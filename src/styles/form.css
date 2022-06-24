@@ -1,0 +1,25 @@
+label {
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding-left: 10px;
+}
+
+.line-adjust {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+}
+
+.line-adjust input, select {
+  margin-left: 20px;
+  width: 75%;
+}
+
+.line-checkbox {
+  display: flex;
+}
+
+.line-checkbox input {
+  margin-top: 10px;
+  width: 7%;
+}

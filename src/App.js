@@ -1,12 +1,18 @@
 import React from 'react';
+import Form from './components/Form';
 import Header from './components/Header';
 
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <>
         <Header />
-      </div>
+        <main>
+          <section className="add-new-card">
+            <Form />
+          </section>
+        </main>
+      </>
     );
   }
 }
