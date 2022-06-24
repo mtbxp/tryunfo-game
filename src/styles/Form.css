@@ -1,0 +1,7 @@
+input, textarea, select {
+  display: block;
+}
+
+section {
+  padding: 8px;
+}
