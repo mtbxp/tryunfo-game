@@ -93,7 +93,7 @@ export default class Form extends Component {
           onChange={ onInputChange }
         />
         <button
-          type="submit"
+          type="button"
           value={ isSaveButtonDisabled }
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }

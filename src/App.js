@@ -19,13 +19,49 @@ class App extends React.Component {
     };
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.validate = this.validate.bind(this);
   }
 
   onInputChange({ target }) {
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { name } = target;
+
+    this.setState({
+      [name]: value,
+    }, () => this.setState({
+      isSaveButtonDisabled: this.validate(),
+    }));
+  }
+
+  onSaveButtonClick() {
+    console.log('criei essa budegaaaaaa!!!!');
+  }
+
+  validate() {
     const {
-      name, value, checked, type,
-    } = target;
-    this.setState({ [name]: (type === 'checkbox' ? checked : value) });
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = this.state;
+
+    const maxValue = 90;
+    const minValue = 0;
+    const maxSumAttr = 211;
+
+    if (cardAttr1 < minValue || cardAttr1 > maxValue
+      || cardAttr2 < minValue || cardAttr2 > maxValue
+      || cardAttr3 < minValue || cardAttr3 > maxValue
+    ) return true;
+
+    const sumAttr = (Number(cardAttr1)
+    + Number(cardAttr2)
+    + Number(cardAttr3))
+    < maxSumAttr;
+
+    return !(cardName && cardDescription && cardImage && sumAttr);
   }
 
   render() {
@@ -41,7 +77,11 @@ class App extends React.Component {
     } = this.state;
     return (
       <>
-        <Form { ...this.state } onInputChange={ this.onInputChange } />
+        <Form
+          { ...this.state }
+          onInputChange={ this.onInputChange }
+          onSaveButtonClick={ this.onSaveButtonClick }
+        />
         <Card
           { ...{
             cardName,
