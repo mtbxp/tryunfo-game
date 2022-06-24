@@ -16,22 +16,23 @@ export default class Form extends Component {
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick } = this.props;
+
     return (
       <form>
-        <label htmlFor="NomeCarta">
+        <label htmlFor="cardName">
           Nome da Carta:
           <input
-            name="NomeCarta"
+            name="cardName"
             type="text"
             data-testid="name-input"
             value={ cardName }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="Descrição-da-carta">
+        <label htmlFor="cardDescription">
           Descrição da Carta :
           <textarea
-            name="Descrição-da-carta"
+            name="cardDescription"
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
@@ -40,9 +41,9 @@ export default class Form extends Component {
         <label htmlFor="attr1">
           Atributo 1 :
           <input
-            data-testid="attr1-input"
+            data-testid="cardAttr1"
             type="number"
-            name="attr1"
+            name="cardAttr1"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
@@ -50,9 +51,9 @@ export default class Form extends Component {
         <label htmlFor="attr2">
           Atributo 2 :
           <input
-            data-testid="attr2-input"
+            data-testid="cardAttr2"
             type="number"
-            name="attr2"
+            name="cardAttr2"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
@@ -60,18 +61,18 @@ export default class Form extends Component {
         <label htmlFor="attr3">
           Atributo 3 :
           <input
-            data-testid="attr3-input"
+            data-testid="cardAttr3"
             type="number"
-            name="attr3"
+            name="cardAttr3"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="Caminho-da-img">
+        <label htmlFor="cardImage">
           Imagem :
           <input
             data-testid="image-input"
-            name="Caminho-da-img"
+            name="cardImage"
             type="text"
             value={ cardImage }
             onChange={ onInputChange }
@@ -79,7 +80,7 @@ export default class Form extends Component {
         </label>
         <select
           data-testid="rare-input"
-          name=""
+          name="cardRare"
           id="raridade-carta"
           value={ cardRare }
           onChange={ onInputChange }
@@ -89,12 +90,12 @@ export default class Form extends Component {
           <option value="raro">raro</option>
           <option value="muito raro">muito raro</option>
         </select>
-        <label htmlFor="Super-trunfo">
+        <label htmlFor="cardTrunfo">
           Super Trunfo
           <input
             data-testid="trunfo-input"
             type="checkbox"
-            name="Super-trunfo"
+            name="cardTrunfo"
             checked={ cardTrunfo }
             onChange={ onInputChange }
           />
