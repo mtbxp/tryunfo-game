@@ -9,5 +9,5 @@ class App extends React.Component {
     );
   }
 }
-
+// iniciando o projeto. VAMOS COM TUDO :rocket:
 export default App;
