@@ -90,11 +90,11 @@ class Form extends React.Component {
           </select>
         </label>
 
-        <label htmlFor="super">
+        <label htmlFor="superTrunfo">
           Super Trunfo:
           <input
             data-testid="trunfo-input"
-            name="super"
+            name="superTrunfo"
             type="checkbox"
             checked={ cardTrunfo }
             onChange={ onInputChange }
