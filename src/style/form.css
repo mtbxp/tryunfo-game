@@ -1,0 +1,9 @@
+body {
+  background-color: rgb(53, 53, 53);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
