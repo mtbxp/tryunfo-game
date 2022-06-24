@@ -8,17 +8,20 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
-      isSaveButtonDisabled: false,
     };
 
+    this.isSaveButtonDisabled = true;
+
     this.handleChange = this.handleChange.bind(this);
+    this.checkRequiredFields = this.checkRequiredFields.bind(this);
+    this.checkAttrsSum = this.checkAttrsSum.bind(this);
     this.handleCardCreation = this.handleCardCreation.bind(this);
   }
 
@@ -41,6 +44,71 @@ class App extends React.Component {
     return 'não definida';
   }
 
+  handleSaveButtonState() {
+    const {
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+    } = this.state;
+    const attrSum = this.checkAttrsSum(cardAttr1, cardAttr2, cardAttr3);
+    const attr1Value = this.checkAttrValue(parseInt(cardAttr1, 10));
+    const attr2Value = this.checkAttrValue(parseInt(cardAttr2, 10));
+    const attr3Value = this.checkAttrValue(parseInt(cardAttr3, 10));
+    const requiredFields = this.checkRequiredFields(cardName,
+      cardDescription,
+      cardImage,
+      cardRare);
+
+    const validations = [attrSum, attr1Value, attr2Value, attr3Value, requiredFields];
+    const isValid = validations.every((validation) => validation);
+    if (isValid) {
+      this.isSaveButtonDisabled = false;
+    } else {
+      this.isSaveButtonDisabled = true;
+    }
+  }
+
+  checkAttrsSum(attr1, attr2, attr3) {
+    const sum = parseInt(attr1, 10) + parseInt(attr2, 10) + parseInt(attr3, 10);
+    const maxAttr = 210;
+    const minAttr = 0;
+    if (sum > maxAttr || sum <= minAttr) {
+      return false;
+    }
+    return true;
+  }
+
+  checkAttrValue(attrValue) {
+    const maxAttrValue = 90;
+    const minAttrValue = 0;
+    if (attrValue > maxAttrValue || attrValue < minAttrValue) {
+      return false;
+    }
+    return true;
+  }
+
+  checkRequiredFields(cardName, cardDescription, cardImage, cardRare) {
+    console.log(cardName);
+    let returnedValue = true;
+    if (cardName.length === 0) {
+      returnedValue = false;
+    }
+    if (cardDescription.length === 0) {
+      returnedValue = false;
+    }
+    if (cardImage.length === 0) {
+      returnedValue = false;
+    }
+    if (cardRare.length === 0) {
+      returnedValue = false;
+    }
+    return returnedValue;
+  }
+
   render() {
     const {
       cardName,
@@ -52,8 +120,9 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
-      isSaveButtonDisabled,
     } = this.state;
+
+    this.handleSaveButtonState();
 
     return (
       <div>
@@ -69,7 +138,7 @@ class App extends React.Component {
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
             hasTrunfo={ hasTrunfo }
-            isSaveButtonDisabled={ isSaveButtonDisabled }
+            isSaveButtonDisabled={ this.isSaveButtonDisabled }
             onInputChange={ this.handleChange }
             onSaveButtonClick={ this.handleCardCreation }
           />
