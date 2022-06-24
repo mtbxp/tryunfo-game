@@ -3,20 +3,67 @@ import Form from './components/Form';
 import Card from './components/Card';
 
 class App extends React.Component {
+  constructor() {
+    super();
+
+    this.onInputChange = this.onInputChange.bind(this);
+
+    this.state = {
+      cardName: "",
+      cardImage: "",
+      cardDescription: "",
+      cardAttr1:"",
+      cardAttr2:"",
+      cardAttr3:"",
+      cardRare:"",
+      cardTrunfo:false,
+    };
+  }
+
+  onInputChange({target}) {
+    const { name } = target
+    const value = target.type === "checkbox" ? target.checked : target.value
+    this.setState({
+      [name]:value
+    })
+  }
+
+
+
   render() {
+    const {
+      cardName,
+      cardImage,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardRare,
+      cardTrunfo
+    } = this.state
     return (
       <div>
         <h1 id="title">Tryunfo</h1>
-        <Form />
+        <Form
+          cardName={ cardName }
+          cardImage={ cardImage }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          onInputChange={ this.onInputChange }
+        />
         <Card
-          cardName="Omori"
-          cardImage="https://preview.redd.it/zs47l46zh1j61.gif?format=png8&s=3b7763fda35062c74f47324e8a3f15ab2a31b927"
-          cardDescription="Alterego de Sunny"
-          cardAttr1={ 70 }
-          cardAttr2={ 90 }
-          cardAttr3={ 60 }
-          cardRare="raro"
-          cardTrunfo={ true }
+          cardName={ cardName }
+          cardImage={ cardImage }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
         />
       </div>
     );

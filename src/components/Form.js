@@ -24,6 +24,7 @@ class Form extends React.Component {
           <label>
             Nome
             <input
+              name="cardName"
               value={ cardName }
               onChange={ onInputChange }
               className="input"
@@ -34,6 +35,7 @@ class Form extends React.Component {
           <label>
             Descrição
             <input
+              name="cardDescription"
               value={ cardDescription }
               onChange={ onInputChange }
               className="input"
@@ -44,6 +46,7 @@ class Form extends React.Component {
           <label>
             Atributo 1
             <input
+              name="cardAttr1"
               value={ cardAttr1 }
               onChange={ onInputChange }
               className="input"
@@ -54,6 +57,7 @@ class Form extends React.Component {
           <label>
             Atributo 2
             <input
+              name="cardAttr2"
               value={ cardAttr2 }
               onChange={ onInputChange }
               className="input"
@@ -64,6 +68,7 @@ class Form extends React.Component {
           <label>
             Atributo 3
             <input
+              name="cardAttr3"
               value={ cardAttr3 }
               onChange={ onInputChange }
               className="input"
@@ -74,6 +79,7 @@ class Form extends React.Component {
           <label>
             Link da Imagem
             <input
+              name="cardImage"
               value={ cardImage }
               onChange={ onInputChange }
               className="input"
@@ -84,6 +90,7 @@ class Form extends React.Component {
           <label>
             Insira o nivel de raridade
             <select
+              name="cardRare"
               value={ cardRare }
               onChange={ onInputChange }
               className="input"
@@ -98,6 +105,7 @@ class Form extends React.Component {
           <label>
             Criar como Super Trunfo?
             <input
+              name="cardTrunfo"
               checked={ cardTrunfo }
               onChange={ onInputChange }
               className="input"
