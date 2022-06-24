@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Form extends React.Component {
   render() {
@@ -140,18 +141,18 @@ class Form extends React.Component {
 }
 Form.propTypes = {
 
-  cardName: Proptypes.string.isRequired,
-  cardDescription: Proptypes.string.isRequired,
-  cardAttr1: Proptypes.string.isRequired,
-  cardAttr2: Proptypes.string.isRequired,
-  cardAttr3: Proptypes.string.isRequired,
-  cardImage: Proptypes.string.isRequired,
-  cardRare: Proptypes.string.isRequired,
-  cardTrunfo: Proptypes.bool.isRequired,
-  // hasTrunfo: Proptypes.bool.isRequired,
-  isSaveButtonDisabled: Proptypes.bool.isRequired,
-  onInputChange: Proptypes.func.isRequired,
-  onSaveButtonClick: Proptypes.func.isRequired,
+  cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  cardRare: PropTypes.string.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
 
 };
 
