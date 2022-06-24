@@ -41,7 +41,7 @@ export default class Form extends Component {
         <label htmlFor="attr1">
           Atributo 1 :
           <input
-            data-testid="cardAttr1"
+            data-testid="attr1-input"
             type="number"
             name="cardAttr1"
             value={ cardAttr1 }
@@ -51,7 +51,7 @@ export default class Form extends Component {
         <label htmlFor="attr2">
           Atributo 2 :
           <input
-            data-testid="cardAttr2"
+            data-testid="attr2-input"
             type="number"
             name="cardAttr2"
             value={ cardAttr2 }
@@ -61,7 +61,7 @@ export default class Form extends Component {
         <label htmlFor="attr3">
           Atributo 3 :
           <input
-            data-testid="cardAttr3"
+            data-testid="attr3-input"
             type="number"
             name="cardAttr3"
             value={ cardAttr3 }
