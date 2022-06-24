@@ -15,6 +15,7 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
+      cards: [],
     };
 
     this.isSaveButtonDisabled = true;
@@ -40,8 +41,40 @@ class App extends React.Component {
     }
   }
 
-  handleCardCreation() {
-    return 'não definida';
+  handleCardCreation(event) {
+    event.preventDefault();
+    const {
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+
+    const newCard = {
+      name: cardName,
+      desc: cardDescription,
+      attr1: cardAttr1,
+      attr2: cardAttr2,
+      attr3: cardAttr3,
+      image: cardImage,
+      rarity: cardRare,
+      trunfo: cardTrunfo,
+    };
+    this.setState((previous) => ({ cards: [...previous.cards, newCard] }));
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+    });
   }
 
   handleSaveButtonState() {
@@ -92,7 +125,6 @@ class App extends React.Component {
   }
 
   checkRequiredFields(cardName, cardDescription, cardImage, cardRare) {
-    console.log(cardName);
     let returnedValue = true;
     if (cardName.length === 0) {
       returnedValue = false;
