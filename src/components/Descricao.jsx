@@ -8,16 +8,14 @@ export default class Descricao extends Component {
     return (
       <label htmlFor="description-input">
         Descrição:
-        <textarea cols="50" rows="10">
-          <input
-            name="cardDescription"
-            value={ cardDescription }
-            onChange={ onInputChange }
-            id="description-input"
-            data-testid="description-input"
-            type="textarea"
-          />
-        </textarea>
+        <textarea
+          name="cardDescription"
+          value={ cardDescription }
+          onChange={ onInputChange }
+          id="description-input"
+          data-testid="description-input"
+          type="textarea"
+        />
       </label>
     );
   }
