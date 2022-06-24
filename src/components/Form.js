@@ -9,7 +9,7 @@ class Form extends React.Component {
     return (
       <form>
         {/* htmlfor feito so pra tirar erro do lint */}
-        <label htmlFor="campos">
+        <label htmlFor="campos" className="form">
           Nome da carta
           <input
             type="text"
