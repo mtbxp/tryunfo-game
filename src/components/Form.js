@@ -25,6 +25,7 @@ class Form extends React.Component {
             id="inputText"
             value={ cardName }
             onChange={ onInputChange }
+            name="cardName"
           />
         </label>
 
@@ -35,6 +36,7 @@ class Form extends React.Component {
             id="textArea"
             value={ cardDescription }
             onChange={ onInputChange }
+            name="cardDescription"
           />
         </label>
 
@@ -46,6 +48,7 @@ class Form extends React.Component {
             id="roteiro"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            name="cardAttr1"
           />
         </label>
 
@@ -57,6 +60,7 @@ class Form extends React.Component {
             id="personagens"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            name="cardAttr2"
           />
         </label>
 
@@ -68,6 +72,7 @@ class Form extends React.Component {
             id="direcao"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            name="cardAttr3"
           />
         </label>
 
@@ -79,6 +84,7 @@ class Form extends React.Component {
             id="url"
             value={ cardImage }
             onChange={ onInputChange }
+            name="cardImage"
           />
         </label>
 
@@ -89,6 +95,7 @@ class Form extends React.Component {
             id="raridade"
             value={ cardRare }
             onChange={ onInputChange }
+            name="cardRare"
           >
             <option value="normal">Normal</option>
             <option value="raro">Raro</option>
@@ -104,6 +111,7 @@ class Form extends React.Component {
             id="superTrunfo"
             checked={ cardTrunfo }
             onChange={ onInputChange }
+            name="cardTrunfo"
           />
         </label>
 
