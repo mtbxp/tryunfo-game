@@ -23,6 +23,7 @@ class From extends React.Component {
           Nome:
           <input
             id="name"
+            name="cardName"
             data-testid="name-input"
             type="text"
             value={ cardName }
@@ -34,6 +35,7 @@ class From extends React.Component {
           Descrição:
           <input
             id="description"
+            name="cardDescription"
             data-testid="description-input"
             type="textarea"
             value={ cardDescription }
@@ -45,6 +47,7 @@ class From extends React.Component {
           Atributo 01:
           <input
             id="attr1"
+            name="cardAttr1"
             data-testid="attr1-input"
             type="number"
             value={ cardAttr1 }
@@ -56,6 +59,7 @@ class From extends React.Component {
           Atributo 02:
           <input
             id="attr2"
+            name="cardAttr2"
             data-testid="attr2-input"
             type="number"
             value={ cardAttr2 }
@@ -67,6 +71,7 @@ class From extends React.Component {
           Atributo 03:
           <input
             id="attr3"
+            name="cardAttr3"
             data-testid="attr3-input"
             type="number"
             value={ cardAttr3 }
@@ -78,6 +83,7 @@ class From extends React.Component {
           Imagem:
           <input
             id="image"
+            name="cardImage"
             data-testid="image-input"
             type="text"
             value={ cardImage }
@@ -85,7 +91,12 @@ class From extends React.Component {
           />
         </label>
 
-        <select data-testid="rare-input" value={ cardRare } onChange={ onInputChange }>
+        <select
+          data-testid="rare-input"
+          name="cardRare"
+          value={ cardRare }
+          onChange={ onInputChange }
+        >
           <option>normal</option>
           <option>raro</option>
           <option>muito raro</option>
@@ -95,11 +106,12 @@ class From extends React.Component {
           Super Tryunfo:
           <input
             id="trunfo"
+            name="cardTrunfo"
             data-testid="trunfo-input"
             type="checkbox"
             checked={ cardTrunfo }
             onChange={ onInputChange }
-            value={ hasTrunfo }
+            value={ hasTrunfo } // nao pertence aqui
           />
         </label>
 
