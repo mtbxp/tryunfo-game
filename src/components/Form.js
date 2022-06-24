@@ -110,7 +110,7 @@ class Form extends React.Component {
 
 export default Form;
 
-Form.prototypes = {
+Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.string.isRequired,
