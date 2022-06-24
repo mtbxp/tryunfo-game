@@ -3,20 +3,19 @@ import React, { Component } from 'react';
 
 export default class Descricao extends Component {
   render() {
-    const { value, func } = this.props;
+    const { cardDescription, onInputChange } = this.props;
 
     return (
-      <label htmlFor="name">
+      <label htmlFor="description-input">
         Descrição:
         <textarea cols="50" rows="10">
           <input
-            type="text"
+            name="cardDescription"
+            value={ cardDescription }
+            onChange={ onInputChange }
+            id="description-input"
             data-testid="description-input"
-            name="text"
-            id="name"
-            value={ value }
-            onChange={ func }
-            required
+            type="textarea"
           />
         </textarea>
       </label>
@@ -25,6 +24,6 @@ export default class Descricao extends Component {
 }
 
 Descricao.propTypes = {
-  func: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  onInputChange: PropTypes.func.isRequired,
 };
