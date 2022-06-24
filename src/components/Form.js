@@ -58,7 +58,7 @@ class Form extends React.Component {
         </label>
 
         <label htmlFor="attr2">
-          Attr01
+          Attr02
           <input
             data-testid="attr2-input"
             type="number"
@@ -70,7 +70,7 @@ class Form extends React.Component {
         </label>
 
         <label htmlFor="attr3">
-          Attr01
+          Attr03
           <input
             data-testid="attr3-input"
             type="number"
@@ -123,6 +123,7 @@ class Form extends React.Component {
         <button
           data-testid="save-button"
           type="submit"
+          name="saveButton"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
         >
