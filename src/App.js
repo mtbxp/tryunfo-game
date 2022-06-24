@@ -6,24 +6,35 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      description: '',
-      attr1: '',
-      attr2: '',
-      attr3: '',
-      image: '',
-      rarity: '',
-      trunfo: false,
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
       hasTrunfo: false,
-      buttonDisabled: false,
+      isSaveButtonDisabled: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleCardCreation = this.handleCardCreation.bind(this);
   }
 
-  handleChange() {
-    return 'não definida';
+  handleChange({ target }) {
+    const { name, type } = target;
+    if (type === 'checkbox') {
+      const { checked } = target;
+      this.setState({
+        [name]: checked,
+      });
+    } else {
+      const { value } = target;
+      this.setState({
+        [name]: value,
+      });
+    }
   }
 
   handleCardCreation() {
@@ -32,16 +43,16 @@ class App extends React.Component {
 
   render() {
     const {
-      name,
-      description,
-      attr1,
-      attr2,
-      attr3,
-      image,
-      rarity,
-      trunfo,
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
       hasTrunfo,
-      buttonDisabled,
+      isSaveButtonDisabled,
     } = this.state;
 
     return (
@@ -49,28 +60,28 @@ class App extends React.Component {
         <h1>Tryunfo</h1>
         <section id="section__create-card">
           <Form
-            cardName={ name }
-            cardDescription={ description }
-            cardAttr1={ attr1 }
-            cardAttr2={ attr2 }
-            cardAttr3={ attr3 }
-            cardImage={ image }
-            cardRare={ rarity }
-            cardTrunfo={ trunfo }
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
             hasTrunfo={ hasTrunfo }
-            isSaveButtonDisabled={ buttonDisabled }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
             onInputChange={ this.handleChange }
             onSaveButtonClick={ this.handleCardCreation }
           />
           <Card
-            cardName={ name }
-            cardDescription={ description }
-            cardAttr1={ attr1 }
-            cardAttr2={ attr2 }
-            cardAttr3={ attr3 }
-            cardImage={ image }
-            cardRare={ rarity }
-            cardTrunfo={ trunfo }
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
           />
         </section>
       </div>
