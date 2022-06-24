@@ -22,8 +22,8 @@ class App extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.checkRequiredFields = this.checkRequiredFields.bind(this);
-    this.checkAttrsSum = this.checkAttrsSum.bind(this);
     this.handleCardCreation = this.handleCardCreation.bind(this);
+    this.handleRemoveCard = this.handleRemoveCard.bind(this);
   }
 
   handleChange({ target }) {
@@ -106,6 +106,10 @@ class App extends React.Component {
     } else {
       this.isSaveButtonDisabled = true;
     }
+  }
+
+  handleRemoveCard(idx) {
+    this.setState(({ cards }) => ({ cards: cards.filter((_, index) => idx !== index) }));
   }
 
   checkAttrsSum(attr1, attr2, attr3) {
@@ -191,17 +195,26 @@ class App extends React.Component {
         </section>
         <section id="section__cards">
           {cards.map(({ name, desc, attr1, attr2, attr3, image, rarity, trunfo }, id) => (
-            <Card
-              key={ id }
-              cardName={ name }
-              cardDescription={ desc }
-              cardAttr1={ attr1 }
-              cardAttr2={ attr2 }
-              cardAttr3={ attr3 }
-              cardImage={ image }
-              cardRare={ rarity }
-              cardTrunfo={ trunfo }
-            />
+            <div key={ id } className="cards__created">
+              <Card
+                cardName={ name }
+                cardDescription={ desc }
+                cardAttr1={ attr1 }
+                cardAttr2={ attr2 }
+                cardAttr3={ attr3 }
+                cardImage={ image }
+                cardRare={ rarity }
+                cardTrunfo={ trunfo }
+              />
+              <button
+                id="button__delete-card"
+                type="button"
+                onClick={ () => this.handleRemoveCard(id) }
+                data-testid="delete-button"
+              >
+                Excluir
+              </button>
+            </div>
           ))}
         </section>
       </div>

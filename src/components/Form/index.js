@@ -102,7 +102,7 @@ class Form extends Component {
           </select>
         </label>
         {hasTrunfo ? (
-          <p>Você já tem um Super Trunfo em seu baralho</p>
+          <p data-testid="trunfo-input">Você já tem um Super Trunfo em seu baralho</p>
         ) : (
           <label htmlFor="input__trunfo">
             <span className="input__label">Super Trybe Trunfo</span>
