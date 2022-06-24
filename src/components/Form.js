@@ -26,6 +26,7 @@ class Form extends React.Component {
             data-testid="name-input"
             type="text"
             value={ cardName }
+            onChange={ onInputChange }
           />
         </label>
         <label htmlFor="description-input">
@@ -34,6 +35,7 @@ class Form extends React.Component {
             data-testid="description-input"
             name="description-input"
             value={ cardDescription }
+            onChange={ onInputChange }
           />
         </label>
         <label htmlFor="name-input">
@@ -83,9 +85,9 @@ class Form extends React.Component {
             value={ cardRare }
             onChange={ onInputChange }
           >
-            <option value="normal">normal</option>
-            <option value="raro">raro</option>
-            <option value="muito-raro">muito raro</option>
+            <option>normal</option>
+            <option>raro</option>
+            <option>muito raro</option>
           </select>
         </label>
         <label htmlFor="trunfo-input">
