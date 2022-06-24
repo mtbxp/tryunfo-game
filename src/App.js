@@ -61,7 +61,6 @@ class App extends React.Component {
   }
 
   onInputChange(event) {
-    console.log('Inputchange')
     const { target } = event;
     if (target.name !== 'cardTrunfo') this.verifySaveButton();
 
