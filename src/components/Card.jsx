@@ -22,7 +22,7 @@ class Card extends React.Component {
         <br />
         <p data-testid="description-card">{ cardDescription }</p>
         <br />
-        { (cardTrunfo) ? <h3 ata-testid="trunfo-card">Super Trunfo</h3> : <>---</>}
+        { (cardTrunfo) ? <h3 data-testid="trunfo-card">Super Trunfo</h3> : <>---</>}
         <br />
         <div className="attr" data-testid="attr1-card">
           <h4>attr1</h4>

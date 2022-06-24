@@ -22,86 +22,92 @@ class Form extends React.Component {
 
     return (
       <form>
-        <label htmlFor="name">
+        <label htmlFor="cardName">
           Nome:
           <br />
           <input
             type="text"
-            name="name"
+            name="cardName"
             data-testid="name-input"
             value={ cardName }
-            onChange={ () => onInputChange() }
+            onChange={ (event) => onInputChange(event) }
           />
           <br />
         </label>
         <br />
-        <label htmlFor="description">
+        <label htmlFor="cardDescription">
           Descrição:
           <br />
           <textarea
-            name="description"
+            name="cardDescription"
             data-testid="description-input"
             value={ cardDescription }
-            onChange={ () => onInputChange() }
+            onChange={ (event) => onInputChange(event) }
           />
           <br />
         </label>
         <br />
-        <label htmlFor="attr1">
+        <label htmlFor="cardAttr1">
           attr1
           <input
             type="number"
-            name="attr1"
+            name="cardAttr1"
             data-testid="attr1-input"
             value={ cardAttr1 }
-            onChange={ () => onInputChange() }
+            onChange={ (event) => onInputChange(event) }
+            min={ 0 }
+            max={ 100 }
           />
           <br />
         </label>
         <br />
-        <label htmlFor="attr2">
+        <label htmlFor="cardAttr2">
           attr2
           <input
             type="number"
-            name="attr2"
+            name="cardAttr2"
             data-testid="attr2-input"
             value={ cardAttr2 }
-            onChange={ () => onInputChange() }
+            onChange={ (event) => onInputChange(event) }
+            min={ 0 }
+            max={ 100 }
           />
           <br />
         </label>
         <br />
-        <label htmlFor="attr3">
+        <label htmlFor="cardAttr3">
           attr3
           <input
             type="number"
-            name="attr3"
+            name="cardAttr3"
             data-testid="attr3-input"
             value={ cardAttr3 }
-            onChange={ () => onInputChange() }
+            onChange={ (event) => onInputChange(event) }
+            min={ 0 }
+            max={ 100 }
           />
           <br />
         </label>
         <br />
-        <label htmlFor="image">
+        <label htmlFor="cardImage">
           Imagem:
           <br />
           <input
             type="text"
-            name="image"
+            name="cardImage"
             data-testid="image-input"
             value={ cardImage }
-            onChange={ () => onInputChange() }
+            onChange={ (event) => onInputChange(event) }
           />
           <br />
         </label>
         <br />
-        <label htmlFor="rare">
+        <label htmlFor="cardRare">
           <select
-            name="rare"
+            name="cardRare"
             data-testid="rare-input"
             value={ cardRare }
-            onChange={ () => onInputChange() }
+            onChange={ (event) => onInputChange(event) }
           >
             <option value="normal">normal</option>
             <option value="raro">raro</option>
@@ -109,14 +115,14 @@ class Form extends React.Component {
           </select>
         </label>
         <br />
-        <label htmlFor="trunfo">
+        <label htmlFor="cardTrunfo">
           <br />
           <input
             type="checkbox"
-            name="trunfo"
+            name="cardTrunfo"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
-            onChange={ () => onInputChange() }
+            onChange={ (event) => onInputChange(event) }
           />
           Super Trybe Trunfo
           <br />
