@@ -11,13 +11,13 @@ export default class Form extends Component {
   }
 
   render() {
+    const { nome } = this.state;
     return (
       <fieldset>
         <legend>Adicionar nova carta</legend>
         <div className="container">
-          <Nome value={ this.state.nome } />
+          <Nome value={ nome } />
         </div>
-
       </fieldset>
     );
   }
