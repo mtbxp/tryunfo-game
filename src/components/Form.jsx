@@ -1,49 +1,49 @@
 import React, { Component } from 'react';
 import Nome from './Nome';
 import Descricao from './Descricao';
-import Atributo1 from './Atributo1';
-import Atributo2 from './Atributo2';
-import Atributo3 from './Atributo3';
+import Habilidade from './Habilidade';
+import Forca from './Forca';
+import Vida from './Vida';
 import Image from './Image';
 import Raridade from './Raridade';
 import Checkbox from './Checkbox';
 
 export default class Form extends Component {
-  constructor() {
-    super();
+  // constructor() {
+  //   super();
 
-    this.state = {
-      name: '',
-      text: '',
-      number: '',
-    };
-  }
+  //   // this.state = {
+  //   //   name: '',
+  //   //   text: '',
+  //   //   number: '',
+  //   // };
+  // }
 
   render() {
-    const { name, text, number } = this.state;
+    // const { name, text, number } = this.state;
     return (
       <fieldset>
         <legend>Adicionar nova carta</legend>
         <div className="container">
-          <Nome value={ name } />
+          <Nome />
         </div>
         <div className="container">
-          <Descricao value={ text } />
+          <Descricao />
         </div>
         <div className="container">
-          <Atributo1 value={ number } />
+          <Habilidade />
         </div>
         <div className="container">
-          <Atributo2 value={ number } />
+          <Forca />
         </div>
         <div className="container">
-          <Atributo3 value={ number } />
+          <Vida />
         </div>
         <div className="container">
-          <Image value={ text } />
+          <Image />
         </div>
         <div className="container">
-          <Raridade value={ text } />
+          <Raridade />
         </div>
         <div className="container">
           <Checkbox />
