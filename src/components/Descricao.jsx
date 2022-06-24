@@ -6,7 +6,7 @@ export default class Descricao extends Component {
     const { value, func } = this.props;
 
     return (
-      <label htmlFor="nome">
+      <label htmlFor="name">
         Descrição:
         <textarea cols="50" rows="10">
           <input
