@@ -64,6 +64,9 @@ class App extends React.Component {
       rarity: cardRare,
       trunfo: cardTrunfo,
     };
+    if (cardTrunfo) {
+      this.setState({ hasTrunfo: true });
+    }
     this.setState((previous) => ({ cards: [...previous.cards, newCard] }));
     this.setState({
       cardName: '',
