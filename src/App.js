@@ -1,6 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import Form from './components/Form';
+import Card from './components/Card';
 
 class App extends React.Component {
   // constructor() {
@@ -14,7 +14,7 @@ class App extends React.Component {
   //     cardAttr3: '',
   //     cardImage: '',
   //     cardRare: '',
-  //     cardTrunfo: false,
+  //     cardTrunfo: true,
   //     hasTrunfo: false,
   //     isSaveButtonDisabled: false,
   //     onInputChange: () => { },
@@ -45,12 +45,17 @@ class App extends React.Component {
       <div>
         <h1>Tryunfo</h1>
         <Form />
+        <Card />
       </div>
     );
   }
 }
 
 export default App;
+
+// CRIEI O ESTADO E PENSEI QUE JÁ PRECISARIA PASSAR AS PROPS,
+// POR ISSO ESSES COMENTÁRIOS
+// CASO PRECISE NOS PRÓXIMOS REQUISITOS, AQUI ESTÃO. :)
 
 // cardName={ cardName }
 // cardDescription={ cardDescription }
@@ -64,3 +69,13 @@ export default App;
 // isSaveButtonDisabled={ isSaveButtonDisabled }
 // onInputChange={ onInputChange }
 // onSaveButtonClick={ onSaveButtonClick }
+
+// cardName={ cardName }
+// cardDescription={ cardDescription }
+// cardAttr1={ cardAttr1 }
+// cardAttr2={ cardAttr2 }
+// cardAttr3={ cardAttr3 }
+// cardImage={ cardImage }
+// cardRare={ cardRare }
+// cardTrunfo={ cardTrunfo }
+// onInputChange={ onInputChange }
