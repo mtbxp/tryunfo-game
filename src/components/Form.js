@@ -107,7 +107,7 @@ class Form extends Component {
             id="checkbox"
             type="checkbox"
             data-testid="trunfo-input"
-            value={ cardTrunfo }
+            checked={ cardTrunfo }
             onChange={ onInputChange }
           />
         </label>
