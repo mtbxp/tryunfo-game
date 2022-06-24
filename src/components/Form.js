@@ -2,36 +2,83 @@ import React from 'react';
 
 class Form extends React.Component {
   render() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick,
+    } = this.props;
     return (
       <div>
         <form>
           <lebel>
             Nome:
-            <input type="text" data-testid="name-input" />
+            <input
+              value={ cardName }
+              onChange={ onInputChange }
+              type="text"
+              data-testid="name-input"
+            />
           </lebel>
           <lebel>
             Descrição
-            <input data-testid="description-input" />
+            <textarea
+              value={ cardDescription }
+              onChange={ onInputChange }
+              data-testid="description-input"
+            />
           </lebel>
           <lebel>
             attr1
-            <input type="number" data-testid="attr1-input" />
+            <input
+              value={ cardAttr1 }
+              onChange={ onInputChange }
+              type="number"
+              data-testid="attr1-input"
+            />
           </lebel>
           <lebel>
             attr2
-            <input type="number" data-testid="attr2-input" />
+            <input
+              value={ cardAttr2 }
+              onChange={ onInputChange }
+              type="number"
+              data-testid="attr2-input"
+            />
           </lebel>
           <lebel>
             attr3
-            <input type="number" data-testid="attr3-input" />
+            <input
+              value={ cardAttr3 }
+              onChange={ onInputChange }
+              type="number"
+              data-testid="attr3-input"
+            />
           </lebel>
           <lebel>
             Image:
-            <input type="text" data-testid="image-input" />
+            <input
+              value={ cardImage }
+              onChange={ onInputChange }
+              type="text"
+              data-testid="image-input"
+            />
           </lebel>
           <lebel>
             Raridade
-            <select data-testid="rare-input">
+            <select
+              value={ cardRare }
+              onChange={ onInputChange }
+              data-testid="rare-input"
+            >
               <option value="normal">Normal</option>
               <option value="raro">Raro</option>
               <option value="muito raro">Muito Raro</option>
@@ -39,10 +86,22 @@ class Form extends React.Component {
           </lebel>
           <lebel>
             Super Trunfo?
-            <input type="checkbox" data-testid="trunfo-input" />
+            <input
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+              type="checkbox"
+              data-testid="trunfo-input"
+            />
           </lebel>
         </form>
-        <button type="submit" data-testid="save-button"> Salvar </button>
+        <button
+          type="submit"
+          onClick={ onSaveButtonClick }
+          disabled={ isSaveButtonDisabled }
+          data-testid="save-button"
+        >
+          Salvar
+        </button>
       </div>
     );
   }
