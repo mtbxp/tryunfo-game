@@ -1,0 +1,14 @@
+header {
+  align-items: flex-end;
+  border-bottom: 3px groove rgb(77, 75, 75);
+  display: flex;
+  font-size: 25px;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+header img {
+  height: 80px;
+  margin-left: 20px;
+  width: 130px;
+}
