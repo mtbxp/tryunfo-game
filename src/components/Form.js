@@ -8,6 +8,7 @@ class Form extends React.Component {
       onSaveButtonClick } = this.props;
     return (
       <form>
+        {/* htmlfor feito so pra tirar erro do lint */}
         <label htmlFor="campos">
           Nome da carta
           <input
@@ -51,9 +52,9 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
           <select data-testid="rare-input" value={ cardRare } onChange={ onInputChange }>
-            <option>Normal</option>
-            <option>Raro</option>
-            <option>Muito Raro</option>
+            <option>normal</option>
+            <option>raro</option>
+            <option>muito raro</option>
           </select>
           Carta Super Trunfo
           <input
@@ -72,6 +73,7 @@ class Form extends React.Component {
           </button>
         </label>
         {console.log(hasTrunfo)}
+        {/* linha acima feita so pra tirar erro do lint */}
       </form>
     );
   }
