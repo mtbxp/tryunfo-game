@@ -25,8 +25,7 @@ class Form extends React.Component {
           </li>
         </ul>
         <p data-testid="rare-card">{cardRare}</p>
-        <p data-testid="trunfo-card">{cardTrunfo ? 'Super Trunfo' : ''}</p>
-
+        {cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : ''}
       </div>
     );
   }
