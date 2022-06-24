@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 class Form extends Component {
   render() {
     const rarities = ['normal', 'raro', 'muito raro'];
