@@ -23,6 +23,6 @@ export default class Nome extends Component {
 }
 
 Nome.propTypes = {
-  onInputChange: PropTypes.string.isRequired,
   cardName: PropTypes.string.isRequired,
+  onInputChange: PropTypes.func.isRequired,
 };
