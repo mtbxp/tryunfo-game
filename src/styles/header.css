@@ -3,7 +3,7 @@ header {
   border-bottom: 4px groove rgb(77, 75, 75);
   display: flex;
   justify-content: center;
-  padding: 30px 0;
+  padding: 20px 0;
 }
 
 header h1 {
