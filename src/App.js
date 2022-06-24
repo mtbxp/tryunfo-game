@@ -15,9 +15,44 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      hasTrunfo: false,
-      isSaveButtonDisabled: false,
+      // hasTrunfo: false,
+      isSaveButtonDisabled: true,
     };
+  }
+
+  verifyingInputs = (estadoAnterior) => {
+    const stateValues = Object.values(estadoAnterior);
+    const arrayValues = [
+      stateValues[0],
+      stateValues[1],
+      stateValues[2],
+      stateValues[3],
+      stateValues[4],
+      stateValues[5],
+      stateValues[6],
+    ];
+    const valuesFilter = arrayValues.filter((element) => element === '');
+    const attr1 = parseInt(stateValues[2], 10);
+    const attr2 = parseInt(stateValues[3], 10);
+    const attr3 = parseInt(stateValues[4], 10);
+    const sum = parseInt(stateValues[2], 10)
+    + parseInt(stateValues[3], 10)
+    + parseInt(stateValues[4], 10);
+    const maxValueSumAttr = 210;
+    const maxValueAttr = 90;
+    const minValueAttr = 0;
+    if (valuesFilter.length === 0
+      && sum <= maxValueSumAttr
+      && attr1 <= maxValueAttr
+      && attr2 <= maxValueAttr
+      && attr3 <= maxValueAttr
+      && attr1 >= minValueAttr
+      && attr2 >= minValueAttr
+      && attr3 >= minValueAttr
+    ) {
+      return false;
+    }
+    return true;
   }
 
   onInputChange = ({ target }) => {
@@ -26,6 +61,9 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     });
+    this.setState((estadoAnterior) => ({
+      isSaveButtonDisabled: this.verifyingInputs(estadoAnterior),
+    }));
   }
 
   render() {
@@ -38,6 +76,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      isSaveButtonDisabled,
     } = this.state;
     return (
       <div>
@@ -51,6 +90,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
         />
         <Card
           cardName={ cardName }

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 class Form extends React.Component {
@@ -11,7 +12,7 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
+      // hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -50,6 +51,8 @@ class Form extends React.Component {
             value={ cardAttr1 }
             onChange={ onInputChange }
             name="cardAttr1"
+            max="90"
+            min="0"
           />
         </label>
         <label htmlFor="attr2-input">
@@ -61,6 +64,8 @@ class Form extends React.Component {
             value={ cardAttr2 }
             onChange={ onInputChange }
             name="cardAttr2"
+            max="90"
+            min="0"
           />
         </label>
         <label htmlFor="attr3-input">
@@ -72,6 +77,8 @@ class Form extends React.Component {
             value={ cardAttr3 }
             onChange={ onInputChange }
             name="cardAttr3"
+            max="90"
+            min="0"
           />
         </label>
         <label htmlFor="image-input">
@@ -124,5 +131,19 @@ class Form extends React.Component {
     );
   }
 }
+
+Form.propTypes = {
+  cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  cardRare: PropTypes.string.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
+};
 
 export default Form;
