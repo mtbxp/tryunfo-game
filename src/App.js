@@ -4,7 +4,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Valorant Trunfo</h1>
+        <h1>Valorant Super Trunfo</h1>
       </div>
     );
   }
