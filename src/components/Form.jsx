@@ -4,6 +4,7 @@ import Descricao from './Descricao';
 import Atributo1 from './Atributo1';
 import Atributo2 from './Atributo2';
 import Atributo3 from './Atributo3';
+import Image from './Image';
 
 export default class Form extends Component {
   constructor() {
@@ -35,6 +36,9 @@ export default class Form extends Component {
         </div>
         <div className="container">
           <Atributo3 value={ number } />
+        </div>
+        <div className="container">
+          <Image value={ text } />
         </div>
       </fieldset>
     );
