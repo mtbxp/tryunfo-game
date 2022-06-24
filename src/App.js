@@ -155,6 +155,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
+      cards,
     } = this.state;
 
     this.handleSaveButtonState();
@@ -187,6 +188,21 @@ class App extends React.Component {
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
           />
+        </section>
+        <section id="section__cards">
+          {cards.map(({ name, desc, attr1, attr2, attr3, image, rarity, trunfo }, id) => (
+            <Card
+              key={ id }
+              cardName={ name }
+              cardDescription={ desc }
+              cardAttr1={ attr1 }
+              cardAttr2={ attr2 }
+              cardAttr3={ attr3 }
+              cardImage={ image }
+              cardRare={ rarity }
+              cardTrunfo={ trunfo }
+            />
+          ))}
         </section>
       </div>
     );
