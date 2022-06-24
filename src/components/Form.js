@@ -8,6 +8,7 @@ class Form extends React.Component {
         <input type="textarea" data-testid="description-input" />
         <input type="number" data-testid="attr1-input" />
         <input type="number" data-testid="attr2-input" />
+        <input type="number" data-testid="attr3-input" />
         <input type="text" data-testid="image-input" />
         <select type="select" data-testid="rare-input">
           <option value="normal">normal</option>
