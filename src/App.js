@@ -38,9 +38,20 @@ class App extends React.Component {
       } else {
         this.setState({ isSaveButtonDisabled: true });
       }
-      console.log(total);
     });
   };
+
+  onSaveButtonClick = () => {
+    console.log('funfa');
+    this.setState({
+      nome: '',
+      descricao: '',
+      atributo1: '0',
+      atributo2: '0',
+      atributo3: '0',
+      imagem: '',
+    });
+  }
 
   render() {
     const { nome, descricao, atributo1, atributo2,
@@ -59,6 +70,7 @@ class App extends React.Component {
           cardRare={ selecionar }
           cardTrunfo={ checkbox }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ nome }
