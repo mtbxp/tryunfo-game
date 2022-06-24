@@ -6,7 +6,7 @@ export default class Nome extends Component {
     const { func, value } = this.props;
 
     return (
-      <label htmlFor="name">
+      <label htmlFor="nome">
         Nome:
         <input
           type="text"
