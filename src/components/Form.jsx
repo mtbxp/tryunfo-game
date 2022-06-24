@@ -6,6 +6,7 @@ class Forms extends React.Component {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
       cardRare, cardTrunfo, isSaveButtonDisabled, onInputChange,
       onSaveButtonClick } = this.props;
+
     return (
       <form>
         <h1>Adicionar nova carta</h1>
@@ -36,7 +37,7 @@ class Forms extends React.Component {
           Attr1
           <input
             value={ cardAttr1 }
-            type="text"
+            type="number"
             name="attr1"
             data-testid="attr1-input"
             onChange={ onInputChange }
@@ -47,7 +48,7 @@ class Forms extends React.Component {
           Attr2
           <input
             value={ cardAttr2 }
-            type="text"
+            type="number"
             name="attr2"
             data-testid="attr2-input"
             onChange={ onInputChange }
@@ -58,7 +59,7 @@ class Forms extends React.Component {
           Attr3
           <input
             value={ cardAttr3 }
-            type="text"
+            type="number"
             name="attr3"
             data-testid="attr3-input"
             onChange={ onInputChange }
