@@ -6,6 +6,7 @@ import Atributo2 from './Atributo2';
 import Atributo3 from './Atributo3';
 import Image from './Image';
 import Raridade from './Raridade';
+import Checkbox from './Checkbox';
 
 export default class Form extends Component {
   constructor() {
@@ -43,6 +44,9 @@ export default class Form extends Component {
         </div>
         <div className="container">
           <Raridade value={ text } />
+        </div>
+        <div className="container">
+          <Checkbox />
         </div>
       </fieldset>
     );
