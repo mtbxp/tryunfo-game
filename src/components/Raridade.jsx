@@ -1,28 +1,24 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-const rarityLetter = ['normal', 'raro', 'muito raro'];
-
 export default class Raridade extends Component {
   render() {
-    const { func, value } = this.props;
+    const { cardImage, onInputChange } = this.props;
 
     return (
-      <label htmlFor="name">
+      <label htmlFor="rare-input">
         Raridade:
-        <select id="name">
+        <select
+          name="cardImage"
+          value={ cardImage }
+          onChange={ onInputChange }
+          id="rare-input"
+          data-testid="rare-input"
+        >
+          Raridade:
           <option value="normal">Normal</option>
           <option value="raro">Raro</option>
           <option value="muito raro">Muito raro</option>
-          <input
-            type="text"
-            data-testid="rare-input"
-            name="name"
-            id="name"
-            value={ value }
-            onChange={ func }
-            required
-          />
         </select>
       </label>
     );
@@ -30,6 +26,6 @@ export default class Raridade extends Component {
 }
 
 Raridade.propTypes = {
-  func: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  onInputChange: PropTypes.func.isRequired,
 };
