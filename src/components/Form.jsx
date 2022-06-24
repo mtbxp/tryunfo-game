@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Nome from './Nome';
 import Descricao from './Descricao';
+import Atributo1 from './Atributo1';
+import Atributo2 from './Atributo2';
+import Atributo3 from './Atributo3';
 
 export default class Form extends Component {
   constructor() {
@@ -9,11 +12,12 @@ export default class Form extends Component {
     this.state = {
       name: '',
       text: '',
+      number: '',
     };
   }
 
   render() {
-    const { name, text } = this.state;
+    const { name, text, number } = this.state;
     return (
       <fieldset>
         <legend>Adicionar nova carta</legend>
@@ -22,6 +26,15 @@ export default class Form extends Component {
         </div>
         <div className="container">
           <Descricao value={ text } />
+        </div>
+        <div className="container">
+          <Atributo1 value={ number } />
+        </div>
+        <div className="container">
+          <Atributo2 value={ number } />
+        </div>
+        <div className="container">
+          <Atributo3 value={ number } />
         </div>
       </fieldset>
     );
