@@ -1,0 +1,10 @@
+input {
+  display: block;
+  margin-bottom: 8px;
+  padding: 7px;
+}
+
+select {
+  display: block;
+  margin-bottom: 8px;
+}
