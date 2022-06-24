@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 export default class Nome extends Component {
   render() {
     const { func, value } = this.props;
+
     return (
       <label htmlFor="name">
         Nome:
