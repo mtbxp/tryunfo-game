@@ -3,6 +3,8 @@ import Form from './components/Form';
 import Card from './components/Card';
 import deck from './deckData';
 
+const cardDeck = deck;
+
 class App extends React.Component {
   constructor() {
     super();
@@ -20,6 +22,7 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
     };
 
+    this.clearState = this.clearState.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.updateSaveButton = this.updateSaveButton.bind(this);
@@ -37,6 +40,30 @@ class App extends React.Component {
 
   onSaveButtonClick(event) {
     event.preventDefault();
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+    cardDeck.unshift({
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    });
+    this.clearState();
+  }
+
+  clearState() {
     this.setState({
       cardName: '',
       cardDescription: '',
