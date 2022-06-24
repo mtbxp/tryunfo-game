@@ -4,7 +4,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Tryunfo do Kauan</h1>
+        <h1>Tryunfo do Kauan Lets Bora</h1>
       </div>
     );
   }
