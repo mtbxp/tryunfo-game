@@ -11,12 +11,9 @@ export default class Raridade extends Component {
       <label htmlFor="name">
         Raridade:
         <select id="name">
-          <option value="">Selecione</option>
-          {
-            rarityLetter.map((letter, key) => (
-              <option key={ key }>{letter}</option>
-            ))
-          }
+          <option value="normal">Normal</option>
+          <option value="raro">Raro</option>
+          <option value="muito raro">Muito raro</option>
           <input
             type="text"
             data-testid="rare-input"
