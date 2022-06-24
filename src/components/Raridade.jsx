@@ -19,7 +19,7 @@ export default class Raridade extends Component {
           }
           <input
             type="text"
-            data-testid="name-input"
+            data-testid="rare-input"
             name="name"
             id="name"
             value={ value }
