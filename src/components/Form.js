@@ -26,6 +26,7 @@ class Form extends Component {
         <label htmlFor="name">
           Nome da Carta:
           <input
+            name="nome"
             id="name"
             type="text"
             data-testid="name-input"
@@ -36,6 +37,7 @@ class Form extends Component {
         <label htmlFor="descricao">
           Descrição da Carta:
           <textarea
+            name="descricao"
             id="descricao"
             data-testid="description-input"
             value={ cardDescription }
@@ -45,6 +47,7 @@ class Form extends Component {
         <label htmlFor="atributo1">
           Atributo 1:
           <input
+            name="atributo1"
             id="atributo1"
             type="number"
             data-testid="attr1-input"
@@ -55,6 +58,7 @@ class Form extends Component {
         <label htmlFor="atributo2">
           Atributo 2:
           <input
+            name="atributo2"
             id="atributo2"
             type="number"
             data-testid="attr2-input"
@@ -65,6 +69,7 @@ class Form extends Component {
         <label htmlFor="atributo3">
           Atributo 3:
           <input
+            name="atributo3"
             id="atributo3"
             type="number"
             data-testid="attr3-input"
@@ -75,6 +80,7 @@ class Form extends Component {
         <label htmlFor="imagem">
           Imagem:
           <input
+            name="imagem"
             id="imagem"
             type="text"
             data-testid="image-input"
@@ -85,6 +91,7 @@ class Form extends Component {
         <label htmlFor="selecionar">
           Raridade
           <select
+            name="selecionar"
             id="selecionar"
             data-testid="rare-input"
             value={ cardRare }
@@ -104,6 +111,7 @@ class Form extends Component {
         <label htmlFor="checkbox">
           Super Trybe Trunfo:
           <input
+            name="checkbox"
             id="checkbox"
             type="checkbox"
             data-testid="trunfo-input"
