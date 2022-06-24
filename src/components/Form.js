@@ -18,29 +18,29 @@ class Form extends React.Component {
     } = this.props;
     return (
       <form>
-        <label htmlFor="name">
+        <label htmlFor="cardName">
           name
           <input
-            name="name-input"
+            name="cardName"
             data-testid="name-input"
             type="text"
             value={ cardName }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="description-input">
+        <label htmlFor="cardDescription">
           description
           <textarea
             data-testid="description-input"
-            name="description-input"
+            name="cardDescription"
             value={ cardDescription }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="name-input">
+        <label htmlFor="cardAttr1">
           attr1
           <input
-            name="attr1-input"
+            name="cardAttr1"
             data-testid="attr1-input"
             type="number"
             value={ cardAttr1 }
@@ -50,7 +50,7 @@ class Form extends React.Component {
         <label htmlFor="name-input">
           attr2
           <input
-            name="attr2-input"
+            name="cardAttr2"
             data-testid="attr2-input"
             type="number"
             value={ cardAttr2 }
@@ -60,27 +60,27 @@ class Form extends React.Component {
         <label htmlFor="name-input">
           attr3
           <input
-            name="attr3-input"
+            name="cardAttr3"
             data-testid="attr3-input"
             type="number"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="name-input">
+        <label htmlFor="cardImage">
           URL image
           <input
-            name="name-input"
+            name="cardImage"
             data-testid="image-input"
             type="text"
             value={ cardImage }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="rare-input">
+        <label htmlFor="cardRare">
           <select
             data-testid="rare-input"
-            name="rare-input"
+            name="rcardRare"
             value={ cardRare }
             onChange={ onInputChange }
           >

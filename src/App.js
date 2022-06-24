@@ -7,29 +7,32 @@ class App extends React.Component {
     super();
 
     this.state = {
-      defaultProps: {
-        cardName: '',
-        cardDescription: '',
-        cardAttr1: 0,
-        cardAttr2: 0,
-        cardAttr3: 0,
-        cardImage: '',
-        cardRare: 'raro',
-        cardTrunfo: true,
-        hasTrunfo: false,
-        isSaveButtonDisabled: false,
-        onInputChange: () => { },
-        onSaveButtonClick: () => { },
-      },
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'raro',
+      cardTrunfo: true,
+      hasTrunfo: false,
+      isSaveButtonDisabled: false,
+      onSaveButtonClick: () => { },
     };
+    this.onInputChange = this.onInputChange.bind(this);
+  }
+
+  onInputChange({ target }) {
+    this.setState({
+      [target.name]: target.value,
+    });
   }
 
   render() {
-    const { defaultProps } = this.state;
     return (
       <div>
-        <Form { ...defaultProps } />
-        <Card { ...defaultProps } />
+        <Form { ...this.state } onInputChange={ this.onInputChange } />
+        <Card { ...this.state } />
       </div>
     );
   }
