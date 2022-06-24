@@ -1,0 +1,28 @@
+#section-card {
+  border: 3px solid black;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+#title {
+  font-weight: 800;
+  margin-top: -1px ;
+}
+
+#card-infos {
+  display: flex;
+  justify-content: space-around;
+}
+
+#card-image {
+  width: 300px;
+}
+
+#super-trunfo {
+    background-color: black;
+    padding: 5px;
+    color: white;
+    border-radius: 10px;
+    width: 100px;
+}
