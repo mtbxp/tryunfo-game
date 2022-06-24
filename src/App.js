@@ -7,6 +7,7 @@ class App extends React.Component {
         <h1>Tryunfo</h1>
       </div>
     );
+    
   }
 }
 
