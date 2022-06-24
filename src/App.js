@@ -13,13 +13,16 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.updateSaveButton = this.updateSaveButton.bind(this);
+    this.checkNoEmptyInput = this.checkNoEmptyInput.bind(this);
+    this.checkValidAttrs = this.checkValidAttrs.bind(this);
   }
 
   onInputChange({ target }) {
@@ -27,11 +30,53 @@ class App extends React.Component {
     const value = (type === 'checkbox') ? checked : target.value;
     this.setState({
       [name]: value,
-    });
+    }, () => this.updateSaveButton());
   }
 
   onSaveButtonClick() {
     console.log('WIP');
+  }
+
+  checkNoEmptyInput() {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = this.state;
+    return [
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    ].every((prop) => prop !== '');
+  }
+
+  checkValidAttrs() {
+    const minValue = 0;
+    const maxValue = 90;
+    const maxTotal = 210;
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    const attrArr = [Number(cardAttr1), Number(cardAttr2), Number(cardAttr3)];
+    const isValidAttr = attrArr.every((attr) => attr >= minValue && attr <= maxValue);
+    const isValidTotal = attrArr.reduce((prev, curr) => prev + curr) <= maxTotal;
+    return (isValidAttr && isValidTotal);
+  }
+
+  updateSaveButton() {
+    if (this.checkNoEmptyInput() && this.checkValidAttrs()) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
   }
 
   render() {
