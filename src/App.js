@@ -28,6 +28,7 @@ class App extends React.Component {
     this.updateSaveButton = this.updateSaveButton.bind(this);
     this.checkNoEmptyInput = this.checkNoEmptyInput.bind(this);
     this.checkValidAttrs = this.checkValidAttrs.bind(this);
+    this.hasSuperTrunfo = this.hasSuperTrunfo.bind(this);
   }
 
   onInputChange({ target }) {
@@ -60,6 +61,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
     });
+    this.hasSuperTrunfo();
     this.clearState();
   }
 
@@ -72,6 +74,13 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
+    });
+  }
+
+  hasSuperTrunfo() {
+    const hasSuperTrunfoCard = !(cardDeck.every((card) => card.cardTrunfo === false));
+    this.setState({
+      hasTrunfo: hasSuperTrunfoCard,
     });
   }
 
