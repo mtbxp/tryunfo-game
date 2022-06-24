@@ -9,9 +9,9 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
@@ -20,6 +20,7 @@ class App extends React.Component {
     };
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.updateSaveButton = this.updateSaveButton.bind(this);
     this.checkNoEmptyInput = this.checkNoEmptyInput.bind(this);
     this.checkValidAttrs = this.checkValidAttrs.bind(this);
@@ -33,8 +34,17 @@ class App extends React.Component {
     }, () => this.updateSaveButton());
   }
 
-  onSaveButtonClick() {
-    console.log('WIP');
+  onSaveButtonClick(event) {
+    event.preventDefault();
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+    });
   }
 
   checkNoEmptyInput() {
