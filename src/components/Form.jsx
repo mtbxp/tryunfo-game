@@ -2,13 +2,6 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 export default class Form extends Component {
-  constructor() {
-    super();
-    this.state = {
-
-    };
-  }
-
   render() {
     const { cardName,
       cardDescription,
@@ -29,6 +22,7 @@ export default class Form extends Component {
         <label htmlFor="name">
           Nome:
           <input
+            name="name"
             id="name"
             type="text"
             data-testid="name-input"
@@ -40,6 +34,7 @@ export default class Form extends Component {
         <label htmlFor="description">
           Descrição:
           <input
+            name="description"
             id="description"
             type="textarea"
             data-testid="description-input"
@@ -51,6 +46,7 @@ export default class Form extends Component {
         <label htmlFor="attr1">
           Attr1:
           <input
+            name="attr1"
             id="attr1"
             type="number"
             data-testid="attr1-input"
@@ -62,6 +58,7 @@ export default class Form extends Component {
         <label htmlFor="attr2">
           Attr2:
           <input
+            name="attr2"
             id="attr2"
             type="number"
             data-testid="attr2-input"
@@ -73,6 +70,7 @@ export default class Form extends Component {
         <label htmlFor="attr3">
           Attr3:
           <input
+            name="attr3"
             id="attr3"
             type="number"
             data-testid="attr3-input"
@@ -84,6 +82,7 @@ export default class Form extends Component {
         <label htmlFor="image">
           Imagem:
           <input
+            name="image"
             id="image"
             type="text"
             data-testid="image-input"
@@ -93,6 +92,7 @@ export default class Form extends Component {
         </label>
 
         <select
+          type="select"
           name="raridade"
           data-testid="rare-input"
           value={ cardRare }
@@ -107,6 +107,7 @@ export default class Form extends Component {
         <label htmlFor="trunfo">
           Super Trybe Trunfo
           <input
+            name="trunfo"
             id="trunfo"
             type="checkbox"
             data-testid="trunfo-input"
