@@ -11,7 +11,7 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor="decricao">
+        <label htmlFor="descricao">
           <textarea
             data-testid="description-input"
           />
