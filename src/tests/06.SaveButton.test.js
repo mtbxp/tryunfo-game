@@ -1,7 +1,7 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event'
-import App from '../App';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import App from "../components/App";
 
 describe("6 - Crie a função do botão salvar", () => {
   it("Será validado se os campos do formulário `Nome`, `Descrição` e `Imagem` são limpos após clicar em `salvar`", () => {
@@ -15,20 +15,23 @@ describe("6 - Crie a função do botão salvar", () => {
     const selectInput = screen.getByTestId(/rare-input/i);
     const saveBtn = screen.getByTestId("save-button");
 
-    userEvent.type(nameInput, 'Carta 1 - Tryunfo');
-    userEvent.type(descInput, 'Considerado por fontes anônimas porém confiáveis um dos melhores projetos já criados');
-    userEvent.type(imgInput, 'url-to-image');
-    userEvent.type(attr1Input, '90');
-    userEvent.type(attr2Input, '90');
-    userEvent.type(attr3Input, '30');
+    userEvent.type(nameInput, "Carta 1 - Tryunfo");
+    userEvent.type(
+      descInput,
+      "Considerado por fontes anônimas porém confiáveis um dos melhores projetos já criados"
+    );
+    userEvent.type(imgInput, "url-to-image");
+    userEvent.type(attr1Input, "90");
+    userEvent.type(attr2Input, "90");
+    userEvent.type(attr3Input, "30");
     userEvent.selectOptions(selectInput, "normal");
-    
+
     expect(saveBtn).toBeEnabled();
     userEvent.click(saveBtn);
 
-    expect(nameInput).toHaveValue('');
-    expect(descInput).toHaveValue('');
-    expect(imgInput).toHaveValue('');
+    expect(nameInput).toHaveValue("");
+    expect(descInput).toHaveValue("");
+    expect(imgInput).toHaveValue("");
   });
 
   it("Será validado se o os três campos de atributos tem o valor `0` após clicar em `salvar`", () => {
@@ -42,14 +45,17 @@ describe("6 - Crie a função do botão salvar", () => {
     const selectInput = screen.getByTestId(/rare-input/i);
     const saveBtn = screen.getByTestId("save-button");
 
-    userEvent.type(nameInput, 'Carta 1 - Tryunfo');
-    userEvent.type(descInput, 'Considerado por fontes anônimas porém confiáveis um dos melhores projetos já criados');
-    userEvent.type(imgInput, 'url-to-image');
-    userEvent.type(attr1Input, '90');
-    userEvent.type(attr2Input, '90');
-    userEvent.type(attr3Input, '30');
+    userEvent.type(nameInput, "Carta 1 - Tryunfo");
+    userEvent.type(
+      descInput,
+      "Considerado por fontes anônimas porém confiáveis um dos melhores projetos já criados"
+    );
+    userEvent.type(imgInput, "url-to-image");
+    userEvent.type(attr1Input, "90");
+    userEvent.type(attr2Input, "90");
+    userEvent.type(attr3Input, "30");
     userEvent.selectOptions(selectInput, "normal");
-    
+
     expect(saveBtn).toBeEnabled();
     userEvent.click(saveBtn);
 
@@ -69,18 +75,20 @@ describe("6 - Crie a função do botão salvar", () => {
     const selectInput = screen.getByTestId(/rare-input/i);
     const saveBtn = screen.getByTestId("save-button");
 
-    userEvent.type(nameInput, 'Carta 1 - Tryunfo');
-    userEvent.type(descInput, 'Considerado por fontes anônimas porém confiáveis um dos melhores projetos já criados');
-    userEvent.type(imgInput, 'url-to-image');
-    userEvent.type(attr1Input, '90');
-    userEvent.type(attr2Input, '90');
-    userEvent.type(attr3Input, '30');
+    userEvent.type(nameInput, "Carta 1 - Tryunfo");
+    userEvent.type(
+      descInput,
+      "Considerado por fontes anônimas porém confiáveis um dos melhores projetos já criados"
+    );
+    userEvent.type(imgInput, "url-to-image");
+    userEvent.type(attr1Input, "90");
+    userEvent.type(attr2Input, "90");
+    userEvent.type(attr3Input, "30");
     userEvent.selectOptions(selectInput, "raro");
-    
+
     expect(saveBtn).toBeEnabled();
     userEvent.click(saveBtn);
 
-    expect(selectInput).toHaveValue('normal');
+    expect(selectInput).toHaveValue("normal");
   });
-
-})
+});
