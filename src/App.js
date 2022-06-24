@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unused-state */
 import React from 'react';
 import Form from './components/Form';
+import Card from './components/Card';
 import './app.css';
 
 class App extends React.Component {
@@ -52,6 +53,7 @@ class App extends React.Component {
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ onSaveButtonClick }
         />
+        <Card />
       </div>
     );
   }
