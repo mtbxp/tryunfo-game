@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.card-container {
+  align-items: center;
+  background-color: red;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column;
+  height: 400px;
+  text-align: left;
+  width: 300px;
+}
+
+.card-image {
+  width: 90%;
+}
+
+.attribute {
+  border: 1px solid black;
+}

@@ -20,13 +20,45 @@ class App extends React.Component {
     };
   }
 
+  validateButtonSave = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+    } = this.state;
+    const at1 = Number(cardAttr1);
+    const at2 = Number(cardAttr2);
+    const at3 = Number(cardAttr3);
+    const maxSumVal = 210;
+    const minVal = 0;
+    const maxVal = 90;
+    const isEmpty = cardName !== '' && cardDescription !== '' && cardImage !== '';
+    const isSumBigger = (at1 + at2 + at3) <= maxSumVal;
+    const isAtBigger = at1 <= maxVal && at2 <= maxVal && at3 <= maxVal;
+    const isAtSmaller = at1 >= minVal && at2 >= minVal && at3 >= minVal;
+    if (isEmpty && isSumBigger && isAtBigger && isAtSmaller) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
+  }
+
   onInputChange = (event) => {
     const { name } = event.target;
     let { value } = event.target;
+    // this.validateButtonSave(); // falta fazer funcionar de modo async
     if (event.target.type === 'checkbox') value = event.target.checked;
     this.setState({
       [name]: value,
-    });
+    },
+    () => this.validateButtonSave());
   }
 
   onSaveButtonClick = () => {}
