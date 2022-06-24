@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 export default class Nome extends Component {
   render() {
-    const { func, value } = this.props;
+    const { onInputChange, cardName } = this.props;
 
     return (
       <label htmlFor="name">
@@ -13,8 +13,8 @@ export default class Nome extends Component {
           data-testid="name-input"
           name="name"
           id="name"
-          value={ value }
-          onChange={ func }
+          value={ cardName }
+          onChange={ onInputChange }
           required
         />
       </label>
@@ -23,6 +23,6 @@ export default class Nome extends Component {
 }
 
 Nome.propTypes = {
-  func: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  onInputChange: PropTypes.string.isRequired,
+  cardName: PropTypes.string.isRequired,
 };
