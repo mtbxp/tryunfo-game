@@ -7,6 +7,7 @@ import Vida from './Vida';
 import Image from './Image';
 import Raridade from './Raridade';
 import Checkbox from './Checkbox';
+import Button from './Button';
 
 export default class Form extends Component {
   // constructor() {
@@ -47,6 +48,9 @@ export default class Form extends Component {
         </div>
         <div className="container">
           <Checkbox />
+        </div>
+        <div className="container">
+          <Button />
         </div>
       </fieldset>
     );
