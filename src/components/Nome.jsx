@@ -6,12 +6,12 @@ export default class Nome extends Component {
     const { func, value } = this.props;
 
     return (
-      <label htmlFor="nome">
+      <label htmlFor="name">
         Nome:
         <input
           type="text"
           data-testid="name-input"
-          name="nome"
+          name="name"
           id="name"
           value={ value }
           onChange={ func }
