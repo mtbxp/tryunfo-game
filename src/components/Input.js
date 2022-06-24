@@ -11,6 +11,8 @@ class Input extends React.Component {
       value,
       onChange,
       checked,
+      min,
+      max,
     } = this.props;
 
     return (
@@ -23,6 +25,8 @@ class Input extends React.Component {
           value={ value }
           onChange={ onChange }
           checked={ checked }
+          min={ min }
+          max={ max }
         />
       </label>
     );
@@ -37,11 +41,15 @@ Input.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string,
   checked: PropTypes.bool,
+  min: PropTypes.number,
+  max: PropTypes.number,
 };
 
 Input.defaultProps = {
   value: '',
   checked: false,
+  min: 0,
+  max: 90,
 };
 
 export default Input;

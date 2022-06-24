@@ -48,6 +48,8 @@ class Form extends React.Component {
           text="Atributo 1"
           value={ cardAttr1 }
           onChange={ onInputChange }
+          min={ 0 }
+          max={ 90 }
           dataTestId="attr1-input"
         />
         <Input
@@ -56,6 +58,8 @@ class Form extends React.Component {
           text="Atributo 2"
           value={ cardAttr2 }
           onChange={ onInputChange }
+          min={ 0 }
+          max={ 90 }
           dataTestId="attr2-input"
         />
         <Input
@@ -64,6 +68,8 @@ class Form extends React.Component {
           text="Atributo 3"
           value={ cardAttr3 }
           onChange={ onInputChange }
+          min={ 0 }
+          max={ 90 }
           dataTestId="attr3-input"
         />
 
