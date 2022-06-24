@@ -1,0 +1,17 @@
+body {
+    margin: 0px;
+}
+
+header {
+    background-color: rgba(0, 204, 0, 0.479);
+    color: rgb(0, 59, 0);
+    display: flex;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.createCard {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
