@@ -1,0 +1,33 @@
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+form input, textarea, select {
+  width: 200px;
+}
+
+form select {
+  margin: 5px;
+}
+
+.super-check {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  width: 200px;
+}
+
+button {
+  border-radius: 10px;
+  padding: 10px;
+  width: 80px;
+}
