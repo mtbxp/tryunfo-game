@@ -6,7 +6,9 @@ class App extends React.Component {
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form />
+        <section id="section__create-card">
+          <Form />
+        </section>
       </div>
     );
   }
