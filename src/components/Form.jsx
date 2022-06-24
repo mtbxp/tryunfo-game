@@ -1,18 +1,18 @@
 import React from 'react';
-import '../App.css';
+import '../global.css';
 
 class Form extends React.Component {
   render() {
     return (
       <form className="text-area">
-        <label htmlFor="name">
+        <label htmlFor="cardName">
           name
-          <input data-testid="name-input" type="text" />
+          <input data-testid="cardName" type="text" />
         </label>
-        <label htmlFor="text-area">
+        <label htmlFor="cardDescription">
           <textarea
             data-testid="description-input"
-            name="text-area"
+            name="cardDescription"
           />
         </label>
         <label htmlFor="number">
