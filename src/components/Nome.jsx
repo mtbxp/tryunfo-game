@@ -6,16 +6,16 @@ export default class Nome extends Component {
     const { onInputChange, cardName } = this.props;
 
     return (
-      <label htmlFor="name">
+      <label htmlFor="name-input">
         Nome:
         <input
-          type="text"
-          data-testid="name-input"
-          name="name"
-          id="name"
+          placeholder="Digite o nome da carta"
+          name="cardName"
           value={ cardName }
           onChange={ onInputChange }
-          required
+          id="name-input"
+          data-testid="name-input"
+          type="text"
         />
       </label>
     );
