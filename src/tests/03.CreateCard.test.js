@@ -64,6 +64,7 @@ describe("3 - Crie e renderize o componente Card com as props necessárias", () 
     expect(text).toHaveTextContent("raro");
   });
 
+  
   it("Será validado se o componente `data-testid=trunfo-card` é exibido quando a prop `cardTrunfo` tiver o valor `true`", () => {
     render(<Card {...defaultProps} />);
     const text = screen.getByTestId(/trunfo-card/i);
