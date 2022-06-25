@@ -12,7 +12,7 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      /* hasTrunfo, */
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -45,8 +45,8 @@ class Form extends React.Component {
             type="number"
             name="cardAttr1"
             data-testid="attr1-input"
-            max="5"
-            min="1"
+            max="90"
+            min="0"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
@@ -57,8 +57,8 @@ class Form extends React.Component {
             type="number"
             name="cardAttr2"
             data-testid="attr2-input"
-            max="5"
-            min="1"
+            max="90"
+            min="0"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
@@ -69,8 +69,8 @@ class Form extends React.Component {
             type="number"
             name="cardAttr3"
             data-testid="attr3-input"
-            max="5"
-            min="1"
+            max="90"
+            min="0"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
@@ -98,13 +98,15 @@ class Form extends React.Component {
             <option value="muito raro">Muito raro</option>
           </select>
         </label>
-        <input
-          name="cardTrunfo"
-          type="checkbox"
-          data-testid="trunfo-input"
-          checked={ cardTrunfo }
-          onChange={ onInputChange }
-        />
+        {
+          hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p> : <input
+            name="cardTrunfo"
+            type="checkbox"
+            data-testid="trunfo-input"
+            checked={ cardTrunfo }
+            onChange={ onInputChange }
+          />
+        }
         <button
           type="button"
           data-testid="save-button"
@@ -113,6 +115,9 @@ class Form extends React.Component {
         >
           Salvar
         </button>
+        {
+          isSaveButtonDisabled ? <p id="isTrunfo">Preencha os campos</p> : ''
+        }
       </form>
     );
   }
@@ -127,7 +132,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  /*   hasTrunfo: PropTypes.bool.isRequired, */
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
