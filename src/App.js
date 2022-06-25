@@ -77,7 +77,7 @@ class App extends React.Component {
   render() {
     const { nome, descricao, atributo1, atributo2,
       atributo3, imagem, selecionar, checkbox, isSaveButtonDisabled,
-      hasTrunf } = this.state;
+      hasTrunf, cards } = this.state;
     return (
       <div>
         <h1> Tryunfo</h1>
@@ -105,6 +105,20 @@ class App extends React.Component {
           cardRare={ selecionar }
           cardTrunfo={ checkbox }
         />
+        <div>
+          { cards.map((card) => (
+            <Card
+              key={ card.name }
+              cardName={ card.name }
+              cardDescription={ card.descricaoCarta }
+              cardAttr1={ card.att1 }
+              cardAttr2={ card.att2 }
+              cardAttr3={ card.att3 }
+              cardImage={ card.img }
+              cardRare={ card.raridade }
+              cardTrunfo={ card.isSuper }
+            />)) }
+        </div>
       </div>
     );
   }
