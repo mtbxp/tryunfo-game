@@ -7,6 +7,20 @@ class App extends React.Component {
       <div>
         <h1>Tryunfo</h1>
         <Form />
+        <Form
+          cardName="teste"
+          cardDescription="teste"
+          cardAttr1
+          cardAttr2
+          cardAttr3
+          cardImage="teste"
+          cardRare
+          cardTrunfo
+          hasTrunfo
+          isSaveButtonDisabled
+          onInputChange
+          onSaveButtonClick
+        />
       </div>
     );
   }
