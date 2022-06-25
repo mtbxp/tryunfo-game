@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './components/Card';
 import Form from './components/Form';
 
 class App extends React.Component {
@@ -13,7 +14,7 @@ class App extends React.Component {
       image: '',
       rare: 'normal',
       trunfo: false,
-      hasTrunfo: false,
+      // hasTrunfo: false,
       isSaveButtonDisabled: false,
     };
   }
@@ -49,6 +50,16 @@ class App extends React.Component {
             isSaveButtonDisabled={ isSaveButtonDisabled }
             onInputChange={ this.onInputChange }
             onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <Card
+            cardName={ name }
+            cardDescription={ description }
+            cardAttr1={ attr1 }
+            cardAttr2={ attr2 }
+            cardAttr3={ attr3 }
+            cardImage={ image }
+            cardRare={ rare }
+            cardTrunfo={ trunfo }
           />
         </div>
       );
