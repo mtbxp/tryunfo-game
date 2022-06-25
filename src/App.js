@@ -15,6 +15,7 @@ class App extends React.Component {
       cardAttr3: '0',
       cardRare: 'normal',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       saveCards: [],
     };
@@ -37,36 +38,52 @@ class App extends React.Component {
 
   onSaveButtonClick(event) {
     event.preventDefault();
-    const {
-      cardName,
-      cardDescription,
-      cardImage,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardRare,
-      cardTrunfo,
-    } = this.state;
-    this.setState((prevArray) => ({
-      cardName: '',
-      cardDescription: '',
-      cardImage: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardRare: 'normal',
-      cardTrunfo: false,
-      saveCards: [...prevArray.saveCards, {
-        cardName,
-        cardDescription,
-        cardImage,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
-        cardRare,
-        cardTrunfo,
-      }],
-    }));
+    const { cardName, cardDescription, cardImage, cardAttr1,
+      cardAttr2, cardAttr3, cardRare, cardTrunfo } = this.state;
+    if (cardTrunfo) {
+      this.setState((prevArray) => ({
+        cardName: '',
+        cardDescription: '',
+        cardImage: '',
+        cardAttr1: '0',
+        cardAttr2: '0',
+        cardAttr3: '0',
+        cardRare: 'normal',
+        cardTrunfo: false,
+        hasTrunfo: true,
+        saveCards: [...prevArray.saveCards, {
+          cardName,
+          cardDescription,
+          cardImage,
+          cardAttr1,
+          cardAttr2,
+          cardAttr3,
+          cardRare,
+          cardTrunfo,
+        }],
+      }));
+    } else {
+      this.setState((prevArray) => ({
+        cardName: '',
+        cardDescription: '',
+        cardImage: '',
+        cardAttr1: '0',
+        cardAttr2: '0',
+        cardAttr3: '0',
+        cardRare: 'normal',
+        cardTrunfo: false,
+        saveCards: [...prevArray.saveCards, {
+          cardName,
+          cardDescription,
+          cardImage,
+          cardAttr1,
+          cardAttr2,
+          cardAttr3,
+          cardRare,
+          cardTrunfo,
+        }],
+      }));
+    }
   }
 
   validate() {
