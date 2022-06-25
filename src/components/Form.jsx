@@ -19,112 +19,115 @@ class Form extends Component {
     } = this.props;
 
     return (
-      <form>
-        <label htmlFor="name-input">
-          <input
+      <div className="form-div">
+        <h1>Tryunfo</h1>
+        <form className="form">
+          <label htmlFor="name-input">
+            Nome da carta
+            <input
+              onChange={ onInputChange }
+              value={ cardName }
+              name="cardName"
+              id="name-input"
+              data-testid="name-input"
+              type="text"
+              placeholder="Nome da carta"
+            />
+          </label>
+          Descrição
+          <textarea
             onChange={ onInputChange }
-            value={ cardName }
-            name="cardName"
-            id="name-input"
-            data-testid="name-input"
-            type="text"
-            placeholder="Nome da carta"
-          />
-        </label>
-
-        <textarea
-          onChange={ onInputChange }
-          value={ cardDescription }
-          name="cardDescription"
-          data-testid="description-input"
-          placeholder="Descrição da carta"
-        >
-          bla bla
-        </textarea>
-
-        <label htmlFor="attr1-input">
-          <input
+            value={ cardDescription }
+            name="cardDescription"
+            data-testid="description-input"
+            placeholder="Descrição da carta"
+          >
+            bla bla
+          </textarea>
+          Atributo 1
+          <label htmlFor="attr1-input">
+            <input
+              onChange={ onInputChange }
+              value={ cardAttr1 }
+              name="cardAttr1"
+              type="number"
+              data-testid="attr1-input"
+              id="attr1-input"
+              placeholder="Atributo 1"
+            />
+          </label>
+          Atributo 2
+          <label htmlFor="attr2-input">
+            <input
+              onChange={ onInputChange }
+              value={ cardAttr2 }
+              name="cardAttr2"
+              type="number"
+              data-testid="attr2-input"
+              id="attr2-input"
+              placeholder="Atributo 2"
+            />
+          </label>
+          Atributo 3
+          <label htmlFor="attr3-input">
+            <input
+              onChange={ onInputChange }
+              value={ cardAttr3 }
+              name="cardAttr3"
+              type="number"
+              data-testid="attr3-input"
+              id="attr3-input"
+              placeholder="Atributo 3"
+            />
+          </label>
+          Imagem
+          <label htmlFor="image-input">
+            <input
+              onChange={ onInputChange }
+              value={ cardImage }
+              name="cardImage"
+              type="text"
+              data-testid="image-input"
+              id="image-input"
+              placeholder="Adicione o link da imagem"
+            />
+          </label>
+          Raridade
+          <select
             onChange={ onInputChange }
-            value={ cardAttr1 }
-            name="cardAttr1"
-            type="number"
-            data-testid="attr1-input"
-            id="attr1-input"
-            placeholder="Atributo 1"
-          />
-        </label>
+            value={ cardRare }
+            name="cardRare"
+            data-testid="rare-input"
+            id="rare-input"
+          >
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito raro</option>
+          </select>
 
-        <label htmlFor="attr2-input">
-          <input
-            onChange={ onInputChange }
-            value={ cardAttr2 }
-            name="cardAttr2"
-            type="number"
-            data-testid="attr2-input"
-            id="attr2-input"
-            placeholder="Atributo 2"
-          />
-        </label>
+          <label htmlFor="trunfo-input">
+            Super Trunfo
+            <input
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+              value={ cardTrunfo }
+              name="cardTrunfo"
+              type="checkbox"
+              data-testid="trunfo-input"
+              id="trunfo-input"
+            />
+          </label>
 
-        <label htmlFor="attr3-input">
-          <input
-            onChange={ onInputChange }
-            value={ cardAttr3 }
-            name="cardAttr3"
-            type="number"
-            data-testid="attr3-input"
-            id="attr3-input"
-            placeholder="Atributo 3"
-          />
-        </label>
-
-        <label htmlFor="image-input">
-          <input
-            onChange={ onInputChange }
-            value={ cardImage }
-            name="cardImage"
-            type="text"
-            data-testid="image-input"
-            id="image-input"
-            placeholder="Adicione a imagem"
-          />
-        </label>
-
-        <select
-          onChange={ onInputChange }
-          value={ cardRare }
-          name="cardRare"
-          data-testid="rare-input"
-          id="rare-input"
-        >
-          <option value="normal">Normal</option>
-          <option value="raro">Raro</option>
-          <option value="muito raro">Muito raro</option>
-        </select>
-
-        <label htmlFor="trunfo-input">
-          Super Trunfo
-          <input
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-            value={ cardTrunfo }
-            name="cardTrunfo"
-            type="checkbox"
-            data-testid="trunfo-input"
-            id="trunfo-input"
-          />
-        </label>
-
-        <button
-          disabled={ isSaveButtonDisabled }
-          onClick={ onSaveButtonClick }
-          type="submit"
-          data-testid="save-button"
-        >
-          Salvar
-        </button>
-
-      </form>
+          <button
+            disabled={ isSaveButtonDisabled }
+            onClick={ onSaveButtonClick }
+            type="submit"
+            data-testid="save-button"
+          >
+            Salvar
+          </button>
+        </form>
+      </div>
     );
   }
 }
