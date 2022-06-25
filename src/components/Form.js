@@ -21,11 +21,11 @@ class Form extends React.Component {
       <form>
         <h1>Adicionar nova carta</h1>
         <label htmlFor="nameCard">
+          Nome da carta:
           <input
             data-testid="name-input"
             type="text"
             id="nameCard"
-            placeholder="Nome"
             required
             value={ cardName }
             onChange={ onInputChange }
@@ -33,11 +33,11 @@ class Form extends React.Component {
         </label>
 
         <label htmlFor="descriptionCard">
+          Descreva a carta
           <textarea
             data-testid="description-input"
             type=""
             id="descriptionCard"
-            placeholder="Descreva a carta"
             cols="30"
             rows="10"
             maxLength="500"
@@ -48,11 +48,11 @@ class Form extends React.Component {
         </label>
 
         <label htmlFor="attr1">
+          1º atributo
           <input
             data-testid="attr1-input"
             type="number"
             id="attr1"
-            placeholder="1º atributo"
             required
             value={ cardAttr1 }
             onChange={ onInputChange }
@@ -60,11 +60,11 @@ class Form extends React.Component {
         </label>
 
         <label htmlFor="attr2">
+          2º atributo
           <input
             data-testid="attr2-input"
             type="number"
             id="attr2"
-            placeholder="2º atributo"
             required
             value={ cardAttr2 }
             onChange={ onInputChange }
@@ -72,11 +72,11 @@ class Form extends React.Component {
         </label>
 
         <label htmlFor="attr3">
+          3º atributo
           <input
             data-testid="attr3-input"
             type="number"
             id="attr3"
-            placeholder="3º atributo"
             required
             value={ cardAttr3 }
             onChange={ onInputChange }
@@ -84,11 +84,11 @@ class Form extends React.Component {
         </label>
 
         <label htmlFor="imgCard">
+          Insira o url da carta
           <input
             data-testid="image-input"
             type="text"
             id="imgCard"
-            placeholder="insira o url da carta"
             required
             value={ cardImage }
             onChange={ onInputChange }
@@ -96,6 +96,7 @@ class Form extends React.Component {
         </label>
 
         <label htmlFor="rare">
+          Nivel
           <select
             type="select"
             data-testid="rare-input"
