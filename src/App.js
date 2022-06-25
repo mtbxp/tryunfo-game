@@ -1,10 +1,14 @@
 import React from 'react';
-import Form from './Form';
+import Card from './components/Card';
+import Form from './components/Form';
 
 class App extends React.Component {
   render() {
     return (
-      <Form />
+      <>
+        <Form />
+        <Card />
+      </>
     );
   }
 }
