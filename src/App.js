@@ -2,15 +2,18 @@ import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
 
+const maxValueSum = 210;
+const maxValue = 90;
+
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       name: '',
       description: '',
-      attr1: 0,
-      attr2: 0,
-      attr3: 0,
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
       image: '',
       rare: 'normal',
       trunfo: false,
@@ -22,10 +25,31 @@ class App extends React.Component {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
-    this.setState({ [name]: value });
+    this.setState({ [name]: value },
+      () => this.setState({
+        isSaveButtonDisabled: this.validateSaveButton(),
+      }));
   }
 
   onSaveButtonClick = () => {}
+
+  validateSaveButton = () => {
+    const { name, description, image, attr1, attr2, attr3 } = this.state;
+
+    const notEmpty = name !== '' && description !== '' && image !== '';
+
+    const maxTotalValue = Number(attr1) + Number(attr2) + Number(attr3) <= maxValueSum;
+
+    const maxValueForEach = Number(attr1) <= maxValue
+    && Number(attr2) <= maxValue && Number(attr3) <= maxValue;
+
+    const minValueForEach = Number(attr1) >= 0
+    && Number(attr2) >= 0 && Number(attr3) >= 0;
+
+    if (notEmpty && maxTotalValue && maxValueForEach && minValueForEach) return false;
+
+    return true;
+  }
 
   render() {
     const {
