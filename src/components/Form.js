@@ -80,26 +80,14 @@ class Form extends React.Component {
             value={ cardRare }
             onChange={ onInputChange }
           >
-            <option>
-              --selecione--
+            <option value="normal" name="normal">
+              Normal
             </option>
-            <option
-              value="normal"
-              name="normal"
-            >
-              { cardRare }
+            <option value="raro" name="raro">
+              Raro
             </option>
-            <option
-              value="raro"
-              name="raro"
-            >
-              { cardRare }
-            </option>
-            <option
-              value="muito raro"
-              name="muito raro"
-            >
-              { cardRare }
+            <option value="muito raro" name="muito raro">
+              Muito Raro
             </option>
           </select>
         </label>
