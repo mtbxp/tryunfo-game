@@ -8,3 +8,12 @@
   padding: 5px;
   width: 350px;
 }
+
+.cardDiv {
+  border: 1px solid black;
+  width: 350px;
+}
+
+.divApp {
+  display: flex;
+}

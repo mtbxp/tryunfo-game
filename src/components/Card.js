@@ -7,7 +7,7 @@ class Form extends React.Component {
       cardRare, cardTrunfo } = this.props;
     return (
       <div className="cardDiv">
-        <p data-testid="name-card">{cardName}</p>
+        <h1 data-testid="name-card">{cardName}</h1>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         <p data-testid="description-card">{cardDescription}</p>
         <ul>

@@ -2,6 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     cardname: '',
+  //     carddescription: '',
+  //     cardat1: '',
+  //     cardat2: '',
+  //     cardat3: '',
+  //     cardart: '',
+  //     cardrare: '',
+  //     cardtrunfo: '',
+  //   };
+  // }
+
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
       cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled, onInputChange,
@@ -16,12 +30,14 @@ class Form extends React.Component {
             data-testid="name-input"
             value={ cardName }
             onChange={ onInputChange }
+            name="cardname"
           />
           Descrição da carta
           <textarea
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
+            name="carddescription"
           />
           Atributo 1
           <input
@@ -29,6 +45,7 @@ class Form extends React.Component {
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            name="cardat1"
           />
           Atributo 2
           <input
@@ -36,6 +53,7 @@ class Form extends React.Component {
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            name="cardat2"
           />
           Atributo 3
           <input
@@ -43,6 +61,7 @@ class Form extends React.Component {
             data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            name="cardat3"
           />
           Arte da carta
           <input
@@ -50,8 +69,14 @@ class Form extends React.Component {
             data-testid="image-input"
             value={ cardImage }
             onChange={ onInputChange }
+            name="cardart"
           />
-          <select data-testid="rare-input" value={ cardRare } onChange={ onInputChange }>
+          <select
+            data-testid="rare-input"
+            value={ cardRare }
+            onChange={ onInputChange }
+            name="cardrare"
+          >
             <option>normal</option>
             <option>raro</option>
             <option>muito raro</option>
@@ -62,6 +87,7 @@ class Form extends React.Component {
             data-testid="trunfo-input"
             checked={ cardTrunfo }
             onChange={ onInputChange }
+            name="cardtrunfo"
           />
           <button
             data-testid="save-button"
