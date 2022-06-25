@@ -16,7 +16,7 @@ class Forms extends React.Component {
             value={ cardName }
             type="text"
             data-testid="name-input"
-            name="nome"
+            name="cardName"
             onChange={ onInputChange }
           />
         </label>
@@ -25,7 +25,7 @@ class Forms extends React.Component {
           Descrição
           <textarea
             value={ cardDescription }
-            name="descricao"
+            name="cardDescription"
             data-testid="description-input"
             cols="30"
             rows="10"
@@ -38,7 +38,7 @@ class Forms extends React.Component {
           <input
             value={ cardAttr1 }
             type="number"
-            name="attr1"
+            name="cardAttr1"
             data-testid="attr1-input"
             onChange={ onInputChange }
           />
@@ -49,7 +49,7 @@ class Forms extends React.Component {
           <input
             value={ cardAttr2 }
             type="number"
-            name="attr2"
+            name="cardAttr2"
             data-testid="attr2-input"
             onChange={ onInputChange }
           />
@@ -60,7 +60,7 @@ class Forms extends React.Component {
           <input
             value={ cardAttr3 }
             type="number"
-            name="attr3"
+            name="cardAttr3"
             data-testid="attr3-input"
             onChange={ onInputChange }
           />
@@ -71,7 +71,7 @@ class Forms extends React.Component {
           <input
             value={ cardImage }
             type="text"
-            name="image"
+            name="cardImage"
             data-testid="image-input"
             onChange={ onInputChange }
           />
@@ -79,7 +79,7 @@ class Forms extends React.Component {
 
         <select
           value={ cardRare }
-          name="caracteristicas"
+          name="cardRare"
           data-testid="rare-input"
           onChange={ onInputChange }
         >
@@ -92,7 +92,7 @@ class Forms extends React.Component {
           Super Trunfo
           <input
             type="checkbox"
-            name="trunfo"
+            name="cardTrunfo"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
             onChange={ onInputChange }
@@ -117,9 +117,9 @@ class Forms extends React.Component {
 Forms.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.number.isRequired,
-  cardAttr2: PropTypes.number.isRequired,
-  cardAttr3: PropTypes.number.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
