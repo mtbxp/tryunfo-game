@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import '../styles/form.css';
 
 export default class Image extends Component {
   render() {
@@ -9,6 +10,7 @@ export default class Image extends Component {
       <label htmlFor="image-input">
         Imagem:
         <input
+          className="input"
           placeholder="Digite o endereço da imagem"
           name="cardImage"
           value={ cardImage }
