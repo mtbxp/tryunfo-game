@@ -2,33 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
-      cardImage: '',
-      cardRare: '',
-      cardTrunfo: '',
-    };
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    const { onInputChange } = this.props;
-    onInputChange(this.state);
-  }
-
   render() {
     const {
       cardName, cardDescription, cardAttr1,
-      cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo,
+      cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo,
       isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
-
-    // const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo } = this.state;
 
     return (
       <div>
@@ -57,7 +35,7 @@ class Form extends React.Component {
             <input
               data-testid="attr1-input"
               name="cardAttr1"
-              type="number"
+              type="string"
               value={ cardAttr1 }
               onChange={ onInputChange }
             />
@@ -67,7 +45,7 @@ class Form extends React.Component {
             <input
               data-testid="attr2-input"
               name="cardAttr2"
-              type="number"
+              type="string"
               value={ cardAttr2 }
               onChange={ onInputChange }
             />
@@ -77,7 +55,7 @@ class Form extends React.Component {
             <input
               data-testid="attr3-input"
               name="cardAttr3"
-              type="number"
+              type="string"
               value={ cardAttr3 }
               onChange={ onInputChange }
             />
@@ -107,16 +85,18 @@ class Form extends React.Component {
             </select>
           </label>
           <label htmlFor="checkBox">
-            Super trunfo
+            Super Trunfo
             <input
               type="checkbox"
+              name="cardTrunfo"
               data-testid="trunfo-input"
-              value={ cardTrunfo }
+              checked={ cardTrunfo }
               onChange={ onInputChange }
             />
           </label>
           <button
             type="submit"
+            name="save-button"
             data-testid="save-button"
             disabled={ isSaveButtonDisabled }
             onClick={ onSaveButtonClick }
@@ -138,7 +118,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
