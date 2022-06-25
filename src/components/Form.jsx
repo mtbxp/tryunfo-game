@@ -21,10 +21,11 @@ class Form extends React.Component {
 
     return (
       <form>
+        {console.log(this.props)}
         <input
           data-testid="name-input"
           type="text"
-          name=""
+          name="cardName"
           id=""
           value={ cardName }
           onChange={ onInputChange }
@@ -33,7 +34,7 @@ class Form extends React.Component {
           data-testid="description-input"
           value={ cardDescription }
           onChange={ onInputChange }
-          name=""
+          name="cardDescription"
           id=""
           cols="30"
           rows="10"
@@ -43,7 +44,7 @@ class Form extends React.Component {
           onChange={ onInputChange }
           data-testid="attr1-input"
           type="number"
-          name=""
+          name="cardAttr1"
           id=""
         />
         <input
@@ -51,7 +52,7 @@ class Form extends React.Component {
           onChange={ onInputChange }
           data-testid="attr2-input"
           type="number"
-          name=""
+          name="cardAttr2"
           id=""
         />
 
@@ -60,20 +61,20 @@ class Form extends React.Component {
           onChange={ onInputChange }
           data-testid="attr3-input"
           type="number"
-          name=""
+          name="cardAttr3"
           id=""
         />
         <input
           data-testid="image-input"
           type="text"
-          name=""
+          name="cardImage"
           id=""
           value={ cardImage }
           onChange={ onInputChange }
         />
         <select
           data-testid="rare-input"
-          name=""
+          name="cardRare"
           id=""
           value={ cardRare }
           onChange={ onInputChange }
@@ -86,7 +87,7 @@ class Form extends React.Component {
           <input
             data-testid="trunfo-input"
             type="checkbox"
-            name=""
+            name="cardTrunfo"
             id=""
             checked={ cardTrunfo }
             onChange={ onInputChange }
@@ -108,10 +109,10 @@ class Form extends React.Component {
 Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.number.isRequired,
-  cardAttr2: PropTypes.number.isRequired,
-  cardAttr3: PropTypes.number.isRequired,
-  cardImage: PropTypes.number.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   // hasTrunfo:,

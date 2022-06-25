@@ -19,10 +19,14 @@ class Card extends React.Component {
         <h2 data-testid="name-card">
           { cardName }
         </h2>
-        <img data-testid="image-card" src={ cardImage } alt={ cardName } />
-        <span data-testid="description-card">
+        <img
+          data-testid="image-card"
+          src={ cardImage }
+          alt={ cardImage !== '' ? 'Nome da carta' : '' }
+        />
+        <p data-testid="description-card">
           { cardDescription }
-        </span>
+        </p>
         <h3 data-testid="attr1-card">{ cardAttr1 }</h3>
         <h3 data-testid="attr2-card">{ cardAttr2 }</h3>
         <h3 data-testid="attr3-card">{ cardAttr3 }</h3>
@@ -38,10 +42,10 @@ class Card extends React.Component {
 Card.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.number.isRequired,
-  cardAttr2: PropTypes.number.isRequired,
-  cardAttr3: PropTypes.number.isRequired,
-  cardImage: PropTypes.number.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   // hasTrunfo:,
