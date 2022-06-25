@@ -21,11 +21,12 @@ class Form extends React.Component {
 
     return (
       <form>
-        {console.log(this.props)}
+        {/* {console.log(this.props)} */}
         <input
           data-testid="name-input"
           type="text"
           name="cardName"
+          placeholder="Nome da carta"
           id=""
           value={ cardName }
           onChange={ onInputChange }
@@ -35,6 +36,7 @@ class Form extends React.Component {
           value={ cardDescription }
           onChange={ onInputChange }
           name="cardDescription"
+          placeholder="Descrição da carta"
           id=""
           cols="30"
           rows="10"
@@ -43,7 +45,10 @@ class Form extends React.Component {
           value={ cardAttr1 }
           onChange={ onInputChange }
           data-testid="attr1-input"
+          min={ 10 }
+          max={ 90 }
           type="number"
+          placeholder="Atributo da carta"
           name="cardAttr1"
           id=""
         />
@@ -51,6 +56,9 @@ class Form extends React.Component {
           value={ cardAttr2 }
           onChange={ onInputChange }
           data-testid="attr2-input"
+          min={ 10 }
+          max={ 90 }
+          placeholder="Atributo da carta"
           type="number"
           name="cardAttr2"
           id=""
@@ -60,6 +68,9 @@ class Form extends React.Component {
           value={ cardAttr3 }
           onChange={ onInputChange }
           data-testid="attr3-input"
+          min={ 10 }
+          max={ 90 }
+          placeholder="Atributo da carta"
           type="number"
           name="cardAttr3"
           id=""
@@ -68,6 +79,7 @@ class Form extends React.Component {
           data-testid="image-input"
           type="text"
           name="cardImage"
+          placeholder="Imagem da carta"
           id=""
           value={ cardImage }
           onChange={ onInputChange }
@@ -83,7 +95,7 @@ class Form extends React.Component {
           <option value="raro">Raro</option>
           <option value="muito raro">Muito Raro</option>
         </select>
-        <div>
+        <div className="trunfo">
           <input
             data-testid="trunfo-input"
             type="checkbox"
@@ -109,9 +121,9 @@ class Form extends React.Component {
 Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.number.isRequired,
+  cardAttr2: PropTypes.number.isRequired,
+  cardAttr3: PropTypes.number.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,

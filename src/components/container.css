@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+div img {
+  height: 200px;
+}
+
+.container div {
+  margin-left: 100px;
+  margin-right: 10px;
+}
+
+div .trunfo {
+  margin-left: 0;
+}

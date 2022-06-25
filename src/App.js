@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import './components/container.css';
 
 class App extends React.Component {
   constructor() {
@@ -8,14 +9,14 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
       // hasTrunfo: '',
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
       onSaveButtonClick: () => {},
     };
   }
@@ -43,9 +44,19 @@ class App extends React.Component {
       isSaveButtonDisabled,
       onSaveButtonClick,
     } = this.state;
+
+    const maxAtrSum = 210;
+    const maxNum = 90;
+    const notBlank = (cardName && cardDescription && cardImage && cardRare) !== '';
+    const Atr1 = parseInt(cardAttr1, 10);
+    const Atr2 = parseInt(cardAttr2, 10);
+    const Atr3 = parseInt(cardAttr3, 10);
+    const atrSum = (Atr1 + Atr2 + Atr3) <= maxAtrSum;
+    const AtrNotHigherThan90 = (Atr1 <= maxNum && Atr2 <= maxNum && Atr3 <= maxNum);
+    const AtrNotNegative = (Atr1 >= 0 && Atr2 >= 0 && Atr3 >= 0);
+    const allTrue = (notBlank && atrSum && AtrNotHigherThan90 && AtrNotNegative) === true;
     return (
-      <div>
-        <h1 style={ { textAlign: 'center' } }>Tryunfo</h1>
+      <div className="container">
         <Form
           cardName={ cardName }
           cardDescription={ cardDescription }
@@ -56,10 +67,13 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           // hasTrunfo={}
-          isSaveButtonDisabled={ isSaveButtonDisabled }
+          isSaveButtonDisabled={ allTrue === true ? false : isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ onSaveButtonClick }
         />
+        { console.log('--------')}
+        { console.log(Atr1 + Atr2 + Atr3)}
+
         <Card
           cardName={ cardName }
           cardDescription={ cardDescription }
