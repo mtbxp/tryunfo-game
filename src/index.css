@@ -16,10 +16,64 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: rgb(43, 43, 43);
+  font-size: 15px;
+  font-weight: 600;
 }
 
-.conteinerCard{
+.inputLetter {
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 250px;
+}
+
+.areaLetter {
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 250px;
+}
+
+
+.attLetter {
+  display: inline-block;
+  padding: 10px;
+  width: 170px;
+  margin-bottom: 18px;
+  margin-top: 18px;
+  margin-left: 8px;
+}
+
+.checkLetter {
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.btnLetter {
+  background-color: rgb(36, 36, 255);
+  color: white;
+  padding: 10px;
+  font-size: 17px;
+  width: 150px;
+  border-radius: 5px;
+  border: 0px;
+}
+
+.btnLetter:hover {
+  background-color: rgb(0, 0, 209);
+  color: rgb(196, 196, 196);
+}
+
+.conteinerCard {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.contanerNewLetter {
+  margin-bottom: 15px;
 }

@@ -9,60 +9,73 @@ class From extends React.Component {
     return (
       <form className="contanerNewLetter">
         <h1>Adicionar Nova Carta</h1>
-        <label htmlFor="name-input">
+        <label htmlFor="nameinput">
+          Nome
           <input
             type="text"
             data-testid="name-input"
-            name="name-input"
+            name="nameinput"
+            className="inputLetter"
             value={ cardName }
             onChange={ onInputChange }
           />
         </label>
 
-        <label htmlFor="description-input">
+        <label htmlFor="descriptioninput">
+          Descrição
           <input
             type="textarea"
-            name="description-input"
+            name="descriptioninput"
+            className="areaLetter"
             value={ cardDescription }
             data-testid="description-input"
             onChange={ onInputChange }
           />
         </label>
 
-        <label htmlFor="attr1-input">
+        <label htmlFor="attr1input">
+          Attr01
           <input
             type="number"
-            name="attr1-input"
+            name="attr1input"
+            className="attLetter"
             value={ cardAttr1 }
             data-testid="attr1-input"
             onChange={ onInputChange }
           />
+
         </label>
 
-        <label htmlFor="attr2-input">
+        <label htmlFor="attr2input">
+          Atte03
           <input
             type="number"
-            name="attr2-input"
+            name="attr2input"
+            className="attLetter"
             value={ cardAttr2 }
             data-testid="attr2-input"
             onChange={ onInputChange }
           />
         </label>
 
-        <label htmlFor="attr3-input">
+        <label htmlFor="attr3input">
+          Attr03
           <input
             type="number"
-            name="attr3-input"
+            name="attr3input"
+            className="attLetter"
             value={ cardAttr3 }
             data-testid="attr3-input"
             onChange={ onInputChange }
           />
         </label>
 
-        <label htmlFor="image-input">
+        <label htmlFor="imageinput">
+          Imagem
           <input
             type="text"
-            name="image-input"
+            name="imageinput"
+            className="attLetter"
             value={ cardImage }
             data-testid="image-input"
             onChange={ onInputChange }
@@ -70,9 +83,11 @@ class From extends React.Component {
         </label>
 
         <div>
+          Raridade
           <select
             data-testid="rare-input"
-            name="rare-input"
+            name="rareinput"
+            className="inputLetter"
             onChange={ onInputChange }
             value={ cardRare }
           >
@@ -82,10 +97,14 @@ class From extends React.Component {
           </select>
         </div>
 
-        <label htmlFor="trunfo-input">
+        <label
+          htmlFor="trunfoinput"
+          className="checkLetter"
+        >
           <input
             type="checkbox"
-            name="trunfo-input"
+            name="trunfoinput"
+            className="checkLetter"
             checked={ cardTrunfo }
             data-testid="trunfo-input"
             onChange={ onInputChange }
@@ -94,8 +113,9 @@ class From extends React.Component {
 
         <button
           type="button"
-          name="save-button"
+          name="savebutton"
           data-testid="save-button"
+          className="btnLetter"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
         >
