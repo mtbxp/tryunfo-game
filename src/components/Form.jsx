@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 export default class Form extends Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, isSaveButtonDisabled,
+      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
       onInputChange, onSaveButtonClick } = this.props;
 
     return (
@@ -121,7 +121,8 @@ export default class Form extends Component {
         </div>
         <div className="container">
           <label htmlFor="trunfo-input">
-            <input
+            Super Trunfo!
+            { hasTrunfo ? <span>Você já tem um Super Trunfo</span> : <input
               className="input"
               checked={ cardTrunfo }
               onChange={ onInputChange }
@@ -129,8 +130,7 @@ export default class Form extends Component {
               name="cardTrunfo"
               id="trunfo-input"
               data-testid="trunfo-input"
-            />
-            Super Trunfo!
+            /> }
           </label>
         </div>
         <div className="container">
@@ -158,6 +158,7 @@ Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
