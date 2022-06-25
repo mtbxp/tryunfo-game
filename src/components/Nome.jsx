@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import '../styles/form.css';
 
 export default class Nome extends Component {
   render() {
@@ -9,6 +10,7 @@ export default class Nome extends Component {
       <label htmlFor="name-input">
         Nome:
         <input
+          className="input"
           placeholder="Digite o nome da carta"
           name="cardName"
           value={ cardName }
