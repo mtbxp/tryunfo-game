@@ -23,7 +23,7 @@ class App extends React.Component {
       cardImage, cardRare, cardTrunfo,
       isSaveButtonDisabled } = this.state;
     return (
-      <div>
+      <section>
         <Form
           cardName={ cardName }
           cardDescription={ cardDescription }
@@ -37,7 +37,7 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
-      </div>
+      </section>
     );
   }
 }
