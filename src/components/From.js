@@ -9,40 +9,40 @@ class From extends React.Component {
     return (
       <form className="contanerNewLetter">
         <h1>Adicionar Nova Carta</h1>
-        <label htmlFor="nameLetter">
+        <label htmlFor="name-input">
           <input
             type="text"
             data-testid="name-input"
-            name="nameLetter"
+            name="name-input"
             value={ cardName }
             onChange={ onInputChange }
           />
         </label>
 
-        <label htmlFor="descLetter">
+        <label htmlFor="description-input">
           <input
             type="textarea"
-            name="descLetter"
+            name="description-input"
             value={ cardDescription }
             data-testid="description-input"
             onChange={ onInputChange }
           />
         </label>
 
-        <label htmlFor="firstAtb">
+        <label htmlFor="attr1-input">
           <input
             type="number"
-            name="firstAtb"
+            name="attr1-input"
             value={ cardAttr1 }
             data-testid="attr1-input"
             onChange={ onInputChange }
           />
         </label>
 
-        <label htmlFor="secondAtb">
+        <label htmlFor="attr2-input">
           <input
             type="number"
-            name="secondAtb"
+            name="attr2-input"
             value={ cardAttr2 }
             data-testid="attr2-input"
             onChange={ onInputChange }
