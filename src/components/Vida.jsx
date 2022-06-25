@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import '../styles/form.css';
 
 export default class Vida extends Component {
   render() {
@@ -9,6 +10,7 @@ export default class Vida extends Component {
       <label htmlFor="attr3-input">
         Vida:
         <input
+          className="input"
           name="cardAttr3"
           value={ cardAttr3 }
           onChange={ onInputChange }
