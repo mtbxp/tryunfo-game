@@ -14,9 +14,6 @@ class Card extends React.Component {
       cardTrunfo,
     } = this.props;
 
-    // handleTryufo = () => {
-    //   if ({ cardTrunfo } === true) <h3 data-testid="trunfo-card">Super Trunfo</h3>;
-    // };
     return (
       <div>
         <h1 data-testid="name-card">
@@ -40,7 +37,7 @@ class Card extends React.Component {
         <h3 data-testid="rare-card">
           { cardRare }
         </h3>
-        { cardTrunfo && <h3 data-testid="trunfo-card">Super Trunfo </h3> }
+        { cardTrunfo && <h3 data-testid="trunfo-card"></h3> }
       </div>
     );
   }
@@ -49,9 +46,9 @@ class Card extends React.Component {
 Card.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.number.isRequired,
+  cardAttr2: PropTypes.number.isRequired,
+  cardAttr3: PropTypes.number.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
