@@ -11,7 +11,7 @@ export default class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
+      // hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -117,6 +117,7 @@ export default class Form extends Component {
         </label>
 
         <button
+          name="btnDisable"
           type="button"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
