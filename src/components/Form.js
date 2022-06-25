@@ -11,32 +11,6 @@ import InputRare from './inputsOfForm/InputRare';
 import InputTrunfo from './inputsOfForm/InputTrunfo';
 
 class Form extends React.Component {
-/*  constructor() {
-    super();
-
-    this.state = {
-      cardName: '',
-      cardInfo: '',
-      attr1: '',
-      attr2: '',
-      attr3: '',
-      cardImage: '',
-      cardRarity: '',
-      cardTrunfo: false,
-    };
-
-    this.onInputChange = this.onInputChange.bind(this);
-  }
-
-  onInputChange({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    });
-    console.log(value);
-  }
-*/
   render() {
     const {
       cardName,

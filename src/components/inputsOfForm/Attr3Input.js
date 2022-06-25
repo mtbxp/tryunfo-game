@@ -6,7 +6,7 @@ class Attr3Input extends React.Component {
     const { cardAttr3, onChange } = this.props;
     return (<input
       type="number"
-      name="aatr3"
+      name="attr3"
       value={ cardAttr3 }
       onChange={ onChange }
       data-testid="attr3-input"
