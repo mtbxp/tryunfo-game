@@ -5,7 +5,8 @@ class From extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo,
-      isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
+      isSaveButtonDisabled, onInputChange, onSaveButtonClick, counter,
+    } = this.props;
     return (
       <form className="contanerNewLetter">
         <h1>Adicionar Nova Carta</h1>
@@ -18,6 +19,7 @@ class From extends React.Component {
             className="inputLetter"
             value={ cardName }
             onChange={ onInputChange }
+            placeholder="Digite aqui"
           />
         </label>
 
@@ -29,6 +31,8 @@ class From extends React.Component {
             className="areaLetter"
             value={ cardDescription }
             data-testid="description-input"
+            maxLength="1000"
+            placeholder="500"
             onChange={ onInputChange }
           />
         </label>
@@ -41,6 +45,7 @@ class From extends React.Component {
             className="attLetter"
             value={ cardAttr1 }
             data-testid="attr1-input"
+            placeholder="0"
             onChange={ onInputChange }
           />
 
@@ -51,6 +56,7 @@ class From extends React.Component {
           <input
             type="number"
             name="attr2input"
+            placeholder="0"
             className="attLetter"
             value={ cardAttr2 }
             data-testid="attr2-input"
@@ -63,9 +69,11 @@ class From extends React.Component {
           <input
             type="number"
             name="attr3input"
+            placeholder="0"
             className="attLetter"
             value={ cardAttr3 }
             data-testid="attr3-input"
+            maxLength="90"
             onChange={ onInputChange }
           />
         </label>
@@ -75,6 +83,7 @@ class From extends React.Component {
           <input
             type="text"
             name="imageinput"
+            placeholder="Link da imagem"
             className="attLetter"
             value={ cardImage }
             data-testid="image-input"
@@ -109,6 +118,7 @@ class From extends React.Component {
             data-testid="trunfo-input"
             onChange={ onInputChange }
           />
+          Super Trunfo
         </label>
 
         <button
