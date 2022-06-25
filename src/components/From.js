@@ -5,7 +5,7 @@ class From extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo,
-      isSaveButtonDisabled, onInputChange, onSaveButtonClick
+      isSaveButtonDisabled, onInputChange, onSaveButtonClick,
     } = this.props;
     return (
       <form className="contanerNewLetter">
@@ -106,20 +106,26 @@ class From extends React.Component {
           </select>
         </div>
 
-        <label
-          htmlFor="trunfoinput"
-          className="checkLetter"
-        >
-          <input
-            type="checkbox"
-            name="trunfoinput"
+        {(hasTrunfo === true) ? (
+          <p>
+            Você já tem um Super Trunfo em seu baralho
+          </p>
+        ) : (
+          <label
+            htmlFor="trunfoinput"
             className="checkLetter"
-            checked={ cardTrunfo }
-            data-testid="trunfo-input"
-            onChange={ onInputChange }
-          />
-          Super Trunfo
-        </label>
+          >
+            <input
+              type="checkbox"
+              name="trunfoinput"
+              className="checkLetter"
+              checked={ cardTrunfo }
+              data-testid="trunfo-input"
+              onChange={ onInputChange }
+            />
+            Super Trunfo
+          </label>
+        )}
 
         <button
           type="button"

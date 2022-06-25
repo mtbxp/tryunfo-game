@@ -52,16 +52,16 @@ class App extends React.Component {
     });
   }
 
-  handleChange = (env) => {
-    const { name } = env.target;
-    let { value } = env.target;
-    if (name === 'trunfoinput') value = env.target.checked;
-    this.setState(
-      {
-        [name]: value,
-      },
-      () => this.executSv(),
-    );
+  valTryunfo = () => {
+    const { trunfoinput } = this.state;
+    let result = null;
+
+    if (trunfoinput.value === false) {
+      result = false;
+      return result;
+    }
+    result = true;
+    return result;
   }
 
   clickButton = () => {
@@ -80,7 +80,6 @@ class App extends React.Component {
         trunfoinput: false,
         hadtrunfu: false,
         existcart: [
-          ...eln.existcart,
           {
             nameinput,
             descriptioninput,
@@ -93,8 +92,23 @@ class App extends React.Component {
             existcart,
             hadtrunfu,
           },
+          ...eln.existcart,
         ],
       }),
+      () => this.setState({ hadtrunfu: this.valTryunfo() }),
+    );
+  }
+
+  handleChange = (env) => {
+    const { name } = env.target;
+    let { value } = env.target;
+
+    if (name === 'trunfoinput') value = env.target.checked;
+    this.setState(
+      {
+        [name]: value,
+      },
+      () => this.executSv(),
     );
   }
 
