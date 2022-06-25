@@ -56,7 +56,7 @@ class Form extends React.Component {
             value={ cardAttr1 }
             onChange={ (event) => onInputChange(event) }
             min={ 0 }
-            max={ 100 }
+            max={ 90 }
           />
           <br />
         </label>
@@ -70,7 +70,7 @@ class Form extends React.Component {
             value={ cardAttr2 }
             onChange={ (event) => onInputChange(event) }
             min={ 0 }
-            max={ 100 }
+            max={ 90 }
           />
           <br />
         </label>
@@ -84,7 +84,7 @@ class Form extends React.Component {
             value={ cardAttr3 }
             onChange={ (event) => onInputChange(event) }
             min={ 0 }
-            max={ 100 }
+            max={ 90 }
           />
           <br />
         </label>

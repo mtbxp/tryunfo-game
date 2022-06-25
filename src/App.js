@@ -8,6 +8,7 @@ class App extends React.Component {
     super();
     this.inputChange = this.inputChange.bind(this);
     this.saveCard = this.saveCard.bind(this);
+    this.saveButton = this.saveButton.bind(this);
 
     this.state = {
       cardName: '',
@@ -25,14 +26,44 @@ class App extends React.Component {
 
   inputChange({ target }) {
     const { type, name } = target;
-    const value = (type === 'checkbox') ? target.checked : target.value;
+    let value = (type === 'checkbox') ? target.checked : target.value;
+    if (type === 'number') {
+      value = parseFloat(value);
+    }
     this.setState({
       [name]: value,
     });
+    this.saveButton();
+  }
+
+  saveButton() {
+    const maxPoints = 210;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+    if (cardName !== ''
+    && cardDescription !== ''
+    && cardImage !== ''
+    && cardRare !== ''
+    && cardAttr1 + cardAttr2 + cardAttr3 <= maxPoints) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
   }
 
   saveCard() {
-    console.log('oi2');
+    console.log('salvando');
   }
 
   render() {
