@@ -1,4 +1,3 @@
-// import { toHaveValue } from '@testing-library/jest-dom/dist/matchers';
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
@@ -17,6 +16,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      savedCards: [],
     };
   }
 
@@ -53,7 +53,6 @@ class App extends React.Component {
   onInputChange = (event) => {
     const { name } = event.target;
     let { value } = event.target;
-    // this.validateButtonSave(); // falta fazer funcionar de modo async
     if (event.target.type === 'checkbox') value = event.target.checked;
     this.setState({
       [name]: value,
@@ -61,7 +60,46 @@ class App extends React.Component {
     () => this.validateButtonSave());
   }
 
-  onSaveButtonClick = () => {}
+  onSaveButtonClick = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+    } = this.state;
+
+    const currCard = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+    };
+
+    this.setState((prevState) => ({
+      savedCards: [currCard, ...prevState.savedCards],
+    }),
+    () => this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      hasTrunfo: false,
+    }));
+  }
 
   render() {
     const {
