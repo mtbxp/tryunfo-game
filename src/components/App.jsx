@@ -14,13 +14,14 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'Normal',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
     };
   }
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, hasTrunfo, cardTrunfo,
+      cardImage, cardRare, cardTrunfo, hasTrunfo,
       isSaveButtonDisabled } = this.state;
     return (
       <section>
