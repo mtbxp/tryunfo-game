@@ -20,35 +20,25 @@ class App extends React.Component {
 
   onSaveButtonClick = () => console.log('fufou');
 
-
   handle = ({ target }) => {
     const { name, type } = target;
-    let value = type === 'checkbox' ? target.checked : target.value;
+    const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
     });
   };
 
-  // handle = (event) => {
-  //   const { name } = event.target;
-  //   let { value } = event.target;
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  // };
-
   render() {
-
     return (
       <div>
         <h1>Tryunfoo</h1>
         <Form
           { ...this.state }
-          onInputChange= { this.handle }
+          onInputChange={ this.handle }
           // onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
-        { ...this.state }
+          { ...this.state }
         />
       </div>
     );
