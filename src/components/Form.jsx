@@ -8,6 +8,7 @@ import Image from './Image';
 import Raridade from './Raridade';
 import Checkbox from './Checkbox';
 import Button from './Button';
+import '../styles/form.css';
 
 export default class Form extends Component {
   // constructor() {
@@ -23,7 +24,7 @@ export default class Form extends Component {
   render() {
     // const { name, text, number } = this.state;
     return (
-      <form action="">
+      <form className="form">
         <legend>Adicionar nova carta</legend>
         <div className="container">
           <Nome />
