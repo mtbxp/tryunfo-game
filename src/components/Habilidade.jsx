@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import '../styles/form.css';
 
 export default class Habilidade extends Component {
   render() {
@@ -9,6 +10,7 @@ export default class Habilidade extends Component {
       <label htmlFor="attr1-input">
         Habilidade:
         <input
+          className="input"
           name="cardAttr1"
           value={ cardAttr1 }
           onChange={ onInputChange }
