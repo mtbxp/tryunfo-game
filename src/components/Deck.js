@@ -34,11 +34,22 @@ class Deck extends React.Component {
   }
 }
 
-Deck.propType = {
-  data: PropTypes.array.isRequired,
+Deck.propTypes = {
   removeCard: PropTypes.func.isRequired,
   inputSearch: PropTypes.string.isRequired,
   selectSearch: PropTypes.string.isRequired,
+  data: PropTypes.oneOfType([
+    PropTypes.shape({
+      cardName: PropTypes.string.isRequired,
+      cardDescription: PropTypes.string.isRequired,
+      cardAttr1: PropTypes.string.isRequired,
+      cardAttr2: PropTypes.string.isRequired,
+      cardAttr3: PropTypes.string.isRequired,
+      cardImage: PropTypes.string.isRequired,
+      cardRare: PropTypes.string.isRequired,
+      cardTrunfo: PropTypes.bool.isRequired,
+    }),
+  ]).isRequired,
 };
 
 export default Deck;
