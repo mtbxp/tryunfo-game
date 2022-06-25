@@ -10,41 +10,48 @@ class Form extends React.Component {
       <form className="formPai">
         <input
           type="text"
+          name="cardName"
           data-testid="name-input"
           value={ cardName }
           onChange={ onInputChange }
         />
         <input
           type="textarea"
+          name="cardDescription"
           data-testid="description-input"
           value={ cardDescription }
           onChange={ onInputChange }
         />
         <input
           type="number"
+          name="cardAttr1"
           data-testid="attr1-input"
           value={ cardAttr1 }
           onChange={ onInputChange }
         />
         <input
           type="number"
+          name="cardAttr2"
           data-testid="attr2-input"
           value={ cardAttr2 }
           onChange={ onInputChange }
         />
         <input
           type="number"
+          name="cardAttr3"
           data-testid="attr3-input"
           value={ cardAttr3 }
           onChange={ onInputChange }
         />
         <input
           type="text"
+          name="cardImage"
           data-testid="image-input"
           value={ cardImage }
           onChange={ onInputChange }
         />
         <select
+          name="rare-input"
           data-testid="rare-input"
           value={ cardRare }
           onChange={ onInputChange }
@@ -55,12 +62,14 @@ class Form extends React.Component {
         </select>
         <input
           type="checkbox"
+          name="cardTrunfo"
           data-testid="trunfo-input"
           checked={ cardTrunfo }
           onChange={ onInputChange }
         />
         <button
           type="button"
+          name="save-button"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
