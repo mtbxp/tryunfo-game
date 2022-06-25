@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import '../styles/form.css';
+// import '../styles/form.css';
 
 export default class Form extends Component {
   render() {
