@@ -54,6 +54,8 @@ class Form extends Component {
               data-testid="attr1-input"
               id="attr1-input"
               placeholder="Atributo 1"
+              max="90"
+              min="0"
             />
           </label>
           Atributo 2
@@ -66,6 +68,8 @@ class Form extends Component {
               data-testid="attr2-input"
               id="attr2-input"
               placeholder="Atributo 2"
+              max="90"
+              min="0"
             />
           </label>
           Atributo 3
@@ -78,6 +82,8 @@ class Form extends Component {
               data-testid="attr3-input"
               id="attr3-input"
               placeholder="Atributo 3"
+              max="90"
+              min="0"
             />
           </label>
           Imagem

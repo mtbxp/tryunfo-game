@@ -7,6 +7,8 @@ class App extends React.Component {
   constructor() {
     super();
 
+    this.buttonValidation = this.buttonValidation.bind(this);
+
     this.state = {
       cardName: '',
       cardDescription: '',
@@ -17,10 +19,14 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       hasTrunfo: false,
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
       // onInputChange: () => { },
       // onSaveButtonClick: () => { },
     };
+  }
+
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
   }
 
   onInputChange = ({ target }) => {
@@ -29,10 +35,46 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
+    }, () => {
+      this.buttonValidation(target);
     });
   }
 
-  onSaveButtonClick = () => {}
+  buttonValidation = () => {
+    const attrMax = 90;
+    const max = 210;
+    const {
+      cardName, cardDescription,
+      cardImage, cardRare, cardAttr1, cardAttr2, cardAttr3,
+    } = this.state;
+
+    const arrOfAttr = [cardAttr1, cardAttr2, cardAttr3].map((value) => value)
+      .map((value) => parseFloat(value)).reduce((acc, curr) => acc + curr);
+
+    // if (target.type === 'number' && parseFloat(target.value) > attrMaxAllowed) {
+    //   this.setState({
+    //     [target.name]: attrMaxAllowed,
+    //   });
+    // }
+
+    if (cardName && cardDescription && cardImage
+      && cardRare && arrOfAttr <= max && cardAttr1 >= 0
+       && cardAttr2 >= 0 && cardAttr3 >= 0) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
+
+    if (cardAttr1 > attrMax || cardAttr2 > attrMax || cardAttr3 > attrMax) {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
+  }
 
   render() {
     const {
