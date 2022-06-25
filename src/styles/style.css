@@ -1,3 +1,4 @@
+/* Referência: Arquivo cedido por Thiago Braddock */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,7 +19,7 @@
 
   --black: #222;
 
-  --white: hwb(0 100% 0%);
+  --white: hwb(0 94% 6%);
 
   --red-light: #f8d7da;
 
@@ -64,19 +65,24 @@
   --bodyFont: 'Nunito' sans-serif;
 }
 
+::selection {
+  background-color: var(--green-light);
+}
+
 /* Fonts */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Montserrat&display=swap') ;
 
 html {
   font-size: 100%;
-}
+} /* 16px */
 
 body {
   color: hwb(0 0% 100%);
   font-family: var(--bodyFont);
   font-weight: 400;
   line-height: 1.75;
+  margin: 25px 50px;
 }
 
 p {
@@ -138,6 +144,8 @@ button {
   letter-spacing: var(--letterSpacing);
   margin-right: 1rem;
   padding: 0.375rem 0.75rem;
+
+  /* transition: var(--transition); */
   text-transform: capitalize;
 }
 
