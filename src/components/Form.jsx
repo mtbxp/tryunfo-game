@@ -17,7 +17,7 @@ class Form extends React.Component {
     const { onSaveButtonClick } = this.props;
     return (
       <form className="form">
-        <h1>Adicionar nova carta:</h1>
+        <h2>Adicionar nova carta:</h2>
         <label htmlFor="name">
           Nome:
           <input
