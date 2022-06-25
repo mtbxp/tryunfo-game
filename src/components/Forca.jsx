@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import '../styles/form.css';
 
 export default class Forca extends Component {
   render() {
@@ -9,6 +10,7 @@ export default class Forca extends Component {
       <label htmlFor="attr2-input">
         Força:
         <input
+          className="input"
           name="cardAttr2"
           value={ cardAttr2 }
           onChange={ onInputChange }
