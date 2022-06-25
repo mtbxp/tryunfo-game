@@ -17,6 +17,7 @@ class App extends React.Component {
       checkbox: false,
       isSaveButtonDisabled: true,
       cards: [],
+      hasTrunf: false,
     };
   }
 
@@ -64,12 +65,19 @@ class App extends React.Component {
       atributo2: '0',
       atributo3: '0',
       imagem: '',
-    }));
+    }), () => {
+      const { cards } = this.state;
+      const result = cards.some((cardd) => cardd.isSuper === true);
+      this.setState(({
+        hasTrunf: result,
+      }));
+    });
   };
 
   render() {
     const { nome, descricao, atributo1, atributo2,
-      atributo3, imagem, selecionar, checkbox, isSaveButtonDisabled } = this.state;
+      atributo3, imagem, selecionar, checkbox, isSaveButtonDisabled,
+      hasTrunf } = this.state;
     return (
       <div>
         <h1> Tryunfo</h1>
@@ -85,6 +93,7 @@ class App extends React.Component {
           cardTrunfo={ checkbox }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ hasTrunf }
         />
         <Card
           cardName={ nome }

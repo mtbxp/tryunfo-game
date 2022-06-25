@@ -2,18 +2,24 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends Component {
-// handleStates = ({target}) => {
-  //     const { name, value } = target;
-  //     this.setState({
-  //         [name]: value,
-  //     })
-  // }
-
   render() {
     const { cardName, cardDescription, cardAttr1,
       cardAttr2, cardAttr3, cardImage, cardRare,
       cardTrunfo, hasTrunfo, isSaveButtonDisabled,
       onInputChange, onSaveButtonClick } = this.props;
+    const checkbox = (
+      <label htmlFor="checkbox">
+        Super Trybe Trunfo:
+        <input
+          name="checkbox"
+          id="checkbox"
+          type="checkbox"
+          data-testid="trunfo-input"
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
+        />
+      </label>);
+    const p = <p>Você já tem um Super Trunfo em seu baralho</p>;
 
     return (
       <form id={ hasTrunfo }>
@@ -102,17 +108,7 @@ class Form extends Component {
             </option>
           </select>
         </label>
-        <label htmlFor="checkbox">
-          Super Trybe Trunfo:
-          <input
-            name="checkbox"
-            id="checkbox"
-            type="checkbox"
-            data-testid="trunfo-input"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-        </label>
+        { hasTrunfo === false ? checkbox : p}
         <button
           id="button"
           type="reset"
