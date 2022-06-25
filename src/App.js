@@ -18,6 +18,7 @@ class App extends React.Component {
       rare: 'normal',
       trunfo: false,
       isSaveButtonDisabled: true,
+      cards: [],
     };
   }
 
@@ -31,7 +32,25 @@ class App extends React.Component {
       }));
   }
 
-  onSaveButtonClick = () => {}
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    const { name, description, image, attr1, attr2, attr3, rare } = this.state;
+
+    this.setState((prev) => ({
+      name: '',
+      description: '',
+      image: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
+      rare: 'normal',
+      trunfo: false,
+      cards: [
+        ...prev.cards,
+        { name, description, image, attr1, attr2, attr3, rare },
+      ],
+    }));
+  };
 
   validateSaveButton = () => {
     const { name, description, image, attr1, attr2, attr3 } = this.state;
