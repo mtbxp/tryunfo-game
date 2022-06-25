@@ -23,7 +23,7 @@ export default class Form extends Component {
   render() {
     // const { name, text, number } = this.state;
     return (
-      <fieldset>
+      <form action="">
         <legend>Adicionar nova carta</legend>
         <div className="container">
           <Nome />
@@ -52,7 +52,7 @@ export default class Form extends Component {
         <div className="container">
           <Button />
         </div>
-      </fieldset>
+      </form>
     );
   }
 }
