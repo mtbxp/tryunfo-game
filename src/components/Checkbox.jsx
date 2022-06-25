@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import '../styles/form.css';
 
 export default class Checkbox extends Component {
   render() {
@@ -7,6 +8,7 @@ export default class Checkbox extends Component {
     return (
       <label htmlFor="trunfo-input">
         <input
+          className="input"
           checked={ cardTrunfo }
           onChange={ onInputChange }
           type="checkbox"
