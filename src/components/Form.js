@@ -2,13 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends Component {
-  constructor() {
-    super();
-    this.state = {
-    };
-  }
-
-  // handleStates = ({target}) => {
+// handleStates = ({target}) => {
   //     const { name, value } = target;
   //     this.setState({
   //         [name]: value,

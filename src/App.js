@@ -14,8 +14,9 @@ class App extends React.Component {
       atributo3: '0',
       imagem: '',
       selecionar: '',
-      checkbox: '',
+      checkbox: false,
       isSaveButtonDisabled: true,
+      cards: [],
     };
   }
 
@@ -42,16 +43,29 @@ class App extends React.Component {
   };
 
   onSaveButtonClick = () => {
-    console.log('funfa');
-    this.setState({
+    const { nome, descricao, imagem, selecionar, atributo1,
+      atributo2, atributo3, checkbox } = this.state;
+    const card = {
+      name: nome,
+      descricaoCarta: descricao,
+      img: imagem,
+      raridade: selecionar,
+      att1: atributo1,
+      att2: atributo2,
+      att3: atributo3,
+      isSuper: checkbox,
+    };
+
+    this.setState((prevState) => ({
+      cards: [...prevState.cards, card],
       nome: '',
       descricao: '',
       atributo1: '0',
       atributo2: '0',
       atributo3: '0',
       imagem: '',
-    });
-  }
+    }));
+  };
 
   render() {
     const { nome, descricao, atributo1, atributo2,
