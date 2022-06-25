@@ -1,0 +1,20 @@
+.form {
+  background: var(--white);
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-2);
+  padding: 2rem 2.5rem;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+.input, .textarea, .select {
+  background: var(--grey-50);
+  border: 1px solid var(--grey-200);
+  border-radius: var(--borderRadius);
+  margin-bottom: 1rem;
+  padding: 0.7rem 0.75rem;
+  width: 100%;
+}
