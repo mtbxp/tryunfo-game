@@ -6,7 +6,13 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  height: 320px;
+  height: 400px;
+}
+
+.ajuste {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
 }
 
 .texto1 {
@@ -18,20 +24,19 @@
 
 .foto {
   display: flex;
-  width: 150px;
+  width: 130px;
 }
 
 .container-foto {
   align-items: center;
   display: flex;
   flex-direction: row;
-  gap: 25px;
 }
 
 .card {
   background-image: linear-gradient(red, yellow);
   border: 10px ridge rgb(79, 79, 219);
-  height: 320px;
+  height: 400px;
   width: 290px;
 }
 

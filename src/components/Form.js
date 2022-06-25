@@ -10,7 +10,7 @@ class Form extends React.Component {
     return (
       <form className="texto">
         <h1 className="texto-h1">Tryunfo</h1>
-        <label htmlFor="name-input">
+        <label htmlFor="name-input" className="ajuste">
           Nome:
           <input
             type="text"
@@ -25,7 +25,7 @@ class Form extends React.Component {
           />
 
         </label>
-        <label htmlFor="description-input" className="container-foto">
+        <label htmlFor="description-input" className="container-foto ajuste">
           Descrição:
           <textarea
             type="textarea"
@@ -38,7 +38,7 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor="attr1-input">
+        <label htmlFor="attr1-input" className="ajuste">
           Attr1:
           <input
             type="number"
@@ -54,7 +54,7 @@ class Form extends React.Component {
           />
 
         </label>
-        <label htmlFor="attr2-input">
+        <label htmlFor="attr2-input" className="ajuste">
           Attr2:
           <input
             type="number"
@@ -70,7 +70,7 @@ class Form extends React.Component {
           />
 
         </label>
-        <label htmlFor="attr3-input">
+        <label htmlFor="attr3-input" className="ajuste">
           Attr3:
           {' '}
           <input
@@ -87,7 +87,7 @@ class Form extends React.Component {
           />
 
         </label>
-        <label htmlFor="image-input">
+        <label htmlFor="image-input" className="ajuste">
           Imagem:
           {' '}
           <input
@@ -102,7 +102,7 @@ class Form extends React.Component {
           />
 
         </label>
-        <label htmlFor="rare-input">
+        <label htmlFor="rare-input" className="ajuste">
           Raridade:
           {' '}
           <select
@@ -120,7 +120,7 @@ class Form extends React.Component {
           </select>
 
         </label>
-        <label htmlFor="trunfo-input">
+        <label htmlFor="trunfo-input" className="ajuste">
           Super Trybe Trunfo:
           <input
             type="checkbox"
