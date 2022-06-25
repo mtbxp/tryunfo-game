@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import '../styles/form.css';
 
 export default class Descricao extends Component {
   render() {
@@ -9,6 +10,7 @@ export default class Descricao extends Component {
       <label htmlFor="description-input">
         Descrição:
         <textarea
+          className="textarea"
           name="cardDescription"
           value={ cardDescription }
           onChange={ onInputChange }
