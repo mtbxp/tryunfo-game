@@ -17,7 +17,30 @@ class App extends React.Component {
     };
   }
 
-  isSaveButtonDisabled = () => false
+  isSaveButtonDisabled = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+    const maximumScore = 210;
+    const maxSkillScore = 90;
+    const totalScoreOfSkills = ((Number(cardAttr1) <= maxSkillScore)
+      && (Number(cardAttr1) >= 0))
+      && ((Number(cardAttr2) <= maxSkillScore)
+      && (Number(cardAttr2) >= 0))
+      && ((Number(cardAttr3) <= maxSkillScore)
+      && (Number(cardAttr3) >= 0));
+    const allScore = (Number(cardAttr1)
+      + Number(cardAttr2)
+      + Number(cardAttr3)) <= maximumScore;
+    return !(!!cardName
+      && cardDescription && cardImage && cardRare && allScore && totalScoreOfSkills);
+  }
 
   onSaveButtonClick = () => false
 
