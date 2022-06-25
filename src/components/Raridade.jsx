@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import '../styles/form.css';
 
 export default class Raridade extends Component {
   render() {
@@ -9,6 +10,7 @@ export default class Raridade extends Component {
       <label htmlFor="rare-input">
         Raridade:
         <select
+          className="select"
           name="cardImage"
           value={ cardImage }
           onChange={ onInputChange }
