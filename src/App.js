@@ -16,6 +16,7 @@ class App extends React.Component {
       trunfoinput: false,
       hadtrunfu: false,
       savebutton: true,
+      existcart: [],
     };
   }
 
@@ -63,6 +64,40 @@ class App extends React.Component {
     );
   }
 
+  clickButton = () => {
+    const { nameinput, descriptioninput, attr1input, attr2input,
+      attr3input, imageinput, rareinput, trunfoinput, existcart, hadtrunfu,
+    } = this.state;
+    this.setState(
+      (eln) => ({
+        nameinput: '',
+        descriptioninput: '',
+        attr1input: 0,
+        attr2input: 0,
+        attr3input: 0,
+        imageinput: '',
+        rareinput: 'normal',
+        trunfoinput: false,
+        hadtrunfu: false,
+        existcart: [
+          ...eln.existcart,
+          {
+            nameinput,
+            descriptioninput,
+            attr1input,
+            attr2input,
+            attr3input,
+            imageinput,
+            rareinput,
+            trunfoinput,
+            existcart,
+            hadtrunfu,
+          },
+        ],
+      }),
+    );
+  }
+
   render() {
     const { nameinput, descriptioninput, attr1input, attr2input, savebutton,
       attr3input, imageinput, rareinput, trunfoinput, hadtrunfu,
@@ -83,7 +118,7 @@ class App extends React.Component {
             hasTrunfo={ hadtrunfu }
             isSaveButtonDisabled={ savebutton }
             onInputChange={ this.handleChange }
-            onSaveButtonClick={ () => {} }
+            onSaveButtonClick={ this.clickButton }
           />
 
           <Card

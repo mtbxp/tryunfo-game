@@ -5,7 +5,7 @@ class From extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo,
-      isSaveButtonDisabled, onInputChange, onSaveButtonClick, counter,
+      isSaveButtonDisabled, onInputChange, onSaveButtonClick
     } = this.props;
     return (
       <form className="contanerNewLetter">
@@ -31,8 +31,8 @@ class From extends React.Component {
             className="areaLetter"
             value={ cardDescription }
             data-testid="description-input"
-            maxLength="1000"
-            placeholder="500"
+            maxLength="200"
+            placeholder="200"
             onChange={ onInputChange }
           />
         </label>

@@ -9,24 +9,64 @@ class Card extends React.Component {
 
     return (
       <div className="conteinerCard">
-        <span data-testid="name-card">{cardName}</span>
+        <h1 data-testid="name-card" className="titleCard">{`Nome: ${cardName}`}</h1>
 
-        <img
-          src={ cardImage }
-          alt={ cardName }
-          data-testid="image-card"
-        />
-        <span data-testid="description-card">{cardDescription}</span>
+        <div className="containerImg">
+          <img
+            src={ cardImage }
+            alt={ cardName }
+            data-testid="image-card"
+            className="imgCard"
+          />
+        </div>
 
-        <span data-testid="attr1-card">{`Atributo: ${cardAttr1}`}</span>
+        <div className="descCard">
+          <span data-testid="description-card">
+            {`Descrição: ${cardDescription}`}
+          </span>
+        </div>
 
-        <span data-testid="attr2-card">{`Atributo: ${cardAttr2}`}</span>
+        <div className="conteinerArrtrs">
+          <span
+            data-testid="attr1-card"
+            className="arrtrs"
+          >
+            {`Atributo: ${cardAttr1}`}
 
-        <span data-testid="attr3-card">{`Atributo: ${cardAttr3}`}</span>
+          </span>
 
-        <span data-testid="rare-card">{`Raridade: ${cardRare}`}</span>
+          <span
+            data-testid="attr2-card"
+            className="arrtrs"
+          >
+            {`Atributo: ${cardAttr2}`}
 
-        {cardTrunfo && <span data-testid="trunfo-card">Super Trunfo</span>}
+          </span>
+
+          <span
+            data-testid="attr3-card"
+            className="arrtrs"
+          >
+            {`Atributo: ${cardAttr3}`}
+
+          </span>
+
+          <span
+            data-testid="rare-card"
+            className="arrtrs"
+          >
+            {`Raridade: ${cardRare}`}
+
+          </span>
+        </div>
+
+        {cardTrunfo && <span
+          data-testid="trunfo-card"
+          className="trunfo"
+        >
+          Super Trunfo
+
+                       </span>}
 
       </div>
     );

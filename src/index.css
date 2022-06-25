@@ -83,8 +83,49 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-self: start;
+  background-color: rgb(0, 109, 58);
+  border: 7px solid rgb(0, 63, 42);
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 25px;
+  color: white;
+  width: 330px;
 }
 
-.contanerNewLetter {
-  margin-bottom: 15px;
+.titleCard {
+  color: rgb(0, 255, 170);
+  font-size: 30px;
 }
+
+.containerImg {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.imgCard {
+  width: 300px;
+}
+
+.descCard {
+  display: flex;
+  flex-flow: row wrap;
+  width: 90%;
+}
+
+.conteinerArrtrs {
+  display: flex;
+  flex-flow: column wrap;
+  flex-grow: 1;
+}
+
+.arrtrs {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.trunfo {
+  color: rgb(0, 255, 170);
+  font-weight: 700;
+}
+
