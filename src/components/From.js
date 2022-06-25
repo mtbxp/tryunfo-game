@@ -3,14 +3,19 @@ import '../index.css';
 
 class From extends React.Component {
   render() {
+    const { cardName, cardDescription, cardAttr1, cardAttr2,
+      cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo,
+      isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
     return (
-      <div className="contanerNewLetter">
+      <form className="contanerNewLetter">
         <h1>Adicionar Nova Carta</h1>
         <label htmlFor="nameLetter">
           <input
             type="text"
             data-testid="name-input"
             name="nameLetter"
+            value={ cardName }
+            onChange={ onInputChange }
           />
         </label>
 
@@ -18,8 +23,9 @@ class From extends React.Component {
           <input
             type="textarea"
             name="descLetter"
-            value=""
+            value={ cardDescription }
             data-testid="description-input"
+            onChange={ onInputChange }
           />
         </label>
 
@@ -27,8 +33,9 @@ class From extends React.Component {
           <input
             type="number"
             name="firstAtb"
-            value=""
+            value={ cardAttr1 }
             data-testid="attr1-input"
+            onChange={ onInputChange }
           />
         </label>
 
@@ -36,57 +43,66 @@ class From extends React.Component {
           <input
             type="number"
             name="secondAtb"
-            value=""
+            value={ cardAttr2 }
             data-testid="attr2-input"
+            onChange={ onInputChange }
           />
         </label>
 
-        <label htmlFor="threeAtb">
+        <label htmlFor="attr3-input">
           <input
             type="number"
-            name="threeAtb"
-            value=""
+            name="attr3-input"
+            value={ cardAttr3 }
             data-testid="attr3-input"
+            onChange={ onInputChange }
           />
         </label>
 
-        <label htmlFor="imgLetter">
+        <label htmlFor="image-input">
           <input
             type="text"
-            name="imgLetter"
-            value=""
+            name="image-input"
+            value={ cardImage }
             data-testid="image-input"
+            onChange={ onInputChange }
           />
         </label>
 
         <div>
           <select
             data-testid="rare-input"
+            name="rare-input"
+            onChange={ onInputChange }
+            value={ cardRare }
           >
-            <option value="normal">normal</option>
-            <option value="raro">raro</option>
-            <option value="muito raro">muito raro</option>
+            <option>normal</option>
+            <option>raro</option>
+            <option>muito raro</option>
           </select>
         </div>
 
-        <label htmlFor="checkLetter">
+        <label htmlFor="trunfo-input">
           <input
             type="checkbox"
-            name="checkLetter"
-            value=""
+            name="trunfo-input"
+            checked={ cardTrunfo }
             data-testid="trunfo-input"
+            onChange={ onInputChange }
           />
         </label>
 
         <button
           type="button"
-          name="btnLetter"
+          name="save-button"
           data-testid="save-button"
+          disabled={ isSaveButtonDisabled }
+          onClick={ onSaveButtonClick }
         >
           Salvar
         </button>
 
-      </div>
+      </form>
     );
   }
 }
