@@ -80,6 +80,7 @@ class App extends React.Component {
         trunfoinput: false,
         hadtrunfu: false,
         existcart: [
+          ...eln.existcart,
           {
             nameinput,
             descriptioninput,
@@ -92,7 +93,6 @@ class App extends React.Component {
             existcart,
             hadtrunfu,
           },
-          ...eln.existcart,
         ],
       }),
       () => this.setState({ hadtrunfu: this.valTryunfo() }),
@@ -114,37 +114,60 @@ class App extends React.Component {
 
   render() {
     const { nameinput, descriptioninput, attr1input, attr2input, savebutton,
-      attr3input, imageinput, rareinput, trunfoinput, hadtrunfu,
+      attr3input, imageinput, rareinput, trunfoinput, hadtrunfu, existcart,
     } = this.state;
     return (
       <div>
-        <h1 className="titleT">Tryunfo</h1>
-        <div className="conteinerTwoletters">
-          <From
-            cardName={ nameinput }
-            cardDescription={ descriptioninput }
-            cardAttr1={ attr1input }
-            cardAttr2={ attr2input }
-            cardAttr3={ attr3input }
-            cardImage={ imageinput }
-            cardRare={ rareinput }
-            cardTrunfo={ trunfoinput }
-            hasTrunfo={ hadtrunfu }
-            isSaveButtonDisabled={ savebutton }
-            onInputChange={ this.handleChange }
-            onSaveButtonClick={ this.clickButton }
-          />
+        <div>
+          <h1 className="titleT">Tryunfo</h1>
+          <div className="conteinerTwoletters">
+            <From
+              cardName={ nameinput }
+              cardDescription={ descriptioninput }
+              cardAttr1={ attr1input }
+              cardAttr2={ attr2input }
+              cardAttr3={ attr3input }
+              cardImage={ imageinput }
+              cardRare={ rareinput }
+              cardTrunfo={ trunfoinput }
+              hasTrunfo={ hadtrunfu }
+              isSaveButtonDisabled={ savebutton }
+              onInputChange={ this.handleChange }
+              onSaveButtonClick={ this.clickButton }
+            />
 
-          <Card
-            cardName={ nameinput }
-            cardDescription={ descriptioninput }
-            cardAttr1={ attr1input }
-            cardAttr2={ attr2input }
-            cardAttr3={ attr3input }
-            cardImage={ imageinput }
-            cardRare={ rareinput }
-            cardTrunfo={ trunfoinput }
-          />
+            <div className="peviewCard">
+              <h1 className="previewT">Preview</h1>
+              <Card
+                cardName={ nameinput }
+                cardDescription={ descriptioninput }
+                cardAttr1={ attr1input }
+                cardAttr2={ attr2input }
+                cardAttr3={ attr3input }
+                cardImage={ imageinput }
+                cardRare={ rareinput }
+                cardTrunfo={ trunfoinput }
+              />
+            </div>
+          </div>
+        </div>
+        <div className="conteinerHadCardts">
+          <h1>Suas Cartas</h1>
+          <div className="hadCard">
+            {existcart.map((elm) => (
+              <Card
+                cardName={ elm.nameinput }
+                cardDescription={ elm.descriptioninput }
+                cardAttr1={ elm.attr1input }
+                cardAttr2={ elm.attr2input }
+                cardAttr3={ elm.attr3input }
+                cardImage={ elm.imageinput }
+                cardRare={ elm.rareinput }
+                cardTrunfo={ elm.trunfoinput }
+                key={ elm.nameinput }
+              />
+            ))}
+          </div>
         </div>
       </div>
     );
