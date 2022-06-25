@@ -20,7 +20,7 @@ class Form extends React.Component {
     } = this.props;
 
     return (
-      <form>
+      <form onSubmit={ onSaveButtonClick }>
         {/* {console.log(this.props)} */}
         <input
           data-testid="name-input"
