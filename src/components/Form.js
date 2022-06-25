@@ -1,35 +1,17 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 
-const validate = yup.object.shape({
-  cardName: yup.string().required(),
-  cardDescription: yup.string().required(),
-  cardAttr1: yup.number().required(),
-  cardAttr2: yup.number().required(),
-  cardAttr3: yup.number().required(),
-  cardImage: yup.string().required(),
-  cardRare: yup.string().required(),
-});
-
-
-function Form() {
-
-    const { register, handleSubmit, formState: { errors } } = useForm({
-      resolver: yupResolver(validate),
-    });
-    const onSubmit = (data) => console.log(data);
+class Form extends React.Component {
+  render() {
     const { onInputChange, onSaveButtonClick } = this.props;
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo, isSaveButtonDisabled,
     } = this.props;
-        return (
-      <form className="texto" onSubmit={ handleSubmit(onSubmit) }>
+    return (
+      <form className="texto">
+        <h1 className="texto-h1">Tryunfo</h1>
         <label htmlFor="name-input">
-          Nome
+          Nome:
           <input
             type="text"
             data-testid="name-input"
@@ -39,12 +21,12 @@ function Form() {
             onChange={ onInputChange }
             placeholder="Nome"
             required="required"
-            { ...register('nome') }
+
           />
-          <p className="error-message">{errors.nome?.message}</p>
+
         </label>
-        <label htmlFor="description-input">
-          Descrição
+        <label htmlFor="description-input" className="container-foto">
+          Descrição:
           <textarea
             type="textarea"
             data-testid="description-input"
@@ -53,13 +35,11 @@ function Form() {
             name="cardDescription"
             placeholder="Descrição"
             onChange={ onInputChange }
-            required="required"
           />
-
         </label>
 
         <label htmlFor="attr1-input">
-          Attr1
+          Attr1:
           <input
             type="number"
             data-testid="attr1-input"
@@ -75,7 +55,7 @@ function Form() {
 
         </label>
         <label htmlFor="attr2-input">
-          Attr2
+          Attr2:
           <input
             type="number"
             data-testid="attr2-input"
@@ -91,7 +71,7 @@ function Form() {
 
         </label>
         <label htmlFor="attr3-input">
-          Attr3
+          Attr3:
           {' '}
           <input
             type="number"
@@ -108,7 +88,7 @@ function Form() {
 
         </label>
         <label htmlFor="image-input">
-          Imagem
+          Imagem:
           {' '}
           <input
             type="text"
@@ -123,7 +103,7 @@ function Form() {
 
         </label>
         <label htmlFor="rare-input">
-          Raridade
+          Raridade:
           {' '}
           <select
             data-testid="rare-input"
@@ -141,7 +121,7 @@ function Form() {
 
         </label>
         <label htmlFor="trunfo-input">
-          Super Trybe Trunfo
+          Super Trybe Trunfo:
           <input
             type="checkbox"
             data-testid="trunfo-input"
@@ -151,8 +131,8 @@ function Form() {
             checked={ cardTrunfo }
             onChange={ onInputChange }
             required="required"
+            className="check"
           />
-
         </label>
         <label htmlFor="save-button">
           <input
@@ -169,6 +149,7 @@ function Form() {
     );
   }
 }
+
 Form.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   cardName: PropTypes.string.isRequired,

@@ -1,4 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap') ;
+
 .texto {
+  background-image: linear-gradient(red, yellow);
+  border: 10px ridge rgb(79, 79, 219);
   display: flex;
   flex-direction: column;
+  gap: 4px;
+  height: 320px;
+}
+
+.texto1 {
+  align-items: center;
+  display: flex;
+  gap: 150px;
+  justify-content: flex-start;
+}
+
+.foto {
+  display: flex;
+  width: 150px;
+}
+
+.container-foto {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.card {
+  background-image: linear-gradient(red, yellow);
+  border: 10px ridge rgb(79, 79, 219);
+  height: 320px;
+  width: 290px;
+}
+
+.centraliza {
+  background-image: url('https://gifs.eco.br/wp-content/uploads/2021/10/imagens-e-gifs-do-ceu-estrelado-0.gif');
+  display: flex;
+  height: 42vw;
+  justify-content: center;
+}
+
+.texto-h1 {
+  color: white;
+  font-family: Roboto , sans-serif;
+  text-align: center;
 }
