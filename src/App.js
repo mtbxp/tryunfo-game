@@ -1,4 +1,5 @@
 import React from 'react';
+import '../src/style.css';
 
 class App extends React.Component {
   render() {
@@ -11,3 +12,4 @@ class App extends React.Component {
 }
 
 export default App;
+
