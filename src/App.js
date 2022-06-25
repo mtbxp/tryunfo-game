@@ -34,32 +34,34 @@ class App extends React.Component {
     } = this.state;
     return (
       <div>
-        <h1>Tryunfo</h1>
-        <From
-          cardName={ nameinput }
-          cardDescription={ descriptioninput }
-          cardAttr1={ attr1input }
-          cardAttr2={ attr2input }
-          cardAttr3={ attr3input }
-          cardImage={ imageinput }
-          cardRare={ rareinput }
-          cardTrunfo={ trunfoinput }
-          hasTrunfo={ hadtrunfu }
-          isSaveButtonDisabled={ savebutton }
-          onInputChange={ this.handleChange }
-          onSaveButtonClick={ () => {} }
-        />
+        <h1 className="titleT">Tryunfo</h1>
+        <div className="conteinerTwoletters">
+          <From
+            cardName={ nameinput }
+            cardDescription={ descriptioninput }
+            cardAttr1={ attr1input }
+            cardAttr2={ attr2input }
+            cardAttr3={ attr3input }
+            cardImage={ imageinput }
+            cardRare={ rareinput }
+            cardTrunfo={ trunfoinput }
+            hasTrunfo={ hadtrunfu }
+            isSaveButtonDisabled={ savebutton }
+            onInputChange={ this.handleChange }
+            onSaveButtonClick={ () => {} }
+          />
 
-        <Card
-          cardName={ nameinput }
-          cardDescription={ descriptioninput }
-          cardAttr1={ attr1input }
-          cardAttr2={ attr2input }
-          cardAttr3={ attr3input }
-          cardImage={ imageinput }
-          cardRare={ rareinput }
-          cardTrunfo={ trunfoinput }
-        />
+          <Card
+            cardName={ nameinput }
+            cardDescription={ descriptioninput }
+            cardAttr1={ attr1input }
+            cardAttr2={ attr2input }
+            cardAttr3={ attr3input }
+            cardImage={ imageinput }
+            cardRare={ rareinput }
+            cardTrunfo={ trunfoinput }
+          />
+        </div>
       </div>
     );
   }

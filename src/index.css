@@ -12,6 +12,17 @@ code {
     monospace;
 }
 
+.conteinerTwoletters {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.titleT {
+  text-align: center;
+}
+
 .contanerNewLetter {
   display: flex;
   flex-direction: column;

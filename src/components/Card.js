@@ -18,13 +18,13 @@ class Card extends React.Component {
         />
         <span data-testid="description-card">{cardDescription}</span>
 
-        <span data-testid="attr1-card">{cardAttr1}</span>
+        <span data-testid="attr1-card">{`Atributo: ${cardAttr1}`}</span>
 
-        <span data-testid="attr2-card">{cardAttr2}</span>
+        <span data-testid="attr2-card">{`Atributo: ${cardAttr2}`}</span>
 
-        <span data-testid="attr3-card">{cardAttr3}</span>
+        <span data-testid="attr3-card">{`Atributo: ${cardAttr3}`}</span>
 
-        <span data-testid="rare-card">{cardRare}</span>
+        <span data-testid="rare-card">{`Raridade: ${cardRare}`}</span>
 
         {cardTrunfo && <span data-testid="trunfo-card">Super Trunfo</span>}
 
