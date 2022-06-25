@@ -5,7 +5,6 @@ class Form extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3 } = this.props;
     const { cardImage, cardRare, cardTrunfo, hasTrunfo } = this.props;
-    // console.log(hasTrunfo);
     const { isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
 
     return (
@@ -98,18 +97,22 @@ class Form extends React.Component {
           </select>
         </label>
         <br />
-        <label htmlFor="joker">
-          Is the card a joker?
-          <input
-            data-testid="trunfo-input"
-            id="joker"
-            name="cardTrunfo"
-            type="checkbox"
-            checked={ cardTrunfo }
-            value={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-        </label>
+        {
+          hasTrunfo
+            ? <p>Você já tem um Super Trunfo em seu baralho</p>
+            : <label htmlFor="joker">
+              Is the card a joker?
+              <input
+                data-testid="trunfo-input"
+                id="joker"
+                name="cardTrunfo"
+                type="checkbox"
+                checked={ cardTrunfo }
+                value={ cardTrunfo }
+                onChange={ onInputChange }
+              />
+            </label>
+        }
         <br />
         <button
           data-testid="save-button"

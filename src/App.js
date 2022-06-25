@@ -14,25 +14,95 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: true,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      myCards: [],
     };
   }
 
   onInputChange = ({ target }) => {
     const { name, type } = target;
     const value = (type === 'checkbox') ? target.checked : target.value;
-    this.setState({ [name]: value });
     const { cardName, cardDescription, cardImage, cardRare } = this.state;
-    if (cardName && cardDescription && cardImage && cardRare) {
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    this.setState({ [name]: value });
+    const maxSumAtt = 210;
+    const maxAtt = 90;
+    if (cardName
+      && cardDescription
+      && cardImage
+      && cardRare
+      && Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= maxSumAtt
+      && Number(cardAttr1) <= maxAtt && Number(cardAttr1) >= 0
+      && Number(cardAttr2) <= maxAtt && Number(cardAttr2) >= 0
+      && Number(cardAttr3) <= maxAtt && Number(cardAttr3) >= 0) {
       this.setState({ isSaveButtonDisabled: false });
+    } else {
+      this.setState({ isSaveButtonDisabled: true });
     }
   }
 
-  onSaveButtonClick = () => {
+  onSaveButtonClick = (e) => {
+    e.preventDefault();
+    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    const { cardImage, cardRare, cardTrunfo, myCards } = this.state;
+    const newCard = { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo };
+    if (!myCards.every((card) => card.Trunfo === false)) {
+      this.setState((estadoAnterior) => ({
+        myCards: [newCard, ...estadoAnterior],
+      }), () => ({
+        cardName: '',
+        cardDescription: '',
+        cardImage: '',
+        cardAttr1: '',
+        cardAttr2: '',
+        cardAttr3: '',
+        cardRare: 'normal',
+      }));
+    }
+    if (cardTrunfo) {
+      this.setState({ hasTrunfo: true });
+    }
+  }
 
+  listCards = () => {
+    const { myCards } = this.state;
+    return myCards.map((card) => (
+      <li key={ cardName }>
+        <Card
+          cardName={ card.cardName }
+          cardDescription={ card.cardDescription }
+          cardAttr1={ card.cardAttr1 }
+          cardAttr2={ card.cardAttr2 }
+          cardAttr3={ card.cardAttr3 }
+          cardImage={ card.cardImage }
+          cardRare={ card.cardRare }
+          cardTrunfo={ card.cardTrunfo }
+        />
+        <button
+          type="button"
+          onClick={ this.deleteCard(card.cardName, card.cardTrunfo) }
+          data-testid="delete-button"
+        >
+          Excluir
+        </button>
+      </li>
+    ));
+  }
+
+  deleteCard = (cardName, cardTrunfo) => {
+    const { myCards: lastCards } = this.state;
+    this.setState({ myCards: lastCards.filter((card) => card.cardName !== cardName) });
+    if (cardTrunfo) this.setState(() => ({ hasTrunfo: false }));
   }
 
   render() {
@@ -65,8 +135,11 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
         />
+        <ul>
+          All the cards:
+          { this.listCards }
+        </ul>
       </div>
     );
   }
