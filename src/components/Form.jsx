@@ -92,7 +92,6 @@ export default class Form extends Component {
         </label>
 
         <select
-          type="select"
           name="raridade"
           data-testid="rare-input"
           value={ cardRare }
@@ -129,7 +128,6 @@ export default class Form extends Component {
     );
   }
 }
-
 Form.propTypes = {
   cardAttr1: PropTypes.string,
   cardAttr2: PropTypes.string,

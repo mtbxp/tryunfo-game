@@ -27,7 +27,6 @@ export default class Card extends Component {
     );
   }
 }
-
 Card.propTypes = {
   cardAttr1: PropTypes.string,
   cardAttr2: PropTypes.string,
