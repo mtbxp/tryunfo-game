@@ -14,18 +14,18 @@ class App extends React.Component {
       cardAttr3: '',
       cardImage: '',
       cardRare: '',
-      cardTrunfo:'' };
+      cardTrunfo: '' };
   }
 
   onInputChange({ target }) {
     const { name } = target;
-    const {value} = target;
+    const { value } = target;
     this.setState(({ [name]: value }));
   }
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare,cardTrunfo } = this.state;
+      cardAttr3, cardImage, cardRare, cardTrunfo } = this.state;
     return (
       <div>
         <Form
