@@ -132,6 +132,7 @@ export default class Form extends Component {
                 id="trunfo-input"
                 data-testid="trunfo-input"
               />
+              Super Trunfo!
             </label>
           )}
         </div>
