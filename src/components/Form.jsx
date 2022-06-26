@@ -104,7 +104,8 @@ export default class Form extends Component {
         </select>
 
         {hasTrunfo
-          ? (
+          ? <h3>Você já tem um Super Trunfo em seu baralho</h3>
+          : (
             <label htmlFor="trunfo">
               Super Trybe Trunfo
               <input
@@ -115,9 +116,7 @@ export default class Form extends Component {
                 checked={ cardTrunfo }
                 onChange={ onInputChange }
               />
-            </label>
-          )
-          : <h3>Você já tem um Super Trunfo em seu baralho</h3>}
+            </label>) }
 
         <button
           name="btnDisable"

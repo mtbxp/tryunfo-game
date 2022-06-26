@@ -17,7 +17,7 @@ class App extends React.Component {
       trunfo: false,
       btnDisabled: true,
       card: [],
-      hasTrunfo: true,
+      hasTrunfo: false,
     };
   }
 
@@ -89,7 +89,7 @@ class App extends React.Component {
       attr3: '0',
       image: '',
       raridade: 'normal',
-      hasTrunfo: this.funcHasTrunfo(),
+      hasTrunfo: !this.funcHasTrunfo(),
     });
   };
 
