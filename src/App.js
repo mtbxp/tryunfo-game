@@ -16,14 +16,16 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: true,
       isSaveButtonDisabled: true,
+      cardsArray: [],
     };
 
     this.onInputChange = this.onInputChange.bind(this);
-    // this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.verifyIsOver210 = this.verifyIsOver210.bind(this);
     this.verifyIsInvalid = this.verifyIsInvalid.bind(this);
     this.verifyIsEmpty = this.verifyIsEmpty.bind(this);
+    this.resetInputs = this.resetInputs.bind(this);
   }
 
   handleSubmit() {
@@ -48,11 +50,47 @@ class App extends React.Component {
     }, () => this.handleSubmit());
   }
 
-  // onSaveButtonClick() {
-  //   this.setState({
-  //     isSaveButtonDisabled: false,
-  //   });
-  // }
+  onSaveButtonClick() {
+    const {
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      cardName,
+      cardsArray,
+    } = this.state;
+
+    const currentCard = {
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      cardName,
+    };
+
+    this.setState({
+      cardsArray: [...cardsArray, currentCard],
+    }, () => this.resetInputs());
+  }
+
+  resetInputs() {
+    this.setState({
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardDescription: '',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      cardName: '',
+    });
+  }
 
   verifyIsOver210() {
     const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
