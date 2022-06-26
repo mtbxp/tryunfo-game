@@ -26,8 +26,32 @@ class App extends React.Component {
   }
 
   validationButton = () => {
+    const { cardName, cardDescription, cardImage, cardAttr1, cardAttr2,
+      cardAttr3 } = this.state;
 
-  }
+    const maxAttr = 90;
+    const minAttr = 0;
+    const maxSumAttr = 120;
+
+    const empty = cardName && cardDescription && cardImage !== '';
+
+    const sumAttr = Number(cardAttr1)
+      + Number(cardAttr2)
+      + Number(cardAttr3) <= maxSumAttr;
+
+    const maxValidationAttr = Number(cardAttr1) <= maxAttr
+      && Number(cardAttr2) <= maxAttr
+      && Number(cardAttr3) <= maxSumAttr;
+
+    const minValidationAttr = Number(cardAttr1) >= minAttr
+      && Number(cardAttr2) >= minAttr
+      && Number(cardAttr3) >= minAttr;
+
+    if (empty && sumAttr && maxValidationAttr && minValidationAttr) {
+      return false;
+    }
+    return true;
+  };
 
   onInputChange = ({ target }) => {
     const { name, type } = target;
