@@ -24,13 +24,23 @@ class App extends React.Component {
   }
 
   onInputChange = ({ target }) => {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { name, value } = target;
 
     this.setState({ [name]: value },
       () => this.setState({
         isSaveButtonDisabled: this.validateSaveButton(),
       }));
+  }
+
+  hasTrunfoCard = () => {
+    const { cards } = this.state;
+    return cards.some((card) => card.trunfo);
+  }
+
+  deleteBtn = (name) => {
+    this.setState((prevState) => ({
+      cards: prevState.cards.filter((card) => card.name !== name),
+    }), () => { this.setState({ hasTrunfo: this.hasTrunfoCard() }); });
   }
 
   onSaveButtonClick = (event) => {
@@ -51,7 +61,7 @@ class App extends React.Component {
         ...prevState.cards,
         { name, description, image, attr1, attr2, attr3, rare, trunfo },
       ],
-    }));
+    }), () => { this.setState({ hasTrunfo: this.hasTrunfoCard }); });
   };
 
   validateSaveButton = () => {
@@ -122,17 +132,25 @@ class App extends React.Component {
         <div>
           <h1>Your Cards</h1>
           {cards.map((card) => (
-            <Card
-              cardName={ card.name }
-              cardDescription={ card.description }
-              cardAttr1={ card.attr1 }
-              cardAttr2={ card.attr2 }
-              cardAttr3={ card.attr3 }
-              cardImage={ card.image }
-              cardRare={ card.rare }
-              cardTrunfo={ card.trunfo }
-              key={ card.name }
-            />
+            <div key={ card.name }>
+              <Card
+                cardName={ card.name }
+                cardDescription={ card.description }
+                cardAttr1={ card.attr1 }
+                cardAttr2={ card.attr2 }
+                cardAttr3={ card.attr3 }
+                cardImage={ card.image }
+                cardRare={ card.rare }
+                cardTrunfo={ card.trunfo }
+              />
+              <button
+                type="button"
+                onClick={ () => this.deleteBtn(card.name) }
+                data-testid="delete-button"
+              >
+                Delete
+              </button>
+            </div>
           ))}
         </div>
       </div>
