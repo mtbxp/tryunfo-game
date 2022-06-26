@@ -8,9 +8,9 @@ class App extends React.Component {
     super();
 
     this.state = {
-      cardName: '',
-      cardDescription: '',
-      cardImage: '',
+      cardName: 'test',
+      cardDescription: 'test',
+      cardImage: 'test',
       cardAttr1: '0',
       cardAttr2: '0',
       cardAttr3: '0',
@@ -114,6 +114,11 @@ class App extends React.Component {
     return !(cardName && cardDescription && cardImage && sumAttr);
   }
 
+  btnClear(name) {
+    this.setState((prev) => ({
+      saveCards: prev.saveCards.filter((card) => card.cardName !== name) }));
+  }
+
   render() {
     const {
       cardName,
@@ -145,10 +150,19 @@ class App extends React.Component {
             cardTrunfo,
           } }
         />
-        {saveCards.map((card, index) => (<Card
-          { ...card }
-          key={ index }
-        />))}
+        {saveCards.map((card, index) => (
+          <section key={ index } className="renderCards">
+            <Card
+              { ...card }
+            />
+            <button
+              type="button"
+              data-testid="delete-button"
+              onClick={ () => this.btnClear(card.cardName) }
+            >
+              excluir
+            </button>
+          </section>))}
       </>
     );
   }
