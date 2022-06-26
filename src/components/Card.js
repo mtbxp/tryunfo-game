@@ -11,14 +11,14 @@ class Card extends React.Component {
         <img
           data-testid="image-card"
           src={ cardImage }
-          alt="Nome da carta"
+          alt={ cardName }
         />
         <p data-testid="description-card">{ cardDescription }</p>
         <p data-testid="attr1-card">{ cardAttr1 }</p>
         <p data-testid="attr2-card">{ cardAttr2 }</p>
         <p data-testid="attr3-card">{ cardAttr3 }</p>
         <p data-testid="rare-card">{ cardRare }</p>
-        { (cardTrunfo) && (<p data-testid="trunfo-card">Super Trunfo</p>) }
+        { cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p> }
         {/* O passo anterior foi feito com auxílio da documentação presente em 'https://pt-br.reactjs.org/docs/conditional-rendering.html' */}
       </div>
     );

@@ -25,9 +25,12 @@ class App extends React.Component {
   onInputChange = ({ target }) => {
     const { name, type } = target;
     const value = (type === 'checkbox') ? target.checked : target.value;
+    this.setState({ [name]: value }, this.validateButton);
+  }
+
+  validateButton = () => {
     const { cardName, cardDescription, cardImage, cardRare } = this.state;
     const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
-    this.setState({ [name]: value });
     const maxSumAtt = 210;
     const maxAtt = 90;
     if (cardName
@@ -47,7 +50,7 @@ class App extends React.Component {
   onSaveButtonClick = (e) => {
     e.preventDefault();
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3 } = this.state;
-    const { cardImage, cardRare, cardTrunfo, myCards } = this.state;
+    const { cardImage, cardRare, cardTrunfo, hasTrunfo, myCards } = this.state;
     const newCard = { cardName,
       cardDescription,
       cardAttr1,
@@ -56,22 +59,21 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo };
-    if (!myCards.every((card) => card.Trunfo === false)) {
-      this.setState((estadoAnterior) => ({
-        myCards: [newCard, ...estadoAnterior],
-      }), () => ({
-        cardName: '',
-        cardDescription: '',
-        cardImage: '',
-        cardAttr1: '',
-        cardAttr2: '',
-        cardAttr3: '',
-        cardRare: 'normal',
-      }));
-    }
-    if (cardTrunfo) {
-      this.setState({ hasTrunfo: true });
-    }
+    // if (!myCards.every((card) => card.Trunfo === false)) {
+    this.setState((estadoAnterior) => ({
+      myCards: [newCard, ...estadoAnterior.myCards],
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardRare: 'normal',
+    }));
+    // }
+    // if (cardTrunfo) {
+    //   this.setState(() => ({ hasTrunfo: true }), console.log(hasTrunfo));
+    // }
   }
 
   listCards = () => {
