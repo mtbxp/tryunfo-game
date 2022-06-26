@@ -18,6 +18,7 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      deleteButton,
     } = this.props;
 
     return (
@@ -43,6 +44,7 @@ class Card extends React.Component {
         <TrunfoCard
           cardTrunfo={ cardTrunfo }
         />
+        { deleteButton }
       </section>
     );
   }
@@ -57,6 +59,7 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.string.isRequired,
+  deleteButton: PropTypes.string.isRequired,
 };
 
 export default Card;

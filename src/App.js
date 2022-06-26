@@ -28,6 +28,7 @@ class App extends React.Component {
     this.verifyIsEmpty = this.verifyIsEmpty.bind(this);
     this.resetInputs = this.resetInputs.bind(this);
     this.verifyHasTrunfo = this.verifyHasTrunfo.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
   }
 
   handleSubmit() {
@@ -86,6 +87,17 @@ class App extends React.Component {
     });
   }
 
+  deleteCard(event) {
+    const { target } = event;
+    const { cardsArray } = this.state;
+    const targetCardName = target.parentElement.firstElementChild.innerHTML;
+    const newCardsArray = cardsArray
+      .filter((card) => card.cardName !== targetCardName);
+    this.setState({
+      cardsArray: newCardsArray,
+    }, () => this.verifyHasTrunfo());
+  }
+
   verifyHasTrunfo() {
     const { cardsArray } = this.state;
     this.setState({
@@ -137,6 +149,16 @@ class App extends React.Component {
 
   render() {
     const { cardsArray } = this.state;
+    const deleteButton = (
+      <button
+        data-testid="delete-button"
+        type="button"
+        onClick={ this.deleteCard }
+      >
+        Excluir
+      </button>
+    );
+
     return (
       <div>
         <Form
@@ -152,6 +174,7 @@ class App extends React.Component {
           <Card
             { ...card }
             key={ index }
+            deleteButton={ deleteButton }
           />
         ))}
       </div>
