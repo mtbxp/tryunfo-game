@@ -24,6 +24,7 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.validationButton = this.validationButton.bind(this);
+    this.removeButton = this.removeButton.bind(this);
   }
 
   onInputChange({ target }) {
@@ -91,6 +92,16 @@ class App extends React.Component {
     }
   }
 
+  removeButton({ target }) {
+    const { listOfCards } = this.state;
+    const name = target.value;
+    const selectedCards = (listOfCards.filter((cards) => cards.cardName !== name));
+    this.setState(() => ({
+      listOfCards: selectedCards,
+      hasTrunfo: selectedCards.some((trunfo) => trunfo.cardTrunfo),
+    }));
+  }
+
   render() {
     const {
       cardName,
@@ -105,6 +116,7 @@ class App extends React.Component {
       listOfCards,
       enableButton,
       isSaveButtonDisabled,
+      removeButton,
     } = this.state;
     return (
       <div>
@@ -133,11 +145,13 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           enableButton={ enableButton }
+          removeButton={ removeButton }
         />
         <ListOfCards
           listOfCards={ listOfCards }
           cardName={ cardName }
           cardTrunfo={ cardTrunfo }
+          removeButton={ this.removeButton }
         />
       </div>
     );
