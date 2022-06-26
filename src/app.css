@@ -57,3 +57,8 @@
   display: flex;
   gap: 15px;
 }
+
+.container-bot {
+  text-align: center;
+}
+

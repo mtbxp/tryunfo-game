@@ -2,9 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Cartas extends React.Component {
+  constructor() {
+    super();
+    this.remove = this.remove.bind(this);
+  }
+
   Mapear(cards) {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo } = cards;
+      cardImage, cardRare, hasTrunfo } = cards;
     console.log(cards);
     return (
 
@@ -49,10 +54,26 @@ class Cartas extends React.Component {
         <p data-testid="rare-card">
           cardRare:
           {' '}
-          {cardTrunfo}
+          {hasTrunfo}
         </p>
+        <div className="container-bot">
+          <button
+            type="submit"
+            className="botao"
+            onClick={ this.remove }
+            data-testid="delete-button"
+          >
+            Remover Carta
+          </button>
+        </div>
+
       </div>
     );
+  }
+
+  remove(event) {
+    event.preventDefault();
+    event.target.parentNode.parentNode.remove();
   }
 
   render() {

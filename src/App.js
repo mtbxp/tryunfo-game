@@ -49,6 +49,7 @@ class App extends React.Component {
           cardAttr2,
           cardAttr3,
           cardRare,
+          hasTrunfo: true,
         }],
       }));
     } else {
@@ -165,6 +166,8 @@ class App extends React.Component {
         <CardsFeito
           className="texto1"
           cards={ cards }
+          VerificaHasTrunfo={ this.VerificaHasTrunfo }
+          onInputChange={ this.onInputChange }
         />
       </main>
     );
