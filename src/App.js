@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import ListOfCards from './components/ListOfCards';
 
 class App extends React.Component {
   constructor() {
@@ -36,7 +37,7 @@ class App extends React.Component {
 
     const newCard = { ...this.state };
 
-    this.setState((newState) => ({
+    this.setState((prevState) => ({
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -45,8 +46,8 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      hasTrunfo: [...newState.listOfCards, newCard].some((card) => card.cardTrunfo),
-      listOfCards: [...newState.listOfCards, newCard],
+      hasTrunfo: [...prevState.listOfCards, newCard].some((card) => card.cardTrunfo),
+      listOfCards: [...prevState.listOfCards, newCard],
     }));
   }
 
@@ -101,6 +102,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
+      listOfCards,
       enableButton,
       isSaveButtonDisabled,
     } = this.state;
@@ -131,6 +133,11 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           enableButton={ enableButton }
+        />
+        <ListOfCards
+          listOfCards={ listOfCards }
+          cardName={ cardName }
+          cardTrunfo={ cardTrunfo }
         />
       </div>
     );
