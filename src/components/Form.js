@@ -9,6 +9,7 @@ import Submit from './inputs_components/Submit';
 import Description from './inputs_components/Description';
 import NameFilter from './inputs_components/NameFilter';
 import RareFilter from './inputs_components/RareFilter';
+import TrunfoFilter from './inputs_components/TrunfoFilter';
 
 class Form extends React.Component {
   render() {
@@ -27,6 +28,7 @@ class Form extends React.Component {
       hasTrunfo,
       nameFilter,
       rareFilter,
+      trunfoFilter,
     } = this.props;
 
     return (
@@ -66,6 +68,10 @@ class Form extends React.Component {
           onInputChange={ onInputChange }
           rareFilter={ rareFilter }
         />
+        <TrunfoFilter
+          onInputChange={ onInputChange }
+          trunfoFilter={ trunfoFilter }
+        />
         <Submit
           onSaveButtonClick={ onSaveButtonClick }
           disabled={ isSaveButtonDisabled }
@@ -90,6 +96,7 @@ Form.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   nameFilter: PropTypes.func.isRequired,
   rareFilter: PropTypes.func.isRequired,
+  trunfoFilter: PropTypes.func.isRequired,
 };
 
 export default Form;

@@ -26,5 +26,4 @@ Image.propTypes = {
   onInputChange: PropTypes.func.isRequired,
 };
 
-
 export default Image;

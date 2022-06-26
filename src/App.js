@@ -20,6 +20,7 @@ class App extends React.Component {
       hasTrunfo: false,
       nameFilter: '',
       rareFilter: '',
+      trunfoFilter: false,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -50,9 +51,11 @@ class App extends React.Component {
 
   onInputChange(event) {
     const { target } = event;
-    const { name, value } = target;
+    const { name, value, checked } = target;
+    const conditionalValue = target.type === 'checkbox' ? checked : value;
+    console.log(target.type, conditionalValue)
     this.setState({
-      [name]: value,
+      [name]: conditionalValue,
     }, () => this.handleSubmit());
   }
 
@@ -151,7 +154,7 @@ class App extends React.Component {
   }
 
   filterName() {
-    const { cardsArray, nameFilter, rareFilter } = this.state;
+    const { cardsArray, nameFilter, rareFilter, trunfoFilter } = this.state;
     const deleteButton = (
       <button
         data-testid="delete-button"
@@ -161,6 +164,7 @@ class App extends React.Component {
         Excluir
       </button>
     );
+    const arrayByTrunfo = cardsArray.filter((card) => card.cardTrunfo);
     const arrayByName = cardsArray.filter((card) => card.cardName.includes(nameFilter));
     let arrayByRare = cardsArray.filter((card) => card.cardRare === rareFilter);
     if (rareFilter === 'todas') arrayByRare = cardsArray;
@@ -172,7 +176,8 @@ class App extends React.Component {
       conditionalCardsArray = arrayByRare;
     } else if (nameFilter.length !== 0 && rareFilter !== 0) {
       conditionalCardsArray = filteredArray;
-    }
+    } if (trunfoFilter) conditionalCardsArray = arrayByTrunfo;
+    console.log(conditionalCardsArray, trunfoFilter)
 
     return (
       conditionalCardsArray.map((card, index) => (
