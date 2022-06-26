@@ -9,16 +9,18 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardInfo: '',
-      attr1: '',
-      attr2: '',
-      attr3: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
       cardImage: '',
       cardRarity: '',
       cardTrunfo: false,
+      cards: [],
     };
 
     this.onChange = this.onChange.bind(this);
     this.isSaveButtonDisabled = this.isSaveButtonDisabled.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
   onChange({ target }) {
@@ -26,6 +28,39 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+    });
+  }
+
+  onSaveButtonClick() {
+    const { cardName,
+      cardInfo,
+      attr1,
+      attr2,
+      attr3,
+      cardImage,
+      cardRarity,
+      cardTrunfo,
+      cards } = this.state;
+    const objectCard = {
+      cardName,
+      cardInfo,
+      attr1,
+      attr2,
+      attr3,
+      cardImage,
+      cardRarity,
+      cardTrunfo,
+    };
+    cards.push(objectCard);
+    this.setState({
+      cardName: '',
+      cardInfo: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
+      cardImage: '',
+      cardRarity: '',
+      cardTrunfo: false,
     });
   }
 
@@ -80,7 +115,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           hasTrunfo={ false }
           isSaveButtonDisabled={ this.isSaveButtonDisabled() }
-          onSaveButtonClick={ () => {} }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
