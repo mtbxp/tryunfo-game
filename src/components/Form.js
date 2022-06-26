@@ -107,14 +107,14 @@ class Form extends React.Component {
           >
             <option name="normal" value="normal">Normal</option>
             <option name="raro" value="raro">Raro</option>
-            <option name="muito-raro" value="muito  raro">Muito Raro</option>
+            <option name="muito-raro" value="muito raro">Muito Raro</option>
           </select>
 
         </label>
         {
           (!hasTrunfo)
             ? <Trunfo cardTrunfo={ cardTrunfo } onInputChange={ onInputChange } />
-            : <p>Não pode te mais de uma Trunfo em seu baralho </p>
+            : <p>Você já tem um Super Trunfo em seu baralho </p>
         }
 
         <button
