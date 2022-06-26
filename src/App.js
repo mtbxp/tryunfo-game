@@ -56,7 +56,7 @@ class App extends React.Component {
     const { trunfoinput } = this.state;
     let result = null;
 
-    if (trunfoinput === false) {
+    if (trunfoinput.value === false) {
       result = false;
       return result;
     }
@@ -78,7 +78,7 @@ class App extends React.Component {
         imageinput: '',
         rareinput: 'normal',
         trunfoinput: false,
-        hadtrunfu: eln.trunfoinput,
+        hadtrunfu: false,
         existcart: [
           {
             nameinput,
