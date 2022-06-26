@@ -4,18 +4,19 @@ import Card from './components/Card';
 
 class App extends React.Component {
   state = {
-    cardTrunfo: false,    
+    cardTrunfo: false,
   };
+
   render() {
     const {
-      cardTrunfo,      
+      cardTrunfo,
     } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form />
-        <Card 
-        cardTrunfo={ cardTrunfo }
+        <Card
+          cardTrunfo={ cardTrunfo }
         />
       </div>
     );
