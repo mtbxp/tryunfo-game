@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Form extends React.Components {
+class Form extends React.Component {
   render() {
     return (
       <>
@@ -31,9 +31,9 @@ class Form extends React.Components {
         <label htmlFor="select">
           select
           <select data-testid="rare-input">
-            <option>Normal</option>
-            <option>Raro</option>
-            <option>Muito Raro</option>
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito Raro</option>
           </select>
         </label>
         <label htmlFor="check">
