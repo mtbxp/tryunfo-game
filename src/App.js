@@ -8,9 +8,9 @@ class App extends React.Component {
     super();
 
     this.state = {
-      cardName: 'test',
-      cardDescription: 'test',
-      cardImage: 'test',
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
       cardAttr1: '0',
       cardAttr2: '0',
       cardAttr3: '0',
@@ -115,8 +115,12 @@ class App extends React.Component {
   }
 
   btnClear(name) {
+    const { hasTrunfo } = this.state;
     this.setState((prev) => ({
       saveCards: prev.saveCards.filter((card) => card.cardName !== name) }));
+    if (hasTrunfo) {
+      this.setState({ hasTrunfo: false });
+    }
   }
 
   render() {
