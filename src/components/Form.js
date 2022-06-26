@@ -117,18 +117,21 @@ class Form extends React.Component {
         </label>
         <br />
         { hasTrunfo
-          ? <p>Você já tem um Super Trunfo em seu baralho</p>
-          : <label htmlFor="joker">
-            Is the card a joker?
-            <input
-              data-testid="trunfo-input"
-              id="joker"
-              name="cardTrunfo"
-              type="checkbox"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-            />
-          </label>}
+          ? 'Você já tem um Super Trunfo em seu baralho'
+          : (
+            <label htmlFor="joker">
+              Is the card a joker?
+              <input
+                data-testid="trunfo-input"
+                id="joker"
+                name="cardTrunfo"
+                type="checkbox"
+                checked={ cardTrunfo }
+                onChange={ onInputChange }
+              />
+            </label>
+          )}
+        {/* { this.verifyTrunfo(hasTrunfo, cardTrunfo, onInputChange) } */}
         <br />
         <button
           data-testid="save-button"
