@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Trunfo from './Trunfo';
 
 class Form extends React.Component {
   render() {
     const { onInputChange, onSaveButtonClick } = this.props;
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, isSaveButtonDisabled,
+      cardImage, cardRare, cardTrunfo, isSaveButtonDisabled, hasTrunfo,
     } = this.props;
     return (
       <form className="texto">
@@ -110,19 +111,11 @@ class Form extends React.Component {
           </select>
 
         </label>
-        <label htmlFor="trunfo-input" className="ajuste">
-          Super Trybe Trunfo:
-          <input
-            type="checkbox"
-            data-testid="trunfo-input"
-            id="trunfo-input"
-            name="cardTrunfo"
-            value={ cardTrunfo }
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-            className="check"
-          />
-        </label>
+        {
+          (!hasTrunfo)
+            ? <Trunfo cardTrunfo={ cardTrunfo } onInputChange={ onInputChange } />
+            : <p>Não pode te mais de uma Trunfo em seu baralho </p>
+        }
 
         <button
           id="save-button"
@@ -150,5 +143,6 @@ Form.propTypes = {
   cardTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
+  hasTrunfo: PropTypes.string.isRequired,
 };
 export default Form;
