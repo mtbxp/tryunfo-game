@@ -12,11 +12,29 @@ class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
     } = this.props;
+
+    const verifica = () => {
+      if (hasTrunfo) return 'Você já tem um Super Trunfo em seu baralho';
+      return (
+        <label htmlFor="trunfo-input">
+          Super Trunfo
+          <input
+            checked={ cardTrunfo }
+            onChange={ onInputChange }
+            value={ cardTrunfo }
+            name="cardTrunfo"
+            type="checkbox"
+            data-testid="trunfo-input"
+            id="trunfo-input"
+          />
+        </label>
+      );
+    };
 
     return (
       <div className="form-div">
@@ -111,7 +129,7 @@ class Form extends Component {
             <option value="muito raro">Muito raro</option>
           </select>
 
-          <label htmlFor="trunfo-input">
+          {/* <label htmlFor="trunfo-input">
             Super Trunfo
             <input
               checked={ cardTrunfo }
@@ -122,7 +140,9 @@ class Form extends Component {
               data-testid="trunfo-input"
               id="trunfo-input"
             />
-          </label>
+          </label> */}
+
+          { verifica() }
 
           <button
             disabled={ isSaveButtonDisabled }
@@ -147,7 +167,7 @@ Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,

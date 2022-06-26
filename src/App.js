@@ -30,14 +30,21 @@ class App extends React.Component {
     event.preventDefault();
     const {
       cardName, cardDescription,
-      cardImage, cardRare, cardAttr1, cardAttr2, cardAttr3,
+      cardImage, cardRare, cardAttr1, cardAttr2, cardAttr3, hasTrunfo,
     } = this.state;
 
     const newCard = {
-      cardName, cardDescription, cardImage, cardRare, cardAttr1, cardAttr2, cardAttr3,
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      hasTrunfo,
     };
 
-    this.setState((prev) => ({
+    this.setState((previous) => ({
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -46,9 +53,9 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      hasTrunfo: false,
+      hasTrunfo: previous.cardTrunfo,
       isSaveButtonDisabled: true,
-      arrayOfCards: [...prev.arrayOfCards, newCard],
+      arrayOfCards: [...previous.arrayOfCards, newCard],
     }), () => {
       const { arrayOfCards } = this.state;
       console.log(arrayOfCards);
