@@ -1,0 +1,104 @@
+.exter-border {
+  background-color: whitesmoke;
+  border-radius: 20px;
+  padding: 15px;
+}
+
+.inter-border {
+  background-color: rgb(204, 36, 36);
+  border: 4px double rgb(29, 1, 1);
+  border-radius: 20px;
+  padding: 18px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content h4 {
+  background-color: rgb(59, 7, 7);
+  border-radius: 20px 20px 0 0;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin: 0;
+  padding: 7px 20px;
+  text-align: end;
+  width: 310px;
+}
+
+.card-image {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: space-between;
+  position: relative;
+  width: 310px;
+}
+
+.rare {
+  background-color: rgb(59, 7, 7);
+  border-radius: 0 20px 20px 0;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-top: 20px;
+  padding: 5px 15px 5px 10px;
+  position: absolute;
+  width: fit-content;
+}
+
+.picture {
+  max-height: 250px;
+  max-width: 310px;
+}
+
+.tryunfo {
+  align-self: flex-end;
+  background-color: rgb(59, 7, 7);
+  border-radius: 20px 0 0 20px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-top: 200px;
+  padding: 5px 10px 5px 15px;
+  position: absolute;
+  width: fit-content;
+}
+
+.description {
+  color: white;
+  font-size: 14px;
+  height: 70px;
+  letter-spacing: 1px;
+  padding: 5px 8px;
+  width: 310px;
+}
+
+.attrs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 310px;
+}
+
+.attr-name {
+  background-color: rgba(245, 245, 245, 0.747);
+  border-radius: 20px 0 0 20px;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 5px 15px;
+  width: 70%;
+}
+
+.attr-number {
+  background-color: rgb(59, 7, 7);
+  border-radius: 0 20px 20px 0;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 5px 15px;
+  width: 30%;
+}

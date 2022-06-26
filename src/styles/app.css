@@ -1,0 +1,18 @@
+.add-new-card {
+  display: flex;
+}
+
+.card-preview {
+  align-items: center;
+  background-color: rgb(117, 15, 15);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 30px 40px 40px;
+  width: 50%;
+}
+
+.card-preview h3 {
+  color: white;
+  width: 100%;
+}
