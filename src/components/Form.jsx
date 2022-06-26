@@ -2,6 +2,40 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
+  constructor() {
+    super();
+    this.saveButton = this.saveButton.bind(this);
+  }
+
+  saveButton() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      onSaveButtonClick,
+    } = this.props;
+
+    const card = {
+      name: cardName,
+      description: cardDescription,
+      attr: {
+        attr1: cardAttr1,
+        attr2: cardAttr2,
+        attr3: cardAttr3,
+      },
+      image: cardImage,
+      rare: cardRare,
+      isTrunfo: cardTrunfo,
+    };
+
+    onSaveButtonClick(card);
+  }
+
   render() {
     const {
       cardName,
@@ -15,10 +49,21 @@ class Form extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
-      onSaveButtonClick,
     } = this.props;
-
-    console.log(hasTrunfo);
+    const inputSuperTrunfo = (hasTrunfo)
+      ? <p>Você já tem um Super Trunfo em seu baralho</p>
+      : (
+        <div id="input-super-trunfo">
+          <input
+            type="checkbox"
+            name="cardTrunfo"
+            data-testid="trunfo-input"
+            checked={ cardTrunfo }
+            onChange={ (event) => onInputChange(event) }
+          />
+          Super Trunfo
+        </div>
+      );
 
     return (
       <form>
@@ -117,14 +162,7 @@ class Form extends React.Component {
         <br />
         <label htmlFor="cardTrunfo">
           <br />
-          <input
-            type="checkbox"
-            name="cardTrunfo"
-            data-testid="trunfo-input"
-            checked={ cardTrunfo }
-            onChange={ (event) => onInputChange(event) }
-          />
-          Super Trybe Trunfo
+          { inputSuperTrunfo }
           <br />
         </label>
         <br />
@@ -133,7 +171,7 @@ class Form extends React.Component {
           name="salvar"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
-          onClick={ () => onSaveButtonClick() }
+          onClick={ () => this.saveButton() }
         >
           Salvar
         </button>

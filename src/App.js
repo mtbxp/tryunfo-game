@@ -2,13 +2,14 @@ import React from 'react';
 import './style/App.css';
 import Card from './components/Card';
 import Form from './components/Form';
+import Data from './components/Data';
 
 class App extends React.Component {
   constructor() {
     super();
     this.inputChange = this.inputChange.bind(this);
     this.saveCard = this.saveCard.bind(this);
-    this.saveButton = this.saveButton.bind(this);
+    this.saveButtonDisabled = this.saveButtonDisabled.bind(this);
 
     this.state = {
       cardName: '',
@@ -21,6 +22,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      data: Data,
     };
   }
 
@@ -33,11 +35,12 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     });
-    this.saveButton();
+    this.saveButtonDisabled();
   }
 
-  saveButton() {
+  saveButtonDisabled() {
     const maxPoints = 210;
+    const maxAttr = 90;
     const {
       cardName,
       cardDescription,
@@ -46,11 +49,18 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      data,
     } = this.state;
     if (cardName !== ''
     && cardDescription !== ''
     && cardImage !== ''
     && cardRare !== ''
+    && cardAttr1 <= maxAttr
+    && cardAttr1 >= 0
+    && cardAttr2 <= maxAttr
+    && cardAttr2 >= 0
+    && cardAttr3 <= maxAttr
+    && cardAttr3 >= 0
     && cardAttr1 + cardAttr2 + cardAttr3 <= maxPoints) {
       this.setState({
         isSaveButtonDisabled: false,
@@ -60,10 +70,27 @@ class App extends React.Component {
         isSaveButtonDisabled: true,
       });
     }
+    if (data.some((item) => item.isTrunfo === true)) {
+      this.setState({
+        hasTrunfo: true,
+        cardTrunfo: false,
+      });
+    }
   }
 
-  saveCard() {
-    console.log('salvando');
+  saveCard(card) {
+    this.setState((prevState) => ({
+      data: [card, ...prevState.data],
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false,
+      isSaveButtonDisabled: true,
+    }));
   }
 
   render() {
