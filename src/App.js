@@ -15,7 +15,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      // hasTrunfo: false,
+      hasTrunfo: 'f',
       isSaveButtonDisabled: true,
       savedCards: [],
     };
@@ -58,9 +58,16 @@ class App extends React.Component {
 
   onInputChange = ({ target }) => {
     const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    let value = target.type === 'checkbox' ? target.checked : target.value;
+    const propValue = () => {
+      if (name === 'cardAttr1' || name === 'cardAttr2' || name === 'cardAttr3') {
+        value = parseInt(target.value, 10);
+        return value;
+      }
+      return value;
+    };
     this.setState({
-      [name]: value,
+      [name]: propValue(),
     });
     this.setState((estadoAnterior) => ({
       isSaveButtonDisabled: this.verifyingInputs(estadoAnterior),
@@ -76,7 +83,7 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
-      // cardTrunfo,
+      cardTrunfo,
       savedCards,
     } = this.state;
 
@@ -89,6 +96,7 @@ class App extends React.Component {
         cardAttr3,
         cardImage,
         cardRare,
+        cardTrunfo,
       }],
       cardName: '',
       cardDescription: '',
@@ -98,9 +106,14 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      // hasTrunfo: false,
       isSaveButtonDisabled: true,
     });
+
+    if (cardTrunfo === true) {
+      this.setState({
+        hasTrunfo: 't',
+      });
+    }
   }
 
   render() {
@@ -114,6 +127,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      hasTrunfo,
     } = this.state;
     return (
       <div>
@@ -129,6 +143,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ cardName }
