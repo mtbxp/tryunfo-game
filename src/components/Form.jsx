@@ -116,7 +116,7 @@ class Form extends Component {
           </label>
         </div>
         <div>
-          {hasTrunfo ? ('Você já tem um Super Trunfo em seu baralho')
+          {hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p>
             : (
               <label htmlFor="trunfo">
                 <input
