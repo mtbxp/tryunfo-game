@@ -25,7 +25,6 @@ class App extends React.Component {
       name,
       description,
       image,
-      rare,
       attack,
       defence,
       speed,
