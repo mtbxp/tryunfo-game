@@ -10,6 +10,11 @@ class Card extends React.Component {
 
     return (
       <div className="conteinerCard">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/pt/6/61/Naruto-logo-shippuuden.png"
+          className="imgNa"
+          alt="Logo Nruto"
+        />
         <h1 data-testid="name-card" className="titleCard">{`Nome: ${cardName}`}</h1>
 
         <div className="containerImg">
@@ -32,7 +37,7 @@ class Card extends React.Component {
             data-testid="attr1-card"
             className="arrtrs"
           >
-            {`Atributo: ${cardAttr1}`}
+            {`Força................. : ${cardAttr1}`}
 
           </span>
 
@@ -40,7 +45,7 @@ class Card extends React.Component {
             data-testid="attr2-card"
             className="arrtrs"
           >
-            {`Atributo: ${cardAttr2}`}
+            {`Agilidade................. : ${cardAttr2}`}
 
           </span>
 
@@ -48,7 +53,7 @@ class Card extends React.Component {
             data-testid="attr3-card"
             className="arrtrs"
           >
-            {`Atributo: ${cardAttr3}`}
+            {`Chakra................. : ${cardAttr3}`}
 
           </span>
 
@@ -61,7 +66,7 @@ class Card extends React.Component {
           </span>
         </div>
 
-        {cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p>}
+        {cardTrunfo && <p data-testid="trunfo-card" className="supeT">Super Trunfo</p>}
 
       </div>
     );

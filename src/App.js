@@ -119,7 +119,13 @@ class App extends React.Component {
     return (
       <div>
         <div>
-          <h1 className="titleT">Tryunfo</h1>
+          <div className="conteinerHeader">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/pt/6/61/Naruto-logo-shippuuden.png"
+              className="titleT"
+              alt="Logo Nruto"
+            />
+          </div>
           <div className="conteinerTwoletters">
             <Form
               cardName={ nameinput }
