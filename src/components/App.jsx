@@ -4,14 +4,23 @@ import Form from './Form';
 const initialState = {
   cardName: '',
   cardDescription: '',
-  cardAttr1: 0,
-  cardAttr2: 0,
-  cardAttr3: 0,
+  cardAttr1: '0',
+  cardAttr2: '0',
+  cardAttr3: '0',
   cardImage: '',
   cardRare: 'Normal',
   cardTrunfo: false,
   hasTrunfo: false,
   isSaveButtonDisabled: true,
+};
+
+onInputChange = ({ target }) => {
+  const { name, type } = target;
+  const value = type === 'checkbox' ? target.checked : target.value;
+
+  this.setState({
+    [name]: value,
+  });
 };
 
 class App extends React.Component {
