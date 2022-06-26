@@ -19,6 +19,7 @@ class App extends React.Component {
       cardsArray: [],
       hasTrunfo: false,
       nameFilter: '',
+      rareFilter: '',
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -150,7 +151,7 @@ class App extends React.Component {
   }
 
   filterName() {
-    const { cardsArray, nameFilter } = this.state;
+    const { cardsArray, nameFilter, rareFilter } = this.state;
     const deleteButton = (
       <button
         data-testid="delete-button"
@@ -160,8 +161,18 @@ class App extends React.Component {
         Excluir
       </button>
     );
-    const filteredArray = cardsArray.filter((card) => card.cardName.includes(nameFilter));
-    const conditionalCardsArray = nameFilter.length === 0 ? cardsArray : filteredArray;
+    const arrayByName = cardsArray.filter((card) => card.cardName.includes(nameFilter));
+    let arrayByRare = cardsArray.filter((card) => card.cardRare === rareFilter);
+    if (rareFilter === 'todas') arrayByRare = cardsArray;
+    const filteredArray = arrayByName.filter((card) => arrayByRare.includes(card));
+    let conditionalCardsArray = cardsArray;
+    if (nameFilter.length !== 0 && rareFilter === 0) {
+      conditionalCardsArray = arrayByName;
+    } else if (nameFilter.length === 0 && rareFilter !== 0) {
+      conditionalCardsArray = arrayByRare;
+    } else if (nameFilter.length !== 0 && rareFilter !== 0) {
+      conditionalCardsArray = filteredArray;
+    }
 
     return (
       conditionalCardsArray.map((card, index) => (
