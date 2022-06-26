@@ -155,6 +155,7 @@ form {
 input,
 textarea,
 select {
+  font-family: var(--bodyFont);
   font-size: 1.1rem;
   width: 100%;
   margin-bottom: 1.5rem;
