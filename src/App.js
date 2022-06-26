@@ -83,7 +83,6 @@ class App extends React.Component {
       return (
         this.verifyHasTrunfo()
       );
-      // this.verifyHasTrunfo()
     });
   }
 
@@ -137,6 +136,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { cardsArray } = this.state;
     return (
       <div>
         <Form
@@ -148,6 +148,12 @@ class App extends React.Component {
         <Card
           { ...this.state }
         />
+        { cardsArray.map((card, index) => (
+          <Card
+            { ...card }
+            key={ index }
+          />
+        ))}
       </div>
     );
   }
