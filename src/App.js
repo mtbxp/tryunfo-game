@@ -16,6 +16,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+      remainingPoints: 210,
     };
   }
 
@@ -24,6 +25,18 @@ class App extends React.Component {
     const stateValue = type === 'checkbox' ? checked : value;
     this.setState({
       [name]: stateValue,
+    }, () => {
+      if (name.startsWith('cardAttr')) this.calculateRemainingPoints();
+    });
+  }
+
+  calculateRemainingPoints = () => {
+    const maxAttrSum = 210;
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    this.setState({
+      remainingPoints: (
+        maxAttrSum - Number(cardAttr1) - Number(cardAttr2) - Number(cardAttr3)
+      ),
     });
   }
 
@@ -76,6 +89,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      remainingPoints,
     } = this.state;
 
     return (
@@ -92,6 +106,7 @@ class App extends React.Component {
               cardImage={ cardImage }
               cardRare={ cardRare }
               cardTrunfo={ cardTrunfo }
+              remainingPoints={ remainingPoints }
               onInputChange={ this.handleChange }
               isSaveButtonDisabled={ !this.validateForm() }
             />

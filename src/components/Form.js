@@ -3,6 +3,11 @@ import '../styles/form.css';
 import ProoTypes from 'prop-types';
 
 class Form extends React.Component {
+  checkMaxPoints = (remainingPoints) => {
+    if (remainingPoints < 0) return 'red';
+    return '';
+  }
+
   render() {
     const {
       cardName,
@@ -17,6 +22,7 @@ class Form extends React.Component {
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
+      remainingPoints,
     } = this.props;
 
     console.log(hasTrunfo);
@@ -57,70 +63,80 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="cardAttr1" className="line-adjust">
-          Vitórias:
-          <input
-            type="number"
-            data-testid="attr1-input"
-            name="cardAttr1"
-            id="cardAttr1"
-            min={ 0 }
-            max={ 90 }
-            value={ cardAttr1 }
-            onChange={ onInputChange }
-          />
-        </label>
-        <label htmlFor="cardAttr2" className="line-adjust">
-          Pole Positions:
-          <input
-            type="number"
-            data-testid="attr2-input"
-            name="cardAttr2"
-            id="cardAttr2"
-            min={ 0 }
-            max={ 90 }
-            value={ cardAttr2 }
-            onChange={ onInputChange }
-          />
-        </label>
-        <label htmlFor="cardAttr3" className="line-adjust">
-          Melhores Voltas:
-          <input
-            type="number"
-            data-testid="attr3-input"
-            name="cardAttr3"
-            id="cardAttr3"
-            min={ 0 }
-            max={ 90 }
-            value={ cardAttr3 }
-            onChange={ onInputChange }
-          />
-        </label>
-        <label htmlFor="cardRare" className="line-adjust">
-          Raridade:
-          <select
-            data-testid="rare-input"
-            name="cardRare"
-            id="cardRare"
-            value={ cardRare }
-            onChange={ onInputChange }
-          >
-            <option>normal</option>
-            <option>raro</option>
-            <option>muito raro</option>
-          </select>
-        </label>
-        <label htmlFor="cardTrunfo" className="line-checkbox">
-          <input
-            type="checkbox"
-            data-testid="trunfo-input"
-            name="cardTrunfo"
-            id="cardTrunfo"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-          Super Tryunfo
-        </label>
+        <fieldset>
+          <legend>Atributos</legend>
+          <label htmlFor="cardAttr1" className="line-adjust">
+            🏆 Vitórias:
+            <input
+              type="number"
+              data-testid="attr1-input"
+              name="cardAttr1"
+              id="cardAttr1"
+              min={ 0 }
+              max={ 90 }
+              value={ cardAttr1 }
+              onChange={ onInputChange }
+            />
+          </label>
+          <label htmlFor="cardAttr2" className="line-adjust">
+            🥇 Pole Positions:
+            <input
+              type="number"
+              data-testid="attr2-input"
+              name="cardAttr2"
+              id="cardAttr2"
+              min={ 0 }
+              max={ 90 }
+              value={ cardAttr2 }
+              onChange={ onInputChange }
+            />
+          </label>
+          <label htmlFor="cardAttr3" className="line-adjust">
+            🏁 Melhores Voltas:
+            <input
+              type="number"
+              data-testid="attr3-input"
+              name="cardAttr3"
+              id="cardAttr3"
+              min={ 0 }
+              max={ 90 }
+              value={ cardAttr3 }
+              onChange={ onInputChange }
+            />
+          </label>
+          <p className={ `points-line ${this.checkMaxPoints(remainingPoints)}` }>
+            {`Pontos restantes = ${remainingPoints}`}
+          </p>
+          <p>Obs. A soma dos três atributos não deve ultrapassar 210 pontos.</p>
+        </fieldset>
+        <div className="last-line">
+          <label htmlFor="cardRare" className="line-adjust line-rare">
+            Raridade:
+            <select
+              data-testid="rare-input"
+              name="cardRare"
+              id="cardRare"
+              value={ cardRare }
+              onChange={ onInputChange }
+            >
+              <option>normal</option>
+              <option>raro</option>
+              <option>muito raro</option>
+            </select>
+          </label>
+          <label htmlFor="cardTrunfo" className="line-checkbox">
+            <input
+              type="checkbox"
+              data-testid="trunfo-input"
+              name="cardTrunfo"
+              id="cardTrunfo"
+              className="checkbox"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+            />
+            <div className="checkbox-label">Super Tryunfo</div>
+          </label>
+        </div>
         <button
           type="submit"
           data-testid="save-button"
@@ -148,6 +164,7 @@ Form.propTypes = {
   isSaveButtonDisabled: ProoTypes.bool.isRequired,
   onInputChange: ProoTypes.func.isRequired,
   onSaveButtonClick: ProoTypes.func.isRequired,
+  remainingPoints: ProoTypes.number.isRequired,
 };
 
 export default Form;

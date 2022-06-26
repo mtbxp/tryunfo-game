@@ -39,11 +39,11 @@ class Card extends React.Component {
               { cardDescription }
             </p>
             <div className="attrs">
-              <p className="attr-name">Vitórias</p>
+              <p className="attr-name">🏆 Vitórias</p>
               <p className="attr-number" data-testid="attr1-card">{ cardAttr1 }</p>
-              <p className="attr-name">Pole Positions</p>
+              <p className="attr-name">🥇 Pole Positions</p>
               <p className="attr-number" data-testid="attr2-card">{ cardAttr2 }</p>
-              <p className="attr-name">Melhores voltas</p>
+              <p className="attr-name">🏁 Melhores voltas</p>
               <p className="attr-number" data-testid="attr3-card">{ cardAttr3 }</p>
             </div>
           </div>

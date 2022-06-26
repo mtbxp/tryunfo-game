@@ -4,22 +4,66 @@ label {
   padding-left: 10px;
 }
 
+fieldset {
+  border: 2px dashed black;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  padding: 8px 20px 0 10px;
+}
+
+fieldset p {
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.points-line {
+  margin-bottom: 15px;
+  text-align: end;
+}
+
+legend {
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 0 10px;
+}
+
 .line-adjust {
   display: flex;
-  justify-content: space-between;
-  margin-left: 10px;
+  justify-content: flex-end;
 }
 
-.line-adjust input, select {
+.line-rare {
+  justify-content: flex-start;
+}
+
+.line-adjust input {
   margin-left: 20px;
-  width: 70%;
+  width: 60%;
 }
 
-.line-checkbox {
-  display: flex;
+.line-rare select {
+  margin-left: 20px;
+  width: 200px;
 }
 
 .line-checkbox input {
+  display: inline-block;
   margin-top: 10px;
-  width: 7%;
+  width: fit-content;
+}
+
+.checkbox-label {
+  display: inline-block;
+  padding: 0 15px;
+}
+
+.last-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.red {
+  color: red;
 }
