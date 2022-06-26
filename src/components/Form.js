@@ -7,6 +7,7 @@ import Rare from './inputs_components/Rare';
 import Trunfo from './inputs_components/Trunfo';
 import Submit from './inputs_components/Submit';
 import Description from './inputs_components/Description';
+import NameFilter from './inputs_components/NameFilter';
 
 class Form extends React.Component {
   render() {
@@ -23,6 +24,7 @@ class Form extends React.Component {
       onSaveButtonClick,
       onInputChange,
       hasTrunfo,
+      nameFilter,
     } = this.props;
 
     return (
@@ -53,6 +55,10 @@ class Form extends React.Component {
           cardTrunfo={ cardTrunfo }
           hasTrunfo={ hasTrunfo }
           onInputChange={ onInputChange }
+        />
+        <NameFilter
+          onInputChange={ onInputChange }
+          nameFilter={ nameFilter }
         />
         <Submit
           onSaveButtonClick={ onSaveButtonClick }

@@ -18,6 +18,7 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       cardsArray: [],
       hasTrunfo: false,
+      nameFilter: '',
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -29,6 +30,7 @@ class App extends React.Component {
     this.resetInputs = this.resetInputs.bind(this);
     this.verifyHasTrunfo = this.verifyHasTrunfo.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
+    this.filterName = this.filterName.bind(this);
   }
 
   handleSubmit() {
@@ -147,8 +149,8 @@ class App extends React.Component {
     );
   }
 
-  render() {
-    const { cardsArray } = this.state;
+  filterName() {
+    const { cardsArray, nameFilter } = this.state;
     const deleteButton = (
       <button
         data-testid="delete-button"
@@ -158,7 +160,21 @@ class App extends React.Component {
         Excluir
       </button>
     );
+    const filteredArray = cardsArray.filter((card) => card.cardName.includes(nameFilter));
+    const conditionalCardsArray = nameFilter.length === 0 ? cardsArray : filteredArray;
 
+    return (
+      conditionalCardsArray.map((card, index) => (
+        <Card
+          { ...card }
+          key={ index }
+          deleteButton={ deleteButton }
+        />
+      ))
+    );
+  }
+
+  render() {
     return (
       <div>
         <Form
@@ -170,13 +186,7 @@ class App extends React.Component {
         <Card
           { ...this.state }
         />
-        { cardsArray.map((card, index) => (
-          <Card
-            { ...card }
-            key={ index }
-            deleteButton={ deleteButton }
-          />
-        ))}
+        { this.filterName() }
       </div>
     );
   }
