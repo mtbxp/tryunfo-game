@@ -58,7 +58,10 @@ class App extends React.Component {
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    });
+    },
+    () => this.setState({
+      isSaveButtonDisabled: this.validationButton(),
+    }));
   };
 
   render() {
