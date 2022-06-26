@@ -160,7 +160,7 @@ button:disabled {
 }
 
 /* form */
-form {
+form, section {
   background: var(--white);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
