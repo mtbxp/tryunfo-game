@@ -19,6 +19,16 @@ class App extends React.Component {
     };
   }
 
+  trunfoInCards = () => {
+    const { Savecards } = this.state;
+    if (Savecards.length === 0) return false;
+    return Savecards.some((card) => card.trunfo);
+  }
+
+  validationButton = () => {
+
+  }
+
   onInputChange = ({ target }) => {
     const { name, type } = target;
     const value = type === 'checkbox' ? target.checked : target.value;
