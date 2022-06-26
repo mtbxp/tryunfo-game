@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
-import From from './components/From';
+import Form from './components/Form';
 
 class App extends React.Component {
   constructor() {
@@ -56,7 +56,7 @@ class App extends React.Component {
     const { trunfoinput } = this.state;
     let result = null;
 
-    if (trunfoinput.value === false) {
+    if (trunfoinput === false) {
       result = false;
       return result;
     }
@@ -78,9 +78,8 @@ class App extends React.Component {
         imageinput: '',
         rareinput: 'normal',
         trunfoinput: false,
-        hadtrunfu: false,
+        hadtrunfu: eln.trunfoinput,
         existcart: [
-          ...eln.existcart,
           {
             nameinput,
             descriptioninput,
@@ -93,6 +92,7 @@ class App extends React.Component {
             existcart,
             hadtrunfu,
           },
+          ...eln.existcart,
         ],
       }),
       () => this.setState({ hadtrunfu: this.valTryunfo() }),
@@ -121,7 +121,7 @@ class App extends React.Component {
         <div>
           <h1 className="titleT">Tryunfo</h1>
           <div className="conteinerTwoletters">
-            <From
+            <Form
               cardName={ nameinput }
               cardDescription={ descriptioninput }
               cardAttr1={ attr1input }
