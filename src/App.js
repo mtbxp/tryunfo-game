@@ -45,7 +45,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      hasTrunfo: false,
+      hasTrunfo: [...newState.listOfCards, newCard].some((card) => card.cardTrunfo),
       listOfCards: [...newState.listOfCards, newCard],
     }));
   }
