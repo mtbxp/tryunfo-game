@@ -166,8 +166,6 @@ class App extends React.Component {
         <CardsFeito
           className="texto1"
           cards={ cards }
-          VerificaHasTrunfo={ this.VerificaHasTrunfo }
-          onInputChange={ this.onInputChange }
         />
       </main>
     );
