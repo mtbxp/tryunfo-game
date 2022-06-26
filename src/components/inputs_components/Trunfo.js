@@ -6,9 +6,10 @@ class Trunfo extends React.Component {
     const {
       cardTrunfo,
       onInputChange,
+      hasTrunfo,
     } = this.props;
 
-    return (
+    const trunfoInput = (
       <label htmlFor="trunfo-input">
         <input
           data-testid="trunfo-input"
@@ -19,12 +20,19 @@ class Trunfo extends React.Component {
         />
       </label>
     );
+
+    const alreadyHasTrunfo = 'Você já tem um Super Trunfo em seu baralho';
+
+    return (
+      hasTrunfo ? alreadyHasTrunfo : trunfoInput
+    );
   }
 }
 
 Trunfo.propTypes = {
   cardTrunfo: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  hasTrunfo: PropTypes.func.isRequired,
 };
 
 export default Trunfo;

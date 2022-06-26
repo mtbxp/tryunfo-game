@@ -22,6 +22,7 @@ class Form extends React.Component {
       isSaveButtonDisabled,
       onSaveButtonClick,
       onInputChange,
+      hasTrunfo,
     } = this.props;
 
     return (
@@ -50,6 +51,7 @@ class Form extends React.Component {
         />
         <Trunfo
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           onInputChange={ onInputChange }
         />
         <Submit
@@ -70,6 +72,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.string.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.string.isRequired,
   onSaveButtonClick: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,

@@ -14,9 +14,10 @@ class App extends React.Component {
       cardAttr3: 0,
       cardImage: '',
       cardRare: '',
-      cardTrunfo: true,
+      cardTrunfo: false,
       isSaveButtonDisabled: true,
       cardsArray: [],
+      hasTrunfo: false,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -26,6 +27,7 @@ class App extends React.Component {
     this.verifyIsInvalid = this.verifyIsInvalid.bind(this);
     this.verifyIsEmpty = this.verifyIsEmpty.bind(this);
     this.resetInputs = this.resetInputs.bind(this);
+    this.verifyHasTrunfo = this.verifyHasTrunfo.bind(this);
   }
 
   handleSubmit() {
@@ -76,7 +78,20 @@ class App extends React.Component {
 
     this.setState({
       cardsArray: [...cardsArray, currentCard],
-    }, () => this.resetInputs());
+    }, () => {
+      this.resetInputs();
+      return (
+        this.verifyHasTrunfo()
+      );
+      // this.verifyHasTrunfo()
+    });
+  }
+
+  verifyHasTrunfo() {
+    const { cardsArray } = this.state;
+    this.setState({
+      hasTrunfo: cardsArray.some((card) => card.cardTrunfo),
+    });
   }
 
   resetInputs() {
