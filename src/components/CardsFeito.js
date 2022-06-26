@@ -10,7 +10,6 @@ class Cartas extends React.Component {
   Mapear(cards) {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, hasTrunfo } = cards;
-    console.log(cards);
     return (
 
       <div className="card" key={ cardName }>
@@ -74,11 +73,12 @@ class Cartas extends React.Component {
   remove(event) {
     event.preventDefault();
     event.target.parentNode.parentNode.remove();
+    const { estado } = this.props;
+    estado();
   }
 
   render() {
     const { cards } = this.props;
-    console.log(cards);
     return (
       <div className="cardfeitos centraliza">
         {cards.map((card) => (
@@ -90,6 +90,7 @@ class Cartas extends React.Component {
 }
 
 Cartas.propTypes = {
+  estado: PropTypes.func.isRequired,
   cards: PropTypes.arrayOf(PropTypes.shape({
     cardName: PropTypes.string.isRequired,
     cardDescription: PropTypes.string.isRequired,

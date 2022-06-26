@@ -24,11 +24,12 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.formsValidation = this.formsValidation.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.estado = this.estado.bind(this);
   }
 
   onSaveButtonClick(event) {
     const { cardName, cardDescription, cardImage, cardAttr1,
-      cardAttr2, cardAttr3, cardRare, cards, cardTrunfo } = this.state;
+      cardAttr2, cardAttr3, cardRare, cardTrunfo } = this.state;
     event.preventDefault();
     if (cardTrunfo) {
       this.setState((beforeState) => ({
@@ -73,7 +74,6 @@ class App extends React.Component {
         }],
       }));
     }
-    console.log(cards);
   }
 
   onInputChange({ target }) {
@@ -125,6 +125,13 @@ class App extends React.Component {
     });
   }
 
+  estado() {
+    const { hasTrunfo } = this.state;
+    if (hasTrunfo === true) {
+      this.setState({ hasTrunfo: false });
+    }
+  }
+
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo, isSaveButtonDisabled, hasTrunfo,
@@ -166,6 +173,8 @@ class App extends React.Component {
         <CardsFeito
           className="texto1"
           cards={ cards }
+          cardTrunfo={ cardTrunfo }
+          estado={ this.estado }
         />
       </main>
     );
