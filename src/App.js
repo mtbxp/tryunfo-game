@@ -53,7 +53,6 @@ class App extends React.Component {
     const { target } = event;
     const { name, value, checked } = target;
     const conditionalValue = target.type === 'checkbox' ? checked : value;
-    console.log(target.type, conditionalValue)
     this.setState({
       [name]: conditionalValue,
     }, () => this.handleSubmit());
@@ -177,7 +176,6 @@ class App extends React.Component {
     } else if (nameFilter.length !== 0 && rareFilter !== 0) {
       conditionalCardsArray = filteredArray;
     } if (trunfoFilter) conditionalCardsArray = arrayByTrunfo;
-    console.log(conditionalCardsArray, trunfoFilter)
 
     return (
       conditionalCardsArray.map((card, index) => (
