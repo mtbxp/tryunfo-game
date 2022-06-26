@@ -16,6 +16,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      saveCards: [],
     };
   }
 
@@ -67,7 +68,7 @@ class App extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo, hasTrunfo,
-      isSaveButtonDisabled } = this.state;
+      isSaveButtonDisabled, saveCards } = this.state;
     return (
       <section>
         <h1>Tryunfo</h1>
