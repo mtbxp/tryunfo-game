@@ -10,9 +10,9 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
@@ -27,6 +27,45 @@ class App extends React.Component {
     });
   }
 
+  validateLength = (...params) => params.every((param) => param.length > 0);
+
+  validateSum = (maxSum, ...params) => {
+    const totalSum = params.reduce((sum, param) => sum + Number(param), 0);
+    return totalSum <= maxSum;
+  }
+
+  validateMin = (min, ...params) => params.every((param) => Number(param) >= min);
+
+  validateMax = (max, ...params) => params.every((param) => Number(param) <= max);
+
+  validateForm = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = this.state;
+
+    const isValidLength = this.validateLength(cardName, cardDescription, cardImage);
+
+    const maxAttrSum = 210;
+    const isValidSum = this.validateSum(maxAttrSum, cardAttr1, cardAttr2, cardAttr3);
+
+    const isValidMin = this.validateMin(0, cardAttr1, cardAttr2, cardAttr3);
+
+    const maxAttrValue = 90;
+    const isValidMax = this.validateMax(maxAttrValue, cardAttr1, cardAttr2, cardAttr3);
+
+    return (isValidLength && isValidSum && isValidMin && isValidMax);
+  }
+
+  // handleSubmit = (event) => {
+  //   event.preventDefault();
+
+  // }
+
   render() {
     const {
       cardName,
@@ -38,6 +77,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
     } = this.state;
+
     return (
       <>
         <Header />
@@ -53,6 +93,7 @@ class App extends React.Component {
               cardRare={ cardRare }
               cardTrunfo={ cardTrunfo }
               onInputChange={ this.handleChange }
+              isSaveButtonDisabled={ !this.validateForm() }
             />
             <div className="card-preview">
               <h3>Pré-visualização</h3>

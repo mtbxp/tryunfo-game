@@ -41,6 +41,7 @@ class Form extends React.Component {
             data-testid="description-input"
             name="cardDescription"
             id="cardDescription"
+            autoComplete
             value={ cardDescription }
             onChange={ onInputChange }
           />
@@ -63,6 +64,8 @@ class Form extends React.Component {
             data-testid="attr1-input"
             name="cardAttr1"
             id="cardAttr1"
+            min={ 0 }
+            max={ 90 }
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
@@ -74,6 +77,8 @@ class Form extends React.Component {
             data-testid="attr2-input"
             name="cardAttr2"
             id="cardAttr2"
+            min={ 0 }
+            max={ 90 }
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
@@ -85,6 +90,8 @@ class Form extends React.Component {
             data-testid="attr3-input"
             name="cardAttr3"
             id="cardAttr3"
+            min={ 0 }
+            max={ 90 }
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
