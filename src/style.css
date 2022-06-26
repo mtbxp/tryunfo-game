@@ -195,3 +195,14 @@ select {
   background: var(--green-light);
   color: var(--green-dark);
 }
+
+/* #form {
+  display: flex;
+  flex-direction: column;
+}
+
+#card {
+  display: flex;
+  flex-direction: row;
+  width: 
+} */

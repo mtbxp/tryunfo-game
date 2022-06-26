@@ -7,7 +7,7 @@ class Form extends React.Component {
       cardAttr3, cardImage, cardRare, cardTrunfo, // hasTrunfo,
       isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
     return (
-      <div>
+      <div id="form">
         <label htmlFor="text">
           Nome
           <input
@@ -24,50 +24,48 @@ class Form extends React.Component {
           Descrição
           <textarea
             data-testid="description-input"
-            name="descricao"
+            name="cardDescription"
             id="descricao"
             value={ cardDescription }
             onChange={ onInputChange }
           />
         </label>
 
-        <fieldset id="attributes">
-          <label htmlFor="attr1">
-            Atributo 1
-            <input
-              data-testid="attr1-input"
-              type="number"
-              name="attr1"
-              id="attr1"
-              value={ cardAttr1 }
-              onChange={ onInputChange }
-            />
-          </label>
+        <label htmlFor="attr1">
+          Atributo 1
+          <input
+            data-testid="attr1-input"
+            type="number"
+            name="cardAttr1"
+            id="attr1"
+            value={ cardAttr1 }
+            onChange={ onInputChange }
+          />
+        </label>
 
-          <label htmlFor="attr2">
-            Atributo 2
-            <input
-              data-testid="attr2-input"
-              type="number"
-              name="attr2"
-              id="attr2"
-              value={ cardAttr2 }
-              onChange={ onInputChange }
-            />
-          </label>
+        <label htmlFor="attr2">
+          Atributo 2
+          <input
+            data-testid="attr2-input"
+            type="number"
+            name="cardAttr2"
+            id="attr2"
+            value={ cardAttr2 }
+            onChange={ onInputChange }
+          />
+        </label>
 
-          <label htmlFor="attr3">
-            Atributo 3
-            <input
-              data-testid="attr3-input"
-              type="number"
-              name="attr3"
-              id="attr3"
-              value={ cardAttr3 }
-              onChange={ onInputChange }
-            />
-          </label>
-        </fieldset>
+        <label htmlFor="attr3">
+          Atributo 3
+          <input
+            data-testid="attr3-input"
+            type="number"
+            name="cardAttr3"
+            id="attr3"
+            value={ cardAttr3 }
+            onChange={ onInputChange }
+          />
+        </label>
 
         <label htmlFor="image">
           Imagem
@@ -75,6 +73,7 @@ class Form extends React.Component {
             data-testid="image-input"
             type="text"
             id="image"
+            name="cardImage"
             value={ cardImage }
             onChange={ onInputChange }
           />
@@ -85,6 +84,7 @@ class Form extends React.Component {
           <select
             data-testid="rare-input"
             id="rarity"
+            name="cardRare"
             value={ cardRare }
             onChange={ onInputChange }
           >
@@ -100,6 +100,7 @@ class Form extends React.Component {
             data-testid="trunfo-input"
             type="checkbox"
             id="superTrunfo"
+            name="cardTrunfo"
             checked={ cardTrunfo }
             onChange={ onInputChange }
           />
@@ -108,6 +109,8 @@ class Form extends React.Component {
         <button
           data-testid="save-button"
           type="button"
+          name="isSaveButtonDisabled"
+          value={ isSaveButtonDisabled }
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
         >
