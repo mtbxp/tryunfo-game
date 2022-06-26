@@ -17,10 +17,26 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       onSaveButtonClick: false,
+      cardLi: '',
     };
   }
 
-  onSaveButtonClick = () => console.log('fufou');
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    this.setState((card) => (
+      {
+        cardLi: [...card.cardLi],
+        cardName: '',
+        cardDescription: '',
+        cardAttr1: '0',
+        cardAttr2: '0',
+        cardAttr3: '0',
+        cardImage: '',
+        cardRare: 'normal',
+        cardTrunfo: false,
+      }
+    ));
+  }
 
   handle = ({ target }) => {
     const { id, checked, value } = target;
@@ -67,6 +83,12 @@ class App extends React.Component {
     }
   }
 
+  addNewCard = (newProject) => {
+    this.setState((oldProject) => ({
+      cards: [newProject, ...oldProject.card],
+    }));
+  }
+
   render() {
     return (
       <div>
@@ -74,7 +96,7 @@ class App extends React.Component {
         <Form
           { ...this.state }
           onInputChange={ this.handle }
-          // onSaveButtonClick={ this.onSaveButtonClick }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           { ...this.state }
