@@ -12,6 +12,7 @@ class Description extends React.Component {
       <label htmlFor="description-input">
         <input
           data-testid="description-input"
+          name="cardDescription"
           type="textarea"
           value={ cardDescription }
           onChange={ onInputChange }

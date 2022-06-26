@@ -16,6 +16,7 @@ class Attributes extends React.Component {
           <input
             data-testid="attr1-input"
             type="number"
+            name="cardAttr1"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
@@ -25,6 +26,7 @@ class Attributes extends React.Component {
           <input
             data-testid="attr2-input"
             type="number"
+            name="cardAttr2"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
@@ -34,6 +36,7 @@ class Attributes extends React.Component {
           <input
             data-testid="attr3-input"
             type="number"
+            name="cardAttr3"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />

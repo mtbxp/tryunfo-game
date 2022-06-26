@@ -14,6 +14,7 @@ class Rare extends React.Component {
           data-testid="rare-input"
           value={ cardRare }
           onChange={ onInputChange }
+          name="cardRare"
         >
           <option>normal</option>
           <option>raro</option>
