@@ -19,7 +19,7 @@ export default class Form extends Component {
     } = this.props;
 
     return (
-      <div>
+      <div className="form">
         <input
           type="text"
           value={ cardName }

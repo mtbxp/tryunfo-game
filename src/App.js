@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import './css/App.css';
 
 class App extends React.Component {
   constructor() {
@@ -123,6 +124,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      saveCards,
     } = this.state;
     return (
       <>
@@ -143,6 +145,10 @@ class App extends React.Component {
             cardTrunfo,
           } }
         />
+        {saveCards.map((card, index) => (<Card
+          { ...card }
+          key={ index }
+        />))}
       </>
     );
   }

@@ -1,0 +1,15 @@
+.form {
+  border: 2px solid green;
+}
+
+.card {
+  border: 2px solid blue;
+}
+
+.listCarts {
+  border: 2px solid blueviolet;
+}
+
+.renderCards {
+  border: 2px solid yellowgreen;
+}
