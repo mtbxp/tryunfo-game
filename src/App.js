@@ -13,6 +13,7 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
+      hasTrunfo: false,
       cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
@@ -23,6 +24,8 @@ class App extends React.Component {
 
   onSaveButtonClick = (event) => {
     event.preventDefault();
+    const { cardTrunfo } = this.state;
+    if (cardTrunfo) this.setState({ hasTrunfo: true });
     this.setState((card) => (
       {
         cardLi: [...card.cardLi],
@@ -33,7 +36,7 @@ class App extends React.Component {
         cardAttr3: '0',
         cardImage: '',
         cardRare: 'normal',
-        cardTrunfo: false,
+        cardTrunfo: true,
       }
     ));
   }
