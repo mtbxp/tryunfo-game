@@ -1,5 +1,4 @@
 import React from 'react';
-import '../style/form.css';
 import PropTypes from 'prop-types';
 import Attr1Input from './inputsOfForm/Attr1Input';
 import Attr2Input from './inputsOfForm/Attr2Input';

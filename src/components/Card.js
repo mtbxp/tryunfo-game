@@ -16,15 +16,36 @@ class Card extends React.Component {
       cardRare,
       cardTrunfo } = this.props;
     return (
-      <div>
-        <h1 data-testid="name-card">{ cardName }</h1>
-        <img data-testid="image-card" src={ cardImage } alt={ cardName } />
-        <p data-testid="description-card">{cardDescription}</p>
-        <h2 data-testid="attr1-card">{cardAttr1}</h2>
-        <h2 data-testid="attr2-card">{cardAttr2}</h2>
-        <h2 data-testid="attr3-card">{cardAttr3}</h2>
-        <p data-testid="rare-card">{cardRare}</p>
-        {this.verifyTrunfo(cardTrunfo)}
+      <div className="divCard">
+        <img
+          className="cardTemplate"
+          src="https://creative-runeterra.netlify.app/static/media/uncollectable.253ddf35.png"
+          alt="Card Template"
+        />
+        <div className="divIntraCard">
+          <img
+            data-testid="image-card"
+            className="cardImage"
+            src={ cardImage }
+            alt={ cardName }
+          />
+          <div className="algo">
+            <h1 data-testid="name-card" className="cardName">{ cardName }</h1>
+            <p
+              className="divCardDescription"
+              data-testid="description-card"
+            >
+              {cardDescription}
+            </p>
+            <div className="divAttributes">
+              <h2 data-testid="attr1-card">{`Ad: ${cardAttr1}`}</h2>
+              <h2 data-testid="attr2-card">{`Ap: ${cardAttr2}`}</h2>
+              <h2 data-testid="attr3-card">{`Resist: ${cardAttr3}`}</h2>
+            </div>
+            <p data-testid="rare-card">{cardRare}</p>
+            {this.verifyTrunfo(cardTrunfo)}
+          </div>
+        </div>
       </div>);
   }
 }

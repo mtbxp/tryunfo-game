@@ -7,6 +7,8 @@ class Attr1Input extends React.Component {
     return (<input
       type="number"
       name="attr1"
+      min={ 0 }
+      max={ 90 }
       data-testid="attr1-input"
       value={ cardAttr1 }
       onChange={ onChange }
