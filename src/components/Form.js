@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Name from './inputsComponents/Name';
-import Attributes from './inputsComponents/Attributes';
-import Image from './inputsComponents/Image';
-import Rare from './inputsComponents/Rare';
-import Trunfo from './inputsComponents/Trunfo';
-import Submit from './inputsComponents/Submit';
-import Description from './inputsComponents/Description';
+import Name from './inputs_components/Name';
+import Attributes from './inputs_components/Attributes';
+import Image from './inputs_components/Image';
+import Rare from './inputs_components/Rare';
+import Trunfo from './inputs_components/Trunfo';
+import Submit from './inputs_components/Submit';
+import Description from './inputs_components/Description';
 
 class Form extends React.Component {
   render() {
