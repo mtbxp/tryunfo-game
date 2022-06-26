@@ -15,16 +15,58 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
+      enableButton: false,
       isSaveButtonDisabled: true,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.validationButton = this.validationButton.bind(this);
   }
 
   onInputChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }, this.validationButton);
+  }
+
+  validationButton() {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = this.state;
+
+    const sumMax = 210;
+    const pointsMax = 90;
+    const sum = parseInt(cardAttr1, 10)
+    + parseInt(cardAttr2, 10)
+    + parseInt(cardAttr3, 10);
+
+    const rulesForValues = () => {
+      if (
+        sum <= sumMax
+        && parseInt(cardAttr1, 10) <= pointsMax
+        && parseInt(cardAttr2, 10) <= pointsMax
+        && parseInt(cardAttr3, 10) <= pointsMax
+        && parseInt(cardAttr1, 10) >= 0
+        && parseInt(cardAttr2, 10) >= 0
+        && parseInt(cardAttr3, 10) >= 0
+      ) return true;
+    };
+
+    const fields = [cardName, cardDescription, cardImage];
+    const noEmptyInputs = fields.every((input) => input !== '');
+
+    const validation = rulesForValues() && noEmptyInputs;
+
+    if (validation) {
+      this.setState({ isSaveButtonDisabled: false });
+    } else {
+      this.setState({ isSaveButtonDisabled: true });
+    }
   }
 
   render() {
@@ -38,6 +80,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
+      enableButton,
       isSaveButtonDisabled,
     } = this.state;
     return (
@@ -65,6 +108,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          enableButton={ enableButton }
         />
       </div>
     );
