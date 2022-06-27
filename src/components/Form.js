@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Form extends Component {
   constructor() {
@@ -9,7 +9,7 @@ class Form extends Component {
   render() {
     return (
       <div>
-        <h1><b>Adicionar nova Carta</b></h1> 
+        <h1><b>Adicionar nova Carta</b></h1>
         <br />
         <br />
         <b>Nome:</b>
