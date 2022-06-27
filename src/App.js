@@ -25,13 +25,22 @@ validation = () => {
     atribute2,
     atribute3,
     image } = this.state;
+
+  const maxValue = 210;
+  const maxPoints = 90;
+  const sumPoints = Number(atribute1) + Number(atribute2) + Number(atribute3);
+
   this.setState({
     button: !(name !== ''
     && description !== ''
     && image !== ''
     && atribute1 >= 0
     && atribute2 >= 0
-    && atribute3 >= 0),
+    && atribute3 >= 0
+    && atribute1 <= maxPoints
+    && atribute2 <= maxPoints
+    && atribute3 <= maxPoints
+    && sumPoints <= maxValue),
   });
 }
 
