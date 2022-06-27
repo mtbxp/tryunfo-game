@@ -17,11 +17,13 @@ class App extends React.Component {
       superTrunfo: false,
       btnDisable: true,
       cards: [],
+      hasTrunfo: false,
     };
 
     this.handle = this.handle.bind(this);
     this.validate = this.validate.bind(this);
     this.saveCard = this.saveCard.bind(this);
+    this.temTrunfo = this.temTrunfo.bind(this);
   }
 
   handle({ target }) {
@@ -89,12 +91,23 @@ class App extends React.Component {
       rare: 'normal',
       superTrunfo: false,
       btnDisable: true,
+    }, () => { this.temTrunfo(); });
+  }
+
+  temTrunfo() {
+    const { cards } = this.state;
+
+    const filtro = cards.filter((element) => element.trunfo === true);
+
+    this.setState({
+      hasTrunfo: filtro.length > 0,
     });
   }
 
   render() {
     const {
-      name, description, attr1, attr2, attr3, image, rare, superTrunfo, btnDisable,
+      name, description, attr1, attr2, attr3,
+      image, rare, superTrunfo, btnDisable, hasTrunfo,
     } = this.state;
 
     return (
@@ -110,7 +123,7 @@ class App extends React.Component {
               cardImage={ image }
               cardRare={ rare }
               cardTrunfo={ superTrunfo }
-              hasTrunfo={ false }
+              hasTrunfo={ hasTrunfo }
               isSaveButtonDisabled={ btnDisable }
               onInputChange={ this.handle }
               onSaveButtonClick={ this.saveCard }
