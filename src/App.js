@@ -169,13 +169,15 @@ class App extends React.Component {
     if (rareFilter === 'todas') arrayByRare = cardsArray;
     const filteredArray = arrayByName.filter((card) => arrayByRare.includes(card));
     let conditionalCardsArray = cardsArray;
-    if (nameFilter.length !== 0 && rareFilter === 0) {
+    if (nameFilter.length !== 0 && rareFilter.length === 0) {
       conditionalCardsArray = arrayByName;
-    } else if (nameFilter.length === 0 && rareFilter !== 0) {
+    } else if (nameFilter.length === 0 && rareFilter.length !== 0) {
       conditionalCardsArray = arrayByRare;
-    } else if (nameFilter.length !== 0 && rareFilter !== 0) {
+    } else if (nameFilter.length !== 0 && rareFilter.length !== 0) {
       conditionalCardsArray = filteredArray;
-    } if (trunfoFilter) conditionalCardsArray = arrayByTrunfo;
+    } else if (trunfoFilter) {
+      conditionalCardsArray = arrayByTrunfo;
+    }
 
     return (
       conditionalCardsArray.map((card, index) => (
