@@ -26,11 +26,13 @@ class App extends React.Component {
     };
   }
 
+  hasTrunfo = (array) => array.some((card) => card.cardTrunfo === true);
+
   onSaveButtonClick = (event) => {
     event.preventDefault();
     const {
       cardName, cardDescription,
-      cardImage, cardRare, cardAttr1, cardAttr2, cardAttr3, hasTrunfo,
+      cardImage, cardRare, cardAttr1, cardAttr2, cardAttr3, cardTrunfo, hasTrunfo,
     } = this.state;
 
     const newCard = {
@@ -41,6 +43,7 @@ class App extends React.Component {
       cardAttr1,
       cardAttr2,
       cardAttr3,
+      cardTrunfo,
       hasTrunfo,
     };
 
@@ -53,7 +56,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      hasTrunfo: previous.cardTrunfo,
+      hasTrunfo: this.hasTrunfo([...previous.arrayOfCards, newCard]),
       isSaveButtonDisabled: true,
       arrayOfCards: [...previous.arrayOfCards, newCard],
     }), () => {
@@ -109,6 +112,24 @@ class App extends React.Component {
     }
   }
 
+  removeCard = ({ target }) => {
+    const name = target.parentElement.getAttribute('name');
+    const { arrayOfCards } = this.state;
+    const newArrayOfCards = arrayOfCards.filter((card) => card.cardName !== name);
+
+    const checkbox = newArrayOfCards.some((card) => card.cardTrunfo);
+    this.setState({
+      arrayOfCards: newArrayOfCards,
+    });
+
+    if (!checkbox) {
+      console.log('entrou');
+      this.setState({
+        hasTrunfo: false,
+      });
+    }
+  }
+
   render() {
     const {
       cardName, cardDescription, cardAttr1,
@@ -142,7 +163,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        <div className="cardSaved">
+        {/* <div className="cardSaved">
           {arrayOfCards.map((card) => (<Card
             key={ card.cardName }
             cardName={ card.cardName }
@@ -155,7 +176,27 @@ class App extends React.Component {
             cardTrunfo={ card.cardTrunfo }
           />
           ))}
-        </div>
+          <button type="submit">Excluir</button>
+        </div> */}
+        {arrayOfCards.map((card) => (
+          <div name={ card.cardName } key={ card.cardName }>
+            <h3>{card.cardName}</h3>
+            <p>{card.cardDescription}</p>
+            <p>{card.cardAttr1}</p>
+            <p>{card.cardAttr2}</p>
+            <p>{card.cardAttr3}</p>
+            <img src={ cardImage } alt={ cardName } />
+            <p>{card.cardRare}</p>
+            <p>{card.cardTrunfo}</p>
+            <button
+              onClick={ this.removeCard }
+              data-testid="delete-button"
+              type="submit"
+            >
+              Excluir
+            </button>
+          </div>
+        ))}
       </div>
     );
   }
