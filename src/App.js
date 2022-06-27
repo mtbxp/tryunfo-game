@@ -71,7 +71,7 @@ class App extends React.Component {
       cardtrunfo,
     };
     this.setState({
-      cardlist: [carta, ...cardlist],
+      cardlist: [...cardlist, carta],
       cardname: '',
       carddescription: '',
       cardat1: '0',
@@ -129,6 +129,55 @@ class App extends React.Component {
           />
         </div>
         <div className="cartas-adicionadas">
+          {/* <p>Filtrar cartas por nome: </p>
+          <input
+            type="text"
+            data-testid="name-filter"
+            onChange={ this.onInputChange }
+            name="search"
+          />
+          {search.length === 0 ? cardlist.map((e) => (
+            <div key={ e.cardname }>
+              <Card
+                cardName={ e.cardname }
+                cardDescription={ e.carddescription }
+                cardAttr1={ e.cardat1 }
+                cardAttr2={ e.cardat2 }
+                cardAttr3={ e.cardat3 }
+                cardImage={ e.cardart }
+                cardRare={ e.cardrare }
+                cardTrunfo={ e.cardtrunfo }
+              />
+              <button
+                type="button"
+                data-testid="delete-button"
+                onClick={ () => this.remover(e.cardname) }
+              >
+                Excluir
+              </button>
+            </div>
+          )) : cardlist.filter((e) => e.cardname.toLowerCase()
+            .startsWith(search.toLowerCase)).map((e) => (
+            <div key={ e.cardname }>
+              <Card
+                cardName={ e.cardname }
+                cardDescription={ e.carddescription }
+                cardAttr1={ e.cardat1 }
+                cardAttr2={ e.cardat2 }
+                cardAttr3={ e.cardat3 }
+                cardImage={ e.cardart }
+                cardRare={ e.cardrare }
+                cardTrunfo={ e.cardtrunfo }
+              />
+              <button
+                type="button"
+                data-testid="delete-button"
+                onClick={ () => this.remover(e.cardname) }
+              >
+                Excluir
+              </button>
+            </div>
+          ))} */}
           {cardlist.map((e) => (
             <div key={ e.cardname }>
               <Card

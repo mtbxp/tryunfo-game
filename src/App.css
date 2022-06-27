@@ -12,7 +12,8 @@
 
 .cardDiv {
   background: linear-gradient(rgb(124, 124, 18), rgb(225, 225, 174));
-  border: 1px solid black;
+  border: 10px solid green;
+  height: 500px;
   padding: 10px;
   width: 350px;
 }
@@ -44,5 +45,6 @@
 }
 
 .card-image {
+  height: 230px;
   width: 320px;
 }
