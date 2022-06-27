@@ -17,28 +17,39 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
-      onSaveButtonClick: false,
-      cardLi: '',
+      cardLi: [],
     };
   }
 
   onSaveButtonClick = (event) => {
     event.preventDefault();
-    const { cardTrunfo } = this.state;
-    if (cardTrunfo) this.setState({ hasTrunfo: true });
     this.setState((card) => (
       {
-        cardLi: [...card.cardLi],
         cardName: '',
         cardDescription: '',
-        cardAttr1: '0',
-        cardAttr2: '0',
-        cardAttr3: '0',
+        cardAttr1: 0,
+        cardAttr2: 0,
+        cardAttr3: 0,
         cardImage: '',
+        hasTrunfo: false,
         cardRare: 'normal',
-        cardTrunfo: true,
+        cardTrunfo: false,
+        cardLi: [...card.cardLi,
+          {
+            cardName: card.cardName,
+            cardDescription: card.cardDescription,
+            cardAttr1: card.cardAttr1,
+            cardAttr2: card.cardAttr2,
+            cardAttr3: card.cardAttr3,
+            cardImage: card.cardImage,
+            cardRare: card.cardRare,
+            cardTrunfo: card.cardTrunfo,
+            hasTrunfo: card.hasTrunfo,
+          }],
       }
     ));
+    const { cardTrunfo } = this.state;
+    if (cardTrunfo) this.setState({ hasTrunfo: true });
   }
 
   handle = ({ target }) => {
@@ -86,24 +97,63 @@ class App extends React.Component {
     }
   }
 
-  addNewCard = (newProject) => {
-    this.setState((oldProject) => ({
-      cards: [newProject, ...oldProject.card],
-    }));
-  }
-
   render() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      cardLi,
+      hasTrunfo,
+      isSaveButtonDisabled,
+    } = this.state;
+
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
-          { ...this.state }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.handle }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
-          { ...this.state }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
         />
+        <div>
+          { cardLi.map((item, index) => (
+            <Card
+              key={ index }
+              cardName={ item.cardName }
+              cardDescription={ item.cardDescription }
+              cardAttr1={ item.cardAttr1 }
+              cardAttr2={ item.cardAttr2 }
+              cardAttr3={ item.cardAttr3 }
+              cardImage={ item.cardImage }
+              cardRare={ item.cardRare }
+              cardTrunfo={ item.cardTrunfo }
+            />
+          ))}
+        </div>
       </div>
     );
   }

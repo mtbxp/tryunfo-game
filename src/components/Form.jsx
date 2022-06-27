@@ -31,7 +31,9 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
+        <br />
         <label htmlFor="cardDescription">
+          Descrição
           <textarea
             id="cardDescription"
             data-testid="description-input"
@@ -40,7 +42,9 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
+        <br />
         <label htmlFor="cardAttr1 cardAttr2 cardAttr3">
+          Attr1
           <input
             id="cardAttr1"
             data-testid="attr1-input"
@@ -49,6 +53,8 @@ class Form extends React.Component {
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
+          <br />
+          Attr2
           <input
             id="cardAttr2"
             data-testid="attr2-input"
@@ -57,6 +63,8 @@ class Form extends React.Component {
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
+          <br />
+          Attr3
           <input
             id="cardAttr3"
             data-testid="attr3-input"
@@ -66,7 +74,9 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
+        <br />
         <label htmlFor="cardImage">
+          Imagem
           <input
             id="cardImage"
             name="cardImage"
@@ -76,7 +86,9 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
+        <br />
         <label htmlFor="cardRare">
+          Raridade
           <select
             id="cardRare"
             data-testid="rare-input"
@@ -95,9 +107,10 @@ class Form extends React.Component {
             </option>
           </select>
         </label>
-
+        <br />
         { hasTrunfo ? <span>Você já tem um Super Trunfo em seu baralho</span> : (
           <label htmlFor="cardTrunfo">
+            Super Trunfo
             <input
               id="cardTrunfo"
               name="cardTrunfo"
@@ -106,12 +119,7 @@ class Form extends React.Component {
               checked={ cardTrunfo }
               onChange={ onInputChange }
             />
-            Super Trybe Trunfo
           </label>)}
-
-        <label htmlFor="cardLi">
-          <input type="text" />
-        </label>
         <button
           data-testid="save-button"
           type="submit"
