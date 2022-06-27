@@ -3,8 +3,18 @@ import PropTypes from 'prop-types';
 
 class Card extends React.Component {
   render() {
-    const { cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo } = this.props;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      isPreview,
+      removeCard,
+    } = this.props;
 
     return (
       <div>
@@ -26,10 +36,23 @@ class Card extends React.Component {
           </li>
         </ul>
         <h3 data-testid="rare-card">{cardRare}</h3>
-        {
-          cardTrunfo ? <h3 data-testid="trunfo-card">Super Trunfo</h3>
-            : <h3>Sem Trunfo</h3>
-        }
+        {cardTrunfo ? (
+          <h3 data-testid="trunfo-card">Super Trunfo</h3>
+        ) : (
+          <h3>Sem Trunfo</h3>
+        )}
+        {isPreview ? (
+          <h4>Preview</h4>
+        ) : (
+          <button
+            name={ cardName }
+            onClick={ removeCard }
+            type="button"
+            data-testid="delete-button"
+          >
+            Excluir
+          </button>
+        )}
       </div>
     );
   }
@@ -44,6 +67,12 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  isPreview: PropTypes.bool,
+  removeCard: PropTypes.func.isRequired,
+};
+
+Card.defaultProps = {
+  isPreview: false,
 };
 
 export default Card;

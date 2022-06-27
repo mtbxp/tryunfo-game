@@ -22,7 +22,6 @@ class App extends React.Component {
   }
 
   onInputChange = (e) => {
-    const { isSaveButtonDisabled } = this.state;
     const { name } = e.target;
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     this.setState({
@@ -32,11 +31,11 @@ class App extends React.Component {
       && !this.verifyAttr() && !this.verifyAttr2()) {
         this.setState({
           isSaveButtonDisabled: false,
-        }, console.log(isSaveButtonDisabled));
+        });
       } else {
         this.setState({
           isSaveButtonDisabled: true,
-        }, console.log(isSaveButtonDisabled));
+        });
       }
     });
   }
@@ -94,14 +93,14 @@ class App extends React.Component {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo } = this.state;
     const newCard = {
-      cardName: [cardName],
-      cardDescription: [cardDescription],
-      cardAttr1: [cardAttr1],
-      cardAttr2: [cardAttr2],
-      cardAttr3: [cardAttr3],
-      cardImage: [cardImage],
-      cardRare: [cardRare],
-      cardTrunfo: [cardTrunfo],
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
     };
     this.setState((state) => ({
       cards: [newCard, ...state.cards],
@@ -117,13 +116,32 @@ class App extends React.Component {
         cardTrunfo: false,
         isSaveButtonDisabled: true,
       }, () => {
-        if (newCard.cardTrunfo) {
+        if (cardTrunfo) {
           this.setState({
             hasTrunfo: true,
           });
         }
       });
     });
+  }
+
+  removeCard = ({ target }) => {
+    const { cards } = this.state;
+    const { name } = target;
+    const card = cards.find((element) => element.cardName === name);
+    if (card.cardTrunfo === true) {
+      this.setState({
+        hasTrunfo: false,
+      }, () => {
+        this.setState((PreviousState) => ({
+          cards: PreviousState.cards.filter((element) => element.cardName !== name),
+        }));
+      });
+    } else {
+      this.setState((PreviousState) => ({
+        cards: PreviousState.cards.filter((element) => element.cardName !== name),
+      }));
+    }
   }
 
   render() {
@@ -157,6 +175,8 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          removeCard={ this.removeCard }
+          isPreview
         />
         <div>
           {cards.map((card) => (
@@ -170,6 +190,7 @@ class App extends React.Component {
               cardImage={ card.cardImage }
               cardRare={ card.cardRare }
               cardTrunfo={ card.cardTrunfo }
+              removeCard={ this.removeCard }
             />
           ))}
         </div>
