@@ -57,10 +57,10 @@ class App extends React.Component {
     };
 
   onInputChange = ({ target }) => {
-    const { cardName } = target;
+    const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
-      [cardName]: value,
+      [name]: value,
     },
     () => this.setState({
       isSaveButtonDisabled: this.validationButton(),
