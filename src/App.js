@@ -91,7 +91,9 @@ class App extends React.Component {
       rare: 'normal',
       superTrunfo: false,
       btnDisable: true,
-    }, () => { this.temTrunfo(); });
+    }, () => {
+      this.temTrunfo();
+    });
   }
 
   temTrunfo() {
@@ -107,7 +109,7 @@ class App extends React.Component {
   render() {
     const {
       name, description, attr1, attr2, attr3,
-      image, rare, superTrunfo, btnDisable, hasTrunfo,
+      image, rare, superTrunfo, btnDisable, hasTrunfo, cards,
     } = this.state;
 
     return (
@@ -143,6 +145,23 @@ class App extends React.Component {
             />
           </section>
         </article>
+        <div>
+          <h1>Baralho</h1>
+          { cards.map((card) => (
+            <div key={ card.nome }>
+              <Card
+                cardName={ card.nome }
+                cardDescription={ card.desc }
+                cardAttr1={ card.a1 }
+                cardAttr2={ card.a2 }
+                cardAttr3={ card.a3 }
+                cardImage={ card.img }
+                cardRare={ card.raridade }
+                cardTrunfo={ card.trunfo }
+              />
+            </div>
+          ))}
+        </div>
       </main>
     );
   }
