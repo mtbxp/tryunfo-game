@@ -15,12 +15,33 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: true,
+      deck: [],
       isSaveButtonDisabled: true,
-      onSaveButtonClick: () => {},
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.enableBtn = this.enableBtn.bind(this);
     this.validation = this.validation.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.clearState = this.clearState.bind(this);
+  }
+
+  onSaveButtonClick() {
+    const { cardName, cardDescription, cardImage, cardRare, cardAttr1,
+      cardAttr2, cardAttr3, cardTrunfo } = this.state;
+
+    const cardMount = {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardTrunfo,
+    };
+    this.setState((oldState) => ({
+      deck: [...oldState.deck, cardMount],
+    }), () => this.clearState());
   }
 
   onInputChange = ({ target }) => {
@@ -28,6 +49,20 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({ [name]: value }, () => this.validation());
   };
+
+  clearState() {
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: true,
+      isSaveButtonDisabled: true,
+    });
+  }
 
   validation() {
     const maxValue = 210;
@@ -63,7 +98,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Form { ...this.state } onInputChange={ this.onInputChange } />
+        <Form
+          { ...this.state }
+          onInputChange={ this.onInputChange }
+          onSaveButtonClick={ this.onSaveButtonClick }
+        />
         <Card { ...this.state } />
       </div>
     );
