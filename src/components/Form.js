@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/form.css';
 
 class Form extends React.Component {
   render() {
@@ -15,7 +16,7 @@ class Form extends React.Component {
       isSaveButtonDisabled,
       onSaveButtonClick } = this.props;
     return (
-      <form>
+      <form className="form">
         <label className="nomeCarta" htmlFor="inputText">
           Nome da Carta:
           <input
