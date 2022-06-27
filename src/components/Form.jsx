@@ -3,34 +3,6 @@ import '../styles/form.css';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
-/*   constructor() {
-    super();
-    this.state = {
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
-      cardImage: '',
-      cardRare: '',
-      cardTrunfo: false,
-      hasTrunfo: false,
-      isSaveButtonDisabled: true,
-      onInputChange: () => {},
-      onSaveButtonClick: () => {},
-    };
-    this.onInputChange = this.onInputChange.bind(this);
-  } */
-
-  /*   onInputChange({ target }) {
-    const { name, type, checked } = target;
-    const value = type === 'checkbox' ? checked : target.value;
-
-    this.setState({
-      [name]: value,
-    });
-  } */
-
   render() {
     const {
       cardName,
