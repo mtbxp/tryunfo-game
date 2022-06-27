@@ -12,17 +12,64 @@ class App extends React.Component {
       attr2: '',
       attr3: '',
       imageCard: '',
-      rarity: '',
+      rarity: 'normal',
       trunfo: false,
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
       onInputChange: this.handleChange,
     };
   }
 
-  handleChange = ({ target }) => {
-    const { name, value } = target;
+  handleStringInput = () => {
+    const { nameCard, descriptionCard, imageCard, rarity } = this.state;
+
+    if (nameCard !== '' && descriptionCard !== '' && imageCard !== '' && rarity !== '') {
+      return true;
+    }
+
+    return false;
+  }
+
+  handleAttrInput = () => {
+    const { attr1, attr2, attr3 } = this.state;
+
+    const totalAttr = parseInt(attr1, 10) + parseInt(attr1, 10) + parseInt(attr3, 10);
+    const totalMaximumAttr = 210;
+    const minimunAttr = 0;
+    const maxAttr = 90;
+
+    if (parseInt(attr1, 10) >= minimunAttr
+    && parseInt(attr2, 10) >= minimunAttr
+    && parseInt(attr3, 10) >= minimunAttr
+    && parseInt(attr1, 10) <= maxAttr
+    && parseInt(attr2, 10) <= maxAttr
+    && parseInt(attr3, 10) <= maxAttr
+    && totalAttr <= totalMaximumAttr) return true;
+
+    return false;
+  }
+
+  handleEnableButton = (stringInput, attrInput) => {
+    if (stringInput && attrInput) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
+  }
+
+  handleChange = (event) => {
+    const { name, type, value, checked } = event.target;
+    const inputValue = type === 'checkbox' ? checked : value;
     this.setState({
-      [name]: value,
+      [name]: inputValue,
+    }, () => {
+      const stringsInput = this.handleStringInput();
+      const attrInput = this.handleAttrInput();
+
+      this.handleEnableButton(stringsInput, attrInput);
     });
   }
 
@@ -39,6 +86,7 @@ class App extends React.Component {
       isSaveButtonDisabled,
       onInputChange,
     } = this.state;
+
     return (
       <>
         <h1>Tryunfo</h1>
@@ -63,8 +111,6 @@ class App extends React.Component {
           cardImage={ imageCard }
           cardRare={ rarity }
           cardTrunfo={ trunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ onInputChange }
         />
       </>
     );
