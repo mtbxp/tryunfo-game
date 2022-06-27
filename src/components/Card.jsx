@@ -13,31 +13,31 @@ class Card extends React.Component {
     const { cardTrunfo } = this.props;
     if (cardTrunfo) {
       return (
-        <div>
-          <p data-testid="name-card">{ cardName }</p>
-          <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-          <p data-testid="description-card">{ cardDescription }</p>
+        <div className="protoCard">
+          <p name="name" data-testid="name-card">{ cardName }</p>
+          <img name="image" src={ cardImage } alt={ cardName } data-testid="image-card" />
+          <p name="description" data-testid="description-card">{ cardDescription }</p>
           <ul>
-            <li data-testid="attr1-card">{ cardAttr1 }</li>
-            <li data-testid="attr2-card">{ cardAttr2 }</li>
-            <li data-testid="attr3-card">{ cardAttr3 }</li>
+            <li name="attr1" data-testid="attr1-card">{ cardAttr1 }</li>
+            <li name="attr2" data-testid="attr2-card">{ cardAttr2 }</li>
+            <li name="attr3" data-testid="attr3-card">{ cardAttr3 }</li>
           </ul>
-          <p data-testid="rare-card">{ cardRare }</p>
-          <h4 data-testid="trunfo-card">Super Trunfo</h4>
+          <p name="rare" data-testid="rare-card">{ cardRare }</p>
+          <h4 name="trunfo" data-testid="trunfo-card">Super Trunfo</h4>
         </div>
       );
     }
     return (
-      <div>
-        <p data-testid="name-card">{ cardName }</p>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        <p data-testid="description-card">{ cardDescription }</p>
+      <div className="protoCard">
+        <p name="name" data-testid="name-card">{ cardName }</p>
+        <img name="image" src={ cardImage } alt={ cardName } data-testid="image-card" />
+        <p name="description" data-testid="description-card">{ cardDescription }</p>
         <ul>
-          <li data-testid="attr1-card">{ cardAttr1 }</li>
-          <li data-testid="attr2-card">{ cardAttr2 }</li>
-          <li data-testid="attr3-card">{ cardAttr3 }</li>
+          <li name="attr1" data-testid="attr1-card">{ cardAttr1 }</li>
+          <li name="attr2" data-testid="attr2-card">{ cardAttr2 }</li>
+          <li name="attr3" data-testid="attr3-card">{ cardAttr3 }</li>
         </ul>
-        <p data-testid="rare-card">{ cardRare }</p>
+        <p name="rare" data-testid="rare-card">{ cardRare }</p>
       </div>
     );
   }

@@ -67,6 +67,7 @@ body {
   font-weight: 400;
   line-height: 1.75;
   color: #000000;
+  background-color: #2fc18c
 }
 
 p {
@@ -121,6 +122,10 @@ small,
   object-fit: cover;
 }
 
+label {
+  font-weight: bolder;
+}
+
 /* buttons */
 button {
   cursor: pointer;
@@ -153,10 +158,24 @@ button:disabled {
 
 /* form */
 form {
-  background: var(--white);
+  background:#68caa6;
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
   padding: 2rem 2.5rem;
+  max-width: 700px;
+  float: left;
+}
+
+/* card */
+.protoCard {
+  width: 300px;
+  height: 400px;
+  border: 3px solid black;
+  border-radius: 12px;
+  padding: 1rem 1rem;
+  float: right;
+  margin-top: 8%;
+  margin-right: 15%;
 }
 
 input,

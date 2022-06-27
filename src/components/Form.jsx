@@ -38,7 +38,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="attr1">
-          Atributo 1:
+          Força:
           <input
             type="number"
             name="attr1"
@@ -48,7 +48,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="attr2">
-          Atributo 2:
+          Velocidade:
           <input
             type="number"
             name="attr2"
@@ -58,7 +58,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="attr3">
-          Atributo 3:
+          População:
           <input
             type="number"
             name="attr3"
