@@ -116,6 +116,23 @@ class App extends React.Component {
     }
   }
 
+  removeCard = ({ target }) => {
+    const { savedCards } = this.state;
+    const excludingSavedCards = savedCards
+      .filter((__card, index) => index !== parseInt(target.name, 10));
+    const filteringTrunfo = excludingSavedCards
+      .filter((card) => card.cardTrunfo === 'true');
+    if (filteringTrunfo.length >= 1) {
+      this.setState({
+        savedCards: excludingSavedCards,
+      });
+    }
+    this.setState({
+      savedCards: excludingSavedCards,
+      hasTrunfo: 'f',
+    });
+  }
+
   render() {
     const {
       cardName,
@@ -156,9 +173,13 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        <ul>
-          {savedCards.map((card) => (
-            <li key={ card.cardName }>
+        <ul className="allCardsList">
+          Todas as cartas:
+          {savedCards.map((card, index) => (
+            <li
+              key={ index }
+              className="cardsList"
+            >
               <Card
                 cardName={ card.cardName }
                 cardDescription={ card.cardDescription }
@@ -169,6 +190,14 @@ class App extends React.Component {
                 cardRare={ card.cardRare }
                 cardTrunfo={ card.cardTrunfo }
               />
+              <button
+                name={ index }
+                type="button"
+                data-testid="delete-button"
+                onClick={ this.removeCard }
+              >
+                Excluir
+              </button>
             </li>))}
         </ul>
       </div>
