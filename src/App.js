@@ -102,7 +102,7 @@ class App extends React.Component {
     };
 
     this.setState((prevState) => ({
-      savedCards: [currCard, ...prevState.savedCards],
+      savedCards: [...prevState.savedCards, currCard],
     }),
     () => this.setState({
       cardName: '',
