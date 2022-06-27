@@ -23,7 +23,9 @@ class App extends React.Component {
 
   trunfoInCards = () => {
     const { saveCards } = this.state;
-    if (saveCards.length === 0) return saveCards.some((card) => card.cardTrunfo);
+    if (saveCards.length !== 0) {
+      return saveCards.some((card) => card.cardTrunfo);
+    }
     return false;
   };
 
@@ -35,7 +37,8 @@ class App extends React.Component {
       const minAttr = 0;
       const maxSumAttr = 120;
 
-      const empty = cardName && cardDescription && cardImage !== '';
+      const empty = cardName !== ''
+        && cardDescription !== '' && cardImage !== '';
 
       const sumAttr = Number(cardAttr1)
       + Number(cardAttr2)
@@ -43,7 +46,7 @@ class App extends React.Component {
 
       const maxValidationAttr = Number(cardAttr1) <= maxAttr
       && Number(cardAttr2) <= maxAttr
-      && Number(cardAttr3) <= maxSumAttr;
+      && Number(cardAttr3) <= maxAttr;
 
       const minValidationAttr = Number(cardAttr1) >= minAttr
       && Number(cardAttr2) >= minAttr
