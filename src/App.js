@@ -25,6 +25,7 @@ class App extends React.Component {
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.clearState = this.clearState.bind(this);
     this.handleHasTrunfo = this.handleHasTrunfo.bind(this);
+    this.deletCard = this.deletCard.bind(this);
   }
 
   componentDidMount() {
@@ -58,6 +59,7 @@ class App extends React.Component {
       cardAttr2,
       cardAttr3,
       cardTrunfo,
+      isDeck: true,
     };
     this.setState((oldState) => ({
       deck: [...oldState.deck, cardMount],
@@ -108,6 +110,12 @@ class App extends React.Component {
     }
   }
 
+  deletCard(cardName, cardTrunfo) {
+    const { deck } = this.state;
+    const filterDeck = deck.filter((card) => card.cardName !== cardName);
+    this.setState({ deck: filterDeck, hasTrunfo: !cardTrunfo });
+  }
+
   enableBtn(valueOfVerity) {
     this.setState({
       isSaveButtonDisabled: valueOfVerity,
@@ -126,7 +134,7 @@ class App extends React.Component {
         <Card { ...this.state } />
         {
           deck.map((card) => (
-            <Card key={ card.name } { ...card } />
+            <Card key={ card.name } { ...card } deletCard={ this.deletCard } />
           ))
         }
       </div>

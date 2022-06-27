@@ -11,6 +11,8 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      isDeck,
+      deletCard,
     } = this.props;
     return (
       <div>
@@ -24,6 +26,17 @@ class Card extends React.Component {
         {
           cardTrunfo && (
             <p data-testid="trunfo-card">Super Trunfo</p>
+          )
+        }
+        {
+          isDeck && (
+            <button
+              onClick={ () => deletCard(cardName, cardTrunfo) }
+              type="button"
+              data-testid="delete-button"
+            >
+              <span>Excluir</span>
+            </button>
           )
         }
       </div>
@@ -41,6 +54,8 @@ Card.propTypes = {
   cardRare: PropTypes.string,
   cardTrunfo: PropTypes.bool,
   hasTrunfo: PropTypes.bool,
+  isDeck: PropTypes.bool,
+  deletCard: PropTypes.func,
 }.isRequired;
 
 export default Card;
