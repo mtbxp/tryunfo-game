@@ -12,18 +12,16 @@ class Card extends React.Component {
       ? <p data-testid="trunfo-card">Super Trunfo</p> : '';
 
     return (
-      <>
-        <h1>Card</h1>
-
-        <h3 data-testid="name-card">{ cardName }</h3>
+      <div className="card">
+        <h2 data-testid="name-card">{ cardName }</h2>
+        <p data-testid="rare-card" className={ cardRare }>{ cardRare }</p>
         <img data-testid="image-card" src={ cardImage } alt={ cardName } />
         <p data-testid="description-card">{ cardDescription }</p>
         <h3 data-testid="attr1-card">{ cardAttr1 }</h3>
         <h3 data-testid="attr2-card">{ cardAttr2 }</h3>
         <h3 data-testid="attr3-card">{ cardAttr3 }</h3>
-        <p data-testid="rare-card">{ cardRare }</p>
         { superTrunfo }
-      </>
+      </div>
     );
   }
 }

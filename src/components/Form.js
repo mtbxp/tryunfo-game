@@ -13,7 +13,7 @@ class Form extends React.Component {
     return (
       <form>
         <label htmlFor="name">
-          Nome Da Carta:
+          Nome:
           <input
             data-testid="name-input"
             name="name"
@@ -22,7 +22,6 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-
         <label htmlFor="description">
           Descrição Da Carta:
           <textarea

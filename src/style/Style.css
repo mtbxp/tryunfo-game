@@ -1,0 +1,58 @@
+* {
+  background-color: whitesmoke;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+label {
+  margin: 10px;
+  text-align: left;
+}
+
+input, textarea {
+  margin-left: -4px;
+  width: 100%;
+}
+
+img {
+  width: 250px;
+}
+
+.creatingCards {
+  display: flex;
+  justify-content: center;
+}
+
+.formCard {
+  width: 70%;
+}
+
+.previewCard {
+  background-color: black;
+  min-height: 100vh;
+  padding: 10px;
+  width: 40%;
+}
+
+.card {
+  background-color: #dec493;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.previewCard p, h2 {
+  border-radius: 22px;
+}
+
+h3 {
+  background-color: #37241e;
+  border-radius: 20px;
+  color: white;
+  width: 30%;
+}

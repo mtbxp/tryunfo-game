@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import './style/Style.css';
 
 class App extends React.Component {
   constructor() {
@@ -11,9 +12,10 @@ class App extends React.Component {
       attr1: '',
       attr2: '',
       attr3: '',
-      image: '',
       rare: 'normal',
+      image: '',
       superTrunfo: false,
+      btnDisable: false,
     };
 
     this.handle = this.handle.bind(this);
@@ -29,38 +31,43 @@ class App extends React.Component {
 
   render() {
     const {
-      name, description, attr1, attr2, attr3, image, rare, superTrunfo,
+      name, description, attr1, attr2, attr3, image, rare, superTrunfo, btnDisable,
     } = this.state;
 
     return (
-      <div>
-        <h1>Tryunfo do Kauan Lets Bora</h1>
-        <Form
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardImage={ image }
-          cardRare={ rare }
-          cardTrunfo={ superTrunfo }
-          hasTrunfo={ false }
-          isSaveButtonDisabled={ false }
-          onInputChange={ this.handle }
-          onSaveButtonClick={ () => {} }
-        />
+      <main>
+        <article className="creatingCards">
+          <section className="formCard">
+            <Form
+              cardName={ name }
+              cardDescription={ description }
+              cardAttr1={ attr1 }
+              cardAttr2={ attr2 }
+              cardAttr3={ attr3 }
+              cardImage={ image }
+              cardRare={ rare }
+              cardTrunfo={ superTrunfo }
+              hasTrunfo={ false }
+              isSaveButtonDisabled={ btnDisable }
+              onInputChange={ this.handle }
+              onSaveButtonClick={ () => {} }
+            />
+          </section>
 
-        <Card
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardImage={ image }
-          cardRare={ rare }
-          cardTrunfo={ superTrunfo }
-        />
-      </div>
+          <section className="previewCard">
+            <Card
+              cardName={ name }
+              cardDescription={ description }
+              cardAttr1={ attr1 }
+              cardAttr2={ attr2 }
+              cardAttr3={ attr3 }
+              cardImage={ image }
+              cardRare={ rare }
+              cardTrunfo={ superTrunfo }
+            />
+          </section>
+        </article>
+      </main>
     );
   }
 }
