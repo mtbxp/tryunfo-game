@@ -111,6 +111,6 @@ CardList.propTypes = {
       cardTrunfo: PropTypes.string,
     }),
   ).isRequired,
-  deleteButtonClick: PropTypes.func,
-  preview: PropTypes.bool,
-}.isRequired;
+  deleteButtonClick: PropTypes.func.isRequired,
+  preview: PropTypes.bool.isRequired,
+};
