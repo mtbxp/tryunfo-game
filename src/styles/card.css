@@ -1,5 +1,6 @@
 .exter-border {
   background-color: whitesmoke;
+  border: 3px solid rgb(29, 1, 1);
   border-radius: 20px;
   padding: 15px;
 }
@@ -49,6 +50,7 @@
   margin-top: 20px;
   padding: 5px 15px 5px 10px;
   position: absolute;
+  text-transform: capitalize;
   width: fit-content;
 }
 

@@ -153,7 +153,7 @@ class App extends React.Component {
               hasTrunfo={ this.checkHasTrunfo(cardList) }
             />
             <div className="card-preview">
-              <h3>Pré-visualização</h3>
+              <h3>Pré-Visualização</h3>
               <Card
                 cardName={ cardName }
                 cardDescription={ cardDescription }
@@ -164,6 +164,29 @@ class App extends React.Component {
                 cardRare={ cardRare }
                 cardTrunfo={ cardTrunfo }
               />
+            </div>
+          </section>
+          <section className="card-collection">
+            <aside className="card-search">
+              <h3>🔎 Busca de Cartas</h3>
+            </aside>
+            <div className="cards-container">
+              <h2>Baralho Tryunfo Pilotos F1</h2>
+              {
+                cardList.map((card) => (
+                  <Card
+                    cardName={ card.cardName }
+                    cardDescription={ card.cardDescription }
+                    cardAttr1={ card.cardAttr1 }
+                    cardAttr2={ card.cardAttr2 }
+                    cardAttr3={ card.cardAttr3 }
+                    cardImage={ card.cardImage }
+                    cardRare={ card.cardRare }
+                    cardTrunfo={ card.cardTrunfo }
+                    key={ card.cardName }
+                  />
+                ))
+              }
             </div>
           </section>
         </main>
