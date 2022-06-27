@@ -8,15 +8,15 @@ export default class CardList extends Component {
     this.state = {
       nameFilter: '',
       rareFilter: 'todas',
-      trunfoFilter: '',
+      trunfoFilter: false,
     };
   }
 
   onInputChange = ({ target }) => {
-    const { name } = target;
+    const { cardName } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
-      [name]: value,
+      [cardName]: value,
     });
   };
 
