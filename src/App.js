@@ -163,6 +163,7 @@ class App extends React.Component {
         Excluir
       </button>
     );
+
     const arrayByTrunfo = cardsArray.filter((card) => card.cardTrunfo);
     const arrayByName = cardsArray.filter((card) => card.cardName.includes(nameFilter));
     let arrayByRare = cardsArray.filter((card) => card.cardRare === rareFilter);
