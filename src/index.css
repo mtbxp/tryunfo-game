@@ -4,10 +4,6 @@
   padding: 0;
 }
 
-.checkbox {
-  align-items: flex-start;
-}
-
 html {
   font-size: 270%;
 }
@@ -56,4 +52,8 @@ textarea:focus {
 checkbox {
   cursor: pointer;
   
+}
+
+.checkbox {
+  align-items: flex-start;
 }
