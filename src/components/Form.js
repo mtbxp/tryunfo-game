@@ -109,8 +109,6 @@ class Form extends React.Component {
             Salvar
           </button>
         </label>
-        {console.log(hasTrunfo)}
-        {/* linha acima feita so pra tirar erro do lint */}
       </form>
     );
   }

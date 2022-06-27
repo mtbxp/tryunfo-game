@@ -14,7 +14,7 @@ class App extends React.Component {
       cardat3: '0',
       cardart: '',
       cardrare: 'normal',
-      cardtrunfo: '',
+      cardtrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       cardlist: [],
@@ -79,9 +79,20 @@ class App extends React.Component {
       cardat3: '0',
       cardart: '',
       cardrare: 'normal',
-      cardtrunfo: '',
+      cardtrunfo: false,
     }, () => this.validate());
     // this.validate();
+  }
+
+  remover = (name) => {
+    console.log('removendo carta: ', name);
+    const { cardlist } = this.state;
+    if (cardlist.find((e) => e.cardname === name).cardtrunfo === true) {
+      this.setState({ hasTrunfo: false });
+    }
+    this.setState({
+      cardlist: cardlist.filter((e) => e.cardname !== name),
+    });
   }
 
   render() {
@@ -119,17 +130,25 @@ class App extends React.Component {
         </div>
         <div className="cartas-adicionadas">
           {cardlist.map((e) => (
-            <Card
-              key={ e.cardname }
-              cardName={ e.cardname }
-              cardDescription={ e.carddescription }
-              cardAttr1={ e.cardat1 }
-              cardAttr2={ e.cardat2 }
-              cardAttr3={ e.cardat3 }
-              cardImage={ e.cardart }
-              cardRare={ e.cardrare }
-              cardTrunfo={ e.cardtrunfo }
-            />
+            <div key={ e.cardname }>
+              <Card
+                cardName={ e.cardname }
+                cardDescription={ e.carddescription }
+                cardAttr1={ e.cardat1 }
+                cardAttr2={ e.cardat2 }
+                cardAttr3={ e.cardat3 }
+                cardImage={ e.cardart }
+                cardRare={ e.cardrare }
+                cardTrunfo={ e.cardtrunfo }
+              />
+              <button
+                type="button"
+                data-testid="delete-button"
+                onClick={ () => this.remover(e.cardname) }
+              >
+                Excluir
+              </button>
+            </div>
           ))}
         </div>
       </div>
