@@ -106,7 +106,7 @@ export default class Form extends Component {
             Raridade:
             <select
               className="select"
-              name="cardImage"
+              name="cardRare"
               value={ cardRare }
               onChange={ onInputChange }
               id="rare-input"
@@ -132,7 +132,7 @@ export default class Form extends Component {
                 id="trunfo-input"
                 data-testid="trunfo-input"
               />
-              Super Trunfo!
+              <span>Super Trunfo!</span>
             </label>
           )}
         </div>
