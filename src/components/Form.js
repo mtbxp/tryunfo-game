@@ -22,7 +22,8 @@ class Form extends React.Component {
       cardTrunfo,
       onInputChange,
       onSaveButtonClick,
-      isSaveButtonDisabled } = this.props;
+      isSaveButtonDisabled,
+      hasTrunfo } = this.props;
     return (
       <form>
         <InputName cardName={ cardName } onChange={ onInputChange } />
@@ -35,7 +36,11 @@ class Form extends React.Component {
         <Attr3Input cardAttr3={ cardAttr3 } onChange={ onInputChange } />
         <InputImage cardImage={ cardImage } onChange={ onInputChange } />
         <InputRare cardRare={ cardRare } onChange={ onInputChange } />
-        <InputTrunfo cardTrunfo={ cardTrunfo } onChange={ onInputChange } />
+        <InputTrunfo
+          cardTrunfo={ cardTrunfo }
+          onChange={ onInputChange }
+          hasTrunfo={ hasTrunfo }
+        />
         <button
           type="button"
           data-testid="save-button"
@@ -61,6 +66,7 @@ Form.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
 };
 
 export default Form;

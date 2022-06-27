@@ -13,8 +13,9 @@ class App extends React.Component {
       attr2: '0',
       attr3: '0',
       cardImage: '',
-      cardRarity: '',
+      cardRarity: 'normal',
       cardTrunfo: false,
+      hasTrunfo: false,
       cards: [],
     };
 
@@ -51,6 +52,7 @@ class App extends React.Component {
       cardRarity,
       cardTrunfo,
     };
+    if (cardTrunfo) this.setState({ hasTrunfo: true });
     cards.push(objectCard);
     this.setState({
       cardName: '',
@@ -59,7 +61,7 @@ class App extends React.Component {
       attr2: '0',
       attr3: '0',
       cardImage: '',
-      cardRarity: '',
+      cardRarity: 'normal',
       cardTrunfo: false,
     });
   }
@@ -83,7 +85,7 @@ class App extends React.Component {
     const lastKey = 7;
     const totalAttr = parseInt(attr1, 10) + parseInt(attr2, 10) + parseInt(attr3, 10);
     const isFormFilled = valuesStates.every((value, key) => {
-      if (key !== lastKey) return value;
+      if (key < lastKey) return value;
       return true;
     });
     if (this.isAttrValidated(totalAttr, [attr1, attr2, attr3])) return true;
@@ -99,7 +101,8 @@ class App extends React.Component {
       attr3,
       cardImage,
       cardRarity,
-      cardTrunfo } = this.state;
+      cardTrunfo,
+      hasTrunfo } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -113,7 +116,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRarity }
           cardTrunfo={ cardTrunfo }
-          hasTrunfo={ false }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ this.isSaveButtonDisabled() }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
