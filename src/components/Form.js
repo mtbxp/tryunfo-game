@@ -43,7 +43,7 @@ class Form extends React.Component {
           Speed:
           <input
             type="number"
-            name="attr1"
+            name="cardAttr1"
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
@@ -53,7 +53,7 @@ class Form extends React.Component {
           Skill:
           <input
             type="number"
-            name="attr2"
+            name="cardAttr2"
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
@@ -63,7 +63,7 @@ class Form extends React.Component {
           Power:
           <input
             type="number"
-            name="attr3"
+            name="cardAttr3"
             data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
