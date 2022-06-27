@@ -80,7 +80,7 @@ class App extends React.Component {
 
   saveCard(card) {
     this.setState((prevState) => ({
-      data: [...prevState.data, card],
+      data: [card, ...prevState.data],
       cardName: '',
       cardDescription: '',
       cardAttr1: 0,
