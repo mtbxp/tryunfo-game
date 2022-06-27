@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class DivAttributes extends React.Component {
   render() {
-    const { cardAttr1, cardAttr2, cardAttr3} = this.props;
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.props;
     return (
       <div className="divAttributes">
         <h2 data-testid="attr1-card">{`Ad: ${cardAttr1}`}</h2>
