@@ -14,7 +14,7 @@ class Form extends React.Component {
           Nome
           <input
             type="text"
-            name="card-name"
+            name="cardName"
             id="set-card-name"
             data-testid="name-input"
             value={ cardName }
@@ -25,7 +25,7 @@ class Form extends React.Component {
           Descrição
           <input
             type="textarea"
-            name="card-description"
+            name="cardDescription"
             id="set-card-description"
             data-testid="description-input"
             value={ cardDescription }
@@ -37,7 +37,7 @@ class Form extends React.Component {
           Attr01
           <input
             type="number"
-            name="attribute01"
+            name="cardAttr1"
             id="set-attribute01"
             data-testid="attr1-input"
             value={ cardAttr1 }
@@ -49,7 +49,7 @@ class Form extends React.Component {
           Attr02
           <input
             type="number"
-            name="attribute02"
+            name="cardAttr2"
             id="set-attribute02"
             data-testid="attr2-input"
             value={ cardAttr2 }
@@ -61,7 +61,7 @@ class Form extends React.Component {
           Attr03
           <input
             type="number"
-            name="attribute03"
+            name="cardAttr3"
             id="set-attribute03"
             data-testid="attr3-input"
             value={ cardAttr3 }
@@ -73,7 +73,7 @@ class Form extends React.Component {
           Imagem
           <input
             type="text"
-            name="image"
+            name="cardImage"
             id="set-image"
             data-testid="image-input"
             value={ cardImage }
@@ -84,7 +84,7 @@ class Form extends React.Component {
         <label htmlFor="set-rarity">
           Raridade
           <select
-            name="rarity"
+            name="cardRare"
             id="set-rarity"
             data-testid="rare-input"
             value={ cardRare }
@@ -100,7 +100,7 @@ class Form extends React.Component {
           Super Trybe Trunfo
           <input
             type="checkbox"
-            name="trunfo"
+            name="cardTrunfo"
             id="set-trunfo"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
