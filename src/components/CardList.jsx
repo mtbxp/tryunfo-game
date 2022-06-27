@@ -24,9 +24,12 @@ export default class CardList extends Component {
     const { nameFilter, rareFilter, trunfoFilter } = this.state;
     const { preview, deleteButtonClick, saveCards } = this.props;
     const myCards = saveCards
-      .filter((card) => (nameFilter === '' ? true : card.cardName.includes(nameFilter)))
-      .filter((card) => (rareFilter === 'todas' ? true : card.cardRare === rareFilter))
-      .filter((card) => (!trunfoFilter ? true : card.cardTrunfo));
+      .filter((card) => (!trunfoFilter ? true
+        : card.cardTrunfo))
+      .filter((card) => (nameFilter === '' ? true
+        : card.cardName.includes(nameFilter)))
+      .filter((card) => (rareFilter === 'todas' ? true
+        : card.cardRare === rareFilter));
     return (
       <div>
         <section>
@@ -36,6 +39,7 @@ export default class CardList extends Component {
               type="text"
               data-testid="name-filter"
               value={ nameFilter }
+              name="nameFilter"
               id="nameFilter"
               onChange={ this.onInputChange }
               disabled={ trunfoFilter }
@@ -47,6 +51,7 @@ export default class CardList extends Component {
               type="text"
               data-testid="rare-filter"
               value={ rareFilter }
+              name="rareFilter"
               id="rareFilter"
               onChange={ this.onInputChange }
               disabled={ trunfoFilter }
