@@ -15,6 +15,7 @@ class App extends React.Component {
       rare: '',
       trunfo: '',
       button: true,
+      cards: [],
     };
   }
 
@@ -49,6 +50,42 @@ onInputChange = ({ target }) => {
   this.setState(({ [name]: value }), () => this.validation());
 }
 
+onSaveButtonClick = () => {
+  const { name,
+    description,
+    atribute1,
+    atribute2,
+    atribute3,
+    image,
+    rare,
+    trunfo,
+    cards } = this.state;
+
+  const toMakeCard = {
+    name,
+    description,
+    atribute1,
+    atribute2,
+    atribute3,
+    image,
+    rare,
+    trunfo,
+  };
+
+  this.setState((element) => ({ cards: [...element.cards, toMakeCard] }));
+
+  this.setState({
+    name: '',
+    description: '',
+    atribute1: 0,
+    atribute2: 0,
+    atribute3: 0,
+    image: '',
+    rare: 'normal',
+    trunfo: false,
+  });
+}
+
 render() {
   const {
     name,
@@ -74,6 +111,7 @@ render() {
         cardRare={ rare }
         cardTrunfo={ trunfo }
         onInputChange={ this.onInputChange }
+        onSaveButtonClick={ this.onSaveButtonClick }
         isSaveButtonDisabled={ button }
       />
       <Card
