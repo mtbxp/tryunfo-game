@@ -70,8 +70,8 @@ export default class CardList extends Component {
               id="trunfoFilter"
               checked={ trunfoFilter }
               onChange={ this.onInputChange }
-
             />
+            <h3>Filtro por Trunfo: </h3>
           </label>
         </section>
       </div>
