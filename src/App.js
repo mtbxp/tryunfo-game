@@ -2,13 +2,6 @@ import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
 
-// faça o setState com esse INITIAL_STATE e dps faça
-// um link desse setState com as props que vc passou
-// nos dois componentes <Form/> e <Card/>, ex: cardName= {this.state}
-// e depois modifique a linha 19 do componente Form para this.state
-// talvez nem precise modificar a linha 19, pois vc já estará passando
-// o state como props pros componentes;
-
 const INITIAL_STATE = {
   cardName: '',
   cardDescription: '',
@@ -22,12 +15,39 @@ const INITIAL_STATE = {
   isSaveButtonDisabled: true,
   onInputChange: '',
   onSaveButtonClick: '',
+  cardList: '',
 };
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = { ...INITIAL_STATE };
+  }
+
+  saveCardList = (event) => {
+    event.preventDefault();
+    const { cardName, cardDescription, cardAttr1,
+      cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo, cardList } = this.state;
+    const card = { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+    this.setState({
+      cardList: [card, ...cardList],
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: '',
+    });
   }
 
   handleValue = ({ target }) => {
@@ -71,8 +91,8 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      // onInputChange, lembrar desa linha ---------------------------------
-      onSaveButtonClick,
+      // onInputChange, lembrar dessas linhas ---------------------------------
+      // onSaveButtonClick,
     } = this.state;
     return (
       <div>
@@ -89,7 +109,7 @@ class App extends React.Component {
           hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.handleValue } // declarei a function aqui
-          onSaveButtonClick={ onSaveButtonClick }
+          onSaveButtonClick={ this.saveCardList }
         />
         <Card
           cardName={ cardName }
