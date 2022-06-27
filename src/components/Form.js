@@ -22,7 +22,7 @@ class Form extends Component {
     const p = <p>Você já tem um Super Trunfo em seu baralho</p>;
 
     return (
-      <form id={ hasTrunfo }>
+      <form>
         <label htmlFor="name">
           Nome da Carta:
           <input

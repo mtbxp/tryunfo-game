@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
+import DeckCard from './components/DeckCard';
 import Form from './components/Form';
 import './styles/global.css';
 
@@ -70,9 +71,42 @@ class App extends React.Component {
       const result = cards.some((cardd) => cardd.isSuper === true);
       this.setState(({
         hasTrunf: result,
+        checkbox: false,
       }));
     });
   };
+
+  deleteCard = (event) => {
+    const { cards } = this.state;
+    const innerName = event.target.parentNode.children[0].innerText;
+    const arrayName = innerName.split('Name:');
+    const name = arrayName[arrayName.length - 1];
+    const innerDes = event.target.parentNode.children[2].innerText;
+    if (arrayName[arrayName.length - 1] === '') {
+      const arrayDes = innerDes.split('Descrição do Card:');
+      const descricao = arrayDes[arrayDes.length - 1];
+      const newArray = cards.filter((card) => card.descricaoCarta !== descricao);
+      this.setState(({
+        cards: newArray,
+      }), () => {
+        const result = newArray.some((card1) => card1.isSuper === true);
+        this.setState(({
+          hasTrunf: result,
+        }));
+      });
+      console.log(newArray);
+    } else {
+      const newArray = cards.filter((card) => card.name !== name);
+      this.setState(({
+        cards: newArray,
+      }), () => {
+        const result = newArray.some((carddd) => carddd.isSuper === true);
+        this.setState(({
+          hasTrunf: result,
+        }));
+      });
+    }
+  }
 
   render() {
     const { nome, descricao, atributo1, atributo2,
@@ -105,20 +139,19 @@ class App extends React.Component {
           cardRare={ selecionar }
           cardTrunfo={ checkbox }
         />
-        <div>
-          { cards.map((card) => (
-            <Card
-              key={ card.name }
-              cardName={ card.name }
-              cardDescription={ card.descricaoCarta }
-              cardAttr1={ card.att1 }
-              cardAttr2={ card.att2 }
-              cardAttr3={ card.att3 }
-              cardImage={ card.img }
-              cardRare={ card.raridade }
-              cardTrunfo={ card.isSuper }
-            />)) }
-        </div>
+        { cards.map((card) => (
+          <DeckCard
+            key={ card.name }
+            cardName={ card.name }
+            cardDescription={ card.descricaoCarta }
+            cardAttr1={ card.att1 }
+            cardAttr2={ card.att2 }
+            cardAttr3={ card.att3 }
+            cardImage={ card.img }
+            cardRare={ card.raridade }
+            cardTrunfo={ card.isSuper }
+            deleteCard={ this.deleteCard }
+          />)) }
       </div>
     );
   }
