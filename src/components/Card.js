@@ -2,12 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Card extends React.Component {
-  handleSubmit(e) {
-    e.preventDefault();
-    const { onInputChange } = this.props;
-    onInputChange(this.state);
-  }
-
   render() {
     const {
       cardName, cardDescription, cardAttr1,
@@ -45,7 +39,7 @@ Card.propTypes = {
   cardTrunfo: PropTypes.bool.isRequired,
   // hasTrunfo: PropTypes.bool.isRequired,
   // isSaveButtonDisabled: PropTypes.bool.isRequired,
-  onInputChange: PropTypes.func.isRequired,
+  // onInputChange: PropTypes.func.isRequired,
   // onSaveButtonClick: PropTypes.func.isRequired,
 };
 

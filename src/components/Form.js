@@ -4,13 +4,22 @@ import PropTypes from 'prop-types';
 class Form extends React.Component {
   render() {
     const {
-      cardName, cardDescription, cardAttr1,
-      cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo,
-      isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      // hasTrunfo,
+      isSaveButtonDisabled,
+      onSaveButtonClick,
+      onInputChange } = this.props;
 
     return (
       <div>
-        <form onSubmit={ this.handleSubmit }>
+        <form>
           <label htmlFor="name">
             Nome:
             <input
@@ -64,7 +73,7 @@ class Form extends React.Component {
             Image URL:
             <input
               data-testid="image-input"
-              name="image"
+              name="cardImage"
               type="text"
               value={ cardImage }
               onChange={ onInputChange }
@@ -77,7 +86,7 @@ class Form extends React.Component {
               data-testid="rare-input"
               value={ cardRare }
               onChange={ onInputChange }
-              name="input-raridade"
+              name="cardRare"
             >
               <option>normal</option>
               <option>raro</option>
