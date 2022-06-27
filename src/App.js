@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import React from 'react';
 
 import './App.css';
@@ -21,9 +20,7 @@ class App extends React.Component {
       cards: [],
       filteredCards: [],
     };
-
     this.isSaveButtonDisabled = true;
-
     this.handleChange = this.handleChange.bind(this);
     this.checkRequiredFields = this.checkRequiredFields.bind(this);
     this.handleCardCreation = this.handleCardCreation.bind(this);
@@ -36,26 +33,16 @@ class App extends React.Component {
     const { name, type } = target;
     if (type === 'checkbox') {
       const { checked } = target;
-      this.setState({
-        [name]: checked,
-      });
+      this.setState({ [name]: checked });
     } else {
       const { value } = target;
-      this.setState({
-        [name]: value,
-      });
+      this.setState({ [name]: value });
     }
   }
 
   handleCardCreation(event) {
     event.preventDefault();
-    const {
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardName,
-      cardDescription,
-      cardImage,
+    const { cardAttr1, cardAttr2, cardAttr3, cardName, cardDescription, cardImage,
       cardRare,
       cardTrunfo,
     } = this.state;
@@ -77,8 +64,7 @@ class App extends React.Component {
       { cards: [...previous.cards, newCard],
         filteredCards: [...previous.cards, newCard],
       }));
-    this.setState({
-      cardName: '',
+    this.setState({ cardName: '',
       cardDescription: '',
       cardAttr1: '0',
       cardAttr2: '0',
@@ -91,23 +77,16 @@ class App extends React.Component {
 
   handleSaveButtonState() {
     const {
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardName,
-      cardDescription,
-      cardImage,
-      cardRare,
+      cardAttr1, cardAttr2, cardAttr3, cardName, cardDescription, cardImage, cardRare,
     } = this.state;
     const attrSum = this.checkAttrsSum(cardAttr1, cardAttr2, cardAttr3);
     const attr1Value = this.checkAttrValue(parseInt(cardAttr1, 10));
     const attr2Value = this.checkAttrValue(parseInt(cardAttr2, 10));
     const attr3Value = this.checkAttrValue(parseInt(cardAttr3, 10));
-    const requiredFields = this.checkRequiredFields(cardName,
+    const requiredFields = this.checkRequiredFields([cardName,
       cardDescription,
       cardImage,
-      cardRare);
-
+      cardRare]);
     const validations = [attrSum, attr1Value, attr2Value, attr3Value, requiredFields];
     const isValid = validations.every((validation) => validation);
     if (isValid) {
@@ -126,9 +105,7 @@ class App extends React.Component {
   filterCardsByName({ target }) {
     const { value: cardName } = target;
     if (!cardName) {
-      this.setState(({ cards }) => (
-        { filteredCards: cards }
-      ));
+      this.setState(({ cards }) => ({ filteredCards: cards }));
     } else {
       this.setState(({ cards }) => (
         { filteredCards: cards.filter(({ name }) => (
@@ -141,9 +118,7 @@ class App extends React.Component {
   filterCardsByRarity({ target }) {
     const { value } = target;
     if (value === 'todas') {
-      this.setState(({ cards }) => (
-        { filteredCards: cards }
-      ));
+      this.setState(({ cards }) => ({ filteredCards: cards }));
     } else {
       this.setState(({ cards }) => (
         { filteredCards: cards.filter(({ rarity }) => rarity === value) }
@@ -170,31 +145,20 @@ class App extends React.Component {
     return true;
   }
 
-  checkRequiredFields(cardName, cardDescription, cardImage, cardRare) {
+  testLength(field) {
+    return field.length === 0;
+  }
+
+  checkRequiredFields(fieldsToTest) {
     let returnedValue = true;
-    if (cardName.length === 0) {
-      returnedValue = false;
-    }
-    if (cardDescription.length === 0) {
-      returnedValue = false;
-    }
-    if (cardImage.length === 0) {
-      returnedValue = false;
-    }
-    if (cardRare.length === 0) {
-      returnedValue = false;
-    }
+    fieldsToTest.forEach((field) => {
+      if (this.testLength(field)) returnedValue = false;
+    });
     return returnedValue;
   }
 
   render() {
-    const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
+    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
       cardRare,
       cardTrunfo,
       hasTrunfo,
