@@ -3,6 +3,8 @@ import './style.css';
 
 class Form extends React.Component {
   render() {
+    // const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
+    //     cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
     return (
       <div>
         <form className="form">
@@ -69,7 +71,7 @@ class Form extends React.Component {
             >
               <option value="normal">Normal</option>
               <option value="raro">Raro</option>
-              <option value="muito-raro">Muito raro</option>
+              <option value="muito raro">Muito raro</option>
             </select>
           </label>
 
