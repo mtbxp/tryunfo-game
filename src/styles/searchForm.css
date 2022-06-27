@@ -9,8 +9,12 @@
   padding: 15px 20px 8px;
 }
 
-.search-form input {
-  background-color: rgba(255, 255, 255, 0.774);
+.search-form input, .search-form select {
+  background-color: rgba(255, 255, 255, 0.829);
   border: 2px solid whitesmoke;
-  font-weight: 600;
+  font-weight: 500;
+}
+
+.search-form select {
+  text-transform: capitalize;
 }

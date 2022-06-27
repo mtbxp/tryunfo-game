@@ -45,6 +45,7 @@ legend {
 
 .line-rare select {
   margin-left: 20px;
+  text-transform: capitalize;
   width: 200px;
 }
 

@@ -20,6 +20,7 @@ class App extends React.Component {
       remainingPoints: 210,
       cardList: [],
       nameSearch: '',
+      rareSearch: 'todas',
     };
   }
 
@@ -126,11 +127,17 @@ class App extends React.Component {
     }));
   }
 
-  handleSearch = (searchParam) => {
+  handleSearch = (searchedName, searchedRare) => {
     const { cardList } = this.state;
-    const newList = cardList.filter(({ cardName }) => (
-      cardName.toLowerCase().includes(searchParam.toLowerCase())));
-    return newList;
+    const nameSearchList = cardList.filter(({ cardName }) => (
+      cardName.toLowerCase().includes(searchedName.toLowerCase())
+    ));
+    const rareSearchList = nameSearchList.filter(({ cardRare }) => (
+      cardRare === searchedRare
+    ));
+
+    if (searchedRare === 'todas') return nameSearchList;
+    return rareSearchList;
   }
 
   render() {
@@ -146,6 +153,7 @@ class App extends React.Component {
       remainingPoints,
       cardList,
       nameSearch,
+      rareSearch,
     } = this.state;
 
     return (
@@ -188,12 +196,13 @@ class App extends React.Component {
               <SearchForm
                 onSearchChange={ this.handleChange }
                 nameSearch={ nameSearch }
+                rareSearch={ rareSearch }
               />
             </aside>
             <div className="cards-container">
               <h2>Baralho Tryunfo Pilotos F1</h2>
               {
-                this.handleSearch(nameSearch).map((card) => (
+                this.handleSearch(nameSearch, rareSearch).map((card) => (
                   <div className="card-container" key={ card.cardName }>
                     <Card
                       cardName={ card.cardName }
