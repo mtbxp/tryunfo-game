@@ -4,50 +4,64 @@ import PropTypes from 'prop-types';
 class Card extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo,
+      cardImage, cardTrunfo,
     } = this.props;
     return (
-      <div className="card">
-        <h1 className="texto-h1">Card Escolhido</h1>
-        <p data-testid="name-card">
-          cardName:
-          {' '}
+      <div className="carde">
+        <h1 data-testid="name-card " className="texto-h1">
           {cardName}
-        </p>
-        <p className="container-foto">
-          cardImage:
-          {' '}
+        </h1>
+        <div className="foti">
           <img
             data-testid="image-card"
             src={ cardImage }
             alt={ cardName }
             className="foto"
           />
-        </p>
-        <p data-testid="description-card">
-          cardDescription:
-          {' '}
+        </div>
+
+        <p data-testid="description-card" className="desc">
           {cardDescription}
         </p>
-        <p data-testid="attr1-card">
-          cardAttr1:
-          {' '}
-          {cardAttr1}
-        </p>
-        <p data-testid="attr2-card">
-          cardAttr2:
-          {cardAttr2}
-        </p>
-        <p data-testid="attr3-card">
-          cardAttr3:
-          {cardAttr3}
-        </p>
-        <p data-testid="rare-card">
-          cardRare:
-          {' '}
-          {cardRare}
-        </p>
-        {cardTrunfo && <span data-testid="trunfo-card">Super Trunfo</span>}
+        <div className="mb-0">
+          <div data-testid="attr1-card" className="progress w-30" style={ { heigt: 30 } }>
+            <div
+              className="progress-bar progress-bar-striped bg-dark progress-bar-animated"
+              role="progressbar"
+              style={ { width: `${cardAttr1}%` } }
+            >
+              {' '}
+              {cardAttr1}
+              {' '}
+            </div>
+          </div>
+          <div data-testid="attr2-card" className="progress w-30" style={ { heigt: 30 } }>
+            <div
+              className="progress-bar progress-bar-striped bg-danger
+              progress-bar-animated"
+              max={ 90 }
+              role="progressbar"
+              style={ { width: `${cardAttr2}%` } }
+            >
+              {' '}
+              {cardAttr2}
+              {' '}
+            </div>
+          </div>
+          <div data-testid="attr3-card" className="progress w-30" style={ { heigt: 30 } }>
+            <div
+              className="progress-bar progress-bar-striped bg-black progress-bar-animated"
+              role="progressbar"
+              style={ { width: `${cardAttr3}%` } }
+            >
+              {' '}
+              {cardAttr3}
+              {' '}
+            </div>
+          </div>
+        </div>
+
+        {cardTrunfo && <p data-testid="trunfo-card" className="p">Super Trunfo</p>}
       </div>
     );
   }
@@ -60,7 +74,6 @@ Card.propTypes = {
   cardAttr2: PropTypes.number.isRequired,
   cardAttr3: PropTypes.number.isRequired,
   cardImage: PropTypes.string.isRequired,
-  cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
 };
 

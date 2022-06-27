@@ -9,7 +9,7 @@ class Form extends React.Component {
       cardImage, cardRare, cardTrunfo, isSaveButtonDisabled, hasTrunfo,
     } = this.props;
     return (
-      <form className="texto">
+      <form className="carde">
         <h1 className="texto-h1">Tryunfo</h1>
         <label htmlFor="name-input" className="ajuste">
           Nome:
@@ -22,7 +22,7 @@ class Form extends React.Component {
             onChange={ onInputChange }
             placeholder="Nome"
             required="required"
-
+            className="botao"
           />
 
         </label>
@@ -36,6 +36,7 @@ class Form extends React.Component {
             name="cardDescription"
             placeholder="Descrição"
             onChange={ onInputChange }
+            className="botao"
           />
         </label>
 
@@ -92,6 +93,7 @@ class Form extends React.Component {
             value={ cardImage }
             name="cardImage"
             onChange={ onInputChange }
+            className="botao"
           />
 
         </label>
@@ -123,6 +125,7 @@ class Form extends React.Component {
           type="submit"
           onClick={ onSaveButtonClick }
           disabled={ isSaveButtonDisabled }
+          className="botao"
         >
           Salvar
         </button>

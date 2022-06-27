@@ -9,51 +9,69 @@ class Cartas extends React.Component {
 
   Mapear(cards) {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, hasTrunfo } = cards;
+      cardImage, hasTrunfo } = cards;
     return (
 
-      <div className="card" key={ cardName }>
-        <h1 data-testid="name-card" className="texto-h1">
-          {' '}
+      <div className="carde" key={ cardName }>
+        <h1 data-testid="name-card " className="texto-h1">
           {cardName}
         </h1>
-        <p className="container-foto">
-          cardImage:
-          {' '}
+        <div className="foti">
           <img
             data-testid="image-card"
             src={ cardImage }
             alt={ cardName }
             className="foto"
           />
-        </p>
-        <p data-testid="description-card">
+        </div>
+        <p data-testid="description-card" className="desc">
           cardDescription:
-          {' '}
           {cardDescription}
         </p>
-        <p data-testid="attr1-card">
-          cardAttr1:
-          {' '}
-          {cardAttr1}
-        </p>
-        <p data-testid="attr2-card">
-          cardAttr2:
-          {cardAttr2}
-        </p>
-        <p data-testid="attr3-card">
-          cardAttr3:
-          {cardAttr3}
-        </p>
-        <p data-testid="rare-card">
-          cardRare:
-          {' '}
-          {cardRare}
-        </p>
-        <p data-testid="rare-card">
-          cardRare:
-          {' '}
-          {hasTrunfo}
+        <div className="mb-0">
+          <div data-testid="attr1-card" className="progress w-30" style={ { heigt: 30 } }>
+            <div
+              className="progress-bar progress-bar-striped bg-dark progress-bar-animated"
+              role="progressbar"
+              style={ { width: `${cardAttr1}%` } }
+            >
+              {' '}
+              {cardAttr1}
+              {' '}
+            </div>
+          </div>
+          <div data-testid="attr2-card" className="progress w-30" style={ { heigt: 30 } }>
+            <div
+              className="progress-bar progress-bar-striped bg-danger
+              progress-bar-animated"
+              max={ 90 }
+              role="progressbar"
+              style={ { width: `${cardAttr2}%` } }
+            >
+              {' '}
+              {cardAttr2}
+              {' '}
+            </div>
+          </div>
+          <div data-testid="attr3-card" className="progress w-30" style={ { heigt: 30 } }>
+            <div
+              className="progress-bar progress-bar-striped bg-black progress-bar-animated"
+              role="progressbar"
+              style={ { width: `${cardAttr3}%` } }
+            >
+              {' '}
+              {cardAttr3}
+              {' '}
+            </div>
+          </div>
+        </div>
+
+        <p data-testid="rare-card" className="p">
+          {
+            (!hasTrunfo)
+              ? <p> </p>
+              : <p className="p">Super Trunfo </p>
+          }
         </p>
         <div className="container-bot">
           <button

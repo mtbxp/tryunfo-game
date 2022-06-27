@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap') ;
 
 .texto {
-  background-image: linear-gradient(red, yellow);
-  border: 10px ridge rgb(79, 79, 219);
+  background-image: linear-gradient(90deg, white 0%, lightgreen 80%, darkblue 100%);
+  border: 10px ridge rgb(79, 203, 219);
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -23,8 +23,11 @@
 }
 
 .foto {
-  display: flex;
-  width: 130px;
+  border-radius: 10px;
+  display: block;
+  height: 100%;
+  margin: auto;
+  width: 100%;
 }
 
 .container-foto {
@@ -33,11 +36,19 @@
   flex-direction: row;
 }
 
-.card {
-  background-image: linear-gradient(red, yellow);
+.carde {
+  background-image: url('https://thumbs.dreamstime.com/b/textura-de-papel-antiga-5668357.jpg  ');
   border: 10px ridge rgb(79, 79, 219);
+  color: white;
   height: 400px;
   width: 290px;
+}
+
+.botao {
+  align-items: baseline;
+  align-self: center;
+  display: flex;
+  width: 100%;
 }
 
 .centraliza {
@@ -48,9 +59,10 @@
 }
 
 .texto-h1 {
-  color: white;
+  color: rgb(238, 196, 10);
   font-family: Roboto , sans-serif;
   text-align: center;
+  text-shadow: 2px 2px black;
 }
 
 .cardfeitos {
@@ -62,3 +74,29 @@
   text-align: center;
 }
 
+.p {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  text-shadow: 2px 2px rgb(161, 9, 9);
+}
+
+.desc {
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.658);
+  border: 5px ridge rgba(5, 5, 5, 0.514);
+  color: black;
+  display: flex;
+  font-size: 10px;
+  height: 70px;
+  justify-content: center;
+  margin: auto;
+}
+
+.foti {
+  background-color: gray;
+  border: 10px ridge rgb(79, 214, 219);
+  height: 150px;
+  margin: auto;
+  width: 200px;
+}
