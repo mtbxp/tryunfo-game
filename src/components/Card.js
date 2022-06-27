@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DivAttributes from './inputsOfForm/DivAttributes';
 
 class Card extends React.Component {
   verifyTrunfo(cardTrunfo) {
@@ -49,11 +50,11 @@ class Card extends React.Component {
               >
                 {cardDescription}
               </p>
-              <div className="divAttributes">
-                <h2 data-testid="attr1-card">{`Ad: ${cardAttr1}`}</h2>
-                <h2 data-testid="attr2-card">{`Ap: ${cardAttr2}`}</h2>
-                <h2 data-testid="attr3-card">{`Resist: ${cardAttr3}`}</h2>
-              </div>
+              <DivAttributes
+                cardAttr1={ cardAttr1 }
+                cardAttr2={ cardAttr2 }
+                cardAttr3={ cardAttr3 }
+              />
               <p data-testid="rare-card">{cardRare}</p>
               {this.verifyTrunfo(cardTrunfo)}
             </div>
