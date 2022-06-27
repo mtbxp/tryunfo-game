@@ -15,6 +15,7 @@ class App extends React.Component {
       rarity: 'normal',
       deck: [],
       trunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       onInputChange: this.handleChange,
       onSaveButtonClick: this.handleCard,
@@ -84,7 +85,13 @@ class App extends React.Component {
   handleCard = (event) => {
     event.preventDefault();
     const { nameCard, descriptionCard,
-      attr1, attr2, attr3, imageCard, rarity } = this.state;
+      attr1, attr2, attr3, imageCard, rarity, trunfo } = this.state;
+
+    if (trunfo) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
 
     const card = {
       nameCard,
@@ -119,6 +126,7 @@ class App extends React.Component {
       imageCard,
       rarity,
       trunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -136,6 +144,7 @@ class App extends React.Component {
           cardImage={ imageCard }
           cardRare={ rarity }
           cardTrunfo={ trunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ onInputChange }
           onSaveButtonClick={ onSaveButtonClick }

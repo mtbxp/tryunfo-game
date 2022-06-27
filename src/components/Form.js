@@ -20,7 +20,6 @@ class Form extends React.Component {
     } = this.props;
     return (
       <form>
-        {hasTrunfo}
         <label htmlFor="nameCard">
           Nome
           <input
@@ -108,17 +107,25 @@ class Form extends React.Component {
           </select>
         </label>
 
-        <label htmlFor="trunfo">
-          Super Trybe Trunfo
-          <input
-            data-testid="trunfo-input"
-            type="checkbox"
-            name="trunfo"
-            id="trunfo"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-        </label>
+        {
+          hasTrunfo ? (
+            <p>
+              Você já tem um Super Trunfo em seu baralho
+            </p>
+          ) : (
+            <label htmlFor="trunfo">
+              Super Trybe Trunfo
+              <input
+                data-testid="trunfo-input"
+                type="checkbox"
+                name="trunfo"
+                id="trunfo"
+                checked={ cardTrunfo }
+                onChange={ onInputChange }
+              />
+            </label>
+          )
+        }
 
         <button
           data-testid="save-button"
