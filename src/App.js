@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 
 import './App.css';
@@ -28,6 +29,7 @@ class App extends React.Component {
     this.handleCardCreation = this.handleCardCreation.bind(this);
     this.handleRemoveCard = this.handleRemoveCard.bind(this);
     this.filterCardsByName = this.filterCardsByName.bind(this);
+    this.filterCardsByRarity = this.filterCardsByRarity.bind(this);
   }
 
   handleChange({ target }) {
@@ -136,6 +138,19 @@ class App extends React.Component {
     }
   }
 
+  filterCardsByRarity({ target }) {
+    const { value } = target;
+    if (value === 'todas') {
+      this.setState(({ cards }) => (
+        { filteredCards: cards }
+      ));
+    } else {
+      this.setState(({ cards }) => (
+        { filteredCards: cards.filter(({ rarity }) => rarity === value) }
+      ));
+    }
+  }
+
   checkAttrsSum(attr1, attr2, attr3) {
     const sum = parseInt(attr1, 10) + parseInt(attr2, 10) + parseInt(attr3, 10);
     const maxAttr = 210;
@@ -183,10 +198,9 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
-      cards,
       filteredCards,
     } = this.state;
-
+    const rarities = ['todas', 'normal', 'raro', 'muito raro'];
     this.handleSaveButtonState();
 
     return (
@@ -225,6 +239,11 @@ class App extends React.Component {
               data-testid="name-filter"
               onChange={ this.filterCardsByName }
             />
+            <select data-testid="rare-filter" onChange={ this.filterCardsByRarity }>
+              {rarities.map((rarity) => (
+                <option key={ rarity } value={ rarity }>{rarity}</option>
+              ))}
+            </select>
           </div>
           {filteredCards.map(
             ({ name, desc, attr1, attr2, attr3, image, rarity, trunfo }, id) => (
