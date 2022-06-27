@@ -4,32 +4,32 @@ import React from 'react';
 class Form extends React.Component {
   // constructor() {
   //   super();
-  //   this.onInputChange = this.onInputChange.bind(this);
-  //   this.state = {
-  //     nameInput: '',
-  //     descriptionInput: '',
-  //     attr1Input: '',
-  //     attr2Input: '',
-  //     attr3Input: '',
-  //     imageInput: '',
-  //     rareInput: '',
-  //     checkbox: 'false',
-  //     // saveButton:
-  //   };
+  //   // this.onInputChange = this.onInputChange.bind(this);
+  //   // this.state = {
+  //   //   nameInput: '',
+  //   //   descriptionInput: '',
+  //   //   attr1Input: '',
+  //   //   attr2Input: '',
+  //   //   attr3Input: '',
+  //   //   imageInput: '',
+  //   //   rareInput: '',
+  //   //   checkbox: 'false',
+  //   //   // saveButton:
+  //   // };
   // }
 
-  onInputChange = ({ target }) => {
-    console.log(target.value);
-    this.setState({
-      [target.name]: (target.value),
-    });
-  }
+  // onInputChange = ({ target }) => {
+  //   console.log(target.value);
+  //   this.setState({
+  //     [target.name]: (target.value),
+  //   });
+  // }
 
   render() {
     const { cardName, cardDescription, cardAttr1,
       cardAttr2, cardAttr3, cardImage,
       cardRare, cardTrunfo,
-      //  hasTrunfo,
+      // hasTrunfo,
       isSaveButtonDisabled, onInputChange,
       onSaveButtonClick } = this.props;
 
@@ -38,6 +38,7 @@ class Form extends React.Component {
       <div>
         <form>
           <label htmlFor="name-input">
+            <h3>Nome:</h3>
             <input
               type="text"
               name="nameInput"
@@ -47,6 +48,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="description-input">
+            <h3>Descrição:</h3>
             <input
               type="textarea"
               data-testid="description-input"
@@ -56,6 +58,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="attr1-input">
+            <h3> Attr01:</h3>
             <input
               type="number"
               data-testid="attr1-input"
@@ -65,6 +68,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="attr2-input">
+            <h3>Attr02:</h3>
             <input
               type="number"
               data-testid="attr2-input"
@@ -74,6 +78,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="attr3-input">
+            <h3> Attr03:</h3>
             <input
               type="number"
               data-testid="attr3-input"
@@ -83,6 +88,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="image-input">
+            <h3>Imagem:</h3>
             <input
               type="text"
               data-testid="image-input"
@@ -92,6 +98,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="rare-input">
+            <h3>Raridade:</h3>
             <select
               name="rareInput"
               data-testid="rare-input"
@@ -104,6 +111,7 @@ class Form extends React.Component {
             </select>
           </label>
           <label htmlFor="trunfo-input">
+            <h3>Super Trybe Trunfo</h3>
             <input
               type="checkbox"
               data-testid="trunfo-input"
@@ -113,7 +121,7 @@ class Form extends React.Component {
             />
           </label>
           <button
-            type="button"
+            type="submit"
             name="saveButton"
             data-testid="save-button"
             disabled={ isSaveButtonDisabled }
@@ -135,7 +143,7 @@ Form.propTypes = {
   cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
-  cardTrunfo: PropTypes.bool.isRequired,
+  cardTrunfo: PropTypes.string.isRequired,
   // hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
