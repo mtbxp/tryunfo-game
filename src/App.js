@@ -51,6 +51,7 @@ class App extends React.Component {
   };
 
   clearState() {
+    console.log(this.state);
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -58,7 +59,7 @@ class App extends React.Component {
       cardAttr2: 0,
       cardAttr3: 0,
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: true,
       isSaveButtonDisabled: true,
     });
