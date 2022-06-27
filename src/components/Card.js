@@ -29,25 +29,28 @@ class Card extends React.Component {
 
     return (
       <div>
-        <h2 data-testid="name-card">{ cardName }</h2>
+        <h1>Pré-visualização</h1>
+        <h2 data-testid="name-card">{cardName}</h2>
         <br />
-        <img src={ cardImage } data-testid="image-card" alt={ `${cardName}` } />
+        <img src={ cardImage } data-testid="image-card" alt={ cardName } />
         <br />
-        <p data-testid="description-card">{ cardDescription }</p>
+        <p data-testid="description-card">{cardDescription}</p>
         <br />
-        <h3>Atributo 1:</h3>
-        <h3 data-testid="attr1-card">{ cardAttr1 }</h3>
-        <br />
-        <h3>Atributo 2:</h3>
-        <h3 data-testid="attr2-card">{ cardAttr2 }</h3>
-        <br />
-        <h3>Atributo 3:</h3>
-        <h3 data-testid="attr3-card">{ cardAttr3 }</h3>
-        <br />
+        <div className="atributos">
+          <h3>Atributo 1:</h3>
+          <h3 data-testid="attr1-card">{cardAttr1}</h3>
+          <br />
+          <h3>Atributo 2:</h3>
+          <h3 data-testid="attr2-card">{cardAttr2}</h3>
+          <br />
+          <h3>Atributo 3:</h3>
+          <h3 data-testid="attr3-card">{cardAttr3}</h3>
+          <br />
+        </div>
         <h4>Raridade:</h4>
-        <h3 data-testid="rare-card">{ cardRare }</h3>
+        <h3 data-testid="rare-card">{cardRare}</h3>
         <br />
-        <div>{ this.isTrunfo() }</div>
+        <div>{this.isTrunfo()}</div>
       </div>
     );
   }
