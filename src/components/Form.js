@@ -5,41 +5,26 @@ class Form extends React.Component {
     return (
       <div>
         <form>
-          <label>
-            Nome
-            <input type="text" data-testid="name-input" />
-          </label>
-          <label>
-            Descrição
-            <textarea data-testid="description-input" />
-          </label>
-          <label>
-            Attr01
-            <input type="number" data-testid="attr1-input" />
-          </label>
-          <label>
-            Attr02
-            <input type="number" data-testid="attr2-input" />
-          </label>
-          <label>
-            Attr03
-            <input type="number" data-testid="attr3-input" />
-          </label>
-          <label>
-            Imagem
-            <input type="text" data-testid="image-input" />
-          </label>
+          Nome
+          <input type="text" data-testid="name-input" />
+          Descrição
+          <textarea data-testid="description-input" />
+          Attr01
+          <input type="number" data-testid="attr1-input" />
+          Attr02
+          <input type="number" data-testid="attr2-input" />
+          Attr03
+          <input type="number" data-testid="attr3-input" />
+          Imagem
+          <input type="text" data-testid="image-input" />
           <select data-testid="rare-input">
             <option>normal</option>
             <option>raro</option>
             <option>muito raro</option>
           </select>
-          <label>
-            Super Tryunfo
-            <input type="checkbox" data-testid="trunfo-input" />
-          </label>
+          Super Tryunfo
+          <input type="checkbox" data-testid="trunfo-input" />
           <button type="submit" data-testid="save-button">Salvar</button>
-
         </form>
       </div>
     );
