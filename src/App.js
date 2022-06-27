@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import './styles/App.css';
 
 class App extends React.Component {
   constructor() {
@@ -9,13 +10,50 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
-      cardRare: 'normal',
+      cardRare: '',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
     };
+  }
+
+  isSaveButtonDisabled = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+    const max = 90;
+    const min = 0;
+    const totalMax = 210;
+    const attr1 = parseInt(cardAttr1, 10);
+    const attr2 = parseInt(cardAttr2, 10);
+    const attr3 = parseInt(cardAttr3, 10);
+    let result;
+    if (cardName === ''
+    || cardDescription === ''
+    || cardImage === ''
+    || cardRare === '') {
+      result = true;
+    } else if (attr1 > max || attr2 > max || attr3 > max) {
+      result = true;
+    } else if (attr1 < min || attr2 < min || attr3 < min) {
+      result = true;
+    } else if (attr1 + attr2 + attr3 > totalMax) {
+      result = true;
+    } else {
+      result = false;
+    }
+    this.setState({
+      isSaveButtonDisabled: result,
+    });
   }
 
   onInputChange = ({ target }) => {
@@ -23,6 +61,8 @@ class App extends React.Component {
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+    }, () => {
+      this.isSaveButtonDisabled();
     });
   }
 
@@ -30,8 +70,20 @@ class App extends React.Component {
     return (
       <div>
         <h1>Valorant Super Trunfo</h1>
-        <Form { ...this.state } onInputChange={ this.onInputChange } />
-        <Card { ...this.state } />
+        <div className="main-Content">
+          <fieldset className="form-section">
+            <legend>Form</legend>
+            <Form
+              { ...this.state }
+              onInputChange={ this.onInputChange }
+            />
+          </fieldset>
+          <fieldset className="card-section">
+            <legend>Card</legend>
+            <Card { ...this.state } />
+          </fieldset>
+        </div>
+
       </div>
     );
   }

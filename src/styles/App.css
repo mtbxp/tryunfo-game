@@ -1,0 +1,16 @@
+h1 {
+  text-align: center;
+}
+
+.main-Content {
+  display: flex;
+  justify-content: center;
+}
+
+.form-section {
+  padding: 4;
+}
+
+.card-section {
+  width: 200px;
+}
