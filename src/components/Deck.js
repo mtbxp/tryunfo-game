@@ -8,7 +8,7 @@ class Deck extends Component {
       deleteCard,
     } = this.props;
 
-    const test = () => savedDeck.map((card) => (
+    const loadDeck = () => savedDeck.map((card) => (
       <div className="card-display" key={ card.cardIndex }>
         <div className="card-container">
           <h2 data-testid="name-card">{ card.cardName }</h2>
@@ -54,9 +54,9 @@ class Deck extends Component {
     ));
 
     return (
-      <>
-        {test()}
-      </>
+      <div className="deck-container">
+        {loadDeck()}
+      </div>
     );
   }
 }

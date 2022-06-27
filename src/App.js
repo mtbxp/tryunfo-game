@@ -193,13 +193,11 @@ class App extends React.Component {
             hasTrunfo={ hasTrunfo }
           />
         </section>
-        <div className="deck-container">
-          <Deck
-            savedDeck={ cardDeck }
-            deleteCard={ this.deleteCard }
-            deckLength={ deckLength }
-          />
-        </div>
+        <Deck
+          savedDeck={ cardDeck }
+          deleteCard={ this.deleteCard }
+          deckLength={ deckLength }
+        />
       </>
     );
   }

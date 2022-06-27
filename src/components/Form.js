@@ -45,6 +45,7 @@ class Form extends Component {
             name="cardName"
             value={ cardName }
             onChange={ onInputChange }
+            maxLength="53"
           />
         </label>
 

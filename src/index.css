@@ -192,10 +192,13 @@ button {
 }
 
 .card-container h2 {
+  align-items: center;
   background-color: var(--color5);
   color: white;
-  font-size: 1.7rem;
+  display: flex;
+  font-size: 1.8rem;
   height: 75px;
+  justify-content: center;
   overflow: hidden;
   padding: 2px;
   text-align: center;
