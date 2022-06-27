@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../css/App.css';
 
 class Form extends React.Component {
   render() {
@@ -8,7 +9,7 @@ class Form extends React.Component {
     const { isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
 
     return (
-      <form>
+      <form className="card-form">
         <label htmlFor="name">
           Letters name:
           <input
@@ -18,6 +19,7 @@ class Form extends React.Component {
             type="text"
             value={ cardName }
             onChange={ onInputChange }
+            placeholder="Card name"
           />
         </label>
         <br />
@@ -30,6 +32,7 @@ class Form extends React.Component {
             type="textarea"
             value={ cardDescription }
             onChange={ onInputChange }
+            placeholder="Card description"
           />
         </label>
         <br />
@@ -42,6 +45,7 @@ class Form extends React.Component {
             type="number"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            placeholder="First attribute"
           />
         </label>
         <br />
@@ -54,6 +58,7 @@ class Form extends React.Component {
             type="number"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            placeholder="Second attribute"
           />
         </label>
         <br />
@@ -66,6 +71,7 @@ class Form extends React.Component {
             type="number"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            placeholder="Third attribute"
           />
         </label>
         <br />
@@ -78,6 +84,7 @@ class Form extends React.Component {
             type="text"
             value={ cardImage }
             onChange={ onInputChange }
+            placeholder="Card image"
           />
         </label>
         <br />
@@ -114,6 +121,7 @@ class Form extends React.Component {
           )}
         <br />
         <button
+          className="button"
           data-testid="save-button"
           type="button"
           disabled={ isSaveButtonDisabled }

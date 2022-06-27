@@ -2,7 +2,9 @@
 
 import React from 'react';
 import Card from './components/Card';
+import FilterForm from './components/FilterForm';
 import Form from './components/Form';
+import './css/App.css';
 
 class App extends React.Component {
   constructor() {
@@ -18,6 +20,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      isFilterAbled: false,
       myCards: [],
     };
   }
@@ -74,75 +77,99 @@ class App extends React.Component {
       cardAttr3: '0',
       cardRare: 'normal',
       cardTrunfo: false,
-      myCards: [newCard, ...estadoAnterior.myCards],
+      myCards: [...estadoAnterior.myCards, newCard],
     }), () => this.setState({ hasTrunfo: this.veriryTrunfo() }));
   }
 
-  deleteCard = (cardName, cardTrunfo) => {
+  deleteCard = ({ target }) => {
+    const { id: cardName } = target;
     const { myCards: lastCards } = this.state;
-    this.setState({ myCards: lastCards.filter((card) => card.cardName !== cardName) });
-    if (cardTrunfo) this.setState(() => ({ hasTrunfo: false }));
+    this.setState({
+      myCards: lastCards.filter((card) => card.cardName !== cardName),
+    }, () => this.setState({ hasTrunfo: this.veriryTrunfo() }));
+  }
+
+  filterCard = ({ target }) => {
+    const { name, type } = target;
+    const value = (type === 'checkbox') ? target.checked : target.value;
+    const { myCards: lastCards } = this.state;
+    this.setState(() => ({
+      myCards: lastCards.filter((card) => card[name].includes(value)),
+    }));
+  }
+
+  selectedFilter = () => {
+    this.setState({ isFilterAbled: true });
   }
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3 } = this.state;
     const { cardImage, cardRare, cardTrunfo, hasTrunfo, myCards } = this.state;
-    const { isSaveButtonDisabled } = this.state;
+    const { isSaveButtonDisabled, isFilterAbled } = this.state;
     return (
-      <div>
-        <header>Add new card</header>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
-        <ul>
+      <div className="body">
+        <header>My deck of cards</header>
+        <section className="add-card">
+          <Form
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+          />
+        </section>
+        <section className="cards-display">
+          <FilterForm
+            filterCard={ this.filterCard }
+            isFilterAbled={ isFilterAbled }
+            selectedFilter={ this.selectedFilter }
+          />
           All the cards:
-          {
-            myCards.map((card) => (
-              <li key={ cardName }>
-                <Card
-                  cardName={ card.cardName }
-                  cardDescription={ card.cardDescription }
-                  cardAttr1={ card.cardAttr1 }
-                  cardAttr2={ card.cardAttr2 }
-                  cardAttr3={ card.cardAttr3 }
-                  cardImage={ card.cardImage }
-                  cardRare={ card.cardRare }
-                  cardTrunfo={ card.cardTrunfo }
-                />
-                {/* <button
-                  type="button"
-                  onClick={
-                    this.setState({ myCards: lastCards.filter((card) => card.cardName !== cardName) }, () => ({ hasTrunfo: this.veriryTrunfo() })),
-                  }
-                  data-testid="delete-button"
-                >
-                  Excluir
-                </button> */}
-              </li>
-            ))
-          }
-        </ul>
+          <ul className="cards-list">
+            {
+              myCards.map((card) => (
+                <li key={ card.cardName } className="card">
+                  <Card
+                    cardName={ card.cardName }
+                    cardDescription={ card.cardDescription }
+                    cardAttr1={ card.cardAttr1 }
+                    cardAttr2={ card.cardAttr2 }
+                    cardAttr3={ card.cardAttr3 }
+                    cardImage={ card.cardImage }
+                    cardRare={ card.cardRare }
+                    cardTrunfo={ card.cardTrunfo }
+                  />
+                  <button
+                    type="button"
+                    onClick={ this.deleteCard }
+                    id={ card.cardName }
+                    data-testid="delete-button"
+                  >
+                    Excluir
+                  </button>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+        <footer>by @Larissa Menezes, 2022</footer>
       </div>
     );
   }
