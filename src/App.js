@@ -15,6 +15,7 @@ class App extends React.Component {
       cardart: '',
       cardrare: 'normal',
       cardtrunfo: '',
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       cardlist: [],
     };
@@ -59,6 +60,7 @@ class App extends React.Component {
     e.preventDefault();
     const { cardname, carddescription, cardat1, cardat2,
       cardat3, cardart, cardrare, cardtrunfo, cardlist } = this.state;
+    if (cardtrunfo === true) this.setState({ hasTrunfo: true });
     const carta = { cardname,
       carddescription,
       cardat1,
@@ -85,7 +87,7 @@ class App extends React.Component {
   render() {
     const { cardname, carddescription, cardat1, cardat2,
       cardat3, cardart, cardrare, cardtrunfo,
-      isSaveButtonDisabled, cardlist } = this.state;
+      isSaveButtonDisabled, cardlist, hasTrunfo } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -102,6 +104,7 @@ class App extends React.Component {
             cardImage={ cardart }
             cardRare={ cardrare }
             cardTrunfo={ cardtrunfo }
+            hasTrunfo={ hasTrunfo }
           />
           <Card
             cardName={ cardname }
