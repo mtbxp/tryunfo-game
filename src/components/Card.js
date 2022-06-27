@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Card extends React.Component {
-  // Lógica baseada na dúvida de Victor Yuri Tavares, respondida pelo slack
+  // Lógica da função handleTrunfoCard baseada na dúvida de Victor Yuri Tavares, respondida pelo slack
   handleTrunfoCard = (isSuperTrunfo) => {
     const superTrunfo = <span data-testid="trunfo-card">Super Trunfo</span>;
     return isSuperTrunfo === true ? superTrunfo : '';
