@@ -31,7 +31,7 @@ export default class CardList extends Component {
       <div>
         <section>
           <label htmlFor="nameFilter">
-            <h3>Filtro por nome: </h3>
+            <span>Filtro por nome: </span>
             <input
               type="text"
               data-testid="name-filter"
@@ -42,7 +42,7 @@ export default class CardList extends Component {
             />
           </label>
           <label htmlFor="rareFilter">
-            <h3>Filtro por raridade: </h3>
+            <span>Filtro por raridade: </span>
             <select
               type="text"
               data-testid="rare-filter"
@@ -68,7 +68,7 @@ export default class CardList extends Component {
               checked={ trunfoFilter }
               onChange={ this.onInputChange }
             />
-            <h3>Filtro por Trunfo: </h3>
+            <span>Filtro por Trunfo: </span>
           </label>
         </section>
         <section>
@@ -106,6 +106,6 @@ CardList.propTypes = {
       cardTrunfo: PropTypes.string,
     }),
   ).isRequired,
-  deleteButtonClick: PropTypes.func.isRequired,
-  preview: PropTypes.bool.isRequired,
-};
+  deleteButtonClick: PropTypes.func,
+  preview: PropTypes.bool,
+}.isRequired;
