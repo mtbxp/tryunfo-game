@@ -13,25 +13,26 @@
 .cardDiv {
   background: linear-gradient(rgb(124, 124, 18), rgb(225, 225, 174));
   border: 1px solid black;
-  width: 350px;
   padding: 10px;
+  width: 350px;
 }
 
 .divApp {
   display: flex;
 }
 
-.cartas-adicionadas {
+/* .cartas-adicionadas {
   display: flex;
-  flex-direction: row;
   flex-flow: row;
+  flex-direction: row;
   flex-wrap: wrap;
-}
+} */
 
 .super-trunfo {
   background: linear-gradient(green, yellow);
   color: linen;
   font-style: oblique;
+
   /* font-weight: bold; */
   text-align: center;
 }
@@ -40,6 +41,7 @@
   background: linear-gradient(rgb(122, 115, 57), rgb(129, 128, 56));
   color: linen;
   font-style: oblique;
+
   /* font-weight: bold; */
   text-align: center;
 }
