@@ -33,8 +33,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Form value={ this.state } onInputChange={ this.handleChange } />
-        <Card value={ this.state } />
+        <Form { ...this.state } onInputChange={ this.handleChange } />
+        <Card { ... this.state } />
       </div>
     );
   }
