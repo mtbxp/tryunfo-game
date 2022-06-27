@@ -3,11 +3,23 @@ import Form from './components/Form';
 import Card from './components/Card';
 
 class App extends React.Component {
-  // constructor() {
-  //   super();
-  //   this.state = {}
-  // }
+  constructor() {
+    super();
 
+    this.state = {
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false,
+      // hasTrunfo: false,
+      // isSaveButtonDisabled: true,
+    };
+    this.onInputChange = this.onInputChange.bind(this);
+  }
   // addNewProject = (project) => {
   //   this.setState({
 
@@ -22,15 +34,35 @@ class App extends React.Component {
     });
   }
 
-  negativeSubmit = (e) => {
-    e.preventDefault();
-  }
-
   render() {
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      // isSaveButtonDisabled
+    } = this.state;
+
     return (
       <div>
-        <Form />
+        <h1>Project Tryunfo</h1>
+        <h2>Forms</h2>
+        <Form
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          onInputChange={ this.onInputChange }
+        />
         ,
+        <h2> Preview Card </h2>
         <Card />
         ,
       </div>
