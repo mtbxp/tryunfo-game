@@ -13,7 +13,7 @@ export default class Form extends Component {
       <form>
         <h1>Adicionar nova carta</h1>
         <label htmlFor="name-input">
-          <span>Nome: </span>
+          Nome:
           <input
             type="text"
             data-testid="name-input"
@@ -25,7 +25,7 @@ export default class Form extends Component {
           />
         </label>
         <label htmlFor="description-input">
-          <span>Descrição: </span>
+          Descrição:
           <input
             type="textarea"
             data-testid="description-input"
@@ -37,7 +37,7 @@ export default class Form extends Component {
         </label>
         <div>
           <label htmlFor="attr1-input">
-            <span>Habilidade: </span>
+            Habilidade:
             <input
               type="number"
               data-testid="attr1-input"
@@ -48,7 +48,7 @@ export default class Form extends Component {
             />
           </label>
           <label htmlFor="attr2-input">
-            <span>Força: </span>
+            Força:
             <input
               name="cardAttr2"
               value={ cardAttr2 }
@@ -59,7 +59,7 @@ export default class Form extends Component {
             />
           </label>
           <label htmlFor="attr3-input">
-            <span>Vida: </span>
+            Vida:
             <input
               className="input"
               name="cardAttr3"
@@ -72,7 +72,7 @@ export default class Form extends Component {
           </label>
         </div>
         <label htmlFor="image-input">
-          <span>Imagem: </span>
+          Imagem:
           <input
             placeholder="Digite o endereço da imagem"
             name="cardImage"
@@ -84,7 +84,7 @@ export default class Form extends Component {
           />
         </label>
         <label htmlFor="rare-input">
-          <span>Raridade: </span>
+          Raridade:
           <select
             name="cardRare"
             value={ cardRare }
