@@ -33,7 +33,7 @@ class App extends React.Component {
 
       const maxAttr = 90;
       const minAttr = 0;
-      const maxSumAttr = 120;
+      const maxSumAttr = 210;
 
       const empty = cardName !== ''
         && cardDescription !== '' && cardImage !== '';
