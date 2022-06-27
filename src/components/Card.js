@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 class Card extends Component {
   render() {
     const {
+      cardIndex,
       cardName,
       cardDescription,
       cardAttr1,
@@ -12,10 +13,25 @@ class Card extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      isPreview,
+      deleteCard,
     } = this.props;
 
+    const deletBtn = () => {
+      if (!isPreview) {
+        return (
+          <button
+            type="submit"
+            data-testid="delete-button"
+            onClick={ () => deleteCard(cardIndex) }
+          >
+            Excluir
+          </button>);
+      }
+    };
+
     return (
-      <div>
+      <div className="card-container">
         <h2 data-testid="name-card">{ cardName }</h2>
         <img
           src={ cardImage }
@@ -29,12 +45,15 @@ class Card extends Component {
         <p data-testid="rare-card">{ cardRare }</p>
         {cardTrunfo
           && <p data-testid="trunfo-card">Super Trunfo</p>}
+        {deletBtn()}
       </div>
     );
   }
 }
 
 Card.propTypes = {
+  cardIndex: PropTypes.number,
+  deleteCard: PropTypes.func,
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.string.isRequired,
@@ -43,6 +62,13 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  isPreview: PropTypes.bool.isRequired,
+};
+
+Card.defaultProps = {
+  cardIndex: 0,
+  deleteCard: () => {},
+
 };
 
 export default Card;

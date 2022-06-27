@@ -1,9 +1,10 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
-import deck from './deckData';
+import Header from './components/Header';
+import deck from './deck/deckData';
 
-const cardDeck = deck;
+let cardDeck = deck;
 
 class App extends React.Component {
   constructor() {
@@ -29,6 +30,7 @@ class App extends React.Component {
     this.checkNoEmptyInput = this.checkNoEmptyInput.bind(this);
     this.checkValidAttrs = this.checkValidAttrs.bind(this);
     this.hasSuperTrunfo = this.hasSuperTrunfo.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
   }
 
   onInputChange({ target }) {
@@ -52,6 +54,7 @@ class App extends React.Component {
       cardTrunfo,
     } = this.state;
     cardDeck.unshift({
+      cardIndex: '',
       cardName,
       cardDescription,
       cardAttr1,
@@ -60,9 +63,22 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      isPreview: false,
+      deleteCard: this.deleteCard,
     });
     this.hasSuperTrunfo();
     this.clearState();
+    this.assignId();
+  }
+
+  assignId() {
+    cardDeck.forEach((card, index) => {
+      card.cardIndex = index;
+    });
+  }
+
+  deleteCard(cardIndex) {
+    cardDeck = cardDeck.filter((card) => card.cardIndex !== cardIndex);
   }
 
   clearState() {
@@ -140,35 +156,43 @@ class App extends React.Component {
       isSaveButtonDisabled,
     } = this.state;
 
+    this.assignId();
+
     return (
       <>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
+        <Header />
+        <section className="main-section">
+          <Form
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            isPreview
+          />
+        </section>
+
         {deck.map((card, index) => (<Card
           key={ `${cardName}${index}` }
           cardName={ card.cardName }
+          cardIndex={ card.cardIndex }
           cardDescription={ card.cardDescription }
           cardAttr1={ card.cardAttr1 }
           cardAttr2={ card.cardAttr2 }
@@ -176,6 +200,8 @@ class App extends React.Component {
           cardImage={ card.cardImage }
           cardRare={ card.cardRare }
           cardTrunfo={ card.cardTrunfo }
+          isPreview={ false }
+          deleteCard={ this.deleteCard }
         />))}
       </>
     );
