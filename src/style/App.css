@@ -13,8 +13,8 @@ img {
 .card {
   border: 1px solid gray;
   height: 800px;
-  width: 350px;
   text-align: center;
+  width: 350px;
 }
 
 .deck {
@@ -147,11 +147,11 @@ small, .text_small {
 button {
   background: var(--accent);
   color: var(--white);
-  cursor: pointer;
   border: transparent;
   border-radius: var(--borderRadius);
-  display: inline-block;
+  cursor: pointer;
   box-shadow: var(--shadow-1);
+  display: inline-block;
   font-size: 1.2rem;
   letter-spacing: var(--letterSpacing);
   margin-right: 1rem;
