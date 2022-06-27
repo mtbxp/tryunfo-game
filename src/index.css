@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(101, 155, 155);
+  background: linear-gradient(135deg, #71b1e6, #9b59b6);
 }
 
 code {
@@ -13,7 +13,67 @@ code {
     monospace;
 }
 
+#title {
+  margin: 5%;
+  text-align: center;
+  font-size: 70px;
+  color: rgb(225, 226, 228);
+}
+
 .form {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 25px;
+  margin: 5%;
+  background-color: rgba(228, 218, 227, 0.473);
+  border-radius: 10px;
+  line-height: 1; 
+}
+
+.form-child {
+  display: flex;
+  align-items: center;
+  line-height: 2;
+  color: rgb(31, 48, 63);
+}
+
+input {
+  width: 25%;
+  background-color: rgba(211, 179, 211, 0.568);
+}
+
+.card-name {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  line-height: 2;
+  color: rgb(31, 48, 63);
+}
+
+.card-description {
+  display: flex;
+  flex-direction: column;
+  line-height: 2;
+  color: rgb(31, 48, 63);
+}
+
+#description-box {
+  height: 50px;
+  width: 250px;
+  background-color: rgba(211, 179, 211, 0.568);
+}
+
+#selection-box {
+  margin-left: 10px;
+  height: 25px;
+  width: 100px;
+  font-size: 15px;
+  background-color: rgba(211, 179, 211, 0.568);
+}
+
+#submit-button {
+  height: 40px;
+  width: 110px;
+  margin: 10px;
+  border-radius: 5px;
 }
