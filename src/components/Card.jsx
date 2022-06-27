@@ -18,20 +18,39 @@ class Card extends Component {
       if (!cardTrunfo) {
         return null;
       }
-      return <div data-testid="trunfo-card">Super Trunfo</div>;
+      return <p className="attributes" data-testid="trunfo-card">Super Trunfo</p>;
     };
 
     return (
-      <div className="card" data-testid="name-card">
-        { cardName }
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        <div data-testid="description-card">{cardDescription}</div>
-        <div data-testid="attr1-card">{ cardAttr1 }</div>
-        <div data-testid="attr2-card">{ cardAttr2 }</div>
-        <div data-testid="attr3-card">{ cardAttr3 }</div>
-        <div data-testid="rare-card">{ cardRare }</div>
-        { isCardTrunfoTrue() }
-      </div>
+      <section className="card-section">
+        <div className="card" data-testid="name-card">
+          <h3 className="card-name">{ cardName }</h3>
+          <img src={ cardImage } alt={ cardName } data-testid="image-card" />
+          <p
+            id="description-card"
+            className="attributes"
+            data-testid="description-card"
+          >
+            {cardDescription}
+          </p>
+          <div className="attributes">
+            Força.....................................
+            <p className="attributes inline" data-testid="attr1-card">{ cardAttr1 }</p>
+          </div>
+
+          <div className="attributes">
+            Velocidade.............................
+            <p className="attributes inline" data-testid="attr2-card">{ cardAttr2 }</p>
+          </div>
+
+          <div className="attributes">
+            Inteligencia............................
+            <p className="attributes inline" data-testid="attr3-card">{ cardAttr3 }</p>
+          </div>
+          <p className="attributes" data-testid="rare-card">{ cardRare }</p>
+          { isCardTrunfoTrue() }
+        </div>
+      </section>
     );
   }
 }
