@@ -1,7 +1,7 @@
 const defaultImg = 'https://xurras.co/_library/images/default-avatar.jpg';
-const defaultDescription = 'Defaul description template.';
+const defaultDescription = 'Default description template.';
 
-const deck = [
+const savedDeck = [
   {
     cardIndex: '',
     cardName: 'Name Template 01',
@@ -12,7 +12,6 @@ const deck = [
     cardImage: defaultImg,
     cardRare: 'normal',
     cardTrunfo: false,
-    isPreview: false,
   },
   {
     cardIndex: '',
@@ -24,7 +23,6 @@ const deck = [
     cardImage: defaultImg,
     cardRare: 'raro',
     cardTrunfo: false,
-    isPreview: false,
   },
   {
     cardIndex: '',
@@ -36,7 +34,6 @@ const deck = [
     cardImage: defaultImg,
     cardRare: 'muito raro',
     cardTrunfo: false,
-    isPreview: false,
   },
   {
     cardIndex: '',
@@ -48,8 +45,7 @@ const deck = [
     cardImage: defaultImg,
     cardRare: 'normal',
     cardTrunfo: false,
-    isPreview: false,
   },
 ];
 
-export default deck;
+export default savedDeck;

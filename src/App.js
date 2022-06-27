@@ -2,15 +2,17 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import Header from './components/Header';
-import deck from './deck/deckData';
+import Deck from './components/Deck';
+import savedDeck from './deck/deckData';
 
-let cardDeck = deck;
+let cardDeck = savedDeck;
 
 class App extends React.Component {
   constructor() {
     super();
 
     this.state = {
+      deckLength: cardDeck.length,
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -63,8 +65,6 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      isPreview: false,
-      deleteCard: this.deleteCard,
     });
     this.hasSuperTrunfo();
     this.clearState();
@@ -79,6 +79,9 @@ class App extends React.Component {
 
   deleteCard(cardIndex) {
     cardDeck = cardDeck.filter((card) => card.cardIndex !== cardIndex);
+    this.setState({
+      deckLength: cardDeck.length,
+    });
   }
 
   clearState() {
@@ -144,6 +147,7 @@ class App extends React.Component {
 
   render() {
     const {
+      deckLength,
       cardName,
       cardDescription,
       cardAttr1,
@@ -185,25 +189,14 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
-            isPreview
           />
         </section>
-
         <div className="deck-container">
-          {deck.map((card, index) => (<Card
-            key={ `${cardName}${index}` }
-            cardName={ card.cardName }
-            cardIndex={ card.cardIndex }
-            cardDescription={ card.cardDescription }
-            cardAttr1={ card.cardAttr1 }
-            cardAttr2={ card.cardAttr2 }
-            cardAttr3={ card.cardAttr3 }
-            cardImage={ card.cardImage }
-            cardRare={ card.cardRare }
-            cardTrunfo={ card.cardTrunfo }
-            isPreview={ false }
+          <Deck
+            savedDeck={ cardDeck }
             deleteCard={ this.deleteCard }
-          />))}
+            deckLength={ deckLength }
+          />
         </div>
       </>
     );
