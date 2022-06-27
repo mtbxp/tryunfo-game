@@ -6,6 +6,7 @@ class NameFilter extends React.Component {
     const {
       nameFilter,
       onInputChange,
+      nameAndRareDisabled,
     } = this.props;
 
     return (
@@ -15,6 +16,7 @@ class NameFilter extends React.Component {
           name="nameFilter"
           value={ nameFilter }
           onChange={ onInputChange }
+          disabled={ nameAndRareDisabled }
         />
       </label>
     );
@@ -24,6 +26,7 @@ class NameFilter extends React.Component {
 NameFilter.propTypes = {
   nameFilter: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  nameAndRareDisabled: PropTypes.func.isRequired,
 };
 
 export default NameFilter;

@@ -29,6 +29,7 @@ class Form extends React.Component {
       nameFilter,
       rareFilter,
       trunfoFilter,
+      nameAndRareDisabled,
     } = this.props;
 
     return (
@@ -63,10 +64,12 @@ class Form extends React.Component {
         <NameFilter
           onInputChange={ onInputChange }
           nameFilter={ nameFilter }
+          nameAndRareDisabled={ nameAndRareDisabled }
         />
         <RareFilter
           onInputChange={ onInputChange }
           rareFilter={ rareFilter }
+          nameAndRareDisabled={ nameAndRareDisabled }
         />
         <TrunfoFilter
           onInputChange={ onInputChange }
@@ -97,6 +100,7 @@ Form.propTypes = {
   nameFilter: PropTypes.func.isRequired,
   rareFilter: PropTypes.func.isRequired,
   trunfoFilter: PropTypes.func.isRequired,
+  nameAndRareDisabled: PropTypes.func.isRequired,
 };
 
 export default Form;

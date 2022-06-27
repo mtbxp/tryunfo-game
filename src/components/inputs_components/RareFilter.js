@@ -6,6 +6,7 @@ class RareFilter extends React.Component {
     const {
       rareFilter,
       onInputChange,
+      nameAndRareDisabled,
     } = this.props;
 
     return (
@@ -15,6 +16,7 @@ class RareFilter extends React.Component {
           name="rareFilter"
           value={ rareFilter }
           onChange={ onInputChange }
+          disabled={ nameAndRareDisabled }
         >
           <option>todas</option>
           <option>normal</option>
@@ -29,6 +31,7 @@ class RareFilter extends React.Component {
 RareFilter.propTypes = {
   rareFilter: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  nameAndRareDisabled: PropTypes.func.isRequired,
 };
 
 export default RareFilter;

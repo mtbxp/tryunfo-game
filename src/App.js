@@ -21,6 +21,7 @@ class App extends React.Component {
       nameFilter: '',
       rareFilter: '',
       trunfoFilter: false,
+      nameAndRareDisabled: false,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -50,9 +51,13 @@ class App extends React.Component {
   }
 
   onInputChange(event) {
+    const { nameAndRareDisabled } = this.state;
     const { target } = event;
     const { name, value, checked } = target;
     const conditionalValue = target.type === 'checkbox' ? checked : value;
+    if (conditionalValue === true) this.setState({ nameAndRareDisabled: true });
+    if (conditionalValue === false) this.setState({ nameAndRareDisabled: false });
+    console.log(nameAndRareDisabled, conditionalValue)
     this.setState({
       [name]: conditionalValue,
     }, () => this.handleSubmit());
@@ -178,6 +183,7 @@ class App extends React.Component {
       conditionalCardsArray = filteredArray;
     } else if (trunfoFilter) {
       conditionalCardsArray = arrayByTrunfo;
+      // this.setState((state) => state.nameAndRareDisabled);
     }
 
     return (
