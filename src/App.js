@@ -90,6 +90,7 @@ class App extends React.Component {
     if (trunfo) {
       this.setState({
         hasTrunfo: true,
+        trunfo: false,
       });
     }
 
@@ -101,6 +102,7 @@ class App extends React.Component {
       attr3,
       imageCard,
       rarity,
+      trunfo,
     };
 
     this.addNewCard(card);
@@ -114,6 +116,21 @@ class App extends React.Component {
       imageCard: '',
       rarity: 'normal',
     });
+  }
+
+  handleDeleteButton = (cardName, cardTrunfo) => {
+    const { deck } = this.state;
+    const newDeck = deck.filter((card) => card.nameCard !== cardName);
+
+    this.setState({
+      deck: newDeck,
+    });
+
+    if (cardTrunfo) {
+      this.setState({
+        hasTrunfo: false,
+      });
+    }
   }
 
   render() {
@@ -172,6 +189,9 @@ class App extends React.Component {
               cardAttr3={ card.attr3 }
               cardImage={ card.imageCard }
               cardRare={ card.rarity }
+              cardTrunfo={ card.trunfo }
+              cardList
+              handleDeleteButton={ this.handleDeleteButton }
             />
           ))
         }
