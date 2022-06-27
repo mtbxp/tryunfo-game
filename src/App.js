@@ -24,7 +24,8 @@ class App extends React.Component {
   }
 
   onInputChange = ({ target }) => {
-    const { name, value } = target;
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
 
     this.setState({ [name]: value },
       () => this.setState({
@@ -56,12 +57,12 @@ class App extends React.Component {
       attr3: '0',
       rare: 'normal',
       trunfo: false,
-      hasTrunfo: prevState.trunfo,
+      isSaveButtonDisabled: true,
       cards: [
         ...prevState.cards,
         { name, description, image, attr1, attr2, attr3, rare, trunfo },
       ],
-    }), () => { this.setState({ hasTrunfo: this.hasTrunfoCard }); });
+    }), () => { this.setState({ hasTrunfo: this.hasTrunfoCard() }); });
   };
 
   validateSaveButton = () => {
