@@ -25,6 +25,21 @@ class App extends React.Component {
     }, console.log(value));
   }
 
+  isSaveButtonDisabled = () => {
+    const inputsValue = Object.values(this.state);
+    const bool1 = inputsValue.filter((value) => typeof value === 'string')
+      .every((value) => value.length > 0);
+    const { attr1, attr2, attr3 } = this.state;
+    const limitAttr = 90;
+    const bool2 = [attr1, attr2, attr3]
+      .every((value) => parseInt(value, 10) >= 0 && parseInt(value, 10) <= limitAttr);
+    const limitAttrTotal = 210;
+    const bool3 = [attr1, attr2, attr3]
+      .reduce((acc, value) => acc + parseInt(value, 10), 0) <= limitAttrTotal;
+    const boolMaster = [bool1, bool2, bool3].every((bool) => bool === true);
+    return boolMaster === false;
+  }
+
   render() {
     const {
       name,
@@ -49,7 +64,7 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ superTrunfo }
           hasTrunfo={ false }
-          isSaveButtonDisabled={ false }
+          isSaveButtonDisabled={ this.isSaveButtonDisabled() }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ () => {} }
         />
