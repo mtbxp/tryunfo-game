@@ -13,7 +13,7 @@ class App extends React.Component {
       cardAttr2: 0,
       cardAttr3: 0,
       cardImage: '',
-      cardRare: '',
+      cardRare: 'Normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
 
@@ -24,7 +24,6 @@ class App extends React.Component {
   }
 
   handleValue({ target }) {
-    console.log(target.value);
     this.setState({
       [target.name]: target.value,
     }, () => this.handleSaveButton());
@@ -40,18 +39,19 @@ class App extends React.Component {
       cardRare } = this.state;
     const somaMax = 210;
     const attrMax = 90;
+    const attrMin = 0;
     if (
-      cardAttr1 + cardAttr2 + cardAttr3 <= somaMax
-      && cardAttr1 <= attrMax
-      && cardAttr2 <= attrMax
-      && cardAttr3 <= attrMax
-      && Math.sign(cardAttr1) === 1
-      && Math.sign(cardAttr2) === 1
-      && Math.sign(cardAttr3) === 1
-      && cardName.length > 0
-      && cardDescription.length > 0
-      && cardImage.length > 0
-      && cardRare.length > 0
+      Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= somaMax
+      && Number(cardAttr1) <= attrMax
+      && Number(cardAttr2) <= attrMax
+      && Number(cardAttr3) <= attrMax
+      && Number(cardAttr1) > attrMin
+      && Number(cardAttr2) > attrMin
+      && Number(cardAttr3) > attrMin
+      && cardName.length
+      && cardDescription.length
+      && cardImage.length
+      && cardRare.length !== 0
     ) {
       this.setState({
         isSaveButtonDisabled: false,
@@ -60,6 +60,7 @@ class App extends React.Component {
       this.setState({
         isSaveButtonDisabled: true,
       });
+      console.log();
     }
   }
 
@@ -82,7 +83,6 @@ class App extends React.Component {
           // cardDescription=""
           // cardAttr1=""
           // cardAttr2=""
-          // cardAttr3=""
           // cardImage=""
           // cardRare=""
           // cardTrunfo={ false }
