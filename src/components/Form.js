@@ -3,7 +3,18 @@ import '../index.css';
 
 class Form extends Component {
   render() {
-    const {} = this.props;
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick } = this.props;
     return (
       <form className="form">
 
@@ -13,7 +24,7 @@ class Form extends Component {
         </label>
 
         <label>
-          Description:
+          Description
           <textarea name="Nome" data-testid="description-input" />
         </label>
 
