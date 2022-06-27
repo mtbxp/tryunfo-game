@@ -17,7 +17,6 @@ section {
 .global {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
 }
 
 .form-style {
