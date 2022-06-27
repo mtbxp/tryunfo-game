@@ -13,7 +13,20 @@ class Card extends React.Component {
       cardRare,
       cardTrunfo,
       // hasTrunfo,
+      eraseBtn,
+      onClickRemove,
     } = this.props;
+
+    const btn = (
+      <button
+        data-testid="delete-button"
+        type="button"
+        onClick={ onClickRemove }
+      >
+        Excluir
+
+      </button>);
+
     return (
       <div>
         <h2 data-testid="name-card">
@@ -35,6 +48,8 @@ class Card extends React.Component {
         </h2>
         { cardTrunfo === true
           ? <strong data-testid="trunfo-card"> Super Trunfo </strong> : '' }
+        {eraseBtn === true
+          ? btn : ''}
       </div>
     );
   }
@@ -48,6 +63,8 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  eraseBtn: PropTypes.bool.isRequired,
+  onClickRemove: PropTypes.func.isRequired,
   // hasTrunfo:,
 };
 

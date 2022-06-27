@@ -21,6 +21,13 @@ class App extends React.Component {
     };
   }
 
+  onClickRemove = ({ target }) => {
+    const list = document.querySelector('.cardList');
+    const parentHTML = target.parentNode.innerHTML.includes('Super Trunfo');
+    if (parentHTML === true) { this.setState({ hasTrunfo: false }); }
+    list.removeChild(target.parentNode);
+  };
+
   onInputChange = ({ target }) => {
     const { name } = target;
     const finalValue = target.type === 'checkbox' ? target.checked : target.value;
@@ -42,6 +49,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      onClickRemove = this.onClickRemove,
     } = this.state;
     const newCardData = {
       cardName,
@@ -54,6 +62,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      onClickRemove,
     };
     this.setState((prevState) => ({
       cardName: '',
@@ -121,20 +130,24 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
+            eraseBtn={ false }
           />
         </div>
-        <ul>
-          {cards.map((element) => (<Card
-            cardName={ element.cardName }
-            cardDescription={ element.cardDescription }
-            cardAttr1={ element.cardAttr1 }
-            cardAttr2={ element.cardAttr2 }
-            cardAttr3={ element.cardAttr3 }
-            cardImage={ element.cardImage }
-            cardRare={ element.cardRare }
-            cardTrunfo={ element.cardTrunfo }
-            key={ element.cardName }
-          />))}
+        <ul className="cardList">
+          {cards.map((element) => (
+            <Card
+              cardName={ element.cardName }
+              cardDescription={ element.cardDescription }
+              cardAttr1={ element.cardAttr1 }
+              cardAttr2={ element.cardAttr2 }
+              cardAttr3={ element.cardAttr3 }
+              cardImage={ element.cardImage }
+              cardRare={ element.cardRare }
+              cardTrunfo={ element.cardTrunfo }
+              onClickRemove={ element.onClickRemove }
+              eraseBtn
+              key={ element.cardName }
+            />))}
         </ul>
 
       </>
