@@ -107,7 +107,7 @@ class App extends React.Component {
     };
     this.setState(
       (state) => ({
-        cards: [newCard, ...state.cards],
+        cards: [...state.cards, newCard],
       }),
       () => {
         this.setState(
