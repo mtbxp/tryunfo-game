@@ -16,6 +16,7 @@ class App extends React.Component {
       trunfo: '',
       button: true,
       cards: [],
+      hasTrunfo: false,
     };
   }
 
@@ -50,6 +51,11 @@ onInputChange = ({ target }) => {
   this.setState(({ [name]: value }), () => this.validation());
 }
 
+hasTrunfo = () => {
+  const { cards } = this.state;
+  return cards.some((element) => element.trunfo);
+}
+
 onSaveButtonClick = () => {
   const { name,
     description,
@@ -81,7 +87,7 @@ onSaveButtonClick = () => {
     atribute3: 0,
     image: '',
     rare: 'normal',
-    trunfo: false,
+    hasTrunfo: !this.hasTrunfo(),
   });
 }
 
@@ -95,7 +101,8 @@ render() {
     image,
     rare,
     trunfo,
-    button } = this.state;
+    button,
+    hasTrunfo } = this.state;
 
   return (
     <div>
@@ -112,6 +119,7 @@ render() {
         onInputChange={ this.onInputChange }
         onSaveButtonClick={ this.onSaveButtonClick }
         isSaveButtonDisabled={ button }
+        hasTrunfo={ hasTrunfo }
       />
       <Card
         cardName={ name }
