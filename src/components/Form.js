@@ -2,25 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
-  // verifyTrunfo = (hasTrunfo, cardTrunfo, onInputChange) => {
-  //   if (hasTrunfo) {
-  //     return <p>Você já tem um Super Trunfo em seu baralho</p>;
-  //   }
-  //   return (
-  //     <label htmlFor="joker">
-  //       Is the card a joker?
-  //       <input
-  //         data-testid="trunfo-input"
-  //         id="joker"
-  //         name="cardTrunfo"
-  //         type="checkbox"
-  //         checked={ cardTrunfo }
-  //         onChange={ onInputChange }
-  //       />
-  //     </label>
-  //   );
-  // }
-
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3 } = this.props;
     const { cardImage, cardRare, cardTrunfo, hasTrunfo } = this.props;
@@ -131,7 +112,6 @@ class Form extends React.Component {
               />
             </label>
           )}
-        {/* { this.verifyTrunfo(hasTrunfo, cardTrunfo, onInputChange) } */}
         <br />
         <button
           data-testid="save-button"
