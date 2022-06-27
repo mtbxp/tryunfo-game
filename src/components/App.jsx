@@ -22,8 +22,37 @@ class App extends React.Component {
 
   trunfoInCards = () => {
     const { Savecards } = this.state;
-    if (Savecards.length === 0) return false;
-    return Savecards.some((card) => card.trunfo);
+    if (Savecards.length === 0) return Savecards.some((card) => card.trunfo);
+    return false;
+  }
+
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
+      cardImage, cardRare, cardTrunfo } = this.state;
+
+    this.setState((prev) => ({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'Normal',
+      cardTrunfo: false,
+      saveCards: [...prev.saveCards,
+        {
+          cardName,
+          cardDescription,
+          cardAttr1,
+          cardAttr2,
+          cardAttr3,
+          cardImage,
+          cardRare,
+          cardTrunfo,
+        }],
+    }),
+    () => this.setState({ hasTrunfo: this.trunfoInCards() }));
   }
 
   validationButton = () => {
@@ -95,6 +124,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          preview={ false }
         />
       </section>
     );
