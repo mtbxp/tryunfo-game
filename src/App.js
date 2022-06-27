@@ -12,14 +12,14 @@ import Form from './components/Form';
 const INITIAL_STATE = {
   cardName: '',
   cardDescription: '',
-  cardAttr1: '',
-  cardAttr2: '',
-  cardAttr3: '',
+  cardAttr1: '0',
+  cardAttr2: '0',
+  cardAttr3: '0',
   cardImage: '',
   cardRare: '',
-  cardTrunfo: '',
-  hasTrunfo: '',
-  isSaveButtonDisabled: '',
+  cardTrunfo: false,
+  hasTrunfo: false,
+  isSaveButtonDisabled: true,
   onInputChange: '',
   onSaveButtonClick: '',
 };
@@ -30,14 +30,34 @@ class App extends React.Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  // corrgir function
   handleValue = ({ target }) => {
     const { type, name } = target;
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    });
+    }, () => this.validateForm());
   };
+
+  validateForm = () => {
+    const { cardName, cardDescription, cardAttr1,
+      cardAttr2, cardAttr3, cardImage } = this.state;
+    const maxAtt = 90;
+    const maxSumAtt = 210;
+    if (
+      cardName.length > 0
+      && cardDescription.length > 0
+      && cardImage.length > 0
+      && parseInt(cardAttr1, 10) >= 0
+      && parseInt(cardAttr1, 10) <= maxAtt
+      && parseInt(cardAttr2, 10) >= 0
+      && parseInt(cardAttr2, 10) <= maxAtt
+      && parseInt(cardAttr3, 10) >= 0
+      && parseInt(cardAttr3, 10) <= maxAtt
+      && (parseInt(cardAttr1, 10) + parseInt(cardAttr2, 10) + parseInt(cardAttr3, 10)
+         <= maxSumAtt)
+    ) this.setState({ isSaveButtonDisabled: false });
+    else this.setState({ isSaveButtonDisabled: true });
+  }
 
   render() {
     const {
@@ -51,7 +71,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      // onInputChange,
+      // onInputChange, lembrar desa linha ---------------------------------
       onSaveButtonClick,
     } = this.state;
     return (
