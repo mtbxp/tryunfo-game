@@ -15,9 +15,32 @@ h1 {
 }
 
 #section__cards {
+  min-height: 470px;
   background-color: #e86e38;
   padding: 2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 50px;
+}
+
+.cards__created {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.button__delete-card {
+  height: 30px;
+  width: 50%;
+  background-color: #1b2124;
+  border: none;
+  border-radius: 3px;
+  color: white;
+}
+
+.button__delete-card:hover {
+  opacity: 0.9;
+  cursor: pointer;
 }

@@ -209,7 +209,7 @@ class App extends React.Component {
                 cardTrunfo={ trunfo }
               />
               <button
-                id="button__delete-card"
+                className="button__delete-card"
                 type="button"
                 onClick={ () => this.handleRemoveCard(id) }
                 data-testid="delete-button"
