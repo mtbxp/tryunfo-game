@@ -2,10 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Card extends React.Component {
-//   handleMsg = (bool) => {
-//     bool === false ? 'Super Trunfo' : '';
-//   }
-
   render() {
     const {
       cardName,
@@ -27,7 +23,7 @@ class Card extends React.Component {
         <li data-testid="attr2-card">{ cardAttr2 }</li>
         <li data-testid="attr3-card">{ cardAttr3 }</li>
         <h4 data-testid="rare-card">{ cardRare }</h4>
-        <h3 data-testid="trunfo-card">{ cardTrunfo }</h3>
+        { cardTrunfo === true ? <h3 data-testid="trunfo-card">Super Trunfo</h3> : '' }
       </div>
     );
   }

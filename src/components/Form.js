@@ -99,10 +99,11 @@ class Form extends React.Component {
             <option value="muito raro">Muito raro</option>
           </select>
         </label>
-        <label htmlFor="STT">
+        <label htmlFor="superTrunfo">
           <input
             type="checkbox"
-            id="STT"
+            id="superTrunfo"
+            name="superTrunfo"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
             onChange={ onInputChange }

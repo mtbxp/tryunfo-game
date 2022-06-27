@@ -169,3 +169,8 @@
     color: var(--green-dark);
     background: var(--green-light);
   } */
+
+form {
+  display: flex;
+  flex-flow: column;
+}
