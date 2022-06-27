@@ -22,6 +22,7 @@ class App extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.isSaveButtonDisabled = this.isSaveButtonDisabled.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.onRemoveButtonClick = this.onRemoveButtonClick.bind(this);
   }
 
   onChange({ target }) {
@@ -64,6 +65,15 @@ class App extends React.Component {
       cardRarity: 'normal',
       cardTrunfo: false,
     });
+  }
+
+  onRemoveButtonClick({ target }) {
+    const { cards, hasTrunfo } = this.state;
+    const { value } = target;
+    const valueInt = parseInt(value, 10);
+    const newArrayCards = cards.filter((_, index) => index !== valueInt);
+    this.setState({ cards: newArrayCards });
+    if (hasTrunfo) this.setState({ hasTrunfo: false });
   }
 
   isAttrValidated(total, attrs) {
@@ -130,18 +140,24 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRarity }
           cardTrunfo={ cardTrunfo }
+          removeCard={ this.onRemoveButtonClick }
+          value={ 100 }
         />
-        {cards.map((card, index) => (<Card
-          key={ index }
-          cardName={ card.cardName }
-          cardDescription={ card.cardInfo }
-          cardAttr1={ card.attr1 }
-          cardAttr2={ card.attr2 }
-          cardAttr3={ card.attr3 }
-          cardImage={ card.cardImage }
-          cardRare={ card.cardRarity }
-          cardTrunfo={ card.cardTrunfo }
-        />))}
+        {cards.map((card, index) => (
+          <Card
+            key={ index }
+            cardName={ card.cardName }
+            cardDescription={ card.cardInfo }
+            cardAttr1={ card.attr1 }
+            cardAttr2={ card.attr2 }
+            cardAttr3={ card.attr3 }
+            cardImage={ card.cardImage }
+            cardRare={ card.cardRarity }
+            cardTrunfo={ card.cardTrunfo }
+            removeCard={ this.onRemoveButtonClick }
+            value={ index }
+          />
+        ))}
       </div>
     );
   }
