@@ -51,7 +51,6 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
-      data,
     } = this.state;
     if (cardName !== ''
     && cardDescription !== ''
@@ -86,6 +85,12 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
     }));
+  }
+
+  deleteElement({ target }) {
+    console.log(target.name);
+    const list = document.querySelector('.deck');
+    console.log(list);
   }
 
   render() {
@@ -144,7 +149,7 @@ class App extends React.Component {
         <ul className="deck">
           {
             data.map((card, index) => (
-              <li key={ index } className="card">
+              <li key={ index } className="card" name={ index }>
                 <h3 data-testid="name-card">{ card.name }</h3>
                 <br />
                 <img src={ card.image } alt={ card.name } data-testid="image-card" />
@@ -168,6 +173,14 @@ class App extends React.Component {
                 <br />
                 <h4 data-testid="rare-card">{ card.rare }</h4>
                 <br />
+                <button
+                  type="button"
+                  data-testid="delete-button"
+                  name={ index }
+                  onClick={ (event) => this.deleteElement(event) }
+                >
+                  Excluir
+                </button>
               </li>))
           }
         </ul>
