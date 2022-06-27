@@ -1,4 +1,4 @@
-import { string } from 'prop-types';
+import PropTypes from 'prop-types';
 import React from 'react';
 import '../styles/form.css';
 
@@ -117,6 +117,7 @@ class Form extends React.Component {
             name="name"
             id="name"
             value={ name }
+            data-testid="name-input"
             onChange={ this.handleChange }
           />
         </label>
@@ -129,6 +130,7 @@ class Form extends React.Component {
             name="description"
             id="description"
             value={ description }
+            data-testid="description-input"
             onChange={ this.handleChange }
           />
         </label>
@@ -142,6 +144,7 @@ class Form extends React.Component {
             name="attr1"
             id="attr1"
             value={ attr1 }
+            data-testid="attr1-input"
             onChange={ this.handleChange }
           />
         </label>
@@ -155,6 +158,7 @@ class Form extends React.Component {
             name="attr2"
             id="attr2"
             value={ attr2 }
+            data-testid="attr2-input"
             onChange={ this.handleChange }
           />
         </label>
@@ -168,6 +172,7 @@ class Form extends React.Component {
             name="attr3"
             id="attr3"
             value={ attr3 }
+            data-testid="attr3-input"
             onChange={ this.handleChange }
           />
         </label>
@@ -181,6 +186,7 @@ class Form extends React.Component {
             name="image"
             id="image"
             value={ image }
+            data-testid="image-input"
             onChange={ this.handleChange }
           />
         </label>
@@ -193,11 +199,12 @@ class Form extends React.Component {
             id="rare"
             className="input"
             value={ rare }
+            data-testid="rare-input"
             onChange={ this.handleChange }
           >
-            <option value="normal" selected="true">Normal</option>
+            <option value="normal">Normal</option>
             <option value="raro">Raro</option>
-            <option value="muito-raro">Muito raro</option>
+            <option value="muito raro">Muito raro</option>
           </select>
         </label>
         <span className="error">{errors.rare}</span>
@@ -206,7 +213,8 @@ class Form extends React.Component {
             name="trunfo"
             id="trunfo"
             type="checkbox"
-            value={ trunfo }
+            selected={ trunfo }
+            data-testid="trunfo-input"
             onChange={ this.handleChange }
           />
           Trunfo
@@ -217,6 +225,7 @@ class Form extends React.Component {
             className="btn"
             name="salvar"
             id="salvar"
+            data-testid="save-button"
           >
             Salvar
           </button>
@@ -227,7 +236,7 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-  addNewCard: string.isRequired,
+  addNewCard: PropTypes.func.isRequired,
 };
 
 export default Form;
