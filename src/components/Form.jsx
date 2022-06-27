@@ -76,6 +76,7 @@ class Form extends React.Component {
             data-testid="name-input"
             value={ cardName }
             onChange={ (event) => onInputChange(event) }
+            maxLength={ 22 }
           />
           <br />
         </label>
@@ -87,6 +88,7 @@ class Form extends React.Component {
             name="cardDescription"
             data-testid="description-input"
             value={ cardDescription }
+            maxLength={ 144 }
             onChange={ (event) => onInputChange(event) }
           />
           <br />
