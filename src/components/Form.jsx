@@ -98,9 +98,13 @@ export default class Form extends Component {
             <option value="muito raro">Muito raro</option>
           </select>
         </label>
-        {hasTrunfo ? ('Você já tem um Super Trunfo no seu baralho'
+        {hasTrunfo ? (
+          <p data-testid="trunfo-input">
+            Você já tem um Super Trunfo no seu baralho
+          </p>
         ) : (
           <label htmlFor="trunfo">
+            <span>Super Trunfo!</span>
             <input
               checked={ cardTrunfo }
               onChange={ onInputChange }
@@ -109,7 +113,6 @@ export default class Form extends Component {
               id="trunfo"
               data-testid="trunfo-input"
             />
-            <span>Super Trunfo!</span>
           </label>
         )}
         <button
