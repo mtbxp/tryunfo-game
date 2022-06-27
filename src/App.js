@@ -78,8 +78,8 @@ class App extends React.Component {
       cardart: '',
       cardrare: 'normal',
       cardtrunfo: '',
-    });
-    this.validate();
+    }, () => this.validate());
+    // this.validate();
   }
 
   render() {
