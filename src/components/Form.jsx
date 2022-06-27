@@ -5,6 +5,7 @@ import Attr from './Attr';
 import CardImage from './CardImage';
 import CardRarity from './CardRarity';
 import SuperTrunfoCheckbox from './SuperTrunfoCheckbox';
+import BtnSave from './BtnSave';
 
 class Form extends React.Component {
   constructor() {
@@ -75,7 +76,7 @@ class Form extends React.Component {
           handlerCardInfo={ this.handlerCardInfo }
         />
 
-        <button type="submit" data-testid="save-button">Enviar</button>
+        <BtnSave />
       </form>
     );
   }

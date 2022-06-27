@@ -11,6 +11,7 @@ class SuperTrunfoCheckbox extends React.Component {
           type="checkbox"
           id="cardTrunfo"
           name="cardTrunfo"
+          data-testid="trunfo-input"
           value={ cardTrunfo }
           onChange={ handlerCardInfo }
         />
