@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './components/Card';
 import Form from './components/Form';
 
 const stateInicial = {
@@ -32,6 +33,9 @@ class App extends React.Component {
           state={ this.state }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
+        />
+        <Card
+          state={ this.state }
         />
       </div>
     );
