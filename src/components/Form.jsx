@@ -40,8 +40,8 @@ class Form extends React.Component {
         />
 
         <Input
-          text="Attr1"
-          name="Attr01"
+          text="Attr01"
+          name="cardAttr1"
           type="number"
           value={ cardAttr1 }
           dataTestId="attr1-input"
@@ -50,7 +50,7 @@ class Form extends React.Component {
 
         <Input
           text="Attr02"
-          name="Attr02"
+          name="cardAttr2"
           type="number"
           value={ cardAttr2 }
           dataTestId="attr2-input"
@@ -59,7 +59,7 @@ class Form extends React.Component {
 
         <Input
           text="Attr03"
-          name="Attr03"
+          name="cardAttr3"
           type="number"
           value={ cardAttr3 }
           dataTestId="attr3-input"
