@@ -7,7 +7,20 @@ class App extends React.Component {
       <div>
         <h1>Tryunfo</h1>
         <div>
-          <Form />
+          <Form
+            cardName=""
+            cardDescription=""
+            cardAttr1=""
+            cardAttr2=""
+            cardAttr3=""
+            cardImage=""
+            cardRare=""
+            cardTrunfo={ false }
+            hasTrunfo={ false }
+            isSaveButtonDisabled={ false }
+            onInputChange={ () => {} }
+            onSaveButtonClick={ () => { } }
+          />
         </div>
       </div>
     );
