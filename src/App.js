@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
+import Footer from './components/Footer';
 import Form from './components/Form';
 
 class App extends React.Component {
@@ -20,6 +21,7 @@ class App extends React.Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.validateForms = this.validateForms.bind(this);
   }
 
   onInputChange({ target }) {
@@ -28,11 +30,47 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
-    });
+    }, () => { this.validateForms(); });
   }
 
   onSaveButtonClick() {
     console.log('Teste');
+  }
+
+  validateForms() {
+    const maxAttrSum = 210;
+    const maxAttr = 90;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+
+    if (
+      cardName !== ''
+      && cardDescription !== ''
+      && cardImage !== ''
+      && cardRare !== ''
+      && Number(cardAttr1) >= ''
+      && Number(cardAttr1) <= maxAttr
+      && Number(cardAttr2) >= ''
+      && Number(cardAttr2) <= maxAttr
+      && Number(cardAttr3) >= ''
+      && Number(cardAttr3) <= maxAttr
+      && Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= maxAttrSum
+    ) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      }, () => {});
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
   }
 
   render() {
@@ -78,6 +116,7 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </section>
+        <Footer />
       </div>
     );
   }

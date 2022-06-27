@@ -22,14 +22,31 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .form {
   display: flex;
 } 
 
-.card {
+.cardPreview {
  display: flex;
+ flex-direction: column;
  background-color: green; 
+ border-radius: 30px;
+ padding: 20px;
+ width: 350px;
+ color: white;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #DADEDF;
+}
+
+#footer p {
+  font-size: small;
+  text-align: center;
 }
