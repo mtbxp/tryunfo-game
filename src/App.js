@@ -13,7 +13,7 @@ const INITIAL_STATE = {
   cardRare: '',
   cardTrunfo: false,
   hasTrunfo: false,
-  isSaveButtonDisabled: false,
+  isSaveButtonDisabled: true,
 };
 
 class App extends React.Component {
@@ -32,7 +32,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="main-content">
         <Form { ...this.state } onInputChange={ this.handleChange } />
         <Card { ... this.state } />
       </div>
