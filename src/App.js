@@ -14,9 +14,15 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      hasTrunfo: false,
       cards: [],
     };
   }
+
+  validateTrunfo = () => {
+    const { cards } = this.state;
+    return cards.some(({ cardTrunfo: exist }) => exist);
+  };
 
   isSaveButtonDisabled = () => {
     const {
@@ -44,7 +50,7 @@ class App extends React.Component {
 
     return !(!!cardName
       && cardDescription && cardImage && cardRare && allScore && totalScoreOfSkills);
-  }
+  };
 
   onSaveButtonClick = (event) => {
     event.preventDefault();
@@ -77,6 +83,8 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: '',
+      cardTrunfo: false,
+      hasTrunfo: this.validateTrunfo(),
     }));
   }
 
@@ -88,7 +96,7 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     });
-  }
+  };
 
   render() {
     const {
