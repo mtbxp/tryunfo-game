@@ -18,6 +18,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       cards: [],
+      filteredCards: [],
     };
 
     this.isSaveButtonDisabled = true;
@@ -26,6 +27,7 @@ class App extends React.Component {
     this.checkRequiredFields = this.checkRequiredFields.bind(this);
     this.handleCardCreation = this.handleCardCreation.bind(this);
     this.handleRemoveCard = this.handleRemoveCard.bind(this);
+    this.filterCardsByName = this.filterCardsByName.bind(this);
   }
 
   handleChange({ target }) {
@@ -69,7 +71,10 @@ class App extends React.Component {
     if (cardTrunfo) {
       this.setState({ hasTrunfo: true });
     }
-    this.setState((previous) => ({ cards: [...previous.cards, newCard] }));
+    this.setState((previous) => (
+      { cards: [...previous.cards, newCard],
+        filteredCards: [...previous.cards, newCard],
+      }));
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -111,7 +116,24 @@ class App extends React.Component {
   }
 
   handleRemoveCard(idx) {
-    this.setState(({ cards }) => ({ cards: cards.filter((_, index) => idx !== index) }));
+    const { cards } = this.state;
+    const currentCards = cards.filter((_, index) => idx !== index);
+    this.setState(() => ({ cards: currentCards, filteredCards: currentCards }));
+  }
+
+  filterCardsByName({ target }) {
+    const { value: cardName } = target;
+    if (!cardName) {
+      this.setState(({ cards }) => (
+        { filteredCards: cards }
+      ));
+    } else {
+      this.setState(({ cards }) => (
+        { filteredCards: cards.filter(({ name }) => (
+          name.toLowerCase().includes(cardName.toLowerCase())
+        )) }
+      ));
+    }
   }
 
   checkAttrsSum(attr1, attr2, attr3) {
@@ -162,6 +184,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       cards,
+      filteredCards,
     } = this.state;
 
     this.handleSaveButtonState();
@@ -196,28 +219,37 @@ class App extends React.Component {
           />
         </section>
         <section id="section__cards">
-          {cards.map(({ name, desc, attr1, attr2, attr3, image, rarity, trunfo }, id) => (
-            <div key={ id } className="cards__created">
-              <Card
-                cardName={ name }
-                cardDescription={ desc }
-                cardAttr1={ attr1 }
-                cardAttr2={ attr2 }
-                cardAttr3={ attr3 }
-                cardImage={ image }
-                cardRare={ rarity }
-                cardTrunfo={ trunfo }
-              />
-              <button
-                className="button__delete-card"
-                type="button"
-                onClick={ () => this.handleRemoveCard(id) }
-                data-testid="delete-button"
-              >
-                Excluir
-              </button>
-            </div>
-          ))}
+          <div id="toolbar__filter">
+            <input
+              type="text"
+              data-testid="name-filter"
+              onChange={ this.filterCardsByName }
+            />
+          </div>
+          {filteredCards.map(
+            ({ name, desc, attr1, attr2, attr3, image, rarity, trunfo }, id) => (
+              <div key={ id } className="cards__created">
+                <Card
+                  cardName={ name }
+                  cardDescription={ desc }
+                  cardAttr1={ attr1 }
+                  cardAttr2={ attr2 }
+                  cardAttr3={ attr3 }
+                  cardImage={ image }
+                  cardRare={ rarity }
+                  cardTrunfo={ trunfo }
+                />
+                <button
+                  className="button__delete-card"
+                  type="button"
+                  onClick={ () => this.handleRemoveCard(id) }
+                  data-testid="delete-button"
+                >
+                  Excluir
+                </button>
+              </div>
+            ),
+          )}
         </section>
       </div>
     );
