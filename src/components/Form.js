@@ -21,16 +21,15 @@ class Form extends React.Component {
       <div>
         <h1>Adicionar nova carta</h1>
         <form>
-          <label htmlFor="players-name">
+          <label htmlFor="card-name">
             Nome:
 
             <input
               type="text"
               data-testid="name-input"
-              id="players-name"
-              name="players-name"
+              id="card-name"
+              name="card-name"
               value={ cardName }
-              required
               onChange={ onInputChange }
             />
           </label>
