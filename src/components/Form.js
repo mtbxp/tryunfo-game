@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Form extends Component {
   // constructor() {
@@ -91,9 +92,9 @@ class Form extends Component {
 
         <b>Raridade:</b>
         <select className="rare-input" value={ cardRare } onChange={ onInputChange }>
-          <option value="normal">Normal</option>
-          <option value="raro">Raro</option>
-          <option value="muito raro">Muito Raro</option>
+          <option>normal</option>
+          <option>raro</option>
+          <option>muito raro</option>
         </select>
         <br />
         <br />
@@ -124,9 +125,9 @@ class Form extends Component {
 }
 
 Form.propTypes = {
-  onInputChange: PropTypes.callback.isRequired,
-  onSaveButtonClick: PropTypes.callback.isRequired,
-  isSaveButtonDisabled: PropTypes.boolean.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
   cardname: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.string.isRequired,
@@ -134,10 +135,18 @@ Form.propTypes = {
   cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
-  cardTrunfo: PropTypes.boolean.isRequired,
-  // hasTrunfo: PropTypes.boolean.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
 };
 
 export default Form;
 
 // <input type="select" data-testid="rare-input" />
+/* <input
+          type="checkbox"
+          className="trunfo-input"
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
+          data-testid="trunfo-input"
+        />
+      */
