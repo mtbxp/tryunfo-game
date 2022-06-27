@@ -72,7 +72,7 @@ export default class Form extends Component {
           </label>
         </div>
         <label htmlFor="image">
-          Imagem:
+          <span>Imagem: </span>
           <input
             placeholder="Digite o endereço da imagem"
             name="cardImage"
@@ -84,7 +84,7 @@ export default class Form extends Component {
           />
         </label>
         <label htmlFor="rare">
-          Raridade:
+          <span>Raridade: </span>
           <select
             name="cardRare"
             value={ cardRare }
@@ -92,7 +92,6 @@ export default class Form extends Component {
             id="rare"
             data-testid="rare-input"
           >
-            Raridade:
             <option value="normal">Normal</option>
             <option value="raro">Raro</option>
             <option value="muito raro">Muito raro</option>
@@ -100,11 +99,10 @@ export default class Form extends Component {
         </label>
         {hasTrunfo ? (
           <p data-testid="trunfo-input">
-            Você já tem um Super Trunfo no seu baralho
+            Você já tem um Super Trunfo em seu baralho
           </p>
         ) : (
           <label htmlFor="trunfo">
-            <span>Super Trunfo!</span>
             <input
               checked={ cardTrunfo }
               onChange={ onInputChange }
@@ -113,6 +111,7 @@ export default class Form extends Component {
               id="trunfo"
               data-testid="trunfo-input"
             />
+            <span>Super Trunfo!</span>
           </label>
         )}
         <button
