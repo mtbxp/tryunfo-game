@@ -19,7 +19,7 @@ body {
   border: 7px solid white;
   border-radius: 8px;
   margin: 10px;
-  min-width: 300px;
+  min-width: 270px;
   padding: 10px;
   text-align: center;
 }
@@ -31,6 +31,10 @@ body {
 
 .card p {
   font-size: 10px;
+}
+
+#imagem {
+  width: 230px;
 }
 
 .form {

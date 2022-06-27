@@ -15,6 +15,7 @@ class App extends React.Component {
       select: 'normal',
       check: false,
       isSaveButtonDisabled: true,
+      listCard: [],
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -62,7 +63,42 @@ class App extends React.Component {
     return true;
   };
 
-  onSaveButtonClick = () => {};
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+
+    const {
+      name,
+      describe,
+      image,
+      attr1,
+      attr2,
+      attr3,
+      select,
+    } = this.state;
+
+    const newListCard = {
+      name,
+      describe,
+      image,
+      attr1,
+      attr2,
+      attr3,
+      select,
+    };
+
+    this.setState((e) => ({
+      name: '',
+      describe: '',
+      image: '',
+      attr1: 0,
+      attr2: 0,
+      attr3: 0,
+      select: 'normal',
+      check: false,
+      isSaveButtonDisabled: true,
+      listCard: [...e.listCard, newListCard],
+    }));
+  };
 
   render() {
     const {
