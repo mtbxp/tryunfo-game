@@ -14,8 +14,9 @@ class App extends React.Component {
       cardAttr3: 0,
       cardImage: '',
       cardRare: 'normal',
-      cardTrunfo: true,
+      cardTrunfo: false,
       deck: [],
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
     };
     this.onInputChange = this.onInputChange.bind(this);
@@ -23,11 +24,30 @@ class App extends React.Component {
     this.validation = this.validation.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.clearState = this.clearState.bind(this);
+    this.handleHasTrunfo = this.handleHasTrunfo.bind(this);
+  }
+
+  componentDidMount() {
+    const { deck } = this.state;
+    const verifyHasTrunfo = deck.some((card) => card.cardTrunfo);
+    if (verifyHasTrunfo) {
+      this.handleHasTrunfo(true);
+    } else {
+      this.handleHasTrunfo(false);
+    }
+  }
+
+  handleHasTrunfo(param) {
+    this.setState({ hasTrunfo: param });
   }
 
   onSaveButtonClick() {
     const { cardName, cardDescription, cardImage, cardRare, cardAttr1,
       cardAttr2, cardAttr3, cardTrunfo } = this.state;
+
+    if (cardTrunfo) {
+      this.setState({ hasTrunfo: true, cardTrunfo: false });
+    }
 
     const cardMount = {
       cardName,
@@ -51,7 +71,6 @@ class App extends React.Component {
   };
 
   clearState() {
-    console.log(this.state);
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -59,8 +78,8 @@ class App extends React.Component {
       cardAttr2: 0,
       cardAttr3: 0,
       cardImage: '',
+      cardTrunfo: false,
       cardRare: 'normal',
-      cardTrunfo: true,
       isSaveButtonDisabled: true,
     });
   }
@@ -90,7 +109,6 @@ class App extends React.Component {
   }
 
   enableBtn(valueOfVerity) {
-    console.log('chamado');
     this.setState({
       isSaveButtonDisabled: valueOfVerity,
     });
