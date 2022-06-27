@@ -7,6 +7,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.handler = this.handler.bind(this);
+    this.enableButton = this.enableButton.bind(this);
     this.state = {
       name: '',
       description: '',
@@ -27,6 +28,29 @@ class App extends React.Component {
     });
   }
 
+  enableButton() {
+    const { state } = this;
+    const a1 = parseInt(state.attr1, 10);
+    const a2 = parseInt(state.attr2, 10);
+    const a3 = parseInt(state.attr3, 10);
+    const maxAttr = 90;
+    const attrSum = 210;
+
+    if (state.name !== ''
+        && state.description !== ''
+        && state.image !== ''
+        && state.rare !== ''
+        && a1 <= maxAttr
+        && a1 >= 0
+        && a2 <= maxAttr
+        && a2 >= 0
+        && a3 <= maxAttr
+        && a3 >= 0
+        && a1 + a2 + a3 <= attrSum
+    ) return false;
+    return true;
+  }
+
   render() {
     const { state } = this;
     return (
@@ -34,6 +58,7 @@ class App extends React.Component {
         <h1>TRYUNFO</h1>
         <Form
           onInputChange={ this.handler }
+          isSaveButtonDisabled={ this.enableButton() }
         />
         <Card
           cardName={ state.name }

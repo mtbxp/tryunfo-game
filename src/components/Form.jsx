@@ -58,7 +58,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="attr3">
-          População:
+          Agressividade:
           <input
             type="number"
             name="attr3"

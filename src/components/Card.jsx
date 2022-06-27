@@ -14,16 +14,31 @@ class Card extends React.Component {
     if (cardTrunfo) {
       return (
         <div className="protoCard">
-          <p name="name" data-testid="name-card">{ cardName }</p>
-          <img name="image" src={ cardImage } alt={ cardName } data-testid="image-card" />
+          <h2 name="name" data-testid="name-card">{ cardName }</h2>
+          <img
+            className="cardIMG"
+            name="image"
+            src={ cardImage }
+            alt={ cardName }
+            data-testid="image-card"
+          />
           <p name="description" data-testid="description-card">{ cardDescription }</p>
-          <ul>
-            <li name="attr1" data-testid="attr1-card">{ cardAttr1 }</li>
-            <li name="attr2" data-testid="attr2-card">{ cardAttr2 }</li>
-            <li name="attr3" data-testid="attr3-card">{ cardAttr3 }</li>
-          </ul>
+          <div className="attr">
+            <label htmlFor="attr1">
+              Força:
+              <p name="attr1" data-testid="attr1-card">{ cardAttr1 }</p>
+            </label>
+            <label htmlFor="attr2">
+              Velocidade:
+              <p name="attr2" data-testid="attr2-card">{ cardAttr2 }</p>
+            </label>
+            <label htmlFor="attr3">
+              Agressividade:
+              <p name="attr3" data-testid="attr3-card">{ cardAttr3 }</p>
+            </label>
+          </div>
           <p name="rare" data-testid="rare-card">{ cardRare }</p>
-          <h4 name="trunfo" data-testid="trunfo-card">Super Trunfo</h4>
+          <h3 name="trunfo" data-testid="trunfo-card">Super Trunfo</h3>
         </div>
       );
     }
@@ -32,11 +47,20 @@ class Card extends React.Component {
         <p name="name" data-testid="name-card">{ cardName }</p>
         <img name="image" src={ cardImage } alt={ cardName } data-testid="image-card" />
         <p name="description" data-testid="description-card">{ cardDescription }</p>
-        <ul>
-          <li name="attr1" data-testid="attr1-card">{ cardAttr1 }</li>
-          <li name="attr2" data-testid="attr2-card">{ cardAttr2 }</li>
-          <li name="attr3" data-testid="attr3-card">{ cardAttr3 }</li>
-        </ul>
+        <div className="attr">
+          <label htmlFor="attr1">
+            Força:
+            <p name="attr1" data-testid="attr1-card">{ cardAttr1 }</p>
+          </label>
+          <label htmlFor="attr2">
+            Velocidade:
+            <p name="attr2" data-testid="attr2-card">{ cardAttr2 }</p>
+          </label>
+          <label htmlFor="attr3">
+            Agressividade:
+            <p name="attr3" data-testid="attr3-card">{ cardAttr3 }</p>
+          </label>
+        </div>
         <p name="rare" data-testid="rare-card">{ cardRare }</p>
       </div>
     );
