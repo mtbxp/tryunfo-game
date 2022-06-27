@@ -74,6 +74,12 @@ class App extends React.Component {
     );
   }
 
+  validateHasTrunfo = () => {
+    const { card } = this.state;
+    if (card.length === 0) return false;
+    return card.some((element) => element.cardTrunfo);
+  }
+
   onSaveButtonClick = (event) => {
     event.preventDefault();
     const {
@@ -97,6 +103,7 @@ class App extends React.Component {
         cardImage: '',
         cardRare: 'normal',
         cardTrunfo: false,
+        hasTrunfo: false,
         card: [...prev.card, { cardName,
           cardDescription,
           cardAttr1,
@@ -106,6 +113,7 @@ class App extends React.Component {
           cardRare,
           cardTrunfo }],
       }),
+      () => this.setState({ hasTrunfo: this.validateHasTrunfo() }),
     );
   }
 
