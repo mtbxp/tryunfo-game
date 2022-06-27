@@ -27,6 +27,7 @@ class Form extends React.Component {
             id="name-input"
             value={ cardName }
             onChange={ onInputChange }
+            name="name"
           />
         </label>
         <label htmlFor="description-input">
@@ -36,6 +37,7 @@ class Form extends React.Component {
             id="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
+            name="description"
           />
         </label>
         <label htmlFor="attr1-input">
@@ -46,6 +48,7 @@ class Form extends React.Component {
             id="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            name="atribute1"
           />
         </label>
         <label htmlFor="attr2-input">
@@ -56,6 +59,7 @@ class Form extends React.Component {
             id="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            name="atribute2"
           />
         </label>
         <label htmlFor="attr3-input">
@@ -66,6 +70,7 @@ class Form extends React.Component {
             id="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            name="atribute3"
           />
         </label>
         <label htmlFor="image-input">
@@ -76,6 +81,7 @@ class Form extends React.Component {
             id="image-input"
             value={ cardImage }
             onChange={ onInputChange }
+            name="imagePath"
           />
         </label>
         <label htmlFor="rare-input">
@@ -85,6 +91,7 @@ class Form extends React.Component {
             id="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
+            name="rarity"
           >
             <option value="normal">Normal</option>
             <option value="raro">Raro</option>
@@ -99,6 +106,7 @@ class Form extends React.Component {
             id="trunfo-input"
             checked={ cardTrunfo }
             onChange={ onInputChange }
+            name="superTrunfo"
           />
         </label>
         <input
@@ -115,9 +123,9 @@ class Form extends React.Component {
 Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.number.isRequired,
+  cardAttr2: PropTypes.number.isRequired,
+  cardAttr3: PropTypes.number.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
