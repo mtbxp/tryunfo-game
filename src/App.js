@@ -14,13 +14,15 @@ class App extends React.Component {
       cardAttr3: '',
       cardRare: '',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
-      // deck: '',
+      deck: [],
     };
   }
 
   onInputChange = ({ target }) => {
-    const { name, value } = target;
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
     }, () => this.buttonConditionsToEnable()); // Ponto de atenção/tirar dúvida
@@ -48,6 +50,26 @@ class App extends React.Component {
   }
 
   onSaveButtonClick = () => {
+    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
+      cardImage, cardRare, cardTrunfo, deck } = this.state;
+    this.setState((prevState) => ({
+      deck: [...deck, { ...prevState.deck,
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo }],
+    }), () => this.cleaningInputFields());
+
+    if (cardTrunfo === true) {
+      this.setState({ hasTrunfo: true });
+    }
+  }
+
+  cleaningInputFields = () => {
     document.querySelector('#text').value = '';
     document.querySelector('#descricao').value = '';
     document.querySelector('#image').value = '';
@@ -60,7 +82,7 @@ class App extends React.Component {
   render() {
     const { cardName, cardDescription, cardImage,
       cardAttr1, cardAttr2, cardAttr3, cardRare,
-      cardTrunfo, isSaveButtonDisabled } = this.state;
+      cardTrunfo, isSaveButtonDisabled, hasTrunfo } = this.state;
 
     return (
       <div>
@@ -72,6 +94,7 @@ class App extends React.Component {
           cardDescription={ cardDescription }
           cardImage={ cardImage }
           onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ cardName }
