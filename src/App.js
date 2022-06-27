@@ -1,10 +1,19 @@
 import React from 'react';
+import Form from './components/Form';
+import Card from './components/Card';
 
 class App extends React.Component {
+  // constructor() {
+  //   super();
+  // }
+
   render() {
     return (
       <div>
-        <h1>Tryunfo Show Time</h1>
+        <Form />
+        ,
+        <Card />
+        ,
       </div>
     );
   }
