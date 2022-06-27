@@ -16,6 +16,7 @@ class App extends React.Component {
       cardAttr2: '0',
       cardAttr3: '0',
       cardTrunfo: false,
+      cardId: 0,
       cards: [],
     };
   }
@@ -40,10 +41,10 @@ class App extends React.Component {
 
   sumHandle = (array2) => {
     const number90 = 90;
+    const attrLimit = 210;
     const sum = array2.reduce((acc, curr) => parseFloat(acc) + parseFloat(curr), 0);
     const maxNum = array2.some((attrInfo) => parseFloat(attrInfo) > number90);
     const minNum = array2.some((attrInfo) => parseFloat(attrInfo) < 0);
-    const attrLimit = 210;
     return sum <= attrLimit && !maxNum && !minNum;
   }
 
@@ -71,6 +72,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      cardId,
     } = this.state;
 
     const newCard = {
@@ -82,9 +84,10 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      cardId,
     };
+
     this.setState((preState) => ({
-      cards: [...preState.cards, newCard],
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -93,6 +96,15 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+      cardId: preState.cardId + 1,
+      cards: [...preState.cards, newCard],
+    }));
+  }
+
+  handleDelet = (event) => {
+    const getInfo = event.target.value;
+    this.setState((preState) => ({
+      cards: [...preState.cards.filter(({ cardId }) => cardId !== parseInt(getInfo, 10))],
     }));
   }
 
@@ -138,19 +150,30 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </section>
-        <section>
+        <section className="cardsSection">
           {
-            cards.map((getCard, index) => (<Card
-              key={ index }
-              cardName={ getCard.cardName }
-              cardDescription={ getCard.cardDescription }
-              cardAttr1={ getCard.cardAttr1 }
-              cardAttr2={ getCard.cardAttr2 }
-              cardAttr3={ getCard.cardAttr3 }
-              cardImage={ getCard.cardImage }
-              cardRare={ getCard.cardRare }
-              cardTrunfo={ getCard.cardTrunfo }
-            />))
+            cards.map((getCard, index) => (
+              <article key={ index }>
+                <Card
+                  key={ index }
+                  cardName={ getCard.cardName }
+                  cardDescription={ getCard.cardDescription }
+                  cardAttr1={ getCard.cardAttr1 }
+                  cardAttr2={ getCard.cardAttr2 }
+                  cardAttr3={ getCard.cardAttr3 }
+                  cardImage={ getCard.cardImage }
+                  cardRare={ getCard.cardRare }
+                  cardTrunfo={ getCard.cardTrunfo }
+                />
+                <button
+                  value={ getCard.cardId }
+                  type="button"
+                  data-testid="delete-button"
+                  onClick={ this.handleDelet }
+                >
+                  Apagar Carta
+                </button>
+              </article>))
           }
         </section>
       </div>

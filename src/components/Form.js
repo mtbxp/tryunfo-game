@@ -40,7 +40,7 @@ class Form extends React.Component {
               type="text"
               name="cardName"
               data-testid="name-input"
-              maxLength="20"
+              maxLength="100"
               placeholder={ isSaveButtonDisabled ? 'Preencha esse campo' : '' }
               value={ cardName }
               onChange={ onInputChange }

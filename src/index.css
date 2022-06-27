@@ -118,15 +118,43 @@ body {
 }
 
 .cardPreview {
+  background-color: brown;
+  border-radius: 5px;
   display: block;
-  width: 300px;
-  white-space: pre-line;
+  padding: 10px;
+  text-align: center;
+  width: 240px;
 }
 
-#cardDesc::after {
-  border: 1px red solid;
-  display: block;
-  max-width: 80px;
+.cardPreview #idTag {
+  display: none;
+}
+
+#cardDesc {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap; 
+  max-width: 100%;
+}
+
+.cardsSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.cardsSection article {
+  text-align: center;
+}
+
+.cardsSection .cardPreview {
+  margin: 10px;
+}
+
+.cardsSection button {
+  font-size: 1rem;
+  padding: 10px;
 }
 
 #isTrunfo {
