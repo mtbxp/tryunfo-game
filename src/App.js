@@ -130,13 +130,15 @@ class App extends React.Component {
                   cardRare={ card.cardRare }
                   cardTrunfo={ card.cardTrunfo }
                 />
-                <button
+                {/* <button
                   type="button"
-                  onClick={ this.deleteCard(card.cardName, card.cardTrunfo) }
+                  onClick={
+                    this.setState({ myCards: lastCards.filter((card) => card.cardName !== cardName) }, () => ({ hasTrunfo: this.veriryTrunfo() })),
+                  }
                   data-testid="delete-button"
                 >
                   Excluir
-                </button>
+                </button> */}
               </li>
             ))
           }
