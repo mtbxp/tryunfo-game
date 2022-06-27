@@ -16,8 +16,8 @@ class Form extends React.Component {
           Nome da carta:
           <input
             data-testid="name-input"
-            name="nomeDaCarta"
-            type="string"
+            name="cardName"
+            type="text"
             value={ cardName }
             onChange={ onInputChange }
           />
@@ -26,7 +26,7 @@ class Form extends React.Component {
         <label htmlFor="descricao">
           <textarea
             data-testid="description-input"
-            name="primeiroAtributo"
+            name="cardDescription"
             value={ cardDescription }
             onChange={ onInputChange }
           />
@@ -35,7 +35,7 @@ class Form extends React.Component {
         <label htmlFor="primeiroAtributo">
           <input
             data-testid="attr1-input"
-            name="primeiroAtributo"
+            name="cardAttr1"
             type="number"
             value={ cardAttr1 }
             onChange={ onInputChange }
@@ -45,7 +45,7 @@ class Form extends React.Component {
         <label htmlFor="segundoAtributo">
           <input
             data-testid="attr2-input"
-            name="segundoAtributo"
+            name="cardAttr2"
             type="number"
             value={ cardAttr2 }
             onChange={ onInputChange }
@@ -55,7 +55,7 @@ class Form extends React.Component {
         <label htmlFor="terceiroAtributo">
           <input
             data-testid="attr3-input"
-            name="terceiroAtributo"
+            name="cardAttr3"
             type="number"
             value={ cardAttr3 }
             onChange={ onInputChange }
@@ -65,7 +65,7 @@ class Form extends React.Component {
         <label htmlFor="img">
           <input
             data-testid="image-input"
-            name="imagemCarta"
+            name="cardImage"
             type="string"
             value={ cardImage }
             onChange={ onInputChange }
@@ -75,6 +75,7 @@ class Form extends React.Component {
         <label htmlFor="raridade">
           <select
             data-testid="rare-input"
+            name="cardRare"
             value={ cardRare }
             onChange={ onInputChange }
           >
@@ -87,7 +88,7 @@ class Form extends React.Component {
         <label htmlFor="superTrunfo">
           <input
             data-testid="trunfo-input"
-            name="superTrunfo"
+            name="cardTrunfo"
             type="checkbox"
             checked={ cardTrunfo }
             onChange={ onInputChange }
