@@ -15,6 +15,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      // deck: '',
     };
   }
 
@@ -46,6 +47,16 @@ class App extends React.Component {
     return this.setState({ isSaveButtonDisabled: false });
   }
 
+  onSaveButtonClick = () => {
+    document.querySelector('#text').value = '';
+    document.querySelector('#descricao').value = '';
+    document.querySelector('#image').value = '';
+    document.querySelector('#attr1').value = 0;
+    document.querySelector('#attr2').value = 0;
+    document.querySelector('#attr3').value = 0;
+    document.querySelector('#rarity').value = 'normal';
+  }
+
   render() {
     const { cardName, cardDescription, cardImage,
       cardAttr1, cardAttr2, cardAttr3, cardRare,
@@ -58,7 +69,9 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           cardName={ cardName }
-          // onSaveButtonClick={ onSaveButtonClick }
+          cardDescription={ cardDescription }
+          cardImage={ cardImage }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
