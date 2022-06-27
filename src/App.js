@@ -30,6 +30,9 @@ class App extends React.Component {
     const { type, name } = target;
     let value = (type === 'checkbox') ? target.checked : target.value;
     if (type === 'number') {
+      if (value === '') {
+        value = '0';
+      }
       value = parseFloat(value);
     }
     this.setState({
@@ -139,10 +142,11 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </div>
-        <ul>
+        <br />
+        <ul id="deck">
           {
             data.map((card, index) => (
-              <li key={ index }>
+              <li key={ index } className="card">
                 <h3 data-testid="name-card">{ card.name }</h3>
                 <br />
                 <img src={ card.image } alt={ card.name } data-testid="image-card" />
