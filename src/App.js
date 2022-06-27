@@ -1,4 +1,3 @@
-/* eslint-disable no-magic-numbers */
 import React from 'react';
 import Card from './components/Card';
 import Forms from './components/Form';
@@ -23,14 +22,17 @@ class App extends React.Component {
     const { cardName, cardDescription, cardImage, cardRare,
       cardAttr1, cardAttr2, cardAttr3 } = this.state;
     const sum = (+cardAttr1) + (+cardAttr2) + (+cardAttr3);
+    const maxCard = 90;
+    const maxLengthCard = 210;
+
     if (cardName.length <= 1
       || cardDescription.length <= 1
       || cardImage.length <= 1
       || cardRare.length <= 1
-      || sum > 210
-      || cardAttr1 > 90
-      || cardAttr2 > 90
-      || cardAttr3 > 90
+      || sum > maxLengthCard
+      || cardAttr1 > maxCard
+      || cardAttr2 > maxCard
+      || cardAttr3 > maxCard
       || cardAttr1 < 0
       || cardAttr2 < 0
       || cardAttr3 < 0
