@@ -7,7 +7,7 @@ export default class CardList extends Component {
     super();
     this.state = {
       nameFilter: '',
-      rareFilter: '',
+      rareFilter: 'todas',
       trunfoFilter: '',
     };
   }
