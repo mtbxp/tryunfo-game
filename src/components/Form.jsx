@@ -12,84 +12,83 @@ export default class Form extends Component {
     return (
       <form>
         <h1>Adicionar nova carta</h1>
-        <label htmlFor="name-input">
+        <label htmlFor="name">
           Nome:
           <input
             type="text"
             data-testid="name-input"
-            name="cardName"
-            id="name-input"
+            name="card-name"
+            id="name"
             placeholder="Digite o nome da carta"
             value={ cardName }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="description-input">
+        <label htmlFor="description">
           Descrição:
-          <input
+          <textarea
             type="textarea"
             data-testid="description-input"
-            name="cardDescription"
-            id="description-input"
+            name="card-description"
+            id="description"
             value={ cardDescription }
             onChange={ onInputChange }
           />
         </label>
         <div>
-          <label htmlFor="attr1-input">
+          <label htmlFor="attr1">
             Habilidade:
             <input
               type="number"
               data-testid="attr1-input"
-              name="cardAttr1"
-              id="attr1-input"
+              name="card-attr1"
+              id="attr1"
               value={ cardAttr1 }
               onChange={ onInputChange }
             />
           </label>
-          <label htmlFor="attr2-input">
+          <label htmlFor="attr2">
             Força:
             <input
-              name="cardAttr2"
+              name="card-attr2"
               value={ cardAttr2 }
               onChange={ onInputChange }
-              id="attr2-input"
+              id="attr2"
               data-testid="attr2-input"
               type="number"
             />
           </label>
-          <label htmlFor="attr3-input">
+          <label htmlFor="attr3">
             Vida:
             <input
-              className="input"
-              name="cardAttr3"
+              name="card-attr3"
               value={ cardAttr3 }
               onChange={ onInputChange }
-              id="attr3-input"
+              id="attr3"
               data-testid="attr3-input"
               type="number"
             />
           </label>
         </div>
-        <label htmlFor="image-input">
+        <label htmlFor="image">
           Imagem:
           <input
             placeholder="Digite o endereço da imagem"
-            name="cardImage"
+            name="card-image"
             value={ cardImage }
             onChange={ onInputChange }
-            id="image-input"
+            id="image"
             data-testid="image-input"
             type="text"
           />
         </label>
-        <label htmlFor="rare-input">
+        <label htmlFor="rare">
           Raridade:
           <select
-            name="cardRare"
+            name="card-rare"
             value={ cardRare }
             onChange={ onInputChange }
-            id="rare-input"
+            id="rare"
             data-testid="rare-input"
           >
             <option value="normal">Normal</option>
@@ -98,17 +97,15 @@ export default class Form extends Component {
           </select>
         </label>
         {hasTrunfo ? (
-          <p data-testid="trunfo-input">
-            Você já tem um Super Trunfo em seu baralho
-          </p>
+          'Você já tem um Super Trunfo em seu baralho'
         ) : (
-          <label htmlFor="trunfo-input">
+          <label htmlFor="trunfo">
             <input
               checked={ cardTrunfo }
               onChange={ onInputChange }
               type="checkbox"
-              name="cardTrunfo"
-              id="trunfo-input"
+              name="card-trunfo"
+              id="trunfo"
               data-testid="trunfo-input"
             />
             <span>Super Trunfo!</span>
