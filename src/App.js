@@ -16,11 +16,13 @@ class App extends React.Component {
       cardRare: 'Normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      baralho: [],
 
     };
 
     this.handleValue = this.handleValue.bind(this);
     this.handleSaveButton = this.handleSaveButton.bind(this);
+    this.handleBaralho = this.handleBaralho.bind(this);
   }
 
   handleValue({ target }) {
@@ -64,6 +66,23 @@ class App extends React.Component {
     }
   }
 
+  handleBaralho(event) {
+    event.preventDefault();
+
+    const currentState = { ...this.state };
+
+    this.setState((actualState) => ({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+      baralho: [...actualState.baralho, currentState],
+    }));
+  }
+
   render() {
     const { cardName,
       onInputChange,
@@ -79,17 +98,18 @@ class App extends React.Component {
       <div>
         <h1>Tryunfo</h1>
         <Form
-          // cardName=""
-          // cardDescription=""
-          // cardAttr1=""
-          // cardAttr2=""
-          // cardImage=""
-          // cardRare=""
-          // cardTrunfo={ false }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
           // hasTrunfo={ false }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.handleValue }
-          // onSaveButtonClick=""
+          onSaveButtonClick={ this.handleBaralho }
         />
         <Card
           cardName={ cardName }

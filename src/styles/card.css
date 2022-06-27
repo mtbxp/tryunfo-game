@@ -1,0 +1,22 @@
+.cardFull {
+  border: solid black 2px;
+  width: 500px;
+}
+
+.cardName {
+  border: solid gray 1px;
+  text-align: center;
+}
+
+.descricao {
+  border: solid gray 1px;
+  font-size: 15px;
+  font-style: italic;
+}
+
+img {
+  padding-left: 80px;
+  padding-top: 10px;
+  width: 300px;
+}
+

@@ -119,7 +119,7 @@ class Form extends React.Component {
           type="submit"
           name="salvar"
           disabled={ isSaveButtonDisabled }
-          onChange={ onSaveButtonClick }
+          onClick={ onSaveButtonClick }
         >
           Salvar
         </button>
