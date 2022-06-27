@@ -26,6 +26,7 @@ class Form extends React.Component {
               data-testid="name-input"
               value={ cardName }
               onChange={ onInputChange }
+              name="name"
             />
           </label>
           <label htmlFor="description">
@@ -35,6 +36,7 @@ class Form extends React.Component {
               data-testid="description-input"
               value={ cardDescription }
               onChange={ onInputChange }
+              name="description"
             />
           </label>
           <label htmlFor="attr1">
@@ -44,6 +46,7 @@ class Form extends React.Component {
               data-testid="attr1-input"
               value={ cardAttr1 }
               onChange={ onInputChange }
+              name="attr1"
             />
           </label>
           <label htmlFor="attr2">
@@ -53,6 +56,7 @@ class Form extends React.Component {
               data-testid="attr2-input"
               value={ cardAttr2 }
               onChange={ onInputChange }
+              name="attr2"
             />
           </label>
           <label htmlFor="attr3">
@@ -62,6 +66,7 @@ class Form extends React.Component {
               data-testid="attr3-input"
               value={ cardAttr3 }
               onChange={ onInputChange }
+              name="attr3"
             />
           </label>
           <label htmlFor="image">
@@ -71,6 +76,7 @@ class Form extends React.Component {
               data-testid="image-input"
               value={ cardImage }
               onChange={ onInputChange }
+              name="image"
             />
           </label>
           <label htmlFor="rare">
@@ -80,6 +86,7 @@ class Form extends React.Component {
               data-testid="rare-input"
               value={ cardRare }
               onChange={ onInputChange }
+              name="rare"
             >
               <option value="normal">normal</option>
               <option value="raro">raro</option>
@@ -93,6 +100,7 @@ class Form extends React.Component {
               data-testid="trunfo-input"
               checked={ cardTrunfo }
               onChange={ onInputChange }
+              name="trunfo"
             />
           </label>
           <button
