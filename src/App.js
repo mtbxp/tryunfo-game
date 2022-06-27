@@ -9,13 +9,13 @@ class App extends React.Component {
     this.state = {
       name: '',
       description: '',
-      attr1: '',
-      attr2: '',
-      attr3: '',
-      rare: 'normal',
+      attr1: 0,
+      attr2: 0,
+      attr3: 0,
       image: '',
+      rare: 'normal',
       superTrunfo: false,
-      btnDisable: false,
+      btnDisable: true,
     };
 
     this.handle = this.handle.bind(this);
@@ -26,7 +26,38 @@ class App extends React.Component {
     const value = (target.type === 'checkbox') ? target.checked : target.value;
     this.setState({
       [name]: value,
+    }, () => {
+      this.validate();
     });
+  }
+
+  validate() {
+    const { name, description, image, attr1, attr2, attr3 } = this.state;
+    const maxTotal = 210;
+    const maxPerAttr = 90;
+    const minPerAttr = 0;
+
+    const vazio = name !== '' && description !== '' && image !== '';
+
+    const maxTotalAttr = Number(attr1) + Number(attr2) + Number(attr3) <= maxTotal;
+
+    const maxInOnlyAtt = Number(attr1) <= maxPerAttr
+    && Number(attr2) <= maxPerAttr
+    && Number(attr3) <= maxPerAttr;
+
+    const minInOnlyAtt = Number(attr1) >= minPerAttr
+    && Number(attr2) >= minPerAttr
+    && Number(attr3) >= minPerAttr;
+
+    if (vazio && maxTotalAttr && maxInOnlyAtt && minInOnlyAtt) {
+      this.setState({
+        btnDisable: false,
+      });
+    } else {
+      this.setState({
+        btnDisable: true,
+      });
+    }
   }
 
   render() {
