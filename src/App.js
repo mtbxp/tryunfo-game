@@ -15,6 +15,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'Normal',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       baralho: [],
 
@@ -23,12 +24,26 @@ class App extends React.Component {
     this.handleValue = this.handleValue.bind(this);
     this.handleSaveButton = this.handleSaveButton.bind(this);
     this.handleBaralho = this.handleBaralho.bind(this);
+    this.handleHasTrue = this.handleHasTrue.bind(this);
   }
 
   handleValue({ target }) {
     this.setState({
       [target.name]: target.value,
     }, () => this.handleSaveButton());
+  }
+
+  handleHasTrue() {
+    const { baralho } = this.state;
+    if (baralho.find((element) => element.cardTrunfo === true)) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    } else {
+      this.setState({
+        hasTrunfo: false,
+      });
+    }
   }
 
   handleSaveButton() {
@@ -80,7 +95,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       baralho: [...actualState.baralho, currentState],
-    }));
+    }), () => this.handleHasTrue());
   }
 
   render() {
@@ -93,6 +108,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled } = this.state;
     return (
       <div>
@@ -106,7 +122,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          // hasTrunfo={ false }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.handleValue }
           onSaveButtonClick={ this.handleBaralho }
