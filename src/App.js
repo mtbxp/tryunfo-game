@@ -115,8 +115,13 @@ class App extends React.Component {
         cardImage: '',
         cardRare: 'normal',
         cardTrunfo: false,
-        hasTrunfo: false,
         isSaveButtonDisabled: true,
+      }, () => {
+        if (newCard.cardTrunfo) {
+          this.setState({
+            hasTrunfo: true,
+          });
+        }
       });
     });
   }

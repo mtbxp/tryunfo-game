@@ -3,9 +3,20 @@ import PropTypes from 'prop-types';
 
 class Form extends React.Component {
   render() {
-    const { cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo,
-      isSaveButtonDisabled, onSaveButtonClick, onInputChange } = this.props;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      isSaveButtonDisabled,
+      onSaveButtonClick,
+      onInputChange,
+      hasTrunfo,
+    } = this.props;
     return (
       <form>
         <div>
@@ -80,15 +91,21 @@ class Form extends React.Component {
           </select>
         </div>
         <div>
-          <input
-            name="cardTrunfo"
-            data-testid="trunfo-input"
-            id="super-trunfo"
-            type="checkbox"
-            onChange={ onInputChange }
-            checked={ cardTrunfo }
-          />
-          Super Trunfo
+          {hasTrunfo ? (
+            <h3>Você já tem um Super Trunfo em seu baralho</h3>
+          ) : (
+            <div>
+              <input
+                name="cardTrunfo"
+                data-testid="trunfo-input"
+                id="super-trunfo"
+                type="checkbox"
+                onChange={ onInputChange }
+                checked={ cardTrunfo }
+              />
+              Super Trunfo
+            </div>
+          )}
         </div>
         <button
           name="isSaveButtonDisabled"
@@ -116,6 +133,7 @@ Form.propTypes = {
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
 };
 
 export default Form;
