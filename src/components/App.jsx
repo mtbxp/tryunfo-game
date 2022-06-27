@@ -109,7 +109,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Tryunfo</h1>
-        <section>
+        <div>
           <Form
             cardName={ cardName }
             cardDescription={ cardDescription }
@@ -124,9 +124,9 @@ class App extends React.Component {
             onInputChange={ this.onInputChange }
             onSaveButtonClick={ this.onSaveButtonClick }
           />
-        </section>
+        </div>
         <h2>Lista de cartas</h2>
-        <section>
+        <div>
           <Card
             cardName={ cardName }
             cardDescription={ cardDescription }
@@ -139,17 +139,16 @@ class App extends React.Component {
             deleteButtonClick={ this.deleteButtonClick }
             preview={ false }
           />
-        </section>
+        </div>
         <h2>Todas as Cartas</h2>
-        <section>
+        <div>
           <CardList
             saveCards={ saveCards }
             deleteButtonClick={ this.deleteButtonClick }
             preview
           />
-        </section>
+        </div>
       </div>
-
     );
   }
 }
