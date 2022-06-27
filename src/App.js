@@ -46,7 +46,7 @@ class App extends React.Component {
     const { cardName, cardDescription, cardImage, cardRare,
       cardAttr1, cardAttr2, cardAttr3, cards } = this.state;
     this.setState({
-      cards: [
+      [cards]: [
         {
           name: cardName,
           description: cardDescription,
@@ -79,7 +79,7 @@ class App extends React.Component {
 
   render() {
     const { cardName, cardDescription, cardImage, cardAttr1, cardAttr2,
-      cardAttr3, cardRare, cardTrunfo } = this.state;
+      cardAttr3, cardRare, cardTrunfo, cards } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -95,6 +95,7 @@ class App extends React.Component {
           cardAttr3={ cardAttr3 }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+
         />
         <Card
           cardName={ cardName }
@@ -107,6 +108,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
 
         />
+        <div>{cards}</div>
       </div>
     );
   }
