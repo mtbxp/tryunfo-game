@@ -66,7 +66,6 @@ class App extends React.Component {
   onSaveButtonClick = (e) => {
     e.preventDefault();
     this.setState((prev) => ({
-      arrayCards: [...prev.arrayCards, prev],
       name: '',
       description: '',
       image: '',
@@ -75,6 +74,7 @@ class App extends React.Component {
       attr3: 0,
       trunfo: false,
       rare: 'normal',
+      arrayCards: [...prev.arrayCards, prev],
     }
     ));
   }
@@ -100,7 +100,7 @@ class App extends React.Component {
           isSaveButtonDisabled={ this.validateForm() }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
-          add={ arrayCards }
+
         />
         <Card
           cardName={ name }
@@ -111,7 +111,27 @@ class App extends React.Component {
           cardImage={ image }
           cardRare={ rare }
           cardTrunfo={ trunfo }
+
         />
+
+        <div>
+          {
+            (arrayCards.map((item, index) => (
+              <div key={ index }>
+                <Card
+                  cardName={ item.name }
+                  cardDescription={ item.description }
+                  cardAttr1={ item.attr1 }
+                  cardAttr2={ item.attr2 }
+                  cardAttr3={ item.attr3 }
+                  cardImage={ item.image }
+                  cardTrunfo={ item.trunfo }
+                  cardRare={ item.rare }
+                />
+              </div>
+            )))
+          }
+        </div>
       </div>
     );
   }
