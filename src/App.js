@@ -27,6 +27,16 @@ class App extends React.Component {
         cardImage: 'https://static.todamateria.com.br/upload/od/in/odintrono1-cke.jpg',
         cardRare: 'raro',
         cardTrunfo: false,
+      },
+      {
+        cardName: 'Freya',
+        cardDescription: 'Deusa Vanir do Amor, Magia e Morte',
+        cardAttr1: '34',
+        cardAttr2: '67',
+        cardAttr3: '17',
+        cardImage: 'https://i1.wp.com/caminhopagao.com.br/wp-content/uploads/2019/06/FReya-3-1.jpg?resize=570%2C886',
+        cardRare: 'normal',
+        cardTrunfo: false,
       }],
     };
   }
