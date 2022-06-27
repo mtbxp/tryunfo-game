@@ -21,8 +21,8 @@ class App extends React.Component {
   }
 
   trunfoInCards = () => {
-    const { Savecards } = this.state;
-    if (Savecards.length === 0) return Savecards.some((card) => card.trunfo);
+    const { saveCards } = this.state;
+    if (saveCards.length === 0) return saveCards.some((card) => card.trunfo);
     return false;
   }
 
