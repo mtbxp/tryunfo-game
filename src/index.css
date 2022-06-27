@@ -3,9 +3,9 @@
 
 /* RESET DEFAULTS */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 /* VARIABLES */
@@ -25,82 +25,82 @@ body {
 }
 
 header {
-  background-color: var(--color6);
-  font-family: var(--font-display-1);
-  letter-spacing: 15px;
-  display: flex;
   align-items: center;
-  width: 100%;
-  height: 13vh;
+  background-color: var(--color6);
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  font-family: var(--font-display-1);
   margin-bottom: 40px;
+  letter-spacing: 15px;
+  height: 13vh;
+  width: 100%;
 }
 
 header h1 {
-  font-size: 3rem;
-  text-transform: uppercase;
   color: white;
+  font-size: 3rem;
   font-weight: 700;
   text-indent: 20px;
+  text-transform: uppercase;
 }
 
 form {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px;
-  max-width: 50%;
-  min-width: 360px;
   background-color: var(--color2);
   border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
+  max-width: 50%;
+  min-width: 360px;
+  padding: 20px;
 }
 
 form label{
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  width: 100%;
 }
 
 form label input {
-  width: 300px;
-  border-radius: 20px;
-  padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  text-align: center;
+  border-radius: 20px;
   font-size: 2rem;
+  padding: 10px;
+  text-align: center;
+  width: 300px;
 }
 
 form label p {
-  width: 300px;
-  text-align: center;
+  color: white;
   font-size: 3rem;
   font-weight: 700;
-  color: white;
+  text-align: center;
   text-transform: uppercase;
+  width: 300px;
 }
 
 .main-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   align-items: center;
-  gap: 30px;
   background-color: var(--color1);
-  width: 85%;
-  max-width: 1350px;
-  margin: auto;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 30px;
-  padding: 30px 0;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-around;
+  margin: auto;
+  max-width: 1350px;
+  padding: 30px 0;
+  width: 85%;
 }
 
 .extra-btns-container {
-  width: 100%;
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
+  width: 100%;
 }
 
 .extra-btns-container{
@@ -115,87 +115,87 @@ form label p {
 }
 
 .extra-btns-container p{
-  font-size: 1.4rem;
   color: white;
+  font-size: 1.4rem;
 }
 
 .extra-btns-container select {
-  border-radius: 20px;
-  padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
   margin-top: 5px;
+  padding: 10px;
 }
 
 .extra-btns-container input[type=checkbox] {
-  height: 20px;
   margin-top: 5px;
+  height: 20px;
 }
 
 .extra-btns-container button {
-  border-radius: 20px;
-  padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  width: 30%;
   background-color: var(--color5);
-  font-weight: 700;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
   color: white;
   font-size: 1.3rem;
+  font-weight: 700;
+  padding: 10px;
+  width: 30%;
 }
 
 .card-display {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 10px;
   width: 450px;
 }
 
 .card-display button {
   background-color: var(--color2);
-  font-weight: 500;
-  font-size: 1.2rem;
-  width: 120px;
-  color: white;
-  padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 20px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 10px;
+  width: 120px;
 }
 
 .card-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   align-items: center;
   background-color: var(--color3);
   border: 10px solid var(--color4);
-  width: 400px;
-  height: 600px;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 600px;
+  width: 400px;
 }
 
 .card-container img {
-  height: 300px;
-  width: 300px;
   border: 3px solid var(--color4);
   border-radius: 10px;
+  height: 300px;
+  width: 300px;
 }
 
 .card-container h2 {
-  font-size: 1.8rem;
-  padding: 10px 5px;
-  overflow: hidden;
-  text-align: center;
-  max-width: 100%;
-  height: 75px;
   color: rgba(0, 0, 0, 0.8);
+  font-size: 1.8rem;
+  height: 75px;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 10px 5px;
+  text-align: center;
 }
 
 .description-container {
-  width: 300px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
   height: 90px;
   padding: 10px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.9);
+  width: 300px;
 }
 
 .description-container p{
@@ -212,13 +212,13 @@ form label p {
 }
 
 .attr-container p {
-  padding: 10px;
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  font-weight: 700;
-  color: white;
   border-radius: 100%;
+  color: white;
+  font-weight: 700;
+  height: 40px;
+  padding: 10px;
+  text-align: center;
+  width: 40px;
 }
 .attr1-container {
   background-color: rgb(175, 0, 0);
@@ -236,23 +236,23 @@ form label p {
 
 .card-proprieties {
   background-color: var(--color4);
-  width: 100%;
   height: 50px;
   padding: 5px;
+  width: 100%;
 }
 
 .card-proprieties p{
   color: white;
-  text-align: center;
   font-weight: 600;
   line-height: 20px;
+  text-align: center;
 }
 
 .deck-container {
-  width: 95%;
-  margin: 40px auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 20px;
+  justify-content: center;
+  margin: 40px auto;
+  width: 95%;
 }
