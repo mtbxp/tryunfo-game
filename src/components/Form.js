@@ -104,15 +104,32 @@ class From extends React.Component {
 
         <label htmlFor="trunfo">
           Super Tryunfo:
-          <input
+          {hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p> : <input
             id="trunfo"
             name="cardTrunfo"
             data-testid="trunfo-input"
             type="checkbox"
             checked={ cardTrunfo }
             onChange={ onInputChange }
-            value={ hasTrunfo } // nao pertence aqui
-          />
+          />}
+          {/* {deck.map((card, index) => {
+            if (card.cardTrunfo) {
+              return (
+                <p key={ card.cardName }>
+                  Você já tem um Super Trunfo em seu baralho
+                </p>);
+            }
+            return (<input
+              key={ index }
+              id="trunfo"
+              name="cardTrunfo"
+              data-testid="trunfo-input"
+              type="checkbox"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+              value={ hasTrunfo } // nao pertence aqui
+            />);
+          })} */}
         </label>
 
         <button

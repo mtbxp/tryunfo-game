@@ -15,9 +15,18 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      hasTrunfo: true,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
-      deck: [],
+      deck: [{
+        cardName: 'Odin',
+        cardDescription: 'Pai de Todos',
+        cardAttr1: '56',
+        cardAttr2: '36',
+        cardAttr3: '67',
+        cardImage: 'img.png',
+        cardRare: 'raro',
+        cardTrunfo: false,
+      }],
     };
   }
 
@@ -49,9 +58,13 @@ class App extends React.Component {
 
   onInputChange = ({ target }) => {
     const { name, type } = target;
-    let { value } = target;
-    const { hasTrunfo } = this.state;
-    if (type === 'checkbox') value = hasTrunfo;
+    const { value } = target;
+    if (type === 'checkbox') {
+      this.setState({
+        cardTrunfo: true,
+        hasTrunfo: true,
+      });
+    }
     this.setState({
       [name]: value,
     }, () => {
