@@ -5,6 +5,8 @@
 }
 
 body {
+  display: flex;
+  justify-content: space-around;
   text-align: center;
 }
 
@@ -14,12 +16,11 @@ body {
   flex-direction: column;
   padding: 25px;
   text-align: left;
-  width: 20%;
 }
 
 input {
+  margin-bottom: 5px;
   margin-left: 5px;
-  margin-top: 5px;
   padding: 5px;
 }
 
