@@ -90,8 +90,9 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+      hasTrunfo: Boolean(cardTrunfo || state.hasTrunfo),
       savedCards: [...state.savedCards, newCard],
-    }), () => console.log(this.state));
+    }));
   }
 
   render() {
