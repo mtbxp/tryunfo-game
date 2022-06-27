@@ -20,6 +20,11 @@ class App extends React.Component {
     };
   }
 
+  hasTrunfo = () => {
+    const { savedCards } = this.state;
+    return savedCards.some((card) => card.cardTrunfo);
+  };
+
   validateButtonSave = () => {
     const {
       cardName,
@@ -88,6 +93,7 @@ class App extends React.Component {
     this.setState((prevState) => ({
       savedCards: [currCard, ...prevState.savedCards],
     }),
+    // () => this.hasTrunfo(),
     () => this.setState({
       cardName: '',
       cardDescription: '',
@@ -97,7 +103,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      hasTrunfo: false,
+      hasTrunfo: this.hasTrunfo(),
     }));
   }
 
