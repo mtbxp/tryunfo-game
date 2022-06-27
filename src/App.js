@@ -45,9 +45,9 @@ class App extends React.Component {
       && Number(cardAttr1) <= attrMax
       && Number(cardAttr2) <= attrMax
       && Number(cardAttr3) <= attrMax
-      && Number(cardAttr1) > attrMin
-      && Number(cardAttr2) > attrMin
-      && Number(cardAttr3) > attrMin
+      && Number(cardAttr1) >= attrMin
+      && Number(cardAttr2) >= attrMin
+      && Number(cardAttr3) >= attrMin
       && cardName.length
       && cardDescription.length
       && cardImage.length
