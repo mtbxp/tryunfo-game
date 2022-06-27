@@ -24,7 +24,6 @@ class App extends React.Component {
   onInputChange = ({ target }) => {
     const { name, type } = target;
     const value = type === 'checkbox' ? target.checked : target.value;
-    // if (type === 'number') { value = parseInt(value, 10); }
     this.setState({
       [name]: value,
     }, () => this.checkButtonValidation());
