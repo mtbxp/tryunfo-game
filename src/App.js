@@ -8,14 +8,16 @@ class App extends React.Component {
     this.state = {
       nameCard: '',
       descriptionCard: '',
-      attr1: '',
-      attr2: '',
-      attr3: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
       imageCard: '',
       rarity: 'normal',
+      deck: [],
       trunfo: false,
       isSaveButtonDisabled: true,
       onInputChange: this.handleChange,
+      onSaveButtonClick: this.handleCard,
     };
   }
 
@@ -73,6 +75,40 @@ class App extends React.Component {
     });
   }
 
+  addNewCard = (card) => {
+    this.setState((prevState) => ({
+      deck: [...prevState.deck, card],
+    }));
+  }
+
+  handleCard = (event) => {
+    event.preventDefault();
+    const { nameCard, descriptionCard,
+      attr1, attr2, attr3, imageCard, rarity } = this.state;
+
+    const card = {
+      nameCard,
+      descriptionCard,
+      attr1,
+      attr2,
+      attr3,
+      imageCard,
+      rarity,
+    };
+
+    this.addNewCard(card);
+
+    this.setState({
+      nameCard: '',
+      descriptionCard: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
+      imageCard: '',
+      rarity: 'normal',
+    });
+  }
+
   render() {
     const {
       nameCard,
@@ -85,6 +121,7 @@ class App extends React.Component {
       trunfo,
       isSaveButtonDisabled,
       onInputChange,
+      onSaveButtonClick,
     } = this.state;
 
     return (
@@ -101,6 +138,8 @@ class App extends React.Component {
           cardTrunfo={ trunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ onInputChange }
+          onSaveButtonClick={ onSaveButtonClick }
+
         />
         <Card
           cardName={ nameCard }
