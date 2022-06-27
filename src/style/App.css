@@ -148,8 +148,8 @@ button {
   background: var(--accent);
   border: transparent;
   border-radius: var(--borderRadius);
-  color: var(--white);
   box-shadow: var(--shadow-1);
+  color: var(--white);
   cursor: pointer;
   display: inline-block;
   font-size: 1.2rem;
