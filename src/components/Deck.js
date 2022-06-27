@@ -8,11 +8,13 @@ class Deck extends React.Component {
     this.state = {
       nameFilter: '',
       rareFilter: 'todas',
+      trunfoFilter: false,
     };
   }
 
   handleFilters = ({ target }) => {
-    const { name, value } = target;
+    const { name, type } = target;
+    const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
     });
@@ -20,7 +22,7 @@ class Deck extends React.Component {
 
   render() {
     const { savedCards, handleDeckButton } = this.props;
-    const { nameFilter, rareFilter } = this.state;
+    const { nameFilter, rareFilter, trunfoFilter } = this.state;
 
     return (
       <div>
@@ -32,6 +34,7 @@ class Deck extends React.Component {
               onChange={ this.handleFilters }
               name="nameFilter"
               value={ nameFilter }
+              disabled={ trunfoFilter }
               data-testid="name-filter"
             />
           </label>
@@ -41,6 +44,7 @@ class Deck extends React.Component {
               onChange={ this.handleFilters }
               name="rareFilter"
               value={ rareFilter }
+              disabled={ trunfoFilter }
               data-testid="rare-filter"
             >
               <option value="todas">Todas</option>
@@ -49,9 +53,22 @@ class Deck extends React.Component {
               <option value="muito raro">Muito raro</option>
             </select>
           </label>
+          <label htmlFor="trunfoFilter">
+            Apenas Super Trunfo
+            <input
+              type="checkbox"
+              onChange={ this.handleFilters }
+              name="trunfoFilter"
+              value={ trunfoFilter }
+              data-testid="trunfo-filter"
+            />
+          </label>
         </div>
         {
           savedCards
+            .filter(({ cardTrunfo }) => (
+              !trunfoFilter ? true : cardTrunfo
+            ))
             .filter(({ cardName }) => (
               cardName.toLowerCase().includes(nameFilter.toLowerCase())
             ))
