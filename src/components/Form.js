@@ -25,7 +25,20 @@ class Form extends React.Component {
       remainingPoints,
     } = this.props;
 
-    console.log(hasTrunfo);
+    const checkboxElement = (
+      <label htmlFor="cardTrunfo" className="line-checkbox">
+        <input
+          type="checkbox"
+          data-testid="trunfo-input"
+          name="cardTrunfo"
+          id="cardTrunfo"
+          className="checkbox"
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
+        />
+        <div className="checkbox-label">Super Trunfo</div>
+      </label>
+    );
 
     return (
       <form onSubmit={ () => { } }>
@@ -123,18 +136,11 @@ class Form extends React.Component {
               <option>muito raro</option>
             </select>
           </label>
-          <label htmlFor="cardTrunfo" className="line-checkbox">
-            <input
-              type="checkbox"
-              data-testid="trunfo-input"
-              name="cardTrunfo"
-              id="cardTrunfo"
-              className="checkbox"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-            />
-            <div className="checkbox-label">Super Tryunfo</div>
-          </label>
+          {
+            hasTrunfo
+              ? <p className="no-trunfo">Você já tem um Super Trunfo em seu baralho</p>
+              : checkboxElement
+          }
         </div>
         <button
           type="submit"

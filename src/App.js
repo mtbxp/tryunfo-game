@@ -41,17 +41,6 @@ class App extends React.Component {
     });
   }
 
-  validateLength = (...params) => params.every((param) => param.length > 0);
-
-  validateSum = (maxSum, ...params) => {
-    const totalSum = params.reduce((sum, param) => sum + Number(param), 0);
-    return totalSum <= maxSum;
-  }
-
-  validateMin = (min, ...params) => params.every((param) => Number(param) >= min);
-
-  validateMax = (max, ...params) => params.every((param) => Number(param) <= max);
-
   validateForm = () => {
     const {
       cardName,
@@ -75,19 +64,16 @@ class App extends React.Component {
     return (isValidLength && isValidSum && isValidMin && isValidMax);
   }
 
-  resetStateAndForm = () => {
-    this.setState({
-      cardName: '',
-      cardDescription: '',
-      cardImage: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardRare: 'normal',
-      cardTrunfo: false,
-      remainingPoints: 210,
-    });
+  validateLength = (...params) => params.every((param) => param.length > 0);
+
+  validateSum = (maxSum, ...params) => {
+    const totalSum = params.reduce((sum, param) => sum + Number(param), 0);
+    return totalSum <= maxSum;
   }
+
+  validateMin = (min, ...params) => params.every((param) => Number(param) >= min);
+
+  validateMax = (max, ...params) => params.every((param) => Number(param) <= max);
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -116,6 +102,22 @@ class App extends React.Component {
     }), () => this.resetStateAndForm());
   }
 
+  resetStateAndForm = () => {
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      remainingPoints: 210,
+    });
+  }
+
+  checkHasTrunfo = (dataList) => dataList.some(({ cardTrunfo }) => cardTrunfo);
+
   render() {
     const {
       cardName,
@@ -127,6 +129,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       remainingPoints,
+      cardList,
     } = this.state;
 
     return (
@@ -147,6 +150,7 @@ class App extends React.Component {
               onInputChange={ this.handleChange }
               isSaveButtonDisabled={ !this.validateForm() }
               onSaveButtonClick={ this.handleSubmit }
+              hasTrunfo={ this.checkHasTrunfo(cardList) }
             />
             <div className="card-preview">
               <h3>Pré-visualização</h3>

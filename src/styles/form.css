@@ -67,3 +67,9 @@ legend {
 .red {
   color: red;
 }
+
+.no-trunfo {
+  font-style: italic;
+  font-weight: 600;
+  margin-left: 40px;
+}
