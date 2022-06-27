@@ -83,13 +83,16 @@ form label p {
 .main-section {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
   gap: 30px;
   background-color: var(--color1);
   width: 85%;
+  max-width: 1350px;
   margin: auto;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 30px;
-  padding: 25px;
+  padding: 30px 0;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -139,11 +142,117 @@ form label p {
   font-size: 1.3rem;
 }
 
+.card-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 450px;
+}
+
+.card-display button {
+  background-color: var(--color2);
+  font-weight: 500;
+  font-size: 1.2rem;
+  width: 120px;
+  color: white;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
 .card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
   background-color: var(--color3);
   border: 10px solid var(--color4);
   width: 400px;
   height: 600px;
-  margin: auto;
   border-radius: 15px;
+}
+
+.card-container img {
+  height: 300px;
+  width: 300px;
+  border: 3px solid var(--color4);
+  border-radius: 10px;
+}
+
+.card-container h2 {
+  font-size: 1.8rem;
+  padding: 10px 5px;
+  overflow: hidden;
+  text-align: center;
+  max-width: 100%;
+  height: 75px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.description-container {
+  width: 300px;
+  height: 90px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.description-container p{
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.attr-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.attr-container p {
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  border-radius: 100%;
+}
+.attr1-container {
+  background-color: rgb(175, 0, 0);
+}
+
+.attr2-container {
+  background-color: rgb(27, 27, 198);
+  
+}
+
+.attr3-container {
+  background-color: rgb(226, 200, 48);
+
+}
+
+.card-proprieties {
+  background-color: var(--color4);
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+}
+
+.card-proprieties p{
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.deck-container {
+  width: 95%;
+  margin: 40px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }

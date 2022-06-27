@@ -189,20 +189,22 @@ class App extends React.Component {
           />
         </section>
 
-        {deck.map((card, index) => (<Card
-          key={ `${cardName}${index}` }
-          cardName={ card.cardName }
-          cardIndex={ card.cardIndex }
-          cardDescription={ card.cardDescription }
-          cardAttr1={ card.cardAttr1 }
-          cardAttr2={ card.cardAttr2 }
-          cardAttr3={ card.cardAttr3 }
-          cardImage={ card.cardImage }
-          cardRare={ card.cardRare }
-          cardTrunfo={ card.cardTrunfo }
-          isPreview={ false }
-          deleteCard={ this.deleteCard }
-        />))}
+        <div className="deck-container">
+          {deck.map((card, index) => (<Card
+            key={ `${cardName}${index}` }
+            cardName={ card.cardName }
+            cardIndex={ card.cardIndex }
+            cardDescription={ card.cardDescription }
+            cardAttr1={ card.cardAttr1 }
+            cardAttr2={ card.cardAttr2 }
+            cardAttr3={ card.cardAttr3 }
+            cardImage={ card.cardImage }
+            cardRare={ card.cardRare }
+            cardTrunfo={ card.cardTrunfo }
+            isPreview={ false }
+            deleteCard={ this.deleteCard }
+          />))}
+        </div>
       </>
     );
   }

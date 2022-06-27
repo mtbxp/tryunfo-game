@@ -1,12 +1,15 @@
+const defaultImg = 'https://xurras.co/_library/images/default-avatar.jpg';
+const defaultDescription = 'Defaul description template.';
+
 const deck = [
   {
     cardIndex: '',
     cardName: 'Name Template 01',
-    cardDescription: '',
+    cardDescription: defaultDescription,
     cardAttr1: '10',
     cardAttr2: '20',
     cardAttr3: '30',
-    cardImage: '',
+    cardImage: defaultImg,
     cardRare: 'normal',
     cardTrunfo: false,
     isPreview: false,
@@ -14,11 +17,11 @@ const deck = [
   {
     cardIndex: '',
     cardName: 'Name Template 02',
-    cardDescription: '',
+    cardDescription: defaultDescription,
     cardAttr1: '15',
     cardAttr2: '25',
     cardAttr3: '35',
-    cardImage: 'https://xurras.co/_library/images/default-avatar.jpg',
+    cardImage: defaultImg,
     cardRare: 'raro',
     cardTrunfo: false,
     isPreview: false,
@@ -26,11 +29,11 @@ const deck = [
   {
     cardIndex: '',
     cardName: 'Name Template 03',
-    cardDescription: '',
+    cardDescription: defaultDescription,
     cardAttr1: '20',
     cardAttr2: '30',
     cardAttr3: '40',
-    cardImage: 'https://xurras.co/_library/images/default-avatar.jpg',
+    cardImage: defaultImg,
     cardRare: 'muito raro',
     cardTrunfo: false,
     isPreview: false,
@@ -38,11 +41,11 @@ const deck = [
   {
     cardIndex: '',
     cardName: 'Name Template 04',
-    cardDescription: '',
+    cardDescription: defaultDescription,
     cardAttr1: '30',
     cardAttr2: '20',
     cardAttr3: '10',
-    cardImage: 'https://xurras.co/_library/images/default-avatar.jpg',
+    cardImage: defaultImg,
     cardRare: 'normal',
     cardTrunfo: false,
     isPreview: false,
