@@ -203,7 +203,7 @@ input, textarea, select {
   color: var(--green-dark);
 }
 
-.main {
+.main-content {
   display: flex;
   justify-content: start;
 }
@@ -239,5 +239,8 @@ input, textarea, select {
 
 .card-preview img {
   border-radius: 10px;
+  height: 360px;
+  margin-bottom: 14px;
+  margin-top: 6px;
   width: 90%;
 }
