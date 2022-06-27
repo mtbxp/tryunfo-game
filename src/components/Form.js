@@ -10,6 +10,7 @@ class Form extends React.Component {
     //   };
 
     // }
+    // const { cardName: } = this.props.form;
 
     return (
       <form className="form">
