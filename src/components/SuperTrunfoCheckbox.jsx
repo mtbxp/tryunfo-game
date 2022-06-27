@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class SuperTrunfoCheckbox extends React.Component {
   render() {
-    const { cardTrunfo, handlerCardInfo } = this.props;
+    const { cardTrunfo, onInputChange } = this.props;
 
     return (
       <label htmlFor="cardTrunfo">
@@ -13,7 +13,7 @@ class SuperTrunfoCheckbox extends React.Component {
           name="cardTrunfo"
           data-testid="trunfo-input"
           value={ cardTrunfo }
-          onChange={ handlerCardInfo }
+          onChange={ onInputChange }
         />
         Super Trybe Trunfo
       </label>
@@ -23,7 +23,7 @@ class SuperTrunfoCheckbox extends React.Component {
 
 SuperTrunfoCheckbox.propTypes = {
   cardTrunfo: PropTypes.bool.isRequired,
-  handlerCardInfo: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
 };
 
 export default SuperTrunfoCheckbox;

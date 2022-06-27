@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Description extends React.Component {
   render() {
-    const { value, handlerCardInfo } = this.props;
+    const { value, onInputChange } = this.props;
 
     return (
       <label htmlFor="cardDescription" className="cardDescription">
@@ -16,7 +16,7 @@ class Description extends React.Component {
           rows="10"
           data-testid="description-input"
           value={ value }
-          onChange={ handlerCardInfo }
+          onChange={ onInputChange }
         />
       </label>
     );
@@ -25,7 +25,7 @@ class Description extends React.Component {
 
 Description.propTypes = {
   value: PropTypes.string.isRequired,
-  handlerCardInfo: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
 };
 
 export default Description;

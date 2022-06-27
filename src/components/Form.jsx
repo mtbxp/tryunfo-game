@@ -10,7 +10,7 @@ import BtnSave from './BtnSave';
 class Form extends React.Component {
   constructor() {
     super();
-    this.handlerCardInfo = this.handlerCardInfo.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
 
     this.state = {
       cardName: '',
@@ -24,7 +24,7 @@ class Form extends React.Component {
     };
   }
 
-  handlerCardInfo({ target }) {
+  onInputChange({ target }) {
     const { name } = target;
     const value = (target.type === 'checkbox') ? target.checked : target.value;
 
@@ -45,35 +45,35 @@ class Form extends React.Component {
     return (
       <form className="form" onSubmit={ this.handleSubmit }>
         <CardName
-          cardName={ cardName }
-          handlerCardInfo={ this.handlerCardInfo }
+          value={ cardName }
+          onInputChange={ this.onInputChange }
         />
 
         <Description
           cardDescription={ cardDescription }
-          handlerCardInfo={ this.handlerCardInfo }
+          onInputChange={ this.onInputChange }
         />
 
         <Attr
           cardAttr1={ cardAttr1 }
           cardAttr2={ cardAttr2 }
           cardAttr3={ cardAttr3 }
-          handlerCardInfo={ this.handlerCardInfo }
+          onInputChange={ this.onInputChange }
         />
 
         <CardImage
           cardImage={ cardImage }
-          handlerCardInfo={ this.handlerCardInfo }
+          onInputChange={ this.onInputChange }
         />
 
         <CardRarity
           cardRare={ cardRare }
-          handlerCardInfo={ this.handlerCardInfo }
+          onInputChange={ this.onInputChange }
         />
 
         <SuperTrunfoCheckbox
           cardTrunfo={ cardTrunfo }
-          handlerCardInfo={ this.handlerCardInfo }
+          onInputChange={ this.onInputChange }
         />
 
         <BtnSave />

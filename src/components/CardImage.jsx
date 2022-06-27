@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class cardImage extends React.Component {
   render() {
-    const { value, handlerCardInfo } = this.props;
+    const { value, onInputChange } = this.props;
 
     return (
       <input
@@ -12,7 +12,7 @@ class cardImage extends React.Component {
         data-testid="image-input"
         alt=""
         value={ value }
-        onChange={ handlerCardInfo }
+        onChange={ onInputChange }
       />
     );
   }
@@ -20,7 +20,7 @@ class cardImage extends React.Component {
 
 cardImage.propTypes = {
   value: PropTypes.string.isRequired,
-  handlerCardInfo: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
 };
 
 export default cardImage;
