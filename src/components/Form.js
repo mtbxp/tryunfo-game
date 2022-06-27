@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 class Form extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      //  hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -23,6 +23,7 @@ class Form extends React.Component {
           <input
             type="text"
             data-testid="name-input"
+            name="name"
             placeholder="Digite o nome"
             id="name"
             value={ cardName }
@@ -33,6 +34,7 @@ class Form extends React.Component {
           <input
             type="textarea"
             data-testid="description-input"
+            name="description"
             placeholder="Digite a Informação"
             id="description"
             value={ cardDescription }
@@ -43,6 +45,7 @@ class Form extends React.Component {
           <input
             type="number"
             data-testid="attr1-input"
+            name="attr1"
             placeholder="Escolha o atributo 1"
             id="attr1"
             value={ cardAttr1 }
@@ -53,6 +56,7 @@ class Form extends React.Component {
           <input
             type="number"
             data-testid="attr2-input"
+            name="attr2"
             placeholder="Escolha o atributo 2"
             id="attr2"
             value={ cardAttr2 }
@@ -63,6 +67,7 @@ class Form extends React.Component {
           <input
             type="number"
             data-testid="attr3-input"
+            name="attr3"
             placeholder="Escolha o atributo 2"
             id="attr3"
             value={ cardAttr3 }
@@ -92,15 +97,21 @@ class Form extends React.Component {
             <option value="muito raro">muito raro</option>
           </select>
         </label>
-        <label htmlFor="checkbox">
-          <input
-            type="checkbox"
-            data-testid="trunfo-input"
-            id="checkbox"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-        </label>
+        {hasTrunfo ? (
+          'Você já tem um Super Trunfo em seu baralho'
+        ) : (
+          <label htmlFor="checkbox">
+            <input
+              type="checkbox"
+              data-testid="trunfo-input"
+              name="checkbox"
+              id="checkbox"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+            />
+          </label>
+        )}
+
         <button
           type="submit"
           data-testid="save-button"
