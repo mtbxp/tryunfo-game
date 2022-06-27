@@ -54,10 +54,11 @@ class App extends React.Component {
     const { target } = event;
     const { name, value, checked } = target;
     const conditionalValue = target.type === 'checkbox' ? checked : value;
-    if (conditionalValue === true) this.setState({ nameAndRareDisabled: true });
-    if (conditionalValue === false) this.setState({ nameAndRareDisabled: false });
+    const conditionalNameandRare = !!(conditionalValue === true
+      && target.type === 'checkbox' && target.name !== 'cardTrunfo');
     this.setState({
       [name]: conditionalValue,
+      nameAndRareDisabled: conditionalNameandRare,
     }, () => this.handleSubmit());
   }
 
