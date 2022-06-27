@@ -12,7 +12,7 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -22,7 +22,7 @@ class Form extends React.Component {
       <div>
         <form>
           <label htmlFor="name-input">
-            Nome da carta
+            Name
             <input
               id="name-input"
               type="text"
@@ -43,7 +43,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="attr1-input">
-            Atributo que mais combinar1
+            cardAttr1
             <input
               id="attr1-input"
               type="number"
@@ -54,7 +54,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="attr2-input">
-            Atributo que mais combinar2
+            cardAttr2
             <input
               id="attr2-input"
               type="number"
@@ -65,7 +65,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="attr3-input">
-            Atributo que mais combinar3
+            cardAttr3
             <input
               id="attr3-input"
               type="number"
