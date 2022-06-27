@@ -8,7 +8,7 @@ class Form extends React.Component {
       cardDescription, cardAttr1,
       cardAttr2, cardAttr3,
       cardImage, cardRare,
-      cardTrunfo, isSaveButtonDisabled, onSaveButtonClick, hasTrunfo } = this.props;
+      cardTrunfo, isSaveButtonDisabled, onSaveButtonClick /* hasTrunfo */ } = this.props;
 
     return (
       <form className="form">
@@ -116,7 +116,7 @@ Form.propTypes = {
   cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
