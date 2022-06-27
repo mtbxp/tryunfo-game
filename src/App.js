@@ -31,7 +31,7 @@ class App extends React.Component {
     let value = (type === 'checkbox') ? target.checked : target.value;
     if (type === 'number') {
       if (value === '') {
-        value = '0';
+        value = 0;
       }
       value = parseFloat(value);
     }
@@ -56,7 +56,7 @@ class App extends React.Component {
     if (cardName !== ''
     && cardDescription !== ''
     && cardImage !== ''
-    && cardRare !== 'normal'
+    && cardRare !== ''
     && cardAttr1 <= maxAttr
     && cardAttr1 >= 0
     && cardAttr2 <= maxAttr
@@ -66,17 +66,11 @@ class App extends React.Component {
     && cardAttr1 + cardAttr2 + cardAttr3 <= maxPoints) {
       this.setState({
         isSaveButtonDisabled: false,
-      }, () => {});
+      });
     } else {
       this.setState({
         isSaveButtonDisabled: true,
-      }, () => {});
-    }
-    if (data.some((item) => item.isTrunfo === true)) {
-      this.setState({
-        hasTrunfo: true,
-        cardTrunfo: false,
-      }, () => {});
+      });
     }
   }
 
@@ -89,9 +83,8 @@ class App extends React.Component {
       cardAttr2: 0,
       cardAttr3: 0,
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
-      isSaveButtonDisabled: true,
     }));
   }
 
@@ -110,6 +103,12 @@ class App extends React.Component {
       data,
     } = this.state;
     const men = 'Super Trunfo';
+    if (data.some((item) => item.isTrunfo === true) && !hasTrunfo) {
+      this.setState({
+        hasTrunfo: true,
+        cardTrunfo: false,
+      });
+    }
     return (
       <div>
         <header>
