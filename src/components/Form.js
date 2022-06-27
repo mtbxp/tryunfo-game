@@ -16,8 +16,7 @@ class Form extends React.Component {
       onSaveButtonClick } = this.props;
     return (
       <form>
-        Adicionar Carta:
-        <label htmlFor="inputText">
+        <label className="nomeCarta" htmlFor="inputText">
           Nome da Carta:
           <input
             data-testid="name-input"
