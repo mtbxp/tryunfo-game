@@ -91,6 +91,7 @@ class Form extends React.Component {
         </label>
 
         <label htmlFor="rare">
+          Raridade:
           <select
             data-testid="rare-input"
             name="rare"

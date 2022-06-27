@@ -24,6 +24,7 @@ class App extends React.Component {
     this.validate = this.validate.bind(this);
     this.saveCard = this.saveCard.bind(this);
     this.temTrunfo = this.temTrunfo.bind(this);
+    this.removeCard = this.removeCard.bind(this);
   }
 
   handle({ target }) {
@@ -106,6 +107,12 @@ class App extends React.Component {
     });
   }
 
+  removeCard(name) {
+    this.setState((prevState) => ({
+      cards: prevState.cards.filter((card) => card.nome !== name),
+    }), () => { this.temTrunfo(); });
+  }
+
   render() {
     const {
       name, description, attr1, attr2, attr3,
@@ -159,6 +166,13 @@ class App extends React.Component {
                 cardRare={ card.raridade }
                 cardTrunfo={ card.trunfo }
               />
+              <button
+                type="button"
+                data-testid="delete-button"
+                onClick={ () => this.removeCard(card.nome) }
+              >
+                Delete
+              </button>
             </div>
           ))}
         </div>
