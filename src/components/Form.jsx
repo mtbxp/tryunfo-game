@@ -25,7 +25,7 @@ class Form extends React.Component {
             type="text"
             data-testid="name-input"
             id="text"
-            name="text"
+            name="cardName"
             value={ cardName }
             onChange={ onInputChange }
           />
@@ -34,7 +34,7 @@ class Form extends React.Component {
           Descrição Carta:
           <textarea
             id="descricao"
-            name="descricao"
+            name="cardDescription"
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
@@ -46,7 +46,7 @@ class Form extends React.Component {
             type="number"
             data-testid="attr1-input"
             id="speed"
-            name="speed"
+            name="cardAttr1"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
@@ -57,7 +57,7 @@ class Form extends React.Component {
             type="number"
             data-testid="attr2-input"
             id="skill"
-            name="skill"
+            name="cardAttr2"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
@@ -68,7 +68,7 @@ class Form extends React.Component {
             type="number"
             data-testid="attr3-input"
             id="power"
-            name="power"
+            name="cardAttr3"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
@@ -79,7 +79,7 @@ class Form extends React.Component {
             type="text"
             data-testid="image-input"
             id="image"
-            name="image"
+            name="cardImage"
             value={ cardImage }
             onChange={ onInputChange }
           />
@@ -99,7 +99,7 @@ class Form extends React.Component {
             type="checkbox"
             data-testid="trunfo-input"
             id="check"
-            name="check"
+            name="cardTrunfo"
             checked={ cardTrunfo }
             onChange={ onInputChange }
           />
