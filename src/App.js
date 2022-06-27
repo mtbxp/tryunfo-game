@@ -1,5 +1,5 @@
 import React from 'react';
-import './style/App.css';
+//import './style/App.css';
 import Card from './components/Card';
 import Form from './components/Form';
 import Data from './components/Data';
