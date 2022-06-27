@@ -17,6 +17,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      deck: [],
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -33,8 +34,30 @@ class App extends React.Component {
     }, () => { this.validateForms(); });
   }
 
-  onSaveButtonClick() {
-    console.log('Teste');
+  onSaveButtonClick(card) {
+    // const {
+    //   cardName,
+    //   cardDescription,
+    //   cardAttr1,
+    //   cardAttr2,
+    //   cardAttr3,
+    //   cardImage,
+    //   cardRare,
+    //   cardTrunfo,
+    // } = this.state;
+
+    this.setState((prevState) => ({
+      deck: [card, ...prevState.deck],
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false,
+      isSaveButtonDisabled: true,
+    }));
   }
 
   validateForms() {
