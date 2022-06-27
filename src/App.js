@@ -24,8 +24,7 @@ validation = () => {
     atribute1,
     atribute2,
     atribute3,
-    image,
-    rare } = this.state;
+    image } = this.state;
   this.setState({
     button: !(name !== ''
     && description !== ''
