@@ -101,7 +101,7 @@ class Form extends React.Component {
             type="checkbox"
             data-testid="trunfo-input"
             name="cardTrunfo"
-            value={ cardTrunfo }
+            checked={ cardTrunfo }
             onChange={ onInputChange }
           />
         </label>
@@ -111,7 +111,7 @@ class Form extends React.Component {
           data-testid="save-button"
           name="isSaveButtonDisabled"
           disabled={ isSaveButtonDisabled }
-          onChange={ onSaveButtonClick }
+          onClick={ onSaveButtonClick }
         >
           Salvar
         </button>
