@@ -36,9 +36,7 @@ class Card extends React.Component {
         <p data-testid="rare-card">
           { cardRare }
         </p>
-        <p data-testid="trunfo-card">
-          { cardTrunfo }
-        </p>
+        { cardTrunfo && <p data-testid="trunfo-card">Super Trunfo </p> }
       </div>
     );
   }
@@ -56,3 +54,5 @@ Card.propTypes = {
 };
 
 export default Card;
+
+// CodePen - documentation React
