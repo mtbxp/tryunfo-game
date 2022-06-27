@@ -41,8 +41,6 @@ export default class CardList extends Component {
               disabled={ trunfoFilter }
             />
           </label>
-        </section>
-        <section>
           <label htmlFor="rareFilter">
             <h3>Filtro por raridade: </h3>
             <select
@@ -59,8 +57,6 @@ export default class CardList extends Component {
               <option value="muito raro">muito raro</option>
             </select>
           </label>
-        </section>
-        <section>
           <label
             htmlFor="trunfoFilter"
             data-testid="trunfo-filter"
@@ -74,6 +70,8 @@ export default class CardList extends Component {
             />
             <h3>Filtro por Trunfo: </h3>
           </label>
+        </section>
+        <section>
           {myCards.map((card) => (
             <Card
               key={ card.cardName }
