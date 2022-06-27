@@ -18,7 +18,7 @@ export default class Form extends Component {
     } = this.props;
 
     return (
-      <form>
+      <form className="form-style">
         <label htmlFor="name">
           Nome:
           <input
@@ -91,22 +91,25 @@ export default class Form extends Component {
           />
         </label>
 
-        <select
-          name="raridade"
-          data-testid="rare-input"
-          value={ cardRare }
-          onChange={ onInputChange }
-        >
+        <label htmlFor="select">
           Raridade:
-          <option value="normal">normal</option>
-          <option value="raro">raro</option>
-          <option value="muito raro">muito raro</option>
-        </select>
+          <select
+            name="raridade"
+            id="select"
+            data-testid="rare-input"
+            value={ cardRare }
+            onChange={ onInputChange }
+          >
+            <option value="normal">normal</option>
+            <option value="raro">raro</option>
+            <option value="muito raro">muito raro</option>
+          </select>
+        </label>
 
         {hasTrunfo
           ? <h3>Você já tem um Super Trunfo em seu baralho</h3>
           : (
-            <label htmlFor="trunfo">
+            <label htmlFor="trunfo" className="checkbox">
               Super Trybe Trunfo
               <input
                 name="trunfo"

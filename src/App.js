@@ -97,7 +97,7 @@ class App extends React.Component {
     this.setState((prev) => ({
       card: prev.card.filter((element) => element.name !== parametro),
     }), () => {
-      this.setState({ hasTrunfo: !this.funcHasTrunfo() });
+      this.setState({ hasTrunfo: this.funcHasTrunfo() });
     });
   }
 
@@ -116,54 +116,64 @@ class App extends React.Component {
       card,
     } = this.state;
     return (
-      <div>
+      <div className="global">
         <h1> TRYUNFO </h1>
-        <Form
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardImage={ image }
-          cardRare={ raridade }
-          cardTrunfo={ trunfo }
-          onInputChange={ this.funcOnInputChange }
-          isSaveButtonDisabled={ btnDisabled }
-          onSaveButtonClick={ this.funcOnSaveButtonClick }
-          hasTrunfo={ hasTrunfo }
-        />
-        <Card
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardImage={ image }
-          cardRare={ raridade }
-          cardTrunfo={ trunfo }
-        />
-
-        {card.map((element) => (
-          <div key={ element.name }>
-            <Card
-              cardName={ element.name }
-              cardDescription={ element.description }
-              cardAttr1={ element.attr1 }
-              cardAttr2={ element.attr2 }
-              cardAttr3={ element.attr3 }
-              cardImage={ element.image }
-              cardRare={ element.raridade }
-              cardTrunfo={ element.trunfo }
-            />
-            <button
-              type="button"
-              data-testid="delete-button"
-              onClick={ () => this.funcDeleteButton(element.name) }
+        <div>
+          <Form
+            cardName={ name }
+            cardDescription={ description }
+            cardAttr1={ attr1 }
+            cardAttr2={ attr2 }
+            cardAttr3={ attr3 }
+            cardImage={ image }
+            cardRare={ raridade }
+            cardTrunfo={ trunfo }
+            onInputChange={ this.funcOnInputChange }
+            isSaveButtonDisabled={ btnDisabled }
+            onSaveButtonClick={ this.funcOnSaveButtonClick }
+            hasTrunfo={ hasTrunfo }
+          />
+          <Card
+            cardName={ name }
+            cardDescription={ description }
+            cardAttr1={ attr1 }
+            cardAttr2={ attr2 }
+            cardAttr3={ attr3 }
+            cardImage={ image }
+            cardRare={ raridade }
+            cardTrunfo={ trunfo }
+          />
+        </div>
+        <section>
+          {card.map((element) => (
+            <div
+              className="card-order"
+              key={ element.name }
             >
-              Excluir
-            </button>
-          </div>
-        ))}
+              <Card
+                cardName={ element.name }
+                cardDescription={ element.description }
+                cardAttr1={ element.attr1 }
+                cardAttr2={ element.attr2 }
+                cardAttr3={ element.attr3 }
+                cardImage={ element.image }
+                cardRare={ element.raridade }
+                cardTrunfo={ element.trunfo }
+              />
+              <button
+                type="button"
+                data-testid="delete-button"
+                onClick={ () => this.funcDeleteButton(element.name) }
+              >
+                <img
+                  src="https://cdn.icon-icons.com/icons2/1791/PNG/512/trashcan_114640.png"
+                  alt="delete icon button"
+                />
+                Excluir
+              </button>
+            </div>
+          ))}
+        </section>
       </div>
     );
   }
