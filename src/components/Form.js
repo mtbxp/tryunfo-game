@@ -25,6 +25,7 @@ class Form extends React.Component {
             data-testid="name-input"
             type="text"
             id="nomeCarta"
+            name="cardName"
             value={ cardName }
             onChange={ onInputChange }
 
@@ -36,6 +37,7 @@ class Form extends React.Component {
             data-testid="description-input"
             type="textarea"
             id="descricaoCarta"
+            name="cardDescription"
             value={ cardDescription }
             onChange={ onInputChange }
           />
@@ -46,6 +48,7 @@ class Form extends React.Component {
             data-testid="attr1-input"
             type="number"
             id="atributo1"
+            name="cardAttr1"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
@@ -56,6 +59,7 @@ class Form extends React.Component {
             data-testid="attr2-input"
             type="number"
             id="atributo2"
+            name="cardAttr2"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
@@ -66,6 +70,7 @@ class Form extends React.Component {
             data-testid="attr3-input"
             type="number"
             id="atributo3"
+            name="cardAttr3"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
@@ -76,6 +81,7 @@ class Form extends React.Component {
             data-testid="image-input"
             type="text"
             id="imagemCarta"
+            name="cardImage"
             value={ cardImage }
             onChange={ onInputChange }
           />
@@ -85,6 +91,7 @@ class Form extends React.Component {
           <select
             data-testid="rare-input"
             id="raridade"
+            name="cardRare"
             value={ cardRare }
             onChange={ onInputChange }
           >
@@ -93,12 +100,13 @@ class Form extends React.Component {
             <option value="muito raro">Muito raro</option>
           </select>
         </label>
-        <label htmlFor="superTrunfo">
+        <label htmlFor="cardTrunfo">
           Super Trunfo:
           <input
             data-testid="trunfo-input"
             type="checkbox"
             id="trunfo"
+            name="cardTrunfo"
             checked={ cardTrunfo }
             onChange={ onInputChange }
           />
@@ -117,12 +125,13 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
-  cardDescription: PropTypes.string.isRequired,
-  cardImage: PropTypes.string.isRequired,
+
   cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.number.isRequired,
+  cardAttr2: PropTypes.number.isRequired,
+  cardAttr3: PropTypes.number.isRequired,
+  cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   // hasTrunfo: PropTypes.bool.isRequired,

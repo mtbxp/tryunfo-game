@@ -14,11 +14,11 @@ class Card extends React.Component {
       cardTrunfo,
     } = this.props;
 
-    const validacaoCardTrunfo = () => {
+    /* onst validacaoCardTrunfo = () => {
       if (cardTrunfo === true) {
-        return <p data-testid="trunfo-card">Super Trunfo</p>;
+        return <div data-testid="trunfo-card">Super Trunfo</div>;
       }
-    };
+    }; */
 
     return (
       <div>
@@ -43,21 +43,19 @@ class Card extends React.Component {
         <div data-testid="rare-card">
           { cardRare}
         </div>
-        <div>
-          { validacaoCardTrunfo() }
-        </div>
+        { cardTrunfo === true ? <div data-testid="trunfo-card">Super Trunfo</div> : '' }
       </div>
     );
   }
 }
 
 Card.propTypes = {
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
-  cardDescription: PropTypes.string.isRequired,
-  cardImage: PropTypes.string.isRequired,
   cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.number.isRequired,
+  cardAttr2: PropTypes.number.isRequired,
+  cardAttr3: PropTypes.number.isRequired,
+  cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
 };
