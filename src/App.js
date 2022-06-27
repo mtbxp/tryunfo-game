@@ -15,7 +15,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      // hasTrunfo: '',
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
     };
   }
@@ -30,6 +30,7 @@ class App extends React.Component {
   }
 
   onSaveButtonClick = () => {
+    const { cardTrunfo } = this.state;
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -38,6 +39,7 @@ class App extends React.Component {
       cardAttr1: 0,
       cardAttr2: 0,
       cardAttr3: 0,
+      hasTrunfo: cardTrunfo,
     });
   }
 
@@ -51,7 +53,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
 
@@ -65,6 +67,7 @@ class App extends React.Component {
     const AtrNotHigherThan90 = (Atr1 <= maxNum && Atr2 <= maxNum && Atr3 <= maxNum);
     const AtrNotNegative = (Atr1 >= 0 && Atr2 >= 0 && Atr3 >= 0);
     const allTrue = (notBlank && atrSum && AtrNotHigherThan90 && AtrNotNegative) === true;
+
     return (
       <div className="container">
         <Form
@@ -76,7 +79,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          // hasTrunfo={}
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ allTrue === true ? false : isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
