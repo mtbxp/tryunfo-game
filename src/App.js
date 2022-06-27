@@ -181,7 +181,6 @@ class App extends React.Component {
       conditionalCardsArray = filteredArray;
     } else if (trunfoFilter) {
       conditionalCardsArray = arrayByTrunfo;
-      // this.setState((state) => state.nameAndRareDisabled);
     }
 
     return (
