@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
 import Header from './components/Header';
+import SearchForm from './components/SearchForm';
 import './styles/app.css';
 
 class App extends React.Component {
@@ -18,10 +19,11 @@ class App extends React.Component {
       cardTrunfo: false,
       remainingPoints: 210,
       cardList: [],
+      nameSearch: '',
     };
   }
 
-  handleChangeForm = ({ target }) => {
+  handleChange = ({ target }) => {
     const { name, type, checked, value } = target;
     const stateValue = type === 'checkbox' ? checked : value;
     this.setState({
@@ -124,6 +126,13 @@ class App extends React.Component {
     }));
   }
 
+  handleSearch = (searchParam) => {
+    const { cardList } = this.state;
+    const newList = cardList.filter(({ cardName }) => (
+      cardName.toLowerCase().includes(searchParam.toLowerCase())));
+    return newList;
+  }
+
   render() {
     const {
       cardName,
@@ -136,6 +145,7 @@ class App extends React.Component {
       cardTrunfo,
       remainingPoints,
       cardList,
+      nameSearch,
     } = this.state;
 
     return (
@@ -153,7 +163,7 @@ class App extends React.Component {
               cardRare={ cardRare }
               cardTrunfo={ cardTrunfo }
               remainingPoints={ remainingPoints }
-              onInputChange={ this.handleChangeForm }
+              onInputChange={ this.handleChange }
               isSaveButtonDisabled={ !this.validateForm() }
               onSaveButtonClick={ this.handleSubmit }
               hasTrunfo={ this.checkHasTrunfo(cardList) }
@@ -175,11 +185,15 @@ class App extends React.Component {
           <section className="card-collection">
             <aside className="card-search">
               <h3>🔎 Busca de Cartas</h3>
+              <SearchForm
+                onSearchChange={ this.handleChange }
+                nameSearch={ nameSearch }
+              />
             </aside>
             <div className="cards-container">
               <h2>Baralho Tryunfo Pilotos F1</h2>
               {
-                cardList.map((card) => (
+                this.handleSearch(nameSearch).map((card) => (
                   <div className="card-container" key={ card.cardName }>
                     <Card
                       cardName={ card.cardName }

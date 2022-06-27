@@ -60,6 +60,7 @@ class Form extends React.Component {
             data-testid="description-input"
             name="cardDescription"
             id="cardDescription"
+            maxLength={ 210 }
             value={ cardDescription }
             onChange={ onInputChange }
           />

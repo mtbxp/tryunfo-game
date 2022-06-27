@@ -142,7 +142,6 @@ button:disabled {
 
 /* form */
 form {
-  background: var(--white);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
   display: flex;

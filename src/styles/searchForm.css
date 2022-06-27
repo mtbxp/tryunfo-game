@@ -1,0 +1,16 @@
+.search-form {
+  color: white;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.search-form fieldset {
+  border: 2px dashed white;
+  padding: 15px 20px 8px;
+}
+
+.search-form input {
+  background-color: rgba(255, 255, 255, 0.774);
+  border: 2px solid whitesmoke;
+  font-weight: 600;
+}
