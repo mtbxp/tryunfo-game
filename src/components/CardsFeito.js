@@ -9,7 +9,7 @@ class Cartas extends React.Component {
 
   Mapear(cards) {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, hasTrunfo } = cards;
+      cardImage, hasTrunfo, cardRare } = cards;
     return (
 
       <div className="carde" key={ cardName }>
@@ -25,7 +25,6 @@ class Cartas extends React.Component {
           />
         </div>
         <p data-testid="description-card" className="desc">
-          cardDescription:
           {cardDescription}
         </p>
         <div className="mb-0">
@@ -66,13 +65,13 @@ class Cartas extends React.Component {
           </div>
         </div>
 
-        <p data-testid="rare-card" className="p">
-          {
-            (!hasTrunfo)
-              ? <p> </p>
-              : <p className="p">Super Trunfo </p>
-          }
-        </p>
+        {
+          (!hasTrunfo)
+            ? <p className="p"> </p>
+            : <p className="p">Super Trunfo </p>
+        }
+
+        <p className="texto-h1" data-testid="rare-card">{cardRare}</p>
         <div className="container-bot">
           <button
             type="submit"
