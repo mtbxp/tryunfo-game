@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -38,6 +39,9 @@ class Forms extends React.Component {
           <input
             value={ cardAttr1 }
             type="number"
+            max={ 90 }
+            min={ 0 }
+            step={ 1 }
             name="cardAttr1"
             data-testid="attr1-input"
             onChange={ onInputChange }
@@ -49,6 +53,9 @@ class Forms extends React.Component {
           <input
             value={ cardAttr2 }
             type="number"
+            max={ 90 }
+            min={ 0 }
+            step={ 1 }
             name="cardAttr2"
             data-testid="attr2-input"
             onChange={ onInputChange }
@@ -63,6 +70,9 @@ class Forms extends React.Component {
             name="cardAttr3"
             data-testid="attr3-input"
             onChange={ onInputChange }
+            max={ 90 }
+            min={ 0 }
+            step={ 1 }
           />
         </label>
 
@@ -115,17 +125,17 @@ class Forms extends React.Component {
 }
 
 Forms.propTypes = {
-  cardName: PropTypes.string.isRequired,
-  cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
-  cardImage: PropTypes.string.isRequired,
-  cardRare: PropTypes.string.isRequired,
-  cardTrunfo: PropTypes.bool.isRequired,
-  isSaveButtonDisabled: PropTypes.bool.isRequired,
-  onInputChange: PropTypes.func.isRequired,
-  onSaveButtonClick: PropTypes.func.isRequired,
+  cardName: PropTypes.string,
+  cardDescription: PropTypes.string,
+  cardAttr1: PropTypes.string,
+  cardAttr2: PropTypes.string,
+  cardAttr3: PropTypes.string,
+  cardImage: PropTypes.string,
+  cardRare: PropTypes.string,
+  cardTrunfo: PropTypes.bool,
+  isSaveButtonDisabled: PropTypes.bool,
+  onInputChange: PropTypes.func,
+  onSaveButtonClick: PropTypes.func,
 };
 
 export default Forms;
