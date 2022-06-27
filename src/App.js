@@ -58,8 +58,7 @@ onSaveButtonClick = () => {
     atribute3,
     image,
     rare,
-    trunfo,
-    cards } = this.state;
+    trunfo } = this.state;
 
   const toMakeCard = {
     name,
