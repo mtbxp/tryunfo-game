@@ -16,6 +16,7 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       buttonDisabled: true,
+      cards: [],
 
     };
   }
@@ -62,10 +63,36 @@ class App extends React.Component {
   }
 
   saveButtonClick = () => {
-    // const validateValue = cardName !== '' && cardDescription !== '' && cardImage !== '';
+    // event.preventDefalt();
 
-    console.log('passei aqui');
+    const { cardName, cardDescription, cardAttr1, cardAttr2,
+      cardAttr3, cardImage, cardRare, cardTrunfo } = this.state;
+
+    const newCard = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+
+    this.setState((prev) => ({ cards: [newCard, ...prev.cards] }), () => this.clearAll());
   };
+
+  clearAll() {
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+    });
+  }
 
   render() {
     const {
