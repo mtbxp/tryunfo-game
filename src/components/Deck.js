@@ -7,6 +7,7 @@ class Deck extends React.Component {
     super();
     this.state = {
       nameFilter: '',
+      rareFilter: 'todas',
     };
   }
 
@@ -19,7 +20,7 @@ class Deck extends React.Component {
 
   render() {
     const { savedCards, handleDeckButton } = this.props;
-    const { nameFilter } = this.state;
+    const { nameFilter, rareFilter } = this.state;
 
     return (
       <div>
@@ -34,12 +35,28 @@ class Deck extends React.Component {
               data-testid="name-filter"
             />
           </label>
+          <label htmlFor="rareFilter">
+            Filtre pela raridade
+            <select
+              onChange={ this.handleFilters }
+              name="rareFilter"
+              value={ rareFilter }
+              data-testid="rare-filter"
+            >
+              <option value="todas">Todas</option>
+              <option value="normal">Normal</option>
+              <option value="raro">Raro</option>
+              <option value="muito raro">Muito raro</option>
+            </select>
+          </label>
         </div>
         {
           savedCards
             .filter(({ cardName }) => (
               cardName.toLowerCase().includes(nameFilter.toLowerCase())
             ))
+            .filter(({ cardRare }) => (
+              rareFilter === 'todas' ? true : cardRare === rareFilter))
             .map((card) => (
               <div className="deck-card" key={ card.cardName }>
                 <Card
