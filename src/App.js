@@ -9,16 +9,19 @@ class App extends React.Component {
     this.state = {
       name: '',
       description: '',
-      attr1: 0,
-      attr2: 0,
-      attr3: 0,
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
       image: '',
       rare: 'normal',
       superTrunfo: false,
       btnDisable: true,
+      cards: [],
     };
 
     this.handle = this.handle.bind(this);
+    this.validate = this.validate.bind(this);
+    this.saveCard = this.saveCard.bind(this);
   }
 
   handle({ target }) {
@@ -60,6 +63,35 @@ class App extends React.Component {
     }
   }
 
+  saveCard(event) {
+    event.preventDefault();
+    const {
+      name, description, attr1, attr2, attr3, image, rare, superTrunfo, cards,
+    } = this.state;
+
+    this.setState({
+      cards: [...cards, {
+        nome: name,
+        desc: description,
+        a1: attr1,
+        a2: attr2,
+        a3: attr3,
+        img: image,
+        raridade: rare,
+        trunfo: superTrunfo,
+      }],
+      name: '',
+      description: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
+      image: '',
+      rare: 'normal',
+      superTrunfo: false,
+      btnDisable: true,
+    });
+  }
+
   render() {
     const {
       name, description, attr1, attr2, attr3, image, rare, superTrunfo, btnDisable,
@@ -81,7 +113,7 @@ class App extends React.Component {
               hasTrunfo={ false }
               isSaveButtonDisabled={ btnDisable }
               onInputChange={ this.handle }
-              onSaveButtonClick={ () => {} }
+              onSaveButtonClick={ this.saveCard }
             />
           </section>
 
