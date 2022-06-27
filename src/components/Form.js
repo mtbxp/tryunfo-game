@@ -43,6 +43,8 @@ class Form extends React.Component {
             name="cardAttr1"
             data-testid="attr1-input"
             type="number"
+            min={ 0 }
+            max={ 90 }
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
@@ -53,6 +55,8 @@ class Form extends React.Component {
             name="cardAttr2"
             data-testid="attr2-input"
             type="number"
+            min={ 0 }
+            max={ 90 }
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
@@ -63,6 +67,8 @@ class Form extends React.Component {
             name="cardAttr3"
             data-testid="attr3-input"
             type="number"
+            min={ 0 }
+            max={ 90 }
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
@@ -80,7 +86,7 @@ class Form extends React.Component {
         <label htmlFor="cardRare">
           <select
             data-testid="rare-input"
-            name="rcardRare"
+            name="cardRare"
             value={ cardRare }
             onChange={ onInputChange }
           >
@@ -89,10 +95,10 @@ class Form extends React.Component {
             <option>muito raro</option>
           </select>
         </label>
-        <label htmlFor="trunfo-input">
+        <label htmlFor="cardTrunfo">
           Super Trunfo?
           <input
-            name="trunfo-input"
+            name="cardTrunfo"
             data-testid="trunfo-input"
             type="checkbox"
             checked={ cardTrunfo }
