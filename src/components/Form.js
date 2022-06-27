@@ -1,10 +1,11 @@
 import React from 'react';
+import './style.css';
 
 class Form extends React.Component {
   render() {
     return (
-      <div className="form">
-        <form>
+      <div>
+        <form className="form">
           <label htmlFor="card">
             Nome:
             <input
