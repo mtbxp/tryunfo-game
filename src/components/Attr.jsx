@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Attr extends React.Component {
   render() {
-    const { value, onInputChange } = this.props;
+    const { cardAttr1, cardAttr2, cardAttr3, onInputChange } = this.props;
 
     return (
       <div className="attrs">
@@ -13,7 +13,7 @@ class Attr extends React.Component {
             type="number"
             name="cardAttr1"
             data-testid="attr1-input"
-            value={ value }
+            value={ cardAttr1 }
             onChange={ onInputChange }
           />
         </label>
@@ -24,7 +24,7 @@ class Attr extends React.Component {
             type="number"
             name="cardAttr2"
             data-testid="attr2-input"
-            value={ value }
+            value={ cardAttr2 }
             onChange={ onInputChange }
           />
         </label>
@@ -35,7 +35,7 @@ class Attr extends React.Component {
             type="number"
             name="cardAttr3"
             data-testid="attr3-input"
-            value={ value }
+            value={ cardAttr3 }
             onChange={ onInputChange }
           />
         </label>
@@ -45,7 +45,9 @@ class Attr extends React.Component {
 }
 
 Attr.propTypes = {
-  value: PropTypes.number.isRequired,
+  cardAttr1: PropTypes.number.isRequired,
+  cardAttr2: PropTypes.number.isRequired,
+  cardAttr3: PropTypes.number.isRequired,
   onInputChange: PropTypes.func.isRequired,
 };
 

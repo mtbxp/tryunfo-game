@@ -50,7 +50,7 @@ class Form extends React.Component {
         />
 
         <Description
-          cardDescription={ cardDescription }
+          value={ cardDescription }
           onInputChange={ this.onInputChange }
         />
 
@@ -62,7 +62,7 @@ class Form extends React.Component {
         />
 
         <CardImage
-          cardImage={ cardImage }
+          value={ cardImage }
           onInputChange={ this.onInputChange }
         />
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class cardImage extends React.Component {
+class CardImage extends React.Component {
   render() {
-    const { value, onInputChange } = this.props;
+    const { cardImage, onInputChange } = this.props;
 
     return (
       <label htmlFor="cardImage">
@@ -13,7 +13,7 @@ class cardImage extends React.Component {
           name="cardImage"
           data-testid="image-input"
           alt=""
-          value={ value }
+          cardImage={ cardImage }
           onChange={ onInputChange }
         />
       </label>
@@ -21,9 +21,9 @@ class cardImage extends React.Component {
   }
 }
 
-cardImage.propTypes = {
-  value: PropTypes.string.isRequired,
+CardImage.propTypes = {
+  cardImage: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
 };
 
-export default cardImage;
+export default CardImage;
