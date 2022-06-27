@@ -108,6 +108,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      cards,
     } = this.state;
 
     return (
@@ -129,6 +130,30 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {cards.map(
+          ({
+            cardName: name,
+            cardDescription: desc,
+            cardAttr1: atr1,
+            cardAttr2: atr2,
+            cardAttr3: atr3,
+            cardImage: img,
+            cardRare: rare,
+            cardTrunfo: trunfo,
+          }) => (
+            <Card
+              key={ name }
+              cardName={ name }
+              cardDescription={ desc }
+              cardAttr1={ atr1 }
+              cardAttr2={ atr2 }
+              cardAttr3={ atr3 }
+              cardImage={ img }
+              cardRare={ rare }
+              cardTrunfo={ trunfo }
+            />
+          ),
+        )}
       </div>
     );
   }
