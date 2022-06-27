@@ -26,6 +26,45 @@ class App extends React.Component {
     return false;
   }
 
+    validationButton = () => {
+      const { cardName, cardDescription, cardImage, cardAttr1, cardAttr2,
+        cardAttr3 } = this.state;
+
+      const maxAttr = 90;
+      const minAttr = 0;
+      const maxSumAttr = 120;
+
+      const empty = cardName && cardDescription && cardImage !== '';
+
+      const sumAttr = Number(cardAttr1)
+      + Number(cardAttr2)
+      + Number(cardAttr3) <= maxSumAttr;
+
+      const maxValidationAttr = Number(cardAttr1) <= maxAttr
+      && Number(cardAttr2) <= maxAttr
+      && Number(cardAttr3) <= maxSumAttr;
+
+      const minValidationAttr = Number(cardAttr1) >= minAttr
+      && Number(cardAttr2) >= minAttr
+      && Number(cardAttr3) >= minAttr;
+
+      if (empty && sumAttr && maxValidationAttr && minValidationAttr) {
+        return false;
+      }
+      return true;
+    };
+
+  onInputChange = ({ target }) => {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    },
+    () => this.setState({
+      isSaveButtonDisabled: this.validationButton(),
+    }));
+  };
+
   onSaveButtonClick = (event) => {
     event.preventDefault();
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
@@ -55,49 +94,17 @@ class App extends React.Component {
     () => this.setState({ hasTrunfo: this.trunfoInCards() }));
   }
 
-  validationButton = () => {
-    const { cardName, cardDescription, cardImage, cardAttr1, cardAttr2,
-      cardAttr3 } = this.state;
-
-    const maxAttr = 90;
-    const minAttr = 0;
-    const maxSumAttr = 120;
-
-    const empty = cardName && cardDescription && cardImage !== '';
-
-    const sumAttr = Number(cardAttr1)
-      + Number(cardAttr2)
-      + Number(cardAttr3) <= maxSumAttr;
-
-    const maxValidationAttr = Number(cardAttr1) <= maxAttr
-      && Number(cardAttr2) <= maxAttr
-      && Number(cardAttr3) <= maxSumAttr;
-
-    const minValidationAttr = Number(cardAttr1) >= minAttr
-      && Number(cardAttr2) >= minAttr
-      && Number(cardAttr3) >= minAttr;
-
-    if (empty && sumAttr && maxValidationAttr && minValidationAttr) {
-      return false;
-    }
-    return true;
-  };
-
-  onInputChange = ({ target }) => {
-    const { name, type } = target;
-    const value = type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    },
-    () => this.setState({
-      isSaveButtonDisabled: this.validationButton(),
-    }));
-  };
+  deleteButtonClick = (cards) => {
+    this.setState((prev) => ({
+      saveCards: prev.saveCards.filter((card) => card.cardName !== cards),
+    }),
+    () => this.setState({ hasTrunfo: this.trunfoInCards() }));
+  }
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo, hasTrunfo,
-      isSaveButtonDisabled, saveCards } = this.state;
+      isSaveButtonDisabled } = this.state;
     return (
       <section>
         <h1>Tryunfo</h1>
@@ -124,6 +131,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          deleteButtonClick={ this.deleteButtonClick }
           preview={ false }
         />
       </section>
