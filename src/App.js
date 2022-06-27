@@ -16,6 +16,7 @@ class App extends React.Component {
       trunfo: false,
       // hasTrunfo: false,
       // isSaveButtonDisabled: true,
+      array: '',
     };
   }
 
@@ -59,6 +60,18 @@ class App extends React.Component {
 
   onSaveButtonClick = (e) => {
     e.preventDefault();
+    this.setState((prev) => ({
+      array: [...prev.array, prev],
+      name: '',
+      description: '',
+      image: '',
+      attr1: 0,
+      attr2: 0,
+      attr3: 0,
+      trunfo: false,
+      rare: 'normal',
+    }
+    ));
   }
 
   render() {
