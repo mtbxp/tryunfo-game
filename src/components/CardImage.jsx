@@ -6,14 +6,17 @@ class cardImage extends React.Component {
     const { value, onInputChange } = this.props;
 
     return (
-      <input
-        id="cardImage"
-        name="cardImage"
-        data-testid="image-input"
-        alt=""
-        value={ value }
-        onChange={ onInputChange }
-      />
+      <label htmlFor="cardImage">
+        Image:
+        <input
+          id="cardImage"
+          name="cardImage"
+          data-testid="image-input"
+          alt=""
+          value={ value }
+          onChange={ onInputChange }
+        />
+      </label>
     );
   }
 }

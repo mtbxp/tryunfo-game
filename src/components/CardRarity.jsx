@@ -6,7 +6,7 @@ class CardRarity extends React.Component {
     const { onInputChange } = this.props;
 
     return (
-      <label htmlFor="card-rarity">
+      <label htmlFor="card-rarity" className="cardRarity">
         Rarity:
         <select name="cardRare" data-testid="rare-input" onChange={ onInputChange }>
           <option value="normal" selected>Normal</option>
