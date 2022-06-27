@@ -35,7 +35,7 @@ class App extends React.Component {
   handleAttrInput = () => {
     const { attr1, attr2, attr3 } = this.state;
 
-    const totalAttr = parseInt(attr1, 10) + parseInt(attr1, 10) + parseInt(attr3, 10);
+    const totalAttr = parseInt(attr1, 10) + parseInt(attr2, 10) + parseInt(attr3, 10);
     const totalMaximumAttr = 210;
     const minimunAttr = 0;
     const maxAttr = 90;
@@ -126,6 +126,7 @@ class App extends React.Component {
       imageCard,
       rarity,
       trunfo,
+      deck,
       hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
@@ -160,6 +161,20 @@ class App extends React.Component {
           cardRare={ rarity }
           cardTrunfo={ trunfo }
         />
+        {
+          deck.map((card) => (
+            <Card
+              key={ card.nameCard }
+              cardName={ card.nameCard }
+              cardDescription={ card.descriptionCard }
+              cardAttr1={ card.attr1 }
+              cardAttr2={ card.attr2 }
+              cardAttr3={ card.attr3 }
+              cardImage={ card.imageCard }
+              cardRare={ card.rarity }
+            />
+          ))
+        }
       </>
     );
   }
