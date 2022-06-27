@@ -17,6 +17,7 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       remainingPoints: 210,
+      cardList: [],
     };
   }
 
@@ -74,10 +75,46 @@ class App extends React.Component {
     return (isValidLength && isValidSum && isValidMin && isValidMax);
   }
 
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
+  resetStateAndForm = () => {
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      remainingPoints: 210,
+    });
+  }
 
-  // }
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+    const newCard = {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardRare,
+      cardTrunfo,
+    };
+    this.setState((prevState) => ({
+      cardList: [newCard, ...prevState.cardList],
+    }), () => this.resetStateAndForm());
+  }
 
   render() {
     const {
@@ -109,6 +146,7 @@ class App extends React.Component {
               remainingPoints={ remainingPoints }
               onInputChange={ this.handleChange }
               isSaveButtonDisabled={ !this.validateForm() }
+              onSaveButtonClick={ this.handleSubmit }
             />
             <div className="card-preview">
               <h3>Pré-visualização</h3>

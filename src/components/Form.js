@@ -47,7 +47,6 @@ class Form extends React.Component {
             data-testid="description-input"
             name="cardDescription"
             id="cardDescription"
-            autoComplete
             value={ cardDescription }
             onChange={ onInputChange }
           />
