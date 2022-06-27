@@ -13,10 +13,10 @@ export default class CardList extends Component {
   }
 
   onInputChange = ({ target }) => {
-    const { cardName } = target;
+    const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
-      [cardName]: value,
+      [name]: value,
     });
   };
 
