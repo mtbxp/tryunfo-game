@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@100;300;400;500&family=Kalam&family=Poppins:wght@100;300;500&display=swap');
+
+.card__character {
+  height: 450px;
+  width: 280px;
+  border-radius: 5px;
+  background-color: #fddeaf;
+  box-shadow: 0 0 0 9px #d82004;
+  padding: 0.5rem 0.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.card__name-rank {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.card__name {
+  color: #1b2124;
+  font-size: 1.3rem;
+  min-height: 25px;
+  text-align: start;
+}
+
+.container__rarity {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: Kalam;
+}
+
+.card__rarity {
+  display: none;
+}
+
+
+.card__image {
+  height: 170px;
+  width: 280px;
+  border-radius: 2px;
+  background-color: rgb(241, 241, 241);
+}
+
+.card__description {
+  min-height: 60px;
+  width: 100%;
+  background-color: #edb870;
+  padding: 0.4rem;
+  font-size: 0.8rem;
+  border-radius: 2px;
+}
+
+.container__attr {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.container__trunfo {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+
+.card__trunfo {
+  display: none;
+}

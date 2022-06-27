@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import './style.css';
+
 class Form extends Component {
   render() {
     const rarities = ['normal', 'raro', 'muito raro'];
@@ -104,7 +106,7 @@ class Form extends Component {
         {hasTrunfo ? (
           <p data-testid="trunfo-input">Você já tem um Super Trunfo em seu baralho</p>
         ) : (
-          <label htmlFor="input__trunfo">
+          <label htmlFor="input__trunfo" className="row">
             <span className="input__label">Super Trybe Trunfo</span>
             <input
               id="input__trunfo"

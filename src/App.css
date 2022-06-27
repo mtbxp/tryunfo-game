@@ -1,0 +1,23 @@
+h1 {
+  padding: 1.2rem;
+  background-color: #e86e38;
+  color: white;
+  text-align: center;
+}
+
+#section__create-card {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  background-color: #1b2124;
+}
+
+#section__cards {
+  background-color: #e86e38;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}

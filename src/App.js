@@ -1,4 +1,6 @@
 import React from 'react';
+
+import './App.css';
 import Form from './components/Form';
 import Card from './components/Card';
 
@@ -166,7 +168,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>Tryunfo</h1>
+        <header><h1>Naruto Trunfo</h1></header>
         <section id="section__create-card">
           <Form
             cardName={ cardName }
