@@ -1,34 +1,6 @@
 import React from 'react';
 
 class Form extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
-      cardImage: '',
-      cardRare: 'normal',
-      cardTrunfo: false,
-      hasTrunfo: false,
-      isSaveButtonDisabled: false,
-    };
-  }
-
-  onInputChange = ({ target }) => {
-    const { name, type, value, checked } = target;
-    const valor = type === 'checkbox' ? checked : value;
-    this.setState({
-      [name]: valor,
-    });
-  }
-
-  onSaveButtonClick = (event) => {
-    event.preventDefault();
-  }
-
   render() {
     const { cardName,
       cardDescription,
@@ -38,8 +10,9 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
-      isSaveButtonDisabled } = this.state;
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick } = this.props;
     return (
       <form>
         <label htmlFor="name-input">
@@ -49,7 +22,7 @@ class Form extends React.Component {
             data-testid="name-input"
             name="cardName"
             value={ cardName }
-            onChange={ this.onInputChange }
+            onChange={ onInputChange }
           />
         </label>
         <br />
@@ -59,7 +32,7 @@ class Form extends React.Component {
             data-testid="description-input"
             name="cardDescription"
             value={ cardDescription }
-            onChange={ this.onInputChange }
+            onChange={ onInputChange }
           />
         </label>
         <br />
@@ -70,7 +43,7 @@ class Form extends React.Component {
             data-testid="attr1-input"
             name="cardAttr1"
             value={ cardAttr1 }
-            onChange={ this.onInputChange }
+            onChange={ onInputChange }
           />
         </label>
         <br />
@@ -81,7 +54,7 @@ class Form extends React.Component {
             data-testid="attr2-input"
             name="cardAttr2"
             value={ cardAttr2 }
-            onChange={ this.onInputChange }
+            onChange={ onInputChange }
           />
         </label>
         <br />
@@ -92,7 +65,7 @@ class Form extends React.Component {
             data-testid="attr3-input"
             name="cardAttr3"
             value={ cardAttr3 }
-            onChange={ this.onInputChange }
+            onChange={ onInputChange }
           />
         </label>
         <br />
@@ -103,7 +76,7 @@ class Form extends React.Component {
             data-testid="image-input"
             name="cardImage"
             value={ cardImage }
-            onChange={ this.onInputChange }
+            onChange={ onInputChange }
           />
         </label>
         <br />
@@ -113,7 +86,7 @@ class Form extends React.Component {
             data-testid="rare-input"
             name="cardRare"
             value={ cardRare }
-            onChange={ this.onInputChange }
+            onChange={ onInputChange }
           >
             <option value="normal">normal</option>
             <option value="raro">raro</option>
@@ -128,7 +101,7 @@ class Form extends React.Component {
             data-testid="trunfo-input"
             name="cardTrunfo"
             value={ cardTrunfo }
-            onChange={ this.onInputChange }
+            onChange={ onInputChange }
           />
         </label>
         <br />
@@ -137,8 +110,8 @@ class Form extends React.Component {
           data-testid="save-button"
           name="isSaveButtonDisabled"
           value={ isSaveButtonDisabled }
-          onChange={ this.onSaveButtonClick }
-          disabled={ !cardTrunfo }
+          onChange={ onSaveButtonClick }
+          disabled={ false }
         >
           Salvar
         </button>
