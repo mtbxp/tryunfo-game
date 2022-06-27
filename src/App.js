@@ -13,16 +13,59 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: '',
-      cardTrunfo: 'false',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      buttonDisabled: true,
+
     };
+  }
+
+  validateButton = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+
+    } = this.state;
+
+    const maxSum = 210;
+    const maxIndiv = 90;
+    const min = 0;
+
+    const maxValue = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= maxSum;
+    const minInput = cardAttr1 >= min && cardAttr2 >= min && cardAttr3 >= min;
+    const validateValue = cardName !== '' && cardDescription !== '' && cardImage !== '';
+    const maxInput = cardAttr1 <= maxIndiv
+    && cardAttr2 <= maxIndiv
+    && cardAttr3 <= maxIndiv;
+
+    // console.log(maxValue);
+    // console.log(minInput);
+    // console.log(validateValue);
+    // console.log(maxInput);
+
+    if (validateValue && minInput && maxInput && maxValue) {
+      return false;
+    } return true;
   }
 
   handleChange = ({ target }) => {
     const { name, type } = target;
     const value = type === 'checkbox' ? target.checked : target.value;
-    this.setState({ [name]: value });
+    this.setState({
+      [name]: value,
+    },
+    () => this.setState({ buttonDisabled: this.validateButton() }));
   }
+
+  saveButtonClick = () => {
+    // const validateValue = cardName !== '' && cardDescription !== '' && cardImage !== '';
+
+    console.log('passei aqui');
+  };
 
   render() {
     const {
@@ -34,13 +77,26 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      buttonDisabled,
 
     } = this.state;
     // console.log(cardName);
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form onInputChange={ this.handleChange } />
+        <Form
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          isSaveButtonDisabled={ buttonDisabled }
+          onInputChange={ this.handleChange }
+          onSaveButtonClick={ this.saveButtonClick }
+        />
 
         <Card
           cardName={ cardName }
@@ -53,6 +109,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
 
         />
+
       </div>
     );
   }
