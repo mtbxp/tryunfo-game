@@ -41,7 +41,7 @@ class Form extends React.Component {
     );
 
     return (
-      <form onSubmit={ () => { } }>
+      <form>
         <h2>Adicionar Nova Carta</h2>
         <label htmlFor="cardName">
           Nome:

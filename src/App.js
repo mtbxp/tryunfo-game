@@ -21,7 +21,7 @@ class App extends React.Component {
     };
   }
 
-  handleChange = ({ target }) => {
+  handleChangeForm = ({ target }) => {
     const { name, type, checked, value } = target;
     const stateValue = type === 'checkbox' ? checked : value;
     this.setState({
@@ -98,7 +98,7 @@ class App extends React.Component {
       cardTrunfo,
     };
     this.setState((prevState) => ({
-      cardList: [newCard, ...prevState.cardList],
+      cardList: [...prevState.cardList, newCard],
     }), () => this.resetStateAndForm());
   }
 
@@ -117,6 +117,12 @@ class App extends React.Component {
   }
 
   checkHasTrunfo = (dataList) => dataList.some(({ cardTrunfo }) => cardTrunfo);
+
+  handleDeleteCard = ({ target }) => {
+    this.setState((prevState) => ({
+      cardList: prevState.cardList.filter(({ cardName }) => cardName !== target.id),
+    }));
+  }
 
   render() {
     const {
@@ -147,7 +153,7 @@ class App extends React.Component {
               cardRare={ cardRare }
               cardTrunfo={ cardTrunfo }
               remainingPoints={ remainingPoints }
-              onInputChange={ this.handleChange }
+              onInputChange={ this.handleChangeForm }
               isSaveButtonDisabled={ !this.validateForm() }
               onSaveButtonClick={ this.handleSubmit }
               hasTrunfo={ this.checkHasTrunfo(cardList) }
@@ -174,17 +180,27 @@ class App extends React.Component {
               <h2>Baralho Tryunfo Pilotos F1</h2>
               {
                 cardList.map((card) => (
-                  <Card
-                    cardName={ card.cardName }
-                    cardDescription={ card.cardDescription }
-                    cardAttr1={ card.cardAttr1 }
-                    cardAttr2={ card.cardAttr2 }
-                    cardAttr3={ card.cardAttr3 }
-                    cardImage={ card.cardImage }
-                    cardRare={ card.cardRare }
-                    cardTrunfo={ card.cardTrunfo }
-                    key={ card.cardName }
-                  />
+                  <div className="card-container" key={ card.cardName }>
+                    <Card
+                      cardName={ card.cardName }
+                      cardDescription={ card.cardDescription }
+                      cardAttr1={ card.cardAttr1 }
+                      cardAttr2={ card.cardAttr2 }
+                      cardAttr3={ card.cardAttr3 }
+                      cardImage={ card.cardImage }
+                      cardRare={ card.cardRare }
+                      cardTrunfo={ card.cardTrunfo }
+                    />
+                    <button
+                      type="button"
+                      data-testid="delete-button"
+                      className="delete"
+                      id={ card.cardName }
+                      onClick={ this.handleDeleteCard }
+                    >
+                      Excluir
+                    </button>
+                  </div>
                 ))
               }
             </div>
