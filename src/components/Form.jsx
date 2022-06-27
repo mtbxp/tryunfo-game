@@ -12,7 +12,7 @@ class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
+      // hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -39,7 +39,7 @@ class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
-        
+
         <label htmlFor="cardAttr1">
           Atributo 1
           <input
@@ -47,9 +47,12 @@ class Form extends Component {
             data-testid="attr1-input"
             name="cardAttr1"
             id="cardAttr1"
+            min="0"
+            max="90"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
+
         </label>
         <label htmlFor="cardAttr2">
           Atributo 2
@@ -58,6 +61,8 @@ class Form extends Component {
             data-testid="attr2-input"
             name="cardAttr2"
             id="cardAttr2"
+            min="0"
+            max="90"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
@@ -69,6 +74,8 @@ class Form extends Component {
             data-testid="attr3-input"
             name="cardAttr3"
             id="cardAttr3"
+            min="0"
+            max="90"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
@@ -130,9 +137,9 @@ Form.propTypes = {
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   // hasTrunfo: PropTypes.bool.isRequired,
-  isSaveButtonDisabled: PropTypes.bool,
-  onInputChange: PropTypes.func,
-  onSaveButtonClick: PropTypes.func,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
 };
 
 export default Form;

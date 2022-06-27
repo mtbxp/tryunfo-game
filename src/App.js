@@ -14,8 +14,10 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      isSaveButtonDisabled: true
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSaveButton = this.handleSaveButton.bind(this);
   }
 
   handleChange({ target }) {
