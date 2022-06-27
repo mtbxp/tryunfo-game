@@ -18,7 +18,7 @@ class Form extends React.Component {
       onSaveButtonClick,
     } = this.props;
     return (
-      <>
+      <form>
         <h1>Adicionar nova carta</h1>
         <label htmlFor="name-input">
           Nome
@@ -107,7 +107,7 @@ class Form extends React.Component {
             <option>muito raro</option>
           </select>
         </label>
-        <label htmlFor="trunfo-input">
+        <label htmlFor="trunfo-input" className="checkboxLabel">
           Super Trunfo
           {
             hasTrunfo === 't' ? <p>Você já tem um Super Trunfo em seu baralho</p> : <input
@@ -129,7 +129,7 @@ class Form extends React.Component {
         >
           Salvar
         </button>
-      </>
+      </form>
     );
   }
 }

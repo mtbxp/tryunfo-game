@@ -18,6 +18,7 @@ class App extends React.Component {
       hasTrunfo: 'f',
       isSaveButtonDisabled: true,
       savedCards: [],
+      filterName: '',
     };
   }
 
@@ -146,9 +147,10 @@ class App extends React.Component {
       isSaveButtonDisabled,
       hasTrunfo,
       savedCards,
+      filterName,
     } = this.state;
     return (
-      <div>
+      <div className="container">
         <Form
           onInputChange={ this.onInputChange }
           cardName={ cardName }
@@ -174,31 +176,55 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
         />
         <ul className="allCardsList">
-          Todas as cartas:
-          {savedCards.map((card, index) => (
-            <li
-              key={ index }
-              className="cardsList"
-            >
-              <Card
-                cardName={ card.cardName }
-                cardDescription={ card.cardDescription }
-                cardAttr1={ card.cardAttr1 }
-                cardAttr2={ card.cardAttr2 }
-                cardAttr3={ card.cardAttr3 }
-                cardImage={ card.cardImage }
-                cardRare={ card.cardRare }
-                cardTrunfo={ card.cardTrunfo }
-              />
-              <button
-                name={ index }
-                type="button"
-                data-testid="delete-button"
-                onClick={ this.removeCard }
+          <h4>Todas as cartas</h4>
+          <div className="filtersContainer">
+            <p>Filtros de busca</p>
+            <input
+              name="filterName"
+              type="text"
+              data-testid="name-filter"
+              placeholder="Nome da carta"
+              value={ filterName }
+              onChange={ this.onInputChange }
+            />
+            <select data-testid="rare-filter" defaultValue="todas">
+              <option value="todas">todas</option>
+              <option value="normal">normal</option>
+              <option value="raro">raro</option>
+              <option value="muito rato">muito raro</option>
+            </select>
+            <label htmlFor="trunfoInputFilter" className="checkboxLabel">
+              Super Trunfo
+              <input type="checkbox" id="trunfoInputFilter" />
+            </label>
+          </div>
+
+          {savedCards
+            .filter((card) => card.cardName.includes(filterName))
+            .map((card, index) => (
+              <li
+                key={ index }
+                className="cardsList"
               >
-                Excluir
-              </button>
-            </li>))}
+                <Card
+                  cardName={ card.cardName }
+                  cardDescription={ card.cardDescription }
+                  cardAttr1={ card.cardAttr1 }
+                  cardAttr2={ card.cardAttr2 }
+                  cardAttr3={ card.cardAttr3 }
+                  cardImage={ card.cardImage }
+                  cardRare={ card.cardRare }
+                  cardTrunfo={ card.cardTrunfo }
+                />
+                <button
+                  name={ index }
+                  type="button"
+                  data-testid="delete-button"
+                  onClick={ this.removeCard }
+                >
+                  Excluir
+                </button>
+              </li>))}
         </ul>
       </div>
     );

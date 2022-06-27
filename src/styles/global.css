@@ -161,11 +161,23 @@ button:disabled {
 }
 
 /* form */
-form {
+form, .cardPreview, .allCardsList {
   background: var(--white);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
+  margin-bottom: 2rem;
   padding: 2rem 2.5rem;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+.checkboxLabel {
+  display: flex;
+  margin-bottom: 10px;
+  white-space: nowrap;
 }
 
 input, textarea, select {
@@ -175,11 +187,6 @@ input, textarea, select {
   margin-bottom: 1rem;
   padding: 0.7rem 0.75rem;
   width: 100%;
-}
-
-.container {
-  margin: 0 auto;
-  max-width: var(--max-width);
 }
 
 /* alerts */
