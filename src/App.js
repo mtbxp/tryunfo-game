@@ -1,5 +1,5 @@
 import React from 'react';
-//  import './style/App.css';
+import './style/App.css';
 import Card from './components/Card';
 import Form from './components/Form';
 import Data from './components/Data';
@@ -18,7 +18,7 @@ class App extends React.Component {
       cardAttr2: 0,
       cardAttr3: 0,
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
@@ -37,8 +37,7 @@ class App extends React.Component {
     }
     this.setState({
       [name]: value,
-    });
-    this.inputChangeRules();
+    }, () => { this.inputChangeRules(); });
   }
 
   inputChangeRules() {
@@ -57,7 +56,7 @@ class App extends React.Component {
     if (cardName !== ''
     && cardDescription !== ''
     && cardImage !== ''
-    && cardRare !== ''
+    && cardRare !== 'normal'
     && cardAttr1 <= maxAttr
     && cardAttr1 >= 0
     && cardAttr2 <= maxAttr
@@ -67,17 +66,17 @@ class App extends React.Component {
     && cardAttr1 + cardAttr2 + cardAttr3 <= maxPoints) {
       this.setState({
         isSaveButtonDisabled: false,
-      });
+      }, () => {});
     } else {
       this.setState({
         isSaveButtonDisabled: true,
-      });
+      }, () => {});
     }
     if (data.some((item) => item.isTrunfo === true)) {
       this.setState({
         hasTrunfo: true,
         cardTrunfo: false,
-      });
+      }, () => {});
     }
   }
 
@@ -143,7 +142,7 @@ class App extends React.Component {
           />
         </div>
         <br />
-        <ul id="deck">
+        <ul className="deck">
           {
             data.map((card, index) => (
               <li key={ index } className="card">
