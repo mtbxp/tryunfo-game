@@ -34,7 +34,7 @@ export default class CardList extends Component {
       <div>
         <section>
           <label htmlFor="nameFilter">
-            <span>Filtro por nome: </span>
+            Filtro por nome:
             <input
               type="text"
               data-testid="name-filter"
@@ -46,7 +46,7 @@ export default class CardList extends Component {
             />
           </label>
           <label htmlFor="rareFilter">
-            <span>Filtro por raridade: </span>
+            Filtro por raridade:
             <select
               type="text"
               data-testid="rare-filter"
@@ -73,7 +73,7 @@ export default class CardList extends Component {
               checked={ trunfoFilter }
               onChange={ this.onInputChange }
             />
-            <span>Filtro por Trunfo: </span>
+            Filtro por Trunfo:
           </label>
         </section>
         <section>
