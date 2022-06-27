@@ -19,6 +19,7 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       savedCards: [],
       filterName: '',
+      filterRare: 'todas',
     };
   }
 
@@ -148,6 +149,7 @@ class App extends React.Component {
       hasTrunfo,
       savedCards,
       filterName,
+      filterRare,
     } = this.state;
     return (
       <div className="container">
@@ -187,11 +189,16 @@ class App extends React.Component {
               value={ filterName }
               onChange={ this.onInputChange }
             />
-            <select data-testid="rare-filter" defaultValue="todas">
-              <option value="todas">todas</option>
-              <option value="normal">normal</option>
-              <option value="raro">raro</option>
-              <option value="muito rato">muito raro</option>
+            <select
+              data-testid="rare-filter"
+              value={ filterRare }
+              onChange={ this.onInputChange }
+              name="filterRare"
+            >
+              <option>todas</option>
+              <option>normal</option>
+              <option>raro</option>
+              <option>muito raro</option>
             </select>
             <label htmlFor="trunfoInputFilter" className="checkboxLabel">
               Super Trunfo
@@ -199,32 +206,35 @@ class App extends React.Component {
             </label>
           </div>
 
-          {savedCards
-            .filter((card) => card.cardName.includes(filterName))
-            .map((card, index) => (
-              <li
-                key={ index }
-                className="cardsList"
-              >
-                <Card
-                  cardName={ card.cardName }
-                  cardDescription={ card.cardDescription }
-                  cardAttr1={ card.cardAttr1 }
-                  cardAttr2={ card.cardAttr2 }
-                  cardAttr3={ card.cardAttr3 }
-                  cardImage={ card.cardImage }
-                  cardRare={ card.cardRare }
-                  cardTrunfo={ card.cardTrunfo }
-                />
-                <button
-                  name={ index }
-                  type="button"
-                  data-testid="delete-button"
-                  onClick={ this.removeCard }
+          {
+            savedCards
+              .filter((card) => card.cardName.startsWith(filterName))
+              // .filter((card) => )
+              .map((card, index) => (
+                <li
+                  key={ index }
+                  className="cardsList"
                 >
-                  Excluir
-                </button>
-              </li>))}
+                  <Card
+                    cardName={ card.cardName }
+                    cardDescription={ card.cardDescription }
+                    cardAttr1={ card.cardAttr1 }
+                    cardAttr2={ card.cardAttr2 }
+                    cardAttr3={ card.cardAttr3 }
+                    cardImage={ card.cardImage }
+                    cardRare={ card.cardRare }
+                    cardTrunfo={ card.cardTrunfo }
+                  />
+                  <button
+                    name={ index }
+                    type="button"
+                    data-testid="delete-button"
+                    onClick={ this.removeCard }
+                  >
+                    Excluir
+                  </button>
+                </li>))
+          }
         </ul>
       </div>
     );
