@@ -32,6 +32,8 @@ class Form extends Component {
       />);
     };
 
+    const setButtonClassState = () => (isSaveButtonDisabled ? 'off-btn' : 'on-btn');
+
     return (
       <form>
         <label htmlFor="card-name-input">
@@ -124,7 +126,8 @@ class Form extends Component {
           </label>
 
           <label htmlFor="card-super-input">
-            <p>Super:</p>
+            {!hasTrunfo
+              && <p>Trunfo:</p>}
             {hasTrunfoCard()}
           </label>
 
@@ -133,6 +136,7 @@ class Form extends Component {
             type="submit"
             name="isSaveButtonDisabled"
             disabled={ isSaveButtonDisabled }
+            className={ setButtonClassState() }
             onClick={ onSaveButtonClick }
           >
             Salvar

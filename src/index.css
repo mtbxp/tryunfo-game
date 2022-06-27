@@ -133,7 +133,6 @@ button {
 }
 
 .extra-btns-container button {
-  background-color: var(--color4);
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   color: white;
@@ -141,6 +140,16 @@ button {
   font-weight: 700;
   padding: 10px;
   width: 30%;
+}
+
+.on-btn {
+  background-color: rgb(215, 26, 26);
+
+}
+
+.off-btn {
+  background-color: var(--color4);
+  cursor: not-allowed;
 }
 
 .card-display {

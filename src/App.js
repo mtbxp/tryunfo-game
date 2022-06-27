@@ -82,6 +82,7 @@ class App extends React.Component {
     this.setState({
       deckLength: cardDeck.length,
     });
+    this.hasSuperTrunfo();
   }
 
   clearState() {
@@ -189,6 +190,7 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
           />
         </section>
         <div className="deck-container">
