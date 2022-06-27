@@ -143,21 +143,13 @@ class App extends React.Component {
         {
           hasTrunfo: false,
         },
-        () => {
-          this.setState((PreviousState) => ({
-            cards: PreviousState.cards.filter(
-              (element) => element.cardName !== name,
-            ),
-          }));
-        },
       );
-    } else {
-      this.setState((PreviousState) => ({
-        cards: PreviousState.cards.filter(
-          (element) => element.cardName !== name,
-        ),
-      }));
     }
+    this.setState((PreviousState) => ({
+      cards: PreviousState.cards.filter(
+        (element) => element.cardName !== name,
+      ),
+    }));
   };
 
   onFilterChange = ({ target }) => {
