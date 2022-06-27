@@ -2,14 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
-  // onInputChange= (event) => {
-  //   const { name, value } = event.target;
-
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  // }
-
   render() {
     const { cardName,
       cardDescription,

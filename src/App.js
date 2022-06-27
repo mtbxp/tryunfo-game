@@ -4,31 +4,63 @@ import Form from './components/Form';
 import Card from './components/Card';
 
 class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
+      cardImage: '',
+      cardRare: '',
+    };
+
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+
   render() {
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare } = this.state;
     return (
       <main>
         <Form
-          cardName="Nome da carta"
-          cardDescription="Descrição da carta"
-          cardAttr1="12"
-          cardAttr2="34"
-          cardAttr3="56"
-          cardImage="url-to-image"
-          cardRare="raro"
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
           cardTrunfo
           hasTrunfo={ false }
           isSaveButtonDisabled={ false }
-          onInputChange={ () => { } }
+          onInputChange={ this.onChange }
           onSaveButtonClick={ () => { } }
         />
         <Card
-          cardName="Arthur"
-          cardDescription="Lindo e Perfeito"
-          cardAttr1="10"
-          cardAttr2="10"
-          cardAttr3="10"
-          cardImage="Url da imagem"
-          cardRare="muito raro"
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
           cardTrunfo
         />
       </main>
