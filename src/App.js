@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
+import Deck from './components/Deck';
 import From from './components/Form';
 
 class App extends React.Component {
@@ -23,7 +24,7 @@ class App extends React.Component {
         cardAttr1: '56',
         cardAttr2: '36',
         cardAttr3: '67',
-        cardImage: 'img.png',
+        cardImage: 'https://static.todamateria.com.br/upload/od/in/odintrono1-cke.jpg',
         cardRare: 'raro',
         cardTrunfo: false,
       }],
@@ -91,7 +92,7 @@ class App extends React.Component {
       cardTrunfo,
     } = this.state;
 
-    this.setState({
+    this.setState((prevState) => ({
       deck: [{
         cardName,
         cardDescription,
@@ -101,8 +102,8 @@ class App extends React.Component {
         cardImage,
         cardRare,
         cardTrunfo,
-      }],
-    });
+      }, ...prevState.deck],
+    }));
 
     this.setState({
       cardName: '',
@@ -128,6 +129,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      deck,
     } = this.state;
     return (
       <div>
@@ -156,6 +158,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <Deck deck={ deck } />
       </div>
     );
   }
