@@ -4,7 +4,11 @@ import Form from './components/Form';
 class App extends React.Component {
   render() {
     return (
-      <Form />
+      <>
+        <h1>Tryunfo</h1>
+        <Form />
+      </>
+
     );
   }
 }
