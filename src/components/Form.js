@@ -1,22 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { toHaveValue } from '@testing-library/jest-dom/dist/matchers';
 
 export default class Form extends Component {
-  constructor() {
-    super();
-
-    this.onInputChange = this.onInputChange.bind(this);
-
-    this.state = {
-
-    }
-  }
-
-  onInputChange(){
-
-  }
-
   render() {
     const { cardName,
       cardDescription,
@@ -26,7 +11,7 @@ export default class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
+      // hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -38,41 +23,46 @@ export default class Form extends Component {
           Card name:
           <input
             data-testid="name-input"
-            name="nameInput"
+            name="cardName"
             type="text"
             value={ cardName }
-            onChange={ onInputChange } />
+            onChange={ onInputChange }
+          />
         </label>
-        <label>
+        <label htmlFor="description">
           Description:
           <textarea
+            name="description"
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
           />
           <br />
         </label>
-        <label>
+        <label htmlFor="attr1">
           Attr 1:
           <input
+            name="attr1"
             type="number"
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
         </label>
-        <label>
+        <label htmlFor="attr2">
           Attr 2:
           <input
+            name="attr2"
             type="number"
             data-testid="attr2-input"
             value={ cardAttr2 }
-            onChange={ onInputChange } 
+            onChange={ onInputChange }
           />
         </label>
-        <label>
+        <label htmlFor="attr3">
           Attr 3:
           <input
+            name="attr3"
             type="number"
             data-testid="attr3-input"
             value={ cardAttr3 }
@@ -80,7 +70,7 @@ export default class Form extends Component {
           />
           <br />
         </label>
-        <label>
+        <label htmlFor="image-input">
           Imagem:
           <input
             value={ cardImage }
@@ -88,7 +78,7 @@ export default class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
-        <label>
+        <label htmlFor="rare-input">
           <select
             data-testid="rare-input"
             value={ cardRare }
@@ -99,8 +89,10 @@ export default class Form extends Component {
             <option value="muito raro">MUITO RARO</option>
           </select>
         </label>
-        <label>
+        <label htmlFor="trunfo-input">
+          Super Trunfo
           <input
+            name="cardTrunfo"
             type="checkbox"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
@@ -131,7 +123,8 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
+  isSaveButtonDisabled: PropTypes.func.isRequired,
 };

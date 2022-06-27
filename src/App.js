@@ -6,17 +6,56 @@ class App extends React.Component {
   constructor() {
     super();
 
+    this.onInputChange = this.onInputChange.bind(this);
+
     this.state = {
-
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false,
+      // hasTrunfo: '',
     };
+  }
 
+  onInputChange({ target }) {
+    const { name } = target;
+    const value = name === 'cardTrunfo' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
   }
 
   render() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      // hasTrunfo,
+    } = this.state;
+
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form />
+        <Form
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          onInputChange={ this.onInputChange }
+        />
         <Card />
       </div>
     );
