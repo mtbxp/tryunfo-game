@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+}
+
+.form {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 25%;
+  padding: 25px;
+}
+
+input {
+  padding: 5px;
+  margin: 5px;
+}
+
+.cardDescription {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  width: 50px;
+  background-color: green;
+  color: white;
+  font-weight: 700;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.attrs {
+  display: flex;
+  flex-direction: column;
+}
