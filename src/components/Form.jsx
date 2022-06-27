@@ -25,7 +25,7 @@ class Form extends React.Component {
           <input
             data-testid="name-input"
             type="text"
-            name="name"
+            name="cardName"
             id="name-input"
             value={ cardName }
             onChange={ onInputChange }
@@ -36,7 +36,7 @@ class Form extends React.Component {
           <input
             data-testid="description-input"
             type="text"
-            name="description"
+            name="cardDescription"
             id="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
@@ -47,7 +47,7 @@ class Form extends React.Component {
           <input
             data-testid="attr1-input"
             type="number"
-            name="attr1"
+            name="cardAttr1"
             id="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
@@ -58,7 +58,7 @@ class Form extends React.Component {
           <input
             data-testid="attr2-input"
             type="number"
-            name="attr2"
+            name="cardAttr2"
             id="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
@@ -69,7 +69,7 @@ class Form extends React.Component {
           <input
             data-testid="attr3-input"
             type="number"
-            name="attr3"
+            name="cardAttr3"
             id="attr2-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
@@ -80,7 +80,7 @@ class Form extends React.Component {
           <input
             data-testid="image-input"
             type="text"
-            name="image"
+            name="cardImage"
             id="image-input"
             value={ cardImage }
             onChange={ onInputChange }
@@ -89,6 +89,7 @@ class Form extends React.Component {
         Raridade:
         <label htmlFor="rare-imput">
           <select
+            name="cardRare"
             data-testid="rare-input"
             id="rare-imput"
             value={ cardRare }
@@ -102,6 +103,7 @@ class Form extends React.Component {
         Super Trunfo
         <label htmlFor="trunfo-input">
           <input
+            name="cardTrunfo"
             data-testid="trunfo-input"
             type="checkbox"
             id="trunfo-input"
