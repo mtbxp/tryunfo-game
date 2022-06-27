@@ -15,7 +15,40 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
     };
+  }
+
+  validationForm = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+    } = this.state;
+
+    const maxTotalAttr = 210;
+    const maxAttr = 90;
+    const minAttr = 0;
+
+    const sum = (Number(cardAttr1)
+      + Number(cardAttr2) + Number(cardAttr3)) <= maxTotalAttr;
+
+    const maxValueImput = Number(cardAttr1) <= maxAttr
+    && Number(cardAttr2) <= maxAttr
+    && Number(cardAttr3) <= maxAttr;
+
+    const minValueImput = Number(cardAttr1) >= minAttr
+    && Number(cardAttr2) >= minAttr
+    && Number(cardAttr3) >= minAttr;
+
+    if (cardName && cardDescription && cardImage
+      && sum && maxValueImput && minValueImput) {
+      return false;
+    }
+    return true;
   }
 
   handleChange = ({ target }) => {
@@ -24,7 +57,9 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
-    });
+    }, () => this.setState({
+      isSaveButtonDisabled: this.validationForm(),
+    }));
   }
 
   render() {
@@ -37,6 +72,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      isSaveButtonDisabled,
     } = this.state;
     return (
       <div>
@@ -51,6 +87,7 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
             onInputChange={ this.handleChange }
           />
         </section>
