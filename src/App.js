@@ -9,7 +9,7 @@ class App extends React.Component {
     super();
     this.inputChange = this.inputChange.bind(this);
     this.saveCard = this.saveCard.bind(this);
-    this.saveButtonDisabled = this.saveButtonDisabled.bind(this);
+    this.inputChangeRules = this.inputChangeRules.bind(this);
 
     this.state = {
       cardName: '',
@@ -35,10 +35,10 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     });
-    this.saveButtonDisabled();
+    this.inputChangeRules();
   }
 
-  saveButtonDisabled() {
+  inputChangeRules() {
     const maxPoints = 210;
     const maxAttr = 90;
     const {
@@ -80,7 +80,7 @@ class App extends React.Component {
 
   saveCard(card) {
     this.setState((prevState) => ({
-      data: [card, ...prevState.data],
+      data: [...prevState.data, card],
       cardName: '',
       cardDescription: '',
       cardAttr1: 0,
@@ -105,7 +105,9 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      data,
     } = this.state;
+    const men = 'Super Trunfo';
     return (
       <div>
         <header>
@@ -137,6 +139,36 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </div>
+        <ul>
+          {
+            data.map((card, index) => (
+              <li key={ index }>
+                <h3 data-testid="name-card">{ card.name }</h3>
+                <br />
+                <img src={ card.image } alt={ card.name } data-testid="image-card" />
+                <br />
+                <p data-testid="description-card">{ card.description }</p>
+                <br />
+                { (card.isTrunfo) ? <h3 data-testid="trunfo-card">{ men }</h3> : <>---</>}
+                <br />
+                <div className="attr" data-testid="attr1-card">
+                  <h4>attr1</h4>
+                  <h4>{ card.attr.attr1 }</h4>
+                </div>
+                <div className="attr" data-testid="attr2-card">
+                  <h4>attr2</h4>
+                  <h4>{ card.attr.attr2 }</h4>
+                </div>
+                <div className="attr" data-testid="attr3-card">
+                  <h4>attr3</h4>
+                  <h4>{ card.attr.attr3 }</h4>
+                </div>
+                <br />
+                <h4 data-testid="rare-card">{ card.rare }</h4>
+                <br />
+              </li>))
+          }
+        </ul>
       </div>
     );
   }
