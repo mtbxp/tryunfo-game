@@ -146,11 +146,11 @@ small, .text_small {
 
 button {
   background: var(--accent);
-  color: var(--white);
   border: transparent;
   border-radius: var(--borderRadius);
-  cursor: pointer;
+  color: var(--white);
   box-shadow: var(--shadow-1);
+  cursor: pointer;
   display: inline-block;
   font-size: 1.2rem;
   letter-spacing: var(--letterSpacing);
