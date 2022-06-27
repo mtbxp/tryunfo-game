@@ -125,7 +125,7 @@ class App extends React.Component {
             onSaveButtonClick={ this.onSaveButtonClick }
           />
         </section>
-        <h1>Lista de cartas</h1>
+        <h2>Lista de cartas</h2>
         <section>
           <Card
             cardName={ cardName }
@@ -140,6 +140,7 @@ class App extends React.Component {
             preview={ false }
           />
         </section>
+        <h2>Todas as Cartas</h2>
         <section>
           <CardList
             saveCards={ saveCards }
