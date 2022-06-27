@@ -25,7 +25,9 @@ class Form extends React.Component {
     });
   }
 
-  onSaveButtonClick = () => { }
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+  }
 
   render() {
     const { cardName,
@@ -36,6 +38,7 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled } = this.state;
     return (
       <form>
@@ -49,6 +52,7 @@ class Form extends React.Component {
             onChange={ this.onInputChange }
           />
         </label>
+        <br />
         <label htmlFor="description-input">
           Inserir a descrição da carta
           <textarea
@@ -58,6 +62,7 @@ class Form extends React.Component {
             onChange={ this.onInputChange }
           />
         </label>
+        <br />
         <label htmlFor="attr1-input">
           Inserir o primeiro atributo da carta
           <input
@@ -68,6 +73,7 @@ class Form extends React.Component {
             onChange={ this.onInputChange }
           />
         </label>
+        <br />
         <label htmlFor="attr2-input">
           Inserir o segundo atributo da carta
           <input
@@ -78,6 +84,7 @@ class Form extends React.Component {
             onChange={ this.onInputChange }
           />
         </label>
+        <br />
         <label htmlFor="attr3-input">
           Inserir o terceiro atributo da carta
           <input
@@ -88,6 +95,7 @@ class Form extends React.Component {
             onChange={ this.onInputChange }
           />
         </label>
+        <br />
         <label htmlFor="image-input">
           Inserir o caminho para imagem da carta
           <input
@@ -98,6 +106,7 @@ class Form extends React.Component {
             onChange={ this.onInputChange }
           />
         </label>
+        <br />
         <label htmlFor="rare-input">
           Escolher a raridade da carta
           <select
@@ -111,6 +120,7 @@ class Form extends React.Component {
             <option value="muito raro">muito raro</option>
           </select>
         </label>
+        <br />
         <label htmlFor="trunfo-input">
           A carta é o Super Trunfo?
           <input
@@ -121,13 +131,14 @@ class Form extends React.Component {
             onChange={ this.onInputChange }
           />
         </label>
+        <br />
         <button
-          type="button"
+          type="submit"
           data-testid="save-button"
           name="isSaveButtonDisabled"
           value={ isSaveButtonDisabled }
           onChange={ this.onSaveButtonClick }
-          disabled
+          disabled={ !cardTrunfo }
         >
           Salvar
         </button>
