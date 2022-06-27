@@ -15,6 +15,10 @@ class Form extends React.Component {
   //     cardtrunfo: '',
   //   };
   // }
+  submitFunc = () => {
+    this.props.cardName = 'ehaue';
+    console.log('aiai');
+  }
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,

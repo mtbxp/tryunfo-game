@@ -1,5 +1,6 @@
 * {
   padding-left: 10px;
+  background: linear-gradient(rgb(205, 191, 191), rgb(71, 77, 71))
 }
 
 .form {
@@ -12,8 +13,36 @@
 .cardDiv {
   border: 1px solid black;
   width: 350px;
+  background: linear-gradient(rgb(124, 124, 18), rgb(225, 225, 174));
+  padding: 10px;
 }
 
 .divApp {
   display: flex;
+}
+
+.cartas-adicionadas {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.super-trunfo {
+  background: linear-gradient(green, yellow);
+  text-align: center;
+  font-style: oblique;
+  font-weight: bold;
+  color: linen;
+}
+
+.rarity {
+  background: linear-gradient(rgb(122, 115, 57), rgb(129, 128, 56));
+  text-align: center;
+  font-style: oblique;
+  font-weight: bold;
+  color: linen;
+}
+
+.card-image {
+  width: 320px;
 }

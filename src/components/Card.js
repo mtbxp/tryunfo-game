@@ -8,24 +8,30 @@ class Form extends React.Component {
     return (
       <div className="cardDiv">
         <h1 data-testid="name-card">{cardName}</h1>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
+        <img
+          src={ cardImage }
+          alt={ cardName }
+          data-testid="image-card"
+          className="card-image"
+        />
         <p data-testid="description-card">{cardDescription}</p>
         <ul>
           <li data-testid="attr1-card">
-            Atributo 1:
+            Força:
             {cardAttr1}
           </li>
           <li data-testid="attr2-card">
-            Atributo 2:
+            Velocidade:
             {cardAttr2}
           </li>
           <li data-testid="attr3-card">
-            Atributo 3:
+            Resistência:
             {cardAttr3}
           </li>
         </ul>
-        <p data-testid="rare-card">{cardRare}</p>
-        {cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : ''}
+        <p data-testid="rare-card" className="rarity">{cardRare}</p>
+        {cardTrunfo
+          ? <p data-testid="trunfo-card" className="super-trunfo">Super Trunfo</p> : ''}
       </div>
     );
   }
