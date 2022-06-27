@@ -15,12 +15,12 @@ body {
 }
 
 .card {
-  background-color: #036B52;
+  background-color: #036b52;
   border: 7px solid white;
   border-radius: 8px;
-  padding: 10px;
-  min-width: 250px;
   margin: 10px;
+  min-width: 300px;
+  padding: 10px;
   text-align: center;
 }
 
@@ -37,27 +37,27 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: right;
   margin: 10px;
+  text-align: right;
 }
 
 .input {
-  border-radius: 5px;
   border: none;
-  padding: 5px 10px;
+  border-radius: 5px;
   margin: 5px;
+  padding: 5px 10px;
   width: 200px;
 }
 
 .bt {
   border: none;
   border-radius: 5px;
-  padding: 5px 10px;
   margin: 5px;
+  padding: 5px 10px;
   width: 200px;
 }
 
 .tryunfo {
-  text-align: center;
   margin: 20px;
+  text-align: center;
 }
