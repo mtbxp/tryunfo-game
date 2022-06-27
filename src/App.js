@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Deck from './components/Deck';
 
 class App extends React.Component {
   constructor() {
@@ -95,6 +96,15 @@ class App extends React.Component {
     }));
   }
 
+  handleDeckButton = (cardName, cardTrunfo) => {
+    const { savedCards } = this.state;
+    const newDeck = savedCards.filter((card) => card.cardName !== cardName);
+    this.setState((state) => ({
+      hasTrunfo: cardTrunfo ? false : state.hasTrunfo,
+      savedCards: newDeck,
+    }));
+  }
+
   render() {
     const {
       cardName,
@@ -136,21 +146,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        {
-          savedCards.map((card) => (
-            <Card
-              cardName={ card.cardName }
-              cardDescription={ card.cardDescription }
-              cardAttr1={ card.cardAttr1 }
-              cardAttr2={ card.cardAttr2 }
-              cardAttr3={ card.cardAttr3 }
-              cardImage={ card.cardImage }
-              cardRare={ card.cardRare }
-              cardTrunfo={ card.cardTrunfo }
-              key={ card.cardName }
-            />
-          ))
-        }
+        <Deck savedCards={ savedCards } handleDeckButton={ this.handleDeckButton } />
       </div>
     );
   }
