@@ -13,7 +13,7 @@ class App extends React.Component {
       cardAttr2: 0,
       cardAttr3: 0,
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: true,
       deck: [],
       isSaveButtonDisabled: true,
