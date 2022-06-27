@@ -1,11 +1,132 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
   font-family: -apple-system, sans-serif;
+}
+
+#header {
+  background-color: rgb(183, 118, 21);
+  color: rgb(67, 38, 0);
+  padding: 10px;
+  text-align: center;
+}
+
+.createCard {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 30px 0;
+}
+
+.form {
+  align-items: center;
+  border: 1px gray solid;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.form .cardInfo {
+  padding: 10px;
+}
+
+.form input {
+  border: 1px gray solid;
+  margin-left: 3px;
+  outline: none;
+  padding: 5px;
+}
+
+.superTrun {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+.form label {
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+.form textarea {
+  border: 1px gray solid;
+  max-height: 100px;
+  outline: none;
+  padding: 10px;
+  resize: none;
+  width: 80%;
+}
+
+.form input:focus, .form textarea:focus {
+  background-color: rgb(206, 231, 255);
+}
+
+.form input[type=checkbox] {
+  height: 20px;
+  width: 20px;
+}
+
+.form input:checked {
+  background-color: blue;
+}
+
+::placeholder {
+  color: rgb(0, 0, 0);
+  font-style: italic;
+}
+
+.form select {
+  font-size: 1rem;
+  padding: 5px;
+  outline: none;
+  width: 120px;
+}
+
+.form .cardStatus {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  width: 80%;
+}
+
+.form .cardAttr {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.form .cardSpecials {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.form #tr {
+  font-style: italic;
+  max-width: 130px;
+  text-align: center;
+}
+
+.form button {
+  font-size: 1.3rem;
+  padding: 10px;
+}
+
+.cardPreview {
+  display: block;
+  width: 300px;
+  white-space: pre-line;
+}
+
+#cardDesc::after {
+  border: 1px red solid;
+  display: block;
+  max-width: 80px;
 }
 
 #isTrunfo {
