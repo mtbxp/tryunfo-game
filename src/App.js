@@ -21,7 +21,7 @@ class App extends React.Component {
 
   validateTrunfo = () => {
     const { cards } = this.state;
-    return cards.some(({ cardTrunfo: exist }) => exist);
+    return cards.some(({ cardTrunfo: isTrunfo }) => isTrunfo);
   };
 
   isSaveButtonDisabled = () => {
@@ -98,6 +98,19 @@ class App extends React.Component {
     });
   };
 
+  removeCards = (key) => {
+    const { hasTrunfo } = this.state;
+    this.setState(({ cards: prevList }) => ({
+      cards: (prevList.filter(({ cardName }) => cardName !== key)),
+    }), () => {
+      if (hasTrunfo) {
+        this.setState({
+          hasTrunfo: this.validateTrunfo(),
+        });
+      }
+    });
+  }
+
   render() {
     const {
       cardName,
@@ -129,14 +142,16 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          deleteButton={ false }
+          removeCards={ this.removeCards }
         />
         {cards.map(
           ({
             cardName: name,
-            cardDescription: desc,
-            cardAttr1: atr1,
-            cardAttr2: atr2,
-            cardAttr3: atr3,
+            cardDescription: descript,
+            cardAttr1: attr1,
+            cardAttr2: attr2,
+            cardAttr3: attr3,
             cardImage: img,
             cardRare: rare,
             cardTrunfo: trunfo,
@@ -144,13 +159,15 @@ class App extends React.Component {
             <Card
               key={ name }
               cardName={ name }
-              cardDescription={ desc }
-              cardAttr1={ atr1 }
-              cardAttr2={ atr2 }
-              cardAttr3={ atr3 }
+              cardDescription={ descript }
+              cardAttr1={ attr1 }
+              cardAttr2={ attr2 }
+              cardAttr3={ attr3 }
               cardImage={ img }
               cardRare={ rare }
               cardTrunfo={ trunfo }
+              deleteButton
+              removeCards={ this.removeCards }
             />
           ),
         )}
