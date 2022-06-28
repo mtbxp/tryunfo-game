@@ -65,8 +65,7 @@ class App extends React.Component {
     const validaSoma = () => {
       if (
         soma <= somaMax
-        && Number(cardAttr1) <= max
-        && Number(cardAttr2) <= max
+        && Number(cardAttr1) <= max && Number(cardAttr2) <= max
         && Number(cardAttr3) <= max
         && Number(cardAttr1) >= min
         && Number(cardAttr2) >= min
