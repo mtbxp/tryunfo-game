@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends Component {
-  // constructor() {
-  //   super();
-  //   this.Formulario = this.Formulario.bind(this);
-
-  //   this.state = {
-  //   };
-  // }
-
   render() {
     const {
       onInputChange,
