@@ -15,7 +15,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      hasTrunfo: false,
+      hasTrunfo: true,
       isSaveButtonDisabled: true,
       trunfoDeck: [],
     };
@@ -28,6 +28,17 @@ class App extends React.Component {
     }
     return false;
   }
+
+  deleteCard = (deletedCard) => {
+    const { trunfoDeck } = this.state;
+    const cards = trunfoDeck.filter((card) => card.cardName !== deletedCard);
+    this.setState({
+      trunfoDeck: cards,
+    },
+    () => this.setState({
+      hasTrunfo: this.hasTrunfo(),
+    }));
+  };
 
   onSaveButtonClick = (event) => {
     event.preventDefault();
@@ -75,15 +86,15 @@ class App extends React.Component {
       cardImage,
       cardRare,
     } = this.state;
-    const maxSumAttribute = 211;
+    const maxSumAttribute = 210;
     const maxAttribute = 90;
     const minAttribute = 0;
-    if (cardAttr1 > maxAttribute || cardAttr1 < minAttribute
-      || cardAttr2 > maxAttribute || cardAttr2 < minAttribute
-      || cardAttr3 > maxAttribute || cardAttr3 < minAttribute) return true;
     const sumAttribute = (Number(cardAttr1)
       + Number(cardAttr2)
-      + Number(cardAttr3)) < maxSumAttribute;
+      + Number(cardAttr3)) <= maxSumAttribute;
+    if (cardAttr1 >= maxAttribute || cardAttr1 <= minAttribute
+      || cardAttr2 >= maxAttribute || cardAttr2 <= minAttribute
+      || cardAttr3 >= maxAttribute || cardAttr3 <= minAttribute) return true;
 
     return !(sumAttribute
       && cardDescription
@@ -112,7 +123,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // trunfoDeck,
+      trunfoDeck,
     } = this.state;
     return (
       <section>
@@ -135,6 +146,30 @@ class App extends React.Component {
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
           />
+        </div>
+        <div>
+          {
+            trunfoDeck.map((card) => (
+              <div key={ card.cardName }>
+                <Card
+                  cardName={ card.cardName }
+                  cardDescription={ card.cardDescription }
+                  cardAttr1={ card.cardAttr1 }
+                  cardAttr2={ card.cardAttr2 }
+                  cardAttr3={ card.cardAttr3 }
+                  cardImage={ card.cardImage }
+                  cardRare={ card.cardRare }
+                  cardTrunfo={ card.cardTrunfo }
+                />
+                <button
+                  type="submit"
+                  data-testid="delete-button"
+                  onClick={ () => this.deleteCard(card.cardName) }
+                >
+                  Excluir
+                </button>
+              </div>))
+          }
         </div>
       </section>
     );

@@ -78,7 +78,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="cardImage">
-          URL Imagem:
+          Imagem do personagem:
           <input
             name="cardImage"
             data-testid="image-input"
@@ -94,9 +94,9 @@ class Form extends React.Component {
             value={ cardRare }
             onChange={ onInputChange }
           >
-            <option>normal</option>
-            <option>raro</option>
-            <option>muito raro</option>
+            <option>Normal</option>
+            <option>Raro</option>
+            <option>Muito Raro</option>
           </select>
         </label>
         {
@@ -115,16 +115,6 @@ class Form extends React.Component {
             </label>
           )
         }
-        {/* <label htmlFor="cardTrunfo">
-          Super Trunfo?
-          <input
-            name="cardTrunfo"
-            data-testid="trunfo-input"
-            type="checkbox"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-        </label> */}
         <button
           data-testid="save-button"
           type="button"
