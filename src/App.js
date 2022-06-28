@@ -7,33 +7,90 @@ class App extends React.Component {
     super();
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.atributosIndividuais = this.atributosIndividuais.bind(this);
+    this.testaInputs = this.testaInputs.bind(this);
+    this.habilitaBotao = this.habilitaBotao.bind(this);
 
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
     };
   }
 
   onInputChange({ target }) {
     const { name } = target;
     const valor = target.type === 'checkbox' ? target.checked : target.value;
-    console.log(valor);
     this.setState({
       [name]: valor,
+    }, () => {
+      const estadoAtt = this.state;
+      if (this.testaAtributos(estadoAtt) === true
+        && this.testaInputs(estadoAtt) === true) {
+        this.setState({
+          isSaveButtonDisabled: false,
+        });
+      } else {
+        this.setState({
+          isSaveButtonDisabled: true,
+        });
+      }
     });
+  }
+
+  atributosIndividuais({ cardAttr1, cardAttr2, cardAttr3 }) {
+    const attrs = [cardAttr1, cardAttr2, cardAttr3];
+    const vlrMaximo = 90;
+    const sim = attrs.every((attr) => attr <= vlrMaximo && attr >= 0);
+    return sim;
+  }
+
+  testaAtributos({ cardAttr1, cardAttr2, cardAttr3 }) {
+    let attrs = [cardAttr1, cardAttr2, cardAttr3];
+    attrs = attrs.map((e) => Number(e));
+    const soma = attrs.reduce((total, numero) => total + numero, 0);
+    const valorMaximo = 210;
+    const vlrMx = this.atributosIndividuais(this.state);
+    if (soma > valorMaximo || vlrMx === false) {
+      return false;
+    }
+    return true;
+  }
+
+  testaInputs({ cardName, cardDescription, cardImage }) {
+    if (cardName.length > 0
+      && cardDescription.length > 0
+      && cardImage.length > 0) {
+      return true;
+    }
+    return false;
+  }
+
+  habilitaBotao() {
+    if (this.testaAtributos(this.state) === true
+    && this.testaInputs(this.state) === true) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
   }
 
   render() {
     const { cardName, cardDescription,
       cardAttr1, cardAttr2,
       cardAttr3, cardImage,
-      cardRare, cardTrunfo } = this.state;
+      cardRare, cardTrunfo,
+      isSaveButtonDisabled } = this.state;
 
     return (
       <div>
@@ -48,6 +105,7 @@ class App extends React.Component {
           cardAttr3={ cardAttr3 }
           cardImage={ cardImage }
           cardTrunfo={ cardTrunfo }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
         />
         <Card
           cardName={ cardName }
