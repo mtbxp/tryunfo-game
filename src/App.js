@@ -20,11 +20,6 @@ class App extends React.Component {
     };
     this.onInputChange = this.onInputChange.bind(this);
   }
-  // addNewProject = (project) => {
-  //   this.setState({
-
-  //   });
-  // }
 
   onInputChange({ target }) {
     const { name, type } = target;
@@ -63,7 +58,16 @@ class App extends React.Component {
         />
         ,
         <h2> Preview Card </h2>
-        <Card />
+        <Card
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+        />
         ,
       </div>
     );
