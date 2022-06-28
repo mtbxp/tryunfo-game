@@ -18,11 +18,13 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       deck: [],
+      hasTrunfo: false,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.validateForms = this.validateForms.bind(this);
+    this.hasTrunfo = this.hasTrunfo.bind(this);
   }
 
   onInputChange({ target }) {
@@ -34,20 +36,10 @@ class App extends React.Component {
     }, () => { this.validateForms(); });
   }
 
-  onSaveButtonClick(card) {
-    // const {
-    //   cardName,
-    //   cardDescription,
-    //   cardAttr1,
-    //   cardAttr2,
-    //   cardAttr3,
-    //   cardImage,
-    //   cardRare,
-    //   cardTrunfo,
-    // } = this.state;
-
+  onSaveButtonClick() {
+    const card = this.state;
     this.setState((prevState) => ({
-      deck: [card, ...prevState.deck],
+      deck: [...prevState.deck, card],
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -56,8 +48,16 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
-    }));
+    }), () => { this.hasTrunfo(); });
+  }
+
+  hasTrunfo() {
+    const { deck } = this.state;
+    this.setState({
+      hasTrunfo: deck.some((e) => e.cardTrunfo === true),
+    });
   }
 
   validateForms() {
@@ -107,6 +107,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      hasTrunfo,
     } = this.state;
 
     return (
@@ -126,6 +127,7 @@ class App extends React.Component {
             isSaveButtonDisabled={ isSaveButtonDisabled }
             onInputChange={ this.onInputChange }
             onSaveButtonClick={ this.onSaveButtonClick }
+            hasTrunfo={ hasTrunfo }
           />
           <Card
             className="card"
