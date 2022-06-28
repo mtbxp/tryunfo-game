@@ -21,7 +21,7 @@ class App extends React.Component {
     };
   }
 
-  trunfoDeckHasTrunfo = () => {
+  hasTrunfo = () => {
     const { trunfoDeck } = this.state;
     if (trunfoDeck.length !== 0) {
       return trunfoDeck.some(({ cardTrunfo }) => cardTrunfo);
@@ -36,7 +36,7 @@ class App extends React.Component {
       trunfoDeck: cards,
     },
     () => this.setState({
-      trunfoDeckHasTrunfo: this.trunfoDeckHasTrunfo(),
+      hasTrunfo: this.hasTrunfo(),
     }));
   };
 
@@ -74,7 +74,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      hasTrunfo: this.trunfoDeckHasTrunfo(),
+      hasTrunfo: this.hasTrunfo(),
     }));
   };
 
