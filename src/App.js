@@ -34,7 +34,7 @@ class App extends React.Component {
     const allAttr = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3); // Necessario transformar em number
     const maxAttr = 90;
     const sunAllAttr = 210;
-    console.log(allAttr);
+    // console.log(allAttr);
 
     if (cardName === ''
       || cardImage === ''
@@ -52,6 +52,11 @@ class App extends React.Component {
   onSaveButtonClick = () => {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo, deck } = this.state;
+
+    if (cardTrunfo === true) {
+      this.setState({ hasTrunfo: true });
+    }
+
     this.setState((prevState) => ({
       deck: [...deck, { ...prevState.deck,
         cardName,
@@ -63,38 +68,49 @@ class App extends React.Component {
         cardRare,
         cardTrunfo }],
     }), () => this.cleaningInputFields());
-
-    if (cardTrunfo === true) {
-      this.setState({ hasTrunfo: true });
-    }
   }
 
   cleaningInputFields = () => {
-    document.querySelector('#text').value = '';
-    document.querySelector('#descricao').value = '';
-    document.querySelector('#image').value = '';
-    document.querySelector('#attr1').value = 0;
-    document.querySelector('#attr2').value = 0;
-    document.querySelector('#attr3').value = 0;
-    document.querySelector('#rarity').value = 'normal';
+    // document.querySelector('#text').value = '';
+    // document.querySelector('#descricao').value = '';
+    // document.querySelector('#image').value = '';
+    // document.querySelector('#attr1').value = 0;
+    // document.querySelector('#attr2').value = 0;
+    // document.querySelector('#attr3').value = 0;
+    // document.querySelector('#rarity').value = 'normal';
+
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardRare: '',
+    });
   }
 
   render() {
     const { cardName, cardDescription, cardImage,
       cardAttr1, cardAttr2, cardAttr3, cardRare,
-      cardTrunfo, isSaveButtonDisabled, hasTrunfo } = this.state;
+      cardTrunfo, isSaveButtonDisabled, hasTrunfo, deck } = this.state;
 
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
-          onInputChange={ this.onInputChange }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
           cardName={ cardName }
           cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
           cardImage={ cardImage }
-          onSaveButtonClick={ this.onSaveButtonClick }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
           hasTrunfo={ hasTrunfo }
+          onInputChange={ this.onInputChange }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
@@ -106,6 +122,22 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+
+        { deck.map((item) => (
+
+          <div key={ item.cardName }>
+            <Card
+              cardName={ item.cardName }
+              cardDescription={ item.cardDescription }
+              cardImage={ item.cardImage }
+              cardAttr1={ item.cardAttr1 }
+              cardAttr2={ item.cardAttr2 }
+              cardAttr3={ item.cardAttr3 }
+              cardRare={ item.cardRare }
+              cardTrunfo={ item.cardTrunfo }
+            />
+          </div>
+        ))}
       </div>
     );
   }

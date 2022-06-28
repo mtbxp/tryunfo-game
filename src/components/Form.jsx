@@ -109,7 +109,6 @@ class Form extends React.Component {
             )}
         </label>
 
-        {/* { hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p> : '' } */}
         <button
           data-testid="save-button"
           type="button"
@@ -136,8 +135,8 @@ Form.propTypes = {
   cardTrunfo: PropTypes.bool.isRequired,
   hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
-  onInputChange: PropTypes.string.isRequired,
-  onSaveButtonClick: PropTypes.string.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
 };
 
 export default Form;
