@@ -28,7 +28,7 @@ class Form extends Component {
               type="text"
               id="addCard"
               placeholder="Placeholder"
-              name="name-input"
+              name="cardName"
               onChange={ onInputChange }
               value={ cardName }
 
@@ -41,7 +41,7 @@ class Form extends Component {
               data-testid="description-input"
               type="textarea"
               id="describe"
-              name="description-input"
+              name="cardDescription"
               cols="30"
               rows="10"
               onChange={ onInputChange }
@@ -54,7 +54,7 @@ class Form extends Component {
             <input
               data-testid="attr1-input"
               type="number"
-              name="attr1-input"
+              name="cardAttr1"
               id="number1"
               onChange={ onInputChange }
               value={ cardAttr1 }
@@ -66,7 +66,7 @@ class Form extends Component {
             <input
               data-testid="attr2-input"
               type="number"
-              name="attr2-input"
+              name="cardAttr2"
               id="number2"
               onChange={ onInputChange }
               value={ cardAttr2 }
@@ -78,7 +78,7 @@ class Form extends Component {
             <input
               data-testid="attr3-input"
               type="number"
-              name="attr3-input"
+              name="cardAttr3"
               id="number3"
               onChange={ onInputChange }
               value={ cardAttr3 }
@@ -90,7 +90,7 @@ class Form extends Component {
             <input
               data-testid="image-input"
               type="text"
-              name="imagem-card"
+              name="cardImage"
               id="image"
               onChange={ onInputChange }
               value={ cardImage }
@@ -101,7 +101,7 @@ class Form extends Component {
             Raridade
             <select
               data-testid="rare-input"
-              name="rarity-card"
+              name="cardRare"
               placeholder="Placeholder"
               id="rarity"
               onChange={ onInputChange }
@@ -129,10 +129,10 @@ class Form extends Component {
             className="checkbox"
             htmlFor="checkbox"
           >
-            <input
+            <input 
               data-testid="trunfo-input"
               type="checkbox"
-              name="checkbox-trunfo"
+              name="cardTrunfo"
               id="checkbox"
               checked={ cardTrunfo }
               onChange={ onInputChange }
