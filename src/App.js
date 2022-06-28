@@ -1,17 +1,18 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import ImgJs from './img-js-new.png';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: '',
+      name: 'Java Script',
       describe: '',
-      attr1: 0,
-      attr2: 0,
-      attr3: 0,
-      image: '',
+      attr1: 99,
+      attr2: 99,
+      attr3: 99,
+      image: ImgJs,
       select: 'normal',
       check: false,
       isSaveButtonDisabled: true,
@@ -63,12 +64,6 @@ class App extends React.Component {
     }
     return true;
   };
-
-  // listCardSaves = () => {
-  //   const { listCard } = this.state;
-  //   const newCard = listCard.map((card) => <Card key={ card.name } { ...card } />);
-  //   return newCard;
-  // }
 
   onSaveButtonClick = (event) => {
     event.preventDefault();

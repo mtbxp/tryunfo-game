@@ -24,7 +24,7 @@ class Form extends React.Component {
           <b>Nome</b>
           <br />
           <input
-            className="input"
+            className="input bottom"
             name="name"
             type="text"
             data-testid="name-input"
@@ -36,8 +36,8 @@ class Form extends React.Component {
         <label htmlFor="describe">
           <b>Descrição</b>
           <br />
-          <input
-            className="input"
+          <textarea
+            className="input bottom"
             name="describe"
             type="textarea"
             data-testid="description-input"

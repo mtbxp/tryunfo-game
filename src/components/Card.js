@@ -27,18 +27,18 @@ class Card extends React.Component {
           <p className="descricao" data-testid="description-card">{cardDescription}</p>
           <div className="card-baixo">
             <h4 data-testid="attr1-card">
-              Attr01....................................
+              Attr01.........................................
               {cardAttr1}
             </h4>
             <h4 data-testid="attr2-card">
-              Attr02....................................
+              Attr02.........................................
               {cardAttr2}
             </h4>
             <h4 data-testid="attr3-card">
-              Attr03....................................
+              Attr03.........................................
               {cardAttr3}
             </h4>
-            <h5 data-testid="rare-card">{cardRare}</h5>
+            <h5 className="rari" data-testid="rare-card">{cardRare}</h5>
           </div>
           { (cardTrunfo) ? <h2 data-testid="trunfo-card">Super Trunfo</h2> : ''}
         </div>
