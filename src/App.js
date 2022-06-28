@@ -9,7 +9,7 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.atributosIndividuais = this.atributosIndividuais.bind(this);
     this.testaInputs = this.testaInputs.bind(this);
-    this.habilitaBotao = this.habilitaBotao.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
 
     this.state = {
       cardName: '',
@@ -44,6 +44,20 @@ class App extends React.Component {
     });
   }
 
+  onSaveButtonClick() {
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false,
+      isSaveButtonDisabled: true,
+    });
+  }
+
   atributosIndividuais({ cardAttr1, cardAttr2, cardAttr3 }) {
     const attrs = [cardAttr1, cardAttr2, cardAttr3];
     const vlrMaximo = 90;
@@ -72,25 +86,12 @@ class App extends React.Component {
     return false;
   }
 
-  habilitaBotao() {
-    if (this.testaAtributos(this.state) === true
-    && this.testaInputs(this.state) === true) {
-      this.setState({
-        isSaveButtonDisabled: false,
-      });
-    } else {
-      this.setState({
-        isSaveButtonDisabled: true,
-      });
-    }
-  }
-
   render() {
     const { cardName, cardDescription,
       cardAttr1, cardAttr2,
       cardAttr3, cardImage,
       cardRare, cardTrunfo,
-      isSaveButtonDisabled } = this.state;
+      isSaveButtonDisabled, onSaveButtonClick } = this.state;
 
     return (
       <div>
@@ -106,6 +107,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
