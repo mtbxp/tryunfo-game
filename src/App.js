@@ -8,12 +8,13 @@ class App extends React.Component {
     this.state = {
       name: '',
       description: '',
-      attr1: '',
-      attr2: '',
-      attr3: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
       image: '',
-      rare: '',
+      rare: 'normal',
       superTrunfo: false,
+      colection: [],
     };
   }
 
@@ -22,7 +23,7 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    }, console.log(value));
+    }, console.log(this.state));
   }
 
   isSaveButtonDisabled = () => {
@@ -38,6 +39,46 @@ class App extends React.Component {
       .reduce((acc, value) => acc + parseInt(value, 10), 0) <= limitAttrTotal;
     const boolMaster = [bool1, bool2, bool3].every((bool) => bool === true);
     return boolMaster === false;
+  }
+
+  clearForm = () => {
+    this.setState({
+      name: '',
+      description: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
+      image: '',
+      rare: 'normal',
+      superTrunfo: false,
+    });
+  }
+
+  onSaveButtonClick = () => {
+    const {
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      image,
+      rare,
+      superTrunfo,
+      colection,
+    } = this.state;
+    const obj = {
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      image,
+      rare,
+      superTrunfo,
+    };
+    this.setState({
+      colection: [...colection, obj],
+    }, this.clearForm());
   }
 
   render() {
@@ -66,7 +107,7 @@ class App extends React.Component {
           hasTrunfo={ false }
           isSaveButtonDisabled={ this.isSaveButtonDisabled() }
           onInputChange={ this.onInputChange }
-          onSaveButtonClick={ () => {} }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ name }
