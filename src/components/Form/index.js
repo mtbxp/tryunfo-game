@@ -118,7 +118,7 @@ class Form extends Component {
             />
           </label>)}
         <button
-          id="submit__trunfo"
+          className="submit__trunfo"
           type="submit"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }

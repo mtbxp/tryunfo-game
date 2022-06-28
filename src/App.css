@@ -1,46 +1,46 @@
 h1 {
-  padding: 1.2rem;
   background-color: #e86e38;
   color: white;
+  padding: 1.2rem;
   text-align: center;
 }
 
-#section__create-card {
-  padding: 1.5rem;
-  display: flex;
-  justify-content: center;
+.section__create-card {
   align-items: center;
-  gap: 5rem;
   background-color: #1b2124;
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  padding: 1.5rem;
 }
 
-#section__cards {
-  min-height: 470px;
+.section__cards {
   background-color: #e86e38;
-  padding: 2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 50px;
+  min-height: 470px;
+  padding: 2rem;
 }
 
 .cards__created {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 15px;
+  justify-content: center;
 }
 
 .button__delete-card {
-  height: 30px;
-  width: 50%;
   background-color: #1b2124;
   border: none;
   border-radius: 3px;
   color: white;
+  height: 30px;
+  width: 50%;
 }
 
 .button__delete-card:hover {
-  opacity: 0.9;
   cursor: pointer;
+  opacity: 0.9;
 }

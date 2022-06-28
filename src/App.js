@@ -170,7 +170,7 @@ class App extends React.Component {
     return (
       <div>
         <header><h1>Naruto Trunfo</h1></header>
-        <section id="section__create-card">
+        <section className="section__create-card">
           <Form
             cardName={ cardName }
             cardDescription={ cardDescription }
@@ -196,8 +196,8 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </section>
-        <section id="section__cards">
-          <div id="toolbar__filter">
+        <section className="section__cards">
+          <div className="toolbar__filter">
             <input
               type="text"
               data-testid="name-filter"

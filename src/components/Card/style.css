@@ -1,25 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@100;300;400;500&family=Kalam&family=Poppins:wght@100;300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@100;300;400;500&family=Kalam&family=Poppins:wght@100;300;500&display=swap') ;
 
 .card__character {
-  height: 450px;
-  width: 280px;
-  border-radius: 5px;
+  align-items: center;
   background-color: #fddeaf;
+  border-radius: 5px;
   box-shadow: 0 0 0 9px #d82004;
-  padding: 0.5rem 0.6rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
   gap: 8px;
+  height: 450px;
+  justify-content: flex-start;
+  padding: 0.5rem 0.6rem;
   position: relative;
+  width: 280px;
 }
 
 .card__name-rank {
-  width: 100%;
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: flex-start;
+  width: 100%;
 }
 
 .card__name {
@@ -30,12 +30,12 @@
 }
 
 .container__rarity {
-  flex: 1;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
   align-items: center;
-  font-family: Kalam;
+  display: flex;
+  flex: 1;
+  font-family: Kalam , sans-serif;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .card__rarity {
@@ -44,33 +44,33 @@
 
 
 .card__image {
+  background-color: rgb(241, 241, 241);
+  border-radius: 2px;
   height: 170px;
   width: 280px;
-  border-radius: 2px;
-  background-color: rgb(241, 241, 241);
 }
 
 .card__description {
-  min-height: 60px;
-  width: 100%;
   background-color: #edb870;
-  padding: 0.4rem;
-  font-size: 0.8rem;
   border-radius: 2px;
+  font-size: 0.8rem;
+  min-height: 60px;
+  padding: 0.4rem;
+  width: 100%;
 }
 
 .container__attr {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
+  display: flex;
   gap: 2rem;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .container__trunfo {
+  bottom: 5px;
   position: absolute;
   right: 5px;
-  bottom: 5px;
 }
 
 .card__trunfo {
