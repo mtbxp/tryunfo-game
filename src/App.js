@@ -115,34 +115,52 @@ class App extends React.Component {
         deckOfCards,
       } = this.state;
       return (
-        <div>
-          <h1>Tryunfo</h1>
-          <Form
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardImage={ cardImage }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
-            hasTrunfo={ hasTrunfo }
-            isSaveButtonDisabled={ isSaveButtonDisabled }
-            onSaveButtonClick={ this.handleClick }
-            onInputChange={ this.handleChange }
-          />
-          <Card
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardImage={ cardImage }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
-            deckOfCards={ deckOfCards }
-          />
-        </div>
+        <main>
+          <div>
+            <h1>Tryunfo</h1>
+            <Form
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardImage={ cardImage }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              hasTrunfo={ hasTrunfo }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              onSaveButtonClick={ this.handleClick }
+              onInputChange={ this.handleChange }
+            />
+            <Card
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardImage={ cardImage }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              deckOfCards={ deckOfCards }
+            />
+          </div>
+          <div>
+            <h2>Deck of Cards</h2>
+            { deckOfCards.map((card, index) => (
+              <Card
+                key={ index }
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardImage={ card.cardImage }
+                cardRare={ card.cardRare }
+                cardTrunfo={ card.cardTrunfo }
+              />
+            ))}
+          </div>
+        </main>
       );
     }
 }
