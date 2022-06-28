@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './components/Card';
 import Footer from './components/Footer';
 import Form from './components/Form';
+// import Deck from './components/Deck';
 
 class App extends React.Component {
   constructor() {
@@ -37,9 +38,33 @@ class App extends React.Component {
   }
 
   onSaveButtonClick() {
-    const card = this.state;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+
     this.setState((prevState) => ({
-      deck: [...prevState.deck, card],
+      deck: [{
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
+      },
+      ...prevState.deck,
+      ],
+    }));
+
+    this.setState({
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -50,7 +75,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
-    }), () => { this.hasTrunfo(); });
+    }, () => { this.hasTrunfo(); });
   }
 
   hasTrunfo() {
@@ -108,6 +133,7 @@ class App extends React.Component {
       cardTrunfo,
       isSaveButtonDisabled,
       hasTrunfo,
+      deck,
     } = this.state;
 
     return (
@@ -129,18 +155,29 @@ class App extends React.Component {
             onSaveButtonClick={ this.onSaveButtonClick }
             hasTrunfo={ hasTrunfo }
           />
-          <Card
-            className="card"
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardImage={ cardImage }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
-          />
+          <div className="classPreview">
+            <h3>Pré-visualização</h3>
+            <Card
+              className="card"
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+            />
+          </div>
         </section>
+        <div className="deckPreview">
+          <h1>Seu Baralho</h1>
+          {
+            deck.map((card, index) => (
+              <Card key={ index } { ...card } />
+            ))
+          }
+        </div>
         <Footer />
       </div>
     );

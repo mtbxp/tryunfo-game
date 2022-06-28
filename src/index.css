@@ -49,4 +49,9 @@ h1 {
 #footer p {
   font-size: small;
   text-align: center;
+  margin-top: 20px;
+}
+
+.deckPreview {
+  margin-bottom: 20px;
 }
