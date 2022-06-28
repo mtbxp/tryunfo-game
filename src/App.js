@@ -169,6 +169,7 @@ class App extends React.Component {
         />
         <section>
           <input
+            data-testid="name-filter"
             value={ inputSearch }
             onChange={ this.onInputChange }
             type="text"
@@ -177,12 +178,13 @@ class App extends React.Component {
           />
           <label htmlFor="selectSearch">
             <select
+              data-testid="rare-filter"
               id="selectSearch"
               name="selectSearch"
               value={ selectSearch }
               onChange={ this.onInputChange }
             >
-              <option value="">all</option>
+              <option value="">todas</option>
               <option value="normal">normal</option>
               <option value="raro">raro</option>
               <option value="muito raro">muito raro</option>
@@ -191,6 +193,7 @@ class App extends React.Component {
           <label htmlFor="Trunfo">
             Trunfo
             <input
+              data-testid="trunfo-filter"
               id="Trunfo"
               name="trunfoSearch"
               value={ trunfoSearch }

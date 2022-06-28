@@ -15,7 +15,7 @@ class Deck extends React.Component {
         {data.length === 0 ? <p>deck vazio</p>
           : data
             .filter((card) => card.cardRare.includes(selectSearch))
-            .filter((card) => card.cardName.toLowerCase().includes(inputSearch))
+            .filter((card) => card.cardName.includes(inputSearch))
             .map((card, i) => (<Card
               key={ i }
               cardName={ card.cardName }
