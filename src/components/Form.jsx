@@ -114,6 +114,7 @@ class Form extends React.Component {
         </div>
 
         <div>
+          { cardTrunfo === true && <p>Super Trunfo </p> }
           <label htmlFor="trunfo-input">
             <input
               type="checkbox"
