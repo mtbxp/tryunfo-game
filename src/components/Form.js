@@ -28,8 +28,6 @@ class Form extends React.Component {
             type="text"
             value={ cardName }
             onChange={ onInputChange }
-            // retirar a linha abaixo -----------------------
-            opc={ hasTrunfo }
           />
         </div>
         <div className="container">
@@ -97,13 +95,13 @@ class Form extends React.Component {
         </div>
         <div className="container">
           Super Trunfo:
-          <input
+          { hasTrunfo === false ? <input
             name="cardTrunfo"
             data-testid="trunfo-input"
             type="checkbox"
             checked={ cardTrunfo }
             onChange={ onInputChange }
-          />
+          /> : <p>Você já tem um Super Trunfo em seu baralho</p>}
         </div>
         <button
           type="submit"

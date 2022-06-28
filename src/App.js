@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   isSaveButtonDisabled: true,
   onInputChange: '',
   onSaveButtonClick: '',
-  cardList: '',
+  cardList: [],
 };
 
 class App extends React.Component {
@@ -47,8 +47,18 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: '',
-    });
+    }, () => this.validateTrunfo()); // validateTrunfo aqui
   }
+
+  validateTrunfo = () => {
+    const { cardList } = this.state;
+    const trunfo = cardList.some((element) => element.cardTrunfo === true);
+    if (trunfo === true) {
+      this.setState({ hasTrunfo: true });
+    } else {
+      this.setState({ hasTrunfo: false });
+    }
+  };
 
   handleValue = ({ target }) => {
     const { type, name } = target;
@@ -91,7 +101,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      // onInputChange, lembrar dessas linhas ---------------------------------
+      // onInputChange,
       // onSaveButtonClick,
     } = this.state;
     return (
@@ -106,9 +116,9 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
+          hasTrunfo={ hasTrunfo } // hastrunfo
           isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.handleValue } // declarei a function aqui
+          onInputChange={ this.handleValue }
           onSaveButtonClick={ this.saveCardList }
         />
         <Card
