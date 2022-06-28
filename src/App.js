@@ -21,6 +21,7 @@ class App extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.validaButton = this.validaButton.bind(this);
     this.checaInputs = this.checaInputs.bind(this);
+    this.salvaAtributos = this.salvaAtributos.bind(this);
   }
 
   onChange({ target }) {
@@ -72,6 +73,37 @@ class App extends React.Component {
     this.checaAtributos();
   }
 
+  salvaAtributos() {
+    const { cardName,
+      Description,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      Rare } = this.state;
+
+    const infos = {
+      cardName,
+      Description,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      Rare,
+    };
+
+    this.setState({
+      cardName: '',
+      Description: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      Rare: 'Normal',
+      desable: true,
+    });
+  }
+
   render() {
     const { cardName,
       Description,
@@ -95,7 +127,7 @@ class App extends React.Component {
           hasTrunfo={ false }
           isSaveButtonDisabled={ desable }
           onInputChange={ this.onChange }
-          onSaveButtonClick={ () => { } }
+          onSaveButtonClick={ this.salvaAtributos }
         />
         <Card
           cardName={ cardName }
