@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
@@ -6,7 +5,6 @@ import Form from './components/Form';
 class App extends React.Component {
   constructor() {
     super();
-
     this.state = {
       cardName: '',
       cardDescription: '',
@@ -27,13 +25,8 @@ class App extends React.Component {
   verifyingInputs = (estadoAnterior) => {
     const stateValues = Object.values(estadoAnterior);
     const arrayValues = [
-      stateValues[0],
-      stateValues[1],
-      stateValues[2],
-      stateValues[3],
-      stateValues[4],
-      stateValues[5],
-      stateValues[6],
+      stateValues[0], stateValues[1], stateValues[2], stateValues[3], stateValues[4],
+      stateValues[5], stateValues[6],
     ];
     const valuesFilter = arrayValues.filter((element) => element === '');
     const attr1 = parseInt(stateValues[2], 10);
@@ -79,15 +72,8 @@ class App extends React.Component {
 
   onSaveButtonClick = () => {
     const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo,
-      savedCards,
+      cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare,
+      cardTrunfo, savedCards,
     } = this.state;
 
     this.setState({
@@ -164,19 +150,8 @@ class App extends React.Component {
 
   render() {
     const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo,
-      isSaveButtonDisabled,
-      hasTrunfo,
-      savedCards,
-      filterName,
-      filterRare,
+      cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare,
+      cardTrunfo, isSaveButtonDisabled, hasTrunfo, savedCards, filterName, filterRare,
     } = this.state;
     return (
       <div className="container">
