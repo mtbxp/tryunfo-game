@@ -18,28 +18,40 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
-      deck: [{
-        cardName: 'Odin',
-        cardDescription: 'Pai de Todos',
-        cardAttr1: '56',
-        cardAttr2: '36',
-        cardAttr3: '67',
-        cardImage: 'https://static.todamateria.com.br/upload/od/in/odintrono1-cke.jpg',
-        cardRare: 'raro',
-        cardTrunfo: false,
-      },
-      {
-        cardName: 'Freya',
-        cardDescription: 'Deusa Vanir do Amor, Magia e Morte',
-        cardAttr1: '34',
-        cardAttr2: '67',
-        cardAttr3: '17',
-        cardImage: 'https://i1.wp.com/caminhopagao.com.br/wp-content/uploads/2019/06/FReya-3-1.jpg?resize=570%2C886',
-        cardRare: 'normal',
-        cardTrunfo: false,
-      }],
+      deck: [],
     };
   }
+
+  // mock = [{
+  //   cardName: 'Odin',
+  //   cardDescription: 'Pai de Todos',
+  //   cardAttr1: '56',
+  //   cardAttr2: '36',
+  //   cardAttr3: '67',
+  //   cardImage: 'https://static.todamateria.com.br/upload/od/in/odintrono1-cke.jpg',
+  //   cardRare: 'raro',
+  //   cardTrunfo: false,
+  // },
+  // {
+  //   cardName: 'Freya',
+  //   cardDescription: 'Deusa Vanir do Amor, Magia e Morte',
+  //   cardAttr1: '34',
+  //   cardAttr2: '67',
+  //   cardAttr3: '17',
+  //   cardImage: 'https://i1.wp.com/caminhopagao.com.br/wp-content/uploads/2019/06/FReya-3-1.jpg?resize=570%2C886',
+  //   cardRare: 'normal',
+  //   cardTrunfo: false,
+  // },
+  // {
+  //   cardName: 'Frigga',
+  //   cardDescription: 'Deusa-mãe da dinastia de Aesir',
+  //   cardAttr1: '6',
+  //   cardAttr2: '54',
+  //   cardAttr3: '34',
+  //   cardImage: 'https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2021/05/frigga-a-deusa-mae-uma-das-mais-importantes-da-mitologia-nordica-4.jpg',
+  //   cardRare: 'muito raro',
+  //   cardTrunfo: false,
+  // }]
 
   validaCampos = (value1, value2, value3) => {
     const valuesOfState = Object.values(this.state);
@@ -68,26 +80,26 @@ class App extends React.Component {
   }
 
   onInputChange = ({ target }) => {
-    const { name, type } = target;
-    const { value } = target;
-    if (type === 'checkbox') {
+    const { name, value } = target;
+    if (name === 'cardTrunfo') {
       this.setState({
         cardTrunfo: true,
         hasTrunfo: true,
       });
+    } else {
+      this.setState({
+        [name]: value,
+      }, () => {
+        const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+        let valueAtt1 = cardAttr1;
+        let valueAtt2 = cardAttr2;
+        let valueAtt3 = cardAttr3;
+        if (name === 'cardAttr1') valueAtt1 = value;
+        if (name === 'cardAttr2') valueAtt2 = value;
+        if (name === 'cardAttr3') valueAtt3 = value;
+        this.validaCampos(valueAtt1, valueAtt2, valueAtt3);
+      });
     }
-    this.setState({
-      [name]: value,
-    }, () => {
-      const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
-      let valueAtt1 = cardAttr1;
-      let valueAtt2 = cardAttr2;
-      let valueAtt3 = cardAttr3;
-      if (name === 'cardAttr1') valueAtt1 = value;
-      if (name === 'cardAttr2') valueAtt2 = value;
-      if (name === 'cardAttr3') valueAtt3 = value;
-      this.validaCampos(valueAtt1, valueAtt2, valueAtt3);
-    });
   }
 
   onSaveButtonClick = () => {
@@ -103,7 +115,7 @@ class App extends React.Component {
     } = this.state;
 
     this.setState((prevState) => ({
-      deck: [{
+      deck: [...prevState.deck, {
         cardName,
         cardDescription,
         cardAttr1,
@@ -112,7 +124,7 @@ class App extends React.Component {
         cardImage,
         cardRare,
         cardTrunfo,
-      }, ...prevState.deck],
+      }],
     }));
 
     this.setState({
@@ -124,6 +136,20 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+    });
+  }
+
+  deleteCard = ({ target }) => {
+    const { name } = target;
+    const { cardtrunfo } = target.dataset;
+    const { deck } = this.state;
+    if (cardtrunfo === 'true') {
+      this.setState({
+        hasTrunfo: false,
+      });
+    }
+    this.setState({
+      deck: deck.filter((card) => card.cardName !== name),
     });
   }
 
@@ -168,7 +194,10 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        <Deck deck={ deck } />
+        <Deck
+          deck={ deck }
+          deleteCard={ this.deleteCard }
+        />
       </div>
     );
   }

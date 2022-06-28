@@ -7,7 +7,7 @@ class Deck extends React.Component {
     super();
 
     this.state = {
-      valueFilter: '',
+      nameFilter: '',
     };
   }
 
@@ -19,24 +19,35 @@ class Deck extends React.Component {
   }
 
   render() {
-    const { deck } = this.props;
-    const { valueFilter } = this.state;
+    const { deck, deleteCard } = this.props;
+    const { nameFilter } = this.state;
     return (
       <div>
         <h4>Todas as Cartas</h4>
         <p>Filtros</p>
         <input
+          placeholder="Filtro por Nome"
           data-testid="name-filter"
-          name="valueFilter"
-          value={ valueFilter }
+          name="nameFilter"
+          value={ nameFilter }
           onChange={ this.handleChange }
           type="text"
         />
+        <select
+          name="rareFilter"
+          onChange={ this.handleChange }
+          data-testid="rare-filter"
+        >
+          <option>todas</option>
+          <option>normal</option>
+          <option>raro</option>
+          <option>muito raro</option>
+        </select>
 
         {
 
-          valueFilter.length > 0
-            ? deck.filter((card) => card.cardName.match(valueFilter))
+          nameFilter.length > 0
+            ? deck.filter((card) => card.cardName.match(nameFilter))
               .map((card) => {
                 const {
                   cardName,
@@ -58,7 +69,15 @@ class Deck extends React.Component {
                     <p>{cardAttr3}</p>
                     <p>{cardRare}</p>
                     {cardTrunfo ? <p>Super Trunfo</p> : ''}
-                    <button type="button" data-testid="delete-button">Excluir</button>
+                    <button
+                      name={ cardName }
+                      cardTrunfo={ cardTrunfo }
+                      type="button"
+                      data-testid="delete-button"
+                      onClick={ deleteCard }
+                    >
+                      Excluir
+                    </button>
                   </div>);
               }) : deck.map((card) => {
               const {
@@ -81,7 +100,15 @@ class Deck extends React.Component {
                   <p>{cardAttr3}</p>
                   <p>{cardRare}</p>
                   {cardTrunfo ? <p>Super Trunfo</p> : ''}
-                  <button type="button" data-testid="delete-button">Excluir</button>
+                  <button
+                    name={ cardName }
+                    data-cardtrunfo={ cardTrunfo.toString() }
+                    type="button"
+                    data-testid="delete-button"
+                    onClick={ deleteCard }
+                  >
+                    Excluir
+                  </button>
                 </div>);
             })
 
@@ -93,6 +120,7 @@ class Deck extends React.Component {
 
 Deck.propTypes = {
   deck: PropTypes.arrayOf(PropTypes.object).isRequired,
+  deleteCard: PropTypes.func.isRequired,
 };
 
 export default Deck;
