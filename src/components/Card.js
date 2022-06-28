@@ -15,16 +15,17 @@ class Card extends React.Component {
     } = this.props;
     const trunfo = cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : '';
     return (
-      <>
-        <p data-testid="name-card">{ cardName }</p>
+      <div className="card">
+        <h2 data-testid="name-card" className="card-name">{ cardName }</h2>
+        <p data-testid="rare-card" className="card-rare">{ cardRare }</p>
         <img data-testid="image-card" src={ cardImage } alt={ cardName } />
-        <p data-testid="description-card">{ cardDescription }</p>
-        <p data-testid="attr1-card">{ cardAttr1 }</p>
-        <p data-testid="attr2-card">{ cardAttr2 }</p>
-        <p data-testid="attr3-card">{ cardAttr3 }</p>
-        <p data-testid="rare-card">{ cardRare }</p>
+        <p data-testid="description-card" className="card-desc">{ cardDescription }</p>
+        <p data-testid="attr1-card" className="card-attr">{ cardAttr1 }</p>
+        <p data-testid="attr2-card" className="card-attr">{ cardAttr2 }</p>
+        <p data-testid="attr3-card" className="card-attr">{ cardAttr3 }</p>
+
         {trunfo}
-      </>
+      </div>
     );
   }
 }
