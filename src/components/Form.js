@@ -112,7 +112,7 @@ class Form extends React.Component {
         </label>
 
         <label htmlFor="set-trunfo">
-          Super Trybe Trunfo
+          Super Trunfo
           <input
             type="checkbox"
             name="cardTrunfo"
@@ -147,7 +147,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,

@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from './components/Form';
+import Card from './components/Card';
 
 class App extends React.Component {
   // Para o 'construtor' foi consultado a documentação no React (https://reactjs.org/docs/react-component.html#constructor)
@@ -30,20 +31,20 @@ class App extends React.Component {
 
   onSaveButtonClick = (event) => {
     event.preventDefault();
-    addCard(this.state);
-
-    this.setState({
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
-      cardImage: '',
-      cardRare: '',
-      cardTrunfo: false,
-      hasTrunfo: false,
-      isSaveButtonDisabled: true,
-    });
+    // addCard(this.state);
+    console.log(event);
+    // this.setState({
+    //   cardName: '',
+    //   cardDescription: '',
+    //   cardAttr1: '',
+    //   cardAttr2: '',
+    //   cardAttr3: '',
+    //   cardImage: '',
+    //   cardRare: '',
+    //   cardTrunfo: false,
+    //   hasTrunfo: false,
+    //   isSaveButtonDisabled: true,
+    // });
   };
 
   // // Para a função 'addNewCard' foi consultado a aula ao vivo 'Aula 11.2 - Formulários no React' do curso da Trybe
@@ -82,6 +83,16 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+        />
+        <Card
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
         />
       </div>
     );
