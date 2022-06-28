@@ -21,6 +21,7 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.validateInputs = this.validateInputs.bind(this);
+    // this.checkTrunfo = this.checkTrunfo.bind(this);
   }
 
   onInputChange({ target }) {
@@ -39,7 +40,7 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
-      deckOfCards,
+      cardTrunfo,
     } = this.state;
 
     const newCard = {
@@ -50,10 +51,14 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
     };
-    this.setState({
-      deckOfCards: [newCard, ...deckOfCards],
-    });
+    if (cardTrunfo) {
+      this.setState({ hasTrunfo: true });
+    }
+    this.setState((prevState) => ({
+      deckOfCards: [newCard, ...prevState.deckOfCards],
+    }));
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -65,6 +70,15 @@ class App extends React.Component {
       cardTrunfo: false,
     });
   }
+
+  /*   checkTrunfo() {
+    const { hasTrunfo, deckOfCards } = this.state;
+    deckOfCards.map((card) => {
+      if (card.hasTrunfo === true) {
+
+      }
+    });
+  } */
 
   validateInputs() {
     const maxTotalAttributs = 210;
