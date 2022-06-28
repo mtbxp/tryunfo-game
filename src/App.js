@@ -16,17 +16,25 @@ class App extends React.Component {
       cardImage: '',
       Rare: '',
       desable: true,
+      hasTrunfo: false,
+      cardTrunfo: false,
+      cartasFeitas: [],
     };
 
     this.onChange = this.onChange.bind(this);
     this.validaButton = this.validaButton.bind(this);
     this.checaInputs = this.checaInputs.bind(this);
     this.salvaAtributos = this.salvaAtributos.bind(this);
+    this.limpaAtributos = this.limpaAtributos.bind(this);
   }
 
   onChange({ target }) {
+    if (target.type === 'checkbox') {
+      this.setState({ cardTrunfo: true });
+    }
+
     const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { value } = target;
 
     this.setState({
       [name]: value,
@@ -80,18 +88,32 @@ class App extends React.Component {
       cardAttr2,
       cardAttr3,
       cardImage,
+      cartasFeitas,
       Rare } = this.state;
 
     const infos = {
-      cardName,
-      Description,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      Rare,
+      Nome: cardName,
+      Descriao: Description,
+      atribu1: cardAttr1,
+      atribu2: cardAttr2,
+      atribu3: cardAttr3,
+      image: cardImage,
+      rarety: Rare,
     };
 
+    this.setState({
+      cartasFeitas: [...cartasFeitas, infos],
+    }, () => { this.limpaAtributos(); });
+    console.log(cartasFeitas[0]);
+
+    const { hasTrunfo } = this.state;
+
+    if (hasTrunfo === false) {
+      this.setState({ hasTrunfo: true });
+    }
+  }
+
+  limpaAtributos() {
     this.setState({
       cardName: '',
       Description: '',
@@ -102,7 +124,6 @@ class App extends React.Component {
       Rare: 'Normal',
       desable: true,
     });
-    console.log(infos);
   }
 
   render() {
@@ -113,7 +134,25 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       Rare,
+      hasTrunfo,
+      cardTrunfo,
       desable } = this.state;
+    const infos = {
+      Nome: cardName,
+      Descriao: Description,
+      atribu1: cardAttr1,
+      atribu2: cardAttr2,
+      atribu3: cardAttr3,
+      image: cardImage,
+      rarety: Rare,
+    };
+    const { Nome,
+      Descriao,
+      atribu1,
+      atribu2,
+      atribu3,
+      image,
+      rarety } = infos;
     return (
       <main>
         <Form
@@ -124,20 +163,20 @@ class App extends React.Component {
           cardAttr3={ cardAttr3 }
           cardImage={ cardImage }
           cardRare={ Rare }
-          cardTrunfo
-          hasTrunfo={ false }
+          cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ desable }
           onInputChange={ this.onChange }
           onSaveButtonClick={ this.salvaAtributos }
         />
         <Card
-          cardName={ cardName }
-          cardDescription={ Description }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ Rare }
+          cardName={ Nome }
+          cardDescription={ Descriao }
+          cardAttr1={ atribu1 }
+          cardAttr2={ atribu2 }
+          cardAttr3={ atribu3 }
+          cardImage={ image }
+          cardRare={ rarety }
           cardTrunfo
         />
       </main>
