@@ -16,36 +16,57 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
-      /* cardDeck: '', */
-      hasTrunfo: false,
+      cardDeck: [],
+      /* hasTrunfo: false, */
     };
   }
 
-  /* Object length used, according to this thread found in Slack:
+  /* Object length has been used according to this thread found in Slack:
   https://trybecourse.slack.com/archives/C03229WPQDA/p1652926420311429 */
 
-  disableButton = () => {
-    const { cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare } = this.state;
-    const maxAttr = 90;
-    const minAttr = 0;
-    const maxPoints = 210;
-    this.setState({
-      isSaveButtonDisabled: true,
-    });
+  charactersCondition = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare } = this.state;
+
     if (cardName.length > 0
       && cardDescription.length > 0
       && cardImage.length > 0
-      && cardRare.length > 0
-      && (parseInt(cardAttr1, 10)
-      + parseInt(cardAttr2, 10)
-      + parseInt(cardAttr3, 10)) <= maxPoints
-      && parseInt(cardAttr1, 10) <= maxAttr
-      && parseInt(cardAttr2, 10) <= maxAttr
-      && parseInt(cardAttr3, 10) <= maxAttr
-      && parseInt(cardAttr1, 10) >= minAttr
-      && parseInt(cardAttr2, 10) >= minAttr
-      && parseInt(cardAttr3, 10) >= minAttr) {
+      && cardRare.length > 0) { return true; }
+  }
+
+  pointsCondition = () => {
+    const {
+      cardAttr1,
+      cardAttr2,
+      cardAttr3 } = this.state;
+
+    const maxTotalPoints = 210;
+    const maxAttribute = 90;
+    const minAttribute = 0;
+
+    if (
+      (parseInt(cardAttr1, 10)
+    + parseInt(cardAttr2, 10)
+    + parseInt(cardAttr3, 10)) <= maxTotalPoints
+
+    && parseInt(cardAttr1, 10) <= maxAttribute
+    && parseInt(cardAttr2, 10) <= maxAttribute
+    && parseInt(cardAttr3, 10) <= maxAttribute
+
+    && parseInt(cardAttr1, 10) >= minAttribute
+    && parseInt(cardAttr2, 10) >= minAttribute
+    && parseInt(cardAttr3, 10) >= minAttribute) { return true; }
+  }
+
+  disableButton = () => {
+    this.setState({
+      isSaveButtonDisabled: true,
+    });
+
+    if (this.pointsCondition() && this.charactersCondition()) {
       this.setState({
         isSaveButtonDisabled: false,
       });
@@ -56,12 +77,13 @@ class App extends React.Component {
   https://trybecourse.slack.com/archives/C03229WPQDA/p1652897509403569 */
 
   onInputChange = ({ target }) => {
-    const { name, type, value } = target;
+    const { name, type, value, checked } = target;
     if (type === 'checkbox') {
       this.setState({
-        cardTrunfo: target.checked,
+        cardTrunfo: checked,
       });
     }
+
     if (type !== 'checkbox') {
       this.setState({
         [name]: value,
@@ -69,13 +91,61 @@ class App extends React.Component {
     }
   }
 
-  onSaveButtonClick = () => {
-    const { cardTrunfo } = this.state;
-    if (cardTrunfo.checked) {
-      this.setState({
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      cardDeck } = this.state;
+
+    const newCard = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+
+    cardDeck.push(newCard);
+
+    if (cardTrunfo) {
+      /* this.setState({
         hasTrunfo: true,
-      });
+      }); */
     }
+
+    this.resetForm();
+  }
+
+  showDeckCards = () => {
+    const { cardDeck } = this.state;
+    cardDeck.map((newCard) => (
+      <Card
+        key={ newCard }
+        cardName={ cardName }
+        cardDescription={ cardDescription }
+        cardAttr1={ cardAttr1 }
+        cardAttr2={ cardAttr2 }
+        cardAttr3={ cardAttr3 }
+        cardImage={ cardImage }
+        cardRare={ cardRare }
+        cardTrunfo={ cardTrunfo }
+        onInputChange={ this.onInputChange }
+      />
+    ));
+  }
+
+  resetForm = () => {
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -86,20 +156,6 @@ class App extends React.Component {
       cardRare: '',
       isSaveButtonDisabled: true,
     });
-  }
-
-  renderTrunfoCheckbox = () => {
-    const { cardTrunfo, hasTrunfo } = this.state;
-    if (!hasTrunfo) { return cardTrunfo; }
-    if (hasTrunfo === true) {
-      return (
-        <span
-          data-testid="trunfo-card"
-        >
-          Você já tem um Super Trunfo em seu baralho
-        </span>
-      );
-    }
   }
 
   render() {
@@ -116,7 +172,7 @@ class App extends React.Component {
           cardAttr3={ cardAttr3 }
           cardImage={ cardImage }
           cardRare={ cardRare }
-          cardTrunfo={ this.renderTrunfoCheckbox }
+          cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }

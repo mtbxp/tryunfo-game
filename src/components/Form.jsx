@@ -111,7 +111,7 @@ class Form extends Component {
           Carta Super Trunfo
           <input
             type="checkbox"
-            name="trunfo-input"
+            name="trunfoInput"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
             onChange={ onInputChange }
