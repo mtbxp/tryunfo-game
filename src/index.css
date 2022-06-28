@@ -49,11 +49,7 @@ textarea:focus {
   outline: 0;
 }
 
-checkbox {
-  cursor: pointer;
-  
-}
+/* .checkbox {
+  align-self:baseline;
 
-.checkbox {
-  align-items: flex-start;
-}
+} */
