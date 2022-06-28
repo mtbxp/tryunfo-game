@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
@@ -135,6 +136,32 @@ class App extends React.Component {
     });
   }
 
+  createCards = (card, index) => (
+    <li
+      key={ index }
+      className="cardsList"
+    >
+      <Card
+        cardName={ card.cardName }
+        cardDescription={ card.cardDescription }
+        cardAttr1={ card.cardAttr1 }
+        cardAttr2={ card.cardAttr2 }
+        cardAttr3={ card.cardAttr3 }
+        cardImage={ card.cardImage }
+        cardRare={ card.cardRare }
+        cardTrunfo={ card.cardTrunfo }
+      />
+      <button
+        name={ index }
+        type="button"
+        data-testid="delete-button"
+        onClick={ this.removeCard }
+      >
+        Excluir
+      </button>
+    </li>
+  )
+
   render() {
     const {
       cardName,
@@ -194,6 +221,7 @@ class App extends React.Component {
               value={ filterRare }
               onChange={ this.onInputChange }
               name="filterRare"
+              placeholder="Selecione a raridade"
             >
               <option>todas</option>
               <option>normal</option>
@@ -207,33 +235,14 @@ class App extends React.Component {
           </div>
 
           {
-            savedCards
-              .filter((card) => card.cardName.startsWith(filterName))
-              // .filter((card) => )
-              .map((card, index) => (
-                <li
-                  key={ index }
-                  className="cardsList"
-                >
-                  <Card
-                    cardName={ card.cardName }
-                    cardDescription={ card.cardDescription }
-                    cardAttr1={ card.cardAttr1 }
-                    cardAttr2={ card.cardAttr2 }
-                    cardAttr3={ card.cardAttr3 }
-                    cardImage={ card.cardImage }
-                    cardRare={ card.cardRare }
-                    cardTrunfo={ card.cardTrunfo }
-                  />
-                  <button
-                    name={ index }
-                    type="button"
-                    data-testid="delete-button"
-                    onClick={ this.removeCard }
-                  >
-                    Excluir
-                  </button>
-                </li>))
+            filterRare === 'todas'
+              ? savedCards
+                .filter((card) => card.cardName.includes(filterName))
+                .map((card, index) => this.createCards(card, index))
+              : savedCards
+                .filter((card) => card.cardName.includes(filterName))
+                .filter((card) => card.cardRare === filterRare)
+                .map((card, index) => this.createCards(card, index))
           }
         </ul>
       </div>
