@@ -45,6 +45,13 @@ code {
   border-style: solid;
 }
 
+#preview {
+  margin-top:0px;
+  font-size: 13px;
+  color: rgba(153, 33, 33, 0.836);
+  text-align: center;
+}
+
 .form-child {
   display: flex;
   align-items: center;

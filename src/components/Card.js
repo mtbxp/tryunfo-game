@@ -15,9 +15,15 @@ class Card extends React.Component {
     } = this.props;
     return (
       <div className="card-viewer">
-        <p>Pré-vizualização*</p>
+        <p id="preview">Pré-vizualização*</p>
         <h1 data-testid="name-card" id="title-card-viewer">{ cardName }</h1>
-        <img data-testid="image-card" src={ cardImage } alt={ cardName } />
+        <img
+          data-testid="image-card"
+          src={ cardImage }
+          alt={ cardName }
+          width="250px"
+          height="170px"
+        />
         <p data-testid="description-card">{ cardDescription }</p>
         <p data-testid="attr1-card">
           <span>Habilidades de água</span>
