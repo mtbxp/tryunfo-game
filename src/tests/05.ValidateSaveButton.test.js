@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import App from "../components/App";
+import App from "./App";
 
 describe("5 - Faça a validação do botão de Salvar no formulário", () => {
   it("Será validado se o botão `salvar` está desabilitado quando a página é renderizada pela primeira vez", () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import App from "../components/App";
+import App from "./App";
 
 describe("6 - Crie a função do botão salvar", () => {
   it("Será validado se os campos do formulário `Nome`, `Descrição` e `Imagem` são limpos após clicar em `salvar`", () => {
