@@ -15,7 +15,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      hasTrunfo: true,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       trunfoDeck: [],
     };
@@ -36,7 +36,7 @@ class App extends React.Component {
       trunfoDeck: cards,
     },
     () => this.setState({
-      hasTrunfo: this.hasTrunfo(),
+      trunfoDeckHasTrunfo: this.trunfoDeckHasTrunfo(),
     }));
   };
 
@@ -51,6 +51,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
     } = this.state;
     this.setState(({ trunfoDeck: prevDeck }) => ({
       trunfoDeck: [...prevDeck, {
@@ -62,6 +63,7 @@ class App extends React.Component {
         cardImage,
         cardRare,
         cardTrunfo,
+        hasTrunfo,
       }],
     }), () => this.setState({
       cardName: '',
