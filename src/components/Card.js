@@ -14,20 +14,13 @@ class Card extends Component {
       cardTrunfo,
     } = this.props;
 
-    function const superTrunfo() {
-        if (!cardTrunfo) {
-            return null;
-        }
-        else { return <p data-testid="trunfo-card">Super Trunfo</p>}
-    }
     return (
       <section data-testid="name-card">
         { cardName }
         <img
           data-testid="image-card"
           src={ cardImage }
-          alt=
-            { cardName }
+          alt={ cardName }
         />
         <p data-testid="description-card">
           {cardDescription}
@@ -40,6 +33,9 @@ class Card extends Component {
         </p>
         <p data-testid="attr3-card">{ cardAttr3 }</p>
         <p data-testid="rare-card">{ cardRare }</p>
+        {
+          cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p>
+        }
       </section>
     );
   }
