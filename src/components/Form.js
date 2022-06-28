@@ -13,7 +13,6 @@ class Form extends React.Component {
           <input
             type="text"
             data-testid="name-input"
-            minLength="1"
             value={ cardName }
             onChange={ onInputChange }
             name="cardName"
@@ -25,7 +24,6 @@ class Form extends React.Component {
           Card description:
           <textarea
             data-testid="description-input"
-            minLength="1"
             value={ cardDescription }
             onChange={ onInputChange }
             id="description"
@@ -80,7 +78,6 @@ class Form extends React.Component {
           <input
             type="text"
             data-testid="image-input"
-            minLength="1"
             value={ cardImage }
             onChange={ onInputChange }
             id="img-text"
@@ -92,7 +89,6 @@ class Form extends React.Component {
           Card rarity:
           <select
             data-testid="rare-input"
-            minLength="1"
             value={ cardRare }
             onChange={ onInputChange }
             id="rarity"

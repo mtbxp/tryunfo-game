@@ -20,64 +20,42 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
-    console.log('oi');
-  }
-
-  componentDidUpdate() {
-    this.validateBtn();
-  }
+  // componentDidUpdate() {
+  //   this.validateBtn();
+  // }
 
   validateBtn = () => {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, isSaveButtonDisabled } = this.state;
-    // const textArr = [cardName, cardDescription, cardImage, cardRare];
-    const totalAtributte = 210;
-    const atrArr = [cardAttr1, cardAttr2, cardAttr3]
-      .reduce((acc, curr) => acc + Number(curr), 0);
+      cardImage, cardRare } = this.state;
 
+    const textArr = [cardName, cardDescription, cardImage, cardRare];
+    const numbersArr = [cardAttr1, cardAttr2, cardAttr3];
+    const maxTotal = 210;
+    const maxSingleAtr = 90;
+
+    const maxLength = textArr.every((el) => el.length > 0);
+    const maxValue = numbersArr.reduce((acc, curr) => acc + Number(curr), 0) <= maxTotal;
+    const minValue = numbersArr.every((el) => el > 0 && el <= maxSingleAtr);
+
+    const validationArr = [maxLength, maxValue, minValue].some((el) => el === false);
     let shouldBtnBeDisable = true;
-    if (atrArr < totalAtributte) {
-      shouldBtnBeDisable = false;
-    } else {
+    if (validationArr) {
       shouldBtnBeDisable = true;
+    } else {
+      shouldBtnBeDisable = false;
     }
-    if (shouldBtnBeDisable !== isSaveButtonDisabled) {
-      this.setState({
-        isSaveButtonDisabled: shouldBtnBeDisable,
-      });
-    }
-    // const validateInput = [
-    //   {
-    //     text: textArr.every((el) => el.length > 0),
-    //     atributtes: atrArr > 210 ? true : false,
-    //   },
-    // ];
-    //   {
-    //     text: () => {
-    //       if (cardName.length && cardDescription.length
-    //         && cardImage.length && cardRare.length > 0) {
-    //         return true;
-    //       }
-    //     },
-    //     attributes: () => {
-    //       if(cardAttr1 && cardAttr2 && cardAttr3 >)
-    //     },
-    //   },
-    // ];
+    return shouldBtnBeDisable;
   };
 
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
+    const isSaveButtonDisabled = this.validateBtn();
     this.setState({
       [name]: value,
+      isSaveButtonDisabled,
     });
   }
-
-  // onSaveButtonClick() {
-  //   return 'oi';
-  // }
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
