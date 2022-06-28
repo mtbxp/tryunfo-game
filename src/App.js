@@ -221,12 +221,13 @@ class App extends React.Component {
                   removeCard={ this.removeCard }
                 />
               ))
-            : <Deck
+            : (
+              <Deck
                 inputSearch={ inputSearch }
                 selectSearch={ selectSearch }
                 data={ cardList }
                 removeCard={ this.removeCard }
-            />}
+              />)}
         </section>
       </div>
     );
