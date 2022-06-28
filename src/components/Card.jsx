@@ -8,7 +8,7 @@ class Card extends React.Component {
       cardRare, cardTrunfo } = this.props;
 
     return (
-      <div>
+      <div className="CardPreview">
         <p data-testid="name-card">{ cardName }</p>
         <p data-testid="description-card">{ cardDescription }</p>
         <p data-testid="attr1-card">{ cardAttr1 }</p>

@@ -39,7 +39,7 @@ class App extends React.Component {
       cardRare, cardTrunfo } = this.state;
 
     return (
-      <div>
+      <main>
         <h1>Tryunfo</h1>
         <div className="Input">
           <Form
@@ -51,6 +51,7 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
+            onInputChange={ this.onInputChange }
           />
           <Card
             cardName={ cardName }
@@ -63,7 +64,7 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </div>
-      </div>
+      </main>
     );
   }
 }
