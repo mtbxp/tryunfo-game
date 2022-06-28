@@ -14,7 +14,7 @@ class Deck extends React.Component {
       <div>
         {data.length === 0 ? <p>deck vazio</p>
           : data
-            .filter((card) => card.cardRare.toLowerCase().includes(selectSearch))
+            .filter((card) => card.cardRare.includes(selectSearch))
             .filter((card) => card.cardName.toLowerCase().includes(inputSearch))
             .map((card, i) => (<Card
               key={ i }
@@ -38,7 +38,7 @@ Deck.propTypes = {
   removeCard: PropTypes.func.isRequired,
   inputSearch: PropTypes.string.isRequired,
   selectSearch: PropTypes.string.isRequired,
-  data: PropTypes.oneOfType([
+  data: PropTypes.arrayOf([
     PropTypes.shape({
       cardName: PropTypes.string.isRequired,
       cardDescription: PropTypes.string.isRequired,

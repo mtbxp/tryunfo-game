@@ -93,12 +93,12 @@ class Form extends React.Component {
             value={ cardRare }
             onChange={ onInputChange }
           >
-            <option value="normal" selected>normal</option>
+            <option value="normal">normal</option>
             <option value="raro">raro</option>
             <option value="muito raro">muito raro</option>
           </select>
         </label>
-        {hasTrunfo.find((card) => card.cardTrunfo === true)
+        {hasTrunfo
           ? <p>Você já tem um Super Trunfo em seu baralho</p>
           : <label htmlFor="superTrunfo">
             SuperTrunfo
@@ -110,14 +110,14 @@ class Form extends React.Component {
               onChange={ onInputChange }
               type="checkbox"
             />
-          </label>}
+            </label>}
         <button
           type="button"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
         >
-          save
+          salvar
         </button>
       </form>
     );

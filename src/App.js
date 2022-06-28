@@ -8,11 +8,11 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      cardName: 'kassio',
-      cardDescription: 'foda',
-      cardAttr1: '10',
-      cardAttr2: '10',
-      cardAttr3: '10',
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkB0LbDa6wiwHz6pC76le3tL0g4Zer5bXtiQ&usqp=CAU',
       cardRare: 'normal',
       cardTrunfo: false,
@@ -27,6 +27,22 @@ class App extends React.Component {
 
   componentDidMount() {
     this.blockButton();
+  }
+
+  setHasTrunfo = () => {
+    const { cardList } = this.state;
+    return (cardList.find((card) => card.cardTrunfo === true)
+      ? this.setState({ hasTrunfo: true }) : this.setState({ hasTrunfo: false }));
+  }
+
+  removeCard = ({ target }) => {
+    const { cardList } = this.state;
+    const filter = cardList.filter((card) => card.cardName !== target.name);
+    this.setState({
+      cardList: filter,
+    }, () => {
+      this.setHasTrunfo();
+    });
   }
 
   blockButton = () => {
@@ -100,15 +116,8 @@ class App extends React.Component {
         cardImage: '',
         cardRare: 'normal',
         cardTrunfo: false,
-      });
-    });
-  }
-
-  removeCard = ({ target }) => {
-    const { cardList } = this.state;
-    const filter = cardList.filter((card) => card.cardName !== target.name);
-    this.setState({
-      cardList: filter,
+        isSaveButtonDisabled: true,
+      }, this.setHasTrunfo());
     });
   }
 
@@ -127,6 +136,7 @@ class App extends React.Component {
       inputSearch,
       selectSearch,
       trunfoSearch,
+      hasTrunfo,
     } = this.state;
     return (
       <div>
@@ -140,7 +150,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          hasTrunfo={ cardList }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
@@ -157,60 +167,64 @@ class App extends React.Component {
           preview
           removeCard={ this.removeCard }
         />
-        <input
-          value={ inputSearch }
-          onChange={ this.onInputChange }
-          type="text"
-          name="inputSearch"
-          placeholder="nome..."
-        />
-        <label htmlFor="selectSearch">
-          <select
-            id="selectSearch"
-            name="selectSearch"
-            value={ selectSearch }
-            onChange={ this.onInputChange }
-          >
-            <option value="">all</option>
-            <option value="normal">normal</option>
-            <option value="raro">raro</option>
-            <option value="muito raro">muito raro</option>
-          </select>
-        </label>
-        <label htmlFor="Trunfo">
-          Trunfo
+        <section>
           <input
-            id="Trunfo"
-            name="trunfoSearch"
-            value={ trunfoSearch }
+            value={ inputSearch }
             onChange={ this.onInputChange }
-            type="checkbox"
+            type="text"
+            name="inputSearch"
+            placeholder="nome..."
           />
-        </label>
-        {trunfoSearch === true
-          ? cardList
-            .filter((card) => card.cardTrunfo === true)
-            .map((card) => (
-              <Card
-                key={ card.cardName }
-                cardName={ card.cardName }
-                cardDescription={ card.cardDescription }
-                cardAttr1={ card.cardAttr1 }
-                cardAttr2={ card.cardAttr2 }
-                cardAttr3={ card.cardAttr3 }
-                cardImage={ card.cardImage }
-                cardRare={ card.cardRare }
-                cardTrunfo={ card.cardTrunfo }
-                preview={ false }
+          <label htmlFor="selectSearch">
+            <select
+              id="selectSearch"
+              name="selectSearch"
+              value={ selectSearch }
+              onChange={ this.onInputChange }
+            >
+              <option value="">all</option>
+              <option value="normal">normal</option>
+              <option value="raro">raro</option>
+              <option value="muito raro">muito raro</option>
+            </select>
+          </label>
+          <label htmlFor="Trunfo">
+            Trunfo
+            <input
+              id="Trunfo"
+              name="trunfoSearch"
+              value={ trunfoSearch }
+              onChange={ this.onInputChange }
+              type="checkbox"
+            />
+          </label>
+        </section>
+        <section>
+          {trunfoSearch === true
+            ? cardList
+              .filter((card) => card.cardTrunfo === true)
+              .map((card) => (
+                <Card
+                  key={ card.cardName }
+                  cardName={ card.cardName }
+                  cardDescription={ card.cardDescription }
+                  cardAttr1={ card.cardAttr1 }
+                  cardAttr2={ card.cardAttr2 }
+                  cardAttr3={ card.cardAttr3 }
+                  cardImage={ card.cardImage }
+                  cardRare={ card.cardRare }
+                  cardTrunfo={ card.cardTrunfo }
+                  preview={ false }
+                  removeCard={ this.removeCard }
+                />
+              ))
+            : <Deck
+                inputSearch={ inputSearch }
+                selectSearch={ selectSearch }
+                data={ cardList }
                 removeCard={ this.removeCard }
-              />
-            ))
-          : <Deck
-            inputSearch={ inputSearch }
-            selectSearch={ selectSearch }
-            data={ cardList }
-            removeCard={ this.removeCard }
-          />}
+            />}
+        </section>
       </div>
     );
   }
