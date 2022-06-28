@@ -168,7 +168,7 @@ form {
   background: var(--white);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
-  padding: 2rem 2.5rem;
+  padding: 1rem;
 }
 
 input, textarea, select {
@@ -176,7 +176,7 @@ input, textarea, select {
   border: 1px solid var(--grey-200);
   border-radius: var(--borderRadius);
   margin-bottom: 1rem;
-  padding: 0.7rem 0.75rem;
+  padding: 0.5rem 0.75rem;
   width: 100%;
 }
 
@@ -205,13 +205,13 @@ input, textarea, select {
 
 .main-content {
   display: flex;
-  height: 600px;
+  height: 710px;
   justify-content: start;
 }
 
 .form {
   font-size: large;
-  margin: 10px;
+  margin: 5px;
   width: 400px;
 }
 
@@ -225,6 +225,7 @@ input, textarea, select {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  height: 690px;
   margin: 10px;
   padding: 5px;
   width: 400px;
@@ -233,14 +234,14 @@ input, textarea, select {
 .card-preview p {
   font-size: large;
   height: 40px;
-  margin: 10px;
+  margin: 5px;
   text-align: center;
   width: 95%;
 }
 
 .card-preview img {
   border-radius: 10px;
-  height: 360px;
+  height: 300px;
   margin-bottom: 14px;
   margin-top: 6px;
   width: 90%;
