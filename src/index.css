@@ -14,10 +14,15 @@ code {
 }
 
 #title {
-  margin: 5%;
+  margin: 10px;
   text-align: center;
   font-size: 70px;
   color: rgb(225, 226, 228);
+}
+
+.card-render {
+  display: flex;
+  background-color: rgba(212, 205, 210, 0.493);
 }
 
 .form {
@@ -25,9 +30,19 @@ code {
   flex-direction: column;
   padding: 25px;
   margin: 5%;
-  background-color: rgba(228, 218, 227, 0.473);
+  width: 35%;
+  background-color: rgba(228, 218, 227, 0.856);
   border-radius: 10px;
   line-height: 1; 
+}
+
+.card-viewer {
+  padding: 25px;
+  margin: 5%;
+  width: 35%;
+  background-color: rgba(96, 181, 184, 0.562);
+  border-radius: 10px;
+  border-style: solid;
 }
 
 .form-child {
