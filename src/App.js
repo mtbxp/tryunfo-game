@@ -15,8 +15,43 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
     };
   }
+
+  /* Object length used, according to this thread found in Slack:
+  https://trybecourse.slack.com/archives/C03229WPQDA/p1652926420311429 */
+
+  disableButton = () => {
+    const { cardName, cardDescription, cardAttr1, cardAttr2,
+      cardAttr3, cardImage, cardRare } = this.state;
+    const maxAttr = 90;
+    const minAttr = 0;
+    const maxPoints = 210;
+    this.setState({
+      isSaveButtonDisabled: true,
+    });
+    if (cardName.length > 0
+      && cardDescription.length > 0
+      && cardImage.length > 0
+      && cardRare.length > 0
+      && (parseInt(cardAttr1, 10)
+      + parseInt(cardAttr2, 10)
+      + parseInt(cardAttr3, 10)) <= maxPoints
+      && parseInt(cardAttr1, 10) <= maxAttr
+      && parseInt(cardAttr2, 10) <= maxAttr
+      && parseInt(cardAttr3, 10) <= maxAttr
+      && parseInt(cardAttr1, 10) >= minAttr
+      && parseInt(cardAttr2, 10) >= minAttr
+      && parseInt(cardAttr3, 10) >= minAttr) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    }
+  }
+
+  /* disableButton used as callback as discussed in this thread:
+  https://trybecourse.slack.com/archives/C03229WPQDA/p1652897509403569 */
 
   onInputChange = ({ target }) => {
     const { name, type, value } = target;
@@ -28,14 +63,13 @@ class App extends React.Component {
     if (type !== 'checkbox') {
       this.setState({
         [name]: value,
-      });
+      }, () => this.disableButton());
     }
-    console.log('oi');
   }
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo } = this.state;
+      cardAttr3, cardImage, cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -49,6 +83,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
         />
         <Card
           cardName={ cardName }
