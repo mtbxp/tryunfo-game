@@ -32,37 +32,37 @@ export default class Form extends Component {
         <label htmlFor="description">
           Description:
           <textarea
-            name="description"
+            name="cardDescription"
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
           />
           <br />
         </label>
-        <label htmlFor="attr1">
+        <label htmlFor="cardAttr1">
           Attr 1:
           <input
-            name="attr1"
+            name="cardAttr1"
             type="number"
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="attr2">
+        <label htmlFor="cardAttr2">
           Attr 2:
           <input
-            name="attr2"
+            name="cardAttr2"
             type="number"
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="attr3">
+        <label htmlFor="cardAttr3">
           Attr 3:
           <input
-            name="attr3"
+            name="cardAttr3"
             type="number"
             data-testid="attr3-input"
             value={ cardAttr3 }
@@ -73,6 +73,7 @@ export default class Form extends Component {
         <label htmlFor="image-input">
           Imagem:
           <input
+            name="cardImage"
             value={ cardImage }
             data-testid="image-input"
             onChange={ onInputChange }

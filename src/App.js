@@ -25,7 +25,7 @@ class App extends React.Component {
     const { name } = target;
     const value = name === 'cardTrunfo' ? target.checked : target.value;
     this.setState({
-      [name]: value,
+      [name]: target.value,
     });
   }
 
@@ -56,7 +56,16 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
         />
-        <Card />
+        <Card
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+        />
       </div>
     );
   }
