@@ -90,6 +90,7 @@ class Form extends React.Component {
             type="text"
             data-testid="image-input"
           />
+
         </label>
         <br />
         <label htmlFor="select">
