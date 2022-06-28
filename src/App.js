@@ -1,6 +1,8 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import Deck from './components/inputsOfForm/Deck';
+import dataDeck from './data/dataCards';
 
 class App extends React.Component {
   constructor() {
@@ -16,7 +18,9 @@ class App extends React.Component {
       cardRarity: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
-      cards: [],
+      cards: dataDeck,
+      filterName: '',
+      filterRarity: 'raro',
     };
 
     this.onChange = this.onChange.bind(this);
@@ -77,7 +81,7 @@ class App extends React.Component {
   }
 
   isAttrValidated(total, attrs) {
-    const totalAttrMax = 210;
+    const totalAttrMax = 270;
     const attrMax = 90;
     const attr1 = parseInt(attrs[0], 10);
     const attr2 = parseInt(attrs[1], 10);
@@ -113,7 +117,9 @@ class App extends React.Component {
       cardRarity,
       cardTrunfo,
       hasTrunfo,
-      cards } = this.state;
+      cards,
+      filterName,
+      filterRarity } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -143,7 +149,16 @@ class App extends React.Component {
           removeCard={ this.onRemoveButtonClick }
           value={ 100 }
         />
-        {cards.map((card, index) => (
+        <Deck
+          valueFilterName={ filterName }
+          valueFilterRarity={ filterRarity }
+          onInputChange={ this.onChange }
+        />
+        {(cards.filter((card) => (
+          card.cardRarity.includes(filterRarity)
+        ))).filter((card) => (
+          card.cardName.includes(filterName)
+        )).map((card, index) => (
           <Card
             key={ index }
             cardName={ card.cardName }
@@ -158,6 +173,7 @@ class App extends React.Component {
             value={ index }
           />
         ))}
+
       </div>
     );
   }
