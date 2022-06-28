@@ -91,10 +91,15 @@ class Form extends Component {
         <br />
 
         <b>Raridade:</b>
-        <select className="rare-input" value={ cardRare } onChange={ onInputChange }>
-          <option>normal</option>
-          <option>raro</option>
-          <option>muito raro</option>
+        <select
+          className="rare-input"
+          value={ cardRare }
+          onChange={ onInputChange }
+          data-testid="rare-input"
+        >
+          <option value="normal">normal</option>
+          <option value="raro">raro</option>
+          <option value="muito raro">muito raro</option>
         </select>
         <br />
         <br />
