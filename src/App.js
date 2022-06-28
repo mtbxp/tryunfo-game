@@ -19,9 +19,11 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       filterName: '',
+      filterRare: 'todas',
       onInputChange: this.handleChange,
       onSaveButtonClick: this.handleCard,
       onNameSearch: this.handleFilterName,
+      onRareSearch: this.handleFilterRare,
     };
   }
 
@@ -143,6 +145,13 @@ class App extends React.Component {
     });
   }
 
+  handleFilterRare = (event) => {
+    const { value } = event.target;
+    this.setState({
+      filterRare: value,
+    });
+  }
+
   render() {
     const {
       nameCard,
@@ -157,9 +166,11 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
       filterName,
+      filterRare,
       onInputChange,
       onSaveButtonClick,
       onNameSearch,
+      onRareSearch,
     } = this.state;
 
     return (
@@ -193,10 +204,15 @@ class App extends React.Component {
         <section>
           <FormFilter
             onNameSearch={ onNameSearch }
+            onRareSearch={ onRareSearch }
           />
           {
             deck
               .filter((card) => card.nameCard.includes(filterName))
+              .filter((card) => (
+                filterRare === 'todas' ? card.rarity.includes('')
+                  : card.rarity === filterRare
+              ))
               .map((card) => (
                 <Card
                   key={ card.nameCard }

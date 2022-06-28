@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class FormFilter extends React.Component {
   render() {
-    const { onNameSearch } = this.props;
+    const { onNameSearch, onRareSearch } = this.props;
     return (
       <div>
         <form>
@@ -16,6 +16,18 @@ class FormFilter extends React.Component {
               onChange={ onNameSearch }
             />
           </label>
+          <label htmlFor="rare-filter">
+            <select
+              data-testid="rare-filter"
+              id="rare-filter"
+              onChange={ onRareSearch }
+            >
+              <option value="todas">Todas</option>
+              <option value="normal">Normal</option>
+              <option value="raro">Raro</option>
+              <option value="muito raro">Muito raro</option>
+            </select>
+          </label>
         </form>
       </div>
     );
@@ -24,6 +36,7 @@ class FormFilter extends React.Component {
 
 FormFilter.propTypes = {
   onNameSearch: PropTypes.func.isRequired,
+  onRareSearch: PropTypes.func.isRequired,
 };
 
 export default FormFilter;
