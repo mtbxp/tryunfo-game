@@ -44,7 +44,7 @@ class Form extends Component {
           Business:
           <input
             type="number"
-            name="attr1-input"
+            name="cardAttr1"
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
@@ -57,7 +57,7 @@ class Form extends Component {
           Antiguididade:
           <input
             type="number"
-            name="attr2-input"
+            name="cardAttr2"
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
@@ -70,7 +70,7 @@ class Form extends Component {
           Distribuição:
           <input
             type="number"
-            name="attr3-input"
+            name="cardAttr3"
             data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
@@ -83,7 +83,7 @@ class Form extends Component {
           Pessoa famosa falante desta língua:
           <input
             type="text"
-            name="image-input"
+            name="cardImage"
             data-testid="image-input"
             value={ cardImage }
             onChange={ onInputChange }
@@ -94,7 +94,7 @@ class Form extends Component {
           htmlFor="rare-input"
         >
           <select
-            name="rare-input"
+            name="cardRare"
             data-testid="rare-input"
             value={ cardRare }
             onChange={ onInputChange }

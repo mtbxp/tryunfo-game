@@ -25,11 +25,12 @@ class App extends React.Component {
         cardTrunfo: target.checked,
       });
     }
-    if (!type === 'checkbox') {
+    if (type !== 'checkbox') {
       this.setState({
         [name]: value,
       });
     }
+    console.log('oi');
   }
 
   render() {
