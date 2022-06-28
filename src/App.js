@@ -67,8 +67,7 @@ class App extends React.Component {
         soma <= somaMax
         && Number(cardAttr1) <= max && Number(cardAttr2) <= max
         && Number(cardAttr3) <= max
-        && Number(cardAttr1) >= min
-        && Number(cardAttr2) >= min
+        && Number(cardAttr1) >= min && Number(cardAttr2) >= min
         && Number(cardAttr3) >= min
       ) return true;
     };
@@ -129,8 +128,24 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-      </div>
 
+        {saveCard.map((card, index) => (
+          <div key={ index }>
+            <Card
+              cardName={ card.cardName }
+              cardDescription={ card.cardDescription }
+              cardAttr1={ card.cardAttr1 }
+              cardAttr2={ card.cardAttr2 }
+              cardAttr3={ card.cardAttr3 }
+              cardImage={ card.cardImage }
+              cardRare={ card.cardRare }
+              cardTrunfo={ card.cardTrunfo }
+            />
+          </div>
+
+        ))}
+
+      </div>
     );
   }
 }
