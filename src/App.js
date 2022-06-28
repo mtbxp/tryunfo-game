@@ -19,7 +19,7 @@ class App extends React.Component {
       savedCards: [],
       filterPerName: '',
       filterPerRarity: 'todas',
-      filterTrunfo: 'false',
+      filterTrunfo: false,
     };
   }
 
