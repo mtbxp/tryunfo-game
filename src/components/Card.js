@@ -13,7 +13,7 @@ class Card extends React.Component {
       cardRare,
       cardTrunfo,
     } = this.props;
-
+    console.log(cardTrunfo);
     return (
       <div>
         <h1>Cartas existentes</h1>
@@ -37,7 +37,7 @@ class Card extends React.Component {
           {`Raridade: ${cardRare} `}
         </p>
         {
-          cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p>
+          cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : ''
         }
       </div>
     );
