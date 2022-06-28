@@ -10,6 +10,12 @@ body {
   text-align: center;
 }
 
+.Input {
+  display: flex;
+  justify-content: space-around;
+}
+
+
 .form {
   border: 1px solid black;
   display: flex;

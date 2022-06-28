@@ -9,7 +9,7 @@ class Form extends React.Component {
       onInputChange, isSaveButtonDisabled, onSaveButtonClick } = this.props;
 
     return (
-      <form className="form" onSubmit={ this.handleSubmit }>
+      <form className="form" onSubmit={ this.onSaveButtonClick }>
 
         <label htmlFor="cardName">
           Name:
