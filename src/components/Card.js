@@ -30,8 +30,6 @@ class Card extends Component {
   }
 }
 
-export default Card;
-
 Card.propTypes = {
   cardAttr1: PropTypes.string.isRequired,
   cardAttr2: PropTypes.string.isRequired,
@@ -42,3 +40,5 @@ Card.propTypes = {
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
 };
+
+export default Card;

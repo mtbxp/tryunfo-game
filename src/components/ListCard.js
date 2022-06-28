@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import Card from '/card';
+import Card from '/Card';
 
 class ListCard extends Component {
   render() {
-    const { listOfCards, removeButton } = this.props;
-    return (
-      <div>
-        {listOfCards.map((card, index) =>
-        <div key={ index }>
-          <Card/>
-        </div>
-        )}
-      </div>;
+    const { listCard } = this.props;
+      <div />;
+  }
+}
+export default ListCard;
