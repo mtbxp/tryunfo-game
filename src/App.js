@@ -110,6 +110,25 @@ class App extends React.Component {
     }));
   }
 
+  // deleteCard = (cardIndex, isTrunfo) => {
+  //   const { deck } = this.state;
+
+  //   this.setState({
+  //     deck: deck.filter((_, index) => index !== cardIndex),
+  //     hasTrunfo: isTrunfo,
+  //   });
+  // }
+
+  deleteCard = (name) => {
+    const { hasTrunfo } = this.state;
+
+    this.setState((prev) => ({
+      deck: prev.deck.filter((card) => card.cardName !== name) }));
+    if (hasTrunfo) {
+      this.setState({ hasTrunfo: false });
+    }
+  }
+
   render() {
     const {
       cardName,
@@ -156,6 +175,13 @@ class App extends React.Component {
             <Card
               { ...card }
             />
+            <button
+              data-testid="delete-button"
+              type="button"
+              onClick={ () => this.deleteCard(card.cardName) }
+            >
+              Excluir
+            </button>
           </section>
         ))}
       </div>
