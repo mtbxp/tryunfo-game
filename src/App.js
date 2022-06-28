@@ -12,10 +12,52 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
     };
+  }
+
+  verificaInputText = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3 } = this.state;
+    const maxNumber = 210;
+    const maxItem = 90;
+    let text = false;
+    let result = false;
+    let sum = false;
+    if (cardName.length
+       && cardDescription.length
+       && cardImage.length
+       && cardRare.length) {
+      text = true;
+    }
+    if (Number(cardAttr1) <= maxItem
+      && Number(cardAttr2) <= maxItem
+      && Number(cardAttr3) <= maxItem
+      && Number(cardAttr1) >= 0
+      && Number(cardAttr2) >= 0
+      && Number(cardAttr3) >= 0) {
+      result = true;
+    }
+    if (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= maxNumber) {
+      sum = true;
+    }
+    if (text && result && sum) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
   }
 
   onInputChange = ({ target }) => {
@@ -23,7 +65,7 @@ class App extends React.Component {
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    });
+    }, () => this.verificaInputText());
   };
 
   render() {
