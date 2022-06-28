@@ -13,3 +13,31 @@ class App extends React.Component {
 }
 
 export default App;
+
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       cardName: '',
+//       cardDescription: '',
+//       cardAttr1: '',
+//       cardAttr2: '',
+//       cardAttr3: '',
+//       cardImage: '',
+//       cardRare: '',
+//       cardTrunfo: false,
+//       hasTrunfo: false,
+//       isSaveButtonDisabled: false,
+//     };
+//   }
+
+//   onInputChange = ({ target }) => {
+//     const { name, type } = target;
+//     const value = type === 'checkbox' ? target.checked : target.value;
+//     this.setState({
+//       [name]: value,
+//     });
+//   }
+
+//   onSaveButtonClick = () => {
+//     console.log(this);
+//   };
