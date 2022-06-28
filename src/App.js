@@ -5,12 +5,14 @@ import Card from './components/Card';
 const INNITIAL_STATE = {
   cardName: '',
   cardDescription: '',
-  cardAttr1: '',
-  cardAttr2: '',
-  cardAttr3: '',
+  cardAttr1: 0,
+  cardAttr2: 0,
+  cardAttr3: 0,
   cardImage: '',
-  cardRare: '',
+  cardRare: 'normal',
   cardTrunfo: false,
+  isSaveButtonDisabled: true,
+  // onSaveButtonClick: ,
   // hasTrunfo,
 };
 
@@ -21,44 +23,88 @@ class App extends React.Component {
     this.state = INNITIAL_STATE;
   }
 
-  handleChange = ({ target }) => {
-    const value = target.type
-    === 'checkbox' ? target.checked : target.value;
-
-    this.setState({
-      [target.name]: value,
-    });
-  }
-
-  render() {
-    const { cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo,
-    } = this.state;
-
-    const cardProps = {
+  checkEmpty = () => {
+    const {
       cardName,
       cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
       cardImage,
-      cardRare,
-      cardTrunfo };
+      cardAttr1, cardAttr2,
+      cardAttr3,
+    } = this.state;
 
-    return (
-      <div>
-        <h1>Tryunfo</h1>
-        <Form onInputChange={ this.handleChange } { ...this.state } />
-        <Card onInputChange={ this.handleChange } { ...cardProps } />
-      </div>
-    );
-  }
+    const minValue = 0;
+
+    const maxValue = 90;
+
+    const maxSum = 210;
+
+    const isNotEmpty = cardName !== '' && cardDescription !== '' && cardImage !== '';
+
+    const minAtribute = Number(cardAttr1) >= minValue
+      && Number(cardAttr2) >= minValue
+      && Number(cardAttr3) >= minValue;
+
+    const maxPerAtribute = Number(cardAttr1) <= maxValue
+      && Number(cardAttr2) <= maxValue
+      && Number(cardAttr3) <= maxValue;
+
+    const maxAtributeSum = Number(cardAttr1)
+      + Number(cardAttr2)
+      + Number(cardAttr3) <= maxSum;
+
+    console.log(minAtribute);
+
+    if (isNotEmpty && minAtribute && maxPerAtribute && maxAtributeSum) {
+      return false;
+    }
+    return true;
+  };
+
+    handleChange = ({ target }) => {
+      const value = target.type
+      === 'checkbox' ? target.checked : target.value;
+
+      this.setState({
+        [target.name]: value,
+      }, () => this.setState({
+        isSaveButtonDisabled: this.checkEmpty(),
+      }));
+    };
+
+    render() {
+      const { cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
+        isSaveButtonDisabled,
+      // onSaveButtonClick,
+      } = this.state;
+
+      const cardProps = {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
+        isSaveButtonDisabled,
+      // onSaveButtonClick,
+      };
+
+      return (
+        <div>
+          <h1>Tryunfo</h1>
+          <Form onInputChange={ this.handleChange } { ...this.state } />
+          <Card onInputChange={ this.handleChange } { ...cardProps } />
+        </div>
+      );
+    }
 }
 
 export default App;
