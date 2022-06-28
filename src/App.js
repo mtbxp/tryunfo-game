@@ -13,87 +13,90 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
+      deckOfCards: [],
     };
+  }
+
+  // ============================================
+
+  isSaveButtonDisabled = () => {
+
+  }
+
+  onSaveButtonClick = (e) => {
+    e.preventDefault();
+    // console.log('oi');
+    const { cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardRare } = this.state;
+    const cardObj = { cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardRare };
+    this.setState((prevSate) => ({
+      deckOfCards: [...prevSate.deckOfCards, cardObj],
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+    }));
+  }
+
+  validateForm = () => {
+    const { cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3 } = this.state;
+
+    const minRoll = 0;
+    const maxRoll = 90;
+    const maxPoints = 210;
+    let condText = true;
+    let condNum = false;
+    let condSum = true;
+
+    if (!cardName.length || !cardDescription.length || !cardImage.length) {
+      condText = false;
+    }
+    // if de não ser menor que 0 e não ser maior que 90
+    if (Number(cardAttr1) >= minRoll && Number(cardAttr1) <= maxRoll
+    && Number(cardAttr2) >= minRoll && Number(cardAttr2) <= maxRoll
+    && Number(cardAttr3) >= minRoll && Number(cardAttr3) <= maxRoll) {
+      condNum = true;
+    }
+    if (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) > maxPoints) {
+      condSum = false;
+    }
+    if (condText && condNum && condSum) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
   }
 
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    console.log(value);
-    this.setState({ [name]: value });
-  }
-
-  onSaveButtonClick = () => {
-
-  }
-  // ============================================
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    // Passar o state inteiro para o componente Pai
-    // const { add } = this.props;
-    // valida os campos title e level, se tudo estiver certo aí sim faz o add
-    if (this.validateForm()) {
-      add(this.state);
-
-      // reset state depois de enviar
-      this.setState({
-        cardName: '',
-        cardDescription: '',
-        cardAttr1: '',
-        cardAttr2: '',
-        cardAttr3: '',
-        cardImage: '',
-        cardRare: '',
-        cardTrunfo: false,
-      });
-    }
-  }
-
-  // isSaveButtonDisabled
-  validateForm = () => {
-    const { cardName,
-      cardDescription,
-      cardImage,
-      cardRare,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3 } = this.state;
-
-    const erros = {};
-    let formIsValid = true;
-    const msg = 'Preencha o campo corretamente!';
-    const msgNum = 'O atributo não pode ser maior que 90';
-    const maxRoll = 90;
-    const maxPoints = 210;
-
-    if (!cardName.length || !cardDescription.length || !cardImage.length || !cardRare) {
-      formIsValid = false;
-      erros.cardName = msg;
-      erros.cardDescription = msg;
-      erros.cardImage = msg;
-      erros.cardRare = msg;
-    }
-    // if de não ser menor que 0 e não ser maior que 90
-    if (Number(cardAttr1) > maxRoll
-    || Number(cardAttr2) > maxRoll
-    || Number(cardAttr3) > maxRoll) {
-      formIsValid = false;
-      erros.cardAttr1 = msgNum;
-      erros.cardAttr2 = msgNum;
-      erros.cardAttr3 = msgNum;
-    }
-    if (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) > maxPoints) {
-      formIsValid = false;
-    }
-
-    this.setState({
-      errors: erros,
-    });
-
-    return formIsValid;
+    this.setState(({ [name]: value }), () => this.validateForm());
   }
 
   render() {
@@ -106,6 +109,7 @@ class App extends React.Component {
       cardAttr3,
       cardRare,
       cardTrunfo,
+      isSaveButtonDisabled,
     } = this.state;
 
     return (
@@ -121,7 +125,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
-          isSaveButtonDisabled={ this.isSaveButtonDisabled }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
@@ -134,6 +138,18 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {/* <div className="deckContainer">
+          {deckOfCards.map((card) => (
+            <div className="card" key={ card.name }>
+              {card.cardName}
+              <img src={ card.cardImage } alt={ card.cardName } />
+              <p>{card.cardAttr1}</p>
+              <p>{card.cardAttr2}</p>
+              <p>{card.cardAttr3}</p>
+              <p>{card.cardDescription}</p>
+            </div>
+          ))}
+        </div> */}
       </div>
     );
   }

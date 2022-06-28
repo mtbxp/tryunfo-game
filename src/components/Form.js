@@ -44,7 +44,7 @@ class Form extends React.Component {
             <input
               data-testid="attr1-input"
               name="cardAttr1"
-              type="string"
+              type="number"
               value={ cardAttr1 }
               onChange={ onInputChange }
             />
@@ -54,7 +54,7 @@ class Form extends React.Component {
             <input
               data-testid="attr2-input"
               name="cardAttr2"
-              type="string"
+              type="number"
               value={ cardAttr2 }
               onChange={ onInputChange }
             />
@@ -64,7 +64,7 @@ class Form extends React.Component {
             <input
               data-testid="attr3-input"
               name="cardAttr3"
-              type="string"
+              type="number"
               value={ cardAttr3 }
               onChange={ onInputChange }
             />
