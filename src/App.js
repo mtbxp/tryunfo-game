@@ -13,16 +13,12 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
     };
   }
-
-  // componentDidUpdate() {
-  //   this.validateBtn();
-  // }
 
   validateBtn = () => {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
@@ -35,26 +31,19 @@ class App extends React.Component {
 
     const maxLength = textArr.every((el) => el.length > 0);
     const maxValue = numbersArr.reduce((acc, curr) => acc + Number(curr), 0) <= maxTotal;
-    const minValue = numbersArr.every((el) => el > 0 && el <= maxSingleAtr);
+    const minValue = numbersArr.every((el) => el >= 0 && el <= maxSingleAtr);
 
-    const validationArr = [maxLength, maxValue, minValue].some((el) => el === false);
-    let shouldBtnBeDisable = true;
-    if (validationArr) {
-      shouldBtnBeDisable = true;
-    } else {
-      shouldBtnBeDisable = false;
-    }
-    return shouldBtnBeDisable;
+    return ![maxLength, maxValue, minValue].every((el) => el === true);
   };
 
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    const isSaveButtonDisabled = this.validateBtn();
     this.setState({
       [name]: value,
-      isSaveButtonDisabled,
-    });
+    }, () => this.setState({
+      isSaveButtonDisabled: this.validateBtn(),
+    }));
   }
 
   render() {
