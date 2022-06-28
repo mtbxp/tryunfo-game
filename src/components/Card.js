@@ -12,10 +12,10 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
-      isSaveButtonDisabled,
-      onInputChange,
-      onSaveButtonClick,
+      // hasTrunfo,
+      // isSaveButtonDisabled,
+      // onInputChange,
+      // onSaveButtonClick,
     } = this.props;
 
     return (
@@ -46,10 +46,10 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
-  isSaveButtonDisabled: PropTypes.bool.isRequired,
-  onInputChange: PropTypes.func.isRequired,
-  onSaveButtonClick: PropTypes.func.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
+  // isSaveButtonDisabled: PropTypes.bool.isRequired,
+  // onInputChange: PropTypes.func.isRequired,
+  // onSaveButtonClick: PropTypes.func.isRequired,
 };
 
 export default Card;
