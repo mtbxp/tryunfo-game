@@ -25,7 +25,7 @@ class App extends React.Component {
     const { deck } = this.state;
 
     if (deck.length !== 0) {
-      return deck.some(({ cardTrunfo }) => cardTrunfo);
+      return deck.filter(({ cardTrunfo }) => cardTrunfo);
     }
     return false;
   }
@@ -121,22 +121,13 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
-      hasTrunfo,
     } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <section>
           <Form
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardImage={ cardImage }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
-            hasTrunfo={ hasTrunfo }
+            { ...this.state }
             isSaveButtonDisabled={ isSaveButtonDisabled }
             onInputChange={ this.handleChange }
             onSaveButtonClick={ this.onSaveButtonClick }
