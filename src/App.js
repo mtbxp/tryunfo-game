@@ -120,10 +120,10 @@ class App extends React.Component {
   // }
 
   deleteCard = (name) => {
-    const { hasTrunfo } = this.state;
+    const { hasTrunfo, deck } = this.state;
 
-    this.setState((prev) => ({
-      deck: prev.deck.filter((card) => card.cardName !== name) }));
+    this.setState(() => ({
+      deck: deck.filter((card) => card.cardName !== name) }));
     if (hasTrunfo) {
       this.setState({ hasTrunfo: false });
     }
