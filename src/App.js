@@ -1,3 +1,4 @@
+import { element } from 'prop-types';
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
@@ -115,7 +116,8 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
-      isSaveButtonDisabled } = this.state;
+      isSaveButtonDisabled,
+      baralho } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -145,6 +147,20 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
         />
+        <p>Baralho:</p>
+        {baralho.map((e) => (<Card
+          cardName={ e.cardName }
+          onInputChange={ e.onInputChange }
+          cardDescription={ e.cardDescription }
+          cardAttr1={ e.cardAttr1 }
+          cardAttr2={ e.cardAttr2 }
+          cardAttr3={ e.cardAttr3 }
+          cardImage={ e.cardImage }
+          cardRare={ e.cardRare }
+          cardTrunfo={ e.cardTrunfo }
+          isSaveButtonDisabled={ e.isSaveButtonDisabled }
+          key={ e.cardName }
+        />))}
       </div>
     );
   }
