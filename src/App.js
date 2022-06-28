@@ -63,7 +63,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      savedCards,
+      // savedCards,
     } = this.state;
 
     const objCard = {
@@ -77,10 +77,9 @@ class App extends React.Component {
       cardTrunfo,
     };
 
-    savedCards.push(objCard);
-    console.log(this.state);
+    // savedCards.push(objCard);
 
-    this.setState({
+    this.setState((prevState) => ({
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -90,7 +89,9 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       // hasTrunfo,
-    });
+      savedCards: [...prevState.savedCards, objCard],
+    }));
+    // console.log(this.state);
   }
 
   render() {
