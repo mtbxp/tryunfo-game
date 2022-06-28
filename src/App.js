@@ -21,7 +21,6 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.validateInputs = this.validateInputs.bind(this);
-    // this.checkTrunfo = this.checkTrunfo.bind(this);
   }
 
   onInputChange({ target }) {
@@ -70,15 +69,6 @@ class App extends React.Component {
       cardTrunfo: false,
     });
   }
-
-  /*   checkTrunfo() {
-    const { hasTrunfo, deckOfCards } = this.state;
-    deckOfCards.map((card) => {
-      if (card.hasTrunfo === true) {
-
-      }
-    });
-  } */
 
   validateInputs() {
     const maxTotalAttributs = 210;
@@ -132,6 +122,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      deckOfCards,
     } = this.state;
 
     return (
@@ -161,6 +152,20 @@ class App extends React.Component {
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
           />
+        </section>
+        <section className="cardList">
+          {deckOfCards.map((card, key) => (<Card
+            key={ key }
+            cardName={ card.cardName }
+            cardDescription={ card.cardDescription }
+            cardAttr1={ card.cardAttr1 }
+            cardAttr2={ card.cardAttr2 }
+            cardAttr3={ card.cardAttr3 }
+            cardImage={ card.cardImage }
+            cardRare={ card.cardRare }
+            cardTrunfo={ card.cardTrunfo }
+          />
+          ))}
         </section>
       </div>
     );
