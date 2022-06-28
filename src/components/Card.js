@@ -45,12 +45,14 @@ export default class Card extends Component {
         <p data-testid="rare-card" name="rare-card">
           { cardRare }
         </p>
-        <p
-          data-testid="trunfo-card"
-          name="trunfo-card"
-        >
-          { cardTrunfo }
-        </p>
+        {cardTrunfo === true && (
+          <p
+            data-testid="trunfo-card"
+            name="trunfo-card"
+          >
+            Super Trunfo
+          </p>
+        )}
       </div>
     );
   }
