@@ -15,6 +15,7 @@ class Form extends Component {
           Nome:
           <input
             type="text"
+            name="cardName"
             data-testid="name-input"
             value={ cardName }
             onChange={ onInputChange }
@@ -26,6 +27,7 @@ class Form extends Component {
         >
           Descrição:
           <textarea
+            name="cardDescription"
             data-testid="description-input"
             cols="30"
             rows="10"
@@ -42,6 +44,7 @@ class Form extends Component {
           Business:
           <input
             type="number"
+            name="attr1-input"
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
@@ -54,6 +57,7 @@ class Form extends Component {
           Antiguididade:
           <input
             type="number"
+            name="attr2-input"
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
@@ -66,6 +70,7 @@ class Form extends Component {
           Distribuição:
           <input
             type="number"
+            name="attr3-input"
             data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
@@ -78,6 +83,7 @@ class Form extends Component {
           Pessoa famosa falante desta língua:
           <input
             type="text"
+            name="image-input"
             data-testid="image-input"
             value={ cardImage }
             onChange={ onInputChange }
@@ -105,6 +111,7 @@ class Form extends Component {
           Carta Super Trunfo
           <input
             type="checkbox"
+            name="trunfo-input"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
             onChange={ onInputChange }

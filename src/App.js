@@ -18,15 +18,14 @@ class App extends React.Component {
     };
   }
 
-  isSuperTrunfo = ({ target }) => {
-    const { checked } = target;
-    return checked ? 'Super Trunfo' : '';
-  }
-
   onInputChange = ({ target }) => {
-    const { value, type, name } = target;
-    if (type === checkbox) { this.isSuperTrunfo(); }
-    if (!type === checkbox) {
+    const { name, type, value } = target;
+    if (type === 'checkbox') {
+      this.setState({
+        cardTrunfo: target.checked,
+      });
+    }
+    if (!type === 'checkbox') {
       this.setState({
         [name]: value,
       });
@@ -48,6 +47,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          onInputChange={ this.onInputChange }
         />
         <Card
           cardName={ cardName }
@@ -58,6 +58,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          onInputChange={ this.onInputChange }
         />
       </div>
     );
