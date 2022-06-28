@@ -13,10 +13,21 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       onInputChange,
       isSaveButtonDisabled,
       onSaveButtonClick,
     } = this.props;
+
+    const checkInput = (<Input
+      type="checkbox"
+      text="Super Trybe Trunfo"
+      name="cardTrunfo"
+      dataTestId="trunfo-input"
+      checked={ cardTrunfo }
+      onChange={ onInputChange }
+    />);
+
     return (
       <form>
         <h2>Adicionar nova carta</h2>
@@ -90,14 +101,8 @@ class Form extends React.Component {
           </select>
         </label>
 
-        <Input
-          type="checkbox"
-          text="Super Trybe Trunfo"
-          name="cardTrunfo"
-          dataTestId="trunfo-input"
-          checked={ cardTrunfo }
-          onChange={ onInputChange }
-        />
+        { hasTrunfo ? 'Você já tem um Super Trunfo em seu baralho'
+          : checkInput}
 
         <button
           data-testid="save-button"
@@ -122,6 +127,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,

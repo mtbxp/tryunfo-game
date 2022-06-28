@@ -15,7 +15,8 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
-      cardsSaved: [],
+      deckCards: [],
+      hasTrunfo: false,
     };
   }
 
@@ -72,26 +73,8 @@ class App extends React.Component {
 
   onSaveButtonClick = (event) => {
     event.preventDefault();
-    const { cardName,
-      cardDescription,
-      cardImage,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardTrunfo,
-    } = this.state;
-    this.setState({
-      cardsSaved: {
-        cardName,
-        cardDescription,
-        cardImage,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
-        cardTrunfo,
-      },
-    });
-    this.setState({
+    const deckCards = this.state;
+    this.setState((prev) => ({
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -100,7 +83,9 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-    });
+      hasTrunfo: [...prev.deckCards, deckCards].some((card) => card.cardTrunfo),
+      deckCards: [...prev.deckCards, deckCards],
+    }));
   }
 
   render() {
@@ -114,10 +99,8 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
-      cardsSaved,
+      hasTrunfo,
     } = this.state;
-
-    console.log('cardsSaved', cardsSaved);
 
     return (
       <div>
@@ -132,6 +115,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           validateButton={ this.validateButton }
         />
