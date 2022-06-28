@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Card from './Card';
 import Form from './Form';
 import CardList from './CardList';
 
-class App extends React.Component {
+export default class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -153,5 +153,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;
