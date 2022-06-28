@@ -64,7 +64,7 @@ class Form extends React.Component {
             <select data-testid="rare-input" name="card-rare" id="card-rare">
               <option value="normal">Normal</option>
               <option value="raro">Raro</option>
-              <option value="muito-raro">Muito raro</option>
+              <option value="muito raro">Muito raro</option>
             </select>
           </label>
           <label htmlFor="card-super-trunfo">
@@ -84,7 +84,7 @@ class Form extends React.Component {
             id="card-save-button"
             data-testid="save-button"
           >
-            Adicionar Carta
+            Salvar Carta
           </button>
         </form>
       </div>
