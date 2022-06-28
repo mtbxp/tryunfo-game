@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 class Card extends React.Component {
   render() {
     const {
-      cardID,
       cardName,
       cardDescription,
       cardAttr1,
@@ -13,8 +12,8 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      deleteButton,
-      handlerFuncDelete,
+      onDeleteButtonClick,
+      preview,
     } = this.props;
     return (
       <section>
@@ -27,32 +26,22 @@ class Card extends React.Component {
           <li data-testid="attr3-card">{ cardAttr3 }</li>
         </ul>
         <span data-testid="rare-card">{ cardRare }</span>
-        <div>
-          {
-            cardTrunfo === true && (
-              <span data-testid="trunfo-card">Super Trunfo</span>
-            )
-          }
-        </div>
-        {
-          deleteButton === true && (
-            <button
-              type="button"
-              name={ `button-${cardID}${cardTrunfo === true ? '-Trunfo' : ''}` }
-              onClick={ handlerFuncDelete }
-              data-testid="delete-button"
-            >
-              Excluir
-            </button>
-          )
-        }
+        {cardTrunfo && <span data-testid="trunfo-card">Super Trunfo</span>}
+        {preview && (
+          <button
+            data-testid="delete-button"
+            onClick={ () => onDeleteButtonClick(cardName) }
+            type="button"
+          >
+            Excluir
+          </button>
+        )}
       </section>
     );
   }
 }
 
 Card.propTypes = {
-  cardID: PropTypes.string,
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.oneOfType([
@@ -70,14 +59,8 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  deleteButton: PropTypes.bool,
-  handlerFuncDelete: PropTypes.func,
-};
-
-Card.defaultProps = {
-  cardID: '',
-  deleteButton: false,
-  handlerFuncDelete: () => '',
+  preview: PropTypes.bool.isRequired,
+  onDeleteButtonClick: PropTypes.func.isRequired,
 };
 
 export default Card;
