@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class InputSearchName extends React.Component {
   render() {
-    const { valueFilterName, onInputChange } = this.props;
+    const { valueFilterName, onInputChange, isSearchDisabled } = this.props;
     return (
       <input
         type="text"
@@ -11,6 +11,7 @@ class InputSearchName extends React.Component {
         value={ valueFilterName }
         onChange={ onInputChange }
         name="filterName"
+        disabled={ isSearchDisabled }
       />);
   }
 }
@@ -18,6 +19,7 @@ class InputSearchName extends React.Component {
 InputSearchName.propTypes = {
   valueFilterName: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  isSearchDisabled: PropTypes.bool.isRequired,
 };
 
 export default InputSearchName;

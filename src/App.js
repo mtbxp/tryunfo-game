@@ -18,10 +18,11 @@ class App extends React.Component {
       cardRarity: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
-      cards: dataDeck,
+      cards: [],
       filterName: '',
-      filterRarity: 'raro',
-    };
+      filterRarity: '',
+      filterSuperTrunfo: false,
+      isSearchDisabledValue: false };
 
     this.onChange = this.onChange.bind(this);
     this.isSaveButtonDisabled = this.isSaveButtonDisabled.bind(this);
@@ -30,6 +31,7 @@ class App extends React.Component {
   }
 
   onChange({ target }) {
+    const { isSearchDisabledValue } = this.state;
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
@@ -119,7 +121,8 @@ class App extends React.Component {
       hasTrunfo,
       cards,
       filterName,
-      filterRarity } = this.state;
+      filterRarity,
+      filterSuperTrunfo } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -152,11 +155,17 @@ class App extends React.Component {
         <Deck
           valueFilterName={ filterName }
           valueFilterRarity={ filterRarity }
+          valueFilterSuperTrunfo={ filterSuperTrunfo }
           onInputChange={ this.onChange }
         />
-        {(cards.filter((card) => (
+        {(cards.filter((card) => {
+          if (filterSuperTrunfo) {
+            return card.cardTrunfo;
+          }
+          return true;
+        })).filter((card) => (
           card.cardRarity.includes(filterRarity)
-        ))).filter((card) => (
+        )).filter((card) => (
           card.cardName.includes(filterName)
         )).map((card, index) => (
           <Card
