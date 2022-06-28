@@ -3,6 +3,21 @@ import './style.css';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     cardName: '',
+  //     cardDescription: '',
+  //     cardAttr1: '',
+  //     cardAttr2: '',
+  //     cardAttr3: '',
+  //     cardImage: '',
+  //     cardRare: '',
+  //     cardTrunfo: false,
+  //     isSaveButtonDisabled: false,
+  //   };
+  // }
+
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
       cardRare, cardTrunfo, isSaveButtonDisabled, onInputChange,
