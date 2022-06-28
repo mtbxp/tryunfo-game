@@ -142,6 +142,7 @@ button:disabled {
 
 /* form */
 form {
+  width: 100%;
   background: var(--white);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
@@ -160,6 +161,9 @@ select {
 }
 
 .container {
+  border: 3px #000000 solid;
+  border-radius: 8px;
+  display: flex;
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -180,4 +184,18 @@ select {
 .success {
   color: var(--green-dark);
   background: var(--green-light);
+}
+
+fieldset {
+  width: 100%;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  border: 3px rgb(16, 65, 16) solid ;
+  padding: 0.7rem 0.75rem;
 }
