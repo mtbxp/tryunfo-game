@@ -29,7 +29,7 @@ class Card extends React.Component {
             { cardRare }
           </h4>
 
-          {cardTrunfo ? <h4 data-testid="trunfo-card">Super Trunfo</h4> : ''}
+          {cardTrunfo && <h4 data-testid="trunfo-card">Super Trunfo</h4>}
 
         </header>
 
