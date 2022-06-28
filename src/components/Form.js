@@ -16,6 +16,7 @@ export default class Form extends Component {
       onInputChange,
       onSaveButtonClick,
     } = this.props;
+    console.log(cardRare)
 
     return (
       <form>
@@ -81,13 +82,14 @@ export default class Form extends Component {
         </label>
         <label htmlFor="rare-input">
           <select
+            name="cardRare"
             data-testid="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
           >
-            <option value="normal">NORMAL</option>
-            <option value="raro">RARO</option>
-            <option value="muito raro">MUITO RARO</option>
+            <option value="normal">normal</option>
+            <option value="raro">raro</option>
+            <option value="muito raro">muito raro</option>
           </select>
         </label>
         <label htmlFor="trunfo-input">
