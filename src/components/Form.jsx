@@ -5,9 +5,9 @@ class Form extends React.Component {
     return (
       <div>
         <div>
-          <label htmlFor="name-card">
-            Nome da Carta
-            <input type="text" data-testid="name-input" name="name-card" />
+          <label htmlFor="name-input">
+            Nome
+            <input type="text" data-testid="name-input" name="name-input" />
           </label>
         </div>
         <div>
