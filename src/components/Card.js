@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// linha 27 com renderização condicional
+// https://pt-br.reactjs.org/docs/conditional-rendering.html
 class Card extends React.Component {
   render() {
     const {
       cardName,
-      cardImage,
       cardDescription,
-      cardRare,
-      cardTrunfo,
+      cardAttr1,
       cardAttr2,
       cardAttr3,
-      cardAttr1,
+      cardRare,
+      cardImage,
+      cardTrunfo,
     } = this.props;
     return (
       <div>
