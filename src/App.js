@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
+import CardBaralho from './components/CardBaralho';
 import Form from './components/Form';
 
 class App extends React.Component {
@@ -25,6 +26,7 @@ class App extends React.Component {
     this.handleSaveButton = this.handleSaveButton.bind(this);
     this.handleBaralho = this.handleBaralho.bind(this);
     this.handleHasTrue = this.handleHasTrue.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
   handleValue({ target }) {
@@ -37,6 +39,28 @@ class App extends React.Component {
         [target.name]: target.value,
       }, () => this.handleSaveButton());
     }
+  }
+
+  handleRemove(event) {
+    event.preventDefault();
+
+    const { baralho } = this.state;
+
+    const novoBaralho = baralho.filter((e) => event.target.id !== e.cardName);
+
+    const cartaDeletada = baralho.find((e) => event.target.id === e.cardName);
+
+    if (cartaDeletada.cardTrunfo === true) {
+      this.setState({
+        baralho: novoBaralho,
+        hasTrunfo: false,
+        cardTrunfo: false,
+      });
+    }
+
+    this.setState({
+      baralho: novoBaralho,
+    });
   }
 
   handleHasTrue() {
@@ -147,7 +171,7 @@ class App extends React.Component {
           isSaveButtonDisabled={ isSaveButtonDisabled }
         />
         <p>Baralho:</p>
-        {baralho.map((e) => (<Card
+        {baralho.map((e) => (<CardBaralho
           cardName={ e.cardName }
           onInputChange={ e.onInputChange }
           cardDescription={ e.cardDescription }
@@ -159,7 +183,9 @@ class App extends React.Component {
           cardTrunfo={ e.cardTrunfo }
           isSaveButtonDisabled={ e.isSaveButtonDisabled }
           key={ e.cardName }
-        />))}
+          cardExclude={ this.handleRemove }
+        />
+        ))}
       </div>
     );
   }
