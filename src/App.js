@@ -31,7 +31,7 @@ class App extends React.Component {
     let value = (type === 'checkbox') ? target.checked : target.value;
     if (type === 'number') {
       if (value === '') {
-        value = 0;
+        value = '0';
       }
       value = parseFloat(value);
     }
@@ -84,16 +84,18 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
     }));
   }
 
   deleteElement(event) {
     const {
       data,
+      hasTrunfo,
     } = this.state;
     const list = document.querySelector('.deck');
     list.removeChild(event.nativeEvent.path[1]);
-    if (data[event.target.name].isTrunfo === true) {
+    if (data[event.target.name].isTrunfo === true && hasTrunfo === true) {
       this.setState({
         hasTrunfo: false,
       });
@@ -158,34 +160,34 @@ class App extends React.Component {
           {
             data.map((card, index) => (
               <li key={ index } className="card" name={ index }>
-                <h3 data-testid="name-card">{ card.name }</h3>
+                <h3>{ card.name }</h3>
                 <br />
-                <img src={ card.image } alt={ card.name } data-testid="image-card" />
+                <img src={ card.image } alt={ card.name } />
                 <br />
-                <p data-testid="description-card">{ card.description }</p>
+                <p>{ card.description }</p>
                 <br />
-                { (card.isTrunfo) ? <h3 data-testid="trunfo-card">{ men }</h3> : <>---</>}
+                { (card.isTrunfo) ? <h3>{ men }</h3> : <>---</>}
                 <br />
-                <div className="attr" data-testid="attr1-card">
+                <div className="attr">
                   <h4>attr1</h4>
                   <h4>{ card.attr.attr1 }</h4>
                 </div>
-                <div className="attr" data-testid="attr2-card">
+                <div className="attr">
                   <h4>attr2</h4>
                   <h4>{ card.attr.attr2 }</h4>
                 </div>
-                <div className="attr" data-testid="attr3-card">
+                <div className="attr">
                   <h4>attr3</h4>
                   <h4>{ card.attr.attr3 }</h4>
                 </div>
                 <br />
-                <h4 data-testid="rare-card">{ card.rare }</h4>
+                <h4>{ card.rare }</h4>
                 <br />
                 <button
                   type="button"
                   data-testid="delete-button"
                   name={ index }
-                  onClick={ (event) => this.deleteElement(event) }
+                  // onClick={ (event) => this.deleteElement(event) }
                 >
                   Excluir
                 </button>
