@@ -108,7 +108,7 @@ CardList.propTypes = {
       cardAttr3: PropTypes.string,
       cardImage: PropTypes.string,
       cardRare: PropTypes.string,
-      cardTrunfo: PropTypes.string,
+      cardTrunfo: PropTypes.bool,
     }),
   ).isRequired,
   deleteButtonClick: PropTypes.func.isRequired,
