@@ -15,6 +15,7 @@ class Form extends React.Component {
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick } = this.props;
+
     return (
       <fieldset>
         <div>
@@ -22,10 +23,10 @@ class Form extends React.Component {
             Nome da carta:
             <input
               data-testid="name-input"
-              value={ cardName }
               id="1"
               type="text"
               name="cartName"
+              value={ cardName }
               onChange={ onInputChange }
               required
             />
@@ -33,13 +34,13 @@ class Form extends React.Component {
         </div>
         <div>
           <label htmlFor="2">
-            Inteligência:
+            Descrição:
             <input
               data-testid="description-input"
-              value={ cardDescription }
               id="2"
               type="textarea"
               name="description"
+              value={ cardDescription }
               onChange={ onInputChange }
               required
             />
@@ -50,10 +51,10 @@ class Form extends React.Component {
             História:
             <input
               data-testid="attr1-input"
-              value={ cardAttr1 }
               id="3"
               type="number"
               name="historia"
+              value={ cardAttr1 }
               onChange={ onInputChange }
               required
             />
@@ -64,10 +65,10 @@ class Form extends React.Component {
             Inteligência:
             <input
               data-testid="attr2-input"
-              value={ cardAttr2 }
               id="4"
               type="number"
               name="inteligencia"
+              value={ cardAttr2 }
               onChange={ onInputChange }
               required
             />
@@ -78,10 +79,10 @@ class Form extends React.Component {
             Carisma:
             <input
               data-testid="attr3-input"
-              value={ cardAttr3 }
               id="5"
               type="number"
               name="carisma"
+              value={ cardAttr3 }
               onChange={ onInputChange }
               required
             />
@@ -92,10 +93,10 @@ class Form extends React.Component {
             Image da carta
             <input
               data-testid="image-input"
-              value={ cardImage }
               id="6"
               type="text"
               name="URL"
+              value={ cardImage }
               onChange={ onInputChange }
               required
             />
@@ -107,6 +108,7 @@ class Form extends React.Component {
             <select
               data-testid="rare-input"
               id="7"
+              name="raridade"
               value={ cardRare }
               onChange={ onInputChange }
             >
