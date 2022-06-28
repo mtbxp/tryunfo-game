@@ -90,6 +90,15 @@ class App extends React.Component {
     });
   }
 
+  cardDelete = () => {
+    const { cardTrunfo } = this.state;
+
+    document.querySelector('#cardContainer').remove();
+    if (cardTrunfo === true) {
+      this.setState({ hasTrunfo: false });
+    }
+  }
+
   render() {
     const { cardName, cardDescription, cardImage,
       cardAttr1, cardAttr2, cardAttr3, cardRare,
@@ -125,7 +134,7 @@ class App extends React.Component {
 
         { deck.map((item) => (
 
-          <div key={ item.cardName }>
+          <div key={ item.cardName } id="cardContainer">
             <Card
               cardName={ item.cardName }
               cardDescription={ item.cardDescription }
@@ -136,6 +145,14 @@ class App extends React.Component {
               cardRare={ item.cardRare }
               cardTrunfo={ item.cardTrunfo }
             />
+
+            <button
+              type="button"
+              data-testid="delete-button"
+              onClick={ this.cardDelete }
+            >
+              Excluir
+            </button>
           </div>
         ))}
       </div>
