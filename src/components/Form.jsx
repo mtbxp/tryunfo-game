@@ -93,7 +93,7 @@ class Form extends React.Component {
         </label>
         <br />
         <label htmlFor="cardAttr1">
-          attr1
+          Altura - m
           <input
             type="number"
             name="cardAttr1"
@@ -107,7 +107,7 @@ class Form extends React.Component {
         </label>
         <br />
         <label htmlFor="cardAttr2">
-          attr2
+          Comprimento - m
           <input
             type="number"
             name="cardAttr2"
@@ -121,7 +121,7 @@ class Form extends React.Component {
         </label>
         <br />
         <label htmlFor="cardAttr3">
-          attr3
+          Peso - T
           <input
             type="number"
             name="cardAttr3"

@@ -25,15 +25,15 @@ class Card extends React.Component {
         { (cardTrunfo) ? <h3 data-testid="trunfo-card">Super Trunfo</h3> : <> </>}
         <br />
         <div className="attr">
-          <h4>attr1</h4>
+          <h4>Altura</h4>
           <h4 data-testid="attr1-card">{ cardAttr1 }</h4>
         </div>
         <div className="attr">
-          <h4>attr2</h4>
+          <h4>Comprimento</h4>
           <h4 data-testid="attr2-card">{ cardAttr2 }</h4>
         </div>
         <div className="attr">
-          <h4>attr3</h4>
+          <h4>Peso</h4>
           <h4 data-testid="attr3-card">{ cardAttr3 }</h4>
         </div>
         <br />

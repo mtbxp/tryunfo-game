@@ -127,7 +127,7 @@ class App extends React.Component {
     return (
       <div>
         <header>
-          <h1>Tryunfo</h1>
+          <h1>Dino Tryunfo</h1>
         </header>
         <div className="createCard">
           <Form
@@ -169,15 +169,15 @@ class App extends React.Component {
                 { (card.isTrunfo) ? <h3>{ men }</h3> : <>---</>}
                 <br />
                 <div className="attr">
-                  <h4>attr1</h4>
+                  <h4>Altura</h4>
                   <h4>{ card.attr.attr1 }</h4>
                 </div>
                 <div className="attr">
-                  <h4>attr2</h4>
+                  <h4>Comprimento</h4>
                   <h4>{ card.attr.attr2 }</h4>
                 </div>
                 <div className="attr">
-                  <h4>attr3</h4>
+                  <h4>Peso</h4>
                   <h4>{ card.attr.attr3 }</h4>
                 </div>
                 <br />

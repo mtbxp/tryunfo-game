@@ -10,6 +10,10 @@ img {
   width: 300px;
 }
 
+li {
+  list-style: none;
+}
+
 .card {
   border: 1px solid gray;
   height: 1000px;
@@ -20,6 +24,7 @@ img {
 .deck {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .createCard {
