@@ -3,6 +3,8 @@ import Form from './components/Form';
 import './App.css';
 import Card from './components/Card';
 
+const ruleMaxValue = 210;
+
 class App extends React.Component {
   constructor() {
     super();
@@ -17,6 +19,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
     };
   }
 
@@ -26,17 +29,31 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
-    });
+    }, () => this.validationButton());
   }
 
   onSaveButtonClick = (event) => {
     event.preventDefault();
   }
 
+  validationButton = () => {
+    const states = Object.values(this.state);
+    const flag = Object.values(states)
+      .some((item) => item.length === 0);
+
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    const sumAtt = ruleMaxValue
+      - Number(cardAttr1) - Number(cardAttr2) - Number(cardAttr3);
+    console.log(sumAtt);
+    this.setState({
+      isSaveButtonDisabled: flag,
+    });
+  }
+
   render() {
     const { cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo } = this.state;
+      cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
 
     return (
       <main>
@@ -53,6 +70,7 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
             onInputChange={ this.onInputChange }
             onSaveButtonClick={ this.onSaveButtonClick }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
           />
           <Card
             cardName={ cardName }
