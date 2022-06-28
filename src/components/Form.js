@@ -100,7 +100,7 @@ class Form extends React.Component {
           </select>
         </label>
         {
-          cardTrunfo === false
+          hasTrunfo === false
             ? (
               <label htmlFor="trunfo">
                 Carta Super Trunfo:

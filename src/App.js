@@ -14,6 +14,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       newCard: [],
     };
@@ -27,7 +28,8 @@ class App extends React.Component {
       cardRare,
       cardAttr1,
       cardAttr2,
-      cardAttr3 } = this.state;
+      cardAttr3,
+      cardTrunfo } = this.state;
     const maxNumber = 210;
     const maxItem = 90;
     let text = false;
@@ -54,6 +56,7 @@ class App extends React.Component {
     if (text && result && sum) {
       this.setState({
         isSaveButtonDisabled: false,
+        hasTrunfo: cardTrunfo,
       });
     } else {
       this.setState({
@@ -94,6 +97,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
 
@@ -109,6 +113,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
