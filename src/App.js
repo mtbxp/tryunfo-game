@@ -20,10 +20,13 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       filterName: '',
       filterRare: 'todas',
+      filterTrunfo: false,
+      isInputDisable: false,
       onInputChange: this.handleChange,
       onSaveButtonClick: this.handleCard,
       onNameSearch: this.handleFilterName,
       onRareSearch: this.handleFilterRare,
+      onTrunfoChecked: this.handleTrunfoChecked,
     };
   }
 
@@ -152,25 +155,32 @@ class App extends React.Component {
     });
   }
 
+  handleTrunfoChecked = (event) => {
+    const { checked } = event.target;
+    this.setState({
+      filterTrunfo: checked,
+    });
+    if (checked) {
+      this.setState({
+        isInputDisable: true,
+      });
+    } else {
+      this.setState({
+        isInputDisable: false,
+      });
+    }
+  }
+
   render() {
     const {
-      nameCard,
-      descriptionCard,
-      attr1,
-      attr2,
-      attr3,
-      imageCard,
-      rarity,
-      trunfo,
-      deck,
-      hasTrunfo,
-      isSaveButtonDisabled,
-      filterName,
-      filterRare,
-      onInputChange,
-      onSaveButtonClick,
-      onNameSearch,
-      onRareSearch,
+      nameCard, descriptionCard,
+      attr1, attr2, attr3,
+      imageCard, rarity, trunfo,
+      deck, hasTrunfo, isSaveButtonDisabled,
+      filterName, filterRare, filterTrunfo,
+      isInputDisable,
+      onInputChange, onSaveButtonClick, onNameSearch,
+      onRareSearch, onTrunfoChecked,
     } = this.state;
 
     return (
@@ -189,7 +199,6 @@ class App extends React.Component {
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ onInputChange }
           onSaveButtonClick={ onSaveButtonClick }
-
         />
         <Card
           cardName={ nameCard }
@@ -203,8 +212,10 @@ class App extends React.Component {
         />
         <section>
           <FormFilter
+            isInputDisable={ isInputDisable }
             onNameSearch={ onNameSearch }
             onRareSearch={ onRareSearch }
+            onTrunfoChecked={ onTrunfoChecked }
           />
           {
             deck
@@ -213,6 +224,7 @@ class App extends React.Component {
                 filterRare === 'todas' ? card.rarity.includes('')
                   : card.rarity === filterRare
               ))
+              .filter((card) => filterTrunfo && card.trunfo === true)
               .map((card) => (
                 <Card
                   key={ card.nameCard }
