@@ -49,6 +49,8 @@ class Form extends React.Component {
             type="number"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            min={ 0 }
+            max={ 90 }
           />
         </label>
         <label htmlFor="cardAttr2">
@@ -59,6 +61,8 @@ class Form extends React.Component {
             type="number"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            min={ 0 }
+            max={ 90 }
           />
         </label>
         <label htmlFor="cardAttr3">
@@ -69,6 +73,8 @@ class Form extends React.Component {
             type="number"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            min={ 0 }
+            max={ 90 }
           />
         </label>
         <label htmlFor="cardImage">
@@ -109,6 +115,16 @@ class Form extends React.Component {
             </label>
           )
         }
+        {/* <label htmlFor="cardTrunfo">
+          Super Trunfo?
+          <input
+            name="cardTrunfo"
+            data-testid="trunfo-input"
+            type="checkbox"
+            checked={ cardTrunfo }
+            onChange={ onInputChange }
+          />
+        </label> */}
         <button
           data-testid="save-button"
           type="button"
