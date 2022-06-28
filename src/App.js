@@ -102,7 +102,8 @@ render() {
     rare,
     trunfo,
     button,
-    hasTrunfo } = this.state;
+    hasTrunfo,
+    cards } = this.state;
 
   return (
     <div>
@@ -131,6 +132,22 @@ render() {
         cardRare={ rare }
         cardTrunfo={ trunfo }
       />
+      <div>
+        {cards.map((el) => (
+          <div key={ el.name }>
+            <Card
+              cardName={ el.name }
+              cardDescription={ el.description }
+              cardAttr1={ el.atribute1 }
+              cardAttr2={ el.atribute2 }
+              cardAttr3={ el.atribute3 }
+              cardImage={ el.image }
+              cardRare={ el.rare }
+              cardTrunfo={ trunfo }
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
