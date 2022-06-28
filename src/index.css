@@ -118,23 +118,20 @@ body {
 }
 
 .cardPreview {
+  align-items: center;
   background-color: brown;
   border-radius: 5px;
-  display: block;
+  display: flex;
+  flex-direction: column;
   padding: 10px;
   text-align: center;
   width: 240px;
 }
 
-.cardPreview #idTag {
-  display: none;
-}
-
 #cardDesc {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap; 
-  max-width: 100%;
+  max-width: 80%;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .cardsSection {

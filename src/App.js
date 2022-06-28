@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
 import Header from './components/Header';
+import Search from './components/Search';
 
 class App extends React.Component {
   constructor() {
@@ -18,6 +19,9 @@ class App extends React.Component {
       cardTrunfo: false,
       cardId: 0,
       cards: [],
+      searchName: '',
+      searchRare: 'todas',
+      searchTrunfo: false,
     };
   }
 
@@ -25,7 +29,7 @@ class App extends React.Component {
     const { value, name, checked } = target;
 
     this.setState({
-      [name]: name === 'cardTrunfo' ? checked : value,
+      [name]: name === 'cardTrunfo' || name === 'searchTrunfo' ? checked : value,
     });
   }
 
@@ -108,6 +112,30 @@ class App extends React.Component {
     }));
   }
 
+  hanCreaCard = (cards, cardIndex) => (
+    <article key={ cardIndex }>
+      <Card
+        key={ cardIndex }
+        cardName={ cards.cardName }
+        cardDescription={ cards.cardDescription }
+        cardAttr1={ cards.cardAttr1 }
+        cardAttr2={ cards.cardAttr2 }
+        cardAttr3={ cards.cardAttr3 }
+        cardImage={ cards.cardImage }
+        cardRare={ cards.cardRare }
+        cardTrunfo={ cards.cardTrunfo }
+      />
+      <button
+        value={ cards.cardId }
+        type="button"
+        data-testid="delete-button"
+        onClick={ this.handleDelet }
+      >
+        Apagar Carta
+      </button>
+    </article>
+  )
+
   render() {
     const {
       cardName,
@@ -119,6 +147,9 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       cards,
+      searchName,
+      searchRare,
+      searchTrunfo,
     } = this.state;
 
     return (
@@ -150,30 +181,22 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </section>
+        <Search
+          onInputChange={ this.handleChange }
+          searchName={ searchName }
+          searchRare={ searchRare }
+          searchTrunfo={ searchTrunfo }
+        />
         <section className="cardsSection">
           {
-            cards.map((getCard, index) => (
-              <article key={ index }>
-                <Card
-                  key={ index }
-                  cardName={ getCard.cardName }
-                  cardDescription={ getCard.cardDescription }
-                  cardAttr1={ getCard.cardAttr1 }
-                  cardAttr2={ getCard.cardAttr2 }
-                  cardAttr3={ getCard.cardAttr3 }
-                  cardImage={ getCard.cardImage }
-                  cardRare={ getCard.cardRare }
-                  cardTrunfo={ getCard.cardTrunfo }
-                />
-                <button
-                  value={ getCard.cardId }
-                  type="button"
-                  data-testid="delete-button"
-                  onClick={ this.handleDelet }
-                >
-                  Apagar Carta
-                </button>
-              </article>))
+            searchTrunfo === true ? cards.filter((getCa) => getCa.cardTrunfo === true)
+              .map(this.hanCreaCard) : cards
+              .filter((getCa1) => {
+                if (searchRare === 'todas') return true;
+                return searchRare === getCa1.cardRare;
+              })
+              .filter((getCa2) => getCa2.cardName.includes(searchName))
+              .map(this.hanCreaCard)
           }
         </section>
       </div>
