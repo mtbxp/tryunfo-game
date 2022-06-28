@@ -13,7 +13,7 @@ class Card extends React.Component {
       cardRare,
       cardTrunfo,
     } = this.props;
-    console.log(cardTrunfo);
+    // console.log(cardTrunfo);
     return (
       <div>
         <h1>Cartas existentes</h1>
