@@ -1,3 +1,4 @@
+import { array } from 'prop-types';
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
@@ -30,6 +31,7 @@ class App extends React.Component {
     const sum = attrs.reduce((acc, cur) => Number(acc) + Number(cur), 0);
     const checkSum = attrs.every((i) => Number(i) >= 0
     && Number(i) <= maxValue && sum <= maxAttribute);
+
     this.setState({
       buttonSaveDisabled: !(checkSum && checkString),
     });
@@ -72,6 +74,16 @@ class App extends React.Component {
     return arrayCards.some((i) => i.cardTrunfo);
   }
 
+  deleteButton = (arg) => {
+    this.setState((prev) => ({
+      arrayCards: prev.arrayCards.forEach((i, index) => (i.cardName === arg ? array
+        .splice(index, 1) : null)),
+    }), () => {
+      this.setState({ hasTrunfo: this.validateTrunfo() });
+    });
+  }
+
+  // array.forEach((i,index)=> i%2===0? array.splice(index,1):null)
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo,
@@ -104,7 +116,7 @@ class App extends React.Component {
         />
 
         {arrayCards.map((i, index) => (
-          <div key={ index }>
+          <div key={ i.cardName }>
 
             <Card
               cardName={ i.cardName }
@@ -115,8 +127,15 @@ class App extends React.Component {
               cardImage={ i.cardImage }
               cardRare={ i.cardRare }
               cardTrunfo={ i.cardTrunfo }
+              // deleteButton={ this.deleteButton(i.cardName) }
             />
-
+            <button
+              type="button"
+              data-testid="delete-button"
+              onClick={ () => this.deleteButton(i.cardName) }
+            >
+              Excluir
+            </button>
           </div>
         ))}
 
