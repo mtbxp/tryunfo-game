@@ -24,6 +24,7 @@ class App extends React.Component {
     this.checkMinMax = this.checkMinMax.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.validateSuperTrunfoPresence = this.validateSuperTrunfoPresence.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
   handleSave(event) {
@@ -51,7 +52,7 @@ class App extends React.Component {
     };
 
     this.setState((prevState) => ({
-      listOfCards: [newCard, ...prevState.listOfCards],
+      listOfCards: [...prevState.listOfCards, newCard],
     }), () => this.validateSuperTrunfoPresence());
 
     this.resetFormAfterSaving();
@@ -126,6 +127,15 @@ class App extends React.Component {
     this.handleSaveButton(check);
   }
 
+  removeItem(name) {
+    const { listOfCards } = this.state;
+    const newDeck = listOfCards.filter((card) => card.cardName !== name);
+    this.setState({
+      listOfCards: newDeck,
+    },
+    () => this.validateSuperTrunfoPresence());
+  }
+
   render() {
     const {
       cardName,
@@ -169,21 +179,32 @@ class App extends React.Component {
         />
         <h1>
           CARTAS DO BARALHO
-          {
-            listOfCards.map((card) => (<Card
-              className="deckOfCards"
-              key={ card.cardName }
-              cardName={ card.cardName }
-              cardDescription={ card.cardDescription }
-              cardAttr1={ card.cardAttr1 }
-              cardAttr2={ card.cardAttr2 }
-              cardAttr3={ card.cardAttr3 }
-              cardImage={ card.cardImage }
-              cardRare={ card.cardRare }
-              cardTrunfo={ card.cardTrunfo }
-            />))
-          }
         </h1>
+        <div className="deckOfCards">
+          {
+            listOfCards.map((card) => (
+              <div key={ card.cardName }>
+                <Card
+                  cardName={ card.cardName }
+                  cardDescription={ card.cardDescription }
+                  cardAttr1={ card.cardAttr1 }
+                  cardAttr2={ card.cardAttr2 }
+                  cardAttr3={ card.cardAttr3 }
+                  cardImage={ card.cardImage }
+                  cardRare={ card.cardRare }
+                  cardTrunfo={ card.cardTrunfo }
+                />
+                <button
+                  type="button"
+                  data-testid="delete-button"
+                  onClick={ () => this.removeItem(card.cardName) }
+                >
+                  Excluir
+                </button>
+              </div>
+            ))
+          }
+        </div>
       </>
     );
   }

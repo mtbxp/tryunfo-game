@@ -14,7 +14,7 @@ class Card extends Component {
       cardTrunfo,
     } = this.props;
     return (
-      <>
+      <div>
         <p data-testid="name-card">{ cardName }</p>
         <img
           src={ cardImage }
@@ -28,7 +28,7 @@ class Card extends Component {
         <p data-testid="rare-card">{ cardRare }</p>
         { cardTrunfo === true
           ? <p data-testid="trunfo-card"> Super Trunfo </p> : undefined }
-      </>
+      </div>
     );
   }
 }
