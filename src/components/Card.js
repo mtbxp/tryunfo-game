@@ -8,15 +8,26 @@ class Card extends React.Component {
   }
 
   renderSuperTrunfo() {
-    if (cardTrunfo === true) {
-      return <span data-testid="trunfo-card">Super Trunfo</span>;
-    }
+    return <span data-testid="trunfo-card">Super Trunfo</span>;
   }
 
   render() {
     const { cardName, cardImage, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardRare, cardTrunfo } = this.props;
-
+    if (cardTrunfo === true) {
+      return (
+        <>
+          <span data-testid="name-card">{cardName}</span>
+          <img src={ cardImage } alt={ cardName } data-testid="image-card" />
+          <span data-testid="description-card">{cardDescription}</span>
+          <span data-testid="attr1-card">{cardAttr1}</span>
+          <span data-testid="attr2-card">{cardAttr2}</span>
+          <span data-testid="attr3-card">{cardAttr3}</span>
+          <span data-testid="rare-card">{cardRare}</span>
+          <span data-testid="trunfo-card">Super Trunfo</span>
+        </>
+      );
+    }
     return (
       <>
         <span data-testid="name-card">{cardName}</span>
@@ -26,7 +37,6 @@ class Card extends React.Component {
         <span data-testid="attr2-card">{cardAttr2}</span>
         <span data-testid="attr3-card">{cardAttr3}</span>
         <span data-testid="rare-card">{cardRare}</span>
-        {/* {renderSuperTrunfo()} */}
       </>
     );
   }
