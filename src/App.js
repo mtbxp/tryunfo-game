@@ -2,7 +2,6 @@ import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
 import Deck from './components/inputsOfForm/Deck';
-import dataDeck from './data/dataCards';
 
 class App extends React.Component {
   constructor() {
@@ -31,7 +30,6 @@ class App extends React.Component {
   }
 
   onChange({ target }) {
-    const { isSearchDisabledValue } = this.state;
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
