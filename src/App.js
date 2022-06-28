@@ -16,8 +16,23 @@ class App extends React.Component {
       cardTrunfo: false,
       // hasTrunfo: false,
       isSaveButtonDisabled: true,
-      onSaveButtonClick: true,
+      // onSaveButtonClick: true,
+      deckOfCards: [],
     };
+  }
+
+  resetForm = () => {
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardRare: '',
+      cardTrunfo: false,
+      isSaveButtonDisabled: true,
+    });
   }
 
   handleSaveButton = () => {
@@ -56,6 +71,31 @@ class App extends React.Component {
       this.setState(() => ({ [name]: value }), this.handleSaveButton);
     }
 
+    handleClick = () => {
+      const {
+        cardName,
+        cardDescription,
+        cardImage,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardRare,
+        cardTrunfo,
+      } = this.state;
+      this.setState((cards) => ({
+        deckOfCards: [...cards.deckOfCards, {
+          cardName,
+          cardDescription,
+          cardImage,
+          cardAttr1,
+          cardAttr2,
+          cardAttr3,
+          cardRare,
+          cardTrunfo,
+        }],
+      }), this.resetForm);
+    }
+
     render() {
       const {
         cardName,
@@ -68,7 +108,8 @@ class App extends React.Component {
         cardTrunfo,
         // hasTrunfo,
         isSaveButtonDisabled,
-        onSaveButtonClick,
+        // onSaveButtonClick,
+        deckOfCards,
       } = this.state;
       return (
         <div>
@@ -84,7 +125,7 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
             // hasTrunfo= { hasTrunfo }
             isSaveButtonDisabled={ isSaveButtonDisabled }
-            onSaveButtonClick={ onSaveButtonClick }
+            onSaveButtonClick={ this.handleClick }
             onInputChange={ this.handleChange }
           />
           <Card
@@ -96,6 +137,7 @@ class App extends React.Component {
             cardAttr3={ cardAttr3 }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
+            deckOfCards={ deckOfCards }
           />
         </div>
       );
