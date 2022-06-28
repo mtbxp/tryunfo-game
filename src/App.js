@@ -13,15 +13,12 @@ class App extends React.Component {
       cardAttr3: '',
       cardImage: '',
       cardRare: 'normal',
-      cardTrunfo: false,
+      cardTrunfo: '',
+      hasTrunfo: false,
       buttonSaveDisabled: true,
       arrayCards: [] };
   }
 
-  // desconstruct = () => {
-  //   const { cardAttr1, cardAttr2, cardAttr3, cardName } = this.state;
-  //   const { cardDescription, cardImage } = this.state;
-  // }
   validateButton = () => {
     const { cardAttr1, cardAttr2, cardAttr3, cardName,
       cardDescription, cardImage } = this.state;
@@ -65,15 +62,20 @@ class App extends React.Component {
         cardAttr3: 0,
         cardImage: '',
         cardRare: 'normal',
-        cardTrunfo: false,
+        hasTrunfo: this.validateTrunfo(),
       });
     });
   }
 
-  // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unused-state.md;
+  validateTrunfo = () => {
+    const { arrayCards } = this.state;
+    return arrayCards.some((i) => i.cardTrunfo);
+  }
+
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo, buttonSaveDisabled } = this.state;
+      cardAttr3, cardImage, cardRare, cardTrunfo,
+      buttonSaveDisabled, hasTrunfo } = this.state;
     return (
       <div>
         <Form
@@ -84,6 +86,7 @@ class App extends React.Component {
           cardAttr3={ cardAttr3 }
           cardImage={ cardImage }
           cardRare={ cardRare }
+          hasTrunfo={ hasTrunfo }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ buttonSaveDisabled }
