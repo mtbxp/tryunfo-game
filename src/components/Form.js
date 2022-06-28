@@ -4,8 +4,6 @@ import Input from './Input';
 
 class Form extends Component {
   render() {
-    // mycomment
-    
     const
       {
         cardName,
@@ -19,6 +17,7 @@ class Form extends Component {
         cardTrunfo,
         isSaveButtonDisabled,
         onSaveButtonClick,
+        handleSelection,
       } = this.props;
 
     return (
@@ -74,15 +73,21 @@ class Form extends Component {
             onChange={ onInputChange }
             testid="image-input"
           />
-          <select
-            value={ cardRare }
-            onChange={ onInputChange }
-            data-testid="rare-input"
-          >
-            <option name="normal">normal</option>
-            <option name="raro">raro</option>
-            <option name="muitoRaro">muito raro</option>
-          </select>
+          <label htmlFor="rarity">
+            Raridade
+            <select
+              name="rarity"
+              id="rarity"
+              value={ cardRare }
+              onChange={ onInputChange }
+              onClick={ handleSelection }
+              data-testid="rare-input"
+            >
+              <option name="normal">normal</option>
+              <option name="raro">raro</option>
+              <option name="muitoRaro">muito raro</option>
+            </select>
+          </label>
           <label htmlFor="superTrunfo">
             Super Trunfo
             <input
@@ -108,7 +113,13 @@ class Form extends Component {
   }
 }
 
+Form.defaultProps = {
+  handleSelection: null,
+};
+
 Form.propTypes = {
+  // maxLength: PropTypes.string,
+  handleSelection: PropTypes.func,
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.string.isRequired,

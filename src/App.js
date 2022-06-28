@@ -14,57 +14,101 @@ class App extends React.Component {
       firstAttribute: '',
       secondAttribute: '',
       thirdAttribute: '',
+      rarity: '',
+      saveButtonDisabled: true,
     };
   }
 
-  render() {
-    const
-      {
-        nome,
-        describe,
-        cardImage,
-        firstAttribute,
-        secondAttribute,
-        thirdAttribute,
-      } = this.state;
+handleSelection = () => {
+  const
+    {
+      nome,
+      describe,
+      rarity,
+      cardImage,
+      firstAttribute,
+      secondAttribute,
+      thirdAttribute,
+    } = this.state;
 
-    const onChange = ({ target }) => {
-      const { name, value } = target;
-      this.setState(() => ({
-        [name]: value,
-      }));
-    };
+  const maxPoints = 91;
+  const sumPoints = parseInt(firstAttribute, 10)
+    + parseInt(secondAttribute, 10)
+    + parseInt(thirdAttribute, 10);
+  const isTrueFirstAttr = firstAttribute >= 0 && firstAttribute < maxPoints;
+  const isTrueSecondAttr = secondAttribute >= 0 && secondAttribute < maxPoints;
+  const isTrueThirdAttr = thirdAttribute >= 0 && thirdAttribute < maxPoints;
+  const maxTotalPoints = 211;
 
-    return (
-      <div className="App">
-        <h1>Tryunfo</h1>
-        <Form
-          cardName={ nome }
-          cardDescription={ describe }
-          cardAttr1={ firstAttribute }
-          cardAttr2={ secondAttribute }
-          cardAttr3={ thirdAttribute }
-          cardImage={ cardImage }
-          cardRare=""
-          cardTrunfo={ false }
-          hasTrunfo=""
-          isSaveButtonDisabled={ false }
-          onInputChange={ onChange }
-          onSaveButtonClick={ () => {} }
-        />
-        <Card
-          cardName={ nome }
-          cardDescription={ describe }
-          cardAttr1={ firstAttribute }
-          cardAttr2={ secondAttribute }
-          cardAttr3={ thirdAttribute }
-          cardImage={ cardImage }
-          cardRare=""
-          cardTrunfo
-        />
-      </div>
-    );
+  if (nome.length > 0
+    && describe.length > 0
+    && rarity.length > 0
+    && cardImage.length > 0
+    && (sumPoints) < maxTotalPoints
+    && isTrueFirstAttr
+    && isTrueSecondAttr
+    && isTrueThirdAttr) {
+    this.setState({
+      saveButtonDisabled: false,
+    });
+  } else {
+    this.setState({
+      saveButtonDisabled: true,
+    });
   }
+};
+
+onChange = ({ target }) => {
+  const { name, value } = target;
+  this.setState({
+    [name]: value,
+  }, () => this.handleSelection());
+};
+
+render() {
+  const
+    {
+      nome,
+      describe,
+      cardImage,
+      firstAttribute,
+      secondAttribute,
+      thirdAttribute,
+      rarity,
+      saveButtonDisabled,
+    } = this.state;
+
+  return (
+    <div className="App">
+      <h1>Tryunfo</h1>
+      <Form
+        cardName={ nome }
+        cardDescription={ describe }
+        cardAttr1={ firstAttribute }
+        cardAttr2={ secondAttribute }
+        cardAttr3={ thirdAttribute }
+        cardImage={ cardImage }
+        cardRare={ rarity }
+        cardTrunfo={ false }
+        hasTrunfo={ false }
+        isSaveButtonDisabled={ saveButtonDisabled }
+        handleSelection={ this.handleSelection }
+        onInputChange={ this.onChange }
+        onSaveButtonClick={ () => {} }
+      />
+      <Card
+        cardName={ nome }
+        cardDescription={ describe }
+        cardAttr1={ firstAttribute }
+        cardAttr2={ secondAttribute }
+        cardAttr3={ thirdAttribute }
+        cardImage={ cardImage }
+        cardRare={ rarity }
+        cardTrunfo={ false }
+      />
+    </div>
+  );
+}
 }
 
 export default App;
