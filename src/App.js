@@ -19,7 +19,6 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      // isSaveButtonDisabled: false,
     };
   }
 

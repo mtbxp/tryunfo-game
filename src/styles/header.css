@@ -1,10 +1,10 @@
 .header {
-  background-color: orange;
-  color: white;
+  background-image: linear-gradient(orange, white);
+  color: red;
   display: flex;
   gap: 30px;
   justify-content: center;
-  padding: 10px 50px;
+  padding: 30px 50px;
 }
 
 .logo {

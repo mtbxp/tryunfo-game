@@ -1,5 +1,7 @@
-function validateForm(cardName,
-  cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare) {
+function validateForm(params) {
+  const { cardName, cardDescription, cardAttr1,
+    cardAttr2, cardAttr3, cardImage, cardRare } = params;
+
   const maxAttr = 10;
   const errAttr = '*Apenas números de 1 a 10 suportados';
 

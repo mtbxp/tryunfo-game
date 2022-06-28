@@ -3,6 +3,37 @@ import '../styles/card.css';
 import PropTypes from 'prop-types';
 
 class Card extends React.Component {
+  renderImage = (type, cardImage, cardName) => {
+    if (cardImage) {
+      return (
+        <img
+          data-testid={ !type ? 'image-card' : undefined }
+          src={ cardImage }
+          alt={ cardName }
+          className="card-image"
+        />
+      );
+    }
+    return (
+      <img
+        data-testid={ !type ? 'image-card' : undefined }
+        src="https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FHomerSimpson.png?1497567511939"
+        alt="Imagem do personagem"
+        className="card-image silhueta"
+      />
+    );
+  };
+
+  isTrunfo = (type, trunfo) => {
+    if (trunfo) {
+      return (
+        <div data-testid={ !type ? 'trunfo-card' : undefined } className="trunfo">
+          Super Trunfo
+        </div>
+      );
+    }
+  };
+
   render() {
     const {
       cardName,
@@ -17,15 +48,11 @@ class Card extends React.Component {
 
     return (
       <div>
-        <div className="card" key={ cardName }>
-          {
-            cardTrunfo
-              ? <div data-testid={ !list ? 'trunfo-card' : undefined } className="trunfo">
-                Super Trunfo
-              </div>
-              : undefined
-          }
-          <h2 data-testid={ !list ? 'name-card' : undefined }>{ cardName }</h2>
+        <div className="card">
+          { this.isTrunfo(list, cardTrunfo) }
+          <h2 data-testid={ !list ? 'name-card' : undefined }>
+            { cardName || 'Nome do Personagem' }
+          </h2>
 
           <div className="card-info">
             <div className="card-attr-container">
@@ -51,27 +78,14 @@ class Card extends React.Component {
               </h2>
             </div>
             <div className="card-image-container">
-              {
-                cardImage
-                  ? <img
-                      data-testid={ !list ? 'image-card' : undefined }
-                      src={ cardImage }
-                      alt={ cardName }
-                      className="card-image"
-                  />
-                  : <img
-                      src="https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FHomerSimpson.png?1497567511939"
-                      alt="silhueta Homer"
-                      className="card-image silhueta"
-                  />
-              }
+              { this.renderImage(list, cardImage, cardName)}
             </div>
           </div>
           <h4
             data-testid={ !list ? 'description-card' : undefined }
             className="description card-attr"
           >
-            { `"${cardDescription}"` }
+            { cardDescription ? `"${cardDescription}"` : '"Frase memorável"' }
           </h4>
         </div>
       </div>

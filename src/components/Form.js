@@ -6,11 +6,9 @@ import validateForm from './validateForm';
 class Form extends React.Component {
   onSaveButtonClick = (event) => {
     event.preventDefault();
-    const { addNewCard, getErrors, cardName, cardDescription,
-      cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare } = this.props;
+    const { addNewCard, getErrors } = this.props;
 
-    const returnedErrors = validateForm(cardName, cardDescription,
-      cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare);
+    const returnedErrors = validateForm(this.props);
 
     if (Object.keys(returnedErrors).length === 0) {
       addNewCard();
@@ -21,16 +19,16 @@ class Form extends React.Component {
 
   render() {
     const { cardName, cardDescription,
-      cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo,
-      isSaveButtonDisabled, onInputChange, errors,
+      cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare,
+      cardTrunfo, onInputChange, errors,
     } = this.props;
 
     return (
       <form className="form" onSubmit={ this.onSaveButtonClick }>
-        <h2>Card Info</h2>
+        <h2 className="form-title">Card Info</h2>
         {/* ------------- NAME -------------- */}
         <label htmlFor="Name" className="label">
-          Nome
+          Nome do personagem
           <br />
           <input
             type="text"
@@ -46,7 +44,7 @@ class Form extends React.Component {
 
         {/* ------------- DESCRIPTION -------------- */}
         <label htmlFor="description" className="label">
-          Descrição
+          Frase Memorável
           <br />
           <textarea
             className="input"
@@ -127,7 +125,7 @@ class Form extends React.Component {
 
         {/* ------------- RARE -------------- */}
         <label htmlFor="rare" className="label">
-          Raro
+          Popularidade
           <br />
           <select
             name="cardRare"
@@ -154,7 +152,7 @@ class Form extends React.Component {
             data-testid="trunfo-input"
             onChange={ onInputChange }
           />
-          Trunfo
+          Super Trunfo
         </label>
 
         {/* ------------- BUTTON SALVAR -------------- */}
@@ -164,9 +162,9 @@ class Form extends React.Component {
           name="salvar"
           id="salvar"
           data-testid="save-button"
-          disabled={ isSaveButtonDisabled }
+          // disabled={ isSaveButtonDisabled }
         >
-          Salvar
+          Salvar Carta
         </button>
       </form>
     );
@@ -186,15 +184,15 @@ Form.propTypes = {
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   errors: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    attr1: PropTypes.number.isRequired,
-    attr2: PropTypes.number.isRequired,
-    attr3: PropTypes.number.isRequired,
-    rare: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    attr1: PropTypes.number,
+    attr2: PropTypes.number,
+    attr3: PropTypes.number,
+    rare: PropTypes.string,
+    image: PropTypes.string,
   }).isRequired,
-  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  // isSaveButtonDisabled: PropTypes.bool.isRequired,
 };
 
 export default Form;
