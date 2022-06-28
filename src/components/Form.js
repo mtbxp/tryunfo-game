@@ -18,9 +18,9 @@ class Form extends Component {
       onInputChange,
       onSaveButtonClick,
     } = this.props;
+    console.log(isSaveButtonDisabled);
     return (
       <form>
-
         <label htmlFor="cardName">
           Name:
           <input
@@ -32,7 +32,6 @@ class Form extends Component {
             data-testid="name-input"
           />
         </label>
-
         <label htmlFor="description">
           Descrição:
           <textarea
@@ -43,7 +42,6 @@ class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
-
         <label htmlFor="attr1">
           Força:
           <input
@@ -55,7 +53,6 @@ class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
-
         <label htmlFor="attr2">
           Velocidade:
           <input
@@ -67,7 +64,6 @@ class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
-
         <label htmlFor="attr3">
           seila:
           <input
@@ -79,7 +75,6 @@ class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
-
         <label htmlFor="img">
           Imagem:
           <input
@@ -92,7 +87,6 @@ class Form extends Component {
             placeholder="Insira uma imagem"
           />
         </label>
-
         <label htmlFor="raridade">
           Raridade:
           <select
@@ -118,7 +112,6 @@ class Form extends Component {
             onClick={ onInputChange }
           />
         </label>
-
         <button
           type="submit"
           data-testid="save-button"
@@ -127,7 +120,6 @@ class Form extends Component {
         >
           Salvar
         </button>
-
       </form>
     );
   }
@@ -142,9 +134,9 @@ Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
 };
 
 export default Form;

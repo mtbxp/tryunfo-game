@@ -15,57 +15,57 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      isSavedButtonDisabled: true,
+      isSaveButtonDisabled: true,
     };
     this.onInputChange = this.onInputChange.bind(this);
-    this.validaButton = this.validaButton.bind(this);
+    this.validaBotao = this.validaBotao.bind(this);
   }
 
   onInputChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({ [name]: value }, this.validaButton);
+    this.setState({ [name]: value }, () => (this.validaBotao()));
   }
 
-  validaButton() {
+  validaBotao() {
     const {
       cardName,
+      cardImage,
       cardDescription,
       cardAttr1,
       cardAttr2,
       cardAttr3,
-      cardImage,
     } = this.state;
 
     const max = 90;
     const min = 0;
-    const somamax = 210;
-
-    const soma = parseInt(cardAttr1, 10)
-    + parseInt(cardAttr2, 10)
-    + parseInt(cardAttr3, 10);
+    const somaMax = 210;
+    const soma = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
 
     const validaSoma = () => {
       if (
-        soma <= somamax
-        && parseInt(cardAttr1, 10) <= max
-        && parseInt(cardAttr2, 10) <= max
-        && parseInt(cardAttr3, 10) <= max
-        && parseInt(cardAttr1, 10) >= 0
-        && parseInt(cardAttr2, 10) >= 0
-        && parseInt(cardAttr3, 10) >= 0
+        soma <= somaMax
+        && Number(cardAttr1) <= max
+        && Number(cardAttr2) <= max
+        && Number(cardAttr3) <= max
+        && Number(cardAttr1) >= min
+        && Number(cardAttr2) >= min
+        && Number(cardAttr3) >= min
       ) return true;
     };
+
     const cardArray = [cardName, cardDescription, cardImage];
-    const noInputs = cardArray.every((inputs) => inputs !== '');
+
+    const noInputs = cardArray.every((input) => input !== '');
 
     const valida = validaSoma() && noInputs;
 
     if (valida) {
-      this.setState({ isSavedButtonDisabled: false });
+      this.setState({ isSaveButtonDisabled: false });
     } else {
-      this.setState({ isSavedButtonDisabled: true });
+      this.setState({ isSaveButtonDisabled: true });
     }
+    console.log(valida);
   }
 
   render() {
@@ -78,9 +78,9 @@ class App extends React.Component {
       cardAttr3,
       cardRare,
       cardTrunfo,
-      isSavedButtonDisabled,
+      isSaveButtonDisabled,
+      // onSaveButtonClick,
     } = this.state;
-
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -94,7 +94,8 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
-          isSavedButtonDisabled={ isSavedButtonDisabled }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
+          // onSaveButtonClick={ onSaveButtonClick }
         />
         <h2>Card</h2>
         <Card
