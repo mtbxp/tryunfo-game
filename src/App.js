@@ -11,6 +11,7 @@ const initialState = {
   image: '',
   rare: 'normal',
   trunfo: false,
+  hasTrunfo: true,
   buttonDisabled: true,
   cards: [],
 };
@@ -19,6 +20,11 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = initialState;
+  }
+
+  checkeTryunfo = () => {
+    const { cards } = this.state;
+    return cards.some((card) => card.trunfo);
   }
 
   saveButtonValidation = () => {
@@ -84,7 +90,7 @@ class App extends React.Component {
       trunfo,
     } = this.state;
 
-    const cardData = {
+    const cardStorage = {
       name,
       description,
       image,
@@ -96,8 +102,19 @@ class App extends React.Component {
     };
 
     this.setState((prevState) => ({
-      cards: [...prevState.cards, cardData], ...initialState,
+      cards: [...prevState.cards, cardStorage],
     }));
+    this.setState({
+      name: '',
+      description: '',
+      attack: '0',
+      defence: '0',
+      speed: '0',
+      image: '',
+      rare: 'normal',
+      trunfo: false,
+      hasTrunfo: this.checkeTryunfo(),
+    });
   }
 
   render() {
@@ -110,6 +127,7 @@ class App extends React.Component {
       image,
       rare,
       trunfo,
+      hasTrunfo,
       buttonDisabled,
     } = this.state;
 
@@ -126,7 +144,7 @@ class App extends React.Component {
             cardImage={ image }
             cardRare={ rare }
             cardTrunfo={ trunfo }
-            hasTrunfo={ false }
+            hasTrunfo={ hasTrunfo }
             isSaveButtonDisabled={ buttonDisabled }
             onInputChange={ this.onInputChange }
             onSaveButtonClick={ this.onSaveButtonClick }
