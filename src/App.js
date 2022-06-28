@@ -76,36 +76,18 @@ class App extends React.Component {
     });
   };
 
-  deleteCard = (event) => {
+  deleteCard = ({ target }) => {
     const { cards } = this.state;
-    const innerName = event.target.parentNode.children[0].innerText;
-    const arrayName = innerName.split('Name:');
-    const name = arrayName[arrayName.length - 1];
-    const innerDes = event.target.parentNode.children[2].innerText;
-    if (arrayName[arrayName.length - 1] === '') {
-      const arrayDes = innerDes.split('Descrição do Card:');
-      const descricao = arrayDes[arrayDes.length - 1];
-      const newArray = cards.filter((card) => card.descricaoCarta !== descricao);
+    const name = target.getAttribute('data-key');
+    const newCards = cards.filter((card) => card.name !== name);
+    this.setState({
+      cards: newCards,
+    }, () => {
+      const result = newCards.some((card) => card.isSuper === true);
       this.setState(({
-        cards: newArray,
-      }), () => {
-        const result = newArray.some((card1) => card1.isSuper === true);
-        this.setState(({
-          hasTrunf: result,
-        }));
-      });
-      console.log(newArray);
-    } else {
-      const newArray = cards.filter((card) => card.name !== name);
-      this.setState(({
-        cards: newArray,
-      }), () => {
-        const result = newArray.some((carddd) => carddd.isSuper === true);
-        this.setState(({
-          hasTrunf: result,
-        }));
-      });
-    }
+        hasTrunf: result,
+      }));
+    });
   }
 
   render() {
@@ -151,7 +133,7 @@ class App extends React.Component {
             cardRare={ card.raridade }
             cardTrunfo={ card.isSuper }
             deleteCard={ this.deleteCard }
-          />)) }
+          />))}
       </div>
     );
   }
