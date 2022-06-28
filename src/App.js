@@ -16,6 +16,7 @@ class App extends React.Component {
       check: false,
       isSaveButtonDisabled: true,
       listCard: [],
+      hasTrunfo: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -74,6 +75,7 @@ class App extends React.Component {
       attr2,
       attr3,
       select,
+      check,
     } = this.state;
 
     const newListCard = {
@@ -84,6 +86,7 @@ class App extends React.Component {
       attr2,
       attr3,
       select,
+      check,
     };
 
     this.setState((e) => ({
@@ -96,6 +99,7 @@ class App extends React.Component {
       select: 'normal',
       check: false,
       isSaveButtonDisabled: true,
+      hasTrunfo: e.check,
       listCard: [...e.listCard, newListCard],
     }));
   };
@@ -111,6 +115,7 @@ class App extends React.Component {
       select,
       check,
       isSaveButtonDisabled,
+      hasTrunfo,
     } = this.state;
 
     return (
@@ -129,6 +134,7 @@ class App extends React.Component {
             cardImage={ image }
             cardRare={ select }
             cardTrunfo={ check }
+            hasTrunfo={ hasTrunfo }
           />
           <Card
             cardName={ name }

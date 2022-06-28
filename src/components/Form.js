@@ -19,10 +19,10 @@ class Form extends React.Component {
 
     return (
       <form className="form" onSubmit={ this.handleSubmit }>
-        <h1>Adicionar nova carta</h1>
-        {console.log(hasTrunfo)}
+        <h1 className="titulos-compo">Adicionar nova carta</h1>
         <label htmlFor="name">
-          Nome
+          <b>Nome</b>
+          <br />
           <input
             className="input"
             name="name"
@@ -30,10 +30,12 @@ class Form extends React.Component {
             data-testid="name-input"
             value={ cardName }
             onChange={ onInputChange }
+            placeholder="Placeholder"
           />
         </label>
         <label htmlFor="describe">
-          Descrição
+          <b>Descrição</b>
+          <br />
           <input
             className="input"
             name="describe"
@@ -44,9 +46,9 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="attr1">
-          Attr01
+          <b>Attr01</b>
           <input
-            className="input"
+            className="attrs"
             name="attr1"
             type="number"
             data-testid="attr1-input"
@@ -57,9 +59,9 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="attr2">
-          Attr02
+          <b>Attr02</b>
           <input
-            className="input"
+            className="attrs"
             name="attr2"
             type="number"
             data-testid="attr2-input"
@@ -70,9 +72,9 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="attr3">
-          Attr03
+          <b>Attr03</b>
           <input
-            className="input"
+            className="attrs"
             name="attr3"
             type="number"
             data-testid="attr3-input"
@@ -83,9 +85,9 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="image">
-          URL Imagem
+          <b>Imagem</b>
           <input
-            className="input"
+            className="input-img"
             name="image"
             type="text"
             data-testid="image-input"
@@ -93,31 +95,37 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="select">
-          Raridade
+        <label className="input-rari" htmlFor="select">
+          <b>Raridade</b>
+          <br />
           <select
             className="input"
             name="select"
             data-testid="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
+            placeholder="Placeholder"
           >
             <option>normal</option>
             <option>raro</option>
             <option>muito raro</option>
           </select>
         </label>
-        <label htmlFor="check">
-          Super Trybe Trunfo
-          <input
-            id="check"
-            name="check"
-            type="checkbox"
-            data-testid="trunfo-input"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-        </label>
+        {hasTrunfo ? (
+          'Você já tem um Super Trunfo em seu baralho'
+        ) : (
+          <label className="check" htmlFor="check">
+            <b>Super Trybe Trunfo</b>
+            <input
+              className="check"
+              name="check"
+              type="checkbox"
+              data-testid="trunfo-input"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+            />
+          </label>
+        )}
         <div>
           <button
             className="bt"

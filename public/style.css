@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #2d2d2d;
+  background: linear-gradient(90deg, #fafafa 50%, #023031 50%);
   color: white;
 }
 
@@ -16,52 +16,131 @@ body {
 
 .card {
   background-color: #036b52;
-  border: 7px solid white;
+  border: 8px solid white;
   border-radius: 8px;
   margin: 10px;
-  min-width: 270px;
+  max-height: 600px;
+  min-width: 300px;
   padding: 10px;
   text-align: center;
 }
 
 .card h3 {
   background-color: #023031;
+  border-radius: 8px 8px 0 0;
+  font-size: 25px;
+  padding-right: 10px;
+  text-align: right;
+}
+
+.card h4 {
+  background-color: #f0f2f5;
   border-radius: 10px;
+  color: #3d495c;
+  font-weight: 500;
+  margin: 5px;
+  padding: 2px;
+}
+
+.card h5 {
+  color: #3d495c;
+  font-weight: 500;
 }
 
 .card p {
   font-size: 10px;
+  padding: 10px;
+  transform: rotate(-5.5deg);
 }
 
-#imagem {
-  width: 230px;
+.card-baixo {
+  background-color: white;
+  border-radius: 0 0 8px 8px;
+  clip-path: polygon(0 17%, 100% 0, 100% 100%, 0% 100%);
+  padding-top: 35px;
+}
+
+.imagem {
+  clip-path: polygon(0 0, 100% 0, 100% 87%, 0% 100%);
+  height: 200px;
+  width: 280px;
 }
 
 .form {
+  background-color: rgb(250, 250, 250);
+  color: #023031;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 10px;
-  text-align: right;
+  margin-right: 120px;
+  text-align: left;
 }
 
 .input {
   border: none;
-  border-radius: 5px;
   margin: 5px;
-  padding: 5px 10px;
-  width: 200px;
+  padding: 6px 10px;
+  width: 250px;
+}
+
+input::placeholder {
+  color: #b1c5c5;
+}
+
+.input-rari {
+  margin-top: 20px;
+}
+
+.attrs {
+  border: 1px solid #036b52;
+  margin: 5px;
+  padding: 6px 10px;
+  width: 205px;
+}
+
+.input-img {
+  border: 1px solid #036b52;
+  margin: 5px;
+  margin-top: 30px;
+  padding: 6px 10px;
+  width: 190px;
 }
 
 .bt {
+  background-color: #003be5;
   border: none;
-  border-radius: 5px;
+  border-radius: 2px;
+  color: white;
   margin: 5px;
-  padding: 5px 10px;
-  width: 200px;
+  margin-top: 50px;
+  padding: 8px 10px;
+  width: 100px;
 }
 
 .tryunfo {
+  color: #036b52;
   margin: 20px;
   text-align: center;
+}
+
+.check {
+  margin-top: 10px;
+}
+
+.global-card h1 {
+  text-align: center;
+}
+
+.global-card {
+  background-color: #023031;
+  margin-left: 120px;
+}
+
+.titulos-compo {
+  margin-bottom: 100px;
+}
+
+.check-display {
+  display: none;
 }
