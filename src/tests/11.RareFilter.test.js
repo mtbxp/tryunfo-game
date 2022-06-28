@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import App from "./App";
+import App from "../App";
 
 describe("11 - Crie o filtro por raridade da carta", () => {
   it("Será validado se o campo de filtro por Raridade renderiza na tela", () => {

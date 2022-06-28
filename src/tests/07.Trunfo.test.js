@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import App from "./App";
+import App from "../App";
 
 describe("7 - Crie a validação do Super Trunfo", () => {
   it("Será validado se o checkbox do Super Trunfo é redenderizado ao carregar a página", () => {
