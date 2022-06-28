@@ -9,7 +9,6 @@ class App extends React.Component {
     this.handler = this.handler.bind(this);
     this.enableButton = this.enableButton.bind(this);
     this.saveCard = this.saveCard.bind(this);
-    this.clearForm = this.clearForm.bind(this);
     this.state = {
       name: '',
       description: '',
@@ -31,33 +30,18 @@ class App extends React.Component {
     });
   }
 
-  clearForm = () => {
-    document.getElementById('form').reset();
-    this.setState({ attr1: '0', attr2: '0', attr3: '0' });
-  }
-
   saveCard() {
-    this.clearForm();
-    // this.setState((prevState) => {
-    //   prevState.name.value = '';
-    //   prevState.description.value = '';
-    //   prevState.image.value = '';
-    //   prevState.attr1.value = '';
-    //   prevState.attr2.value = '';
-    //   prevState.attr3.value = '';
-    //   prevState.rare.value = 'normal';
-    //   prevState.trunfo.value = false;
-    //   prevState.cards.value.concat(<Card
-    //     cardName={ prevState.name }
-    //     cardDescription={ prevState.description }
-    //     cardImage={ prevState.image }
-    //     cardAttr1={ prevState.attr1 }
-    //     cardAttr2={ prevState.attr2 }
-    //     cardAttr3={ prevState.attr3 }
-    //     cardRare={ prevState.rare }
-    //     cardTrunfo={ prevState.trunfo }
-    //   />);
-    // });
+    this.setState({
+      name: '',
+      description: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
+      image: '',
+      rare: 'normal',
+      trunfo: false,
+      cards: [],
+    });
   }
 
   enableButton() {
@@ -85,6 +69,7 @@ class App extends React.Component {
 
   render() {
     const { state } = this;
+    console.log(state.cards);
     return (
       <div>
         <h1>TRYUNFO</h1>
