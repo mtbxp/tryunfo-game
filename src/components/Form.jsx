@@ -24,9 +24,10 @@ export default class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="description">
+        <label htmlFor="description" className="label-description">
           Descrição:
           <textarea
+            className="input-textarea"
             type="textarea"
             data-testid="description-input"
             name="cardDescription"
@@ -112,6 +113,7 @@ export default class Form extends Component {
           </label>
         )}
         <button
+          className="button"
           type="submit"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
