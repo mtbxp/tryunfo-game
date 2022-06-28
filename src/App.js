@@ -19,6 +19,7 @@ class App extends React.Component {
       savedCards: [],
       filterPerName: '',
       filterPerRarity: 'todas',
+      filterTrunfo: 'false',
     };
   }
 
@@ -120,16 +121,9 @@ class App extends React.Component {
     }));
   }
 
-  // handleFilterPerName = () => {
-  //   const { savedCards, filterPerName } = this.state;
-  //   return savedCards.filter((card) => {
-  //     if (filterPerName === '') return savedCards;
-  //     return card.cardName.includes(filterPerName);
-  //   });
-  // };
-
   handleFilter = () => {
-    const { savedCards, filterPerName, filterPerRarity } = this.state;
+    const { savedCards, filterPerName, filterPerRarity, filterTrunfo } = this.state;
+    if (filterTrunfo === true) return savedCards.filter((card) => card.cardTrunfo);
     return savedCards.filter((card) => {
       if (filterPerRarity === 'todas') return true;
       return card.cardRare === filterPerRarity;
@@ -152,7 +146,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      // savedCards,
+      filterTrunfo,
     } = this.state;
 
     const filteredCards = this.handleFilter();
@@ -188,17 +182,28 @@ class App extends React.Component {
             onChange={ this.onInputChange }
             name="filterPerName"
             data-testid="name-filter"
+            disabled={ filterTrunfo }
           />
           <select
             onChange={ this.onInputChange }
             name="filterPerRarity"
             data-testid="rare-filter"
+            disabled={ filterTrunfo }
           >
             <option>todas</option>
             <option>normal</option>
             <option>raro</option>
             <option>muito raro</option>
           </select>
+          <label htmlFor="filterTrunfo">
+            Super Trunfo
+            <input
+              type="checkbox"
+              name="filterTrunfo"
+              data-testid="trunfo-filter"
+              onChange={ this.onInputChange }
+            />
+          </label>
         </div>
         {
           filteredCards.map((card) => (
