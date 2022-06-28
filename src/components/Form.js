@@ -1,39 +1,30 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Input from './Input';
 
 class Form extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      nome: '',
-      describe: '',
-      firstAttribute: 0,
-      secondAttribute: 0,
-      thirdAttribute: 0,
-      card: '',
-      superTrunfo: false,
-    };
-  }
-
   render() {
     const
       {
-        nome,
-        card,
-        describe,
-        firstAttribute,
-        secondAttribute,
-        thirdAttribute,
-        superTrunfo,
-      } = this.state;
+        cardName,
+        onInputChange,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
+        isSaveButtonDisabled,
+        onSaveButtonClick,
+      } = this.props;
 
-    const onChange = ({ target }) => {
-      const { name, value } = target;
-      this.setState(() => ({
-        [name]: value,
-      }));
-    };
+    // const onChange = ({ target }) => {
+    //   const { name, value } = target;
+    //   this.setState(() => ({
+    //     [name]: value,
+    //   }));
+    // };
 
     return (
       <div>
@@ -41,9 +32,9 @@ class Form extends Component {
           <Input
             name="nome"
             type="text"
-            value={ nome }
+            value={ cardName }
             label="Nome"
-            onChange={ onChange }
+            onChange={ onInputChange }
             testid="name-input"
           />
           <label htmlFor="textarea">
@@ -51,57 +42,69 @@ class Form extends Component {
             <textarea
               id="textarea"
               name="describe"
-              value={ describe }
-              onChange={ onChange }
+              value={ cardDescription }
+              onChange={ onInputChange }
               data-testid="description-input"
             />
           </label>
           <Input
             name="firstAttribute"
             type="number"
-            value={ firstAttribute.toString() }
+            value={ cardAttr1.toString() }
             label="Força"
             testid="attr1-input"
-            onChange={ onChange }
+            onChange={ onInputChange }
           />
           <Input
             name="secondAttribute"
             type="number"
-            value={ secondAttribute.toString() }
+            value={ cardAttr2.toString() }
             label="Inteligência"
-            onChange={ onChange }
+            onChange={ onInputChange }
             testid="attr2-input"
           />
           <Input
             name="thirdAttribute"
             type="number"
-            value={ thirdAttribute.toString() }
+            value={ cardAttr3.toString() }
             label="Destreza"
-            onChange={ onChange }
+            onChange={ onInputChange }
             testid="attr3-input"
           />
           <Input
             name="card"
             type="text"
-            value={ card }
+            value={ cardImage }
             label="Carta"
-            onChange={ onChange }
+            onChange={ onInputChange }
             testid="image-input"
           />
-          <select data-testid="rare-input">
+          <select
+            value={ cardRare }
+            onChange={ onInputChange }
+            data-testid="rare-input"
+          >
             <option name="normal">normal</option>
             <option name="raro">raro</option>
             <option name="muitoRaro">muito raro</option>
           </select>
-          <Input
-            name="superTrunfo"
-            type="checkbox"
-            value={ superTrunfo }
-            label="Super Trunfo"
-            onChange={ onChange }
-            testid="trunfo-input"
-          />
-          <button type="button" data-testid="save-button">
+          <label htmlFor="superTrunfo">
+            Super Trunfo
+            <input
+              id="superTrunfo"
+              name="superTrunfo"
+              type="checkbox"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+              data-testid="trunfo-input"
+            />
+          </label>
+          <button
+            onClick={ onSaveButtonClick }
+            disabled={ isSaveButtonDisabled }
+            type="button"
+            data-testid="save-button"
+          >
             Salvar
           </button>
         </form>
@@ -109,5 +112,20 @@ class Form extends Component {
     );
   }
 }
+
+Form.propTypes = {
+  cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  cardRare: PropTypes.string.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
+};
 
 export default Form;
