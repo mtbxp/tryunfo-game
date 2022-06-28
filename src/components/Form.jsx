@@ -40,6 +40,7 @@ class Form extends Component {
       <div className="form-div">
         <h1>Tryunfo</h1>
         <form className="form">
+
           <label htmlFor="name-input">
             Nome da carta
             <input
@@ -52,6 +53,7 @@ class Form extends Component {
               placeholder="Nome da carta"
             />
           </label>
+
           Descrição
           <textarea
             onChange={ onInputChange }
@@ -62,60 +64,73 @@ class Form extends Component {
           >
             bla bla
           </textarea>
-          Atributo 1
-          <label htmlFor="attr1-input">
-            <input
-              onChange={ onInputChange }
-              value={ cardAttr1 }
-              name="cardAttr1"
-              type="number"
-              data-testid="attr1-input"
-              id="attr1-input"
-              placeholder="Atributo 1"
-              max="90"
-              min="0"
-            />
-          </label>
-          Atributo 2
-          <label htmlFor="attr2-input">
-            <input
-              onChange={ onInputChange }
-              value={ cardAttr2 }
-              name="cardAttr2"
-              type="number"
-              data-testid="attr2-input"
-              id="attr2-input"
-              placeholder="Atributo 2"
-              max="90"
-              min="0"
-            />
-          </label>
-          Atributo 3
-          <label htmlFor="attr3-input">
-            <input
-              onChange={ onInputChange }
-              value={ cardAttr3 }
-              name="cardAttr3"
-              type="number"
-              data-testid="attr3-input"
-              id="attr3-input"
-              placeholder="Atributo 3"
-              max="90"
-              min="0"
-            />
-          </label>
-          Imagem
-          <label htmlFor="image-input">
-            <input
-              onChange={ onInputChange }
-              value={ cardImage }
-              name="cardImage"
-              type="text"
-              data-testid="image-input"
-              id="image-input"
-              placeholder="Adicione o link da imagem"
-            />
-          </label>
+          <div className="inputs">
+            <p>Atributo 1</p>
+            <label htmlFor="attr1-input">
+              <input
+                className="attr-image-input"
+                onChange={ onInputChange }
+                value={ cardAttr1 }
+                name="cardAttr1"
+                type="number"
+                data-testid="attr1-input"
+                id="attr1-input"
+                placeholder="Atributo 1"
+                max="90"
+                min="0"
+              />
+            </label>
+          </div>
+
+          <div className="inputs">
+            <p>Atributo 2</p>
+            <label htmlFor="attr2-input">
+              <input
+                className="attr-image-input"
+                onChange={ onInputChange }
+                value={ cardAttr2 }
+                name="cardAttr2"
+                type="number"
+                data-testid="attr2-input"
+                id="attr2-input"
+                placeholder="Atributo 2"
+                max="90"
+                min="0"
+              />
+            </label>
+          </div>
+          <div className="inputs">
+            <p>Atributo 3</p>
+            <label htmlFor="attr3-input">
+              <input
+                className="attr-image-input"
+                onChange={ onInputChange }
+                value={ cardAttr3 }
+                name="cardAttr3"
+                type="number"
+                data-testid="attr3-input"
+                id="attr3-input"
+                placeholder="Atributo 3"
+                max="90"
+                min="0"
+              />
+            </label>
+          </div>
+          <div className="inputs">
+            <p>Imagem</p>
+            <label htmlFor="image-input">
+              <input
+                className="image-input"
+                onChange={ onInputChange }
+                value={ cardImage }
+                name="cardImage"
+                type="text"
+                data-testid="image-input"
+                id="image-input"
+                placeholder="Adicione o link da imagem"
+              />
+            </label>
+          </div>
           Raridade
           <select
             onChange={ onInputChange }

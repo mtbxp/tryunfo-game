@@ -23,6 +23,9 @@ class Card extends Component {
 
     return (
       <section className="card-section">
+        <div>
+          <h1 className="pre-visu">Pré-visualização</h1>
+        </div>
         <div className="card" data-testid="name-card">
           <h3 className="card-name">{ cardName }</h3>
           <img src={ cardImage } alt={ cardName } data-testid="image-card" />

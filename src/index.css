@@ -11,12 +11,15 @@
   box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 html {
   font-size: 100%;
 } /*16px*/
 
 body {
   color: #000000;
+  font-family: 'Roboto', sans-serif;
 }
 
 p {
@@ -47,10 +50,8 @@ h3 {
 /* image  */
 
 img {
-  width: 246px;
-  margin-left: 18px;
-  /* display: block;
-  object-fit: cover; */
+  width: 95%;
+  margin: 4px 0 0 8px;
   border-radius: 8px;
 }
 
@@ -85,35 +86,53 @@ select {
   margin-bottom: 1rem;
   padding: 0.7rem 0.75rem;
   border-radius: 8px;
-  background: #43d8fc;
   border: 1px solid black;
 }
 
 /* EU CRIEI A PARTIR DAQUI */
 
+.form-div {
+  background-color: #2183c3;
+  color: #f2f2f2;
+  padding: 10px;
+  height: 100vh;
+  width: 2000px;
+}
+
+input {
+  background-color: #f2f2f2;
+}
+
 .card-section{
-  /* border-radius: 8px; */
   height: 100vh;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  /* gap: 10px; */
   align-items: center;
   background-color: #e01023;
+  color: white;
   width: 100%;
+}
+
+.pre-visu{
+  /* background-color: rebeccapurple; */
+  margin-bottom: 30px;
 }
 
 .card {
   background-color: #f2f2f2;
   border: 2px solid black;
+  /* margin-top: 2px; */
   border-radius: 8px;
   padding: 16px 8px;
   width: 300px;
-  height: 500px;
+  height: 530px;
 }
 
 .card-name {
-  /* display: flex;
-  margin: -10px 0 2px 115px; */
   text-align: center;
+  color: black;
 }
 
 #description-card{
@@ -139,4 +158,19 @@ h1{
 
 .App {
   display: flex;
+}
+
+.inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.attr-image-input {
+  width: 629px;
+}
+
+.image-input {
+  width: 629px;
+  margin-left: 11px;
 }
