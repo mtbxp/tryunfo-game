@@ -115,6 +115,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { custonCards } = this.state;
     return (
       <div>
         <h1>Valorant Super Trunfo</h1>
@@ -132,7 +133,15 @@ class App extends React.Component {
             <Card { ...this.state } />
           </fieldset>
         </div>
-
+        <hr />
+        <div className="custonCardsSection">
+          {custonCards.map((cardData, index) => (
+            <fieldset key={ index } className="card-section">
+              <legend>Card</legend>
+              <Card { ...cardData } />
+            </fieldset>
+          ))}
+        </div>
       </div>
     );
   }

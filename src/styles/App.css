@@ -8,9 +8,15 @@ h1 {
 }
 
 .form-section {
-  padding: 4;
+  width: 200px;
 }
 
 .card-section {
   width: 200px;
+}
+
+.custonCardsSection {
+  display: flex;
+  justify-content: left;
+  margin: 24px;
 }
