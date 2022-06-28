@@ -88,15 +88,15 @@ class App extends React.Component {
       cardImage,
       cardRare,
     } = this.state;
-    const maxSumAttribute = 210;
+    const maxSumAttribute = 211;
     const maxAttribute = 90;
     const minAttribute = 0;
+    if (cardAttr1 > maxAttribute || cardAttr1 < minAttribute
+      || cardAttr2 > maxAttribute || cardAttr2 < minAttribute
+      || cardAttr3 > maxAttribute || cardAttr3 < minAttribute) return true;
     const sumAttribute = (Number(cardAttr1)
       + Number(cardAttr2)
-      + Number(cardAttr3)) <= maxSumAttribute;
-    if (cardAttr1 >= maxAttribute || cardAttr1 <= minAttribute
-      || cardAttr2 >= maxAttribute || cardAttr2 <= minAttribute
-      || cardAttr3 >= maxAttribute || cardAttr3 <= minAttribute) return true;
+      + Number(cardAttr3)) < maxSumAttribute;
 
     return !(sumAttribute
       && cardDescription
