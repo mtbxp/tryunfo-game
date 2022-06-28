@@ -12,7 +12,7 @@ class Form extends Component {
         <label
           htmlFor="name-input"
         >
-          Nome:
+          Nome do personagem:
           <input
             type="text"
             name="cardName"
@@ -41,7 +41,7 @@ class Form extends Component {
         <label
           htmlFor="attr1-input"
         >
-          Business:
+          Fofoqueiro:
           <input
             type="number"
             name="cardAttr1"
@@ -54,7 +54,7 @@ class Form extends Component {
         <label
           htmlFor="attr2-input"
         >
-          Antiguididade:
+          Engraçado:
           <input
             type="number"
             name="cardAttr2"
@@ -67,7 +67,7 @@ class Form extends Component {
         <label
           htmlFor="attr3-input"
         >
-          Distribuição:
+          Perigoso:
           <input
             type="number"
             name="cardAttr3"
@@ -80,7 +80,7 @@ class Form extends Component {
         <label
           htmlFor="image-input"
         >
-          Pessoa famosa falante desta língua:
+          Foto do personagem:
           <input
             type="text"
             name="cardImage"

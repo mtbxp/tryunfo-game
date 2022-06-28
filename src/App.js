@@ -127,24 +127,6 @@ class App extends React.Component {
     this.resetForm();
   }
 
-  showDeckCards = () => {
-    const { cardDeck } = this.state;
-    cardDeck.map((newCard) => (
-      <Card
-        key={ newCard }
-        cardName={ cardName }
-        cardDescription={ cardDescription }
-        cardAttr1={ cardAttr1 }
-        cardAttr2={ cardAttr2 }
-        cardAttr3={ cardAttr3 }
-        cardImage={ cardImage }
-        cardRare={ cardRare }
-        cardTrunfo={ cardTrunfo }
-        onInputChange={ this.onInputChange }
-      />
-    ));
-  }
-
   resetForm = () => {
     this.setState({
       cardName: '',
@@ -160,7 +142,8 @@ class App extends React.Component {
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
+      cardAttr3, cardImage, cardRare, cardTrunfo,
+      isSaveButtonDisabled, cardDeck } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -188,6 +171,22 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
         />
+        {
+          cardDeck.map((newCard) => (
+            <Card
+              key={ newCard }
+              cardName={ newCard.cardName }
+              cardDescription={ newCard.cardDescription }
+              cardAttr1={ newCard.cardAttr1 }
+              cardAttr2={ newCard.cardAttr2 }
+              cardAttr3={ newCard.cardAttr3 }
+              cardImage={ newCard.cardImage }
+              cardRare={ newCard.cardRare }
+              cardTrunfo={ newCard.cardTrunfo }
+              onInputChange={ this.onInputChange }
+            />
+          ))
+        }
       </div>
     );
   }
