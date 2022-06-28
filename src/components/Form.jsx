@@ -6,7 +6,7 @@ class Form extends React.Component {
     const { cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3, cardImage,
       cardRare, cardTrunfo, onInputChange,
-      isSaveButtonDisabled, onSaveButtonClick } = this.props;
+      isSaveButtonDisabled, onSaveButtonClick, sumAtt } = this.props;
 
     return (
       <form className="form" onSubmit={ this.onSaveButtonClick }>
@@ -44,6 +44,8 @@ class Form extends React.Component {
               type="number"
               name="cardAttr1"
               data-testid="attr1-input"
+              min={ 0 }
+              max={ 90 }
               value={ cardAttr1 }
               onChange={ onInputChange }
             />
@@ -55,6 +57,8 @@ class Form extends React.Component {
               type="number"
               name="cardAttr2"
               data-testid="attr2-input"
+              min={ 0 }
+              max={ 90 }
               value={ cardAttr2 }
               onChange={ onInputChange }
             />
@@ -66,10 +70,15 @@ class Form extends React.Component {
               type="number"
               name="cardAttr3"
               data-testid="attr3-input"
+              min={ 0 }
+              max={ 90 }
               value={ cardAttr3 }
               onChange={ onInputChange }
             />
           </label>
+          <p className="totalScore">
+            {`Total Score: ${sumAtt}`}
+          </p>
         </div>
 
         <label htmlFor="cardImage">
@@ -136,6 +145,7 @@ Form.propTypes = {
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
+  sumAtt: PropTypes.number.isRequired,
 };
 
 export default Form;

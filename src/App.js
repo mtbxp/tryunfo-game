@@ -3,7 +3,9 @@ import Form from './components/Form';
 import './App.css';
 import Card from './components/Card';
 
-const ruleMaxValue = 210;
+const ruleMaxTotalScore = 210;
+const ruleMaxIndScore = 90;
+const ruleMinIndScore = 0;
 
 class App extends React.Component {
   constructor() {
@@ -13,13 +15,14 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: ruleMinIndScore,
+      cardAttr2: ruleMinIndScore,
+      cardAttr3: ruleMinIndScore,
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      sumAtt: ruleMaxTotalScore,
     };
   }
 
@@ -38,22 +41,32 @@ class App extends React.Component {
 
   validationButton = () => {
     const states = Object.values(this.state);
-    const flag = Object.values(states)
+    const flagVazios = Object.values(states)
       .some((item) => item.length === 0);
 
     const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
-    const sumAtt = ruleMaxValue
-      - Number(cardAttr1) - Number(cardAttr2) - Number(cardAttr3);
-    console.log(sumAtt);
+
+    const total = ruleMaxTotalScore
+      - (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3));
+
+    const flagMaior0 = cardAttr1 >= ruleMinIndScore
+      && cardAttr2 >= ruleMinIndScore
+      && cardAttr3 >= ruleMinIndScore;
+    const flagMenor90 = cardAttr1 <= ruleMaxIndScore
+      && cardAttr2 <= ruleMaxIndScore
+      && cardAttr3 <= ruleMaxIndScore;
+    const flagTotal = total <= ruleMaxTotalScore && total >= 0;
+
     this.setState({
-      isSaveButtonDisabled: flag,
+      isSaveButtonDisabled: flagTotal && flagMaior0 && flagMenor90 ? flagVazios : true,
+      sumAtt: total > ruleMaxTotalScore ? ruleMaxTotalScore : total,
     });
   }
 
   render() {
     const { cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
+      cardRare, cardTrunfo, isSaveButtonDisabled, sumAtt } = this.state;
 
     return (
       <main>
@@ -71,6 +84,7 @@ class App extends React.Component {
             onInputChange={ this.onInputChange }
             onSaveButtonClick={ this.onSaveButtonClick }
             isSaveButtonDisabled={ isSaveButtonDisabled }
+            sumAtt={ sumAtt }
           />
           <Card
             cardName={ cardName }
