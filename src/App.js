@@ -17,6 +17,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      custonCards: [],
     };
   }
 
@@ -66,6 +67,43 @@ class App extends React.Component {
     });
   }
 
+  onSaveButtonClick = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+    this.setState((prevState) => ({
+      custonCards: [{
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
+      }, ...prevState.custonCards,
+      ],
+    }));
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false,
+      isSaveButtonDisabled: true,
+    });
+  }
+
   render() {
     return (
       <div>
@@ -76,6 +114,7 @@ class App extends React.Component {
             <Form
               { ...this.state }
               onInputChange={ this.onInputChange }
+              onSaveButtonClick={ this.onSaveButtonClick }
             />
           </fieldset>
           <fieldset className="card-section">
