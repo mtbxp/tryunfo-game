@@ -1,15 +1,16 @@
 import React from 'react';
 import Card from './components/Card';
+import Footer from './components/Footer';
 import Form from './components/Form';
 import Header from './components/Header';
 import SearchForm from './components/SearchForm';
+import cardData from './data/cardData';
 import './styles/app.css';
 
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
-      cardName: '',
+    this.state = { cardName: '',
       cardDescription: '',
       cardAttr1: '0',
       cardAttr2: '0',
@@ -21,16 +22,13 @@ class App extends React.Component {
       cardList: [],
       nameSearch: '',
       rareSearch: 'todas',
-      trunfoSearch: false,
-    };
+      trunfoSearch: false };
   }
 
   handleChange = ({ target }) => {
     const { name, type, checked, value } = target;
     const stateValue = type === 'checkbox' ? checked : value;
-    this.setState({
-      [name]: stateValue,
-    }, () => {
+    this.setState({ [name]: stateValue }, () => {
       if (name.startsWith('cardAttr')) this.calculateRemainingPoints();
     });
   }
@@ -38,22 +36,17 @@ class App extends React.Component {
   calculateRemainingPoints = () => {
     const maxAttrSum = 210;
     const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
-    this.setState({
-      remainingPoints: (
-        maxAttrSum - Number(cardAttr1) - Number(cardAttr2) - Number(cardAttr3)
-      ),
-    });
+    this.setState({ remainingPoints: (
+      maxAttrSum - Number(cardAttr1) - Number(cardAttr2) - Number(cardAttr3)) });
   }
 
   validateForm = () => {
-    const {
-      cardName,
+    const { cardName,
       cardDescription,
       cardImage,
       cardAttr1,
       cardAttr2,
-      cardAttr3,
-    } = this.state;
+      cardAttr3 } = this.state;
 
     const isValidLength = this.validateLength(cardName, cardDescription, cardImage);
 
@@ -81,34 +74,28 @@ class App extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const {
-      cardName,
+    const { cardName,
       cardDescription,
       cardImage,
       cardAttr1,
       cardAttr2,
       cardAttr3,
       cardRare,
-      cardTrunfo,
-    } = this.state;
-    const newCard = {
-      cardName,
+      cardTrunfo } = this.state;
+    const newCard = { cardName,
       cardDescription,
       cardImage,
       cardAttr1,
       cardAttr2,
       cardAttr3,
       cardRare,
-      cardTrunfo,
-    };
+      cardTrunfo };
     this.setState((prevState) => ({
-      cardList: [...prevState.cardList, newCard],
-    }), () => this.resetStateAndForm());
+      cardList: [...prevState.cardList, newCard] }), () => this.resetStateAndForm());
   }
 
   resetStateAndForm = () => {
-    this.setState({
-      cardName: '',
+    this.setState({ cardName: '',
       cardDescription: '',
       cardImage: '',
       cardAttr1: '0',
@@ -116,38 +103,36 @@ class App extends React.Component {
       cardAttr3: '0',
       cardRare: 'normal',
       cardTrunfo: false,
-      remainingPoints: 210,
-    });
+      remainingPoints: 210 });
   }
 
   checkHasTrunfo = (dataList) => dataList.some(({ cardTrunfo }) => cardTrunfo);
 
   handleDeleteCard = ({ target }) => {
     this.setState((prevState) => ({
-      cardList: prevState.cardList.filter(({ cardName }) => cardName !== target.id),
-    }));
+      cardList: prevState.cardList.filter(({ cardName }) => cardName !== target.id) }));
   }
 
   handleSearch = (searchedName, searchedRare, searchedIfTrunfo) => {
     const { cardList } = this.state;
-
     const trunfoSearchCard = cardList.filter(({ cardTrunfo }) => cardTrunfo);
     if (searchedIfTrunfo) return trunfoSearchCard;
 
     const nameSearchList = cardList.filter(({ cardName }) => (
-      cardName.toLowerCase().includes(searchedName.toLowerCase())
-    ));
+      cardName.toLowerCase().includes(searchedName.toLowerCase())));
     if (searchedRare === 'todas') return nameSearchList;
 
     const rareSearchList = nameSearchList.filter(({ cardRare }) => (
-      cardRare === searchedRare
-    ));
+      cardRare === searchedRare));
     return rareSearchList;
   }
 
+  loadDeck = (deck) => {
+    this.setState({ cardList: [...deck] });
+  }
+
   render() {
-    const {
-      cardName,
+    const { cardName,
       cardDescription,
       cardAttr1,
       cardAttr2,
@@ -159,8 +144,7 @@ class App extends React.Component {
       cardList,
       nameSearch,
       rareSearch,
-      trunfoSearch,
-    } = this.state;
+      trunfoSearch } = this.state;
 
     return (
       <>
@@ -204,36 +188,46 @@ class App extends React.Component {
               rareSearch={ rareSearch }
               trunfoSearch={ trunfoSearch }
             />
+            <h3>🎴 Exemplos de Baralhos</h3>
+            <button
+              type="button"
+              onClick={ () => this.loadDeck(cardData) }
+            >
+              Pilotos F1 2022
+            </button>
           </aside>
           <div className="cards-container">
             <h2>Baralho Tryunfo Pilotos F1</h2>
-            {
-              this.handleSearch(nameSearch, rareSearch, trunfoSearch).map((card) => (
-                <div className="card-container" key={ card.cardName }>
-                  <Card
-                    cardName={ card.cardName }
-                    cardDescription={ card.cardDescription }
-                    cardAttr1={ card.cardAttr1 }
-                    cardAttr2={ card.cardAttr2 }
-                    cardAttr3={ card.cardAttr3 }
-                    cardImage={ card.cardImage }
-                    cardRare={ card.cardRare }
-                    cardTrunfo={ card.cardTrunfo }
-                  />
-                  <button
-                    type="button"
-                    data-testid="delete-button"
-                    className="delete"
-                    id={ card.cardName }
-                    onClick={ this.handleDeleteCard }
-                  >
-                    Excluir
-                  </button>
-                </div>
-              ))
-            }
+            <div className="cards-pack">
+              {
+                this.handleSearch(nameSearch, rareSearch, trunfoSearch).map((card) => (
+                  <div className="card-container" key={ card.cardName }>
+                    <Card
+                      cardName={ card.cardName }
+                      cardDescription={ card.cardDescription }
+                      cardAttr1={ card.cardAttr1 }
+                      cardAttr2={ card.cardAttr2 }
+                      cardAttr3={ card.cardAttr3 }
+                      cardImage={ card.cardImage }
+                      cardRare={ card.cardRare }
+                      cardTrunfo={ card.cardTrunfo }
+                    />
+                    <button
+                      type="button"
+                      data-testid="delete-button"
+                      className="delete"
+                      id={ card.cardName }
+                      onClick={ this.handleDeleteCard }
+                    >
+                      Excluir
+                    </button>
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </section>
+        <Footer />
       </>
     );
   }

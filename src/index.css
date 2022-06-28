@@ -83,7 +83,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.953rem;
+  font-size: 1.9rem;
 }
 
 h4 {
@@ -119,10 +119,8 @@ button {
   box-shadow: var(--shadow-1);
   /* transition: var(--transition); */
   text-transform: capitalize;
-  display: inline-block;
   margin-right: 1rem;
   width: fit-content;
-  align-self: flex-end;
   font-size: 1.25rem;
   font-weight: 700;
 }

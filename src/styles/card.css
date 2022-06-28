@@ -1,15 +1,15 @@
 .exter-border {
   background-color: whitesmoke;
-  border: 3px solid rgb(29, 1, 1);
+  border: 3px groove rgb(29, 1, 1);
   border-radius: 20px;
-  padding: 15px;
+  padding: 10px;
 }
 
 .inter-border {
   background-color: rgb(204, 36, 36);
   border: 4px double rgb(29, 1, 1);
   border-radius: 20px;
-  padding: 18px;
+  padding: 12px;
 }
 
 .card-content {
@@ -18,7 +18,7 @@
 }
 
 .card-content h4 {
-  background-color: rgb(59, 7, 7);
+  background-color: rgb(26, 2, 2);
   border-radius: 20px 20px 0 0;
   color: white;
   font-weight: 700;
@@ -31,7 +31,7 @@
 }
 
 .card-image {
-  background-color: hsl(246, 12%, 30%);
+  background-color: rgb(55, 29, 30);
   display: flex;
   flex-direction: column;
   height: 250px;
@@ -41,7 +41,7 @@
 }
 
 .rare {
-  background-color: rgb(59, 7, 7);
+  background-color: rgb(26, 2, 2);
   border-radius: 0 20px 20px 0;
   color: white;
   font-size: 15px;
@@ -64,7 +64,7 @@
   align-self: flex-end;
   background-color: rgb(255, 217, 0);
   border-radius: 20px 0 0 20px;
-  color: rgb(59, 7, 7);
+  color: rgb(26, 2, 2);
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -102,7 +102,7 @@
 }
 
 .attr-number {
-  background-color: rgb(59, 7, 7);
+  background-color: rgb(26, 2, 2);
   border-radius: 0 20px 20px 0;
   color: white;
   font-size: 15px;

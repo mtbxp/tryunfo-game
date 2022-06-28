@@ -1,0 +1,21 @@
+footer {
+  background-color: hsl(353, 47%, 96%);
+  border-top: 4px groove rgb(77, 75, 75);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 500;
+  padding: 15px 20px;
+}
+
+footer p {
+  margin-bottom: 3px;
+}
+
+.ref {
+  margin-top: 20px;
+}
+
+a {
+  font-weight: 700;
+  text-decoration: none;
+}

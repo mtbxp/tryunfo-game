@@ -59,7 +59,7 @@ class Form extends React.Component {
             data-testid="description-input"
             name="cardDescription"
             id="cardDescription"
-            maxLength={ 210 }
+            maxLength={ 220 }
             value={ cardDescription }
             onChange={ onInputChange }
           />
@@ -78,7 +78,7 @@ class Form extends React.Component {
         <fieldset>
           <legend>Atributos</legend>
           <label htmlFor="cardAttr1" className="line-adjust">
-            🏆 Vitórias:
+            🏆 Podiums:
             <input
               type="number"
               data-testid="attr1-input"
@@ -91,7 +91,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="cardAttr2" className="line-adjust">
-            🥇 Pole Positions:
+            🏁 Melhores Voltas:
             <input
               type="number"
               data-testid="attr2-input"
@@ -104,7 +104,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="cardAttr3" className="line-adjust">
-            🏁 Melhores Voltas:
+            🥇 Pole Positions:
             <input
               type="number"
               data-testid="attr3-input"
