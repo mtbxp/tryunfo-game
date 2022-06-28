@@ -121,6 +121,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      deck,
     } = this.state;
     return (
       <div>
@@ -135,16 +136,28 @@ class App extends React.Component {
         </section>
         <section>
           <Card
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardImage={ cardImage }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
+            {
+              ...{
+                cardName,
+                cardDescription,
+                cardAttr1,
+                cardAttr2,
+                cardAttr3,
+                cardImage,
+                cardRare,
+                cardTrunfo,
+                deck,
+              }
+            }
           />
         </section>
+        { deck.map((card, index) => (
+          <section key={ index }>
+            <Card
+              { ...card }
+            />
+          </section>
+        ))}
       </div>
     );
   }
