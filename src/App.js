@@ -18,6 +18,7 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       savedCards: [],
       filterPerName: '',
+      filterPerRarity: 'todas',
     };
   }
 
@@ -119,12 +120,24 @@ class App extends React.Component {
     }));
   }
 
-  handleFilterPerName = () => {
-    const { savedCards, filterPerName } = this.state;
+  // handleFilterPerName = () => {
+  //   const { savedCards, filterPerName } = this.state;
+  //   return savedCards.filter((card) => {
+  //     if (filterPerName === '') return savedCards;
+  //     return card.cardName.includes(filterPerName);
+  //   });
+  // };
+
+  handleFilter = () => {
+    const { savedCards, filterPerName, filterPerRarity } = this.state;
     return savedCards.filter((card) => {
-      if (filterPerName === '') return savedCards;
-      return card.cardName.includes(filterPerName);
-    });
+      if (filterPerRarity === 'todas') return true;
+      return card.cardRare === filterPerRarity;
+    })
+      .filter((card) => {
+        if (filterPerName === '') return savedCards;
+        return card.cardName.includes(filterPerName);
+      });
   };
 
   render() {
@@ -142,7 +155,7 @@ class App extends React.Component {
       // savedCards,
     } = this.state;
 
-    const filteredPerName = this.handleFilterPerName();
+    const filteredCards = this.handleFilter();
     return (
       <>
         <Form
@@ -176,9 +189,19 @@ class App extends React.Component {
             name="filterPerName"
             data-testid="name-filter"
           />
+          <select
+            onChange={ this.onInputChange }
+            name="filterPerRarity"
+            data-testid="rare-filter"
+          >
+            <option>todas</option>
+            <option>normal</option>
+            <option>raro</option>
+            <option>muito raro</option>
+          </select>
         </div>
         {
-          filteredPerName.map((card) => (
+          filteredCards.map((card) => (
             <div key={ card.cardName }>
               <Card
                 cardName={ card.cardName }
