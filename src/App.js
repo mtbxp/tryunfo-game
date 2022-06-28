@@ -4,31 +4,61 @@ import './App.css';
 import Card from './components/Card';
 
 class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      nome: '',
+      describe: '',
+      cardImage: '',
+      firstAttribute: '',
+      secondAttribute: '',
+      thirdAttribute: '',
+    };
+  }
+
   render() {
+    const
+      {
+        nome,
+        describe,
+        cardImage,
+        firstAttribute,
+        secondAttribute,
+        thirdAttribute,
+      } = this.state;
+
+    const onChange = ({ target }) => {
+      const { name, value } = target;
+      this.setState(() => ({
+        [name]: value,
+      }));
+    };
+
     return (
       <div className="App">
         <h1>Tryunfo</h1>
         <Form
-          cardName=""
-          cardDescription=""
-          cardAttr1=""
-          cardAttr2=""
-          cardAttr3=""
-          cardImage=""
+          cardName={ nome }
+          cardDescription={ describe }
+          cardAttr1={ firstAttribute }
+          cardAttr2={ secondAttribute }
+          cardAttr3={ thirdAttribute }
+          cardImage={ cardImage }
           cardRare=""
           cardTrunfo={ false }
           hasTrunfo=""
           isSaveButtonDisabled={ false }
-          onInputChange={ () => {} }
+          onInputChange={ onChange }
           onSaveButtonClick={ () => {} }
         />
         <Card
-          cardName=""
-          cardDescription=""
-          cardAttr1=""
-          cardAttr2=""
-          cardAttr3=""
-          cardImage=""
+          cardName={ nome }
+          cardDescription={ describe }
+          cardAttr1={ firstAttribute }
+          cardAttr2={ secondAttribute }
+          cardAttr3={ thirdAttribute }
+          cardImage={ cardImage }
           cardRare=""
           cardTrunfo
         />

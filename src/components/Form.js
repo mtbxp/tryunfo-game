@@ -19,13 +19,6 @@ class Form extends Component {
         onSaveButtonClick,
       } = this.props;
 
-    // const onChange = ({ target }) => {
-    //   const { name, value } = target;
-    //   this.setState(() => ({
-    //     [name]: value,
-    //   }));
-    // };
-
     return (
       <div>
         <form>
@@ -72,7 +65,7 @@ class Form extends Component {
             testid="attr3-input"
           />
           <Input
-            name="card"
+            name="cardImage"
             type="text"
             value={ cardImage }
             label="Carta"
