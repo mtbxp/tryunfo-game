@@ -17,6 +17,7 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       savedCards: [],
+      filterPerName: '',
     };
   }
 
@@ -118,6 +119,14 @@ class App extends React.Component {
     }));
   }
 
+  handleFilterPerName = () => {
+    const { savedCards, filterPerName } = this.state;
+    return savedCards.filter((card) => {
+      if (filterPerName === '') return savedCards;
+      return card.cardName.includes(filterPerName);
+    });
+  };
+
   render() {
     const {
       cardName,
@@ -130,8 +139,10 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      savedCards,
+      // savedCards,
     } = this.state;
+
+    const filteredPerName = this.handleFilterPerName();
     return (
       <>
         <Form
@@ -158,8 +169,16 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <div>
+          <input
+            type="text"
+            onChange={ this.onInputChange }
+            name="filterPerName"
+            data-testid="name-filter"
+          />
+        </div>
         {
-          savedCards.map((card) => (
+          filteredPerName.map((card) => (
             <div key={ card.cardName }>
               <Card
                 cardName={ card.cardName }
