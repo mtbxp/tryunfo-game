@@ -73,6 +73,18 @@ class App extends React.Component {
     }), this.showButton);
   }
 
+  hasTrun = () => {
+    const { cards } = this.state;
+
+    const response = cards.find((card) => card.cardTrunfo === true);
+
+    console.log(response);
+
+    if (response !== undefined) {
+      this.setState({ hasTrunfo: true });
+    } else this.setState({ hasTrunfo: false });
+  }
+
   onSaveButtonClick = (event) => {
     event.preventDefault();
 
@@ -105,7 +117,7 @@ class App extends React.Component {
     }
 
     this.setState((previous) => ({
-      cards: [newCard, ...previous.cards],
+      cards: [...previous.cards, newCard],
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -114,7 +126,18 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-    }));
+    }), this.hasTrun);
+  }
+
+  removeCard = ({ target }) => {
+    const { cards } = this.state;
+    const { name } = target;
+
+    const newCards = cards.filter((card) => card.cardName !== name);
+
+    this.setState({
+      cards: newCards,
+    }, this.hasTrun);
   }
 
   render() {
@@ -162,11 +185,11 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </main>
-        <footer>
-          <ul>
-            {
-              cards.map((card) => (
-                <li key={ cardName }>
+        <ul>
+          {
+            cards.map((card, index) => (
+              <div key={ index }>
+                <li>
                   <Card
                     cardName={ card.cardName }
                     cardDescription={ card.cardDescription }
@@ -178,10 +201,18 @@ class App extends React.Component {
                     cardTrunfo={ card.cardTrunfo }
                   />
                 </li>
-              ))
-            }
-          </ul>
-        </footer>
+                <button
+                  type="button"
+                  data-testid="delete-button"
+                  name={ card.cardName }
+                  onClick={ this.removeCard }
+                >
+                  Excluir
+                </button>
+              </div>
+            ))
+          }
+        </ul>
       </>
     );
   }
