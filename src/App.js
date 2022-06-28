@@ -44,11 +44,6 @@ class App extends React.Component {
     && cardAttr2 <= maxIndiv
     && cardAttr3 <= maxIndiv;
 
-    // console.log(maxValue);
-    // console.log(minInput);
-    // console.log(validateValue);
-    // console.log(maxInput);
-
     if (validateValue && minInput && maxInput && maxValue) {
       return false;
     } return true;
@@ -89,7 +84,6 @@ class App extends React.Component {
     const validateTrunfo = cards.some(({ cardTrunfo }) => cardTrunfo === true);
     console.log(validateTrunfo);
 
-    // if (validateTrunfo === true) {
     return this.setState({
       cardName: '',
       cardDescription: '',
@@ -102,19 +96,6 @@ class App extends React.Component {
       hasTrunfo: validateTrunfo,
 
     });
-    // // }
-    // return this.setState({
-    //   cardName: '',
-    //   cardDescription: '',
-    //   cardAttr1: '0',
-    //   cardAttr2: '0',
-    //   cardAttr3: '0',
-    //   cardImage: '',
-    //   cardRare: 'normal',
-    //   cardTrunfo: false,
-    //   hasTrunfo: false,
-
-    // });
   }
 
   render() {
@@ -132,7 +113,7 @@ class App extends React.Component {
       cards,
 
     } = this.state;
-    // console.log(cardName);
+
     return (
       <div>
         <h1>Tryunfo</h1>
