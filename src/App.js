@@ -22,10 +22,10 @@ class App extends React.Component {
     };
   }
 
-  handleChange = (event) => {
-    const { id, value } = event.target;
+  handleChange = ({ target }) => {
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
-      [id]: value,
+      [target.id]: value,
     });
   };
 

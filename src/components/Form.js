@@ -88,7 +88,7 @@ class Form extends React.Component {
         <Input
           id="cardTrunfo"
           name="card-check"
-          value={ cardTrunfo }
+          checked={ cardTrunfo }
           onInputChange={ onInputChange }
           text="Super Trunfo"
           type="checkbox"
