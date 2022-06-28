@@ -14,6 +14,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       listOfCards: [],
     };
@@ -21,6 +22,7 @@ class App extends React.Component {
     this.handleSaveButton = this.handleSaveButton.bind(this);
     this.checkMinMax = this.checkMinMax.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.validateSuperTrunfoPresence = this.validateSuperTrunfoPresence.bind(this);
   }
 
   handleSave(event) {
@@ -49,7 +51,9 @@ class App extends React.Component {
 
     this.setState((prevState) => ({
       listOfCards: [newCard, ...prevState.listOfCards],
-    }), () => this.resetFormAfterSaving());
+    }), () => this.validateSuperTrunfoPresence());
+
+    this.resetFormAfterSaving();
   }
 
   handleChange({ target }) {
@@ -64,6 +68,14 @@ class App extends React.Component {
   handleSaveButton(stateOfButton) {
     this.setState({
       isSaveButtonDisabled: stateOfButton,
+    });
+  }
+
+  validateSuperTrunfoPresence() {
+    const { listOfCards } = this.state;
+    const anySuperTrunfo = listOfCards.some((element) => element.cardTrunfo);
+    this.setState({
+      hasTrunfo: anySuperTrunfo,
     });
   }
 
@@ -123,6 +135,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
     return (
@@ -136,6 +149,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.handleChange }
           onSaveButtonClick={ this.handleSave }

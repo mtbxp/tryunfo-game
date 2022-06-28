@@ -12,13 +12,28 @@ class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
     } = this.props;
+
+    const checkBoxElement = (
+      <label htmlFor="cardTrunfo">
+        Carta do tipo Super Trunfo?
+        <input
+          type="checkbox"
+          data-testid="trunfo-input"
+          name="cardTrunfo"
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
+        />
+      </label>
+    );
+
     return (
       <form>
+
         <label htmlFor="cardName">
           Nome
           <input
@@ -52,8 +67,8 @@ class Form extends Component {
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
-
         </label>
+
         <label htmlFor="cardAttr2">
           Atributo 2
           <input
@@ -67,6 +82,7 @@ class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
+
         <label htmlFor="cardAttr3">
           Atributo 3
           <input
@@ -80,6 +96,7 @@ class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
+
         <label htmlFor="cardImage">
           URL da Imagem
           <input
@@ -90,6 +107,7 @@ class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
+
         <label htmlFor="cardRare">
           Raridade
           <select
@@ -103,16 +121,12 @@ class Form extends Component {
             <option value="muito raro"> muito raro </option>
           </select>
         </label>
-        <label htmlFor="cardTrunfo">
-          Carta do tipo trunfo?
-          <input
-            type="checkbox"
-            data-testid="trunfo-input"
-            name="cardTrunfo"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-        </label>
+
+        {
+          hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p>
+            : checkBoxElement
+        }
+
         <button
           data-testid="save-button"
           type="submit"
@@ -136,7 +150,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
