@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Card extends Component {
-  // constructor() {
-  //   super();
-  //   this.Cartas = this.Cartas.bind(this);
-  // }
-
   render() {
     const {
       cardName,
@@ -32,7 +27,7 @@ class Card extends Component {
         <p data-testid="attr2-card" className="Atb2 Atributos">{ cardAttr2 }</p>
         <p data-testid="attr3-card" className="Atb3 Atributos">{ cardAttr3 }</p>
         <p data-testid="rare-card" className="Raridade">{ cardRare }</p>
-        { cardTrunfo === True ? (
+        { cardTrunfo === true ? (
           <p
             data-testid="trunfo-card"
             className="ST"
