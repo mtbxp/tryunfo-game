@@ -4,12 +4,12 @@ import Form from './components/Form';
 import Card from './components/Card';
 
 const INITIAL_STATE = {
-  cardName: 'opa',
-  cardDescription: 'bao',
+  cardName: '',
+  cardDescription: '',
   cardAttr1: 0,
   cardAttr2: 0,
   cardAttr3: 0,
-  cardImage: 'opa',
+  cardImage: '',
   cardRare: 'normal',
   cardTrunfo: false,
   hasTrunfo: false,
@@ -30,6 +30,15 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     });
+  }
+
+  validateHasTrunfo = () => {
+    const getCardTrunfo = arrOfCards.some((trunfo) => trunfo.cardTrunfo);
+    if (getCardTrunfo) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
   }
 
   validateSaveButton = () => {
@@ -55,13 +64,11 @@ class App extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState((prevState) => (
-      arrOfCards.push(prevState)
-    ));
+    arrOfCards.push(this.state);
     this.setState(
       INITIAL_STATE,
     );
-    arrOfCards.pop();
+    this.setState(() => ({}), this.validateHasTrunfo);
     console.log(arrOfCards);
   }
 

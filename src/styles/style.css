@@ -205,6 +205,7 @@ input, textarea, select {
 
 .main-content {
   display: flex;
+  height: 600px;
   justify-content: start;
 }
 
@@ -243,4 +244,12 @@ input, textarea, select {
   margin-bottom: 14px;
   margin-top: 6px;
   width: 90%;
+}
+
+.saved-cards {
+  font-size: large;
+  height: 40px;
+  margin: 10px;
+  text-align: center;
+  width: 95%;
 }
