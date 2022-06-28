@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import Card from "./components/Card";
-import Form from "./components/Form";
-import CardList from "./components/CardList";
+import React from 'react';
+import Card from './components/Card';
+import Form from './components/Form';
+import CardList from './components/CardList';
 
-export default class App extends Component {
+class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      cardName: "",
-      cardDescription: "",
-      cardAttr1: "0",
-      cardAttr2: "0",
-      cardAttr3: "0",
-      cardImage: "",
-      cardRare: "Normal",
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'Normal',
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
@@ -43,20 +43,18 @@ export default class App extends Component {
     const minAttr = 0;
     const maxSumAttr = 210;
 
-    const empty = cardName !== "" && cardDescription !== "" && cardImage !== "";
+    const empty = cardName !== '' && cardDescription !== '' && cardImage !== '';
 
-    const sumAttr =
-      Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= maxSumAttr;
+    const sumAttr = Number(cardAttr1)
+      + Number(cardAttr2) + Number(cardAttr3) <= maxSumAttr;
 
-    const maxValidationAttr =
-      Number(cardAttr1) <= maxAttr &&
-      Number(cardAttr2) <= maxAttr &&
-      Number(cardAttr3) <= maxAttr;
+    const maxValidationAttr = Number(cardAttr1) <= maxAttr
+      && Number(cardAttr2) <= maxAttr
+      && Number(cardAttr3) <= maxAttr;
 
-    const minValidationAttr =
-      Number(cardAttr1) >= minAttr &&
-      Number(cardAttr2) >= minAttr &&
-      Number(cardAttr3) >= minAttr;
+    const minValidationAttr = Number(cardAttr1) >= minAttr
+      && Number(cardAttr2) >= minAttr
+      && Number(cardAttr3) >= minAttr;
 
     if (empty && sumAttr && maxValidationAttr && minValidationAttr) {
       return false;
@@ -66,15 +64,14 @@ export default class App extends Component {
 
   onInputChange = ({ target }) => {
     const { name } = target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState(
       {
         [name]: value,
       },
-      () =>
-        this.setState({
-          isSaveButtonDisabled: this.validationButton(),
-        })
+      () => this.setState({
+        isSaveButtonDisabled: this.validationButton(),
+      }),
     );
   };
 
@@ -93,13 +90,13 @@ export default class App extends Component {
 
     this.setState(
       (prev) => ({
-        cardName: "",
-        cardDescription: "",
-        cardAttr1: "0",
-        cardAttr2: "0",
-        cardAttr3: "0",
-        cardImage: "",
-        cardRare: "Normal",
+        cardName: '',
+        cardDescription: '',
+        cardAttr1: '0',
+        cardAttr2: '0',
+        cardAttr3: '0',
+        cardImage: '',
+        cardRare: 'Normal',
         cardTrunfo: false,
         saveCards: [
           ...prev.saveCards,
@@ -115,7 +112,7 @@ export default class App extends Component {
           },
         ],
       }),
-      () => this.setState({ hasTrunfo: this.trunfoInCards() })
+      () => this.setState({ hasTrunfo: this.trunfoInCards() }),
     );
   };
 
@@ -124,7 +121,7 @@ export default class App extends Component {
       (prev) => ({
         saveCards: prev.saveCards.filter((card) => card.cardName !== cards),
       }),
-      () => this.setState({ hasTrunfo: this.trunfoInCards() })
+      () => this.setState({ hasTrunfo: this.trunfoInCards() }),
     );
   };
 
@@ -147,40 +144,40 @@ export default class App extends Component {
         <h1>Tryunfo</h1>
         <div>
           <Form
-            cardName={cardName}
-            cardDescription={cardDescription}
-            cardAttr1={cardAttr1}
-            cardAttr2={cardAttr2}
-            cardAttr3={cardAttr3}
-            cardImage={cardImage}
-            cardRare={cardRare}
-            cardTrunfo={cardTrunfo}
-            hasTrunfo={hasTrunfo}
-            isSaveButtonDisabled={isSaveButtonDisabled}
-            onInputChange={this.onInputChange}
-            onSaveButtonClick={this.onSaveButtonClick}
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
           />
         </div>
         <h2>Lista de cartas</h2>
         <div>
           <Card
-            cardName={cardName}
-            cardDescription={cardDescription}
-            cardAttr1={cardAttr1}
-            cardAttr2={cardAttr2}
-            cardAttr3={cardAttr3}
-            cardImage={cardImage}
-            cardRare={cardRare}
-            cardTrunfo={cardTrunfo}
-            deleteButtonClick={this.deleteButtonClick}
-            preview={false}
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            deleteButtonClick={ this.deleteButtonClick }
+            preview={ false }
           />
         </div>
         <h2>Todas as Cartas</h2>
         <div>
           <CardList
-            saveCards={saveCards}
-            deleteButtonClick={this.deleteButtonClick}
+            saveCards={ saveCards }
+            deleteButtonClick={ this.deleteButtonClick }
             preview
           />
         </div>
@@ -188,3 +185,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default App;
