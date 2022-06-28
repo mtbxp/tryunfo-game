@@ -25,7 +25,7 @@ class App extends React.Component {
     const { deck } = this.state;
 
     if (deck.length !== 0) {
-      return deck.filter(({ cardTrunfo }) => cardTrunfo);
+      return deck.some(({ cardTrunfo }) => cardTrunfo);
     }
     return false;
   }
