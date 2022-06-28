@@ -8,17 +8,48 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      listOfCards: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSaveButton = this.handleSaveButton.bind(this);
     this.checkMinMax = this.checkMinMax.bind(this);
+    this.handleSave = this.handleSave.bind(this);
+  }
+
+  handleSave(event) {
+    event.preventDefault();
+    const {
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+
+    const newCard = {
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+
+    this.setState((prevState) => ({
+      listOfCards: [newCard, ...prevState.listOfCards],
+    }), () => this.resetFormAfterSaving());
   }
 
   handleChange({ target }) {
@@ -33,6 +64,20 @@ class App extends React.Component {
   handleSaveButton(stateOfButton) {
     this.setState({
       isSaveButtonDisabled: stateOfButton,
+    });
+  }
+
+  resetFormAfterSaving() {
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      isSaveButtonDisabled: true,
     });
   }
 
@@ -93,6 +138,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.handleChange }
+          onSaveButtonClick={ this.handleSave }
         />
         <Card
           cardName={ cardName }
