@@ -31,12 +31,15 @@ export default class Card extends Component {
           data-testid="image-card"
         />
         <p data-testid="attr1-card" name="attr1-card">
-          {cardAttr1 }
+          Attribute 1:
+          { cardAttr1 }
         </p>
         <p data-testid="attr2-card" name="attr2-card">
+          Attribute 2:
           { cardAttr2 }
         </p>
         <p data-testid="attr3-card" name="attr3-card">
+          Atribute 3:
           { cardAttr3 }
         </p>
         <p data-testid="rare-card" name="rare-card">

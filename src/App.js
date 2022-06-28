@@ -7,6 +7,7 @@ class App extends React.Component {
     super();
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.validateButton = this.validateButton.bind(this);
 
     this.state = {
       cardName: '',
@@ -18,20 +19,42 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       // hasTrunfo: '',
+      isSaveButtonDisabled: true,
     };
   }
 
   onInputChange({ target }) {
     const { name } = target;
-    if (name === 'cardTrunfo') {
-      this.setState({
-        [target.value]: target.checked,
-      });
-    } else {
-      this.setState({
-        [name]: target.value,
-      });
-    }
+    const value = name === 'cardTrunfo' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    }, () => this.setState({
+      isSaveButtonDisabled: this.validateButton(),
+    }));
+  }
+
+  validateButton() {
+    const { cardName,
+      cardDescription,
+      cardImage, cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3 } = this.state;
+
+    const limitIndividualNumber = 90;
+    const limitTotalNumber = 210;
+
+    const arrayNumbs = [cardAttr1, cardAttr2, cardAttr3];
+    const arrayCaracteres = [cardName, cardDescription, cardImage, cardRare];
+
+    const notEmptys = arrayCaracteres.every((element) => element.length > 0);
+    const totalNumber = arrayNumbs
+      .every((element) => element > 0 && element <= limitIndividualNumber);
+    const totalSumNumbers = arrayNumbs
+      .reduce((acc, curr) => acc + curr, 0) <= limitTotalNumber;
+
+    return ![notEmptys, totalNumber, totalSumNumbers]
+      .every((element) => element === true);
   }
 
   render() {
@@ -44,6 +67,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      isSaveButtonDisabled,
       // hasTrunfo,
     } = this.state;
 
@@ -60,6 +84,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
         />
         <Card
           cardName={ cardName }
