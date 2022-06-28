@@ -12,6 +12,8 @@ class App extends React.Component {
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.salvaCards = this.salvaCards.bind(this);
     this.renderizaCards = this.renderizaCards.bind(this);
+    this.excluiCard = this.excluiCard.bind(this);
+    this.verificaTrunfo = this.verificaTrunfo.bind(this);
 
     this.state = {
       cardName: '',
@@ -110,6 +112,7 @@ class App extends React.Component {
 
   salvaCards() {
     const infCard = this.state;
+    const { cards } = this.state;
     const add = {
       cardName: infCard.cardName,
       cardDescription: infCard.cardDescription,
@@ -120,7 +123,25 @@ class App extends React.Component {
       cardRare: infCard.cardRare,
       cardTrunfo: infCard.cardTrunfo,
     };
-    infCard.cards.push(add);
+    this.setState({
+      cards: [...cards, add],
+    });
+  }
+
+  excluiCard(index) {
+    const { cards } = this.state;
+    this.verificaTrunfo(index);
+    this.setState(cards.splice(index, 1));
+  }
+
+  verificaTrunfo(index) {
+    const { cards } = this.state;
+    console.log(cards[index]);
+    if (cards[index].cardTrunfo === true) {
+      this.setState({
+        hasTrunfo: false,
+      });
+    }
   }
 
   renderizaCards() {
@@ -143,6 +164,13 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardTrunfo={ cardTrunfo }
           />
+          <button
+            data-testid="delete-button"
+            type="button"
+            onClick={ () => this.excluiCard(index) }
+          >
+            Excluir
+          </button>
         </div>
       );
     });
