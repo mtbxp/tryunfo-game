@@ -81,6 +81,11 @@ class App extends React.Component {
     }, this.clearForm());
   }
 
+  hasTrunfo = () => {
+    const { colection } = this.state;
+    return colection.some((card) => card.superTrunfo === true);
+  }
+
   render() {
     const {
       name,
@@ -104,7 +109,7 @@ class App extends React.Component {
           cardImage={ image }
           cardRare={ rare }
           cardTrunfo={ superTrunfo }
-          hasTrunfo={ false }
+          hasTrunfo={ this.hasTrunfo() }
           isSaveButtonDisabled={ this.isSaveButtonDisabled() }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
