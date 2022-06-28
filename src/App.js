@@ -13,22 +13,42 @@ class App extends React.Component {
       cardAttr2: 0,
       cardAttr3: 0,
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
-      // hasTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
+      listOfCards: [],
     };
 
     this.onInputChange = this.onInputChange.bind(this);
 
     this.buttonValidation = this.buttonValidation.bind(this);
+
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
   onInputChange({ target }) {
     const { name, type } = target;
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({ [name]: value }, this.buttonValidation);
-    // () =>
+  }
+
+  onSaveButtonClick(e) {
+    e.preventDefault();
+
+    const addCard = { ...this.state };
+
+    this.setState((prevState) => ({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+      hasTrunfo: false,
+      listOfCards: [...prevState.listOfCards, addCard],
+    }));
   }
 
   buttonValidation() {
@@ -43,22 +63,25 @@ class App extends React.Component {
 
     const twoHundredTen = 210;
     const treeTributte = 90;
-    const somTree = parseInt(cardAttr1, 10)
-                  + parseInt(cardAttr2, 10)
-                  + parseInt(cardAttr3, 10);
+    const somTree = Number(cardAttr1)
+                  + Number(cardAttr2)
+                  + Number(cardAttr3);
     const validationSom = () => {
       if (
         somTree <= twoHundredTen
-      && parseInt(cardAttr1, 10) <= treeTributte
-      && parseInt(cardAttr2, 10) <= treeTributte
-      && parseInt(cardAttr3, 10) <= treeTributte
-      && parseInt(cardAttr1, 10) >= 0
-      && parseInt(cardAttr2, 10) >= 0
-      && parseInt(cardAttr3, 10) >= 0
+      && Number(cardAttr1) <= treeTributte
+      && Number(cardAttr2) <= treeTributte
+      && Number(cardAttr3) <= treeTributte
+      && Number(cardAttr1) >= 0
+      && Number(cardAttr2) >= 0
+      && Number(cardAttr3) >= 0
       ) return true;
     };
+
     const valuesEmpty = [cardName, cardDescription, cardImage];
+
     const dontEmpty = valuesEmpty.every((e) => e !== '');
+
     if (validationSom() && dontEmpty) {
       this.setState({
         isSaveButtonDisabled: false,
@@ -80,6 +103,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      hasTrunfo,
     } = this.state;
 
     return (
@@ -97,10 +121,13 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          hasTrunfo={ hasTrunfo }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         ,
         <h2> Preview Card </h2>
         <Card
+          add={ this.addCard }
           cardName={ cardName }
           cardDescription={ cardDescription }
           cardAttr1={ cardAttr1 }

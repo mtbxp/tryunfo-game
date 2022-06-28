@@ -17,7 +17,7 @@ class Form extends React.Component {
       onInputChange,
       onSaveButtonClick } = this.props;
     return (
-      <form onSubmit={ this.negativeSubmit }>
+      <form onSubmit={ this.formSubmitSaveCard }>
         <fieldset>
           <label htmlFor="cardName">
             <span>Name</span>
