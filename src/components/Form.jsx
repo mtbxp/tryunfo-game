@@ -11,9 +11,10 @@ export default class Form extends Component {
     return (
       <form>
         <h1 className="title">Adicionar nova carta</h1>
-        <label htmlFor="name" className="label">
+        <label htmlFor="name" className="label-name">
           Nome:
           <input
+            className="input-name"
             type="text"
             data-testid="name-input"
             name="cardName"
