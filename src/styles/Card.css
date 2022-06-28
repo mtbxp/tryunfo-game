@@ -7,7 +7,7 @@
 .card-container {
   align-items: center;
   background-color: rgb(107, 106, 106);
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 10px;
   color: white;
   display: flex;
