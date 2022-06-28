@@ -9,6 +9,7 @@ class Card extends React.Component {
 
     return (
       <div className="CardPreview">
+        <h2>Pré-visualização</h2>
         <p data-testid="name-card">{ cardName }</p>
         <p data-testid="description-card">{ cardDescription }</p>
         <p data-testid="attr1-card">{ cardAttr1 }</p>

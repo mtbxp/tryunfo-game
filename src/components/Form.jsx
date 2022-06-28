@@ -10,7 +10,7 @@ class Form extends React.Component {
 
     return (
       <form className="form" onSubmit={ this.onSaveButtonClick }>
-
+        <h2>Adicionar uma nova carta</h2>
         <label htmlFor="cardName">
           Name:
           <input
