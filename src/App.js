@@ -16,6 +16,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       custonCards: [],
     };
@@ -67,6 +68,13 @@ class App extends React.Component {
     });
   }
 
+  hasTrunfo = () => {
+    const { custonCards } = this.state;
+    this.setState({
+      hasTrunfo: custonCards.some((element) => element.cardTrunfo === true),
+    });
+  }
+
   onSaveButtonClick = () => {
     const {
       cardName,
@@ -101,6 +109,8 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+    }, () => {
+      this.hasTrunfo();
     });
   }
 

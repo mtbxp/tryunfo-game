@@ -33,7 +33,7 @@ class Card extends React.Component {
         <p name="cardAttr2" data-testid="attr2-card">{cardAttr2}</p>
         <p name="cardAttr3" data-testid="attr3-card">{cardAttr3}</p>
         <p name="cardRare" data-testid="rare-card">{cardRare}</p>
-        <div>{this.isTrunfo(cardTrunfo)}</div>
+        {this.isTrunfo(cardTrunfo)}
       </div>
     );
   }
