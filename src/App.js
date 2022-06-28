@@ -28,14 +28,20 @@ class App extends React.Component {
   }
 
   handleValue({ target }) {
-    this.setState({
-      [target.name]: target.value,
-    }, () => this.handleSaveButton());
+    if (target.type === 'checkbox') {
+      this.setState({
+        [target.name]: target.checked,
+      });
+    } else {
+      this.setState({
+        [target.name]: target.value,
+      }, () => this.handleSaveButton());
+    }
   }
 
   handleHasTrue() {
     const { baralho } = this.state;
-    if (baralho.find((element) => element.cardTrunfo === true)) {
+    if (baralho.some((element) => element.cardTrunfo === true)) {
       this.setState({
         hasTrunfo: true,
       });

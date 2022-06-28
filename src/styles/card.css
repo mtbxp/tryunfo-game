@@ -1,23 +1,24 @@
 .cardFull {
-  border: solid black 2px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  margin-left: 10px;
   margin-top: 10px;
-  width: 500px;
+  width: 18rem;
 }
 
 .cardName {
-  border: solid gray 1px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
   text-align: center;
 }
 
 .descricao {
-  border: solid gray 1px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
   font-size: 15px;
   font-style: italic;
 }
 
 img {
-  padding-left: 80px;
-  padding-top: 10px;
-  width: 300px;
+  padding-left: 18px;
+  padding-top: 15px;
+  width: 15rem;
 }
 
