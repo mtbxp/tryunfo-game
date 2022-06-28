@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Card extends Component {
-  handleCardTrunfoProp = (cardTrunfo) => {
+  renderTrunfoMessage = (cardTrunfo) => {
     const trunfo = <span data-testid="trunfo-card">Super Trunfo</span>;
     return cardTrunfo === true ? trunfo : '';
   }
@@ -19,7 +19,7 @@ class Card extends Component {
         <p data-testid="attr2-card">{ cardAttr2 }</p>
         <p data-testid="attr3-card">{ cardAttr3 }</p>
         <span data-testid="rare-card">{ cardRare }</span>
-        <span>{ this.handleCardTrunfoProp(cardTrunfo) }</span>
+        <span>{ this.renderTrunfoMessage(cardTrunfo) }</span>
       </div>
     );
   }

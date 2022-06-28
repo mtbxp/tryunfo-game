@@ -16,7 +16,8 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
-      cardDeck: '',
+      /* cardDeck: '', */
+      hasTrunfo: false,
     };
   }
 
@@ -69,6 +70,12 @@ class App extends React.Component {
   }
 
   onSaveButtonClick = () => {
+    const { cardTrunfo } = this.state;
+    if (cardTrunfo.checked) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -77,9 +84,22 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: '',
-      cardTrunfo: true,
       isSaveButtonDisabled: true,
     });
+  }
+
+  renderTrunfoCheckbox = () => {
+    const { cardTrunfo, hasTrunfo } = this.state;
+    if (!hasTrunfo) { return cardTrunfo; }
+    if (hasTrunfo === true) {
+      return (
+        <span
+          data-testid="trunfo-card"
+        >
+          Você já tem um Super Trunfo em seu baralho
+        </span>
+      );
+    }
   }
 
   render() {
@@ -96,7 +116,7 @@ class App extends React.Component {
           cardAttr3={ cardAttr3 }
           cardImage={ cardImage }
           cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
+          cardTrunfo={ this.renderTrunfoCheckbox }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
