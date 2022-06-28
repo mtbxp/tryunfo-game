@@ -13,53 +13,66 @@ class Form extends React.Component {
           <input
             type="text"
             data-testid="name-input"
+            minLength="1"
             value={ cardName }
             onChange={ onInputChange }
-            name="card-name"
+            name="cardName"
             id="name"
+            required
           />
         </label>
         <label htmlFor="description">
           Card description:
           <textarea
             data-testid="description-input"
+            minLength="1"
             value={ cardDescription }
             onChange={ onInputChange }
             id="description"
-            name="description"
+            name="cardDescription"
+            required
           />
         </label>
         <label htmlFor="attr1">
           Strength:
           <input
             type="number"
+            min="0"
+            max="90"
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
             id="attr1"
-            name="attr1"
+            name="cardAttr1"
+            required
           />
         </label>
         <label htmlFor="attr2">
           Agility:
           <input
             type="number"
+            min="0"
+            max="90"
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
             id="attr2"
-            name="attr2"
+            name="cardAttr2"
+            required
           />
         </label>
         <label htmlFor="attr3">
           Intelligence:
           <input
             type="number"
+            min="0"
+            max="90"
             data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
             id="attr3"
-            name="attr3"
+            name="cardAttr3"
+            required
           />
         </label>
         <label htmlFor="img-text">
@@ -67,20 +80,24 @@ class Form extends React.Component {
           <input
             type="text"
             data-testid="image-input"
+            minLength="1"
             value={ cardImage }
             onChange={ onInputChange }
             id="img-text"
-            name="img-text"
+            name="cardImage"
+            required
           />
         </label>
         <label htmlFor="rarity">
           Card rarity:
           <select
             data-testid="rare-input"
+            minLength="1"
             value={ cardRare }
             onChange={ onInputChange }
             id="rarity"
-            name="rarity"
+            name="cardRare"
+            required
           >
             <option>normal</option>
             <option>raro</option>
@@ -95,7 +112,7 @@ class Form extends React.Component {
             checked={ cardTrunfo }
             onChange={ onInputChange }
             id="trunfo"
-            name="trunfo"
+            name="cardTrunfo"
           />
         </label>
         <button
@@ -103,6 +120,7 @@ class Form extends React.Component {
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
+          name="isSaveButtonDisabled"
           id="submit-btn"
         >
           Salvar
