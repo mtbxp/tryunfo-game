@@ -21,6 +21,7 @@ class App extends React.Component {
       cardList: [],
       nameSearch: '',
       rareSearch: 'todas',
+      trunfoSearch: false,
     };
   }
 
@@ -127,16 +128,20 @@ class App extends React.Component {
     }));
   }
 
-  handleSearch = (searchedName, searchedRare) => {
+  handleSearch = (searchedName, searchedRare, searchedIfTrunfo) => {
     const { cardList } = this.state;
+
+    const trunfoSearchCard = cardList.filter(({ cardTrunfo }) => cardTrunfo);
+    if (searchedIfTrunfo) return trunfoSearchCard;
+
     const nameSearchList = cardList.filter(({ cardName }) => (
       cardName.toLowerCase().includes(searchedName.toLowerCase())
     ));
+    if (searchedRare === 'todas') return nameSearchList;
+
     const rareSearchList = nameSearchList.filter(({ cardRare }) => (
       cardRare === searchedRare
     ));
-
-    if (searchedRare === 'todas') return nameSearchList;
     return rareSearchList;
   }
 
@@ -154,14 +159,31 @@ class App extends React.Component {
       cardList,
       nameSearch,
       rareSearch,
+      trunfoSearch,
     } = this.state;
 
     return (
       <>
         <Header />
-        <main>
-          <section className="add-new-card">
-            <Form
+        <section className="add-new-card">
+          <Form
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            remainingPoints={ remainingPoints }
+            onInputChange={ this.handleChange }
+            isSaveButtonDisabled={ !this.validateForm() }
+            onSaveButtonClick={ this.handleSubmit }
+            hasTrunfo={ this.checkHasTrunfo(cardList) }
+          />
+          <div className="card-preview">
+            <h3>Pré-Visualização</h3>
+            <Card
               cardName={ cardName }
               cardDescription={ cardDescription }
               cardAttr1={ cardAttr1 }
@@ -170,65 +192,48 @@ class App extends React.Component {
               cardImage={ cardImage }
               cardRare={ cardRare }
               cardTrunfo={ cardTrunfo }
-              remainingPoints={ remainingPoints }
-              onInputChange={ this.handleChange }
-              isSaveButtonDisabled={ !this.validateForm() }
-              onSaveButtonClick={ this.handleSubmit }
-              hasTrunfo={ this.checkHasTrunfo(cardList) }
             />
-            <div className="card-preview">
-              <h3>Pré-Visualização</h3>
-              <Card
-                cardName={ cardName }
-                cardDescription={ cardDescription }
-                cardAttr1={ cardAttr1 }
-                cardAttr2={ cardAttr2 }
-                cardAttr3={ cardAttr3 }
-                cardImage={ cardImage }
-                cardRare={ cardRare }
-                cardTrunfo={ cardTrunfo }
-              />
-            </div>
-          </section>
-          <section className="card-collection">
-            <aside className="card-search">
-              <h3>🔎 Busca de Cartas</h3>
-              <SearchForm
-                onSearchChange={ this.handleChange }
-                nameSearch={ nameSearch }
-                rareSearch={ rareSearch }
-              />
-            </aside>
-            <div className="cards-container">
-              <h2>Baralho Tryunfo Pilotos F1</h2>
-              {
-                this.handleSearch(nameSearch, rareSearch).map((card) => (
-                  <div className="card-container" key={ card.cardName }>
-                    <Card
-                      cardName={ card.cardName }
-                      cardDescription={ card.cardDescription }
-                      cardAttr1={ card.cardAttr1 }
-                      cardAttr2={ card.cardAttr2 }
-                      cardAttr3={ card.cardAttr3 }
-                      cardImage={ card.cardImage }
-                      cardRare={ card.cardRare }
-                      cardTrunfo={ card.cardTrunfo }
-                    />
-                    <button
-                      type="button"
-                      data-testid="delete-button"
-                      className="delete"
-                      id={ card.cardName }
-                      onClick={ this.handleDeleteCard }
-                    >
-                      Excluir
-                    </button>
-                  </div>
-                ))
-              }
-            </div>
-          </section>
-        </main>
+          </div>
+        </section>
+        <section className="card-collection">
+          <aside className="card-search">
+            <h3>🔎 Busca de Cartas</h3>
+            <SearchForm
+              onSearchChange={ this.handleChange }
+              nameSearch={ nameSearch }
+              rareSearch={ rareSearch }
+              trunfoSearch={ trunfoSearch }
+            />
+          </aside>
+          <div className="cards-container">
+            <h2>Baralho Tryunfo Pilotos F1</h2>
+            {
+              this.handleSearch(nameSearch, rareSearch, trunfoSearch).map((card) => (
+                <div className="card-container" key={ card.cardName }>
+                  <Card
+                    cardName={ card.cardName }
+                    cardDescription={ card.cardDescription }
+                    cardAttr1={ card.cardAttr1 }
+                    cardAttr2={ card.cardAttr2 }
+                    cardAttr3={ card.cardAttr3 }
+                    cardImage={ card.cardImage }
+                    cardRare={ card.cardRare }
+                    cardTrunfo={ card.cardTrunfo }
+                  />
+                  <button
+                    type="button"
+                    data-testid="delete-button"
+                    className="delete"
+                    id={ card.cardName }
+                    onClick={ this.handleDeleteCard }
+                  >
+                    Excluir
+                  </button>
+                </div>
+              ))
+            }
+          </div>
+        </section>
       </>
     );
   }
