@@ -19,6 +19,7 @@ class Form extends React.Component {
       <div>
         <form>
           <label htmlFor="nome">
+            Nome:
             <input
               name="cardName"
               type="text"
@@ -28,6 +29,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="descrição">
+            Descrição:
             <textarea
               name="cardDescription"
               data-testid="description-input"
@@ -36,6 +38,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="atribuição-um">
+            Atributo 1:
             <input
               name="cardAttr1"
               type="number"
@@ -45,6 +48,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="atribuição-dois">
+            Atributo 2:
             <input
               name="cardAttr2"
               type="number"
@@ -54,6 +58,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="atribuição-três">
+            Atribuição 3:
             <input
               name="cardAttr3"
               type="number"
@@ -63,6 +68,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="imagem">
+            Imagem:
             <input
               name="cardImage"
               type="text"
@@ -72,6 +78,7 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="raridade">
+            Raridade:
             <select
               name="cardRare"
               data-testid="rare-input"
@@ -84,6 +91,7 @@ class Form extends React.Component {
             </select>
           </label>
           <label htmlFor="inserir">
+            Super Trunfo:
             <input
               name="cardTrunfo"
               type="checkbox"
