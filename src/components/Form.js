@@ -129,7 +129,7 @@ class Form extends Component {
             className="checkbox"
             htmlFor="checkbox"
           >
-            <input 
+            <input
               data-testid="trunfo-input"
               type="checkbox"
               name="cardTrunfo"
