@@ -14,19 +14,45 @@ class App extends React.Component {
       attr3: '',
       rare: '',
       trunfo: '',
+      button: true,
     };
   }
 
-  handleChange = (event) => {
+  checkForm = () => {
+    const { name, description, image, attr1, attr2, attr3 } = this.state;
+    const maxSumValue = 210;
+    const maxValue = 90;
+    const sum = Number(attr1) + Number(attr2) + Number(attr3);
     this.setState({
-      [event.target.name]: event.target.value,
+      button: !(name !== ''
+      && description !== ''
+      && image !== ''
+      // && rare !== ''
+      && sum <= maxSumValue
+      && attr1 <= maxValue
+      && attr2 <= maxValue
+      && attr3 <= maxValue
+      && attr1 >= 0
+      && attr2 >= 0
+      && attr3 >= 0),
     });
+  }
+
+  // mentoria do Luanderson
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState(({
+      [name]: value,
+    }), () => this.checkForm());
   };
 
-  // mentoria do Luan topzera
-
   render() {
-    const { name, description, image, attr1, attr2, attr3, rare, trunfo } = this.state;
+    const { name,
+      description,
+      image, attr1,
+      attr2, attr3,
+      rare, trunfo,
+      button } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -40,6 +66,7 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
           onInputChange={ this.handleChange }
+          isSaveButtonDisabled={ button }
         />
         <Card
           cardName={ name }
