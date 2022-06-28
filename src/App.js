@@ -224,7 +224,8 @@ class App extends React.Component {
                 filterRare === 'todas' ? card.rarity.includes('')
                   : card.rarity === filterRare
               ))
-              .filter((card) => filterTrunfo && card.trunfo === true)
+              .filter((card) => (filterTrunfo ? card.trunfo === true
+                : card.trunfo === true || card.trunfo === false))
               .map((card) => (
                 <Card
                   key={ card.nameCard }
