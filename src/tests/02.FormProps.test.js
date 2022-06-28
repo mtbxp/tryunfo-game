@@ -1,7 +1,7 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import Form from '../components/Form';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import Form from "../components/Form";
 
 const defaultProps = {
   cardName: "Nome da carta",
@@ -14,9 +14,9 @@ const defaultProps = {
   cardTrunfo: true,
   hasTrunfo: false,
   isSaveButtonDisabled: false,
-  onInputChange: () => { },
-  onSaveButtonClick: () => { },
-}
+  onInputChange: () => {},
+  onSaveButtonClick: () => {},
+};
 
 describe("2 - Adicione as props necessárias ao componente de formulário", () => {
   it("Será validado se o campo de nome recebe o valor da prop `cardName` e se a callback `onInputChange` é chamada quando o campo sofre alguma alteração", () => {
