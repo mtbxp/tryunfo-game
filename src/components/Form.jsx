@@ -72,7 +72,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="image-input">
-          Imagem
+          Imagem:
           <input
             type="text"
             name="cardImage"
@@ -82,32 +82,34 @@ class Form extends Component {
             data-testid="image-input"
           />
         </label>
-        <select
-          name="cardRare"
-          type="select"
-          data-testid="rare-input"
-          value={ cardRare }
-          onChange={ onInputChange }
-        >
-          Raridade
-          <option value="normal">Normal</option>
-          <option value="raro">Raro</option>
-          <option value="muito raro">Muito Raro</option>
-        </select>
-        <label
-          htmlFor="trunfo-input"
-          className="check-container"
-        >
-          É o trunfo?
-          <input
-            type="checkbox"
-            name="cardTrunfo"
-            id="trunfo-input"
-            checked={ cardTrunfo }
+        <label htmlFor="rare-input">
+          Raridade:
+          <select
+            name="cardRare"
+            type="select"
+            data-testid="rare-input"
+            value={ cardRare }
             onChange={ onInputChange }
-            data-testid="trunfo-input"
-          />
+          >
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito Raro</option>
+          </select>
         </label>
+        { hasTrunfo ? 'Você já tem um Super Trunfo em seu baralho' : (
+          <label
+            htmlFor="trunfo-input"
+          >
+            É o trunfo?
+            <input
+              type="checkbox"
+              name="cardTrunfo"
+              id="trunfo-input"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+              data-testid="trunfo-input"
+            />
+          </label>)}
         <input
           type="button"
           value="Salvar"
