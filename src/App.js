@@ -25,7 +25,7 @@ class App extends React.Component {
     const { name } = target;
     const value = name === 'cardTrunfo' ? target.checked : target.value;
     this.setState({
-      [name]: target.value,
+      [name]: value,
     });
   }
 
