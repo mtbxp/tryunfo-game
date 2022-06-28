@@ -20,6 +20,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
     };
   }
@@ -45,17 +46,34 @@ class App extends React.Component {
   }
 
   onSaveButtonClick() {
-    this.setState({
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardImage: '',
-      cardRare: '',
-      cardTrunfo: false,
-      isSaveButtonDisabled: true,
-    });
+    const { cardTrunfo } = this.state;
+    if (cardTrunfo === true) {
+      this.setState({
+        cardName: '',
+        cardDescription: '',
+        cardAttr1: '0',
+        cardAttr2: '0',
+        cardAttr3: '0',
+        cardImage: '',
+        cardRare: '',
+        cardTrunfo: true,
+        hasTrunfo: true,
+        isSaveButtonDisabled: true,
+      });
+    } else {
+      this.setState({
+        cardName: '',
+        cardDescription: '',
+        cardAttr1: '0',
+        cardAttr2: '0',
+        cardAttr3: '0',
+        cardImage: '',
+        cardRare: '',
+        cardTrunfo: false,
+        hasTrunfo: false,
+        isSaveButtonDisabled: true,
+      });
+    }
   }
 
   atributosIndividuais({ cardAttr1, cardAttr2, cardAttr3 }) {
@@ -91,7 +109,7 @@ class App extends React.Component {
       cardAttr1, cardAttr2,
       cardAttr3, cardImage,
       cardRare, cardTrunfo,
-      isSaveButtonDisabled, onSaveButtonClick } = this.state;
+      isSaveButtonDisabled, hasTrunfo } = this.state;
 
     return (
       <div>
@@ -108,6 +126,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ cardName }
