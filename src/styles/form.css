@@ -47,3 +47,26 @@
   top: 0;
   width: 355px;
 }
+
+.label-description {
+  bottom: 0%;
+  color: #3d495c;
+  font-family: Verdana , Geneva , Tahoma , sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  left: 0%;
+  line-height: 150%;
+  position: absolute;
+  right: -79.59%;
+  top: 0%;
+}
+
+.input-textarea {
+  background: white;
+  bottom: 0%;
+  left: 0%;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+}
