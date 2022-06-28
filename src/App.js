@@ -100,9 +100,20 @@ class App extends React.Component {
     }, () => this.setState({
       isSaveButtonDisabled: this.validationForm(),
     }));
-  }
+  };
 
   render() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      // trunfoDeck,
+    } = this.state;
     return (
       <section>
         <h1>Tryunfo</h1>
