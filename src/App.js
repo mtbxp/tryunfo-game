@@ -16,6 +16,7 @@ class App extends React.Component {
       trunfo: false,
       isSaveButtonDisabled: true,
       cards: [],
+      hasTrunfo: false,
     };
   }
 
@@ -50,6 +51,7 @@ class App extends React.Component {
       attr3,
       image,
       rare,
+      trunfo,
     } = this.state;
     const card = {
       nome: name,
@@ -59,6 +61,7 @@ class App extends React.Component {
       atri1: attr1,
       atri2: attr2,
       atri3: attr3,
+      Super: trunfo,
     };
 
     this.setState((prevState) => ({
@@ -70,7 +73,13 @@ class App extends React.Component {
       attr3: '0',
       image: '',
       rare: 'normal',
-    }));
+    }), () => {
+      const { cards } = this.state;
+      const validate = cards.some((element) => element.Super === true);
+      this.setState(({
+        hasTrunfo: validate,
+      }));
+    });
   };
 
   render() {
@@ -84,6 +93,7 @@ class App extends React.Component {
       rare,
       trunfo,
       isSaveButtonDisabled,
+      hasTrunfo,
     } = this.state;
 
     return (
@@ -98,6 +108,7 @@ class App extends React.Component {
           cardImage={ image }
           cardRare={ rare }
           cardTrunfo={ trunfo }
+          hasTrunfo={ hasTrunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.SaveButton }
