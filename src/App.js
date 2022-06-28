@@ -87,10 +87,18 @@ class App extends React.Component {
     }));
   }
 
-  deleteElement({ target }) {
-    console.log(target.name);
+  deleteElement(event) {
+    const {
+      data,
+    } = this.state;
     const list = document.querySelector('.deck');
-    console.log(list);
+    list.removeChild(event.nativeEvent.path[1]);
+    if (data[event.target.name].isTrunfo === true) {
+      this.setState({
+        hasTrunfo: false,
+      });
+    }
+    data.splice(event.target.name, 1);
   }
 
   render() {
