@@ -1,4 +1,3 @@
-import { array } from 'prop-types';
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
@@ -76,10 +75,22 @@ class App extends React.Component {
 
   deleteButton = (arg) => {
     this.setState((prev) => ({
-      arrayCards: prev.arrayCards.forEach((i, index) => (i.cardName === arg ? array
-        .splice(index, 1) : null)),
-    }), () => {
-      this.setState({ hasTrunfo: this.validateTrunfo() });
+      arrayCards: prev.arrayCards.reduce((acc, cur) => {
+        if (cur.cardName !== arg) {
+          acc = [...acc, cur];
+        }
+        return acc;
+      }, []),
+    }),
+    () => {
+      // const { arrayCards } = this.state;
+      // arrayCards.forEach((i) => {
+      //   if (i.cardTrunfo !== '') {
+      this.setState({
+        hasTrunfo: false,
+      //     });
+      //   }
+      });
     });
   }
 
@@ -116,8 +127,7 @@ class App extends React.Component {
         />
 
         {arrayCards.map((i, index) => (
-          <div key={ i.cardName }>
-
+          <div key={ index }>
             <Card
               cardName={ i.cardName }
               cardDescription={ i.cardDescription }

@@ -22,6 +22,7 @@ class Form extends React.Component {
     return (
       <form>
         <label htmlFor="name-input">
+          cardName
           <input
             type="text"
             name="cardName"
@@ -31,6 +32,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="description-input">
+          cardDescription
           <input
             type="textarea"
             name="cardDescription"
@@ -40,6 +42,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="attr1-input">
+          cardAttr1
           <input
             type="number"
             name="cardAttr1"
@@ -49,6 +52,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="attr2-input">
+          cardAttr2
           <input
             type="number"
             name="cardAttr2"
@@ -58,6 +62,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="attr3-input">
+          cardAttr3
           <input
             type="number"
             name="cardAttr3"
@@ -67,6 +72,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="image-input">
+          cardImage
           <input
             type="text"
             name="cardImage"
@@ -76,6 +82,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="rare-input">
+          cardRare
           <select
             id="rare-input"
             name="cardRare"
@@ -91,6 +98,7 @@ class Form extends React.Component {
         </label>
         {!hasTrunfo ? (
           <label htmlFor="trunfo-input">
+            cardTrunfo
             <input
               type="checkbox"
               name="cardTrunfo"
