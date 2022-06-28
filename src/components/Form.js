@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
+  verificaValor = ({ target }) => {
+    const { value } = target;
+    console.log(value);
+  }
+
   render() {
     const { cardName,
       cardDescription,
@@ -24,13 +29,14 @@ class Form extends React.Component {
             data-testid="name-input"
             onChange={ onInputChange }
             value={ cardName }
+            required
           />
         </label>
         <label htmlFor="textarea">
           Descrição
           <input
             type="textarea"
-            name="cardDescription"
+            name="Description"
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
@@ -44,6 +50,8 @@ class Form extends React.Component {
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            min="0"
+            max="90"
           />
         </label>
         <label htmlFor="atribute2">
@@ -54,6 +62,8 @@ class Form extends React.Component {
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            min="0"
+            max="90"
           />
         </label>
         <label htmlFor="atribute3">
@@ -64,6 +74,8 @@ class Form extends React.Component {
             data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            min="0"
+            max="90"
           />
         </label>
         <label htmlFor="image">
@@ -79,11 +91,12 @@ class Form extends React.Component {
         <label htmlFor="raridade">
           Raridade
           <select
-            name="cardRare"
+            name="Rare"
             data-testid="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
           >
+            <option> </option>
             <option>normal</option>
             <option>raro</option>
             <option>muito raro</option>

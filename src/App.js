@@ -9,15 +9,18 @@ class App extends React.Component {
 
     this.state = {
       cardName: '',
-      cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      Description: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
-      cardRare: '',
+      Rare: '',
+      desable: true,
     };
 
     this.onChange = this.onChange.bind(this);
+    this.validaButton = this.validaButton.bind(this);
+    this.checaInputs = this.checaInputs.bind(this);
   }
 
   onChange({ target }) {
@@ -26,41 +29,82 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
-    });
+    }, () => { this.validaButton(); });
+  }
+
+  checaInputs() {
+    const { cardName,
+      Description,
+      cardImage,
+      Rare } = this.state;
+    if ((cardName !== '' && Description !== '') && (cardImage !== '' && Rare !== '')) {
+      this.setState({ desable: false });
+    } else {
+      this.setState({ desable: true });
+    }
+  }
+
+  checaAtributos() {
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    const art1 = parseInt(cardAttr1, 10);
+    const art2 = parseInt(cardAttr2, 10);
+    const art3 = parseInt(cardAttr3, 10);
+    const soma = art1 + art2 + art3;
+    const limite = 210;
+    const max = 90;
+    const min = 0;
+    if (cardAttr1 < min || cardAttr1 > max) {
+      this.setState({ desable: true });
+    }
+    if (cardAttr2 < min || cardAttr2 > max) {
+      this.setState({ desable: true });
+    }
+    if (cardAttr3 < min || cardAttr3 > max) {
+      this.setState({ desable: true });
+    }
+    if (soma > limite) {
+      this.setState({ desable: true });
+    }
+  }
+
+  validaButton() {
+    this.checaInputs();
+    this.checaAtributos();
   }
 
   render() {
     const { cardName,
-      cardDescription,
+      Description,
       cardAttr1,
       cardAttr2,
       cardAttr3,
       cardImage,
-      cardRare } = this.state;
+      Rare,
+      desable } = this.state;
     return (
       <main>
         <Form
           cardName={ cardName }
-          cardDescription={ cardDescription }
+          cardDescription={ Description }
           cardAttr1={ cardAttr1 }
           cardAttr2={ cardAttr2 }
           cardAttr3={ cardAttr3 }
           cardImage={ cardImage }
-          cardRare={ cardRare }
+          cardRare={ Rare }
           cardTrunfo
           hasTrunfo={ false }
-          isSaveButtonDisabled={ false }
+          isSaveButtonDisabled={ desable }
           onInputChange={ this.onChange }
           onSaveButtonClick={ () => { } }
         />
         <Card
           cardName={ cardName }
-          cardDescription={ cardDescription }
+          cardDescription={ Description }
           cardAttr1={ cardAttr1 }
           cardAttr2={ cardAttr2 }
           cardAttr3={ cardAttr3 }
           cardImage={ cardImage }
-          cardRare={ cardRare }
+          cardRare={ Rare }
           cardTrunfo
         />
       </main>
