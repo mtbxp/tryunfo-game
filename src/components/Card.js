@@ -14,12 +14,6 @@ class Card extends React.Component {
       cardTrunfo,
     } = this.props;
 
-    const showTrunf = () => {
-      if (cardTrunfo === true) {
-        return <p data-testid="trunfo-card">Super Trunfo</p>;
-      }
-    };
-
     return (
       <div className="card">
         <p data-testid="name-card">{ cardName }</p>
@@ -31,7 +25,7 @@ class Card extends React.Component {
           <p data-testid="attr3-card">{ cardAttr3 }</p>
         </div>
         <p data-testid="rare-card">{ cardRare }</p>
-        { showTrunf() }
+        {cardTrunfo && <div data-testid="trunfo-card"> Super Trunfo </div>}
       </div>
     );
   }
@@ -45,7 +39,7 @@ Card.propTypes = {
   cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
-  cardTrunfo: PropTypes.string.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
 };
 
 export default Card;
