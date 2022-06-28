@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 
 class Checked extends React.Component {
   render() {
-    const {
-      cardTrunfo,
-      onInputChange,
-    } = this.props;
+    const { cardTrunfo, onInputChange } = this.props;
 
     return (
       <label htmlFor="superTrunfo">

@@ -24,7 +24,7 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    }, console.log(this.state));
+    });
   }
 
   isSaveButtonDisabled = () => {
@@ -87,6 +87,15 @@ class App extends React.Component {
     return colection.some((card) => card.superTrunfo === true);
   }
 
+  removeCard = (event) => {
+    const nameCard = event.target.name;
+    const { colection } = this.state;
+    const newColection = colection.filter((card) => card.name !== nameCard);
+    this.setState({
+      colection: newColection,
+    });
+  }
+
   render() {
     const {
       name,
@@ -102,31 +111,33 @@ class App extends React.Component {
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardImage={ image }
-          cardRare={ rare }
-          cardTrunfo={ superTrunfo }
-          hasTrunfo={ this.hasTrunfo() }
-          isSaveButtonDisabled={ this.isSaveButtonDisabled() }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardImage={ image }
-          cardRare={ rare }
-          cardTrunfo={ superTrunfo }
-        />
-        <Colection colection={ colection } />
+        <div className="createCard">
+          <Form
+            cardName={ name }
+            cardDescription={ description }
+            cardAttr1={ attr1 }
+            cardAttr2={ attr2 }
+            cardAttr3={ attr3 }
+            cardImage={ image }
+            cardRare={ rare }
+            cardTrunfo={ superTrunfo }
+            hasTrunfo={ this.hasTrunfo() }
+            isSaveButtonDisabled={ this.isSaveButtonDisabled() }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <Card
+            cardName={ name }
+            cardDescription={ description }
+            cardAttr1={ attr1 }
+            cardAttr2={ attr2 }
+            cardAttr3={ attr3 }
+            cardImage={ image }
+            cardRare={ rare }
+            cardTrunfo={ superTrunfo }
+          />
+        </div>
+        <Colection colection={ colection } removeCard={ this.removeCard } />
       </div>
     );
   }

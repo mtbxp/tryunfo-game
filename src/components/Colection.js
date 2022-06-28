@@ -4,10 +4,10 @@ import Card from './Card';
 
 class Colection extends React.Component {
   render() {
-    const { colection } = this.props;
+    const { colection, removeCard } = this.props;
 
     return (
-      <div>
+      <div className="colection">
         { colection.map((card) => {
           const {
             name,
@@ -20,17 +20,26 @@ class Colection extends React.Component {
             superTrunfo,
           } = card;
           return (
-            <Card
-              key={ name }
-              cardName={ name }
-              cardDescription={ description }
-              cardAttr1={ attr1 }
-              cardAttr2={ attr2 }
-              cardAttr3={ attr3 }
-              cardImage={ image }
-              cardRare={ rare }
-              cardTrunfo={ superTrunfo }
-            />
+            <div key={ name }>
+              <Card
+                cardName={ name }
+                cardDescription={ description }
+                cardAttr1={ attr1 }
+                cardAttr2={ attr2 }
+                cardAttr3={ attr3 }
+                cardImage={ image }
+                cardRare={ rare }
+                cardTrunfo={ superTrunfo }
+              />
+              <button
+                name={ name }
+                type="button"
+                data-testid="delete-button"
+                onClick={ removeCard }
+              >
+                Excluir
+              </button>
+            </div>
           );
         }) }
       </div>
@@ -40,6 +49,7 @@ class Colection extends React.Component {
 
 Colection.propTypes = {
   colection: PropTypes.arrayOf(PropTypes.object).isRequired,
+  removeCard: PropTypes.func.isRequired,
 };
 
 export default Colection;
