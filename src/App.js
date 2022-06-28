@@ -105,7 +105,7 @@ class App extends React.Component {
       && cardRare);
   }
 
-  handleChange = ({ target }) => {
+  onInputChange = ({ target }) => {
     const { name } = target;
     const value = (target.type === 'checkbox') ? target.checked : target.value;
     this.setState({
@@ -133,7 +133,7 @@ class App extends React.Component {
         <div>
           <Form
             { ...this.state }
-            onInputChange={ this.handleChange }
+            onInputChange={ this.onInputChange }
             onSaveButtonClick={ this.onSaveButtonClick }
           />
         </div>
