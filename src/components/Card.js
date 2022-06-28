@@ -13,7 +13,6 @@ class Card extends Component {
       cardRare,
       cardTrunfo,
     } = this.props;
-
     return (
       <section data-testid="name-card">
         { cardName }
