@@ -16,8 +16,18 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      hasTrunfo: false,
       deck: [],
     };
+  }
+
+  validationTrunfo = () => {
+    const { deck } = this.state;
+
+    if (deck.length !== 0) {
+      return deck.some(({ cardTrunfo }) => cardTrunfo);
+    }
+    return false;
   }
 
   validationForm = () => {
@@ -84,6 +94,8 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: '',
+      cardTrunfo: false,
+      hasTrunfo: this.validationTrunfo(),
     }));
   };
 
@@ -109,6 +121,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      hasTrunfo,
     } = this.state;
     return (
       <div>
@@ -123,6 +136,7 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
             isSaveButtonDisabled={ isSaveButtonDisabled }
             onInputChange={ this.handleChange }
             onSaveButtonClick={ this.onSaveButtonClick }
