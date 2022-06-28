@@ -95,7 +95,6 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
-      onSaveButtonClick,
     } = this.state;
 
     return (
