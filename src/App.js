@@ -64,6 +64,12 @@ class App extends React.Component {
     return true;
   };
 
+  // listCardSaves = () => {
+  //   const { listCard } = this.state;
+  //   const newCard = listCard.map((card) => <Card key={ card.name } { ...card } />);
+  //   return newCard;
+  // }
+
   onSaveButtonClick = (event) => {
     event.preventDefault();
 
@@ -116,6 +122,7 @@ class App extends React.Component {
       check,
       isSaveButtonDisabled,
       hasTrunfo,
+      listCard,
     } = this.state;
 
     return (
@@ -146,6 +153,20 @@ class App extends React.Component {
             cardRare={ select }
             cardTrunfo={ check }
           />
+          <div className="listSavesCards">
+            {listCard.map((index) => (<Card
+              key={ index.name }
+              cardName={ index.name }
+              cardDescription={ index.describe }
+              cardAttr1={ index.attr1 }
+              cardAttr2={ index.attr2 }
+              cardAttr3={ index.attr3 }
+              cardImage={ index.image }
+              cardRare={ index.select }
+              cardTrunfo={ index.check }
+            />
+            ))}
+          </div>
         </div>
       </>
     );
