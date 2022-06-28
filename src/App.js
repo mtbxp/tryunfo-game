@@ -6,73 +6,23 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      cartas: {
-        cardName: '',
-        cardDescription: '',
-        cardAttr1: '',
-        cardAttr2: '',
-        cardAttr3: '',
-        cardImage: '',
-        cardRare: '',
-        cardTrunfo: false,
-        hasTrunfo: false,
-        isSaveButtonDisabled: false,
-      },
+      cards: [],
     };
   }
 
-  onInputChange = ({ target }) => {
-    const { name, type, value, checked } = target;
-    const valor = type === 'checkbox' ? checked : value;
-    this.setState({
-      [name]: valor,
-    });
-  }
-
-  onSaveButtonClick = (carta) => {
-    this.setState((cards) => ({
-      cartas: [...cards.cartas, carta],
+  addCards = (carta) => {
+    this.setState((cartas) => ({
+      cards: [...cartas.cards, carta],
     }));
   }
 
   render() {
-    const { cartas } = this.state;
-    const { cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo,
-      hasTrunfo,
-      isSaveButtonDisabled } = cartas;
+    const { cards } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
+        <Form addCards={ this.addCards } />
+        <Card cards={ cards } />
       </div>
     );
   }
