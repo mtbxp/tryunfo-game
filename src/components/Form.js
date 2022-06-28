@@ -12,7 +12,7 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -51,6 +51,8 @@ class Form extends React.Component {
             type="number"
             name="cardAttr1"
             id="attr1-input"
+            min={ 0 }
+            max={ 90 }
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
@@ -63,6 +65,8 @@ class Form extends React.Component {
             type="number"
             name="cardAttr2"
             id="attr2-input"
+            min={ 0 }
+            max={ 90 }
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
@@ -75,6 +79,8 @@ class Form extends React.Component {
             type="number"
             name="cardAttr3"
             id="attr3-input"
+            min={ 0 }
+            max={ 90 }
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
@@ -106,19 +112,23 @@ class Form extends React.Component {
             <option value="muito raro">Muito Raro</option>
           </select>
         </label>
-
-        <label htmlFor="trunfo-input">
-          <input
-            data-testid="trunfo-input"
-            type="checkbox"
-            name="cardTrunfo"
-            id="trunfo-input"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-          <p>Super Trunfo</p>
-        </label>
-
+        {
+          !hasTrunfo
+            ? (
+              <label htmlFor="trunfo-input">
+                <input
+                  data-testid="trunfo-input"
+                  type="checkbox"
+                  name="cardTrunfo"
+                  id="trunfo-input"
+                  checked={ cardTrunfo }
+                  onChange={ onInputChange }
+                />
+                <p>Super Trunfo</p>
+              </label>)
+            : (
+              <p>Você já tem um Super Trunfo em seu baralho</p>)
+        }
         <button
           data-testid="save-button"
           type="submit"
@@ -142,7 +152,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,

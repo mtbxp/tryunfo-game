@@ -3,13 +3,129 @@ import Card from './components/Card';
 import Form from './components/Form';
 
 class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false,
+      hasTrunfo: false,
+      isSaveButtonDisabled: true,
+      trunfoDeck: [],
+    };
+  }
+
+  trunfoDeckHasTrunfo = () => {
+    const { trunfoDeck } = this.state;
+    if (trunfoDeck.length !== 0) {
+      return trunfoDeck.some(({ cardTrunfo }) => cardTrunfo);
+    }
+    return false;
+  }
+
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+    this.setState(({ trunfoDeck: prevDeck }) => ({
+      trunfoDeck: [...prevDeck, {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
+      }],
+    }), () => this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false,
+      hasTrunfo: this.trunfoDeckHasTrunfo(),
+    }));
+  };
+
+  validationForm = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+    const maxSumAttribute = 211;
+    const maxAttribute = 90;
+    const minAttribute = 0;
+    if (cardAttr1 > maxAttribute || cardAttr1 < minAttribute
+      || cardAttr2 > maxAttribute || cardAttr2 < minAttribute
+      || cardAttr3 > maxAttribute || cardAttr3 < minAttribute) return true;
+    const sumAttribute = (Number(cardAttr1)
+      + Number(cardAttr2)
+      + Number(cardAttr3)) < maxSumAttribute;
+
+    return !(sumAttribute
+      && cardDescription
+      && cardName
+      && cardImage
+      && cardRare);
+  }
+
+  handleChange = ({ target }) => {
+    const { name } = target;
+    const value = (target.type === 'checkbox') ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    }, () => this.setState({
+      isSaveButtonDisabled: this.validationForm(),
+    }));
+  }
+
   render() {
     return (
-      <div>
+      <section>
         <h1>Tryunfo</h1>
-        <Form />
-        <Card />
-      </div>
+        <div>
+          <Form
+            { ...this.state }
+            onInputChange={ this.handleChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+        </div>
+        <div>
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+          />
+        </div>
+      </section>
     );
   }
 }
