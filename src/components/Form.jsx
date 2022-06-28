@@ -16,7 +16,7 @@ class Form extends React.Component {
     const { onInputChange } = this.props;
     const { onSaveButtonClick } = this.props;
     return (
-      <form className="form">
+      <form className="form" id="form">
         <h2>Adicionar nova carta:</h2>
         <label htmlFor="name">
           Nome:

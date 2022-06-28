@@ -14,9 +14,9 @@ class Card extends React.Component {
     if (cardTrunfo) {
       return (
         <div className="protoCard">
-          <h2 name="name" data-testid="name-card">{ cardName }</h2>
+          <p name="name" data-testid="name-card">{ cardName }</p>
           <img
-            className="cardIMG"
+            className="cardImg"
             name="image"
             src={ cardImage }
             alt={ cardName }
@@ -38,7 +38,7 @@ class Card extends React.Component {
             </label>
           </div>
           <p name="rare" data-testid="rare-card">{ cardRare }</p>
-          <h3 name="trunfo" data-testid="trunfo-card">Super Trunfo</h3>
+          <h4 name="trunfo" data-testid="trunfo-card">Super Trunfo</h4>
         </div>
       );
     }

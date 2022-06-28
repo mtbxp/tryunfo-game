@@ -8,15 +8,18 @@ class App extends React.Component {
     super();
     this.handler = this.handler.bind(this);
     this.enableButton = this.enableButton.bind(this);
+    this.saveCard = this.saveCard.bind(this);
+    this.clearForm = this.clearForm.bind(this);
     this.state = {
       name: '',
       description: '',
-      attr1: '',
-      attr2: '',
-      attr3: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
       image: '',
-      rare: '',
+      rare: 'normal',
       trunfo: false,
+      cards: [],
     };
   }
 
@@ -26,6 +29,35 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     });
+  }
+
+  clearForm = () => {
+    document.getElementById('form').reset();
+    this.setState({ attr1: '0', attr2: '0', attr3: '0' });
+  }
+
+  saveCard() {
+    this.clearForm();
+    // this.setState((prevState) => {
+    //   prevState.name.value = '';
+    //   prevState.description.value = '';
+    //   prevState.image.value = '';
+    //   prevState.attr1.value = '';
+    //   prevState.attr2.value = '';
+    //   prevState.attr3.value = '';
+    //   prevState.rare.value = 'normal';
+    //   prevState.trunfo.value = false;
+    //   prevState.cards.value.concat(<Card
+    //     cardName={ prevState.name }
+    //     cardDescription={ prevState.description }
+    //     cardImage={ prevState.image }
+    //     cardAttr1={ prevState.attr1 }
+    //     cardAttr2={ prevState.attr2 }
+    //     cardAttr3={ prevState.attr3 }
+    //     cardRare={ prevState.rare }
+    //     cardTrunfo={ prevState.trunfo }
+    //   />);
+    // });
   }
 
   enableButton() {
@@ -57,8 +89,18 @@ class App extends React.Component {
       <div>
         <h1>TRYUNFO</h1>
         <Form
+          name={ state.name }
+          description={ state.description }
+          image={ state.image }
+          rare={ state.rare }
+          trunfo={ state.trunfo }
+          cards={ state.cards }
+          cardAttr1={ state.attr1 }
+          cardAttr2={ state.attr2 }
+          cardAttr3={ state.attr3 }
           onInputChange={ this.handler }
           isSaveButtonDisabled={ this.enableButton() }
+          onSaveButtonClick={ this.saveCard }
         />
         <Card
           cardName={ state.name }

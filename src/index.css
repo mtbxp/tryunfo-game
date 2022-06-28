@@ -178,13 +178,7 @@ form {
   margin-top: 8%;
   margin-right: 10%;
   background-color: #a6f3d7;
-}
-
-.cardIMG {
-  max-width: 550px;
-  max-height: auto;
-  text-align: center;
-  margin: auto;
+  display: table-column;
 }
 
 .attr {
