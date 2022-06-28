@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import FormFilter from './components/FormFilter';
 
 class App extends React.Component {
   constructor() {
@@ -17,8 +18,10 @@ class App extends React.Component {
       trunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      filterName: '',
       onInputChange: this.handleChange,
       onSaveButtonClick: this.handleCard,
+      onNameSearch: this.handleFilterName,
     };
   }
 
@@ -133,6 +136,13 @@ class App extends React.Component {
     }
   }
 
+  handleFilterName = (event) => {
+    const { value } = event.target;
+    this.setState({
+      filterName: value,
+    });
+  }
+
   render() {
     const {
       nameCard,
@@ -146,8 +156,10 @@ class App extends React.Component {
       deck,
       hasTrunfo,
       isSaveButtonDisabled,
+      filterName,
       onInputChange,
       onSaveButtonClick,
+      onNameSearch,
     } = this.state;
 
     return (
@@ -178,23 +190,30 @@ class App extends React.Component {
           cardRare={ rarity }
           cardTrunfo={ trunfo }
         />
-        {
-          deck.map((card) => (
-            <Card
-              key={ card.nameCard }
-              cardName={ card.nameCard }
-              cardDescription={ card.descriptionCard }
-              cardAttr1={ card.attr1 }
-              cardAttr2={ card.attr2 }
-              cardAttr3={ card.attr3 }
-              cardImage={ card.imageCard }
-              cardRare={ card.rarity }
-              cardTrunfo={ card.trunfo }
-              cardList
-              handleDeleteButton={ this.handleDeleteButton }
-            />
-          ))
-        }
+        <section>
+          <FormFilter
+            onNameSearch={ onNameSearch }
+          />
+          {
+            deck
+              .filter((card) => card.nameCard.includes(filterName))
+              .map((card) => (
+                <Card
+                  key={ card.nameCard }
+                  cardName={ card.nameCard }
+                  cardDescription={ card.descriptionCard }
+                  cardAttr1={ card.attr1 }
+                  cardAttr2={ card.attr2 }
+                  cardAttr3={ card.attr3 }
+                  cardImage={ card.imageCard }
+                  cardRare={ card.rarity }
+                  cardTrunfo={ card.trunfo }
+                  cardList
+                  handleDeleteButton={ this.handleDeleteButton }
+                />
+              ))
+          }
+        </section>
       </>
     );
   }
