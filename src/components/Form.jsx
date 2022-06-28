@@ -68,7 +68,7 @@ class Form extends React.Component {
 
         <Input
           text="Imagem"
-          name="Imagem"
+          name="cardImage"
           type="text"
           value={ cardImage }
           dataTestId="image-input"
@@ -79,7 +79,7 @@ class Form extends React.Component {
           Raridade
           <select
             data-testid="rare-input"
-            name="rare"
+            name="cardRare"
             id="rare"
             value={ cardRare }
             onChange={ onInputChange }
@@ -116,9 +116,9 @@ class Form extends React.Component {
 Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.number.isRequired,
-  cardAttr2: PropTypes.number.isRequired,
-  cardAttr3: PropTypes.number.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,

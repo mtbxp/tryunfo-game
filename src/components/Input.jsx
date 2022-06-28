@@ -30,18 +30,17 @@ class Input extends React.Component {
 }
 
 Input.propTypes = {
-  name: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  dataTestId: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  checked: PropTypes.bool,
+  name: PropTypes.string,
+  text: PropTypes.string,
+  // type: PropTypes.string,
+  dataTestId: PropTypes.string,
+  onChange: PropTypes.func,
   value: PropTypes.string,
-};
+  checked: PropTypes.bool,
+}.isRequired;
 
-Input.defaultProps = {
-  value: '',
-  checked: false,
-};
+// Input.defaultProps = {
+//   checked: false,
+// };
 
 export default Input;

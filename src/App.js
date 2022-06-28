@@ -8,12 +8,13 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: true,
+      isSaveButtonDisabled: true,
     };
   }
 
@@ -22,7 +23,50 @@ class App extends React.Component {
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    });
+    }, () => this.validateButton());
+  }
+
+  validateButton = () => {
+    const { cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = this.state;
+
+    const stringInputs = () => [
+      cardName !== '',
+      cardDescription !== '',
+      cardImage !== '',
+      cardRare !== '']
+      .every((inputs) => inputs === true);
+
+    const maxAtt = 90;
+
+    const numbersInputs = () => [
+      (cardAttr1 <= maxAtt && cardAttr1 >= 0),
+      (cardAttr2 <= maxAtt && cardAttr2 >= 0),
+      (cardAttr3 <= maxAtt && cardAttr3 >= 0),
+    ].every((inputs) => inputs === true);
+
+    const allMaxSum = 210;
+
+    const sumAtt = () => [
+      (+cardAttr1)
+       + (+cardAttr2)
+        + (+cardAttr3)];
+
+    if (stringInputs() && numbersInputs() && sumAtt()[0] <= allMaxSum) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      (this.setState({
+        isSaveButtonDisabled: true,
+      }));
+    }
   }
 
   render() {
@@ -35,6 +79,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      isSaveButtonDisabled,
     } = this.state;
     return (
       <div>
@@ -48,6 +93,8 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
+          validateButton={ this.validateButton }
         />
         <Card
           cardName={ cardName }
