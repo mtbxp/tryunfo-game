@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Colection from './components/Colection';
 
 class App extends React.Component {
   constructor() {
@@ -96,6 +97,7 @@ class App extends React.Component {
       image,
       rare,
       superTrunfo,
+      colection,
     } = this.state;
     return (
       <div>
@@ -124,6 +126,7 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ superTrunfo }
         />
+        <Colection colection={ colection } />
       </div>
     );
   }
