@@ -16,17 +16,58 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       // hasTrunfo: false,
-      // isSaveButtonDisabled: true,
+      isSaveButtonDisabled: true,
     };
+
     this.onInputChange = this.onInputChange.bind(this);
+
+    this.buttonValidation = this.buttonValidation.bind(this);
   }
 
   onInputChange({ target }) {
     const { name, type } = target;
     const value = type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    });
+    this.setState({ [name]: value }, this.buttonValidation);
+    // () =>
+  }
+
+  buttonValidation() {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = this.state;
+
+    const twoHundredTen = 210;
+    const treeTributte = 90;
+    const somTree = parseInt(cardAttr1, 10)
+                  + parseInt(cardAttr2, 10)
+                  + parseInt(cardAttr3, 10);
+    const validationSom = () => {
+      if (
+        somTree <= twoHundredTen
+      && parseInt(cardAttr1, 10) <= treeTributte
+      && parseInt(cardAttr2, 10) <= treeTributte
+      && parseInt(cardAttr3, 10) <= treeTributte
+      && parseInt(cardAttr1, 10) >= 0
+      && parseInt(cardAttr2, 10) >= 0
+      && parseInt(cardAttr3, 10) >= 0
+      ) return true;
+    };
+    const valuesEmpty = [cardName, cardDescription, cardImage];
+    const dontEmpty = valuesEmpty.every((e) => e !== '');
+    if (validationSom() && dontEmpty) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
   }
 
   render() {
@@ -38,7 +79,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // isSaveButtonDisabled
+      isSaveButtonDisabled,
     } = this.state;
 
     return (
@@ -55,6 +96,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
         />
         ,
         <h2> Preview Card </h2>
