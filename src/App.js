@@ -102,6 +102,7 @@ class App extends React.Component {
       Rare: 'Normal',
       desable: true,
     });
+    console.log(infos);
   }
 
   render() {
