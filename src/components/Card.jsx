@@ -30,8 +30,7 @@ class Card extends Component {
           <h3 className="card-name">{ cardName }</h3>
           <img src={ cardImage } alt={ cardName } data-testid="image-card" />
           <p
-            id="description-card"
-            className="attributes"
+            className="attributes description-card"
             data-testid="description-card"
           >
             {cardDescription}

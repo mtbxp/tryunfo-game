@@ -1,7 +1,9 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import Form from './components/Form';
 import Card from './components/Card';
+import array from './arrayOfHeroes';
+
+// console.log(array);
 
 class App extends React.Component {
   constructor() {
@@ -20,13 +22,13 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
-      arrayOfCards: [],
+      arrayOfCards: array,
       // onInputChange: () => { },
       // onSaveButtonClick: () => { },
     };
   }
 
-  hasTrunfo = (array) => array.some((card) => card.cardTrunfo === true);
+  hasTrunfo = (arrayTrocarDps) => arrayTrocarDps.some((card) => card.cardTrunfo === true);
 
   onSaveButtonClick = (event) => {
     event.preventDefault();
@@ -60,8 +62,8 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       arrayOfCards: [...previous.arrayOfCards, newCard],
     }), () => {
-      const { arrayOfCards } = this.state;
-      console.log(arrayOfCards);
+      // const { arrayOfCards } = this.state;
+      // console.log(arrayOfCards);
     });
   }
 
@@ -123,12 +125,21 @@ class App extends React.Component {
     });
 
     if (!checkbox) {
-      console.log('entrou');
+      // console.log('entrou');
       this.setState({
         hasTrunfo: false,
       });
     }
   }
+
+  // isCardTrunfoTrue = () => {
+  //   const { cardTrunfo } = this.state;
+  //   console.log(cardTrunfo);
+  //   if (!cardTrunfo) {
+  //     return null;
+  //   }
+  //   return <p className="super-trunfo" data-testid="trunfo-card">Super Trunfo</p>;
+  // }
 
   render() {
     const {
@@ -139,71 +150,76 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
-        {/* <div className="cardSaved">
-          {arrayOfCards.map((card) => (<Card
-            key={ card.cardName }
-            cardName={ card.cardName }
-            cardDescription={ card.cardDescription }
-            cardAttr1={ card.cardAttr1 }
-            cardAttr2={ card.cardAttr2 }
-            cardAttr3={ card.cardAttr3 }
-            cardImage={ card.cardImage }
-            cardRare={ card.cardRare }
-            cardTrunfo={ card.cardTrunfo }
+        <div className="Form-Card">
+          <Form
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
           />
-          ))}
-          <button type="submit">Excluir</button>
-        </div> */}
-        {arrayOfCards.map((card) => (
-          <div name={ card.cardName } key={ card.cardName }>
-            <h3>{card.cardName}</h3>
-            <p>{card.cardDescription}</p>
-            <p>{card.cardAttr1}</p>
-            <p>{card.cardAttr2}</p>
-            <p>{card.cardAttr3}</p>
-            <img src={ cardImage } alt={ cardName } />
-            <p>{card.cardRare}</p>
-            <p>{card.cardTrunfo}</p>
-            <button
-              onClick={ this.removeCard }
-              data-testid="delete-button"
-              type="submit"
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+          />
+        </div>
+        <h1>Cartas do baralho</h1>
+        <div className="teste-flex-wrap">
+          {arrayOfCards.map((card) => (
+            <div
+              className="card-adicionado
+              card-name"
+              name={ card.cardName }
+              key={ card.cardName }
             >
-              Excluir
-            </button>
-          </div>
-        ))}
+              <h3>{card.cardName}</h3>
+              <img src={ card.cardImage } alt={ card.cardName } />
+              <p className="attributes description-card">{card.cardDescription}</p>
+              <div className="attributes">
+                Força .......................................
+                <p className="attributes inline">{card.cardAttr1}</p>
+              </div>
+
+              <div className="attributes">
+                Velocidade .............................
+                <p className="attributes inline">{card.cardAttr2}</p>
+              </div>
+
+              <div className="attributes">
+                Inteligencia ............................
+                <p className="attributes inline">{card.cardAttr3}</p>
+              </div>
+
+              <p className="attributes">{card.cardRare}</p>
+
+              {/* { this.isCardTrunfoTrue() } */}
+              <button
+                className="remove-card-button"
+                onClick={ this.removeCard }
+                data-testid="delete-button"
+                type="submit"
+              >
+                Excluir
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
 }
-
-// App.propTypes = {
-//   onInputChange: PropTypes.func.isRequired,
-// };
 
 export default App;
