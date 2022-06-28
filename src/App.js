@@ -18,14 +18,66 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
-      isSaveButtonDisabled: false,
     };
   }
 
+  // onInputChange = (event) => {
+  //   const target = event.target;
+  //   const name = target.name;
+  //   const type = target.type;
+  //   const checked = target.checked;
+  //   const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+  //   this.setState({ [event.target.name]: value });
+  // }
+
   onInputChange = ({ target }) => {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { name, type, checked } = target;
+    const value = type === 'checkbox' ? checked : target.value;
     this.setState({ [name]: value });
+  }
+
+  isSaveButtonDisabled = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = this.state;
+
+    const cardAttr1Number = Number(cardAttr1);
+    const cardAttr2Number = Number(cardAttr2);
+    const cardAttr3Number = Number(cardAttr3);
+
+    const maxPointsTotal = 210;
+    const maxPointsAtt = 90;
+
+    if (cardName === ''
+    || cardDescription === ''
+    || cardImage === ''
+    || cardRare === '') {
+      return true;
+    }
+
+    if ((cardAttr1Number + cardAttr2Number + cardAttr3Number) > maxPointsTotal) {
+      return true;
+    }
+
+    if (cardAttr1Number < 0
+      || cardAttr2Number < 0
+      || cardAttr3Number < 0) {
+      return true;
+    }
+
+    if (cardAttr1Number > maxPointsAtt
+      || cardAttr2Number > maxPointsAtt
+      || cardAttr3Number > maxPointsAtt) {
+      return true;
+    }
+
+    return false;
   }
 
   render() {
@@ -39,7 +91,6 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
-      isSaveButtonDisabled,
     } = this.state;
     return (
       <div>
@@ -54,7 +105,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
+          isSaveButtonDisabled={ this.isSaveButtonDisabled() }
           onInputChange={ this.onInputChange }
         />
         <Card
