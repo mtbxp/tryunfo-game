@@ -1,5 +1,5 @@
 import React from 'react';
-
+// iniciado
 class App extends React.Component {
   render() {
     return (
