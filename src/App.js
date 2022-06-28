@@ -83,13 +83,8 @@ class App extends React.Component {
       }, []),
     }),
     () => {
-      // const { arrayCards } = this.state;
-      // arrayCards.forEach((i) => {
-      //   if (i.cardTrunfo !== '') {
       this.setState({
         hasTrunfo: false,
-      //     });
-      //   }
       });
     });
   }
