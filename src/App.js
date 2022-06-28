@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Div from './components/Div';
 import array from './arrayOfHeroes';
 
 // console.log(array);
@@ -23,6 +24,9 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       arrayOfCards: array,
+      // isFiltering: false,
+      // arrayOfCards: [],
+      filteredArrayOfCards: [],
       // onInputChange: () => { },
       // onSaveButtonClick: () => { },
     };
@@ -117,36 +121,61 @@ class App extends React.Component {
   removeCard = ({ target }) => {
     const name = target.parentElement.getAttribute('name');
     const { arrayOfCards } = this.state;
+
     const newArrayOfCards = arrayOfCards.filter((card) => card.cardName !== name);
 
-    const checkbox = newArrayOfCards.some((card) => card.cardTrunfo);
     this.setState({
       arrayOfCards: newArrayOfCards,
     });
 
+    const checkbox = newArrayOfCards.some((card) => card.cardTrunfo);
+
     if (!checkbox) {
-      // console.log('entrou');
+      console.log('entrou');
       this.setState({
         hasTrunfo: false,
       });
     }
   }
 
-  // isCardTrunfoTrue = () => {
-  //   const { cardTrunfo } = this.state;
-  //   console.log(cardTrunfo);
-  //   if (!cardTrunfo) {
-  //     return null;
-  //   }
-  //   return <p className="super-trunfo" data-testid="trunfo-card">Super Trunfo</p>;
-  // }
+  isCardTrunfoTrue = () => {
+    const { cardTrunfo } = this.state;
+    console.log(cardTrunfo);
+    if (!cardTrunfo) {
+      return null;
+    }
+    return <p className="super-trunfo" data-testid="trunfo-card">Super Trunfo</p>;
+  }
+
+  filterCards = ({ target }) => {
+    const { value } = target;
+    const { arrayOfCards } = this.state;
+
+    // if value // bota no state que ta fitrando
+    // else // bota false no isFiltering
+
+    const newArr = arrayOfCards.filter((card) => card.cardName === value);
+    // console.log(arrayOfCards);
+    // console.log(newArr);
+
+    if (value) {
+      this.setState({
+        // isFiltering: true,
+        filteredArrayOfCards: newArr,
+      });
+    }
+
+    // this.setState({
+    //   isFiltering: true,
+    //   filteredArrayOfCards: newArr,
+    // }, () => {});
+  }
 
   render() {
     const {
-      cardName, cardDescription, cardAttr1,
-      cardAttr2, cardAttr3, cardImage, cardRare,
-      cardTrunfo, hasTrunfo, isSaveButtonDisabled, arrayOfCards,
-    } = this.state;
+      cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare,
+      cardTrunfo, hasTrunfo, isSaveButtonDisabled,
+      arrayOfCards, filteredArrayOfCards } = this.state;
 
     return (
       <div className="App">
@@ -176,47 +205,26 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </div>
-        <h1>Cartas do baralho</h1>
-        <div className="teste-flex-wrap">
-          {arrayOfCards.map((card) => (
-            <div
-              className="card-adicionado
-              card-name"
-              name={ card.cardName }
-              key={ card.cardName }
-            >
-              <h3>{card.cardName}</h3>
-              <img src={ card.cardImage } alt={ card.cardName } />
-              <p className="attributes description-card">{card.cardDescription}</p>
-              <div className="attributes">
-                Força .......................................
-                <p className="attributes inline">{card.cardAttr1}</p>
-              </div>
-
-              <div className="attributes">
-                Velocidade .............................
-                <p className="attributes inline">{card.cardAttr2}</p>
-              </div>
-
-              <div className="attributes">
-                Inteligencia ............................
-                <p className="attributes inline">{card.cardAttr3}</p>
-              </div>
-
-              <p className="attributes">{card.cardRare}</p>
-
-              {/* { this.isCardTrunfoTrue() } */}
-              <button
-                className="remove-card-button"
-                onClick={ this.removeCard }
-                data-testid="delete-button"
-                type="submit"
-              >
-                Excluir
-              </button>
-            </div>
-          ))}
-        </div>
+        {/* <h1>Cartas</h1> */}
+        <input
+          data-testid="name-filter"
+          onChange={ this.filterCards }
+          placeholder="Filtre pelo nome"
+        />
+        <Div
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          arrayOfCards={
+            filteredArrayOfCards.length > 0 ? filteredArrayOfCards : arrayOfCards
+          }
+          removeCard={ this.removeCard }
+        />
       </div>
     );
   }
