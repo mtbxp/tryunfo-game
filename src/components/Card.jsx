@@ -11,10 +11,19 @@ class Card extends Component {
         <h3 data-testid="name-card">{ cardName }</h3>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         <p data-testid="description-card">{ cardDescription }</p>
-        <span data-testid="attr1-card">{ cardAttr1 }</span>
-        <span data-testid="attr2-card">{ cardAttr2 }</span>
-        <span data-testid="attr3-card">{ cardAttr3 }</span>
-        <span data-testid="rare-card">{ cardRare }</span>
+        <h6 data-testid="attr1-card">
+          Att1:
+          { cardAttr1 }
+        </h6>
+        <h4 data-testid="attr2-card">
+          Att1:
+          { cardAttr2 }
+        </h4>
+        <h4 data-testid="attr3-card">
+          Att1:
+          { cardAttr3 }
+        </h4>
+        <h4 data-testid="rare-card">{ cardRare }</h4>
         { cardTrunfo ? <h2 data-testid="trunfo-card">Super Trunfo</h2> : ''}
       </div>
     );

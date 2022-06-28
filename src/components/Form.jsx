@@ -8,7 +8,7 @@ class Form extends Component {
       cardTrunfo, hasTrunfo, isSaveButtonDisabled,
       onInputChange, onSaveButtonClick } = this.props;
     return (
-      <div>
+      <form>
         <label htmlFor="name-input">
           Nome
           <input
@@ -38,7 +38,7 @@ class Form extends Component {
             type="number"
             name="cardAttr1"
             id="attr1-input"
-            max={ 5 }
+            max={ 90 }
             min={ 1 }
             value={ cardAttr1 }
             onChange={ onInputChange }
@@ -51,7 +51,7 @@ class Form extends Component {
             type="number"
             name="cardAttr2"
             id="attr2-input"
-            max={ 5 }
+            max={ 90 }
             min={ 1 }
             value={ cardAttr2 }
             onChange={ onInputChange }
@@ -64,7 +64,7 @@ class Form extends Component {
             type="number"
             name="cardAttr3"
             id="attr3-input"
-            max={ 5 }
+            max={ 90 }
             min={ 1 }
             value={ cardAttr3 }
             onChange={ onInputChange }
@@ -115,7 +115,7 @@ class Form extends Component {
           onClick={ onSaveButtonClick }
           data-testid="save-button"
         />
-      </div>
+      </form>
     );
   }
 }
