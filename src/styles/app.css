@@ -1,0 +1,7 @@
+.card-inputs {
+  align-items: center;
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  padding: 50px;
+}
