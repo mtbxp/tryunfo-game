@@ -1,6 +1,6 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import Card from '../components/Card';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import Card from "../components/Card";
 
 const defaultProps = {
   cardName: "Nome da carta",
@@ -11,7 +11,7 @@ const defaultProps = {
   cardImage: "url-to-image",
   cardRare: "raro",
   cardTrunfo: true,
-}
+};
 
 describe("3 - Crie e renderize o componente Card com as props necessárias", () => {
   it("Será validado se o componente `data-testid=name-card` é exibido e possui o valor da prop `cardName`", () => {
@@ -72,7 +72,7 @@ describe("3 - Crie e renderize o componente Card com as props necessárias", () 
   });
 
   it("Será validado se o componente `data-testid=trunfo-card` não é exibido quando a prop `cardTrunfo` tiver o valor `false`", () => {
-    render(<Card {...defaultProps} cardTrunfo={false}/>);
+    render(<Card {...defaultProps} cardTrunfo={false} />);
     const text = screen.queryByTestId(/trunfo-card/i);
     expect(text).not.toBeInTheDocument();
   });
