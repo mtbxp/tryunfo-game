@@ -220,10 +220,8 @@ class App extends React.Component {
           {
             deck
               .filter((card) => card.nameCard.includes(filterName))
-              .filter((card) => (
-                filterRare === 'todas' ? card.rarity.includes('')
-                  : card.rarity === filterRare
-              ))
+              .filter((card) => (filterRare === 'todas' ? card.rarity.includes('')
+                : card.rarity === filterRare))
               .filter((card) => (filterTrunfo ? card.trunfo === true
                 : card.trunfo === true || card.trunfo === false))
               .map((card) => (
