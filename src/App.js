@@ -16,6 +16,7 @@ class App extends React.Component {
       thirdAttribute: '',
       rarity: '',
       saveButtonDisabled: true,
+      superTrunfo: false,
     };
   }
 
@@ -59,7 +60,8 @@ handleSelection = () => {
 };
 
 onChange = ({ target }) => {
-  const { name, value } = target;
+  const { name } = target;
+  const value = target.type === 'checkbox' ? target.checked : target.value;
   this.setState({
     [name]: value,
   }, () => this.handleSelection());
@@ -76,6 +78,7 @@ render() {
       thirdAttribute,
       rarity,
       saveButtonDisabled,
+      superTrunfo,
     } = this.state;
 
   return (
@@ -89,7 +92,7 @@ render() {
         cardAttr3={ thirdAttribute }
         cardImage={ cardImage }
         cardRare={ rarity }
-        cardTrunfo={ false }
+        cardTrunfo={ superTrunfo }
         hasTrunfo={ false }
         isSaveButtonDisabled={ saveButtonDisabled }
         handleSelection={ this.handleSelection }
@@ -104,7 +107,7 @@ render() {
         cardAttr3={ thirdAttribute }
         cardImage={ cardImage }
         cardRare={ rarity }
-        cardTrunfo={ false }
+        cardTrunfo={ superTrunfo }
       />
     </div>
   );
