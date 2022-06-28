@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes, { func } from 'prop-types';
 import React, { Component } from 'react';
 import Card from './Card';
 
@@ -99,18 +99,20 @@ export default class CardList extends Component {
 }
 
 CardList.propTypes = {
-  saveCards: PropTypes.arrayOf(
-    PropTypes.shape({
-      cardName: PropTypes.string,
-      cardDescription: PropTypes.string,
-      cardAttr1: PropTypes.string,
-      cardAttr2: PropTypes.string,
-      cardAttr3: PropTypes.string,
-      cardImage: PropTypes.string,
-      cardRare: PropTypes.string,
-      cardTrunfo: PropTypes.bool,
-    }),
-  ).isRequired,
-  deleteButtonClick: PropTypes.func.isRequired,
+  saveCards: PropTypes.arrayOf(PropTypes.shape({
+    cardName: PropTypes.string,
+    cardDescription: PropTypes.string,
+    cardAttr1: PropTypes.string,
+    cardAttr2: PropTypes.string,
+    cardAttr3: PropTypes.string,
+    cardImage: PropTypes.string,
+    cardRare: PropTypes.string,
+    cardTrunfo: PropTypes.bool,
+  })).isRequired,
+  deleteButtonClick: PropTypes.func,
   preview: PropTypes.bool.isRequired,
+};
+
+CardList.defaultProps = {
+  deleteButtonClick: func,
 };
