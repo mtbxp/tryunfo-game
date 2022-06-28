@@ -91,6 +91,12 @@ onSaveButtonClick = () => {
   });
 }
 
+deleteCard = (nameOfCard) => {
+  this.setState((i) => ({
+    cards: i.cards.filter((del) => del.name !== nameOfCard),
+  }), () => this.setState({ hasTrunfo: this.hasTrunfo() }));
+}
+
 render() {
   const {
     name,
@@ -143,8 +149,15 @@ render() {
               cardAttr3={ el.atribute3 }
               cardImage={ el.image }
               cardRare={ el.rare }
-              cardTrunfo={ trunfo }
+              cardTrunfo={ el.trunfo }
             />
+            <button
+              type="button"
+              data-testid="delete-button"
+              onClick={ () => this.deleteCard(el.name) }
+            >
+              Excluir
+            </button>
           </div>
         ))}
       </div>
