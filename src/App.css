@@ -1,0 +1,4 @@
+.deckOfCards {
+  display: flex;
+  flex-direction: row;
+}

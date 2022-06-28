@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -137,6 +138,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      listOfCards,
     } = this.state;
     return (
       <>
@@ -165,6 +167,23 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.handleChange }
         />
+        <h1>
+          CARTAS DO BARALHO
+          {
+            listOfCards.map((card) => (<Card
+              className="deckOfCards"
+              key={ card.cardName }
+              cardName={ card.cardName }
+              cardDescription={ card.cardDescription }
+              cardAttr1={ card.cardAttr1 }
+              cardAttr2={ card.cardAttr2 }
+              cardAttr3={ card.cardAttr3 }
+              cardImage={ card.cardImage }
+              cardRare={ card.cardRare }
+              cardTrunfo={ card.cardTrunfo }
+            />))
+          }
+        </h1>
       </>
     );
   }
