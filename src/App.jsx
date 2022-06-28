@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react';
-import Card from './components/Card';
 import Form from './components/Form';
+import Card from './components/Card';
 
 class App extends React.Component {
   constructor() {
@@ -10,9 +10,9 @@ class App extends React.Component {
       name: '',
       description: '',
       image: '',
-      attr1: '',
-      attr2: '',
-      attr3: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
       rare: 'normal',
       trunfo: false,
       hasTrunfo: false,
@@ -125,5 +125,4 @@ class App extends React.Component {
     );
   }
 }
-
 export default App;
