@@ -11,7 +11,7 @@ const initialState = {
   image: '',
   rare: 'normal',
   trunfo: false,
-  hasTrunfo: true,
+  hasTrunfo: false,
   buttonDisabled: true,
   cards: [],
 };
@@ -113,7 +113,7 @@ class App extends React.Component {
       image: '',
       rare: 'normal',
       trunfo: false,
-      hasTrunfo: this.checkeTryunfo(),
+      hasTrunfo: !this.checkeTryunfo(),
     });
   }
 
@@ -129,6 +129,7 @@ class App extends React.Component {
       trunfo,
       hasTrunfo,
       buttonDisabled,
+      cards,
     } = this.state;
 
     return (
@@ -159,6 +160,19 @@ class App extends React.Component {
             cardRare={ rare }
             cardTrunfo={ trunfo }
           />
+          { cards.map((e) => (
+            <Card
+              key={ e.name }
+              cardName={ e.name }
+              cardDescription={ e.description }
+              cardAttr1={ e.attack }
+              cardAttr2={ e.defence }
+              cardAttr3={ e.speed }
+              cardImage={ e.image }
+              cardRare={ e.rare }
+              cardTrunfo={ e.trunfo }
+            />
+          ))}
         </div>
       </main>
     );

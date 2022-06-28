@@ -18,6 +18,20 @@ class Form extends React.Component {
       onSaveButtonClick,
     } = this.props;
 
+    const has = () => {
+      if (hasTrunfo === false) {
+        return (
+          <input
+            type="checkbox"
+            name="trunfo"
+            value={ cardTrunfo }
+            data-testid="trunfo-input"
+            checked={ cardTrunfo }
+            onChange={ onInputChange }
+          />);
+      } return <p value={ cardTrunfo }>Você já tem um Super Trunfo em seu baralho</p>;
+    };
+
     return (
       <form>
         <label htmlFor="name">
@@ -99,21 +113,9 @@ class Form extends React.Component {
             </option>
           </select>
         </label>
-        <div>
-          {
-            (hasTrunfo) ? (
-              <label htmlFor="superTrunfo">
-                Super Trunfo
-                <input
-                  type="checkbox"
-                  name="trunfo"
-                  data-testid="trunfo-input"
-                  checked={ cardTrunfo }
-                  onChange={ onInputChange }
-                />
-              </label>) : <p>Você já tem um Super Trunfo em seu baralho</p>
-          }
-        </div>
+        <label htmlFor="superTrunfo">
+          { has() }
+        </label>
         <button
           data-testid="save-button"
           type="submit"
