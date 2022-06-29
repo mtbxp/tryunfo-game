@@ -8,7 +8,7 @@ class App extends React.Component {
       <div>
         <h1>Tryunfo</h1>
         <Form />
-        <Card cardName={ cardName } />
+        <Card />
       </div>
     );
   }
