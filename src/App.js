@@ -15,6 +15,7 @@ class App extends React.Component {
       rare: '',
       superTrunfo: false,
       isSaveButtonDisabled: true,
+      cardList: [],
     };
   }
 
@@ -46,6 +47,32 @@ class App extends React.Component {
       [name]: valueState,
     }, () => this.setState({
       isSaveButtonDisabled: this.validateButton(),
+    }));
+  }
+
+  onSaveButtonClick = () => {
+    const { card, description, valueCard1, valueCard2, valueCard3, urlImage,
+      rare, superTrunfo } = this.state;
+    this.setState((prev) => ({
+      card: '',
+      description: '',
+      valueCard1: '0',
+      valueCard2: '0',
+      valueCard3: '0',
+      urlImage: '',
+      rare: '',
+      superTrunfo: false,
+      cardList: [
+        ...prev.cardList,
+        { card,
+          description,
+          valueCard1,
+          valueCard2,
+          valueCard3,
+          urlImage,
+          rare,
+          superTrunfo,
+        }],
     }));
   }
 
