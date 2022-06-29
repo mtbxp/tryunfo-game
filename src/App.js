@@ -1,22 +1,22 @@
 import React from 'react';
+import Card from './components/Card';
 import Form from './components/Form';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    const inicialState = {
+    this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: false,
     };
-    this.setState = { inicialState };
   }
 
   onInputChange = ({ target }) => {
@@ -38,6 +38,10 @@ class App extends React.Component {
           state={ this.state }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
+        />
+        <Card
+          state={ this.state }
+          onInputChange={ this.onInputChange }
         />
 
       </div>
