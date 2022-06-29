@@ -118,6 +118,7 @@ class App extends React.Component {
       filterRare,
       filterTrunfo,
     } = this.state;
+    console.log(filterTrunfo);
     const men = 'Super Trunfo';
     if (data.some((item) => item.isTrunfo === true) && !hasTrunfo) {
       this.setState({
@@ -164,6 +165,7 @@ class App extends React.Component {
               type="text"
               data-testid="name-filter"
               name="nameFilter"
+              disabled={ filterTrunfo }
               onChange={ ({ target }) => this.setState({
                 filterName: target.value,
               }) }
@@ -173,6 +175,7 @@ class App extends React.Component {
             <select
               data-testid="rare-filter"
               name="rareFilter"
+              disabled={ filterTrunfo }
               onChange={ ({ target }) => this.setState({
                 filterRare: (target.value === 'todas') ? '' : target.value,
               }) }
@@ -197,9 +200,11 @@ class App extends React.Component {
         </form>
         <ul className="deck">
           {
-            data.filter((item) => item.name.includes(filterName))
+            data.filter((item) => ((filterTrunfo)
+              ? item.isTrunfo === true
+              : item.isTrunfo !== null))
+              .filter((item) => item.name.includes(filterName))
               .filter((item) => item.rare.startsWith(filterRare))
-              .filter((item) => item.isTrunfo === filterTrunfo)
               .map((card, index) => (
                 <li key={ index } className="card" name={ index }>
                   <h3>{ card.name }</h3>
