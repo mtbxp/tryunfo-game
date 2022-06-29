@@ -13,7 +13,7 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
@@ -26,6 +26,33 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [target.id]: value,
+    }, () => { this.validateSaveBtn(); });
+  };
+
+  validateSaveBtn = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+    let btnStatus = false;
+    const mn = 90;
+    const mnMax = 210;
+    const attrSome = cardAttr1 + cardAttr2 + cardAttr3;
+    if (cardName.length < 1) { btnStatus = true; }
+    if (cardDescription.length < 1) { btnStatus = true; }
+    if (cardImage.length < 1) { btnStatus = true; }
+    if (cardRare.length < 1) { btnStatus = true; }
+    if (cardAttr1 > mn || cardAttr1 < 0) { btnStatus = true; }
+    if (cardAttr2 > mn || cardAttr2 < 0) { btnStatus = true; }
+    if (cardAttr3 > mn || cardAttr3 < 0) { btnStatus = true; }
+    if (attrSome > mnMax) { btnStatus = true; }
+    this.setState({
+      isSaveButtonDisabled: btnStatus,
     });
   };
 
