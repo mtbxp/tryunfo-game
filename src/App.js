@@ -13,7 +13,7 @@ const initialState = {
   cardRare: '',
   cardTrunfo: false,
   hasTrunfo: false,
-  isSaveButtonDisabled: false,
+  isSaveButtonDisabled: true,
 };
 
 class App extends React.Component {
@@ -24,19 +24,50 @@ class App extends React.Component {
 
   onSaveButtonClick = () => {};
 
+  enableButton = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = this.state;
+    const minimum = 0;
+    const maximum = 90;
+    const sum = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
+    const maxSum = 210;
+    const stringConditions = [
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare].every((condition) => condition !== '');
+    const numberConditions = [
+      Number(cardAttr1),
+      Number(cardAttr2),
+      Number(cardAttr3),
+    ].every((condition) => condition >= minimum && condition <= maximum);
+    if (stringConditions && numberConditions && sum <= maxSum) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
+  };
+
   onInputChange = (event) => {
+    const validation = event.target.type === 'checkbox'
+      ? event.target.checked
+      : event.target.value;
     this.setState(
       {
-        cardName: event.target.value,
-        cardDescription: event.target.value,
-        cardAttr1: event.target.value,
-        cardAttr2: event.target.value,
-        cardAttr3: event.target.value,
-        cardImage: event.target.value,
-        cardRare: event.target.value,
-        cardTrunfo: event.target.value,
+        [event.target.id]: validation,
       },
-      () => console.log(event),
+      () => this.enableButton(),
     );
   };
 

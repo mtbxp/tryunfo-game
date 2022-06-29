@@ -23,7 +23,7 @@ class Card extends React.Component {
         <span data-testid="attr3-card">{`Atributo 3: ${cardAttr3}`}</span>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         <span data-testid="rare-card">{`Raridade: ${cardRare}`}</span>
-        <p data-testid="trunfo-card">{cardTrunfo}</p>
+        { cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : '' }
       </div>
     );
   }
