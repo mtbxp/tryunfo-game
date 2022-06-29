@@ -16,20 +16,29 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
-      cards: [],
     };
   }
 
   ativaBotao = () => {
     const { cardName,
       cardDescription,
+      cardImage,
       cardAttr1,
       cardAttr2,
       cardAttr3,
-      cardImage } = this.state;
-    const avalia1 = cardName && cardDescription && cardImage;
-    const avalia2 = cardAttr1 && cardAttr2 && cardAttr3;
-    if (avalia1 && avalia2) {
+      cardRare } = this.state;
+    const noventa = 90;
+    const zero = 0;
+    const duzentosEdez = 210;
+    const attr1 = parseInt(cardAttr1, 10);
+    const attr2 = parseInt(cardAttr2, 10);
+    const attr3 = parseInt(cardAttr3, 10);
+    const soma = attr1 + attr2 + attr3;
+    const avalia1 = cardName && cardDescription && cardImage && cardRare;
+    const avaliaAttr = attr1 <= noventa && attr2 <= noventa && attr3 <= noventa;
+    const zeroAttr = attr1 >= zero && attr2 >= zero && attr3 >= zero;
+    const avaliaSoma = soma <= duzentosEdez;
+    if (avalia1 && avaliaAttr && zeroAttr && avaliaSoma) {
       this.setState({
         isSaveButtonDisabled: false,
       });
@@ -41,9 +50,7 @@ class App extends React.Component {
   }
 
   onSaveButtonClick = (event) => {
-    const { addCards } = this.props;
     event.preventDefault();
-    addCards(this.state);
   }
 
   onInputChange = ({ target }) => {
@@ -54,15 +61,8 @@ class App extends React.Component {
     }, this.ativaBotao);
   }
 
-  addCards = (carta) => {
-    this.setState((cartas) => ({
-      cards: [...cartas.cards, carta],
-    }));
-  }
-
   render() {
-    const { cards,
-      cardName,
+    const { cardName,
       cardDescription,
       cardAttr1,
       cardAttr2,
@@ -70,11 +70,12 @@ class App extends React.Component {
       cardRare,
       cardImage,
       cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form 
+        <Form
           cardName={ cardName }
           cardDescription={ cardDescription }
           cardAttr1={ cardAttr1 }
@@ -82,10 +83,11 @@ class App extends React.Component {
           cardAttr3={ cardAttr3 }
           cardImage={ cardImage }
           cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick } />
+          onSaveButtonClick={ this.onSaveButtonClick }
+        />
         <Card
           cardName={ cardName }
           cardDescription={ cardDescription }
@@ -94,7 +96,8 @@ class App extends React.Component {
           cardAttr3={ cardAttr3 }
           cardImage={ cardImage }
           cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo } />
+          cardTrunfo={ cardTrunfo }
+        />
       </div>
     );
   }
