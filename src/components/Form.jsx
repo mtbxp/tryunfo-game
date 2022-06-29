@@ -16,6 +16,7 @@ class Form extends Component {
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
+      filterName,
     } = this.props;
 
     const checkBoxElement = (
@@ -136,6 +137,15 @@ class Form extends Component {
         >
           Salvar
         </button>
+
+        <label htmlFor="nameFilter">
+          Filtrar cartas pelo nome
+          <input
+            type="text"
+            data-testid="name-filter"
+            onChange={ filterName }
+          />
+        </label>
       </form>
     );
   }
@@ -154,6 +164,7 @@ Form.propTypes = {
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
+  filterName: PropTypes.func.isRequired,
 };
 
 export default Form;

@@ -25,6 +25,7 @@ class App extends React.Component {
     this.handleSave = this.handleSave.bind(this);
     this.validateSuperTrunfoPresence = this.validateSuperTrunfoPresence.bind(this);
     this.removeItem = this.removeItem.bind(this);
+    this.filterName = this.filterName.bind(this);
   }
 
   handleSave(event) {
@@ -136,6 +137,16 @@ class App extends React.Component {
     () => this.validateSuperTrunfoPresence());
   }
 
+  filterName({ target }) {
+    const { value } = target;
+    const { listOfCards } = this.state;
+    const filteredCardsByName = listOfCards
+      .filter((card) => card.cardName.includes(value));
+    this.setState({
+      listOfCards: filteredCardsByName,
+    });
+  }
+
   render() {
     const {
       cardName,
@@ -165,6 +176,7 @@ class App extends React.Component {
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.handleChange }
           onSaveButtonClick={ this.handleSave }
+          filterName={ this.filterName }
         />
         <Card
           cardName={ cardName }
