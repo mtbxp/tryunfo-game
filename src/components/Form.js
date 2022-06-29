@@ -22,7 +22,7 @@ class Form extends React.Component {
           Nome
           <input
             type="text"
-            name="text"
+            name="cardName"
             id="name-input"
             data-testid="name-input"
             placeholder="Nome da Carta"
@@ -35,7 +35,7 @@ class Form extends React.Component {
           Descrição
           <textarea
             type="textarea"
-            name="textarea"
+            name="cardDescription"
             id="description-input"
             data-testid="description-input"
             placeholder="Descrição da Carta"
@@ -48,7 +48,7 @@ class Form extends React.Component {
           Attr01
           <input
             type="number"
-            name="attr1"
+            name="cardAttr1"
             id="attr1-input"
             data-testid="attr1-input"
             value={ cardAttr1 }
@@ -60,7 +60,7 @@ class Form extends React.Component {
           Attr02
           <input
             type="number"
-            name="attr2"
+            name="cardAttr2"
             id="attr2-input"
             data-testid="attr2-input"
             value={ cardAttr2 }
@@ -72,7 +72,7 @@ class Form extends React.Component {
           Attr03
           <input
             type="number"
-            name="attr3"
+            name="cardAttr3"
             id="attr3-input"
             data-testid="attr3-input"
             value={ cardAttr3 }
@@ -84,7 +84,7 @@ class Form extends React.Component {
           Imagem
           <input
             type="text"
-            name="image"
+            name="cardImage"
             id="image-input"
             data-testid="image-input"
             value={ cardImage }
@@ -95,7 +95,7 @@ class Form extends React.Component {
         <label htmlFor="raridade-input">
           Raridade
           <select
-            name="raridade"
+            name="cardRare"
             data-testid="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
@@ -109,7 +109,7 @@ class Form extends React.Component {
         <label htmlFor="trunfo-input">
           <input
             type="checkbox"
-            name="trunfo"
+            name="cardTrunfo"
             id="trunfo-input"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
