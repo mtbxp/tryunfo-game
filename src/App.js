@@ -45,6 +45,14 @@ class App extends React.Component {
     });
   }
 
+  deleteCard = (oldCard) => {
+    const name = oldCard.target.children[0].innerHTML;
+    this.setState((prevState) => ({
+      cards: prevState.cards
+        .filter((item) => item.cardName !== name),
+    }), () => this.hasTrunfoUpdate());
+  }
+
   addNewCard = (newCard) => {
     this.setState((prevState) => ({
       cardName: '',
@@ -64,6 +72,11 @@ class App extends React.Component {
   onSaveButtonClick = (event) => {
     event.preventDefault();
     this.addNewCard(this.state);
+  }
+
+  onDeleteCardButton = (event) => {
+    event.preventDefault();
+    this.deleteCard(event);
   }
 
   validationButton = () => {
@@ -138,6 +151,7 @@ class App extends React.Component {
               cardRare={ item.cardRare }
               cardTrunfo={ item.cardTrunfo }
               key={ item.cardName }
+              onDeleteCardButton={ this.onDeleteCardButton }
             />))}
         </section>
       </main>
