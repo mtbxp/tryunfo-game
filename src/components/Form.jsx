@@ -18,6 +18,9 @@ class Form extends Component {
       onSaveButtonClick,
       filterName,
       rarityFilter,
+      superTrunfo,
+      superTrunfoFunc,
+      disabledByTrunfoFilter,
     } = this.props;
 
     const checkBoxElement = (
@@ -144,6 +147,7 @@ class Form extends Component {
           <input
             type="text"
             data-testid="name-filter"
+            disabled={ disabledByTrunfoFilter }
             onChange={ filterName }
           />
         </label>
@@ -153,6 +157,7 @@ class Form extends Component {
           <select
             data-testid="rare-filter"
             name="rarityFilter"
+            disabled={ disabledByTrunfoFilter }
             onChange={ rarityFilter }
           >
             <option value="todas"> todas </option>
@@ -160,6 +165,17 @@ class Form extends Component {
             <option value="raro"> raro </option>
             <option value="muito raro"> muito raro </option>
           </select>
+        </label>
+
+        <label htmlFor="superTrunfo">
+          Filtrar apenas Super Trunfo
+          <input
+            type="checkbox"
+            name="superTrunfo"
+            data-testid="trunfo-filter"
+            checked={ superTrunfo }
+            onChange={ superTrunfoFunc }
+          />
         </label>
       </form>
     );
@@ -181,6 +197,9 @@ Form.propTypes = {
   onSaveButtonClick: PropTypes.func.isRequired,
   filterName: PropTypes.func.isRequired,
   rarityFilter: PropTypes.func.isRequired,
+  superTrunfo: PropTypes.bool.isRequired,
+  superTrunfoFunc: PropTypes.func.isRequired,
+  disabledByTrunfoFilter: PropTypes.bool.isRequired,
 };
 
 export default Form;

@@ -17,7 +17,9 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      superTrunfo: false,
       listOfCards: [],
+      disabledByTrunfoFilter: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSaveButton = this.handleSaveButton.bind(this);
@@ -27,6 +29,7 @@ class App extends React.Component {
     this.removeItem = this.removeItem.bind(this);
     this.filterName = this.filterName.bind(this);
     this.rarityFilter = this.rarityFilter.bind(this);
+    this.superTrunfoFunc = this.superTrunfoFunc.bind(this);
   }
 
   handleSave(event) {
@@ -39,9 +42,7 @@ class App extends React.Component {
       cardDescription,
       cardImage,
       cardRare,
-      cardTrunfo,
-    } = this.state;
-
+      cardTrunfo } = this.state;
     const newCard = {
       cardAttr1,
       cardAttr2,
@@ -50,13 +51,10 @@ class App extends React.Component {
       cardDescription,
       cardImage,
       cardRare,
-      cardTrunfo,
-    };
-
+      cardTrunfo };
     this.setState((prevState) => ({
       listOfCards: [...prevState.listOfCards, newCard],
     }), () => this.validateSuperTrunfoPresence());
-
     this.resetFormAfterSaving();
   }
 
@@ -113,8 +111,7 @@ class App extends React.Component {
       cardName,
       cardDescription,
       cardImage,
-      cardRare,
-    } = this.state;
+      cardRare } = this.state;
     const sum = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
     const totalMax = 210;
     const totalMaxValidation = sum > totalMax;
@@ -140,10 +137,9 @@ class App extends React.Component {
   }
 
   filterName({ target }) {
-    const { value } = target;
     const { listOfCards } = this.state;
     const filteredCardsByName = listOfCards
-      .filter((card) => card.cardName.includes(value));
+      .filter((card) => card.cardName.includes(target.value));
     this.setState({
       listOfCards: filteredCardsByName,
     });
@@ -161,6 +157,17 @@ class App extends React.Component {
     }
   }
 
+  superTrunfoFunc({ target }) {
+    const { listOfCards } = this.state;
+    const filteredCardsByTrunfo = listOfCards
+      .filter((card) => card.cardTrunfo === target.checked);
+    this.setState({
+      disabledByTrunfoFilter: target.checked,
+      superTrunfo: target.checked,
+      listOfCards: filteredCardsByTrunfo,
+    });
+  }
+
   render() {
     const {
       cardName,
@@ -174,6 +181,8 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
       listOfCards,
+      superTrunfo,
+      disabledByTrunfoFilter,
     } = this.state;
     return (
       <>
@@ -192,6 +201,9 @@ class App extends React.Component {
           onSaveButtonClick={ this.handleSave }
           filterName={ this.filterName }
           rarityFilter={ this.rarityFilter }
+          superTrunfo={ superTrunfo }
+          disabledByTrunfoFilter={ disabledByTrunfoFilter }
+          superTrunfoFunc={ this.superTrunfoFunc }
         />
         <Card
           cardName={ cardName }
@@ -204,9 +216,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.handleChange }
         />
-        <h1>
-          CARTAS DO BARALHO
-        </h1>
+        <h1> CARTAS DO BARALHO </h1>
         <div className="deckOfCards">
           {
             listOfCards.map((card) => (
