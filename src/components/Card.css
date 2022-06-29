@@ -1,6 +1,6 @@
 .container-card {
-  border: 1px solid black;
   align-items: center;
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   height: 400px;
@@ -14,21 +14,21 @@
 
 .containerForm {
   align-items: center;
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  justify-content: center;
   height: 400px;
+  justify-content: center;
   width: 350px;
   background-color: tomato;
 }
 
 .inputNome {
-  margin: 10px;
   background-color: lightgrey;
+  margin: 10px;
   border-bottom: 1px solid black;
-  width: 150px;
   border-radius: 5px;
+  width: 150px;
   text-align: center;
 }
 
@@ -48,8 +48,8 @@
 .atributos {
   background-color: lightgrey;
   margin: 2px;
-  width: 100px;
   text-align: center;
+  width: 100px;
 }
 
 .inputImg {
@@ -67,8 +67,8 @@
 }
 
 .containerInputsCard {
+  border: 1px solid black;
   height: 177px;
   margin: 5px;
-  border: 1px solid black;
   width: 170px;
 }
