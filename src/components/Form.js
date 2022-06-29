@@ -2,17 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
-  // constructor() {
-  //   super();
-  //   // this.onInputChange = this.onInputChange.bind(this);
-  // }
-
-  // onInputChange = ({ target }) => target
-
   render() {
-    const { cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo,
-      isSaveButtonDisabled } = this.props;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled,
+    } = this.props;
+    const onInputChange = () => {};
+    const onSaveButtonClick = () => {};
+
     return (
       <>
         <label htmlFor="name">
@@ -98,13 +103,14 @@ class Form extends React.Component {
           />
         </label>
         <button
-          type="submit"
+          type="button"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
         >
           Salvar
         </button>
+        <p>{hasTrunfo}</p>
       </>
     );
   }
@@ -118,6 +124,8 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
 };
 
 export default Form;
