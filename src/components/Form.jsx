@@ -13,6 +13,7 @@ class Form extends React.Component {
         <label htmlFor="name">
           Nome
           <input
+            name="cardName"
             type="text"
             data-testid="name-input"
             value={ cardName }
@@ -22,6 +23,7 @@ class Form extends React.Component {
         <label htmlFor="description">
           Descrição
           <textarea
+            name="cardDescription"
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
@@ -30,6 +32,7 @@ class Form extends React.Component {
         <label htmlFor="attr1">
           Atributo 1
           <input
+            name="cardAttr1"
             type="number"
             data-testid="attr1-input"
             value={ cardAttr1 }
@@ -39,6 +42,7 @@ class Form extends React.Component {
         <label htmlFor="attr2">
           Atributo 2
           <input
+            name="cardAttr2"
             type="number"
             data-testid="attr2-input"
             value={ cardAttr2 }
@@ -46,8 +50,9 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="attr3">
-          Atributo 3
+          Atributo3
           <input
+            name="cardAttr3"
             type="number"
             data-testid="attr3-input"
             value={ cardAttr3 }
@@ -57,6 +62,7 @@ class Form extends React.Component {
         <label htmlFor="img">
           URL da Imagem
           <input
+            name="cardImage"
             type="text"
             data-testid="image-input"
             value={ cardImage }
@@ -66,19 +72,21 @@ class Form extends React.Component {
         <label htmlFor="rarity">
           Raridade
           <select
+            name="cardRare"
             data-testid="rare-input"
             id="rarity"
             value={ cardRare }
             onChange={ onInputChange }
           >
-            <option value="normal"> Normal </option>
-            <option value="raro"> Raro </option>
-            <option value="muito raro"> Muito Raro </option>
+            <option value="Normal"> Normal </option>
+            <option value="Raro"> Raro </option>
+            <option value="Muito Raro"> Muito Raro </option>
           </select>
         </label>
         <label htmlFor="super-trunfo">
           Super Trunfo
           <input
+            name="cardTrunfo"
             type="checkbox"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
@@ -97,7 +105,6 @@ class Form extends React.Component {
     );
   }
 }
-
 Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
@@ -112,5 +119,4 @@ Form.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
 };
-
 export default Form;
