@@ -94,7 +94,7 @@ class App extends React.Component {
 
   render() {
     const { state } = this;
-    // console.log(state.cards);
+    const { cards } = state;
     return (
       <div>
         <h1>TRYUNFO</h1>
@@ -122,6 +122,18 @@ class App extends React.Component {
           cardRare={ state.rare }
           cardTrunfo={ state.trunfo }
         />
+        <div>
+          { cards.forEach((element) => (<Card
+            cardName={ element.name }
+            cardDescription={ element.description }
+            cardImage={ element.image }
+            cardAttr1={ element.attr1 }
+            cardAttr2={ element.attr2 }
+            cardAttr3={ element.attr3 }
+            cardRare={ element.rare }
+            cardTrunfo={ element.trunfo }
+          />)) }
+        </div>
       </div>
     );
   }
