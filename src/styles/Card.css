@@ -1,0 +1,35 @@
+.card-preview {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+}
+
+.card-preview h2 {
+  color: white;
+}
+
+.card {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+  height: 350px;
+  width: 280px;
+}
+
+.image {
+  height: 150px;
+  object-fit: contain;
+  width: 100px;
+}
+
+.trunfo-text {
+  visibility: hidden;
+}
+
+.logo-trunfo {
+  position: absolute;
+  width: 30px;
+}

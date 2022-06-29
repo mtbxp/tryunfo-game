@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import './styles/App.css';
 
 class App extends React.Component {
   // Para o 'construtor' foi consultado a documentação no React (https://reactjs.org/docs/react-component.html#constructor)
@@ -68,33 +69,41 @@ class App extends React.Component {
       isSaveButtonDisabled } = this.state;
 
     return (
-      <div>
-        <h1>Tryunfo</h1>
-        <Form
-          onSaveButtonClick={ this.onSaveButtonClick }
-          onInputChange={ this.onInputChange }
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
-      </div>
+      <main className="body">
+        <header className="header">
+          <h1>Tryunfo</h1>
+        </header>
+        <section className="card-creation">
+          <section className="input-area">
+            <Form
+              onSaveButtonClick={ this.onSaveButtonClick }
+              onInputChange={ this.onInputChange }
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              hasTrunfo={ hasTrunfo }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+            />
+          </section>
+          <section className="preview-area">
+            <Card
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+            />
+          </section>
+        </section>
+      </main>
     );
   }
 }

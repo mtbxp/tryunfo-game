@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import tryunfo from '../logo-tryunfo.png';
+import '../styles/Card.css';
 
 class Card extends React.Component {
   render() {
@@ -15,34 +16,41 @@ class Card extends React.Component {
       cardTrunfo,
     } = this.props;
     return (
-      <div>
+      <div className="card-preview">
         <h2>Pré-visualização</h2>
-        <h3 data-testid="name-card">{cardName}</h3>
-        <p data-testid="rare-card">{cardRare}</p>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        {
-          cardTrunfo ? (
-            <div data-testid="trunfo-card">
-              <p>Super Trunfo</p>
-              <img src={ tryunfo } alt="Super Trunfo" />
-            </div>
-          ) : null
-        }
-        <p data-testid="description-card">{cardDescription}</p>
-        <ul>
-          <li data-testid="attr1-card">
-            Attr01..........
-            <span>{cardAttr1}</span>
-          </li>
-          <li data-testid="attr2-card">
-            Attr02..........
-            <span>{cardAttr2}</span>
-          </li>
-          <li data-testid="attr3-card">
-            Attr03..........
-            <span>{cardAttr3}</span>
-          </li>
-        </ul>
+        <div className="card">
+          <h3 data-testid="name-card">{cardName}</h3>
+          {
+            cardTrunfo ? (
+              <div data-testid="trunfo-card">
+                <p className="trunfo-text">Super Trunfo</p>
+                <img src={ tryunfo } alt="Super Trunfo" className="logo-trunfo" />
+              </div>
+            ) : null
+          }
+          <p data-testid="rare-card">{cardRare}</p>
+          <img
+            src={ cardImage }
+            alt={ cardName }
+            data-testid="image-card"
+            className="image"
+          />
+          <p data-testid="description-card" className="description">{cardDescription}</p>
+          <ul>
+            <li data-testid="attr1-card">
+              Attr01..........
+              <span>{cardAttr1}</span>
+            </li>
+            <li data-testid="attr2-card">
+              Attr02..........
+              <span>{cardAttr2}</span>
+            </li>
+            <li data-testid="attr3-card">
+              Attr03..........
+              <span>{cardAttr3}</span>
+            </li>
+          </ul>
+        </div>
       </div>
     );
   }

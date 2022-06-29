@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/Form.css';
 
 class Form extends React.Component {
   render() {
@@ -20,7 +21,7 @@ class Form extends React.Component {
 
     return (
       // Para o forms foi consultado a aula ao vivo 'Aula 11.2 - Formulários no React' do curso da Trybe
-      <form>
+      <form className="form">
         <h2>Adicionar nova carta</h2>
         {/* Para htmlFor foi consultado a documentação no MDN (https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor) */}
 
