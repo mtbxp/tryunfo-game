@@ -118,9 +118,9 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
         />
         <p>Cartas Salvas</p>
-        { cardSave.map((carta) => (
+        { cardSave.map((carta, index) => (
           <Card
-            key={ carta.cardName }
+            key={ index.carta }
             cardName={ carta.cardName }
             cardDescription={ carta.cardDescription }
             cardAttr1={ carta.cardAttr1 }
