@@ -36,8 +36,11 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       savedCards: [...previous.savedCards, savedCards],
+      hasTrunfo: [...previous.savedCards, savedCards].some(
+        () => savedCards.cardTrunfo,
+      ),
     }));
-  }
+  };
 
   enableButton = () => {
     const {
@@ -57,7 +60,8 @@ class App extends React.Component {
       cardName,
       cardDescription,
       cardImage,
-      cardRare].every((condition) => condition !== '');
+      cardRare,
+    ].every((condition) => condition !== '');
     const numberConditions = [
       Number(cardAttr1),
       Number(cardAttr2),
