@@ -16,12 +16,20 @@ class Card extends React.Component {
     } = this.props;
 
     const isCardTrunfo = () => {
-      if (cardTrunfo) return <div data-testid="trunfo-card">Super Trunfo</div>;
+      if (cardTrunfo) {
+        return ((
+          <div
+            data-testid="trunfo-card"
+            className="trunfo"
+          >
+            Super Trunfo
+          </div>));
+      }
     };
 
     return (
       <div className="card-container">
-        <div data-testid="name-card">
+        <div data-testid="name-card" className="card-name">
           { cardName }
         </div>
         <img
@@ -30,22 +38,30 @@ class Card extends React.Component {
           data-testid="image-card"
           className="card-image"
         />
-        <div data-testid="description-card">
+        <div data-testid="description-card" className="card-description">
           { cardDescription }
         </div>
-        <div data-testid="attr1-card" className="attribute">
-          { cardAttr1 }
+        <div className="infos-container">
+          <div className="attributes-container">
+            <div data-testid="attr1-card" className="attribute">
+              { `Speed: ${cardAttr1}` }
+            </div>
+            <div data-testid="attr2-card" className="attribute">
+              { `Resistance: ${cardAttr2}` }
+            </div>
+            <div data-testid="attr3-card" className="attribute">
+              { `Ability: ${cardAttr3}` }
+            </div>
+          </div>
+          <div className="rare-trunfo-container">
+            <div data-testid="rare-card" className="card-rare">
+              { cardRare }
+            </div>
+            <div>
+              {isCardTrunfo()}
+            </div>
+          </div>
         </div>
-        <div data-testid="attr2-card" className="attribute">
-          { cardAttr2 }
-        </div>
-        <div data-testid="attr3-card" className="attribute">
-          { cardAttr3 }
-        </div>
-        <div data-testid="rare-card">
-          { cardRare }
-        </div>
-        {isCardTrunfo()}
       </div>
     );
   }

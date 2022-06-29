@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url('/images/552581.jpg');
+  color: white;
+}
+
+.form-preview-container {
+  display: flex;
+  gap: 20px;
+}
+
+.filters {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+  margin-left: 10px;
+  max-width: 300px;
+}
+
+.saved-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1000px;
+}

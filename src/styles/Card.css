@@ -6,10 +6,10 @@
 
 .card-container {
   align-items: center;
-  background-color: rgb(107, 106, 106);
-  border: 2px solid black;
+  background-color: rgb(125, 108, 63);
+  border: 5px solid black;
   border-radius: 10px;
-  color: white;
+  color: black;
   display: flex;
   flex-flow: column;
   font-weight: 600;
@@ -19,12 +19,81 @@
   width: 300px;
 }
 
+.card-name {
+  border: 2px solid black;
+  border-radius: 4px;
+  box-shadow: 5px;
+  height: 8%;
+  margin: 3px;
+  padding: 4px 2px;
+  width: 95%;
+}
+
 .card-image {
+  border: 2px solid black;
+  height: 40%;
   width: 90%;
+}
+
+.infos-container {
+  align-items: center;
+  display: flex;
+  flex-flow: column-wrap;
+  gap: 20 px;
+  height: 23%;
+  justify-content: space-between;
+  width: 95%;
+}
+
+.card-description {
+  background-color: rgb(228, 199, 130);
+  border: 2px solid black;
+  border-radius: 4px;
+  font-style: italic;
+  font-weight: 400;
+  height: 25%;
+  margin: 5px;
+  padding: 2px 4px;
+  text-align: justify;
+  width: 95%;
+}
+
+.attributes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  width: 47%;
 }
 
 .attribute {
   border: 1px solid black;
-  border-radius: 10px;
-  padding: 5px;
+  border-radius: 5px;
+  padding: 4px 2px;
+  width: 100%;
+}
+
+.rare-trunfo-container {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+  text-align: center;
+  width: 47%;
+}
+
+.card-rare {
+  background-color: rgb(228, 199, 130);
+  border: 1px solid white;
+  border-radius: 4px;
+  color: white;
+  height: 50%;
+  padding: 8px 4px;
+}
+
+.trunfo {
+  background-color: rgb(134, 19, 19);
+  border: 1px solid white;
+  border-radius: 4px;
+  color: white;
+  height: 50%;
+  padding: 8px 4px;
 }

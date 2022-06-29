@@ -4,9 +4,21 @@
   padding: 0;
 }
 
+button {
+  padding: 10px 20px;
+}
+
 form {
+  color: white;
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+  max-width: 600px;
+  padding-left: 10px;
+  width: 50%;
+}
+
+label {
   display: flex;
   flex-flow: column;
 }
-
-/* teste */
