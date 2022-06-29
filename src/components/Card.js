@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 class Card extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo } = this.props;
+      cardAttr3, cardImage, cardRare, cardTrunfo, savedCard,
+      deleteCard } = this.props;
     return (
       <div>
         <p data-testid="name-card">{ cardName }</p>
@@ -15,6 +16,18 @@ class Card extends React.Component {
         <p data-testid="attr3-card">{ cardAttr3 }</p>
         <p data-testid="rare-card">{ cardRare }</p>
         { cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p> }
+        {
+          savedCard
+          && (
+            <button
+              type="button"
+              data-testid="delete-button"
+              onClick={ () => deleteCard(cardName) }
+            >
+              Excluir
+            </button>
+          )
+        }
       </div>
     );
   }

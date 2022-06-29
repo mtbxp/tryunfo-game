@@ -37,6 +37,18 @@ class App extends React.Component {
     return ![maxLength, maxValue, minValue].every((el) => el === true);
   };
 
+  handleTrunfo = () => {
+    const { cardTrunfo } = this.state;
+    if (cardTrunfo) {
+      return this.setState({
+        hasTrunfo: true,
+      });
+    }
+    return this.setState({
+      hasTrunfo: false,
+    });
+  }
+
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -47,7 +59,8 @@ class App extends React.Component {
     }));
   }
 
-  onSaveButtonClick = () => {
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
     const save = this.state;
     this.setState((previousSave) => ({
       cardName: '',
@@ -57,13 +70,20 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
+      cardTrunfo: false,
+      hasTrunfo: this.handleTrunfo(),
       savedCard: [...previousSave.savedCard, save],
     }));
   }
 
+  // deleteCardBtn = (cardName) => {
+
+  // }
+
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled } = this.state;
+      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
+      savedCard } = this.state;
 
     return (
       <div>
@@ -92,6 +112,22 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {
+          savedCard.map((el) => (
+            <Card
+              key={ el.cardName }
+              cardName={ el.cardName }
+              cardDescription={ el.cardDescription }
+              cardAttr1={ el.cardAttr1 }
+              cardAttr2={ el.cardAttr2 }
+              cardAttr3={ el.cardAttr3 }
+              cardImage={ el.cardImage }
+              cardRare={ el.cardRare }
+              cardTrunfo={ el.cardTrunfo }
+              deleteCard={ this.deleteCardBtn }
+            />
+          ))
+        }
       </div>
     );
   }
