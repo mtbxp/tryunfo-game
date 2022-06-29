@@ -86,19 +86,19 @@ class App extends React.Component {
     }));
   }
 
-  deleteElement(event) {
+  deleteElement({ target }) {
     const {
       data,
       hasTrunfo,
     } = this.state;
-    const list = document.querySelector('.deck');
-    list.removeChild(event.nativeEvent.path[1]);
-    if (data[event.target.name].isTrunfo === true && hasTrunfo === true) {
+    if (data[target.id].isTrunfo === true && hasTrunfo === true) {
       this.setState({
         hasTrunfo: false,
       });
     }
-    data.splice(event.target.name, 1);
+    this.setState((prevState) => ({
+      data: prevState.data.filter((item) => target.name !== item.name),
+    }));
   }
 
   render() {
@@ -118,7 +118,6 @@ class App extends React.Component {
       filterRare,
       filterTrunfo,
     } = this.state;
-    console.log(filterTrunfo);
     const men = 'Super Trunfo';
     if (data.some((item) => item.isTrunfo === true) && !hasTrunfo) {
       this.setState({
@@ -231,8 +230,9 @@ class App extends React.Component {
                   <button
                     type="button"
                     data-testid="delete-button"
-                    name={ index }
-                    // onClick={ (event) => this.deleteElement(event) }
+                    id={ index }
+                    name={ card.name }
+                    onClick={ (event) => this.deleteElement(event) }
                   >
                     Excluir
                   </button>
