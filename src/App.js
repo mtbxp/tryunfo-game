@@ -81,7 +81,6 @@ class App extends React.Component {
   };
 
   deleteCard = (cardName) => {
-    // const { allCards } = this.state;
     this.setState((prevState) => ({
       allCards: prevState.allCards.filter((card) => card.name !== cardName),
     }), () => {
