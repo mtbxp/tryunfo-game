@@ -123,16 +123,19 @@ class App extends React.Component {
           cardTrunfo={ state.trunfo }
         />
         <div>
-          { cards.forEach((element) => (<Card
-            cardName={ element.name }
-            cardDescription={ element.description }
-            cardImage={ element.image }
-            cardAttr1={ element.attr1 }
-            cardAttr2={ element.attr2 }
-            cardAttr3={ element.attr3 }
-            cardRare={ element.rare }
-            cardTrunfo={ element.trunfo }
-          />)) }
+          { cards.map((element) => (
+            <div key={ element.name }>
+              <Card
+                cardName={ element.name }
+                cardDescription={ element.description }
+                cardImage={ element.image }
+                cardAttr1={ element.attr1 }
+                cardAttr2={ element.attr2 }
+                cardAttr3={ element.attr3 }
+                cardRare={ element.rare }
+                cardTrunfo={ element.trunfo }
+              />
+            </div>)) }
         </div>
       </div>
     );
