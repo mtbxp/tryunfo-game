@@ -17,27 +17,68 @@ class App extends React.Component {
       imageInput: '',
       rareInput: '',
       trunfoInput: false,
-      // saveButton:
+      // saveButton: '',
+      isSaveButtonDisabled: true,
     };
   }
 
   onInputChange = ({ target }) => {
-    console.log(target.value);
-    this.setState({
-      [target.name]: (target.value),
-    });
+    console.log(target);
+    const { name, type } = target;
+    const value = type === 'checkbox' ? target.checked : target.value;
+    this.setState({ [name]: value },
+      () => {
+        this.isSaveButtonDisabled();
+      });
   }
+
+  isSaveButtonDisabled = () => {
+    const {
+      nameInput, descriptionInput,
+      imageInput, rareInput, attr1Input, attr2Input, attr3Input } = this.state;
+
+    if (nameInput !== '' && descriptionInput !== ''
+      && imageInput !== '' && rareInput !== '') {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
+    const som = 210;
+    const limit = 90;
+    if (attr1Input > limit
+      || attr1Input < 0
+      || attr2Input > limit
+      || attr2Input < 0
+      || attr3Input > limit
+      || attr3Input < 0) {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
+    const somatorio = parseInt(attr1Input, 10) + parseInt(attr2Input, 10)
+    + parseInt(attr3Input, 10);
+    if (somatorio > som) {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
+  };
 
   render() {
     const {
       nameInput, descriptionInput,
       attr1Input, attr2Input, attr3Input,
-      imageInput, rareInput, trunfoInput } = this.state;
+      imageInput, rareInput, isSaveButtonDisabled, trunfoInput } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
           onInputChange={ this.onInputChange }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
         />
         <Card
           cardName={ nameInput }

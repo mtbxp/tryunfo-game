@@ -2,29 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 class Form extends React.Component {
-  // constructor() {
-  //   super();
-  //   // this.onInputChange = this.onInputChange.bind(this);
-  //   // this.state = {
-  //   //   nameInput: '',
-  //   //   descriptionInput: '',
-  //   //   attr1Input: '',
-  //   //   attr2Input: '',
-  //   //   attr3Input: '',
-  //   //   imageInput: '',
-  //   //   rareInput: '',
-  //   //   checkbox: 'false',
-  //   //   // saveButton:
-  //   // };
-  // }
-
-  // onInputChange = ({ target }) => {
-  //   console.log(target.value);
-  //   this.setState({
-  //     [target.name]: (target.value),
-  //   });
-  // }
-
   render() {
     const { cardName, cardDescription, cardAttr1,
       cardAttr2, cardAttr3, cardImage,
@@ -33,13 +10,13 @@ class Form extends React.Component {
       isSaveButtonDisabled, onInputChange,
       onSaveButtonClick } = this.props;
 
-    // console.log(this);
     return (
       <div>
         <form>
-          <label htmlFor="name-input">
+          <label htmlFor="nameInput">
             <h3>Nome:</h3>
             <input
+              id="nameInput"
               type="text"
               name="nameInput"
               data-testid="name-input"
@@ -47,47 +24,55 @@ class Form extends React.Component {
               onChange={ onInputChange }
             />
           </label>
-          <label htmlFor="description-input">
+          <label htmlFor="descriptionInput">
             <h3>Descrição:</h3>
             <input
               type="textarea"
               data-testid="description-input"
+              id="descriptionInput"
               name="descriptionInput"
               value={ cardDescription }
               onChange={ onInputChange }
             />
           </label>
-          <label htmlFor="attr1-input">
+          <label htmlFor="attr1Input">
             <h3> Attr01:</h3>
             <input
               type="number"
+              min="0"
+              max="90"
               data-testid="attr1-input"
               name="attr1Input"
+              id="attr1Input"
               value={ cardAttr1 }
               onChange={ onInputChange }
             />
           </label>
-          <label htmlFor="attr2-input">
+          <label htmlFor="attr2Input">
             <h3>Attr02:</h3>
             <input
               type="number"
+              min="0"
+              max="90"
               data-testid="attr2-input"
               name="attr2Input"
               value={ cardAttr2 }
               onChange={ onInputChange }
             />
           </label>
-          <label htmlFor="attr3-input">
+          <label htmlFor="attr3Input">
             <h3> Attr03:</h3>
             <input
               type="number"
+              min="0"
+              max="90"
               data-testid="attr3-input"
               name="attr3Input"
               value={ cardAttr3 }
               onChange={ onInputChange }
             />
           </label>
-          <label htmlFor="image-input">
+          <label htmlFor="imageInput">
             <h3>Imagem:</h3>
             <input
               type="text"
@@ -97,7 +82,7 @@ class Form extends React.Component {
               onChange={ onInputChange }
             />
           </label>
-          <label htmlFor="rare-input">
+          <label htmlFor="rareInput">
             <h3>Raridade:</h3>
             <select
               name="rareInput"
@@ -110,7 +95,7 @@ class Form extends React.Component {
               <option value="muito raro">muito raro</option>
             </select>
           </label>
-          <label htmlFor="trunfo-input">
+          <label htmlFor="trunfoInput">
             <h3>Super Trybe Trunfo</h3>
             <input
               type="checkbox"
@@ -121,11 +106,12 @@ class Form extends React.Component {
             />
           </label>
           <button
-            type="submit"
+            type="button"
             name="saveButton"
             data-testid="save-button"
             disabled={ isSaveButtonDisabled }
             onClick={ onSaveButtonClick }
+
           >
             Salvar
           </button>
