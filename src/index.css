@@ -99,3 +99,7 @@ input {
   margin: 10px;
   border-radius: 5px;
 }
+
+.cards-section {
+  display: flex;
+}

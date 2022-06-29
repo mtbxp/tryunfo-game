@@ -72,6 +72,7 @@ class App extends React.Component {
 
   handleSaveButton = (event) => {
     event.preventDefault();
+    const currentState = this.state;
     this.setState((prevState) => ({
       cardName: '',
       cardDescription: '',
@@ -81,22 +82,17 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       hasTrunfo: prevState,
+      cards: [...prevState.cards, currentState],
     }), () => this.thereIsTrunfo());
   };
 
   thereIsTrunfo = () => {
     const { cards } = this.state;
-    cards.forEach((card) => {
-      if (card.cardTrunfo === true) {
-        this.setState({
-          hasTrunfo: true,
-        });
-      } else {
-        this.setState({
-          hasTrunfo: false,
-        });
-      }
-    });
+    if (cards.some((card) => card.cardTrunfo === true)) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
   }
 
   render() {
@@ -111,6 +107,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      cards,
     } = this.state;
 
     return (
@@ -144,7 +141,9 @@ class App extends React.Component {
         </div>
         <div>
           <p>Cartas salvas</p>
-          {/* {AllCards.map((card) => (
+          <div className="cards-section">
+            {cards.length > 0
+          && (cards.map((card) => (
             <Card
               cardName={ card.cardName }
               cardDescription={ card.cardDescription }
@@ -156,8 +155,8 @@ class App extends React.Component {
               cardTrunfo={ card.cardTrunfo }
               key={ card.cardName }
             />
-          ))} */}
-          <Card />
+          )))}
+          </div>
         </div>
       </div>
     );
