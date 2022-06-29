@@ -23,6 +23,15 @@ class App extends React.Component {
     };
   }
 
+  verifyTrunfo = () => {
+    const { cardDeck } = this.state;
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+    const hasTrunfo = cardDeck.some((card) => card.cardTrunfo);
+    this.setState({
+      hasTrunfo,
+    });
+  };
+
   handleChange = ({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
@@ -71,6 +80,7 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
     } = this.state;
     const card = {
       cardName,
@@ -80,6 +90,7 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
     };
     const defaultState = {
       cardName: '',
@@ -94,7 +105,7 @@ class App extends React.Component {
     };
     this.setState((prev) => ({
       cardDeck: [...prev.cardDeck, card], ...defaultState,
-    }));
+    }), () => this.verifyTrunfo());
   };
 
   render() {
