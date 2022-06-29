@@ -19,106 +19,108 @@ class Form extends React.Component {
     } = this.props;
     return (
       <div>
-        <h3>Adicionar Nova Carta</h3>
-        Nome:
-        <label htmlFor="name-input">
-          <input
-            data-testid="name-input"
-            type="text"
-            name="cardName"
-            id="name-input"
-            value={ cardName }
-            onChange={ onInputChange }
-          />
-        </label>
-        Descrição:
-        <label htmlFor="description-input">
-          <input
-            data-testid="description-input"
-            type="text"
-            name="cardDescription"
-            id="description-input"
-            value={ cardDescription }
-            onChange={ onInputChange }
-          />
-        </label>
-        Atributo 1:
-        <label htmlFor="attr1-input">
-          <input
-            data-testid="attr1-input"
-            type="number"
-            name="cardAttr1"
-            id="attr1-input"
-            value={ cardAttr1 }
-            onChange={ onInputChange }
-          />
-        </label>
-        Atributo 2:
-        <label htmlFor="attr2-input">
-          <input
-            data-testid="attr2-input"
-            type="number"
-            name="cardAttr2"
-            id="attr2-input"
-            value={ cardAttr2 }
-            onChange={ onInputChange }
-          />
-        </label>
-        Atributo 3:
-        <label htmlFor="attr3-input">
-          <input
-            data-testid="attr3-input"
-            type="number"
-            name="cardAttr3"
-            id="attr2-input"
-            value={ cardAttr3 }
-            onChange={ onInputChange }
-          />
-        </label>
-        Imagem:
-        <label htmlFor="image-input">
-          <input
-            data-testid="image-input"
-            type="text"
-            name="cardImage"
-            id="image-input"
-            value={ cardImage }
-            onChange={ onInputChange }
-          />
-        </label>
-        Raridade:
-        <label htmlFor="rare-imput">
-          <select
-            name="cardRare"
-            data-testid="rare-input"
-            id="rare-imput"
-            value={ cardRare }
-            onChange={ onInputChange }
+        <form>
+          <h3>Adicionar Nova Carta</h3>
+          Nome:
+          <label htmlFor="name-input">
+            <input
+              data-testid="name-input"
+              type="text"
+              name="cardName"
+              id="name-input"
+              value={ cardName }
+              onChange={ onInputChange }
+            />
+          </label>
+          Descrição:
+          <label htmlFor="description-input">
+            <input
+              data-testid="description-input"
+              type="text"
+              name="cardDescription"
+              id="description-input"
+              value={ cardDescription }
+              onChange={ onInputChange }
+            />
+          </label>
+          Atributo 1:
+          <label htmlFor="attr1-input">
+            <input
+              data-testid="attr1-input"
+              type="number"
+              name="cardAttr1"
+              id="attr1-input"
+              value={ cardAttr1 }
+              onChange={ onInputChange }
+            />
+          </label>
+          Atributo 2:
+          <label htmlFor="attr2-input">
+            <input
+              data-testid="attr2-input"
+              type="number"
+              name="cardAttr2"
+              id="attr2-input"
+              value={ cardAttr2 }
+              onChange={ onInputChange }
+            />
+          </label>
+          Atributo 3:
+          <label htmlFor="attr3-input">
+            <input
+              data-testid="attr3-input"
+              type="number"
+              name="cardAttr3"
+              id="attr2-input"
+              value={ cardAttr3 }
+              onChange={ onInputChange }
+            />
+          </label>
+          Imagem:
+          <label htmlFor="image-input">
+            <input
+              data-testid="image-input"
+              type="text"
+              name="cardImage"
+              id="image-input"
+              value={ cardImage }
+              onChange={ onInputChange }
+            />
+          </label>
+          Raridade:
+          <label htmlFor="rare-imput">
+            <select
+              name="cardRare"
+              data-testid="rare-input"
+              id="rare-imput"
+              value={ cardRare }
+              onChange={ onInputChange }
+            >
+              <option value="normal"> Normal</option>
+              <option value="raro"> Raro</option>
+              <option value="muito raro"> Muito Raro</option>
+            </select>
+          </label>
+          Super Trunfo
+          <label htmlFor="trunfo-input">
+            <input
+              name="cardTrunfo"
+              data-testid="trunfo-input"
+              type="checkbox"
+              id="trunfo-input"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+            />
+          </label>
+          <button
+            data-testid="save-button"
+            type="submit"
+            disabled={ isSaveButtonDisabled }
+            onClick={ onSaveButtonClick }
           >
-            <option value="normal"> Normal</option>
-            <option value="raro"> Raro</option>
-            <option value="muito raro"> Muito Raro</option>
-          </select>
-        </label>
-        Super Trunfo
-        <label htmlFor="trunfo-input">
-          <input
-            name="cardTrunfo"
-            data-testid="trunfo-input"
-            type="checkbox"
-            id="trunfo-input"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-        </label>
-        <button
-          data-testid="save-button"
-          type="submit"
-          disabled={ isSaveButtonDisabled }
-          onClick={ onSaveButtonClick }
-        >
-          Salvar
-        </button>
+            Salvar
+          </button>
+        </form>
       </div>
     );
   }
