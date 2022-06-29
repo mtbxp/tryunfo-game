@@ -12,7 +12,7 @@ const INNITIAL_STATE = {
   cardRare: 'normal',
   cardTrunfo: false,
   isSaveButtonDisabled: true,
-  // onSaveButtonClick: ,
+  savedCard: [],
   // hasTrunfo,
 };
 
@@ -71,6 +71,44 @@ class App extends React.Component {
       }));
     };
 
+    onSaveButtonClick = (event) => {
+      event.preventDefault();
+
+      const {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
+        isSaveButtonDisabled,
+      } = this.state;
+
+      this.setState((prevState) => ({
+        cardName: '',
+        cardDescription: '',
+        cardAttr1: 0,
+        cardAttr2: 0,
+        cardAttr3: 0,
+        cardImage: '',
+        cardRare: 'normal',
+        cardTrunfo: false,
+        savedCard: [...prevState.savedCard, {
+          cardName,
+          cardDescription,
+          cardAttr1,
+          cardAttr2,
+          cardAttr3,
+          cardImage,
+          cardRare,
+          cardTrunfo,
+          isSaveButtonDisabled,
+        }],
+      }));
+    }
+
     render() {
       const { cardName,
         cardDescription,
@@ -81,7 +119,7 @@ class App extends React.Component {
         cardRare,
         cardTrunfo,
         isSaveButtonDisabled,
-      // onSaveButtonClick,
+        // savedCard,
       } = this.state;
 
       const cardProps = {
@@ -94,13 +132,16 @@ class App extends React.Component {
         cardRare,
         cardTrunfo,
         isSaveButtonDisabled,
-      // onSaveButtonClick,
       };
 
       return (
         <div>
           <h1>Tryunfo</h1>
-          <Form onInputChange={ this.handleChange } { ...this.state } />
+          <Form
+            onInputChange={ this.handleChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+            { ...this.state }
+          />
           <Card onInputChange={ this.handleChange } { ...cardProps } />
         </div>
       );
