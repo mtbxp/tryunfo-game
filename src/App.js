@@ -19,6 +19,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      // filterTrunfo: false,
       arrayOfCards: array,
       // arrayOfCards: [],
       isFiltering: false,
@@ -34,7 +35,6 @@ class App extends React.Component {
       cardName, cardDescription,
       cardImage, cardRare, cardAttr1, cardAttr2, cardAttr3, cardTrunfo, hasTrunfo,
     } = this.state;
-
     const newCard = {
       cardName,
       cardDescription,
@@ -72,6 +72,8 @@ class App extends React.Component {
     }, () => {
       this.buttonValidation(target);
     });
+
+    // if (target.checked) filter(target);
   }
 
   buttonValidation = () => {
@@ -148,8 +150,6 @@ class App extends React.Component {
     const rareArray = arrayOfCards.filter((card) => card.cardRare === value);
     this.setState({
       isFiltering: !!value,
-    });
-    this.setState({
       filteredArrayOfCards: rareArray,
     });
     if (value === 'todas') {
@@ -158,6 +158,23 @@ class App extends React.Component {
       });
     }
   }
+
+  filter = ({ target }) => {
+    const { arrayOfCards } = this.state;
+    if (target.checked) {
+      console.log('entrou no if');
+      this.setState({
+        filterTrunfo: true,
+        filteredArrayOfCards: arrayOfCards.filter((card) => card.cardTrunfo),
+      });
+    } else {
+      console.log('entrou no else');
+      this.setState({
+        filterTrunfo: true,
+        filteredArrayOfCards: arrayOfCards,
+      });
+    }
+  };
 
   render() {
     const {
@@ -205,6 +222,10 @@ class App extends React.Component {
           <option value="raro">Raro</option>
           <option value="muito raro">Muito raro</option>
         </select>
+        <label onChange={ this.filter } htmlFor="checkbox-filter" testid="trunfo-filter">
+          Super Trunfo
+          <input id="checkbox-filter" type="checkbox" />
+        </label>
         <Div
           cardName={ cardName }
           cardDescription={ cardDescription }
