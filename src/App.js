@@ -17,7 +17,7 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       cardDeck: [],
-      /* hasTrunfo: false, */
+      hasTrunfo: false,
     };
   }
 
@@ -118,12 +118,7 @@ class App extends React.Component {
 
     cardDeck.push(newCard);
 
-    if (cardTrunfo) {
-      /* this.setState({
-        hasTrunfo: true,
-      }); */
-    }
-
+    this.checkTrunfo();
     this.resetForm();
   }
 
@@ -138,6 +133,15 @@ class App extends React.Component {
       cardRare: '',
       isSaveButtonDisabled: true,
     });
+  }
+
+  checkTrunfo = () => {
+    const { cardDeck } = this.state;
+    if (cardDeck.some((card) => card.cardTrunfo)) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
   }
 
   render() {
@@ -171,6 +175,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
         />
+        <h1>Meu Deck</h1>
         {
           cardDeck.map((newCard) => (
             <Card

@@ -3,9 +3,34 @@ import PropTypes from 'prop-types';
 
 class Form extends Component {
   render() {
-    const { cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo,
-      isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick } = this.props;
+
+    const trunfoCheckbox = (
+      <label
+        htmlFor="trunfo-input"
+      >
+        Carta Super Trunfo
+        <input
+          type="checkbox"
+          name="trunfoInput"
+          data-testid="trunfo-input"
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
+        />
+      </label>
+    );
+
     return (
       <form>
 
@@ -104,20 +129,9 @@ class Form extends Component {
             <option value="muito raro">Muito raro</option>
           </select>
         </label>
-
-        <label
-          htmlFor="trunfo-input"
-        >
-          Carta Super Trunfo
-          <input
-            type="checkbox"
-            name="trunfoInput"
-            data-testid="trunfo-input"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-            hasTrunfo={ hasTrunfo }
-          />
-        </label>
+        { hasTrunfo
+          ? <p data-testid="trunfo-input">Você já tem um Super Trunfo em seu baralho</p>
+          : trunfoCheckbox }
 
         <button
           type="button"
