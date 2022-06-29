@@ -253,12 +253,11 @@ input, textarea, select {
 
 /* DivDecks */
 .divDeck {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   align-items: center;
-
+  display: flex;
+  flex-flow: row , wrap;
 }
+
 /* alerts */
 .alert {
   border-color: transparent;
