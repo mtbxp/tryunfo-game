@@ -14,8 +14,29 @@ class App extends React.Component {
       urlImage: '',
       rare: '',
       superTrunfo: false,
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
     };
+  }
+
+  validateButton = () => {
+    const { card, description, urlImage, valueCard1, valueCard2,
+      valueCard3 } = this.state;
+    const maxValue = 90;
+    const minValue = 0;
+    const sumValue = 210;
+
+    const validateText = card !== '' && description !== '' && urlImage !== '';
+
+    const min = Number(valueCard1) >= minValue && Number(valueCard2) >= minValue
+      && Number(valueCard3) >= minValue;
+    const max = Number(valueCard1) <= maxValue && Number(valueCard2) <= maxValue
+      && Number(valueCard3) <= maxValue;
+    const sum = Number(valueCard1) + Number(valueCard2) + Number(valueCard3) <= sumValue;
+
+    if (validateText && sum && min && max) {
+      return false;
+    }
+    return true;
   }
 
   onInputChange = ({ target }) => {
@@ -23,7 +44,9 @@ class App extends React.Component {
     const valueState = type === 'checkbox' ? checked : value;
     this.setState({
       [name]: valueState,
-    });
+    }, () => this.setState({
+      isSaveButtonDisabled: this.validateButton(),
+    }));
   }
 
   render() {
