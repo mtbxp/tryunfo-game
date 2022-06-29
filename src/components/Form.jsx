@@ -1,74 +1,80 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Form extends Component {
+class Form extends React.Component {
   render() {
+    const {
+      cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
+      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
+      onInputChange, onSaveButtonClick,
+    } = this.props;
     return (
-      <form>
+      <div className="form-container">
         <label htmlFor="name">
-          <input type="text" data-testid="name-input" name="name" id="name" />
+          Nome
+          <input
+            type="text"
+            data-testid="name-input"
+            value={ cardDescription }
+          />
         </label>
         <label htmlFor="description">
-          <input
-            type="textarea"
+          Descrição
+          <textarea
             data-testid="description-input"
-            name="description"
-            id="description"
           />
         </label>
         <label htmlFor="attr1">
+          Atributo 1
           <input
             type="number"
             data-testid="attr1-input"
-            name="attr1"
-            id="attr1"
           />
         </label>
         <label htmlFor="attr2">
+          Atributo 2
           <input
             type="number"
             data-testid="attr2-input"
-            name="attr2"
-            id="attr2"
           />
         </label>
         <label htmlFor="attr3">
+          Atributo 3
           <input
             type="number"
             data-testid="attr3-input"
-            name="attr3"
-            id="attr3"
           />
         </label>
-        <label htmlFor="image">
+        <label htmlFor="img">
+          URL da Imagem
           <input
             type="text"
             data-testid="image-input"
-            name="image"
-            id="image"
           />
         </label>
-
-        <label htmlFor="rare">
-          <select name="rare" id="rare" data-testid="rare-input">
-            <option value="normal">normal</option>
-            <option value="raro">raro</option>
-            <option value="muito raro">muito raro</option>
+        <label htmlFor="rarity">
+          Raridade
+          <select data-testid="rare-input" id="rarity">
+            <option value="normal"> Normal </option>
+            <option value="raro"> Raro </option>
+            <option value="muito raro"> Muito Raro </option>
           </select>
         </label>
-
-        <label htmlFor="trunfo">
+        <label htmlFor="super-trunfo">
+          Super Trunfo
           <input
             type="checkbox"
-            name="trunfo"
-            id="trunfo"
             data-testid="trunfo-input"
           />
         </label>
-
-        <button type="submit" data-testid="save-button">
+        <button
+          type="button"
+          data-testid="save-button"
+        >
           Salvar
         </button>
-      </form>
+      </div>
     );
   }
 }
+
+export default Form;
