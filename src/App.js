@@ -154,7 +154,7 @@ render() {
   return (
     <div className="App">
       <h1>Tryunfo</h1>
-      <section id='formPreview'>
+      <section id="formPreview">
         <Form
           cardName={ nome }
           cardDescription={ describe }
@@ -183,7 +183,7 @@ render() {
           />
         </div>
       </section>
-      <section id='savedCards'>
+      <section id="savedCards">
         {
           savedCards.map((elem) => (<Card
             key={ elem.nome }
