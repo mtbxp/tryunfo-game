@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import Filter from './components/Filter';
 
 class App extends React.Component {
   constructor() {
@@ -16,7 +17,8 @@ class App extends React.Component {
       cardTrunfo: '',
       hasTrunfo: false,
       buttonSaveDisabled: true,
-      arrayCards: [] };
+      arrayCards: [],
+      filter: [] };
   }
 
   validateButton = () => {
@@ -54,6 +56,7 @@ class App extends React.Component {
       cardTrunfo };
 
     // this.setState((...args) => { arrayCards.push(args); });
+
     this.setState((i) => ({ arrayCards: [...i.arrayCards, objToArray] }), () => {
       this.setState({
         cardName: '',
@@ -66,6 +69,7 @@ class App extends React.Component {
         hasTrunfo: this.validateTrunfo(),
       });
     });
+    this.setState((i) => ({ filter: [...i.filter, objToArray] }));
   }
 
   validateTrunfo = () => {
@@ -87,6 +91,13 @@ class App extends React.Component {
         hasTrunfo: false,
       });
     });
+  }
+
+  nameFilter = ({ target }) => {
+    const { value } = target;
+    this.setState((prev) => ({
+      arrayCards: prev.arrayCards.filter((i) => i.cardName.includes(value)),
+    }));
   }
 
   // array.forEach((i,index)=> i%2===0? array.splice(index,1):null)
@@ -120,7 +131,6 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-
         {arrayCards.map((i, index) => (
           <div key={ index }>
             <Card
@@ -143,6 +153,7 @@ class App extends React.Component {
             </button>
           </div>
         ))}
+        <Filter onInputChange={ this.nameFilter } />
 
       </div>
     );
