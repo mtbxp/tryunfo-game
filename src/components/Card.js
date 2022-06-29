@@ -15,30 +15,50 @@ class Card extends Component {
     } = this.props;
 
     return (
-      <div>
+      <div id='previewCard'>
+
         <h3 data-testid="name-card">
           { cardName }
         </h3>
+
         <img
           src={ cardImage }
           alt={ cardName }
           data-testid="image-card"
         />
-        <p data-testid="description-card">
+
+        <p 
+          style={
+            {
+              wordWrap: 'break-word',
+              whiteSpace: 'pre-wrap',
+              wordBreak: 'break-word'
+            }
+          }
+          id='descriptionPreview'
+          data-testid="description-card"
+        >
           { cardDescription }
         </p>
-        <p data-testid="attr1-card">
-          { cardAttr1 }
-        </p>
-        <p data-testid="attr2-card">
-          { cardAttr2 }
-        </p>
-        <p data-testid="attr3-card">
-          { cardAttr3 }
-        </p>
-        <p data-testid="rare-card">
+          
+      <div id='atrrRareSection'>
+        <section id='atrrSection'>
+          <p data-testid="attr1-card">
+            { cardAttr1 }
+          </p>
+          <p data-testid="attr2-card">
+            { cardAttr2 }
+          </p>
+          <p data-testid="attr3-card">
+            { cardAttr3 }
+          </p>
+        </section>
+
+        <p id='rare' data-testid="rare-card">
           { cardRare }
         </p>
+      </div>
+
         { cardTrunfo
             && <p className="superTrunfo" data-testid="trunfo-card"> Super Trunfo </p>}
       </div>

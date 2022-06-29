@@ -14,7 +14,7 @@ class App extends React.Component {
       firstAttribute: '',
       secondAttribute: '',
       thirdAttribute: '',
-      rarity: 'normal',
+      rarity: '',
       saveButtonDisabled: true,
       superTrunfo: false,
       savedCards: [],
@@ -154,7 +154,7 @@ render() {
   return (
     <div className="App">
       <h1>Tryunfo</h1>
-      <section>
+      <section id='formPreview'>
         <Form
           cardName={ nome }
           cardDescription={ describe }
@@ -183,19 +183,21 @@ render() {
           />
         </div>
       </section>
-      {
-        savedCards.map((elem) => (<Card
-          key={ elem.nome }
-          cardName={ elem.nome }
-          cardDescription={ elem.describe }
-          cardAttr1={ elem.firstAttribute }
-          cardAttr2={ elem.secondAttribute }
-          cardAttr3={ elem.thirdAttribute }
-          cardImage={ elem.cardImage }
-          cardRare={ elem.rarity }
-          cardTrunfo={ elem.superTrunfo }
-        />))
-      }
+      <section id='savedCards'>
+        {
+          savedCards.map((elem) => (<Card
+            key={ elem.nome }
+            cardName={ elem.nome }
+            cardDescription={ elem.describe }
+            cardAttr1={ elem.firstAttribute }
+            cardAttr2={ elem.secondAttribute }
+            cardAttr3={ elem.thirdAttribute }
+            cardImage={ elem.cardImage }
+            cardRare={ elem.rarity }
+            cardTrunfo={ elem.superTrunfo }
+          />))
+        }
+      </section>
     </div>
   );
 }

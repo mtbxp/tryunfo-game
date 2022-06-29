@@ -1,18 +1,88 @@
 .App {
+  border: 1px solid red;
   align-items: center;
   display: flex;
   flex-direction: column;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+#rare {
+  font-size: 13px;
+  height: 30px;
+  width: 100px;
+  align-items: center;
+  border: 1px solid red;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+#atrrRareSection {
+  border: 1px solid red;
+  height: 30px;
+  width: 240px;
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+#atrrSection {
+  font-size: 12px;
+  width: 100px;
+  height: 30px;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid red;
+  display: flex;
 }
 
 form {
   border: 3px solid purple;
   display: flex;
   flex-direction: column;
-  max-height: 300px;
-  max-width: 220px;
+  height: 315px;
+  width: 200px;
   padding: 10px;
 }
 
 section {
   display: flex;
+}
+
+#descriptionPreview {
+  border: 1px solid red;
+  width: 200px;
+  height: 70px;
+  padding: 10px;
+  font-size: 12px;
+}
+
+#previewCard {
+  border: 1px solid red;
+  width: 250px;
+  height: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#formPreview {
+  border: 1px solid red;
+  width: 700px;
+  height: 540px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#savedCards {
+  width: 90%;
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
