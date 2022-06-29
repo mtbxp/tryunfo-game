@@ -107,6 +107,10 @@ class Form extends Component {
               onChange={ onInputChange }
               value={ cardRare }
             >
+              {/* <option
+                select disabled
+              >
+              </option> */}
               <option
                 value="normal"
               >
