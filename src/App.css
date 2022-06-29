@@ -1,0 +1,8 @@
+.divFCard {
+  display: flex;
+}
+
+.cards {
+  display: flex;
+  margin: 5px;
+}

@@ -1,0 +1,61 @@
+.card {
+  background-color: yellow;
+  border: 10px solid blue;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  width: 300px;
+}
+
+.nomeCard {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+}
+
+.imagem {
+  display: flex;
+  justify-content: center;
+}
+
+.imagem div {
+  align-items: center;
+  background-color: white;
+  border: 5px solid blue;
+  border-radius: 500px;
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  width: 200px;
+}
+
+.imagemT {
+  width: 100%;
+}
+
+.atributos {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.desc {
+  height: 50px;
+  margin-left: 5px;
+  overflow-wrap: break-word;
+  width: 200px;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.atributos1 {
+  display: flex;
+  height: 30px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}

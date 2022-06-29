@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -27,6 +28,7 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       cards: [],
+      fundo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDIxF1SWLKpiTIS1Iu2TCv6btlV-ft78Jr0w&usqp=CAU',
     };
   }
 
@@ -185,32 +187,34 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>Tryunfo</h1>
-        <Form
-          cardName={ cardName }
-          onInputChange={ this.onInputChange }
-          cardDescription={ cardDescription }
-          cardRare={ cardRare }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardTrunfo={ cardTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onSaveButtonClick={ this.onSaveButtonClick }
-          hasTrunfo={ hasTrunfo }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardRare={ cardRare }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardTrunfo={ cardTrunfo }
-        />
-        <div>
+        <h1>PokeTrunfo</h1>
+        <div className="divFCard">
+          <Form
+            cardName={ cardName }
+            onInputChange={ this.onInputChange }
+            cardDescription={ cardDescription }
+            cardRare={ cardRare }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardTrunfo={ cardTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onSaveButtonClick={ this.onSaveButtonClick }
+            hasTrunfo={ hasTrunfo }
+          />
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardRare={ cardRare }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardTrunfo={ cardTrunfo }
+          />
+        </div>
+        <div className="cards">
           { this.renderizaCards() }
         </div>
       </div>

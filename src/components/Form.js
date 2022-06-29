@@ -12,80 +12,110 @@ class Form extends React.Component {
 
     return (
       <form className="form">
-        <label htmlFor="nomeDaCarta">
-          Nome da carta:
-          <input
-            data-testid="name-input"
-            name="cardName"
-            type="text"
-            value={ cardName }
-            onChange={ onInputChange }
-          />
-        </label>
+        <h3 className="margem">Crie sua carta!</h3>
+        <div className="teste">
+          <p className="margem">Nome da Carta:</p>
+          <label htmlFor="nomeDaCarta">
+            <input
+              data-testid="name-input"
+              name="cardName"
+              type="text"
+              value={ cardName }
+              onChange={ onInputChange }
+              className="infCarta"
+              maxLength="30"
+            />
+          </label>
+        </div>
 
-        <label htmlFor="descricao">
-          <textarea
-            data-testid="description-input"
-            name="cardDescription"
-            value={ cardDescription }
-            onChange={ onInputChange }
-          />
-        </label>
+        <div className="teste">
+          <p className="margem">Descrção:</p>
+          <label htmlFor="descricao">
+            <textarea
+              data-testid="description-input"
+              name="cardDescription"
+              value={ cardDescription }
+              onChange={ onInputChange }
+              className="infCarta1"
+              maxLength="90"
+            />
+          </label>
+        </div>
 
-        <label htmlFor="primeiroAtributo">
-          <input
-            data-testid="attr1-input"
-            name="cardAttr1"
-            type="number"
-            value={ cardAttr1 }
-            onChange={ onInputChange }
-          />
-        </label>
+        <div className="teste">
+          <p className="margem">Velocidade:</p>
+          <label htmlFor="primeiroAtributo">
+            <input
+              data-testid="attr1-input"
+              name="cardAttr1"
+              type="number"
+              value={ cardAttr1 }
+              onChange={ onInputChange }
+              className="attrs"
+            />
+          </label>
+        </div>
 
-        <label htmlFor="segundoAtributo">
-          <input
-            data-testid="attr2-input"
-            name="cardAttr2"
-            type="number"
-            value={ cardAttr2 }
-            onChange={ onInputChange }
-          />
-        </label>
+        <div className="teste">
+          <p className="margem">Força:</p>
+          <label htmlFor="segundoAtributo">
+            <input
+              data-testid="attr2-input"
+              name="cardAttr2"
+              type="number"
+              value={ cardAttr2 }
+              onChange={ onInputChange }
+              className="attrs"
+            />
+          </label>
+        </div>
 
-        <label htmlFor="terceiroAtributo">
-          <input
-            data-testid="attr3-input"
-            name="cardAttr3"
-            type="number"
-            value={ cardAttr3 }
-            onChange={ onInputChange }
-          />
-        </label>
+        <div className="teste">
+          <p className="margem">Resistencia:</p>
+          <label htmlFor="terceiroAtributo">
+            <input
+              data-testid="attr3-input"
+              name="cardAttr3"
+              type="number"
+              value={ cardAttr3 }
+              onChange={ onInputChange }
+              className="attrs"
+            />
+          </label>
+        </div>
 
-        <label htmlFor="img">
-          <input
-            data-testid="image-input"
-            name="cardImage"
-            type="string"
-            value={ cardImage }
-            onChange={ onInputChange }
-          />
-        </label>
+        <div className="teste">
+          <p className="margem">Url da Imagem:</p>
+          <label htmlFor="img">
+            <input
+              data-testid="image-input"
+              name="cardImage"
+              type="string"
+              value={ cardImage }
+              onChange={ onInputChange }
+              className="infCarta"
+            />
+          </label>
+        </div>
 
-        <label htmlFor="raridade">
-          <select
-            data-testid="rare-input"
-            name="cardRare"
-            value={ cardRare }
-            onChange={ onInputChange }
-          >
-            <option>normal</option>
-            <option>raro</option>
-            <option>muito raro</option>
-          </select>
-        </label>
+        <div className="teste">
+          <p className="margem">Raridade da Carta:</p>
+          <label htmlFor="raridade">
+            <select
+              data-testid="rare-input"
+              name="cardRare"
+              value={ cardRare }
+              onChange={ onInputChange }
+              className="raridade"
+            >
+              <option>normal</option>
+              <option>raro</option>
+              <option>muito raro</option>
+            </select>
+          </label>
+        </div>
 
-        <label htmlFor="superTrunfo">
+        <label htmlFor="superTrunfo" className="margem">
           { hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p> : <input
             data-testid="trunfo-input"
             name="cardTrunfo"
@@ -93,16 +123,20 @@ class Form extends React.Component {
             checked={ cardTrunfo }
             onChange={ onInputChange }
           />}
+          Super Trunfo
         </label>
 
-        <button
-          data-testid="save-button"
-          type="button"
-          disabled={ isSaveButtonDisabled }
-          onClick={ onSaveButtonClick }
-        >
-          Salvar
-        </button>
+        <div className="divBotao">
+          <button
+            data-testid="save-button"
+            type="button"
+            disabled={ isSaveButtonDisabled }
+            onClick={ onSaveButtonClick }
+            className="botao"
+          >
+            Salvar
+          </button>
+        </div>
       </form>
     );
   }

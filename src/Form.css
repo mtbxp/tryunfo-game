@@ -1,6 +1,63 @@
 .form {
-  border: 5px solid black;
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
+  height: 350px;
+  margin-right: 50px;
+  width: 400px;
 }
 
+.teste {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.teste p {
+  margin: 0%;
+}
+
+.infCarta {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 25px;
+  margin-right: 5px;
+  padding: 0%;
+  width: 250px;
+}
+
+.attrs {
+  border-radius: 5px;
+  margin-right: 5px;
+  width: 50px;
+}
+
+.margem {
+  margin-left: 5px;
+}
+
+.raridade {
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.botao {
+  height: 30px;
+  width: 200px;
+}
+
+.divBotao {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.infCarta1 {
+  border: 1px solid black;
+  height: 40px;
+  margin-right: 5px;
+  padding: 0%;
+  width: 250px;
+}

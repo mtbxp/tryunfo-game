@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../Card.css';
 
 class Card extends React.Component {
   render() {
@@ -8,45 +9,58 @@ class Card extends React.Component {
       cardAttr2, cardAttr3,
       cardImage, cardRare,
       cardTrunfo } = this.props;
+    const superTrunfo = (
+      <p
+        data-testid="trunfo-card"
+        className="atributos1"
+      >
+        Super Trunfo
+      </p>);
     return (
-      <div>
-        <label htmlFor="nome">
-          Nome:
-          <p data-testid="name-card">{ cardName }</p>
-        </label>
+      <div className="card">
+        <div className="nomeCard">
+          <label htmlFor="nome">
+            <p data-testid="name-card">{ cardName }</p>
+          </label>
+        </div>
 
-        <img
-          src={ cardImage }
-          alt={ cardName }
-          data-testid="image-card"
-        />
+        <div className="imagem">
+          <div>
+            <img
+              src={ cardImage }
+              alt={ cardName }
+              data-testid="image-card"
+              className="imagemT"
+            />
+          </div>
+        </div>
 
-        <label htmlFor="descricao">
-          Descrção:
-          <p data-testid="description-card">{ cardDescription }</p>
-        </label>
+        <div className="atributos">
+          <p>Descrção:</p>
+          <p data-testid="description-card" className="desc">{ cardDescription }</p>
+        </div>
 
-        <label htmlFor="attr1">
-          Primeiro Atributo:
+        <div className="atributos1">
+          <p>Velocidade:</p>
           <p data-testid="attr1-card">{ cardAttr1 }</p>
-        </label>
+        </div>
 
-        <label htmlFor="attr2">
-          Segundo Atributo:
+        <div className="atributos1">
+          <p>Força:</p>
           <p data-testid="attr2-card">{ cardAttr2 }</p>
-        </label>
+        </div>
 
-        <label htmlFor="attr3">
-          Terceiro Atributo:
+        <div className="atributos1">
+          <p>Resistencia:</p>
           <p data-testid="attr3-card">{ cardAttr3 }</p>
-        </label>
+        </div>
 
-        <label htmlFor="raridade">
-          RAridade da carta:
+        <div className="atributos1">
+          <p>Raridade da carta:</p>
           <p data-testid="rare-card">{ cardRare }</p>
-        </label>
+        </div>
 
-        { cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : <p>...</p>}
+        { cardTrunfo ? superTrunfo : <p className="atributos1"> </p>}
       </div>
     );
   }
