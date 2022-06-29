@@ -111,6 +111,7 @@ class Form extends React.Component {
           Salvar
         </button>
         <p>{hasTrunfo}</p>
+        <p>{isSaveButtonDisabled}</p>
       </>
     );
   }
