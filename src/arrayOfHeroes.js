@@ -6,7 +6,7 @@ const array = [
     cardAttr1: '70',
     cardAttr2: '50',
     cardAttr3: '79',
-    cardRare: 'Normal',
+    cardRare: 'normal',
     cardTrunfo: false,
   },
   {
@@ -16,7 +16,7 @@ const array = [
     cardAttr1: '88',
     cardAttr2: '60',
     cardAttr3: '10',
-    cardRare: 'Normal',
+    cardRare: 'normal',
     cardTrunfo: false,
   },
   {
@@ -26,7 +26,7 @@ const array = [
     cardAttr1: '70',
     cardAttr2: '60',
     cardAttr3: '85',
-    cardRare: 'Normal',
+    cardRare: 'normal',
     cardTrunfo: false,
   },
   {
@@ -36,7 +36,7 @@ const array = [
     cardAttr1: '80',
     cardAttr2: '35',
     cardAttr3: '75',
-    cardRare: 'Normal',
+    cardRare: 'normal',
     cardTrunfo: false,
   },
   {
@@ -46,7 +46,7 @@ const array = [
     cardAttr1: '35',
     cardAttr2: '40',
     cardAttr3: '60',
-    cardRare: 'Normal',
+    cardRare: 'raro',
     cardTrunfo: false,
   },
   {
@@ -56,7 +56,7 @@ const array = [
     cardAttr1: '88',
     cardAttr2: '65',
     cardAttr3: '40',
-    cardRare: 'Normal',
+    cardRare: 'raro',
     cardTrunfo: false,
   },
   {
@@ -66,7 +66,7 @@ const array = [
     cardAttr1: '88',
     cardAttr2: '50',
     cardAttr3: '50',
-    cardRare: 'Normal',
+    cardRare: 'raro',
     cardTrunfo: false,
   },
   {
@@ -76,7 +76,7 @@ const array = [
     cardAttr1: '65',
     cardAttr2: '50',
     cardAttr3: '60',
-    cardRare: 'Normal',
+    cardRare: 'raro',
     cardTrunfo: false,
   },
   {
@@ -86,7 +86,7 @@ const array = [
     cardAttr1: '35',
     cardAttr2: '35',
     cardAttr3: '65',
-    cardRare: 'Normal',
+    cardRare: 'raro',
     cardTrunfo: false,
   },
   {
@@ -96,7 +96,7 @@ const array = [
     cardAttr1: '85',
     cardAttr2: '65',
     cardAttr3: '90',
-    cardRare: 'Normal',
+    cardRare: 'muito raro',
     cardTrunfo: false,
   },
   {
@@ -106,7 +106,7 @@ const array = [
     cardAttr1: '85',
     cardAttr2: '65',
     cardAttr3: '90',
-    cardRare: 'Normal',
+    cardRare: 'muito raro',
     cardTrunfo: false,
   },
 ];
