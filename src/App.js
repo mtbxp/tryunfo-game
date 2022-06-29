@@ -14,6 +14,7 @@ class App extends React.Component {
       urlImage: '',
       rare: '',
       superTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       cardList: [],
     };
@@ -62,6 +63,7 @@ class App extends React.Component {
       urlImage: '',
       rare: '',
       superTrunfo: false,
+      hasTrunfo: prev.superTrunfo,
       cardList: [
         ...prev.cardList,
         { card,
@@ -78,7 +80,7 @@ class App extends React.Component {
 
   render() {
     const { card, description, valueCard1, valueCard2, valueCard3, urlImage,
-      rare, superTrunfo, isSaveButtonDisabled } = this.state;
+      rare, superTrunfo, hasTrunfo, isSaveButtonDisabled } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -91,7 +93,7 @@ class App extends React.Component {
           cardImage={ urlImage }
           cardRare={ rare }
           cardTrunfo={ superTrunfo }
-          hasTrunfo={ false }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }

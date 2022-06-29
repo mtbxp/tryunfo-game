@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class Form extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, isSaveButtonDisabled, onInputChange,
+      cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled, onInputChange,
       onSaveButtonClick } = this.props;
     return (
       <div>
@@ -90,17 +90,20 @@ class Form extends React.Component {
               <option value="muito raro">Muito raro</option>
             </select>
           </label>
-
-          <label htmlFor="super-trunfo">
-            Super Trunfo?
-            <input
-              data-testid="trunfo-input"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-              name="superTrunfo"
-              type="checkbox"
-            />
-          </label>
+          { hasTrunfo ? (
+            'Você já tem um Super Trunfo em seu baralho'
+          ) : (
+            <label htmlFor="super-trunfo">
+              Super Trunfo?
+              <input
+                data-testid="trunfo-input"
+                checked={ cardTrunfo }
+                onChange={ onInputChange }
+                name="superTrunfo"
+                type="checkbox"
+              />
+            </label>
+          )}
 
           <button
             type="button"
@@ -125,6 +128,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
