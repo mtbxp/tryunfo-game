@@ -4,14 +4,45 @@ import Form from './components/Form';
 
 class App extends React.Component {
   state = {
-    nameInput: 'Nome da Carta',
-    descriptionInput: 'Descrição',
-    attr1Input: '0',
-    attr2Input: '0',
-    attr3Input: '0',
-    imageInput: 'https://cdn-icons-png.flaticon.com/512/7733/7733781.png',
+    nameInput: '',
+    descriptionInput: '',
+    attr1Input: '',
+    attr2Input: '',
+    attr3Input: '',
+    imageInput: '',
     rareInput: 'normal',
     trunfoInput: false,
+    buttonDisabled: true,
+  }
+
+  teste = () => {
+    const {
+      nameInput, descriptionInput, imageInput, attr1Input, attr2Input, attr3Input,
+    } = this.state;
+    const attr1Number = parseInt(attr1Input, 10);
+    const attr2Number = parseInt(attr2Input, 10);
+    const attr3Number = parseInt(attr3Input, 10);
+    const maxTotal = 210;
+    const maxAtt = 90;
+    const minAtt = 0;
+    if (nameInput !== ''
+    && descriptionInput !== ''
+    && imageInput !== ''
+    && attr1Number >= minAtt
+    && attr2Number >= minAtt
+    && attr3Number >= minAtt
+    && attr1Number <= maxAtt
+    && attr2Number <= maxAtt
+    && attr3Number <= maxAtt
+    && (attr1Number + attr2Number + attr3Number) <= maxTotal) {
+      this.setState({
+        buttonDisabled: false,
+      });
+    } else {
+      this.setState({
+        buttonDisabled: true,
+      });
+    }
   }
 
   handleChange = ({ target }) => {
@@ -19,8 +50,8 @@ class App extends React.Component {
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    });
-  };
+    }, this.teste);
+  }
 
   render() {
     const {
@@ -32,13 +63,17 @@ class App extends React.Component {
       imageInput,
       rareInput,
       trunfoInput,
+      buttonDisabled,
     } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <main>
           <h2>Crie sua carta</h2>
-          <Form onInputChange={ this.handleChange } />
+          <Form
+            onInputChange={ this.handleChange }
+            isSaveButtonDisabled={ buttonDisabled }
+          />
           <Card
             cardName={ nameInput }
             cardDescription={ descriptionInput }
