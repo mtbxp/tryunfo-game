@@ -14,7 +14,9 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
+      cards: [],
     };
   }
 
@@ -70,7 +72,7 @@ class App extends React.Component {
 
   handleSaveButton = (event) => {
     event.preventDefault();
-    this.setState({
+    this.setState((prevState) => ({
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -78,8 +80,24 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
-    });
+      hasTrunfo: prevState,
+    }), () => this.thereIsTrunfo());
   };
+
+  thereIsTrunfo = () => {
+    const { cards } = this.state;
+    cards.forEach((card) => {
+      if (card.cardTrunfo === true) {
+        this.setState({
+          hasTrunfo: true,
+        });
+      } else {
+        this.setState({
+          hasTrunfo: false,
+        });
+      }
+    });
+  }
 
   render() {
     const {
@@ -91,6 +109,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
 
@@ -108,6 +127,7 @@ class App extends React.Component {
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
             onInputChange={ this.handleInputChange }
+            hasTrunfo={ hasTrunfo }
             isSaveButtonDisabled={ isSaveButtonDisabled }
             onSaveButtonClick={ this.handleSaveButton }
           />
@@ -121,6 +141,23 @@ class App extends React.Component {
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
           />
+        </div>
+        <div>
+          <p>Cartas salvas</p>
+          {/* {AllCards.map((card) => (
+            <Card
+              cardName={ card.cardName }
+              cardDescription={ card.cardDescription }
+              cardAttr1={ card.cardAttr1 }
+              cardAttr2={ card.cardAttr2 }
+              cardAttr3={ card.cardAttr3 }
+              cardImage={ card.cardImage }
+              cardRare={ card.cardRare }
+              cardTrunfo={ card.cardTrunfo }
+              key={ card.cardName }
+            />
+          ))} */}
+          <Card />
         </div>
       </div>
     );
