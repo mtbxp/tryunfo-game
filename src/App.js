@@ -2,6 +2,8 @@ import React from 'react';
 import Form from './components/Form';
 import './App.css';
 import Card from './components/Card';
+import CardPreview from './components/CardPreview';
+import Data from './Data';
 
 const ruleMaxTotalScore = 210;
 const ruleMaxIndScore = 90;
@@ -10,7 +12,6 @@ const ruleMinIndScore = 0;
 class App extends React.Component {
   constructor() {
     super();
-    this.onInputChange = this.onInputChange.bind(this);
 
     this.state = {
       cardName: '',
@@ -23,10 +24,11 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       sumAtt: ruleMaxTotalScore,
+      cards: Data,
     };
   }
 
-  onInputChange({ target }) {
+  onInputChange = ({ target }) => {
     const { name } = target;
     const value = (target.type === 'checkbox') ? target.checked : target.value;
 
@@ -35,8 +37,25 @@ class App extends React.Component {
     }, () => this.validationButton());
   }
 
+  addNewCard = (newCard) => {
+    this.setState((prevState) => ({
+      cards: [newCard, ...prevState.cards],
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: ruleMinIndScore,
+      cardAttr2: ruleMinIndScore,
+      cardAttr3: ruleMinIndScore,
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false,
+      isSaveButtonDisabled: true,
+      sumAtt: ruleMaxTotalScore,
+    }));
+  }
+
   onSaveButtonClick = (event) => {
     event.preventDefault();
+    this.addNewCard(this.state);
   }
 
   validationButton = () => {
@@ -66,7 +85,7 @@ class App extends React.Component {
   render() {
     const { cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, isSaveButtonDisabled, sumAtt } = this.state;
+      cardRare, cardTrunfo, isSaveButtonDisabled, sumAtt, cards } = this.state;
 
     return (
       <main>
@@ -86,7 +105,7 @@ class App extends React.Component {
             isSaveButtonDisabled={ isSaveButtonDisabled }
             sumAtt={ sumAtt }
           />
-          <Card
+          <CardPreview
             cardName={ cardName }
             cardDescription={ cardDescription }
             cardAttr1={ cardAttr1 }
@@ -97,6 +116,20 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </div>
+        <section className="Deck">
+          {cards.map((item) => (
+            <Card
+              cardName={ item.cardName }
+              cardDescription={ item.cardDescription }
+              cardAttr1={ item.cardAttr1 }
+              cardAttr2={ item.cardAttr2 }
+              cardAttr3={ item.cardAttr3 }
+              cardImage={ item.cardImage }
+              cardRare={ item.cardRare }
+              cardTrunfo={ item.cardTrunfo }
+              key={ item.cardName }
+            />))}
+        </section>
       </main>
     );
   }

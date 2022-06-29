@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Card extends React.Component {
+class CardPreview extends React.Component {
   render() {
     const { cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3, cardImage,
@@ -10,22 +10,22 @@ class Card extends React.Component {
     return (
       <div className="CardPreview">
         <h2>Pré-visualização</h2>
-        <p>{ cardName }</p>
-        <p>{ cardDescription }</p>
-        <p>{ cardAttr1 }</p>
-        <p>{ cardAttr2 }</p>
-        <p>{ cardAttr3 }</p>
-        <img src={ cardImage } alt={ cardName } />
-        <p>{ cardRare }</p>
+        <p data-testid="name-card">{ cardName }</p>
+        <p data-testid="description-card">{ cardDescription }</p>
+        <p data-testid="attr1-card">{ cardAttr1 }</p>
+        <p data-testid="attr2-card">{ cardAttr2 }</p>
+        <p data-testid="attr3-card">{ cardAttr3 }</p>
+        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
+        <p data-testid="rare-card">{ cardRare }</p>
         {
-          cardTrunfo && <p>Super Trunfo</p>
+          cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p>
         }
       </div>
     );
   }
 }
 
-Card.propTypes = {
+CardPreview.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.number.isRequired,
@@ -36,4 +36,4 @@ Card.propTypes = {
   cardTrunfo: PropTypes.bool.isRequired,
 };
 
-export default Card;
+export default CardPreview;

@@ -10,18 +10,19 @@ body {
 
 .Input {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   margin-top: 50px;
 }
 
 
 .form {
   border: 1px solid black;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   padding: 25px;
   text-align: left;
-  width: 30%;
+  width: 25%;
 }
 
 input {
@@ -35,13 +36,28 @@ input {
   flex-direction: column;
 }
 
-button {
-  background-color: green;
+.form button:disabled {
+  background-color: rgb(172, 172, 172);
+  border-radius: 10px;
   color: white;
+  font-size: 1.2rem;
   font-weight: 700;
+  height: 30px;
   margin: auto;
   margin-top: 20px;
-  width: 50px;
+  width: 75px;
+}
+
+.form button {
+  background-color: green;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  height: 30px;
+  margin: auto;
+  margin-top: 20px;
+  width: 75px;
 }
 
 .attrs {
@@ -60,11 +76,18 @@ label {
 
 .CardPreview {
   border: 1px solid black;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
+  margin-left: 10px;
   padding: 25px;
   text-align: left;
-  width: 30%;
+  width: 25%;
+}
+
+.CardPreview img {
+  margin: auto;
+  width: 50%;
 }
 
 .totalScore {

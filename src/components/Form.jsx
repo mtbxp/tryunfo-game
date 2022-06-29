@@ -9,7 +9,7 @@ class Form extends React.Component {
       isSaveButtonDisabled, onSaveButtonClick, sumAtt } = this.props;
 
     return (
-      <form className="form" onSubmit={ this.onSaveButtonClick }>
+      <form className="form" onSubmit={ onSaveButtonClick }>
         <h2>Adicionar uma nova carta</h2>
         <label htmlFor="cardName">
           Name:
@@ -123,7 +123,6 @@ class Form extends React.Component {
           type="submit"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
-          onClick={ onSaveButtonClick }
         >
           Enviar
         </button>
