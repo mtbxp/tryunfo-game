@@ -7,12 +7,6 @@ class Form extends React.Component {
     console.log(value);
   }
 
-  VerificaTrunfo = (value) => {
-    if (value === true) {
-      return <p>Você já tem um Super Trunfo em seu baralho</p>;
-    }
-  }
-
   permiteChechbox = (value) => {
     const { cardTrunfo, onInputChange } = this.props;
     if (value === false) {

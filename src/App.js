@@ -104,7 +104,6 @@ class App extends React.Component {
     this.setState({
       cartasFeitas: [...cartasFeitas, infos],
     }, () => { this.limpaAtributos(); });
-    console.log(cartasFeitas[0]);
 
     const { hasTrunfo } = this.state;
 
@@ -114,6 +113,8 @@ class App extends React.Component {
   }
 
   limpaAtributos() {
+    const { cartasFeitas } = this.state;
+    cartasFeitas.map((e) => console.log(e));
     this.setState({
       cardName: '',
       Description: '',
@@ -136,6 +137,7 @@ class App extends React.Component {
       Rare,
       hasTrunfo,
       cardTrunfo,
+      cartasFeitas,
       desable } = this.state;
     const infos = {
       Nome: cardName,
@@ -153,6 +155,21 @@ class App extends React.Component {
       atribu3,
       image,
       rarety } = infos;
+    const lista = cartasFeitas.map((e) => (
+      <li key={ e.Nome }>
+        (
+        <Card
+          cardName={ e.Nome }
+          cardDescription={ e.Descriao }
+          cardAttr1={ e.atribu1 }
+          cardAttr2={ e.atribu2 }
+          cardAttr3={ e.atribu3 }
+          cardImage={ e.image }
+          cardRare={ e.rarety }
+          cardTrunfo
+        />
+        )
+      </li>));
     return (
       <main>
         <Form
@@ -179,6 +196,9 @@ class App extends React.Component {
           cardRare={ rarety }
           cardTrunfo
         />
+        <ul>
+          {lista}
+        </ul>
       </main>
     );
   }
