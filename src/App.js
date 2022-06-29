@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import './styles/card.css';
 
 class App extends React.Component {
   constructor() {
@@ -79,6 +80,14 @@ class App extends React.Component {
     ));
   }
 
+  removeCard = (name) => {
+    const { arrayCards } = this.state;
+    this.setState({
+      arrayCards: arrayCards.filter((item) => item.name !== name),
+    });
+    console.log(name);
+  }
+
   render() {
     const { name, description, attr1,
       attr2, attr3, image,
@@ -100,8 +109,8 @@ class App extends React.Component {
           isSaveButtonDisabled={ this.validateForm() }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
-
         />
+
         <Card
           cardName={ name }
           cardDescription={ description }
@@ -111,13 +120,12 @@ class App extends React.Component {
           cardImage={ image }
           cardRare={ rare }
           cardTrunfo={ trunfo }
-
         />
 
         <div>
           {
-            (arrayCards.map((item, index) => (
-              <div key={ index }>
+            arrayCards.map((item, index) => (
+              <div key={ index } className="cardbox">
                 <Card
                   cardName={ item.name }
                   cardDescription={ item.description }
@@ -127,10 +135,20 @@ class App extends React.Component {
                   cardImage={ item.image }
                   cardTrunfo={ item.trunfo }
                   cardRare={ item.rare }
+
                 />
+                <button
+                  type="button"
+                  data-testid="delete-button"
+                  onClick={ () => this.removeCard(arrayCards[index].name) }
+                >
+                  Excluir
+
+                </button>
               </div>
-            )))
+            ))
           }
+
         </div>
       </div>
     );
