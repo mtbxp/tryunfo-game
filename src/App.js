@@ -18,6 +18,7 @@ class App extends React.Component {
       image: '',
       rare: 'normal',
       trunfo: false,
+      hasTrunfo: false,
       cards: [],
     };
   }
@@ -27,11 +28,34 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+      hasTrunfo: this.checkTrunfo(),
     });
   }
 
+  checkTrunfo = () => {
+    const { cards } = this.state;
+    if ((cards.filter((card) => card.trunfo === true)).length > 0) return true;
+    return false;
+  }
+
+  checkNewTrunfo = (card) => {
+    if (card.trunfo) return true;
+    return false;
+  }
+
   saveCard() {
-    this.setState({
+    const { name, description, image, attr1, attr2, attr3, rare, trunfo } = this.state;
+    const newCard = {
+      name,
+      description,
+      image,
+      attr1,
+      attr2,
+      attr3,
+      rare,
+      trunfo,
+    };
+    this.setState((state) => ({
       name: '',
       description: '',
       attr1: '0',
@@ -40,8 +64,9 @@ class App extends React.Component {
       image: '',
       rare: 'normal',
       trunfo: false,
-      cards: [],
-    });
+      cards: [...state.cards, newCard],
+      hasTrunfo: this.checkNewTrunfo(newCard),
+    }));
   }
 
   enableButton() {
@@ -69,20 +94,20 @@ class App extends React.Component {
 
   render() {
     const { state } = this;
-    console.log(state.cards);
+    // console.log(state.cards);
     return (
       <div>
         <h1>TRYUNFO</h1>
         <Form
-          name={ state.name }
-          description={ state.description }
-          image={ state.image }
-          rare={ state.rare }
-          trunfo={ state.trunfo }
-          cards={ state.cards }
+          cardName={ state.name }
+          cardDescription={ state.description }
+          cardImage={ state.image }
+          cardRare={ state.rare }
+          cardTrunfo={ state.trunfo }
           cardAttr1={ state.attr1 }
           cardAttr2={ state.attr2 }
           cardAttr3={ state.attr3 }
+          hasTrunfo={ state.hasTrunfo }
           onInputChange={ this.handler }
           isSaveButtonDisabled={ this.enableButton() }
           onSaveButtonClick={ this.saveCard }
