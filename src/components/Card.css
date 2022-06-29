@@ -13,6 +13,7 @@
 }
 
 .containerForm {
+  background-color: tomato;
   align-items: center;
   border: 1px solid black;
   display: flex;
@@ -20,16 +21,15 @@
   height: 400px;
   justify-content: center;
   width: 350px;
-  background-color: tomato;
 }
 
 .inputNome {
   background-color: lightgrey;
-  margin: 10px;
   border-bottom: 1px solid black;
+  margin: 10px;
   border-radius: 5px;
-  width: 150px;
   text-align: center;
+  width: 150px;
 }
 
 .divInputSp {
