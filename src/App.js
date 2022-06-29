@@ -28,7 +28,6 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       cards: [],
-      fundo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDIxF1SWLKpiTIS1Iu2TCv6btlV-ft78Jr0w&usqp=CAU',
     };
   }
 
@@ -138,7 +137,6 @@ class App extends React.Component {
 
   verificaTrunfo(index) {
     const { cards } = this.state;
-    console.log(cards[index]);
     if (cards[index].cardTrunfo === true) {
       this.setState({
         hasTrunfo: false,

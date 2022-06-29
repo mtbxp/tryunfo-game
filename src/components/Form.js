@@ -23,7 +23,6 @@ class Form extends React.Component {
               value={ cardName }
               onChange={ onInputChange }
               className="infCarta"
-              maxLength="30"
             />
           </label>
         </div>
