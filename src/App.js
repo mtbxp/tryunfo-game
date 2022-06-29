@@ -13,7 +13,7 @@ class App extends React.Component {
       attr2: '',
       attr3: '',
       rare: '',
-      trunfo: '',
+      trunfo: false,
       button: true,
       allCards: [],
       hasTrunfo: false,
@@ -60,23 +60,24 @@ class App extends React.Component {
       trunfo };
     this.setState((prevState) => ({
       allCards: [...prevState.allCards, card],
-    }));
-    this.setState({
-      name: '',
-      description: '',
-      image: '',
-      attr1: 0,
-      attr2: 0,
-      attr3: 0,
-      rare: '',
-      trunfo: '',
-      hasTrunfo: !this.hasTrunfo(),
+    }), () => {
+      this.setState({
+        name: '',
+        description: '',
+        image: '',
+        attr1: 0,
+        attr2: 0,
+        attr3: 0,
+        rare: '',
+        trunfo: false,
+        hasTrunfo: this.hasTrunfo(),
+      });
     });
   }
 
   hasTrunfo = () => {
     const { allCards } = this.state;
-    return allCards.some((card) => card.trunfo);
+    return allCards.some((card) => card.trunfo === 'on');
   };
 
   render() {
@@ -131,6 +132,7 @@ class App extends React.Component {
                 cardRare={ card.rare }
                 cardTrunfo={ card.trunfo }
               />
+              <button data-testid="delete-button" type="button">Excluir</button>
             </div>
           ))}
         </div>
