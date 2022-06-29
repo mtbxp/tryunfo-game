@@ -13,8 +13,8 @@
 }
 
 .containerForm {
-  background-color: tomato;
   align-items: center;
+  background-color: tomato;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
@@ -26,8 +26,8 @@
 .inputNome {
   background-color: lightgrey;
   border-bottom: 1px solid black;
-  margin: 10px;
   border-radius: 5px;
+  margin: 10px;
   text-align: center;
   width: 150px;
 }
