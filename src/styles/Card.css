@@ -1,9 +1,9 @@
 .Card {
-    background: #036b52;
-    border: solid 10px rgb(250, 143, 42);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    height: 529px;
-    max-width: 348px;
+  background: #036b52;
+  border: solid 10px rgb(250, 143, 42);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 529px;
+  max-width: 348px;
 }
