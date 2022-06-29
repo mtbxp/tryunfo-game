@@ -61,7 +61,7 @@ class App extends React.Component {
       atri1: attr1,
       atri2: attr2,
       atri3: attr3,
-      Super: trunfo,
+      super: trunfo,
     };
 
     this.setState((prevState) => ({
@@ -75,7 +75,7 @@ class App extends React.Component {
       rare: 'normal',
     }), () => {
       const { cards } = this.state;
-      const validate = cards.some((element) => element.Super === true);
+      const validate = cards.some((element) => element.super === true);
       this.setState(({
         hasTrunfo: validate,
       }));
@@ -94,6 +94,7 @@ class App extends React.Component {
       trunfo,
       isSaveButtonDisabled,
       hasTrunfo,
+      cards,
     } = this.state;
 
     return (
@@ -123,6 +124,20 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
         />
+        { !!cards.length
+           && cards.map((index) => (
+             <Card
+               key={ index.nome }
+               cardName={ index.nome }
+               cardDescription={ index.descricao }
+               cardAttr1={ index.atr1 }
+               cardAttr2={ index.atr2 }
+               cardAttr3={ index.atr3 }
+               cardImage={ index.imagem }
+               cardRare={ index.raridade }
+               cardTrunfo={ index.super }
+             />
+           ))}
       </div>
     );
   }
