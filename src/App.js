@@ -21,13 +21,12 @@ class App extends Component {
 onInputChange = ({ target }) => {
   const { name, type } = target;
   const value = type === 'checkbox' ? target.checked : target.value;
-  this.setState({
-    [name]: value,
-  });
+  this.setState({ [name]: value });
 }
 
 render() {
-  const { cardName,
+  const {
+    cardName,
     cardDescription,
     cardAttr1,
     cardAttr2,
@@ -36,6 +35,7 @@ render() {
     cardRare,
     cardTrunfo,
   } = this.state;
+
   return (
     <section>
       <Form onInputChange={ this.onInputChange } />
