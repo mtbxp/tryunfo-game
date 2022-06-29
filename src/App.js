@@ -5,7 +5,7 @@ import Card from './components/Card';
 class App extends React.Component {
   constructor() {
     super();
-    this.onInputChange = this.onInputChange.bind(this);
+
     this.state = {
       name: '',
       description: '',
@@ -14,11 +14,11 @@ class App extends React.Component {
       attr3: '',
       image: '',
       rare: '',
-      trunfo: '',
+      trunfo: false,
     };
   }
 
-  onInputChange({ target }) {
+  onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
@@ -27,8 +27,13 @@ class App extends React.Component {
     });
   }
 
+  saveButton = () => {
+    console.log('aqui!');
+  }
+
   render() {
-    const { name, description, attr1, attr2, attr3, image, rare, trunfo } = this.state;
+    const { name, description, attr1, attr2,
+      attr3, image, rare, trunfo, saveButton } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -41,6 +46,7 @@ class App extends React.Component {
           cardImage={ image }
           cardRare={ rare }
           cardTrunfo={ trunfo }
+          onSaveButtonClick={ saveButton }
           onInputChange={ this.onInputChange }
         />
         <Card
