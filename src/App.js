@@ -110,15 +110,6 @@ class App extends React.Component {
     }));
   }
 
-  // deleteCard = (cardIndex, isTrunfo) => {
-  //   const { deck } = this.state;
-
-  //   this.setState({
-  //     deck: deck.filter((_, index) => index !== cardIndex),
-  //     hasTrunfo: isTrunfo,
-  //   });
-  // }
-
   deleteCard = (name) => {
     const { hasTrunfo, deck } = this.state;
 
