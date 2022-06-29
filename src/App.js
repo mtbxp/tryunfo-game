@@ -119,23 +119,30 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
-      isSaveButtonDisabled,
+      cardDeck,
     } = this.state;
+
+    const card = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+    };
+
     return (
       <>
-        <Form { ...this.state } />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-        />
+        <div className="creator">
+          <Form { ...this.state } />
+          <Card { ...card } />
+        </div>
+        <div className="deck">
+          {cardDeck.map((cardItem, index) => <Card key={ index } { ...cardItem } />)}
+        </div>
       </>
     );
   }
