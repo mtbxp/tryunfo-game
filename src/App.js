@@ -4,67 +4,183 @@ import Form from './components/Form';
 
 class App extends React.Component {
   constructor() {
-    super()
+    super();
 
     this.state = {
-      cardName: "",
-      cardDescription: "Alguma coisa",
-      cardAttr1: "",
-      cardAttr2: "",
-      cardAttr3: "",
-      cardImage: "",
-      cardRare: "",
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
+      cardImage: '',
+      cardRare: 'normal',
       cardTrunfo: false,
-      hasTrunfo: "",
-      isSaveButtonDisabled: "",
-    }
+      hasTrunfo: '',
+      isSaveButtonDisabled: true,
+      listaCartasSalvas: [],
+    };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.temAlguemVazio = this.temAlguemVazio.bind(this);
+    this.isDisable = this.isDisable.bind(this);
   }
 
   onInputChange({ target }) {
     const { name } = target;
-    console.log(target.checked)
-    const value = target.type === 'checkbox' ? target.checked : target.value
+
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    })
+    });
   }
 
-  onSaveButtonClick(event) {
-    console.log(event.target)
+  onSaveButtonClick() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      listaCartasSalvas,
+    } = this.state;
+    const card = {
+      name: cardName,
+      descricao: cardDescription,
+      attr1: cardAttr1,
+      attr2: cardAttr2,
+      attr3: cardAttr3,
+      image: cardImage,
+      raridade: cardRare,
+      superTrunfo: cardTrunfo,
+      hasTrunfo,
+    };
+
+    const arrayCartas = [...listaCartasSalvas, card];
+    this.setState((prevState) => ({
+      ...prevState,
+      listaCartasSalvas: arrayCartas,
+    }));
+    const trunfo = arrayCartas.some((e) => e.superTrunfo);
+    if (trunfo) {
+      this.setState({
+        hasTrunfo: 'true',
+      });
+    }
+
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+    });
+  }
+
+  temAlguemVazio() {
+    const inputs = [
+      'cardName',
+      'cardDescription',
+      'cardAttr1',
+      'cardAttr2',
+      'cardAttr3',
+      'cardImage',
+    ];
+    const estados = { ...this.state };
+    const filtra = (e) => estados[e] === '';
+    const result = inputs.filter(filtra);
+    return result.length;
+  }
+
+  isDisable() {
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    const camposNumber = [
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    ];
+    const result = camposNumber.reduce((prev, cur) => prev + parseInt(cur || '0', 10), 0);
+    const lMax = 90;
+    const lMin = 0;
+    const filtrar = (e) => parseInt(e || '0', 10) > lMax || parseInt(e || '0', 10) < lMin;
+    const temNumeroMaiorQ90 = camposNumber.filter(filtrar).length;
+
+    let disable = false;
+    const limiteMaximoCampos = 210;
+    if (this.temAlguemVazio() || result > limiteMaximoCampos || temNumeroMaiorQ90) {
+      disable = true;
+    }
+
+    return disable;
   }
 
   render() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      listaCartasSalvas,
+    } = this.state;
     return (
       <div>
-        <h1>Tryunfo</h1>
-        <Form
-          cardName={this.state.cardName}
-          cardDescription={this.state.cardDescription}
-          cardAttr1={this.state.cardAttr1}
-          cardAttr2={this.state.cardAttr2}
-          cardAttr3={this.state.cardAttr3}
-          cardImage={this.state.cardImage}
-          cardRare={this.state.cardRare}
-          cardTrunfo={this.state.cardTrunfo}
-          hasTrunfo={this.state.hasTrunfo}
-          isSaveButtonDisabled={this.state.isSaveButtonDisabled}
-          onInputChange={this.onInputChange}
-          onSaveButtonClick={this.onSaveButtonClick}
-        />
-        <Card
-          cardName={this.state.cardName}
-          cardDescription={this.state.cardDescription}
-          cardAttr1={this.state.cardAttr1}
-          cardAttr2={this.state.cardAttr2}
-          cardAttr3={this.state.cardAttr3}
-          cardImage={this.state.cardImage}
-          cardRare={this.state.cardRare}
-          cardTrunfo={this.state.cardTrunfo}
-          hasTrunfo={this.state.hasTrunfo}
-        />
+        <h1 style={ { textAlign: 'center' } }>Tryunfo</h1>
+        <div className="containerPrincipal">
+          <Form
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ this.isDisable() }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+          />
+
+        </div>
+        {
+          listaCartasSalvas.map((e) => (
+            <Card
+              key={ e.name }
+              cardName={ e.name }
+              cardDescription={ e.descricao }
+              cardAttr1={ e.attr1 }
+              cardAttr2={ e.attr2 }
+              cardAttr3={ e.attr3 }
+              cardImage={ e.image }
+              cardRare={ e.raridade }
+              cardTrunfo={ e.superTrunfo }
+              hasTrunfo={ e.hasTrunfo }
+            />
+          ))
+        }
       </div>
     );
   }

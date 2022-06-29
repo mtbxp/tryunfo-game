@@ -1,0 +1,75 @@
+.container-card {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 400px;
+}
+
+.containerPrincipal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.containerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  border: 1px solid black;
+  height: 400px;
+  background-color: tomato;
+}
+
+.inputNome {
+  width: 150px;
+  margin: 10px;
+  border: 0px;
+  border-bottom: 1px solid black;
+  text-align: center;
+  background-color: lightgrey;
+  border-radius: 5px;
+}
+
+.divInputSp {
+  display: flex;
+  flex-direction: row;
+}
+
+.inputdescricao {
+  border: 0px;
+  border-bottom: 1px solid black;
+  height: 60px;
+  background-color: lightgrey;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.atributos {
+  background-color: lightgrey;
+  text-align: center;
+  width: 100px;
+  margin: 2px;
+}
+
+.inputImg {
+  background-color: lightgrey;
+}
+.saidaImg {
+  width: 170px;
+}
+
+.divImg {
+  border: 1px solid black;
+  margin: 5px;
+  height: 170px;
+}
+
+.containerInputsCard {
+  height: 177px;
+  width: 170px;
+  border: 1px solid black;
+  margin: 5px;
+}
