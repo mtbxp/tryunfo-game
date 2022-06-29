@@ -16,7 +16,7 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       // hasTrunfo: '',
       isSaveButtonDisabled: true,
@@ -28,9 +28,7 @@ class App extends React.Component {
     const value = name === 'cardTrunfo' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    }, () => this.setState({
-      isSaveButtonDisabled: this.validateButton(),
-    }));
+    }, this.validateButton);
   }
 
   validateButton() {
@@ -39,22 +37,32 @@ class App extends React.Component {
       cardImage, cardRare,
       cardAttr1,
       cardAttr2,
-      cardAttr3 } = this.state;
+      cardAttr3,
+    } = this.state;
 
-    const limitIndividualNumber = 90;
-    const limitTotalNumber = 210;
+    const totalSum = 210;
+    const limitInd = 90;
+    const arrayNumb = [Number(cardAttr1), Number(cardAttr2), Number(cardAttr3)];
+    const soma = arrayNumb.reduce((acc, curr) => acc + curr, 0);
 
-    const arrayNumbs = [cardAttr1, cardAttr2, cardAttr3];
-    const arrayCaracteres = [cardName, cardDescription, cardImage, cardRare];
+    const individualLimit = arrayNumb
+      .every((element) => element >= 0 && element <= limitInd);
 
-    const notEmptys = arrayCaracteres.every((element) => element.length > 0);
-    const totalNumber = arrayNumbs
-      .every((element) => element > 0 && element <= limitIndividualNumber);
-    const totalSumNumbers = arrayNumbs
-      .reduce((acc, curr) => acc + curr, 0) <= limitTotalNumber;
-
-    return ![notEmptys, totalNumber, totalSumNumbers]
-      .every((element) => element === true);
+    if (
+      cardName
+      && cardImage
+      && cardDescription
+      && cardRare
+      && individualLimit === true
+      && soma <= totalSum) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
   }
 
   render() {
