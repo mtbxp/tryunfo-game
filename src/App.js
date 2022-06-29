@@ -15,6 +15,7 @@ class App extends React.Component {
       rare: '',
       trunfo: '',
       button: true,
+      allCards: [],
     };
   }
 
@@ -46,6 +47,31 @@ class App extends React.Component {
     }), () => this.checkForm());
   };
 
+  addNewCard = () => {
+    const { name, description, image, attr1, attr2, attr3, rare, trunfo } = this.state;
+    const card = { name,
+      description,
+      image,
+      attr1,
+      attr2,
+      attr3,
+      rare,
+      trunfo };
+    this.setState((prevState) => ({
+      allCards: [...prevState.allCards, card],
+    }));
+    this.setState({
+      name: '',
+      description: '',
+      image: '',
+      attr1: 0,
+      attr2: 0,
+      attr3: 0,
+      rare: '',
+      trunfo: '',
+    });
+  }
+
   render() {
     const { name,
       description,
@@ -67,6 +93,7 @@ class App extends React.Component {
           cardTrunfo={ trunfo }
           onInputChange={ this.handleChange }
           isSaveButtonDisabled={ button }
+          onSaveButtonClick={ this.addNewCard }
         />
         <Card
           cardName={ name }
