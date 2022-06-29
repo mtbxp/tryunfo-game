@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input';
-import Select from './Select';
 
 class Form extends React.Component {
   render() {
@@ -78,13 +77,15 @@ class Form extends React.Component {
           type="text"
           data="image-input"
         />
-        <Select
+        <select
           name="card-rarity"
           value={ cardRare }
-          options={ options }
-          onInputChange={ onInputChange }
-          data="rare-input"
-        />
+          onChange={ onInputChange }
+          id="cardRare"
+          data-testid="rare-input"
+        >
+          {options.map((opt) => <option key={ opt } value={ opt }>{opt}</option>)}
+        </select>
         <Input
           id="cardTrunfo"
           name="card-check"
