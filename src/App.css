@@ -66,3 +66,16 @@ button {
   color: orange;
   font-weight: 800;
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.super-trunfo {
+  align-self: center;
+  background-color: green;
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
+}
