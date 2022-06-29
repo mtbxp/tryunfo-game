@@ -18,6 +18,7 @@ class App extends React.Component {
       saveButtonDisabled: true,
       superTrunfo: false,
       savedCards: [],
+      hasTrunfo: false,
     };
   }
 
@@ -68,6 +69,20 @@ onChange = ({ target }) => {
   }, () => this.handleSelection());
 };
 
+isSuperTrunfo = () => {
+  const { savedCards } = this.state;
+  const hasSuperTrunfo = savedCards.find(({ superTrunfo }) => superTrunfo === true);
+  if (hasSuperTrunfo === undefined) {
+    this.setState({
+      hasTrunfo: false,
+    });
+  } else {
+    this.setState({
+      hasTrunfo: true,
+    });
+  }
+}
+
 handleClear = () => {
   const zero = 0;
 
@@ -82,8 +97,7 @@ handleClear = () => {
       rarity: 'normal',
       saveButtonDisabled: true,
       superTrunfo: false,
-      savedCards: [],
-    },
+    }, () => this.isSuperTrunfo(),
   );
 };
 
@@ -133,6 +147,7 @@ render() {
       rarity,
       saveButtonDisabled,
       superTrunfo,
+      hasTrunfo,
     } = this.state;
 
   return (
@@ -147,7 +162,7 @@ render() {
         cardImage={ cardImage }
         cardRare={ rarity }
         cardTrunfo={ superTrunfo }
-        hasTrunfo={ false }
+        hasTrunfo={ hasTrunfo }
         isSaveButtonDisabled={ saveButtonDisabled }
         handleSelection={ this.handleSelection }
         onInputChange={ this.onChange }
