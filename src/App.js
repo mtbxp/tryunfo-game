@@ -1,5 +1,4 @@
 import React from 'react';
-// import { number } from 'prop-types';
 import Form from './components/Form';
 import Card from './components/Card';
 
@@ -31,7 +30,17 @@ class App extends React.Component {
 
   onSaveButtonClick = (event) => {
     event.preventDefault();
-    const saveCard = this.state;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+
+    } = this.state;
 
     this.setState((prev) => ({
       cardName: '',
@@ -42,9 +51,35 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: 'false',
-      hasTrunfo: [...prev.saveCard, saveCard].some((card) => card.cardTrunfo),
-      saveCard: [...prev.saveCard, saveCard],
+      hasTrunfo: [...prev.saveCard, {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
+      }].some((card) => card.cardTrunfo),
+      saveCard: [...prev.saveCard, {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
+      }],
     }));
+  }
+
+  delete = (event) => {
+    this.setState((prev) => ({
+      saveCard: prev.saveCard.filter((remove) => remove.cardName !== event),
+    }), () => (this.setState((prev) => ({ hasTrunfo: prev.saveCard
+      .some((card) => card.cardTrunfo) }))
+    ));
   }
 
   validaBotao() {
@@ -99,7 +134,6 @@ class App extends React.Component {
       saveCard,
       hasTrunfo,
     } = this.state;
-    console.log(saveCard);
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -128,7 +162,6 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-
         {saveCard.map((card, index) => (
           <div key={ index }>
             <Card
@@ -141,10 +174,15 @@ class App extends React.Component {
               cardRare={ card.cardRare }
               cardTrunfo={ card.cardTrunfo }
             />
+            <button
+              type="button"
+              data-testid="delete-button"
+              onClick={ () => this.delete(card.cardName) }
+            >
+              Excluir
+            </button>
           </div>
-
         ))}
-
       </div>
     );
   }
