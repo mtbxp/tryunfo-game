@@ -148,36 +148,54 @@ render() {
       saveButtonDisabled,
       superTrunfo,
       hasTrunfo,
+      savedCards,
     } = this.state;
 
   return (
     <div className="App">
       <h1>Tryunfo</h1>
-      <Form
-        cardName={ nome }
-        cardDescription={ describe }
-        cardAttr1={ firstAttribute }
-        cardAttr2={ secondAttribute }
-        cardAttr3={ thirdAttribute }
-        cardImage={ cardImage }
-        cardRare={ rarity }
-        cardTrunfo={ superTrunfo }
-        hasTrunfo={ hasTrunfo }
-        isSaveButtonDisabled={ saveButtonDisabled }
-        handleSelection={ this.handleSelection }
-        onInputChange={ this.onChange }
-        onSaveButtonClick={ this.handleSave }
-      />
-      <Card
-        cardName={ nome }
-        cardDescription={ describe }
-        cardAttr1={ firstAttribute }
-        cardAttr2={ secondAttribute }
-        cardAttr3={ thirdAttribute }
-        cardImage={ cardImage }
-        cardRare={ rarity }
-        cardTrunfo={ superTrunfo }
-      />
+      <section>
+        <Form
+          cardName={ nome }
+          cardDescription={ describe }
+          cardAttr1={ firstAttribute }
+          cardAttr2={ secondAttribute }
+          cardAttr3={ thirdAttribute }
+          cardImage={ cardImage }
+          cardRare={ rarity }
+          cardTrunfo={ superTrunfo }
+          hasTrunfo={ hasTrunfo }
+          isSaveButtonDisabled={ saveButtonDisabled }
+          handleSelection={ this.handleSelection }
+          onInputChange={ this.onChange }
+          onSaveButtonClick={ this.handleSave }
+        />
+        <div>
+          <Card
+            cardName={ nome }
+            cardDescription={ describe }
+            cardAttr1={ firstAttribute }
+            cardAttr2={ secondAttribute }
+            cardAttr3={ thirdAttribute }
+            cardImage={ cardImage }
+            cardRare={ rarity }
+            cardTrunfo={ superTrunfo }
+          />
+        </div>
+      </section>
+      {
+        savedCards.map((elem) => (<Card
+          key={ elem.nome }
+          cardName={ elem.nome }
+          cardDescription={ elem.describe }
+          cardAttr1={ elem.firstAttribute }
+          cardAttr2={ elem.secondAttribute }
+          cardAttr3={ elem.thirdAttribute }
+          cardImage={ elem.cardImage }
+          cardRare={ elem.rarity }
+          cardTrunfo={ elem.superTrunfo }
+        />))
+      }
     </div>
   );
 }

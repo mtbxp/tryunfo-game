@@ -12,3 +12,7 @@ form {
   max-width: 220px;
   padding: 10px;
 }
+
+section {
+  display: flex;
+}
