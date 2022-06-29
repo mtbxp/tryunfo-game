@@ -13,6 +13,7 @@ const stateInicial = {
   cardTrunfo: false,
   hasTrunfo: Boolean,
   isSaveButtonDisabled: true,
+  cartas: [],
 };
 
 class App extends React.Component {
@@ -67,7 +68,49 @@ class App extends React.Component {
     }, () => { this.handleForm(); });
   };
 
-  onSaveButtonClick = () => {};
+  enviar = (objeto) => {
+    const { cartas } = this.state;
+    this.setState((prevState) => ({
+      cartas: [...prevState.cartas, objeto],
+    }));
+    console.log(cartas);
+  }
+
+  onSaveButtonClick = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+    } = this.state;
+
+    this.enviar({
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+    });
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardRare: 'normal',
+      isSaveButtonDisabled: true,
+    });
+  };
 
   render() {
     const {
