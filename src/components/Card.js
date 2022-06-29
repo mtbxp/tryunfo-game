@@ -21,18 +21,18 @@ class Card extends React.Component {
     } = this.props;
     return (
       <div className="card">
-        <p data-testid="name-card">{ cardName }</p>
+        <h4 data-testid="name-card">{ cardName }</h4>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         <p data-testid="description-card">{ cardDescription }</p>
         <p data-testid="attr1-card" className="yellow">
           FORÇA:
           { ` ${cardAttr1}` }
         </p>
-        <p data-testid="attr1-card" className="red">
+        <p data-testid="attr2-card" className="red">
           ATAQUE:
           { ` ${cardAttr2}` }
         </p>
-        <p data-testid="attr1-card" className="green">
+        <p data-testid="attr3-card" className="green">
           DEFESA:
           { ` ${cardAttr3}` }
         </p>
