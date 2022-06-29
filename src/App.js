@@ -23,6 +23,9 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       data: Data,
+      filterName: '',
+      filterRare: '',
+      filterTrunfo: false,
     };
   }
 
@@ -52,16 +55,11 @@ class App extends React.Component {
       cardImage,
       cardRare,
     } = this.state;
-    if (cardName !== ''
-    && cardDescription !== ''
-    && cardImage !== ''
-    && cardRare !== ''
-    && cardAttr1 <= maxAttr
-    && cardAttr1 >= 0
-    && cardAttr2 <= maxAttr
-    && cardAttr2 >= 0
-    && cardAttr3 <= maxAttr
-    && cardAttr3 >= 0
+    if (cardName !== '' && cardDescription !== ''
+    && cardImage !== '' && cardRare !== ''
+    && cardAttr1 <= maxAttr && cardAttr1 >= 0
+    && cardAttr2 <= maxAttr && cardAttr2 >= 0
+    && cardAttr3 <= maxAttr && cardAttr3 >= 0
     && cardAttr1 + cardAttr2 + cardAttr3 <= maxPoints) {
       this.setState({
         isSaveButtonDisabled: false,
@@ -116,6 +114,9 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
       data,
+      filterName,
+      filterRare,
+      filterTrunfo,
     } = this.state;
     const men = 'Super Trunfo';
     if (data.some((item) => item.isTrunfo === true) && !hasTrunfo) {
@@ -156,42 +157,81 @@ class App extends React.Component {
           />
         </div>
         <br />
+        <form>
+          <label htmlFor="nameFilter">
+            Filtro por nome:
+            <input
+              type="text"
+              data-testid="name-filter"
+              name="nameFilter"
+              onChange={ ({ target }) => this.setState({
+                filterName: target.value,
+              }) }
+            />
+          </label>
+          <label htmlFor="rareFilter">
+            <select
+              data-testid="rare-filter"
+              name="rareFilter"
+              onChange={ ({ target }) => this.setState({
+                filterRare: (target.value === 'todas') ? '' : target.value,
+              }) }
+            >
+              <option value="todas">todas</option>
+              <option value="normal">normal</option>
+              <option value="raro">raro</option>
+              <option value="muito raro">muito raro</option>
+            </select>
+          </label>
+          <label htmlFor="trunfoFilter">
+            Super Trunfo
+            <input
+              type="checkbox"
+              data-testid="trunfo-filter"
+              name="trunfoFilter"
+              onChange={ ({ target }) => this.setState({
+                filterTrunfo: target.checked,
+              }) }
+            />
+          </label>
+        </form>
         <ul className="deck">
           {
-            data.map((card, index) => (
-              <li key={ index } className="card" name={ index }>
-                <h3>{ card.name }</h3>
-                <br />
-                <img src={ card.image } alt={ card.name } />
-                <br />
-                <p>{ card.description }</p>
-                <br />
-                { (card.isTrunfo) ? <h3>{ men }</h3> : <>---</>}
-                <br />
-                <div className="attr">
-                  <h4>Altura</h4>
-                  <h4>{ card.attr.attr1 }</h4>
-                </div>
-                <div className="attr">
-                  <h4>Comprimento</h4>
-                  <h4>{ card.attr.attr2 }</h4>
-                </div>
-                <div className="attr">
-                  <h4>Peso</h4>
-                  <h4>{ card.attr.attr3 }</h4>
-                </div>
-                <br />
-                <h4>{ card.rare }</h4>
-                <br />
-                <button
-                  type="button"
-                  data-testid="delete-button"
-                  name={ index }
-                  // onClick={ (event) => this.deleteElement(event) }
-                >
-                  Excluir
-                </button>
-              </li>))
+            data.filter((item) => item.name.includes(filterName))
+              .filter((item) => item.rare.startsWith(filterRare))
+              .filter((item) => item.isTrunfo === filterTrunfo)
+              .map((card, index) => (
+                <li key={ index } className="card" name={ index }>
+                  <h3>{ card.name }</h3>
+                  <img src={ card.image } alt={ card.name } />
+                  <br />
+                  <p>{ card.description }</p>
+                  { (card.isTrunfo) ? <h3>{ men }</h3> : <>---</>}
+                  <br />
+                  <div className="attr">
+                    <h4>Altura</h4>
+                    <h4>{ card.attr.attr1 }</h4>
+                  </div>
+                  <div className="attr">
+                    <h4>Comprimento</h4>
+                    <h4>{ card.attr.attr2 }</h4>
+                  </div>
+                  <div className="attr">
+                    <h4>Peso</h4>
+                    <h4>{ card.attr.attr3 }</h4>
+                  </div>
+                  <br />
+                  <h4>{ card.rare }</h4>
+                  <br />
+                  <button
+                    type="button"
+                    data-testid="delete-button"
+                    name={ index }
+                    // onClick={ (event) => this.deleteElement(event) }
+                  >
+                    Excluir
+                  </button>
+                </li>))
           }
         </ul>
       </div>
