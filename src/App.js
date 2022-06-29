@@ -39,20 +39,24 @@ class App extends React.Component {
       cardImage,
       cardRare,
     } = this.state;
-    let btnStatus = false;
+    let disabled = false;
     const mn = 90;
     const mnMax = 210;
-    const attrSome = cardAttr1 + cardAttr2 + cardAttr3;
-    if (cardName.length < 1) { btnStatus = true; }
-    if (cardDescription.length < 1) { btnStatus = true; }
-    if (cardImage.length < 1) { btnStatus = true; }
-    if (cardRare.length < 1) { btnStatus = true; }
-    if (cardAttr1 > mn || cardAttr1 < 0) { btnStatus = true; }
-    if (cardAttr2 > mn || cardAttr2 < 0) { btnStatus = true; }
-    if (cardAttr3 > mn || cardAttr3 < 0) { btnStatus = true; }
-    if (attrSome > mnMax) { btnStatus = true; }
+    const attr1 = parseInt(cardAttr1, 10);
+    const attr2 = parseInt(cardAttr2, 10);
+    const attr3 = parseInt(cardAttr3, 10);
+    const attrSome = attr1 + attr2 + attr3;
+    console.log(attrSome);
+    if (cardName.length < 1) { disabled = true; }
+    if (cardDescription.length < 1) { disabled = true; }
+    if (cardImage.length < 1) { disabled = true; }
+    if (cardRare.length < 1) { disabled = true; }
+    if (attr1 > mn || attr1 < 0) { disabled = true; }
+    if (attr2 > mn || attr2 < 0) { disabled = true; }
+    if (attr3 > mn || attr3 < 0) { disabled = true; }
+    if (attrSome > mnMax) { disabled = true; }
     this.setState({
-      isSaveButtonDisabled: btnStatus,
+      isSaveButtonDisabled: disabled,
     });
   };
 
