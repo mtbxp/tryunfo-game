@@ -24,15 +24,27 @@ class App extends React.Component {
     this.state = { ...INITIAL_STATE };
   }
 
+  // completar function
+
+  removeCards = (e) => {
+    const { cardList } = this.state;
+    console.log(e.target);
+    cardList.filter((element) => console.log(element));
+  }
+
   renderCardList = () => {
     const { cardList } = this.state;
-    cardList.map((element) => (
-      <div className="container-cards" key={ element.name }>
+    return cardList.map((element) => (
+      <div className="container-cards" key={ element.cardName }>
         <Card { ...element } />
+        <button type="button" onClick={ this.removeCards } data-testid="delete-button">
+          Excluir
+        </button>
       </div>
     ));
-    return cardList;
   }
+
+  //
 
   saveCardList = (event) => {
     event.preventDefault();
@@ -111,7 +123,6 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      cardList,
     } = this.state;
     return (
       <div>
@@ -141,18 +152,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
         />
         <p> Cards </p>
-        { cardList.map((element) => (<Card
-          key={ element.cardName }
-          cardName={ element.cardName }
-          cardDescription={ element.cardDescription }
-          cardAttr1={ element.cardAttr1 }
-          cardAttr2={ element.cardAttr2 }
-          cardAttr3={ element.cardAttr3 }
-          cardImage={ element.cardImage }
-          cardRare={ element.cardRare }
-          cardTrunfo={ element.cardTrunfo }
-        />
-        ))}
+        {this.renderCardList()}
       </div>
     );
   }

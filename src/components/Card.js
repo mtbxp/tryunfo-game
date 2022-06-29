@@ -13,7 +13,6 @@ class Card extends React.Component {
       cardRare,
       cardTrunfo,
     } = this.props;
-
     return (
       <div className="container">
         <p data-testid="name-card">
