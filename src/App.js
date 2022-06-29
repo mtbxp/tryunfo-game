@@ -14,9 +14,10 @@ class App extends React.Component {
       firstAttribute: '',
       secondAttribute: '',
       thirdAttribute: '',
-      rarity: '',
+      rarity: 'normal',
       saveButtonDisabled: true,
       superTrunfo: false,
+      savedCards: [],
     };
   }
 
@@ -67,6 +68,59 @@ onChange = ({ target }) => {
   }, () => this.handleSelection());
 };
 
+handleClear = () => {
+  const zero = 0;
+
+  this.setState(
+    {
+      nome: '',
+      describe: '',
+      cardImage: '',
+      firstAttribute: zero.toString(),
+      secondAttribute: zero.toString(),
+      thirdAttribute: zero.toString(),
+      rarity: 'normal',
+      saveButtonDisabled: true,
+      superTrunfo: false,
+      savedCards: [],
+    },
+  );
+};
+
+handleSave = () => {
+  const
+    {
+      nome,
+      describe,
+      cardImage,
+      firstAttribute,
+      secondAttribute,
+      thirdAttribute,
+      rarity,
+      superTrunfo,
+      savedCards,
+    } = this.state;
+
+  // const savedCards = JSON.parse(localStorage.getItem('savedCards') || '[]');
+  const card = {
+    nome,
+    describe,
+    cardImage,
+    firstAttribute,
+    secondAttribute,
+    thirdAttribute,
+    rarity,
+    superTrunfo,
+  };
+
+  const updateSavedCards = [...savedCards];
+  updateSavedCards.push(card);
+
+  this.setState({
+    savedCards: updateSavedCards,
+  }, this.handleClear());
+};
+
 render() {
   const
     {
@@ -97,7 +151,7 @@ render() {
         isSaveButtonDisabled={ saveButtonDisabled }
         handleSelection={ this.handleSelection }
         onInputChange={ this.onChange }
-        onSaveButtonClick={ () => {} }
+        onSaveButtonClick={ this.handleSave }
       />
       <Card
         cardName={ nome }
