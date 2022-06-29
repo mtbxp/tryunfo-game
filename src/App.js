@@ -9,10 +9,10 @@ class App extends React.Component {
       name: '',
       description: '',
       image: '',
-      attr1: '',
-      attr2: '',
-      attr3: '',
-      rare: '',
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
+      rare: 'normal',
       trunfo: false,
       button: true,
       allCards: [],
@@ -80,6 +80,17 @@ class App extends React.Component {
     return allCards.some((card) => card.trunfo === 'on');
   };
 
+  deleteCard = (cardName) => {
+    // const { allCards } = this.state;
+    this.setState((prevState) => ({
+      allCards: prevState.allCards.filter((card) => card.name !== cardName),
+    }), () => {
+      this.setState({
+        hasTrunfo: this.hasTrunfo(),
+      });
+    });
+  };
+
   render() {
     const { name,
       description,
@@ -132,7 +143,14 @@ class App extends React.Component {
                 cardRare={ card.rare }
                 cardTrunfo={ card.trunfo }
               />
-              <button data-testid="delete-button" type="button">Excluir</button>
+              <button
+                data-testid="delete-button"
+                type="button"
+                onClick={ () => this.deleteCard(card.name) }
+              >
+                Excluir
+
+              </button>
             </div>
           ))}
         </div>
