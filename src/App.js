@@ -14,6 +14,7 @@ const initialState = {
   cardTrunfo: false,
   hasTrunfo: false,
   isSaveButtonDisabled: true,
+  savedCards: [],
 };
 
 class App extends React.Component {
@@ -22,7 +23,21 @@ class App extends React.Component {
     this.state = initialState;
   }
 
-  onSaveButtonClick = () => {};
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    const savedCards = this.state;
+    this.setState((previous) => ({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      savedCards: [...previous.savedCards, savedCards],
+    }));
+  }
 
   enableButton = () => {
     const {
