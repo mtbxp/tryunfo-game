@@ -91,7 +91,7 @@ class App extends React.Component {
   showDeck() {
     const { savedCard } = this.state;
     return (
-      <div id="cart-function">
+      <div className="cart-function">
         { savedCard.map((card) => (<Card
           cardName={ card.cardName }
           cardImage={ card.cardImage }
@@ -160,7 +160,7 @@ class App extends React.Component {
     } = this.state;
     return (
       <div>
-        <h1 id="title">Tryunfo</h1>
+        <h1 className="title">Tryunfo</h1>
         <Form
           cardName={ cardName }
           cardImage={ cardImage }

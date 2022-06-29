@@ -1,29 +1,29 @@
-#section-card {
+.section-card {
   border: 3px solid black;
-  width: fit-content;
   display: flex;
   flex-direction: column;
   margin: 20px;
+  width: fit-content;
 }
 
-#title {
+.title {
   font-weight: 800;
-  margin-top: -1px ;
+  margin-top: -1px;
 }
 
-#card-infos {
+.card-infos {
   display: flex;
   justify-content: space-around;
 }
 
-#card-i {
+.card-i {
   width: 300px;
 }
 
-#super-trunfo {
-    background-color: black;
-    padding: 5px;
-    color: white;
-    border-radius: 10px;
-    width: 100px;
+.super-trunfo {
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+  padding: 5px;
+  width: 100px;
 }

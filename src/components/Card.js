@@ -13,7 +13,7 @@ class Card extends React.Component {
     const { cardTrunfo } = this.props;
     if (cardTrunfo === true) {
       return (
-        <p id="super-trunfo" data-testid="trunfo-card">Super Trunfo</p>
+        <p className="super-trunfo" data-testid="trunfo-card">Super Trunfo</p>
       );
     }
   }
@@ -29,11 +29,16 @@ class Card extends React.Component {
       cardRare,
     } = this.props;
     return (
-      <section id="section-card">
-        <h3 id="title" data-testid="name-card">{ cardName }</h3>
-        <img id="card-i" data-testid="image-card" src={ cardImage } alt={ cardName } />
+      <section className="section-card">
+        <h3 className="title" data-testid="name-card">{ cardName }</h3>
+        <img
+          className="card-i"
+          data-testid="image-card"
+          src={ cardImage }
+          alt={ cardName }
+        />
         <p data-testid="description-card">{ cardDescription }</p>
-        <div id="card-infos">
+        <div className="card-infos">
           <p data-testid="attr1-card">{ cardAttr1 }</p>
           <p data-testid="attr2-card">{ cardAttr2 }</p>
           <p data-testid="attr3-card">{ cardAttr3 }</p>
