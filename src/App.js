@@ -9,32 +9,64 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
 
     this.state = {
-      // cardName: '',
-      // cardDescription: '',
-      // cardAttr1: '',
-      // cardAttr2: '',
-      // cardAttr3: '',
-      // cardImage: '',
-      // cardRare: '',
-      // cardTrunfo: false,
-      // hasTrunfo: false,
-      // isSaveButtonDisabled: false,
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false,
+      hasTrunfo: false,
     };
   }
 
-  onInputChange({ target }) {
-    const { name, value } = target;
+  onInputChange(event) {
+    const { name, value } = event.target;
+    console.log('ok');
     this.setState({
       [name]: value,
     });
   }
 
   render() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+    } = this.state;
+
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form />
-        <Card />
+        <Form
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
+          onInputChange={ this.onInputChange }
+        />
+        <Card
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+        />
       </div>
     );
   }
