@@ -46,7 +46,6 @@ class App extends React.Component {
     const attr2 = parseInt(cardAttr2, 10);
     const attr3 = parseInt(cardAttr3, 10);
     const attrSome = attr1 + attr2 + attr3;
-    console.log(attrSome);
     if (cardName.length < 1) { disabled = true; }
     if (cardDescription.length < 1) { disabled = true; }
     if (cardImage.length < 1) { disabled = true; }
