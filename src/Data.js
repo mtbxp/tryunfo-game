@@ -25,7 +25,7 @@ const Data = [
     cardAttr2: 90,
     cardAttr3: 50,
     cardDescription: 'aushduashduhasudhasu',
-    cardTrunfo: true,
+    cardTrunfo: false,
     cardRare: 'normal',
     cardImage: 'https://assets.axieinfinity.com/axies/2054139/axie/axie-full-transparent.png',
   },

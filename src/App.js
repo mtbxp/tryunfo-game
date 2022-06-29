@@ -22,6 +22,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       sumAtt: ruleMaxTotalScore,
       cards: Data,
@@ -37,9 +38,15 @@ class App extends React.Component {
     }, () => this.validationButton());
   }
 
+  hasTrunfoUpdate = () => {
+    const { cards } = this.state;
+    this.setState({
+      hasTrunfo: cards.some((item) => item.cardTrunfo === true),
+    });
+  }
+
   addNewCard = (newCard) => {
     this.setState((prevState) => ({
-      cards: [newCard, ...prevState.cards],
       cardName: '',
       cardDescription: '',
       cardAttr1: ruleMinIndScore,
@@ -50,7 +57,8 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       sumAtt: ruleMaxTotalScore,
-    }));
+      cards: [newCard, ...prevState.cards],
+    }), () => this.hasTrunfoUpdate());
   }
 
   onSaveButtonClick = (event) => {
@@ -85,7 +93,8 @@ class App extends React.Component {
   render() {
     const { cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, isSaveButtonDisabled, sumAtt, cards } = this.state;
+      cardRare, cardTrunfo, isSaveButtonDisabled,
+      sumAtt, cards, hasTrunfo } = this.state;
 
     return (
       <main>
@@ -104,6 +113,7 @@ class App extends React.Component {
             onSaveButtonClick={ this.onSaveButtonClick }
             isSaveButtonDisabled={ isSaveButtonDisabled }
             sumAtt={ sumAtt }
+            hasTrunfo={ hasTrunfo }
           />
           <Card
             cardName={ cardName }

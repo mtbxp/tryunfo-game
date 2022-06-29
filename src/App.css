@@ -129,3 +129,8 @@ label {
 .CardDeck h2 {
   text-align: right;
 }
+
+.checkClass {
+  display: flex;
+  margin-top: 10px;
+}
