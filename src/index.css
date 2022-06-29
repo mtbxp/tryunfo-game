@@ -142,7 +142,9 @@ button:disabled {
 
 /* form */
 form {
-  width: 100%;
+    border: 3px #000000 solid;
+  width: 50%;
+  /* height: 500px; */
   background: var(--white);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
@@ -151,7 +153,8 @@ form {
 
 input,
 textarea,
-select {
+select,
+checked {
   width: 100%;
   margin-bottom: 1rem;
   padding: 0.7rem 0.75rem;
@@ -161,7 +164,6 @@ select {
 }
 
 .container {
-  border: 3px #000000 solid;
   border-radius: 8px;
   display: flex;
   max-width: var(--max-width);
@@ -187,7 +189,9 @@ select {
 }
 
 fieldset {
-  width: 100%;
+  border-radius: 20px;
+  max-width: 50%;
+  margin: 1rem;
 }
 
 .main {
@@ -195,7 +199,8 @@ fieldset {
   flex-direction: column;
 }
 
-p {
-  border: 3px rgb(16, 65, 16) solid ;
-  padding: 0.7rem 0.75rem;
+.cards-storage {
+  display: flex;
+  margin: 1rem;
+  flex-wrap: wrap;
 }

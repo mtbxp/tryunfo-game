@@ -114,6 +114,7 @@ class Form extends React.Component {
           </select>
         </label>
         <label htmlFor="superTrunfo">
+          Super Trunfo
           { has() }
         </label>
         <button

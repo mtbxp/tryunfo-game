@@ -160,17 +160,19 @@ class App extends React.Component {
             cardRare={ rare }
             cardTrunfo={ trunfo }
           />
-          { cards.map((e) => (
+        </div>
+        <div className="cards-storage">
+          { cards.map((cardComponents) => (
             <Card
-              key={ e.name }
-              cardName={ e.name }
-              cardDescription={ e.description }
-              cardAttr1={ e.attack }
-              cardAttr2={ e.defence }
-              cardAttr3={ e.speed }
-              cardImage={ e.image }
-              cardRare={ e.rare }
-              cardTrunfo={ e.trunfo }
+              key={ cardComponents.name }
+              cardName={ cardComponents.name }
+              cardDescription={ cardComponents.description }
+              cardAttr1={ cardComponents.attack }
+              cardAttr2={ cardComponents.defence }
+              cardAttr3={ cardComponents.speed }
+              cardImage={ cardComponents.image }
+              cardRare={ cardComponents.rare }
+              cardTrunfo={ cardComponents.trunfo }
             />
           ))}
         </div>
