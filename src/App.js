@@ -5,7 +5,7 @@ import Form from './components/Form';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    const inicialState = {
       cardName: '',
       cardDescription: '',
       cardAttr1: 0,
@@ -17,6 +17,7 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: false,
     };
+    this.setState = { inicialState };
   }
 
   onInputChange = ({ target }) => {
