@@ -81,7 +81,7 @@ class App extends React.Component {
   }
 
   isAttrValidated(total, attrs) {
-    const totalAttrMax = 270;
+    const totalAttrMax = 210;
     const attrMax = 90;
     const attr1 = parseInt(attrs[0], 10);
     const attr2 = parseInt(attrs[1], 10);
@@ -150,37 +150,42 @@ class App extends React.Component {
           removeCard={ this.onRemoveButtonClick }
           value={ 100 }
         />
+
         <Deck
           valueFilterName={ filterName }
           valueFilterRarity={ filterRarity }
           valueFilterSuperTrunfo={ filterSuperTrunfo }
           onInputChange={ this.onChange }
         />
-        {(cards.filter((card) => {
-          if (filterSuperTrunfo) {
-            return card.cardTrunfo;
-          }
-          return true;
-        })).filter((card) => (
-          card.cardRarity.includes(filterRarity)
-        )).filter((card) => (
-          card.cardName.includes(filterName)
-        )).map((card, index) => (
-          <Card
-            key={ index }
-            cardName={ card.cardName }
-            cardDescription={ card.cardInfo }
-            cardAttr1={ card.attr1 }
-            cardAttr2={ card.attr2 }
-            cardAttr3={ card.attr3 }
-            cardImage={ card.cardImage }
-            cardRare={ card.cardRarity }
-            cardTrunfo={ card.cardTrunfo }
-            removeCard={ this.onRemoveButtonClick }
-            value={ index }
-          />
-        ))}
-
+        <div className="divDeck">
+          {(cards.filter((card) => {
+            if (filterSuperTrunfo) {
+              return card.cardTrunfo;
+            }
+            return true;
+          })).filter((card) => {
+            if (filterRarity === '') {
+              return true;
+            }
+            return card.cardRarity === filterRarity;
+          }).filter((card) => (
+            card.cardName.includes(filterName)
+          )).map((card, index) => (
+            <Card
+              key={ index }
+              cardName={ card.cardName }
+              cardDescription={ card.cardInfo }
+              cardAttr1={ card.attr1 }
+              cardAttr2={ card.attr2 }
+              cardAttr3={ card.attr3 }
+              cardImage={ card.cardImage }
+              cardRare={ card.cardRarity }
+              cardTrunfo={ card.cardTrunfo }
+              removeCard={ this.onRemoveButtonClick }
+              value={ index }
+            />
+          ))}
+        </div>
       </div>
     );
   }

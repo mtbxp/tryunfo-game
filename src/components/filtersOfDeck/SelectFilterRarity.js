@@ -13,9 +13,9 @@ class SelectFilterRarity extends React.Component {
         disabled={ isSearchDisabled }
       >
         <option value="">todas</option>
-        <option>normal</option>
-        <option>raro</option>
-        <option>muito raro</option>
+        <option value="normal">normal</option>
+        <option value="raro">raro</option>
+        <option value="muito raro">muito raro</option>
       </select>
     );
   }

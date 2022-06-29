@@ -251,7 +251,14 @@ input, textarea, select {
   font-size: 17px;
 }
 
+/* DivDecks */
+.divDeck {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
 
+}
 /* alerts */
 .alert {
   border-color: transparent;
