@@ -2,7 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import Div from './components/Div';
-import array from './arrayOfHeroes';
+// import array from './arrayOfHeroes';
 
 class App extends React.Component {
   constructor() {
@@ -20,8 +20,8 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       // filterTrunfo: false,
-      arrayOfCards: array,
-      // arrayOfCards: [],
+      // arrayOfCards: array,
+      arrayOfCards: [],
       isFiltering: false,
       filteredArrayOfCards: [],
     };
@@ -72,8 +72,6 @@ class App extends React.Component {
     }, () => {
       this.buttonValidation(target);
     });
-
-    // if (target.checked) filter(target);
   }
 
   buttonValidation = () => {
@@ -159,22 +157,22 @@ class App extends React.Component {
     }
   }
 
-  filter = ({ target }) => {
-    const { arrayOfCards } = this.state;
-    if (target.checked) {
-      console.log('entrou no if');
-      this.setState({
-        filterTrunfo: true,
-        filteredArrayOfCards: arrayOfCards.filter((card) => card.cardTrunfo),
-      });
-    } else {
-      console.log('entrou no else');
-      this.setState({
-        filterTrunfo: true,
-        filteredArrayOfCards: arrayOfCards,
-      });
-    }
-  };
+  // filter = ({ target }) => {
+  //   const { arrayOfCards } = this.state;
+  //   if (target.checked) {
+  //     console.log('entrou no if');
+  //     this.setState({
+  //       filterTrunfo: true,
+  //       filteredArrayOfCards: arrayOfCards.filter((card) => card.cardTrunfo),
+  //     });
+  //   } else {
+  //     console.log('entrou no else');
+  //     this.setState({
+  //       filterTrunfo: true,
+  //       filteredArrayOfCards: arrayOfCards,
+  //     });
+  //   }
+  // };
 
   render() {
     const {
@@ -222,10 +220,10 @@ class App extends React.Component {
           <option value="raro">Raro</option>
           <option value="muito raro">Muito raro</option>
         </select>
-        <label onChange={ this.filter } htmlFor="checkbox-filter" testid="trunfo-filter">
+        {/* <label onChange={ this.filter } htmlFor="checkbox-filter" testid="trunfo-filter">
           Super Trunfo
           <input id="checkbox-filter" type="checkbox" />
-        </label>
+        </label> */}
         <Div
           cardName={ cardName }
           cardDescription={ cardDescription }
