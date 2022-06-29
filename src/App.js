@@ -24,8 +24,8 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       arrayOfCards: array,
-      // isFiltering: false,
       // arrayOfCards: [],
+      isFiltering: false,
       filteredArrayOfCards: [],
       // onInputChange: () => { },
       // onSaveButtonClick: () => { },
@@ -151,31 +151,26 @@ class App extends React.Component {
     const { value } = target;
     const { arrayOfCards } = this.state;
 
-    // if value // bota no state que ta fitrando
-    // else // bota false no isFiltering
+    this.setState({
+      isFiltering: !!value,
+    });
 
-    const newArr = arrayOfCards.filter((card) => card.cardName === value);
-    // console.log(arrayOfCards);
-    // console.log(newArr);
+    const newArr = arrayOfCards.filter((card) => {
+      const toLower = card.cardName.toLowerCase();
+      const valueLower = value.toLowerCase();
+      return toLower.includes(valueLower);
+    });
 
-    if (value) {
-      this.setState({
-        // isFiltering: true,
-        filteredArrayOfCards: newArr,
-      });
-    }
-
-    // this.setState({
-    //   isFiltering: true,
-    //   filteredArrayOfCards: newArr,
-    // }, () => {});
+    this.setState({
+      filteredArrayOfCards: newArr,
+    });
   }
 
   render() {
     const {
       cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare,
       cardTrunfo, hasTrunfo, isSaveButtonDisabled,
-      arrayOfCards, filteredArrayOfCards } = this.state;
+      arrayOfCards, filteredArrayOfCards, isFiltering } = this.state;
 
     return (
       <div className="App">
@@ -221,7 +216,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           arrayOfCards={
-            filteredArrayOfCards.length > 0 ? filteredArrayOfCards : arrayOfCards
+            isFiltering ? filteredArrayOfCards : arrayOfCards
           }
           removeCard={ this.removeCard }
         />

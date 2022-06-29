@@ -34,7 +34,7 @@ class Div extends Component {
             <p className="attributes description-card">{card.cardDescription}</p>
 
             <div className="attributes">
-              Força .......................................
+              Força .....................................
               <p className="attributes inline">{card.cardAttr1}</p>
             </div>
 
