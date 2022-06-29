@@ -1,7 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
-import './App.css';
 
 // Hello World!
 class App extends React.Component {
@@ -72,6 +71,8 @@ class App extends React.Component {
       [name]: value,
     }), this.showButton);
   }
+
+  // Ca
 
   hasTrun = () => {
     const { cards } = this.state;
