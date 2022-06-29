@@ -1,43 +1,42 @@
 .App {
-  border: 1px solid red;
   align-items: center;
+  border: 1px solid red;
   display: flex;
   flex-direction: column;
 }
 
 img {
-  width: 200px;
   height: 200px;
+  width: 200px;
 }
 
-#rare {
+.rare {
+  align-content: center;
+  align-items: center;
+  display: flex;
   font-size: 13px;
   height: 30px;
-  width: 100px;
-  align-items: center;
-  border: 1px solid red;
-  display: flex;
-  align-content: center;
   justify-content: center;
-}
-
-#atrrRareSection {
-  border: 1px solid red;
-  height: 30px;
-  width: 240px;
-  align-items: center;
-  display: flex;
-  justify-content: space-around;
-}
-
-#atrrSection {
-  font-size: 12px;
   width: 100px;
-  height: 30px;
+}
+
+.atrrRareSection {
   align-items: center;
-  justify-content: space-evenly;
   border: 1px solid red;
   display: flex;
+  height: 30px;
+  justify-content: space-around;
+  width: 240px;
+}
+
+.atrrSection {
+  align-items: center;
+  border: 1px solid red;
+  display: flex;
+  font-size: 12px;
+  height: 30px;
+  justify-content: space-evenly;
+  width: 100px;
 }
 
 form {
@@ -45,44 +44,44 @@ form {
   display: flex;
   flex-direction: column;
   height: 315px;
-  width: 200px;
   padding: 10px;
+  width: 200px;
 }
 
 section {
   display: flex;
 }
 
-#descriptionPreview {
+.descriptionPreview {
   border: 1px solid red;
-  width: 200px;
+  font-size: 12px;
   height: 70px;
   padding: 10px;
-  font-size: 12px;
+  width: 200px;
 }
 
-#previewCard {
+.previewCard {
+  align-items: center;
   border: 1px solid red;
-  width: 250px;
-  height: 460px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 460px;
+  width: 250px;
 }
 
-#formPreview {
+.formPreview {
+  align-items: center;
   border: 1px solid red;
-  width: 700px;
+  display: flex;
   height: 540px;
-  display: flex;
   justify-content: space-around;
-  align-items: center;
+  width: 700px;
 }
 
-#savedCards {
-  width: 90%;
+.savedCards {
   border: 1px solid red;
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  justify-content: space-around;
+  width: 90%;
 }

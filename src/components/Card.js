@@ -15,7 +15,7 @@ class Card extends Component {
     } = this.props;
 
     return (
-      <div id="previewCard">
+      <div className="previewCard">
 
         <h3 data-testid="name-card">
           { cardName }
@@ -33,14 +33,14 @@ class Card extends Component {
             whiteSpace: 'pre-wrap',
             wordBreak: 'break-word',
           } }
-          id="descriptionPreview"
+          className="descriptionPreview"
           data-testid="description-card"
         >
           { cardDescription }
         </p>
 
-        <div id="atrrRareSection">
-          <section id="atrrSection">
+        <div className="atrrRareSection">
+          <section className="atrrSection">
             <p data-testid="attr1-card">
               { cardAttr1 }
             </p>
@@ -52,7 +52,7 @@ class Card extends Component {
             </p>
           </section>
 
-          <p id="rare" data-testid="rare-card">
+          <p className="rare" data-testid="rare-card">
             { cardRare }
           </p>
         </div>
