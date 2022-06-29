@@ -20,6 +20,13 @@ class App extends React.Component {
     };
   }
 
+handleDelet= ({ target }) => {
+  target.parentNode.remove(target);
+  this.setState({
+    hasTrunfo: false,
+  });
+}
+
   isSaveButtonDisabled = () => {
     const { cardName, cardDescription, cardImage, cardRare,
       cardAttr1, cardAttr2, cardAttr3 } = this.state;
@@ -130,7 +137,12 @@ class App extends React.Component {
                   <li>{elemento.attr2}</li>
                   <li>{elemento.attr3}</li>
                 </ul>
-                <input type="button" value="DELETAR" data-testid="delete-button" />
+                <input
+                  type="button"
+                  value="DELETAR"
+                  data-testid="delete-button"
+                  onClick={ this.handleDelet }
+                />
               </div>
             ))
           }
