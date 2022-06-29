@@ -11,7 +11,7 @@ const stateInicial = {
   cardImage: '',
   cardRare: '',
   cardTrunfo: false,
-  hasTrunfo: Boolean,
+  hasTrunfo: false,
   isSaveButtonDisabled: true,
   cartas: [],
 };
@@ -100,16 +100,30 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
     });
-    this.setState({
-      cardName: '',
-      cardDescription: '',
-      cardImage: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
-      cardRare: 'normal',
-      isSaveButtonDisabled: true,
-    });
+    if (cardTrunfo === 'on') {
+      this.setState({
+        cardName: '',
+        cardDescription: '',
+        cardImage: '',
+        cardAttr1: 0,
+        cardAttr2: 0,
+        cardAttr3: 0,
+        cardRare: 'normal',
+        isSaveButtonDisabled: true,
+        hasTrunfo: true,
+      });
+    } else {
+      this.setState({
+        cardName: '',
+        cardDescription: '',
+        cardImage: '',
+        cardAttr1: 0,
+        cardAttr2: 0,
+        cardAttr3: 0,
+        cardRare: 'normal',
+        isSaveButtonDisabled: true,
+      });
+    }
   };
 
   render() {
