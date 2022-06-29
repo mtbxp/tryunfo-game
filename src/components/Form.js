@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../index.css';
 
 class Form extends React.Component {
   render() {
@@ -18,10 +20,16 @@ class Form extends React.Component {
       onSaveButtonClick,
     } = this.props;
     return (
-      <form>
-        <label htmlFor="nomeCarta">
+      <form
+        className="container form-group form-control form-horizontala"
+      >
+        <label
+          className="control-label"
+          htmlFor="nomeCarta"
+        >
           Nome da carta:
           <input
+            className="form-group"
             data-testid="name-input"
             type="text"
             id="nomeCarta"
@@ -31,7 +39,10 @@ class Form extends React.Component {
 
           />
         </label>
-        <label htmlFor="descricaoCarta">
+        <label
+          className="control-label"
+          htmlFor="descricaoCarta"
+        >
           Descrição da carta:
           <input
             data-testid="description-input"
@@ -42,7 +53,10 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="atributo1">
+        <label
+          className="control-label"
+          htmlFor="atributo1"
+        >
           Atributo 1:
           <input
             data-testid="attr1-input"
@@ -53,7 +67,10 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="atributo2">
+        <label
+          className="control-label"
+          htmlFor="atributo2"
+        >
           Atributo 2:
           <input
             data-testid="attr2-input"
@@ -64,7 +81,10 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="atributo3">
+        <label
+          className="control-label"
+          htmlFor="atributo3"
+        >
           Atributo 3:
           <input
             data-testid="attr3-input"
@@ -75,7 +95,10 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="imagemCarta">
+        <label
+          className="control-label"
+          htmlFor="imagemCarta"
+        >
           Imagem:
           <input
             data-testid="image-input"
@@ -86,21 +109,28 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="raridade">
+        <label
+          className="control-label"
+          htmlFor="raridade"
+        >
           Raridade:
           <select
+            className="slect"
             data-testid="rare-input"
             id="raridade"
             name="cardRare"
             value={ cardRare }
             onChange={ onInputChange }
           >
-            <option value="normal" selected>Normal</option>
+            <option value="normal">Normal</option>
             <option value="raro">Raro</option>
             <option value="muito raro">Muito raro</option>
           </select>
         </label>
-        <label htmlFor="cardTrunfo">
+        <label
+          className="control-label"
+          htmlFor="cardTrunfo"
+        >
           Super Trunfo:
           <input
             data-testid="trunfo-input"
@@ -128,9 +158,9 @@ Form.propTypes = {
 
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.number.isRequired,
-  cardAttr2: PropTypes.number.isRequired,
-  cardAttr3: PropTypes.number.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,

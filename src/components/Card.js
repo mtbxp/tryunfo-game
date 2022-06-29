@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../index.css';
 
 class Card extends React.Component {
   render() {
@@ -21,9 +23,12 @@ class Card extends React.Component {
     }; */
 
     return (
-      <div>
+      <div
+        className="container form-group form-control"
+      >
         <h2 data-testid="name-card">{ cardName }</h2>
         <img
+          className="imagemCarta"
           src={ cardImage }
           alt={ cardName }
           data-testid="image-card"
@@ -52,9 +57,9 @@ class Card extends React.Component {
 Card.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.number.isRequired,
-  cardAttr2: PropTypes.number.isRequired,
-  cardAttr3: PropTypes.number.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,

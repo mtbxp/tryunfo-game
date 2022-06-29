@@ -11,3 +11,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+form { 
+  align-items: center;
+  align-self: center;
+  display: flex;
+  width: 20rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.2rem;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+select {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-top: 2rem;
+  width: 10%;
+}
+.imagemCarta {
+  border-radius: 25px;
+  width: 200px;
+  height: auto;
+}
