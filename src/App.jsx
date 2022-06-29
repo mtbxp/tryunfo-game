@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Forms from './components/Form';
+import data from './components/data';
 
 class App extends React.Component {
   constructor() {
@@ -14,7 +15,8 @@ class App extends React.Component {
       cardAttr3: '',
       cardRare: '',
       cardTrunfo: false,
-      cards: [],
+      hasTrunfo: false,
+      cards: data,
     };
   }
 
@@ -43,20 +45,20 @@ class App extends React.Component {
 
   onSaveButtonClick = (event) => {
     event.preventDefault();
-    const { cardName, cardDescription, cardImage, cardRare,
-      cardAttr1, cardAttr2, cardAttr3, cards } = this.state;
-    this.setState({
-      [cards]: [
-        {
-          name: cardName,
-          description: cardDescription,
-          image: cardImage,
-          rare: cardRare,
-          attr1: cardAttr1,
-          attr2: cardAttr2,
-          att3: cardAttr3,
-        }],
-    });
+    const { cardName, cardDescription, cardImage,
+      cardAttr1, cardAttr2, cardAttr3, cardRare, cardTrunfo } = this.state;
+    this.setState((prevState) => ({
+      cards: [...prevState.cards, {
+        name: cardName,
+        description: cardDescription,
+        image: cardImage,
+        attr1: cardAttr1,
+        attr2: cardAttr2,
+        attr3: cardAttr3,
+        rare: cardRare,
+        trunfo: cardTrunfo,
+      }],
+    }));
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -66,6 +68,7 @@ class App extends React.Component {
       cardAttr3: 0,
       cardRare: '',
       cardTrunfo: false,
+      hasTrunfo: true,
     });
   };
 
@@ -79,7 +82,7 @@ class App extends React.Component {
 
   render() {
     const { cardName, cardDescription, cardImage, cardAttr1, cardAttr2,
-      cardAttr3, cardRare, cardTrunfo, cards } = this.state;
+      cardAttr3, cardRare, cardTrunfo, cards, hasTrunfo } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -95,6 +98,7 @@ class App extends React.Component {
           cardAttr3={ cardAttr3 }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
 
         />
         <Card
@@ -108,8 +112,32 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
 
         />
-        <div>{cards}</div>
+        <div>
+          {
+            cards.map((elemento) => (
+              <div key={ elemento.name }>
+                { elemento.name}
+                <span>{elemento.trunfo}</span>
+                <p>
+                  {elemento.description}
+                </p>
+                <p>
+                  {elemento.rare}
+                </p>
+
+                <ul>
+                  <li>{elemento.attr1}</li>
+                  <li>{elemento.attr2}</li>
+                  <li>{elemento.attr3}</li>
+                </ul>
+                <input type="button" value="DELETAR" data-testid="delete-button" />
+              </div>
+            ))
+          }
+
+        </div>
       </div>
+
     );
   }
 }
