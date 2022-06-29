@@ -26,6 +26,7 @@ class App extends React.Component {
     this.validateSuperTrunfoPresence = this.validateSuperTrunfoPresence.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.filterName = this.filterName.bind(this);
+    this.rarityFilter = this.rarityFilter.bind(this);
   }
 
   handleSave(event) {
@@ -112,7 +113,8 @@ class App extends React.Component {
       cardName,
       cardDescription,
       cardImage,
-      cardRare } = this.state;
+      cardRare,
+    } = this.state;
     const sum = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
     const totalMax = 210;
     const totalMaxValidation = sum > totalMax;
@@ -147,6 +149,18 @@ class App extends React.Component {
     });
   }
 
+  rarityFilter({ target }) {
+    const { value } = target;
+    const { listOfCards } = this.state;
+    const filteredCardsByRarity = listOfCards
+      .filter((card) => card.cardRare === value);
+    if (value !== 'todas') {
+      this.setState({
+        listOfCards: filteredCardsByRarity,
+      });
+    }
+  }
+
   render() {
     const {
       cardName,
@@ -177,6 +191,7 @@ class App extends React.Component {
           onInputChange={ this.handleChange }
           onSaveButtonClick={ this.handleSave }
           filterName={ this.filterName }
+          rarityFilter={ this.rarityFilter }
         />
         <Card
           cardName={ cardName }

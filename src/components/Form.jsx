@@ -17,6 +17,7 @@ class Form extends Component {
       onInputChange,
       onSaveButtonClick,
       filterName,
+      rarityFilter,
     } = this.props;
 
     const checkBoxElement = (
@@ -146,6 +147,20 @@ class Form extends Component {
             onChange={ filterName }
           />
         </label>
+
+        <label htmlFor="rarityFilter">
+          Filtrar cartas pela Raridade
+          <select
+            data-testid="rare-filter"
+            name="rarityFilter"
+            onChange={ rarityFilter }
+          >
+            <option value="todas"> todas </option>
+            <option value="normal"> normal </option>
+            <option value="raro"> raro </option>
+            <option value="muito raro"> muito raro </option>
+          </select>
+        </label>
       </form>
     );
   }
@@ -165,6 +180,7 @@ Form.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
   filterName: PropTypes.func.isRequired,
+  rarityFilter: PropTypes.func.isRequired,
 };
 
 export default Form;
