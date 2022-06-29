@@ -16,6 +16,7 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      hasTrunfo: false,
       deckOfCards: [],
     };
   }
@@ -35,24 +36,27 @@ class App extends React.Component {
       cardAttr1,
       cardAttr2,
       cardAttr3,
-      cardRare } = this.state;
+      cardRare,
+      cardTrunfo } = this.state;
     const cardObj = { cardName,
       cardDescription,
       cardImage,
       cardAttr1,
       cardAttr2,
       cardAttr3,
-      cardRare };
+      cardRare,
+      cardTrunfo };
     this.setState((prevSate) => ({
       deckOfCards: [...prevSate.deckOfCards, cardObj],
       cardName: '',
       cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
-    }));
+      cardTrunfo: false,
+    }), () => this.checkSuperTrunfo());
   }
 
   validateForm = () => {
@@ -96,7 +100,15 @@ class App extends React.Component {
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState(({ [name]: value }), () => this.validateForm());
+    this.setState(({ [name]: value }),
+      () => this.validateForm());
+  }
+
+  checkSuperTrunfo = () => {
+    const { deckOfCards } = this.state;
+    this.setState({
+      hasTrunfo: (deckOfCards.some((e) => e.cardTrunfo)),
+    });
   }
 
   render() {
@@ -110,6 +122,8 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      hasTrunfo,
+      deckOfCards,
     } = this.state;
 
     return (
@@ -127,6 +141,7 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ cardName }
@@ -138,18 +153,24 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        {/* <div className="deckContainer">
-          {deckOfCards.map((card) => (
-            <div className="card" key={ card.name }>
-              {card.cardName}
-              <img src={ card.cardImage } alt={ card.cardName } />
-              <p>{card.cardAttr1}</p>
-              <p>{card.cardAttr2}</p>
-              <p>{card.cardAttr3}</p>
-              <p>{card.cardDescription}</p>
-            </div>
-          ))}
-        </div> */}
+        <div className="deckContainer">
+          <h1>Le Deck</h1>
+          {
+            deckOfCards.map((card) => (
+              <Card
+                key={ card.cardName }
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardImage={ card.cardImage }
+                cardRare={ card.cardRare }
+                cardTrunfo={ card.cardTrunfo }
+              />
+            ))
+          }
+        </div>
       </div>
     );
   }
