@@ -1,8 +1,8 @@
 import React from 'react';
 import Form from './components/Form';
 import './App.css';
+import CardDeck from './components/CardDeck';
 import Card from './components/Card';
-import CardPreview from './components/CardPreview';
 import Data from './Data';
 
 const ruleMaxTotalScore = 210;
@@ -105,7 +105,7 @@ class App extends React.Component {
             isSaveButtonDisabled={ isSaveButtonDisabled }
             sumAtt={ sumAtt }
           />
-          <CardPreview
+          <Card
             cardName={ cardName }
             cardDescription={ cardDescription }
             cardAttr1={ cardAttr1 }
@@ -118,7 +118,7 @@ class App extends React.Component {
         </div>
         <section className="Deck">
           {cards.map((item) => (
-            <Card
+            <CardDeck
               cardName={ item.cardName }
               cardDescription={ item.cardDescription }
               cardAttr1={ item.cardAttr1 }
