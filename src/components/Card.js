@@ -16,7 +16,7 @@ class Card extends React.Component {
     // console.log(cardTrunfo);
     return (
       <div>
-        <h1>Cartas existentes</h1>
+        <h1>Pré-Visualização</h1>
         <p data-testid="name-card">
           {`Nome: ${cardName} `}
         </p>
@@ -39,6 +39,7 @@ class Card extends React.Component {
         {
           cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : ''
         }
+
       </div>
     );
   }

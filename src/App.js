@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
+import Cartas from './components/Cartas';
 import Form from './components/Form';
 
 const stateInicial = {
@@ -138,6 +139,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      cartas,
     } = this.state;
     // console.log(this.onSaveButtonClick());
     return (
@@ -167,6 +169,9 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        { cartas.map((carta) => (
+          <Cartas key={ carta.cardName } cartinha={ carta } />
+        )) }
       </div>
     );
   }
