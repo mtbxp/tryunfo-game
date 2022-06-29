@@ -18,7 +18,7 @@ class Form extends React.Component {
       onSaveButtonClick,
     } = this.props;
     return (
-      <div>
+      <section>
         <form>
           <h1>Adicionar Nova Carta</h1>
           Nome:
@@ -113,7 +113,7 @@ class Form extends React.Component {
             Salvar
           </button>
         </form>
-      </div>
+      </section>
     );
   }
 }
