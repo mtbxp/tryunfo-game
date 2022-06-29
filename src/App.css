@@ -1,34 +1,34 @@
-.container-section h1{
-    margin-left: 165px;
-    margin-top: 25px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+.container-section h1 {
+  margin-left: 165px;
+  margin-top: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .container-forms {
-    display: flex;
-    align-items: center;
-    line-height: 40px;
-    width: 20%;
-    height: 780px;
-    flex-direction: column;
-    margin: 20px;
-    border: 2px solid black;
-    border-radius: 10px;
-    margin-left: 80px;
+  display: flex;
+  align-items: center;
+  line-height: 40px;
+  width: 20%;
+  height: 780px;
+  flex-direction: column;
+  margin: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-left: 80px;
 }
 
 button {
-    width: 150px;
-    height: 40px;
-    border: none;
-    cursor: pointer;
+  width: 150px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
 }
 
 .container-card {
-    margin-top: -840px;
-    margin-left: 900px;
-    border: 2px solid black;
-    width: 30%;
-    text-align: center;
-    border-radius: 15px;
+  margin-top: -840px;
+  margin-left: 900px;
+  border: 2px solid black;
+  width: 30%;
+  text-align: center;
+  border-radius: 15px;
 }
