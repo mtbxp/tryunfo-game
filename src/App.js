@@ -4,14 +4,10 @@ import Card from './components/Card';
 import Div from './components/Div';
 import array from './arrayOfHeroes';
 
-// console.log(array);
-
 class App extends React.Component {
   constructor() {
     super();
-
     this.buttonValidation = this.buttonValidation.bind(this);
-
     this.state = {
       cardName: '',
       cardDescription: '',
@@ -27,8 +23,6 @@ class App extends React.Component {
       // arrayOfCards: [],
       isFiltering: false,
       filteredArrayOfCards: [],
-      // onInputChange: () => { },
-      // onSaveButtonClick: () => { },
     };
   }
 
@@ -66,8 +60,6 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       arrayOfCards: [...previous.arrayOfCards, newCard],
     }), () => {
-      // const { arrayOfCards } = this.state;
-      // console.log(arrayOfCards);
     });
   }
 
@@ -93,15 +85,8 @@ class App extends React.Component {
     const arrOfAttr = [cardAttr1, cardAttr2, cardAttr3].map((value) => value)
       .map((value) => parseFloat(value)).reduce((acc, curr) => acc + curr);
 
-    // if (target.type === 'number' && parseFloat(target.value) > attrMaxAllowed) {
-    //   this.setState({
-    //     [target.name]: attrMaxAllowed,
-    //   });
-    // }
-
-    if (cardName && cardDescription && cardImage
-      && cardRare && arrOfAttr <= max && cardAttr1 >= 0
-       && cardAttr2 >= 0 && cardAttr3 >= 0) {
+    if (cardName && cardDescription && cardImage && cardRare
+       && arrOfAttr <= max && cardAttr1 >= 0 && cardAttr2 >= 0 && cardAttr3 >= 0) {
       this.setState({
         isSaveButtonDisabled: false,
       });
@@ -121,17 +106,12 @@ class App extends React.Component {
   removeCard = ({ target }) => {
     const name = target.parentElement.getAttribute('name');
     const { arrayOfCards } = this.state;
-
     const newArrayOfCards = arrayOfCards.filter((card) => card.cardName !== name);
-
     this.setState({
       arrayOfCards: newArrayOfCards,
     });
-
     const checkbox = newArrayOfCards.some((card) => card.cardTrunfo);
-
     if (!checkbox) {
-      console.log('entrou');
       this.setState({
         hasTrunfo: false,
       });
@@ -140,7 +120,6 @@ class App extends React.Component {
 
   isCardTrunfoTrue = () => {
     const { cardTrunfo } = this.state;
-    console.log(cardTrunfo);
     if (!cardTrunfo) {
       return null;
     }
@@ -150,20 +129,34 @@ class App extends React.Component {
   filterCards = ({ target }) => {
     const { value } = target;
     const { arrayOfCards } = this.state;
-
     this.setState({
       isFiltering: !!value,
     });
-
     const newArr = arrayOfCards.filter((card) => {
       const toLower = card.cardName.toLowerCase();
       const valueLower = value.toLowerCase();
       return toLower.includes(valueLower);
     });
-
     this.setState({
       filteredArrayOfCards: newArr,
     });
+  }
+
+  rareFilterCards = ({ target }) => {
+    const { arrayOfCards } = this.state;
+    const { value } = target;
+    const rareArray = arrayOfCards.filter((card) => card.cardRare === value);
+    this.setState({
+      isFiltering: !!value,
+    });
+    this.setState({
+      filteredArrayOfCards: rareArray,
+    });
+    if (value === 'todas') {
+      this.setState({
+        filteredArrayOfCards: arrayOfCards,
+      });
+    }
   }
 
   render() {
@@ -200,12 +193,18 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </div>
-        {/* <h1>Cartas</h1> */}
         <input
+          type="text"
           data-testid="name-filter"
           onChange={ this.filterCards }
           placeholder="Filtre pelo nome"
         />
+        <select onChange={ this.rareFilterCards } data-testid="rare-filter">
+          <option value="todas">Todas</option>
+          <option value="normal">Normal</option>
+          <option value="raro">Raro</option>
+          <option value="muito raro">Muito raro</option>
+        </select>
         <Div
           cardName={ cardName }
           cardDescription={ cardDescription }
@@ -215,9 +214,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          arrayOfCards={
-            isFiltering ? filteredArrayOfCards : arrayOfCards
-          }
+          arrayOfCards={ isFiltering ? filteredArrayOfCards : arrayOfCards }
           removeCard={ this.removeCard }
         />
       </div>
