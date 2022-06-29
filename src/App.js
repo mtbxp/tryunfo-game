@@ -10,4 +10,5 @@ class App extends React.Component {
   }
 }
 
+// Comentário inicial de projeto!
 export default App;
