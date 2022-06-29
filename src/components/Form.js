@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/Form.css';
 
-class Form extends Component {
+class Form extends React.Component {
   render() {
     const {
       cardName,
@@ -21,6 +22,7 @@ class Form extends Component {
     return (
       <form>
         <label htmlFor="cardName">
+          <p>Nome: </p>
           <input
             type="text"
             name="cardName"
@@ -30,6 +32,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="cardDescription">
+          <p>Descrição</p>
           <textarea
             name="cardDescription"
             data-testid="description-input"
@@ -38,6 +41,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="cardAttr1">
+          <p>Ataque</p>
           <input
             type="number"
             name="cardAttr1"
@@ -47,6 +51,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="cardAttr2">
+          <p>Força</p>
           <input
             type="number"
             name="cardAttr2"
@@ -56,6 +61,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="cardAttr3">
+          <p>Defesa</p>
           <input
             type="number"
             name="cardAttr3"
@@ -65,6 +71,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="cardImage">
+          <p>Imagem</p>
           <input
             type="text"
             name="cardImage"
@@ -74,6 +81,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="cardRare">
+          <p>Raridade:</p>
           <select
             name="cardRare"
             data-testid="rare-input"
@@ -86,6 +94,7 @@ class Form extends Component {
           </select>
         </label>
         <label htmlFor="cardTrunfo">
+          <p>Super trunfo?</p>
           {hasTrunfo
             ? <span>Você já tem um Super Trunfo em seu baralho</span>
             : (

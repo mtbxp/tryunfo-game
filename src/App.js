@@ -1,6 +1,8 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Filter from './components/Filter';
+import './styles/App.css';
 
 class App extends React.Component {
   constructor() {
@@ -12,11 +14,41 @@ class App extends React.Component {
       cardAttr2: '0',
       cardAttr3: '0',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
       cards: [],
+      filterName: '',
+      filterRare: 'todas',
+      filterTrunfo: false,
     };
+  }
+
+  filteringByName = (event) => {
+    this.setState({
+      filterName: event.target.value,
+    });
+  }
+
+  filteringByRarity = (event) => {
+    this.setState({
+      filterRare: (event.target.value),
+    });
+  }
+
+  filteringByTrunfo = () => {
+    this.setState(({ filterTrunfo: filter }) => ({
+      filterTrunfo: !filter,
+    }));
+  }
+
+  fillCards = () => {
+    const { cards, filterTrunfo, filterName, filterRare } = this.state;
+    const filteredCards = cards
+      .filter((card) => ((filterTrunfo) ? card.cardTrunfo : true))
+      .filter((card) => (filterRare === 'todas' ? true : card.cardRare === filterRare))
+      .filter((card) => (!filterName ? true : card.cardName.includes(filterName)));
+    return filteredCards;
   }
 
   validateTrunfo = () => {
@@ -74,15 +106,17 @@ class App extends React.Component {
         cardImage,
         cardRare,
         cardTrunfo,
-      }],
-    }), () => this.setState({
+      },
+      ],
+    }),
+    () => this.setState({
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
       cardAttr2: '0',
       cardAttr3: '0',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: this.validateTrunfo(),
     }));
@@ -121,57 +155,71 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      cards,
+      filterTrunfo,
     } = this.state;
 
     return (
-      <div>
-        <h1>Tryunfo</h1>
-        <Form
-          { ...this.state }
-          isSaveButtonDisabled={ this.isSaveButtonDisabled() }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          deleteButton={ false }
-          removeCards={ this.removeCards }
-        />
-        {cards.map(
-          ({
-            cardName: name,
-            cardDescription: descript,
-            cardAttr1: attr1,
-            cardAttr2: attr2,
-            cardAttr3: attr3,
-            cardImage: img,
-            cardRare: rare,
-            cardTrunfo: trunfo,
-          }) => (
+      <>
+        <section className="App">
+          <div className="form-content">
+            <h1>Tryunfo</h1>
+            <Form
+              { ...this.state }
+              isSaveButtonDisabled={ this.isSaveButtonDisabled() }
+              onInputChange={ this.onInputChange }
+              onSaveButtonClick={ this.onSaveButtonClick }
+            />
+          </div>
+          <div className="card-content">
             <Card
-              key={ name }
-              cardName={ name }
-              cardDescription={ descript }
-              cardAttr1={ attr1 }
-              cardAttr2={ attr2 }
-              cardAttr3={ attr3 }
-              cardImage={ img }
-              cardRare={ rare }
-              cardTrunfo={ trunfo }
-              deleteButton
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              deleteButton={ false }
               removeCards={ this.removeCards }
             />
-          ),
-        )}
-      </div>
+          </div>
+        </section>
+        <section className="card-deck">
+          <Filter
+            filteringByName={ this.filteringByName }
+            filteringByTrunfo={ this.filteringByTrunfo }
+            filteringByRarity={ this.filteringByRarity }
+            filterTrunfo={ filterTrunfo }
+          />
+          {this.fillCards().map(
+            ({
+              cardName: name,
+              cardDescription: descript,
+              cardAttr1: attr1,
+              cardAttr2: attr2,
+              cardAttr3: attr3,
+              cardImage: img,
+              cardRare: rare,
+              cardTrunfo: trunfo,
+            }) => (
+              <Card
+                key={ name }
+                cardName={ name }
+                cardDescription={ descript }
+                cardAttr1={ attr1 }
+                cardAttr2={ attr2 }
+                cardAttr3={ attr3 }
+                cardImage={ img }
+                cardRare={ rare }
+                cardTrunfo={ trunfo }
+                deleteButton
+                removeCards={ this.removeCards }
+              />
+            ),
+          )}
+        </section>
+      </>
     );
   }
 }
