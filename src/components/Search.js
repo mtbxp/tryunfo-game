@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 class Search extends React.Component {
   render() {
-    const { textFilter, onInputChange, rarityFilter } = this.props;
+    const { textFilter, onInputChange, rarityFilter, trunfoFilter,
+      disabled } = this.props;
     return (
       <section>
         <label htmlFor="pesquisa">
@@ -13,6 +14,7 @@ class Search extends React.Component {
             data-testid="name-filter"
             value={ textFilter }
             onChange={ onInputChange }
+            disabled={ disabled }
             name="textFilter"
             id="pesquisa"
             placeholder="card name"
@@ -24,6 +26,7 @@ class Search extends React.Component {
             data-testid="rare-filter"
             value={ rarityFilter }
             onChange={ onInputChange }
+            disabled={ disabled }
             name="rarityFilter"
             id="rairtyFilter"
           >
@@ -32,6 +35,16 @@ class Search extends React.Component {
             <option>raro</option>
             <option>muito raro</option>
           </select>
+        </label>
+        <label data-testid="trunfo-filter" htmlFor="trunfoFilter">
+          Super Trunfo
+          <input
+            type="checkbox"
+            checked={ trunfoFilter }
+            onChange={ onInputChange }
+            name="trunfoFilter"
+            id="trunfoFilter"
+          />
         </label>
       </section>
     );

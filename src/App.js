@@ -20,6 +20,8 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       textFilter: '',
       rarityFilter: 'todas',
+      trunfoFilter: false,
+      disabled: false,
       savedCards: [],
     };
   }
@@ -40,6 +42,11 @@ class App extends React.Component {
     return ![maxLength, maxValue, minValue].every((el) => el === true);
   };
 
+  handleSearchInputs = () => {
+    const { trunfoFilter } = this.state;
+    return trunfoFilter;
+  }
+
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -47,6 +54,7 @@ class App extends React.Component {
       [name]: value,
     }, () => this.setState({
       isSaveButtonDisabled: this.validateBtn(),
+      disabled: this.handleSearchInputs(),
     }));
   }
 
@@ -74,8 +82,11 @@ class App extends React.Component {
   }
 
   showCardsCollection = () => {
-    const { textFilter, savedCards, rarityFilter } = this.state;
+    const { textFilter, savedCards, rarityFilter, trunfoFilter } = this.state;
 
+    if (trunfoFilter) {
+      return savedCards.filter(({ cardTrunfo }) => cardTrunfo === true);
+    }
     if (rarityFilter !== 'todas') {
       return savedCards.filter(({ cardRare }) => cardRare === rarityFilter);
     }
@@ -96,7 +107,7 @@ class App extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
-      textFilter } = this.state;
+      textFilter, rarityFilter, trunfoFilter, disabled } = this.state;
 
     return (
       <div>
@@ -128,6 +139,9 @@ class App extends React.Component {
         <Search
           textFilter={ textFilter }
           onInputChange={ this.onInputChange }
+          rarityFilter={ rarityFilter }
+          trunfoFilter={ trunfoFilter }
+          disabled={ disabled }
         />
         {
           this.showCardsCollection().map((el) => (
