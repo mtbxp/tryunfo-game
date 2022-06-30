@@ -33,7 +33,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="attr1-input">
-          Atributo 1
+          Health
           <input
             type="number"
             name="cardAttr1"
@@ -46,7 +46,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="attr2-input">
-          Atributo 2
+          Melee Damage
           <input
             type="number"
             name="cardAttr2"
@@ -59,7 +59,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="attr3-input">
-          Atributo 3
+          Movement Speed:
           <input
             type="number"
             name="cardAttr3"

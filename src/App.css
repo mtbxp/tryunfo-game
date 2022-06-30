@@ -1,3 +1,104 @@
+header {
+  justify-content: center;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+form {
+  background: var(--white);
+  border-radius: var(0.25rem);
+  box-shadow: var(--shadow-2);
+  padding: 2rem 2.5rem;
+  width: 60%;
+}
+
+input,
+textarea,
+select {
+  background: var(--grey-50);
+  border: 1px solid gray;
+  border-radius: var(0.25rem);
+  margin-bottom: 1rem;
+  padding: 0.7rem 0.75rem;
+  width: 100%;
+}
+
+h1 {
+  font-size: 3.052rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 2.441rem;
+  margin: 0;
+}
+
+h3 {
+  font-size: 1.953rem;
+  margin: 0;
+}
+
+h4 {
+  font-size: 1.563rem;
+  margin: 0;
+}
+
+h5 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
 .cardCreate-container {
   display: flex;
+}
+
+.cardlist-container li {
+  list-style-type: none;
+}
+
+.Card-container {
+  background-color: forestgreen;
+  border: solid 20px brown;
+  border-radius: 8%;
+  display: block;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  height: 520px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 350px;
+}
+
+.Card-container img {
+  background-color: bisque;
+  border: solid 1px black;
+  border-radius: 4%;
+  height: 240px;
+  max-width: 300px;
+  padding: 5px;
+}
+
+.attr-container {
+  margin: 10px;
+  padding: 8px;
+  text-align: left;
+}
+
+.description {
+  background-color: bisque;
+  border: solid 1px black;
+  border-radius: 8%;
+  height: 50px;
+  margin: 0 18px;
+  padding-top: 8px;
+}
+
+.super-trunfo {
+  color: rgb(226, 14, 25);
+  font-style: oblique;
+}
+
+.super-trunfo:hover {
+  color: aqua;
 }

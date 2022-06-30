@@ -99,7 +99,9 @@ class App extends React.Component {
       cardTrunfo, isSaveButtonDisabled, hasTrunfo, cardList } = this.state;
     return (
       <div>
-        <h1>Tryunfo</h1>
+        <header>
+          <h1>Tryunfo</h1>
+        </header>
         <div className="cardCreate-container">
           <Form
             cardName={ cardName }
@@ -128,17 +130,18 @@ class App extends React.Component {
         </div>
         <div className="cardList-container">
           {cardList.map((element) => (
-            <Card
-              cardName={ element.cardName }
-              cardDescription={ element.cardDescription }
-              cardAttr1={ element.cardAttr1 }
-              cardAttr2={ element.cardAttr2 }
-              cardAttr3={ element.cardAttr3 }
-              cardImage={ element.cardImage }
-              cardRare={ element.cardRare }
-              cardTrunfo={ element.cardTrunfo }
-              key={ element.cardName }
-            />
+            <li key={ element.cardName } className="card">
+              <Card
+                cardName={ element.cardName }
+                cardDescription={ element.cardDescription }
+                cardAttr1={ element.cardAttr1 }
+                cardAttr2={ element.cardAttr2 }
+                cardAttr3={ element.cardAttr3 }
+                cardImage={ element.cardImage }
+                cardRare={ element.cardRare }
+                cardTrunfo={ element.cardTrunfo }
+              />
+            </li>
           ))}
         </div>
       </div>
