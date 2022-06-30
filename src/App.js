@@ -19,6 +19,8 @@ class App extends React.Component {
       savedCards: [],
       filterName: '',
       filterRare: 'todas',
+      filterTrunfo: false,
+      isDisabled: false,
     };
   }
 
@@ -33,19 +35,13 @@ class App extends React.Component {
     const attr2 = parseInt(stateValues[3], 10);
     const attr3 = parseInt(stateValues[4], 10);
     const sum = parseInt(stateValues[2], 10)
-    + parseInt(stateValues[3], 10)
-    + parseInt(stateValues[4], 10);
+    + parseInt(stateValues[3], 10) + parseInt(stateValues[4], 10);
     const maxValueSumAttr = 210;
     const maxValueAttr = 90;
     const minValueAttr = 0;
-    if (valuesFilter.length === 0
-      && sum <= maxValueSumAttr
-      && attr1 <= maxValueAttr
-      && attr2 <= maxValueAttr
-      && attr3 <= maxValueAttr
-      && attr1 >= minValueAttr
-      && attr2 >= minValueAttr
-      && attr3 >= minValueAttr
+    if (valuesFilter.length === 0 && sum <= maxValueSumAttr && attr1 <= maxValueAttr
+      && attr2 <= maxValueAttr && attr3 <= maxValueAttr && attr1 >= minValueAttr
+      && attr2 >= minValueAttr && attr3 >= minValueAttr
     ) {
       return false;
     }
@@ -56,8 +52,13 @@ class App extends React.Component {
     const { name } = target;
     let value = target.type === 'checkbox' ? target.checked : target.value;
     const propValue = () => {
+      const { filterTrunfo } = this.state;
       if (name === 'cardAttr1' || name === 'cardAttr2' || name === 'cardAttr3') {
         value = parseInt(target.value, 10);
+        return value;
+      }
+      if (name === 'filterTrunfo') {
+        this.setState({ isDisabled: !filterTrunfo });
         return value;
       }
       return value;
@@ -148,10 +149,31 @@ class App extends React.Component {
     </li>
   )
 
+  superTrunfoFalse = () => {
+    const { savedCards, filterName, filterRare } = this.state;
+    if (filterRare === 'todas') {
+      return savedCards
+        .filter((card) => card.cardName.includes(filterName))
+        .map((card, index) => this.createCards(card, index));
+    }
+    return savedCards
+      .filter((card) => card.cardName.includes(filterName))
+      .filter((card) => card.cardRare === filterRare)
+      .map((card, index) => this.createCards(card, index));
+  }
+
+  superTrunfoTrue = () => {
+    const { savedCards } = this.state;
+    return savedCards
+      .filter((card) => card.cardTrunfo === true)
+      .map((card, index) => this.createCards(card, index));
+  }
+
   render() {
     const {
       cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare,
-      cardTrunfo, isSaveButtonDisabled, hasTrunfo, savedCards, filterName, filterRare,
+      cardTrunfo, isSaveButtonDisabled, hasTrunfo, filterName, filterRare, filterTrunfo,
+      isDisabled,
     } = this.state;
     return (
       <div className="container">
@@ -190,6 +212,7 @@ class App extends React.Component {
               placeholder="Nome da carta"
               value={ filterName }
               onChange={ this.onInputChange }
+              disabled={ isDisabled }
             />
             <select
               data-testid="rare-filter"
@@ -197,6 +220,7 @@ class App extends React.Component {
               onChange={ this.onInputChange }
               name="filterRare"
               placeholder="Selecione a raridade"
+              disabled={ isDisabled }
             >
               <option>todas</option>
               <option>normal</option>
@@ -205,19 +229,17 @@ class App extends React.Component {
             </select>
             <label htmlFor="trunfoInputFilter" className="checkboxLabel">
               Super Trunfo
-              <input type="checkbox" id="trunfoInputFilter" />
+              <input
+                name="filterTrunfo"
+                type="checkbox"
+                id="trunfoInputFilter"
+                data-testid="trunfo-filter"
+                onChange={ this.onInputChange }
+              />
             </label>
           </div>
-
           {
-            filterRare === 'todas'
-              ? savedCards
-                .filter((card) => card.cardName.includes(filterName))
-                .map((card, index) => this.createCards(card, index))
-              : savedCards
-                .filter((card) => card.cardName.includes(filterName))
-                .filter((card) => card.cardRare === filterRare)
-                .map((card, index) => this.createCards(card, index))
+            filterTrunfo === false ? this.superTrunfoFalse() : this.superTrunfoTrue()
           }
         </ul>
       </div>
