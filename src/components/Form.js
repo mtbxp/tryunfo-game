@@ -7,7 +7,7 @@ class Form extends Component {
       onInputChange,
       onSaveButtonClick,
       isSaveButtonDisabled,
-      cardname,
+      cardName,
       cardDescription,
       cardAttr1,
       cardAttr2,
@@ -26,7 +26,7 @@ class Form extends Component {
         <input
           type="text"
           className="name-input"
-          value={ cardname }
+          value={ cardName }
           onChange={ onInputChange }
           data-testid="name-input"
         />
@@ -125,7 +125,7 @@ Form.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
-  cardname: PropTypes.string.isRequired,
+  cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.string.isRequired,
   cardAttr2: PropTypes.string.isRequired,
