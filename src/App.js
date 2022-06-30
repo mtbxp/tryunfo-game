@@ -16,6 +16,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      listSavedCards: [],
     };
   }
 
@@ -32,8 +33,6 @@ class App extends React.Component {
     const valorMaximoPontos = 90;
     const somaMaximaCards = 210;
     const somaAtributos = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
-    console.log(somaAtributos);
-    console.log(cardAttr1);
 
     if (cardName !== ''
       && cardDescription !== ''
@@ -65,6 +64,42 @@ class App extends React.Component {
     }, () => this.validateButton());
   }
 
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    // console.log('chamou');
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+
+    const newObjCard = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+    this.setState((prevState) => ({
+      listSavedCards: [...prevState.listSavedCards, newObjCard],
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+    }));
+  }
+
   render() {
     const {
       cardName,
@@ -76,7 +111,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
-      // onSaveButtonClick,
+      // listSavedCards,
     } = this.state;
     return (
       <div>
@@ -92,7 +127,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
-        // onSaveButtonClick={ onSaveButtonClick }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
@@ -107,7 +142,7 @@ class App extends React.Component {
       </div>
     );
   }
+  // oi
 }
-// oi
 
 export default App;
