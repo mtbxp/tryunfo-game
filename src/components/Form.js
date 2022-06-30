@@ -26,13 +26,13 @@ class Form extends React.Component {
           <label htmlFor="card_rare">
             <select data-testid="rare-input" id="card_rare">
               <option>
-                Normal
+                normal
               </option>
               <option>
-                Raro
+                raro
               </option>
               <option>
-                Muito Raro
+                muito raro
               </option>
             </select>
           </label>
