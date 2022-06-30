@@ -7,13 +7,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  text-align: center;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-.cardForm {
+.container {
   display: block;
-  width: 1000px;
-  background-color: aqua;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid gray;
+  width: 50%;
+  height: 80%;
+  margin-left: 300px;
+  background-color: gainsboro;
+}
+
+.label-container {
+  padding: 10px;
+  text-align: left;
+  display: block;
+}
+
+textarea {
+  display: block;
+  width: 291px;
+  height: 65px
 }

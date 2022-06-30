@@ -1,12 +1,25 @@
 import React from 'react';
+import Card from './components/Card';
+import CardList from './components/CardList';
 import Form from './components/Form';
 
 class App extends React.Component {
+  // constructor() {
+  //   super();
+
+  //   this.state = {
+  //     allCards: [{ }];
+  //   }
+  // }n
+
   render() {
+    // const { allCards } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form />
+        <Card />
+        {/* <CardList todosCards={ allCards } /> */}
       </div>
     );
   }
