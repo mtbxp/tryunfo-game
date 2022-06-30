@@ -6,6 +6,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      newCard: [],
       hasTrunfo: false,
       cardName: '',
       cardDescription: '',
@@ -18,7 +19,6 @@ class App extends React.Component {
       button: true,
       arrayCards: [],
     };
-    this.thereIsTrunfo = this.thereIsTrunfo.bind(this);
   }
 
   buttonSave = () => {
@@ -52,6 +52,14 @@ class App extends React.Component {
     this.setState(({ [name]: value }), () => this.buttonSave());
   };
 
+  thereIsTrunfo = () => {
+    const { arrayCards } = this.state;
+    const findTrunfo = arrayCards.some((cartCurrent) => cartCurrent.cardTrunfo);
+    this.setState({
+      hasTrunfo: findTrunfo,
+    });
+  };
+
     onSaveButtonClick = (event) => {
       event.preventDefault();
       const {
@@ -82,13 +90,6 @@ class App extends React.Component {
         arrayCards: [...cart.arrayCards, addNewCard],
       }), () => this.thereIsTrunfo());
 
-      thereIsTrunfo() {
-        const { arrayCards } = this.state;
-        const findTrunfo = arrayCards.some((cartCurrent) => cartCurrent.cardTrunfo);
-        this.setState({
-          hasTrunfo: findTrunfo,
-        });
-      }
       this.setState({
         cardName: '',
         cardDescription: '',
@@ -103,6 +104,7 @@ class App extends React.Component {
 
     render() {
       const {
+        newCard,
         hasTrunfo,
         cardName,
         cardDescription,
@@ -143,6 +145,24 @@ class App extends React.Component {
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
           />
+          <section>
+            {
+              newCard.map((cardEvent) => (
+                <section key={ cardEvent.cardName }>
+
+                  <Card
+                    cardName={ cardEvent.cardName }
+                    cardDescription={ cardEvent.cardDescription }
+                    cardAttr1={ cardEvent.cardAttr1 }
+                    cardAttr2={ cardEvent.cardAttr2 }
+                    cardAttr3={ cardEvent.cardAttr3 }
+                    cardImage={ cardEvent.cardImage }
+                    cardRare={ cardEvent.cardRare }
+                    cardTrunfo={ cardEvent.cardTrunfo }
+                  />
+                </section>))
+            }
+          </section>
         </section>
       );
     }

@@ -16,10 +16,11 @@ class Form extends Component {
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
+      hasTrunfo,
     } = this.props;
 
     const trunfoCheckBox = (
-      <label htmlFor="addCard">
+      <label htmlFor="cardTrunfo">
         Super trunfo
         <input
           type="checkbox"
@@ -142,7 +143,7 @@ class Form extends Component {
             </select>
           </label>
 
-          <label
+          {/* <label
             className="checkbox"
             htmlFor="checkbox"
           >
@@ -155,7 +156,7 @@ class Form extends Component {
               onChange={ onInputChange }
             />
             Super Trybe Trunfo
-          </label>
+          </label> */}
           {
             hasTrunfo ? <>Você já tem um Super Trunfo em seu baralho</>
               : trunfoCheckBox
