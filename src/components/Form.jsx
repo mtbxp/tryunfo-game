@@ -23,7 +23,7 @@ class Form extends React.Component {
         <h2> Adicionar nova carta </h2>
         <form className="form">
           <label htmlFor="cardName">
-            Nome
+            Nome:
             <input
               type="text"
               data-testid="name-input"
@@ -34,7 +34,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="cardDescription">
-            Descrição
+            Descrição:
             <input
               type="textarea"
               data-testid="description-input"
@@ -45,7 +45,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="cardAttr1">
-            Primeiro atributo
+            1º atributo:
             <input
               type="number"
               data-testid="attr1-input"
@@ -56,7 +56,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="cardAttr2">
-            Segundo atributo
+            2º atributo:
             <input
               type="number"
               data-testid="attr2-input"
@@ -67,7 +67,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="cardAttr3">
-            Terceiro atributo
+            3º atributo:
             <input
               type="number"
               data-testid="attr3-input"
@@ -78,7 +78,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="cardImage">
-            Imagem
+            Imagem:
             <input
               type="text"
               data-testid="image-input"
@@ -89,7 +89,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="cardRare">
-            Raridade
+            Raridade:
             <select
               name="rarity"
               id="cardRare"
@@ -107,7 +107,7 @@ class Form extends React.Component {
             'Você já tem um Super Trunfo em seu baralho'
           ) : (
             <label htmlFor="cardTrunfo">
-              Super Trybe Trunfo
+              Super Trybe Trunfo?
               <input
                 type="checkbox"
                 id="cardTrunfo"

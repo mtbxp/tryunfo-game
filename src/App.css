@@ -1,5 +1,5 @@
 html {
-  background: url('https://i.pinimg.com/originals/d2/63/55/d26355a4484cf412669476a57a263abc.png');
+  background: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/627fe721-846f-4f75-ac61-111ca00b27dd/dcv26ep-40e233eb-3459-4c5a-99ae-c8632ede695d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzYyN2ZlNzIxLTg0NmYtNGY3NS1hYzYxLTExMWNhMDBiMjdkZFwvZGN2MjZlcC00MGUyMzNlYi0zNDU5LTRjNWEtOTlhZS1jODYzMmVkZTY5NWQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.g4QIitCauc7zF8OrPSDG6ERVPVz2jzf6PJ4p4mOlBsg');
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -8,18 +8,64 @@ html {
 
 h1 {
   font-size: 2.5rem;
-  padding: 10px;
+  padding: 8px;
   text-align: center;
 }
 
 h2 {
   font-size: 1.8rem;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
 }
 
-.formProps {
-  display: inline;
+input {
+  border-radius: 5px;
+  display: flex;
+  padding: 8px;
+  width: 15rem;
+}
+
+input#cardTrunfo {
+  margin-bottom: 20px;
+  margin-left: 50px;
+  margin-top: -15px;
+}
+
+label {
+  margin-left: 20px;
+  text-align: left;
+}
+
+.card {
+  background-image: url(https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png);
+  background-repeat: no-repeat;
+  display: flex;
   flex-direction: column;
-  text-align: center;
+  float: right;
+  height: 500px;
+  margin-bottom: 3rem;
+  margin-right: 10rem;
+  text-align: left;
+  width: 400px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  float: left;
+  gap: 12px;
+  margin-left: 10rem;
+  margin-top: 5px;
+}
+
+button#saveButton {
+  border-radius: 5px;
+  margin-left: 6rem;
+  padding: 5px;
+  width: 100px;
+}
+
+h3, p, span {
+  display: flex;
+  margin-top: 15px;
 }
