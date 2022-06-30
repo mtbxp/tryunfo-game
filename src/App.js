@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import CardList from './components/CardList';
 
 class App extends React.Component {
   constructor() {
@@ -17,7 +18,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
-      listOfCards: [],
+      cardList: [],
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -46,8 +47,8 @@ class App extends React.Component {
       cardAttr3: 0,
       cardImage: '',
       cardRare: 'normal',
-      hasTrunfo: [...addCard.listOfCards, addCard].some((elem) => elem.cardTrunfo),
-      listOfCards: [...prevState.listOfCards, addCard],
+      hasTrunfo: [...prevState.cardList, addCard].some((elem) => elem.cardTrunfo),
+      cardList: [...prevState.cardList, addCard],
     }));
   }
 
@@ -104,6 +105,7 @@ class App extends React.Component {
       cardTrunfo,
       isSaveButtonDisabled,
       hasTrunfo,
+      cardList,
     } = this.state;
 
     return (
@@ -124,10 +126,8 @@ class App extends React.Component {
           hasTrunfo={ hasTrunfo }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
-        ,
         <h2> Preview Card </h2>
         <Card
-          add={ this.addCard }
           cardName={ cardName }
           cardDescription={ cardDescription }
           cardAttr1={ cardAttr1 }
@@ -137,7 +137,11 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        ,
+        <CardList
+          cardList={ cardList }
+          cardName={ cardName }
+          cardTrunfo={ cardTrunfo }
+        />
       </div>
     );
   }
