@@ -54,6 +54,18 @@ html {
 
 /*16px*/
 
+.label {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-flow: row-reverse;
+}
+#trunfo-input {
+  width: 15px;
+  height: 15px;
+  margin: 12px;
+}
+
 body {
   font-family: var(--bodyFont);
   font-weight: 400;
