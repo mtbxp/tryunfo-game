@@ -30,12 +30,20 @@ class App extends React.Component {
     };
 
     const disableButton = () => {
+      const nineZero = 90;
+      const minAttr = -1;
+      const maxAttr = 210;
       if (cardName.length > 0
   && cardDescription.length > 0
-  && cardAttr1.length > 0
-  && cardAttr2.length > 0
-  && cardAttr3.length > 0
-  && cardImage.length > 0) {
+  && cardAttr1 <= nineZero
+  && cardAttr1 > minAttr
+  && cardAttr2 <= nineZero
+  && cardAttr2 > minAttr
+  && cardAttr3 <= nineZero
+  && cardAttr3 > minAttr
+  && cardImage.length > 0
+  && Math.round(cardAttr1) + Math.round(cardAttr2) + Math.round(cardAttr3) <= maxAttr
+      ) {
         return false;
       }
       return true;
