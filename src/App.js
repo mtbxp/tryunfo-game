@@ -19,6 +19,7 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       textFilter: '',
+      rarityFilter: 'todas',
       savedCards: [],
     };
   }
