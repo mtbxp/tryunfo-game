@@ -9,16 +9,17 @@ class App extends React.Component {
 
     this.state = {
 
-      nameInput: '',
-      descriptionInput: '',
-      attr1Input: '',
-      attr2Input: '',
-      attr3Input: '',
-      imageInput: '',
-      rareInput: '',
-      trunfoInput: false,
-      // saveButton: '',
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      // hasTrunfo,
       isSaveButtonDisabled: true,
+      cardList: [],
     };
   }
 
@@ -32,13 +33,30 @@ class App extends React.Component {
       });
   }
 
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    const { cardList } = this.state;
+    const card = this.state;
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      cardImage: '',
+      cardList: [...cardList, card],
+    });
+  };
+
   isSaveButtonDisabled = () => {
     const {
-      nameInput, descriptionInput,
-      imageInput, rareInput, attr1Input, attr2Input, attr3Input } = this.state;
+      cardName, cardDescription,
+      cardImage, cardRare, cardAttr1, cardAttr2, cardAttr3 } = this.state;
 
-    if (nameInput !== '' && descriptionInput !== ''
-      && imageInput !== '' && rareInput !== '') {
+    if (cardName !== '' && cardDescription !== ''
+      && cardImage !== '' && cardRare !== '') {
       this.setState({
         isSaveButtonDisabled: false,
       });
@@ -49,18 +67,18 @@ class App extends React.Component {
     }
     const som = 210;
     const limit = 90;
-    if (attr1Input > limit
-      || attr1Input < 0
-      || attr2Input > limit
-      || attr2Input < 0
-      || attr3Input > limit
-      || attr3Input < 0) {
+    if (cardAttr1 > limit
+      || cardAttr1 < 0
+      || cardAttr2 > limit
+      || cardAttr2 < 0
+      || cardAttr3 > limit
+      || cardAttr3 < 0) {
       this.setState({
         isSaveButtonDisabled: true,
       });
     }
-    const somatorio = parseInt(attr1Input, 10) + parseInt(attr2Input, 10)
-    + parseInt(attr3Input, 10);
+    const somatorio = parseInt(cardAttr1, 10) + parseInt(cardAttr2, 10)
+    + parseInt(cardAttr3, 10);
     if (somatorio > som) {
       this.setState({
         isSaveButtonDisabled: true,
@@ -70,25 +88,34 @@ class App extends React.Component {
 
   render() {
     const {
-      nameInput, descriptionInput,
-      attr1Input, attr2Input, attr3Input,
-      imageInput, rareInput, isSaveButtonDisabled, trunfoInput } = this.state;
+      cardName, cardDescription,
+      cardAttr1, cardAttr2, cardAttr3,
+      cardImage, cardRare, isSaveButtonDisabled, cardTrunfo } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardRare={ cardRare }
+          cardImage={ cardImage }
+          cardTrunfo={ cardTrunfo }
         />
         <Card
-          cardName={ nameInput }
-          cardDescription={ descriptionInput }
-          cardAttr1={ attr1Input }
-          cardAttr2={ attr2Input }
-          cardAttr3={ attr3Input }
-          cardRare={ rareInput }
-          cardImage={ imageInput }
-          cardTrunfo={ trunfoInput }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardRare={ cardRare }
+          cardImage={ cardImage }
+          cardTrunfo={ cardTrunfo }
         />
       </div>
     );
