@@ -6,25 +6,60 @@ class App extends React.Component {
   constructor() {
     super();
 
-    this.handleEvent = this.handleEvent.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-      numeroDeCliques: 0,
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false,
+      isSaveButtonDisabled: false,
     };
   }
 
-  handleEvent() {
-    this.setState((estadoAnterior) => ({
-      numeroDeCliques: estadoAnterior.numeroDeCliques + 1,
-    }));
+  handleChange = ({ target }) => {
+    const { name, type } = target;
+    const value = type === 'checkbox' ? target.checked : target.value;
+    this.setState({ [name]: value });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
   }
 
   render() {
+    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
+      cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form />
-        <Card />
+        <Form
+          onInputChange={ this.handleChange }
+          onSaveButtonClick={ this.handleSubmit }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
+        />
+        <Card
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+        />
       </div>
     );
   }
