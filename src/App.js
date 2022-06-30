@@ -74,8 +74,11 @@ class App extends React.Component {
   }
 
   showCardsCollection = () => {
-    const { textFilter, savedCards } = this.state;
+    const { textFilter, savedCards, rarityFilter } = this.state;
 
+    if (rarityFilter !== 'todas') {
+      return savedCards.filter(({ cardRare }) => cardRare === rarityFilter);
+    }
     return savedCards.filter(({ cardName }) => cardName.includes(textFilter));
   }
 
