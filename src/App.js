@@ -90,6 +90,13 @@ class App extends React.Component {
     });
   };
 
+  nameFilter = (event) => {
+    const { value } = event.target;
+    this.setState((prevState) => ({
+      allCards: prevState.allCards.filter((card) => card.name.includes(value)),
+    }));
+  }
+
   render() {
     const { name,
       description,
@@ -129,6 +136,15 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
         />
+        <div>
+          <input
+            type="text"
+            data-testid="name-filter"
+            id="name-filter"
+            name="name-filter"
+            onChange={ this.nameFilter }
+          />
+        </div>
         <div>
           {allCards.map((card) => (
             <div key={ card.name }>
