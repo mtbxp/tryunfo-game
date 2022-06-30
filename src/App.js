@@ -19,12 +19,7 @@ class App extends React.Component {
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
-  }
-
-  onInputChange({ target }) {
-    const { name, type } = target;
-    const value = type === 'checkbox' ? target.checked : target.value;
-    this.setState(({ [name]: value }));
+    this.enableSaveButton = this.enableSaveButton.bind(this);
   }
 
   onSaveButtonClick(e) {
@@ -47,6 +42,44 @@ class App extends React.Component {
   //       saveBtn: '',
   //     });
     // }
+  }
+
+  onInputChange({ target }) {
+    const { name, type } = target;
+    const value = type === 'checkbox' ? target.checked : target.value;
+    this.setState(({ [name]: value }), () => this.enableSaveButton());
+  }
+
+  enableSaveButton() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+
+    const attrSum = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
+
+    if (
+      cardName
+      && cardDescription
+      && cardImage
+      && cardRare
+      && cardAttr1 >= 0
+      && cardAttr2 >= 0
+      && cardAttr3 >= 0
+      && cardAttr1 <= +'90'
+      && cardAttr2 <= +'90'
+      && cardAttr3 <= +'90'
+      && attrSum < Number('211')
+    ) {
+      this.setState({ isSaveButtonDisabled: false });
+    } else {
+      this.setState({ isSaveButtonDisabled: true });
+    }
   }
 
   render() {

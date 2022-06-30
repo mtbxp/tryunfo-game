@@ -42,6 +42,7 @@ export class Form extends Component {
         <label className="labelForCardName" htmlFor="cardName">
           Nome
           <input
+            required
             data-testid="name-input"
             type="text"
             name="cardName"
@@ -54,6 +55,7 @@ export class Form extends Component {
         <label className="labelForCardDescription" htmlFor="cardDescription">
           Descrição
           <input
+            required
             data-testid="description-input"
             type="textarea"
             name="cardDescription"
@@ -66,10 +68,13 @@ export class Form extends Component {
         <label className="labelForCardAttr1" htmlFor="cardAttr1">
           cardAttr01
           <input
+            required
             data-testid="attr1-input"
             type="number"
             name="cardAttr1"
             id="cardAttr1"
+            min="0"
+            max="90"
             defaultValue={ cardAttr1 }
             onChange={ onInputChange }
           />
@@ -78,10 +83,13 @@ export class Form extends Component {
         <label className="labelForCardAttr2" htmlFor="cardAttr2">
           cardAttr02
           <input
+            required
             data-testid="attr2-input"
             type="number"
             name="cardAttr2"
             id="cardAttr2"
+            min="0"
+            max="90"
             defaultValue={ cardAttr2 }
             onChange={ onInputChange }
           />
@@ -90,10 +98,13 @@ export class Form extends Component {
         <label className="labelForCardAttr3" htmlFor="cardAttr3">
           cardAttr03
           <input
+            required
             data-testid="attr3-input"
             type="number"
             name="cardAttr3"
             id="cardAttr3"
+            min="0"
+            max="90"
             defaultValue={ cardAttr3 }
             onChange={ onInputChange }
           />
@@ -102,6 +113,7 @@ export class Form extends Component {
         <label className="labelForCardImage" htmlFor="cardImage">
           Imagem
           <input
+            required
             data-testid="image-input"
             type="text"
             name="cardImage"
@@ -114,6 +126,7 @@ export class Form extends Component {
         <label className="labelForCardRare" htmlFor="cardRare">
           Raridade
           <select
+            required
             data-testid="rare-input"
             name="cardRare"
             id="cardRare"
@@ -138,28 +151,19 @@ export class Form extends Component {
           Super Trybe Trunfo
         </label>
         <br />
-        <label className="labelForSaveBtn" htmlFor="saveBtn">
-          <input
-            data-testid="save-button"
-            type="submit"
-            name="saveBtn"
-            id="saveBtn"
-            disabled={ isSaveButtonDisabled }
-            onClick={ onSaveButtonClick }
-            value="Salvar"
-          />
-        </label>
+        <button
+          data-testid="save-button"
+          type="submit"
+          name="saveBtn"
+          id="saveBtn"
+          disabled={ isSaveButtonDisabled }
+          onClick={ onSaveButtonClick }
+        >
+          Salvar
+        </button>
       </form>
     );
   }
-  // const onInputChange = ({ target }) => {
-  //   const { name, value } = target;
-  //   const value = type === 'checkbox' ? target.checked : target.value;
-
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  // }
 }
 
 Form.propTypes = {
