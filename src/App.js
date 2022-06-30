@@ -18,6 +18,7 @@ class App extends React.Component {
       allCards: [],
       hasTrunfo: false,
       filterCards: [],
+      disable: false,
     };
   }
 
@@ -117,6 +118,22 @@ class App extends React.Component {
     }
   }
 
+  trunfoFilter = (event) => {
+    const { allCards } = this.state;
+    const { checked } = event.target;
+    if (checked) {
+      this.setState((prevState) => ({
+        filterCards: prevState.filterCards.filter((card) => card.trunfo === 'on'),
+        disable: true,
+      }));
+    } else {
+      this.setState({
+        filterCards: allCards,
+        disable: false,
+      });
+    }
+  }
+
   render() {
     const { name,
       description,
@@ -128,7 +145,8 @@ class App extends React.Component {
       trunfo,
       button,
       hasTrunfo,
-      filterCards } = this.state;
+      filterCards,
+      disable } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -163,18 +181,30 @@ class App extends React.Component {
             id="name-filter"
             name="name-filter"
             onChange={ this.nameFilter }
+            disabled={ disable }
           />
           <select
             data-testid="rare-filter"
             id="rare-filter"
             name="rare-filter"
             onChange={ this.rareFilter }
+            disabled={ disable }
           >
             <option value="todas" selected>Todas</option>
             <option value="normal">Normal</option>
             <option value="raro">Raro</option>
             <option value="muito raro">Muito raro</option>
           </select>
+          <label htmlFor="trunfo-input">
+            <input
+              type="checkbox"
+              data-testid="trunfo-filter"
+              id="trunfo-filtert"
+              name="trunfo-filter"
+              onChange={ this.trunfoFilter }
+            />
+            Super Trunfo
+          </label>
         </div>
         <div>
           {filterCards.map((card) => (
