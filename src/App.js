@@ -14,7 +14,7 @@ class App extends React.Component {
       attr3Input: 0,
       imageInput: '',
       rareInput: '',
-      trunfoInput: false
+      trunfoInput: false,
     };
   }
 
