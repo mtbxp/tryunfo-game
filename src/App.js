@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Filter from './components/Filter';
 
 class App extends React.Component {
   constructor(props) {
@@ -108,10 +109,6 @@ class App extends React.Component {
     });
   }
 
-  // SearchValue = ({}) => {
-
-  // }
-
   render() {
     const {
       cardName,
@@ -155,15 +152,10 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        <label htmlFor="search">
-          <input
-            type="text"
-            name="searchValue"
-            data-testid="name-filter"
-            onChange={ this.onInputChange }
-            value={ searchValue }
-          />
-        </label>
+        <Filter
+          onInputChange={ this.onInputChange }
+          searchValue={ searchValue }
+        />
         {
           newCard
             .filter((card) => card.cardName.includes(searchValue))
