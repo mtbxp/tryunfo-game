@@ -19,7 +19,7 @@ class Form extends React.Component {
     } = this.props;
 
     return (
-      <form className="form">
+      <form className="container-preview">
         <h3>Adicionar Nova Carta</h3>
         <label htmlFor="name">
           <input

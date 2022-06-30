@@ -44,7 +44,7 @@ class App extends React.Component {
 
     // Auxilio do colega Lucas Medeiros que me explicou melhor o conceito de props
     return (
-      <div>
+      <div className="container-card">
         <h1>Tryunfo</h1>
         <Form
           cardName={ cardName }
