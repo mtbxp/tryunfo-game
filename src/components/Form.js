@@ -26,7 +26,7 @@ class Form extends Component {
         <input
           type="text"
           className="name-input"
-          value={ cardName }
+          // value={ cardName }
           onChange={ onInputChange }
           data-testid="name-input"
         />
@@ -137,13 +137,3 @@ Form.propTypes = {
 };
 
 export default Form;
-
-// <input type="select" data-testid="rare-input" />
-/* <input
-          type="checkbox"
-          className="trunfo-input"
-          checked={ cardTrunfo }
-          onChange={ onInputChange }
-          data-testid="trunfo-input"
-        />
-      */
