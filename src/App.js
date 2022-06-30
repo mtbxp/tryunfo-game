@@ -13,7 +13,7 @@ const INNITIAL_STATE = {
   cardTrunfo: false,
   isSaveButtonDisabled: true,
   savedCard: [],
-  // hasTrunfo,
+  hasTrunfo: false,
 };
 
 class App extends React.Component {
@@ -23,42 +23,42 @@ class App extends React.Component {
     this.state = INNITIAL_STATE;
   }
 
-  checkEmpty = () => {
-    const {
-      cardName,
-      cardDescription,
-      cardImage,
-      cardAttr1, cardAttr2,
-      cardAttr3,
-    } = this.state;
+    checkEmpty = () => {
+      const {
+        cardName,
+        cardDescription,
+        cardImage,
+        cardAttr1, cardAttr2,
+        cardAttr3,
+      } = this.state;
 
-    const minValue = 0;
+      const minValue = 0;
 
-    const maxValue = 90;
+      const maxValue = 90;
 
-    const maxSum = 210;
+      const maxSum = 210;
 
-    const isNotEmpty = cardName !== '' && cardDescription !== '' && cardImage !== '';
+      const isNotEmpty = cardName !== '' && cardDescription !== '' && cardImage !== '';
 
-    const minAtribute = Number(cardAttr1) >= minValue
-      && Number(cardAttr2) >= minValue
-      && Number(cardAttr3) >= minValue;
+      const minAtribute = Number(cardAttr1) >= minValue
+        && Number(cardAttr2) >= minValue
+        && Number(cardAttr3) >= minValue;
 
-    const maxPerAtribute = Number(cardAttr1) <= maxValue
-      && Number(cardAttr2) <= maxValue
-      && Number(cardAttr3) <= maxValue;
+      const maxPerAtribute = Number(cardAttr1) <= maxValue
+        && Number(cardAttr2) <= maxValue
+        && Number(cardAttr3) <= maxValue;
 
-    const maxAtributeSum = Number(cardAttr1)
-      + Number(cardAttr2)
-      + Number(cardAttr3) <= maxSum;
+      const maxAtributeSum = Number(cardAttr1)
+        + Number(cardAttr2)
+        + Number(cardAttr3) <= maxSum;
 
-    console.log(minAtribute);
+      console.log(minAtribute);
 
-    if (isNotEmpty && minAtribute && maxPerAtribute && maxAtributeSum) {
-      return false;
-    }
-    return true;
-  };
+      if (isNotEmpty && minAtribute && maxPerAtribute && maxAtributeSum) {
+        return false;
+      }
+      return true;
+    };
 
     handleChange = ({ target }) => {
       const value = target.type
@@ -106,7 +106,14 @@ class App extends React.Component {
           cardTrunfo,
           isSaveButtonDisabled,
         }],
-      }));
+      }), () => { this.hasTrunfo(); });
+    }
+
+    hasTrunfo = () => {
+      const { savedCard } = this.state;
+      this.setState({
+        hasTrunfo: savedCard.some((item) => item.cardTrunfo === true),
+      });
     }
 
     render() {
@@ -119,7 +126,7 @@ class App extends React.Component {
         cardRare,
         cardTrunfo,
         isSaveButtonDisabled,
-        // savedCard,
+        hasTrunfo,
       } = this.state;
 
       const cardProps = {
@@ -141,6 +148,7 @@ class App extends React.Component {
             onInputChange={ this.handleChange }
             onSaveButtonClick={ this.onSaveButtonClick }
             { ...this.state }
+            hasTrunfo={ hasTrunfo }
           />
           <Card onInputChange={ this.handleChange } { ...cardProps } />
         </div>
