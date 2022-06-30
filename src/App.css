@@ -1,3 +1,25 @@
 html {
   margin: 0 auto;
+  background: url(https://i.pinimg.com/originals/d2/63/55/d26355a4484cf412669476a57a263abc.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  padding: 10px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  padding: 10px;
+}
+
+.formProps {
+  text-align: center;
+  display: inline;
+  flex-direction: column;
 }
