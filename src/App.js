@@ -43,6 +43,18 @@ class App extends React.Component {
     return false;
   }
 
+  deleteButton = ({ target }) => {
+    const { name } = target;
+    const { cards } = this.state;
+    this.setState({
+      cards: cards.filter((card) => card.name !== name),
+    }, () => {
+      this.setState({
+        hasTrunfo: this.checkTrunfo(),
+      });
+    });
+  }
+
   saveCard() {
     const { name, description, image, attr1, attr2, attr3, rare, trunfo } = this.state;
     const newCard = {
@@ -122,7 +134,7 @@ class App extends React.Component {
           cardRare={ state.rare }
           cardTrunfo={ state.trunfo }
         />
-        <div>
+        <div className="deck">
           { cards.map((element) => (
             <div key={ element.name }>
               <Card
@@ -135,6 +147,14 @@ class App extends React.Component {
                 cardRare={ element.rare }
                 cardTrunfo={ element.trunfo }
               />
+              <button
+                type="button"
+                name={ element.name }
+                data-testid="delete-button"
+                onClick={ this.deleteButton }
+              >
+                Excluir
+              </button>
             </div>)) }
         </div>
       </div>
