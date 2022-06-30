@@ -6,6 +6,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      hasTrunfo: false,
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -17,6 +18,7 @@ class App extends React.Component {
       button: true,
       arrayCards: [],
     };
+    this.thereIsTrunfo = this.thereIsTrunfo.bind(this);
   }
 
   buttonSave = () => {
@@ -77,8 +79,16 @@ class App extends React.Component {
       };
 
       this.setState((cart) => ({
-        arrayCards: [...cart.arrayCards, addNewCard]
-      }));
+        arrayCards: [...cart.arrayCards, addNewCard],
+      }), () => this.thereIsTrunfo());
+
+      thereIsTrunfo() {
+        const { arrayCards } = this.state;
+        const findTrunfo = arrayCards.some((cartCurrent) => cartCurrent.cardTrunfo);
+        this.setState({
+          hasTrunfo: findTrunfo,
+        });
+      }
       this.setState({
         cardName: '',
         cardDescription: '',
@@ -93,6 +103,7 @@ class App extends React.Component {
 
     render() {
       const {
+        hasTrunfo,
         cardName,
         cardDescription,
         cardAttr1,
@@ -109,6 +120,7 @@ class App extends React.Component {
         <section>
           <h1>Tryunfo</h1>
           <Form
+            hasTrunfo={ hasTrunfo }
             cardName={ cardName }
             cardDescription={ cardDescription }
             cardAttr1={ cardAttr1 }
