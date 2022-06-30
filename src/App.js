@@ -17,6 +17,7 @@ class App extends React.Component {
       button: true,
       allCards: [],
       hasTrunfo: false,
+      filterCards: [],
     };
   }
 
@@ -60,6 +61,7 @@ class App extends React.Component {
       trunfo };
     this.setState((prevState) => ({
       allCards: [...prevState.allCards, card],
+      filterCards: [...prevState.allCards, card],
     }), () => {
       this.setState({
         name: '',
@@ -93,8 +95,26 @@ class App extends React.Component {
   nameFilter = (event) => {
     const { value } = event.target;
     this.setState((prevState) => ({
-      allCards: prevState.allCards.filter((card) => card.name.includes(value)),
+      filterCards: prevState.filterCards.filter((card) => card.name.includes(value)),
     }));
+  }
+
+  // Marcos Souza sempre proativo e ajudando no raciocínio
+  rareFilter = (event) => {
+    const { allCards } = this.state;
+    const { value } = event.target;
+    if (value === 'todas') {
+      this.setState({
+        filterCards: allCards,
+      });
+    } else {
+      this.setState({
+        filterCards: allCards,
+      });
+      this.setState((prevState) => ({
+        filterCards: prevState.filterCards.filter((card) => card.rare === value),
+      }));
+    }
   }
 
   render() {
@@ -108,7 +128,7 @@ class App extends React.Component {
       trunfo,
       button,
       hasTrunfo,
-      allCards } = this.state;
+      filterCards } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -144,9 +164,20 @@ class App extends React.Component {
             name="name-filter"
             onChange={ this.nameFilter }
           />
+          <select
+            data-testid="rare-filter"
+            id="rare-filter"
+            name="rare-filter"
+            onChange={ this.rareFilter }
+          >
+            <option value="todas" selected>Todas</option>
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito raro</option>
+          </select>
         </div>
         <div>
-          {allCards.map((card) => (
+          {filterCards.map((card) => (
             <div key={ card.name }>
               <Card
                 cardName={ card.name }
