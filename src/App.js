@@ -9,13 +9,13 @@ class App extends React.Component {
         <Form />
         <Card
           cardName="oi"
-          cardDescription=""
-          cardAttr1=""
-          cardAttr2=""
-          cardAttr3=""
-          cardImage=""
-          cardRare=""
-          cardTrunfo=""
+          cardDescription="oi"
+          cardAttr1="oi"
+          cardAttr2="oi"
+          cardAttr3="oi"
+          cardImage="oi"
+          cardRare="oi"
+          cardTrunfo="true"
         />
       </>
     );
