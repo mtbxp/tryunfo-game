@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card } from './components/Card';
 import { Form } from './components/Form';
 
 class App extends React.Component {
@@ -7,26 +8,26 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr01: '',
-      cardAttr02: '',
-      cardAttr03: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
     };
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
-  onInputChange = ({ target }) => {
+  onInputChange({ target }) {
     const { name, type } = target;
     const value = type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    });
+    this.setState(({ [name]: value }));
   }
 
-  onSaveButtonClick = (e) => {
+  onSaveButtonClick(e) {
     e.preventDefault();
   //   // Passar o state inteiro para o componente Pai
   //   const { add } = this.props;
@@ -37,8 +38,8 @@ class App extends React.Component {
   //     this.setState({
   //       cardName: '',
   //       cardDesciption: '',
-  //       cardAttr01: '',
-  //       cardAttr02: '',
+  //       cardAttr1: '',
+  //       cardAttr2: '',
   //       cardAttr3: '',
   //       cardImage: '',
   //       cardRare: '',
@@ -52,32 +53,45 @@ class App extends React.Component {
     const {
       cardName,
       cardDescription,
-      cardAttr01,
-      cardAttr02,
-      cardAttr03,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
       cardImage,
       cardRare,
       cardTrunfo,
       hasTrunfo,
-      onInputChange,
       isSaveButtonDisabled,
-      onSaveButtonClick,
     } = this.state;
+
     return (
       <div>
         <Form
           cardName={ cardName }
-          cardDesc={ cardDescription }
-          cardAttrOne={ cardAttr01 }
-          cardAttrTwo={ cardAttr02 }
-          cardAttrThree={ cardAttr03 }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ onInputChange }
-          onSaveButtonClick={ onSaveButtonClick }
+          onInputChange={ this.onInputChange }
+          onSaveButtonClick={ this.onSaveButtonClick }
+        />
+        <Card
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
+          onInputChange={ this.onInputChange }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
       </div>
     );

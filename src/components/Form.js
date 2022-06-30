@@ -37,7 +37,7 @@ export class Form extends Component {
     return (
       <form
         className="form"
-        onSubmit={ this.onSaveButtonClick }
+        onSubmit={ onSaveButtonClick }
       >
         <label className="labelForCardName" htmlFor="cardName">
           Nome
@@ -46,7 +46,7 @@ export class Form extends Component {
             type="text"
             name="cardName"
             id="cardName"
-            value={ cardName }
+            defaultValue={ cardName }
             onChange={ onInputChange }
           />
         </label>
@@ -58,7 +58,7 @@ export class Form extends Component {
             type="textarea"
             name="cardDescription"
             id="cardDescription"
-            value={ cardDescription }
+            defaultValue={ cardDescription }
             onChange={ onInputChange }
           />
         </label>
@@ -70,7 +70,7 @@ export class Form extends Component {
             type="number"
             name="cardAttr1"
             id="cardAttr1"
-            value={ cardAttr1 }
+            defaultValue={ cardAttr1 }
             onChange={ onInputChange }
           />
         </label>
@@ -82,7 +82,7 @@ export class Form extends Component {
             type="number"
             name="cardAttr2"
             id="cardAttr2"
-            value={ cardAttr2 }
+            defaultValue={ cardAttr2 }
             onChange={ onInputChange }
           />
         </label>
@@ -94,7 +94,7 @@ export class Form extends Component {
             type="number"
             name="cardAttr3"
             id="cardAttr3"
-            value={ cardAttr3 }
+            defaultValue={ cardAttr3 }
             onChange={ onInputChange }
           />
         </label>
@@ -106,7 +106,7 @@ export class Form extends Component {
             type="text"
             name="cardImage"
             id="cardImage"
-            value={ cardImage }
+            defaultValue={ cardImage }
             onChange={ onInputChange }
           />
         </label>
@@ -117,7 +117,7 @@ export class Form extends Component {
             data-testid="rare-input"
             name="cardRare"
             id="cardRare"
-            value={ cardRare }
+            defaultValue={ cardRare }
             onChange={ onInputChange }
           >
             <option value="normal">Normal</option>
