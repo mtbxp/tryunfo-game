@@ -140,6 +140,7 @@ class App extends React.Component {
     if (cardDeck.some((card) => card.cardTrunfo)) {
       this.setState({
         hasTrunfo: true,
+        cardTrunfo: false,
       });
     }
   }
@@ -147,7 +148,7 @@ class App extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo,
-      isSaveButtonDisabled, cardDeck } = this.state;
+      isSaveButtonDisabled, cardDeck, hasTrunfo } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -163,6 +164,7 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ cardName }

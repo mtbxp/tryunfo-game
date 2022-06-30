@@ -16,7 +16,7 @@ class Form extends Component {
       onInputChange,
       onSaveButtonClick } = this.props;
 
-    const trunfoCheckbox = (
+    const doesNotHaveTrunfoCheckbox = (
       <label
         htmlFor="trunfo-input"
       >
@@ -27,9 +27,15 @@ class Form extends Component {
           data-testid="trunfo-input"
           checked={ cardTrunfo }
           onChange={ onInputChange }
+          hasTrunfo={ hasTrunfo }
         />
       </label>
     );
+
+    const hasTrunfoMessage = (
+      <span>
+        Você já tem um Super Trunfo em seu baralho
+      </span>);
 
     return (
       <form>
@@ -130,8 +136,8 @@ class Form extends Component {
           </select>
         </label>
         { hasTrunfo
-          ? <p data-testid="trunfo-input">Você já tem um Super Trunfo em seu baralho</p>
-          : trunfoCheckbox }
+          ? hasTrunfoMessage
+          : doesNotHaveTrunfoCheckbox }
 
         <button
           type="button"
