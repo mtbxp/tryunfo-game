@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class Form extends React.Component {
   handleSaveButton = (event) => {
     event.preventDefault();
-    const { addNewCard,
+    const { onSaveButtonClick,
       cardName,
       cardDescription,
       cardAttr1,
@@ -15,7 +15,7 @@ class Form extends React.Component {
       cardTrunfo,
     } = this.props;
 
-    addNewCard({
+    onSaveButtonClick({
       cardName,
       cardDescription,
       cardAttr1,
@@ -137,7 +137,7 @@ class Form extends React.Component {
             data-testid="save-button"
             disabled={ isSaveButtonDisabled }
             onClick={ this.handleSaveButton }
-            // onSubmit={ this.onSaveButtonClick }
+            onSubmit={ this.onSaveButtonClick }
           >
             Salvar
           </button>
@@ -159,7 +159,7 @@ Form.propTypes = {
   // hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
-  addNewCard: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
   // addNew: PropTypes.func.isRequired,
 };
 

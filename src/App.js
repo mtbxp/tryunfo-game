@@ -122,7 +122,7 @@ class App extends React.Component {
         <h1>Tryunfo</h1>
         <div>
           <Form
-            addNewCard={ this.addNewCard }
+            // addNewCard={ this.addNewCard }
             cardName={ cardName }
             cardDescription={ cardDescription }
             cardAttr1={ cardAttr1 }
@@ -134,7 +134,7 @@ class App extends React.Component {
             hasTrunfo={ false }
             isSaveButtonDisabled={ isSaveButtonDisabled }
             onInputChange={ this.onInputChange }
-            onSaveButtonClick={ () => {} }
+            onSaveButtonClick={ this.addNewCard }
             allCards={ allCards }
           />
           <Card
