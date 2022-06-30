@@ -54,6 +54,8 @@ class Form extends React.Component {
               id="3"
               type="number"
               name="historia"
+              min="0"
+              max="90"
               value={ cardAttr1 }
               onChange={ onInputChange }
               required
@@ -68,6 +70,8 @@ class Form extends React.Component {
               id="4"
               type="number"
               name="inteligencia"
+              min="0"
+              max="90"
               value={ cardAttr2 }
               onChange={ onInputChange }
               required
@@ -82,6 +86,8 @@ class Form extends React.Component {
               id="5"
               type="number"
               name="carisma"
+              min="0"
+              max="90"
               value={ cardAttr3 }
               onChange={ onInputChange }
               required
@@ -133,7 +139,8 @@ class Form extends React.Component {
         </div>
         <button
           data-testid="save-button"
-          type="submit"
+          type="button"
+          name="buttonSave"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
         >

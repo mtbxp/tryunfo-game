@@ -8,20 +8,48 @@ class App extends React.Component {
     this.state = {
       cartName: '',
       description: '',
-      historia: 0,
-      inteligencia: 0,
-      carisma: 0,
+      historia: '0',
+      inteligencia: '0',
+      carisma: '0',
       URL: '',
       raridade: '',
       superTrunfo: false,
+      buttonSave: true,
     };
   }
 
+  validateButton = () => {
+    const { cartName,
+      description,
+      historia,
+      inteligencia,
+      carisma,
+      URL,
+    } = this.state;
+
+    const sum = Number(historia) + Number(inteligencia) + Number(carisma);
+    const maxSum = 210;
+    const pointMax = 90;
+    const pointMin = 0;
+
+    this.setState({
+      buttonSave: !(cartName !== ''
+      && description !== ''
+      && URL !== ''
+      && historia >= pointMin
+      && inteligencia >= pointMin
+      && carisma >= pointMin
+      && historia <= pointMax
+      && inteligencia <= pointMax
+      && carisma <= pointMax
+      && sum <= maxSum),
+    });
+  }
+
   heandleState = ({ target }) => {
-    console.log(target);
-    const { name, value } = target;
-    const valueCard = target.type === 'checkbox' ? target.checked : value;
-    this.setState({ [name]: valueCard });
+    const { name, value, type, checked } = target;
+    const valueCard = type === 'checkbox' ? checked : value;
+    this.setState({ [name]: valueCard }, () => this.validateButton());
   }
 
   render() {
@@ -32,7 +60,9 @@ class App extends React.Component {
       carisma,
       URL,
       raridade,
-      superTrunfo } = this.state;
+      superTrunfo,
+      buttonSave,
+    } = this.state;
 
     return (
       <div>
@@ -47,6 +77,7 @@ class App extends React.Component {
           cardRare={ raridade }
           cardTrunfo={ superTrunfo }
           onInputChange={ this.heandleState }
+          isSaveButtonDisabled={ buttonSave }
         />
         <h2>Nova Carta</h2>
         <Card
