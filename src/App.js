@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
-import CardList from './components/CardList';
+// import CardList from './components/CardList';
 import Form from './components/Form';
 
 class App extends React.Component {
