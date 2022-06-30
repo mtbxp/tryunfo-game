@@ -115,8 +115,10 @@ class Form extends React.Component {
           <button
             data-testid="save-button"
             type="submit"
+            id="save-button"
             disabled={ isSaveButtonDisabled }
             onClick={ onSaveButtonClick }
+            // onSubmit={ onSaveButtonClick }
           >
             Salvar
           </button>
@@ -142,3 +144,17 @@ Form.propTypes = {
 };
 
 export default Form;
+
+/* // linhas 85
+this.setState((prevState) => ({
+  cardName: '',
+  cardDescription: '',
+  cardAttr1: '0',
+  cardAttr2: '0',
+  cardAttr3: '0',
+  cardImage: '',
+  cardRare: 'normal',
+  cardTrunfo: false,
+  cards: [...prevState.cards, objectOfCard],
+}));
+ */
