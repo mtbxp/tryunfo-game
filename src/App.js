@@ -48,8 +48,10 @@ class App extends React.Component {
   }
 
   onInputChange = ({ target }) => {
-    const { name, value } = target;
-    this.setState(({ [name]: value }), () => this.buttonSave());
+    const { name, value, type, checked } = target;
+    console.log(value);
+    this.setState(({ [name]: type === 'checkbox' ? checked
+      : value }), () => this.buttonSave());
   };
 
   thereIsTrunfo = () => {
