@@ -9,7 +9,6 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.validateButton = this.validateButton.bind(this);
     this.saveButton = this.saveButton.bind(this);
-    // this.validadeTrunfo = this.validadeTrunfo(this);
 
     this.state = {
       cardName: '',
@@ -55,6 +54,12 @@ class App extends React.Component {
       hasTrunfo: trunfo,
     });
   }
+
+  // cardRemove() {
+  //   const { savedCard } = this.state;
+  //   return savedCard.filter
+
+  // }
 
   validateButton() {
     const { cardName,
@@ -163,6 +168,7 @@ class App extends React.Component {
         <div className="listaCartas">
           { cardList }
         </div>
+        <button type='button' onClick={ this.cardRemove }>REMOVER</button>
 
       </div>
     );
