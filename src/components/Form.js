@@ -19,7 +19,7 @@ class Form extends React.Component {
     } = this.props;
     return (
       <form>
-        <label htmlFor>
+        <label htmlFor="name-input">
           <input
             data-testid="name-input"
             type="text"
@@ -29,7 +29,7 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor>
+        <label htmlFor="description-input">
           <textarea
             data-testid="description-input"
             name="cardDescription"
@@ -38,7 +38,7 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor>
+        <label htmlFor="attr1-input">
           <input
             data-testid="attr1-input"
             type="number"
@@ -48,7 +48,7 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor>
+        <label htmlFor="attr2-input">
           <input
             data-testid="attr2-input"
             type="number"
@@ -58,7 +58,7 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor>
+        <label htmlFor="attr3-input">
           <input
             data-testid="attr3-input"
             type="number"
@@ -68,7 +68,7 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor>
+        <label htmlFor="image-input">
           <input
             data-testid="image-input"
             type="text"
@@ -78,7 +78,7 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor>
+        <label htmlFor="rare-input">
           <select
             data-testid="rare-input"
             name="cardRare"
@@ -91,7 +91,7 @@ class Form extends React.Component {
           </select>
         </label>
 
-        <label htmlFor>
+        <label htmlFor="trunfo-input">
           <input
             data-testid="trunfo-input"
             type="checkbox"
