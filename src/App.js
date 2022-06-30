@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Search from './components/Search';
 
 class App extends React.Component {
   constructor() {
@@ -17,7 +18,8 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
-      savedCard: [],
+      textFilter: '',
+      savedCards: [],
     };
   }
 
@@ -66,25 +68,31 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
-      savedCard: [...previousSave.savedCard, save],
+      savedCards: [...previousSave.savedCards, save],
     }));
   }
 
+  showCardsCollection = () => {
+    const { textFilter, savedCards } = this.state;
+
+    return savedCards.filter(({ cardName }) => cardName.includes(textFilter));
+  }
+
   deleteCardBtn = (name) => {
-    const { savedCard } = this.state;
-    const validateTrunfo = savedCard.find((el) => el.cardName === name).cardTrunfo;
+    const { savedCards } = this.state;
+    const validateTrunfo = savedCards.find((el) => el.cardName === name).cardTrunfo;
     if (validateTrunfo) {
       this.setState({ hasTrunfo: false });
     }
     this.setState((previousSave) => ({
-      savedCard: previousSave.savedCard.filter((el) => el.cardName !== name),
+      savedCards: previousSave.savedCards.filter((el) => el.cardName !== name),
     }));
   }
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
-      savedCard } = this.state;
+      textFilter } = this.state;
 
     return (
       <div>
@@ -113,18 +121,15 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <Search
+          textFilter={ textFilter }
+          onInputChange={ this.onInputChange }
+        />
         {
-          savedCard.map((el) => (
+          this.showCardsCollection().map((el) => (
             <div key={ el.cardName }>
               <Card
-                cardName={ el.cardName }
-                cardDescription={ el.cardDescription }
-                cardAttr1={ el.cardAttr1 }
-                cardAttr2={ el.cardAttr2 }
-                cardAttr3={ el.cardAttr3 }
-                cardImage={ el.cardImage }
-                cardRare={ el.cardRare }
-                cardTrunfo={ el.cardTrunfo }
+                { ...el }
               />
               <button
                 type="button"
