@@ -61,7 +61,8 @@ class App extends React.Component {
       hasTrunfo: previousSave.cardTrunfo,
       savedCard: [...previousSave.savedCard, saveInfo],
     }),
-    this.verifyTrunfoExistence);
+    this.verifyTrunfoExistence,
+    this.renderCards);
   }
 
   verifyTrunfoExistence() {
@@ -75,9 +76,27 @@ class App extends React.Component {
     });
   }
 
+  renderCards() {
+    const { savedCard } = this.state;
+    return savedCard.map((card) => (
+      <Card
+        cardName={ card.cardName }
+        cardDescription={ card.cardDescription }
+        cardAttr1={ card.cardAttr1 }
+        cardAttr2={ card.cardAttr2 }
+        cardAttr3={ card.cardAttr3 }
+        cardImage={ card.cardImage }
+        cardRare={ card.cardRare }
+        cardTrunfo={ card.cardTrunfo }
+        key={ card.cardName }
+      />
+    ));
+  }
+
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
+      savedCard,
     } = this.state;
 
     return (
@@ -107,6 +126,21 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <ul>
+          {savedCard.map((card) => (
+            <li key={ card.cardName }>
+              <Card
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardImage={ card.cardImage }
+                cardRare={ card.cardRare }
+                cardTrunfo={ card.cardTrunfo }
+              />
+            </li>))}
+        </ul>
       </div>
     );
   }
