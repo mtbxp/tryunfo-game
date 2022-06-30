@@ -9,6 +9,7 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.validateButton = this.validateButton.bind(this);
     this.saveButton = this.saveButton.bind(this);
+    this.cardRemove = this.cardRemove.bind(this);
 
     this.state = {
       cardName: '',
@@ -55,11 +56,19 @@ class App extends React.Component {
     });
   }
 
-  // cardRemove() {
-  //   const { savedCard } = this.state;
-  //   return savedCard.filter
-
-  // }
+  cardRemove({ target }) {
+    const { savedCard } = this.state;
+    console.log(target.parentNode.className);
+    this.setState({
+      savedCard: savedCard
+        .filter((element) => element.cardName !== target.parentNode.className),
+    });
+    if (target.previousSibling.className === 'superTrunfo') {
+      this.setState({
+        hasTrunfo: false,
+      });
+    }
+  }
 
   validateButton() {
     const { cardName,
@@ -112,7 +121,11 @@ class App extends React.Component {
 
     const cardList = savedCard
       .map((element) => (
-        <div className="cardList" key={ element.cardName }>
+        <div
+          className={ element.cardName }
+          key={ element.cardName }
+          name={ element.cardName }
+        >
           <h3>{element.cardName}</h3>
           <img src={ element.cardImage } alt={ element.cardName } />
           <p>
@@ -131,10 +144,18 @@ class App extends React.Component {
             { element.cardRare }
           </p>
           {element.cardTrunfo && (
-            <p>
-              {element.cardTrunfo}
+            <p className="superTrunfo">
+              SUPER TRUNFO
             </p>
           )}
+          <button
+            type="button"
+            data-testid="delete-button"
+            onClick={ this.cardRemove }
+          >
+            EXCLUIR
+          </button>
+
         </div>
       ));
 
@@ -168,8 +189,6 @@ class App extends React.Component {
         <div className="listaCartas">
           { cardList }
         </div>
-        <button type='button' onClick={ this.cardRemove }>REMOVER</button>
-
       </div>
     );
   }
