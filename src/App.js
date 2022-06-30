@@ -15,6 +15,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       listSavedCards: [],
     };
@@ -28,7 +29,9 @@ class App extends React.Component {
       cardAttr2,
       cardAttr3,
       cardImage,
-      cardRare } = this.state;
+      cardRare,
+      cardTrunfo,
+    } = this.state;
 
     const valorMaximoPontos = 90;
     const somaMaximaCards = 210;
@@ -47,6 +50,7 @@ class App extends React.Component {
       && somaAtributos <= somaMaximaCards) {
       this.setState({
         isSaveButtonDisabled: false,
+        hasTrunfo: cardTrunfo,
       });
     } else {
       this.setState({
@@ -110,6 +114,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       // listSavedCards,
     } = this.state;
@@ -125,6 +130,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
