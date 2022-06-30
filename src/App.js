@@ -29,7 +29,7 @@ class App extends React.Component {
       cardAttr1,
       cardAttr2,
       cardAttr3,
-      cardTrunfo } = this.state;
+    } = this.state;
     const maxNumber = 210;
     const maxItem = 90;
     let text = false;
@@ -56,7 +56,6 @@ class App extends React.Component {
     if (text && result && sum) {
       this.setState({
         isSaveButtonDisabled: false,
-        hasTrunfo: cardTrunfo,
       });
     } else {
       this.setState({
@@ -76,17 +75,37 @@ class App extends React.Component {
   onSaveButtonClick = (event) => {
     event.preventDefault();
     const card = this.state;
+    if (card.cardTrunfo) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
     this.setState((previous) => ({
       cardName: '',
       cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
+      cardTrunfo: false,
+      isSaveButtonDisabled: true,
       newCard: [...previous.newCard, card],
     }));
   };
+
+  removeCard = (item) => {
+    const { newCard } = this.state;
+    if (item.cardTrunfo) {
+      this.setState({
+        hasTrunfo: false,
+      });
+    }
+    this.setState({
+      newCard: newCard.filter((card) => (item.cardName !== card.cardName
+      )),
+    });
+  }
 
   render() {
     const {
@@ -130,9 +149,10 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        <section className="cards-save">
-          {
-            newCard.map((card) => (
+        {
+          newCard.map((card, index) => (
+
+            <section className="cards-save" key={ index }>
               <Card
                 cardName={ card.cardName }
                 cardDescription={ card.cardDescription }
@@ -144,9 +164,16 @@ class App extends React.Component {
                 cardTrunfo={ card.cardTrunfo }
                 key={ card.cardName }
               />
-            ))
-          }
-        </section>
+              <button
+                data-testid="delete-button"
+                type="button"
+                onClick={ () => this.removeCard(card) }
+              >
+                Excluir
+              </button>
+            </section>
+          ))
+        }
       </div>
     );
   }
