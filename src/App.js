@@ -3,24 +3,50 @@ import Card from './components/Card';
 import Form from './components/Form';
 // import data from './components/data';
 
-//   this.state = {
-//     skins: data,
-//   };
-// }
+const initialState = {
+  cardName: '',
+  cardDescription: '',
+  cardAttr1: '',
+  cardAttr2: '',
+  cardAttr3: '',
+  cardImage: '',
+  cardRare: '',
+  cardTrunfo: false,
+  isSaveButtonDisabled: true,
+  allCards: [{
+    cardName: '',
+    cardDescription: '',
+    cardAttr1: '',
+    cardAttr2: '',
+    cardAttr3: '',
+    cardImage: '',
+    cardRare: '',
+    cardTrunfo: false,
+  }],
+};
+
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
+    this.state = initialState;
+  }
+
+  addNewCard = (card) => {
+    // console.log(card);
+    this.setState((prevState) => ({
+      allCards: [...prevState.allCards, card],
+    }));
+
+    this.setState({
       cardName: '',
       cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      isSaveButtonDisabled: true,
-    };
+    });
   }
 
   validadeNumbersInput = () => {
@@ -88,6 +114,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      allCards,
     } = this.state;
 
     return (
@@ -95,6 +122,7 @@ class App extends React.Component {
         <h1>Tryunfo</h1>
         <div>
           <Form
+            addNewCard={ this.addNewCard }
             cardName={ cardName }
             cardDescription={ cardDescription }
             cardAttr1={ cardAttr1 }
@@ -106,7 +134,8 @@ class App extends React.Component {
             hasTrunfo={ false }
             isSaveButtonDisabled={ isSaveButtonDisabled }
             onInputChange={ this.onInputChange }
-            onSaveButtonClick={ () => { } }
+            onSaveButtonClick={ () => {} }
+            allCards={ allCards }
           />
           <Card
             cardName={ cardName }
@@ -117,6 +146,7 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
+            allCards={ allCards }
           />
         </div>
       </div>

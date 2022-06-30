@@ -2,6 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
+  handleSaveButton = (event) => {
+    event.preventDefault();
+    const { addNewCard,
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.props;
+
+    addNewCard({
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    });
+  }
+
   render() {
     const {
       cardName,
@@ -15,12 +40,13 @@ class Form extends React.Component {
       // hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
-      onSaveButtonClick,
+      // onSaveButtonClick,
+      // allCards,
     } = this.props;
 
     return (
       <div>
-        <form className="form" onSubmit={ () => {} }>
+        <form className="form" onSubmit={ this.handleSaveButton }>
           <label htmlFor="name-input">
             Nome
             <input
@@ -107,10 +133,11 @@ class Form extends React.Component {
           </label>
           <button
             name="save-button"
-            type="button"
+            type="submit"
             data-testid="save-button"
             disabled={ isSaveButtonDisabled }
-            onClick={ onSaveButtonClick }
+            onClick={ this.handleSaveButton }
+            // onSubmit={ this.onSaveButtonClick }
           >
             Salvar
           </button>
@@ -132,7 +159,8 @@ Form.propTypes = {
   // hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
-  onSaveButtonClick: PropTypes.func.isRequired,
+  addNewCard: PropTypes.func.isRequired,
+  // addNew: PropTypes.func.isRequired,
 };
 
 export default Form;
