@@ -64,6 +64,8 @@ class App extends React.Component {
 
     if (cardTrunfo) {
       this.setState(() => ({ hasTrunfo: true }));
+    } else {
+      this.setState(() => ({ hasTrunfo: false }));
     }
 
     this.setState((prevState) => ({ cardDeck: [...prevState.cardDeck, card] }),
@@ -119,6 +121,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
+      cardDeck,
       isSaveButtonDisabled,
     } = this.state;
 
@@ -152,6 +155,21 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
+        {
+          cardDeck.map((card) => (
+            <Card
+              key={ card.cardName }
+              cardName={ card.cardName }
+              cardDescription={ card.cardDescription }
+              cardAttr1={ card.cardAttr1 }
+              cardAttr2={ card.cardAttr2 }
+              cardAttr3={ card.cardAttr3 }
+              cardImage={ card.cardImage }
+              cardRare={ card.cardRare }
+              cardTrunfo={ card.cardTrunfo }
+            />
+          ))
+        }
       </div>
     );
   }
