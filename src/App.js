@@ -52,6 +52,7 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     }, this.toggleButton);
+    this.trunfoValidation();
   }
 
   saveCard = () => {
@@ -68,6 +69,11 @@ class App extends React.Component {
       buttonDisabled: true,
       savedCards: [...prevstate.savedCards, carta],
     }), document.querySelector('form').reset());
+  }
+
+  trunfoValidation = () => {
+    const { savedCards } = this.state;
+    return savedCards.some((card) => card.trunfoInput === true);
   }
 
   render() {
@@ -88,9 +94,18 @@ class App extends React.Component {
         <main>
           <h2>Crie sua carta</h2>
           <Form
+            cardName={ nameInput }
+            cardDescription={ descriptionInput }
+            cardAttr1={ attr1Input }
+            cardAttr2={ attr2Input }
+            cardAttr3={ attr3Input }
+            cardImage={ imageInput }
+            cardRare={ rareInput }
+            cardTrunfo={ trunfoInput }
             onInputChange={ this.handleChange }
             isSaveButtonDisabled={ buttonDisabled }
             onSaveButtonClick={ this.saveCard }
+            hasTrunfo={ this.trunfoValidation() }
           />
           <Card
             cardName={ nameInput }
