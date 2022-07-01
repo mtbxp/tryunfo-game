@@ -9,11 +9,11 @@ class App extends Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
@@ -65,8 +65,8 @@ onInputChange = ({ target }) => {
   }, () => this.verificarCampo());
 }
 
-onSaveButtonClick = (e) => {
-  e.preventDefault();
+onSaveButtonClick = (event) => {
+  event.preventDefault();
 
   const {
     cardName,
@@ -76,7 +76,8 @@ onSaveButtonClick = (e) => {
     cardAttr2,
     cardAttr3,
     cardRare,
-    cardTrunfo } = this.state;
+    cardTrunfo,
+    cards } = this.state;
 
   const allCards = {
     cardName,
@@ -90,11 +91,11 @@ onSaveButtonClick = (e) => {
 
   this.setState((preventState) => ({
     cardName: '',
-    cardImage: '',
     cardDescription: '',
     cardAttr1: '0',
     cardAttr2: '0',
     cardAttr3: '0',
+    cardImage: '',
     cardRare: 'normal',
     isSaveButtonDisabled: true,
     cardTrunfo: false,
