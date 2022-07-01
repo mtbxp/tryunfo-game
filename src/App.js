@@ -79,13 +79,18 @@ class App extends React.Component {
       cardAttr3,
     } = this.state;
 
+    const miniNumber = 0;
     const totalSum = 210;
     const limitInd = 90;
-    const arrayNumb = [Number(cardAttr1), Number(cardAttr2), Number(cardAttr3)];
+    const arrayNumb = [parseInt(cardAttr1, 10),
+      parseInt(cardAttr2, 10),
+      parseInt(cardAttr3, 10)];
     const soma = arrayNumb.reduce((acc, curr) => acc + curr, 0);
 
     const individualLimit = arrayNumb
-      .every((element) => element >= 0 && element <= limitInd);
+      .every((element) => element <= limitInd);
+
+    const mariorquezero = arrayNumb.every((element) => element >= miniNumber);
 
     if (
       cardName
@@ -93,6 +98,7 @@ class App extends React.Component {
       && cardDescription
       && cardRare
       && individualLimit
+      && mariorquezero
       && soma <= totalSum) {
       this.setState({
         isSaveButtonDisabled: false,
