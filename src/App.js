@@ -13,32 +13,59 @@ class App extends React.Component {
       attr2Input: 0,
       attr3Input: 0,
       imageInput: '',
-      rareInput: '',
+      rareInput: 'normal',
       trunfoInput: false,
+      isButtonDisabled: true,
     };
   }
 
   handleInputChange = ({ target }) => {
     console.log(target.value);
     console.log(target.name);
-    if (target.name !== 'trunfoInput') {
+    const { name, type } = target;
+    const value = type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    }, () => {
+      const { nameInput, descriptionInput, attr1Input, attr2Input,
+        attr3Input, imageInput, rareInput } = this.state;
+      const sum = parseInt(attr1Input, 10)
+      + parseInt(attr2Input, 10)
+      + parseInt(attr3Input, 10);
+      const maxAttrSum = 210;
+      const maxAttr = 90;
+      let disableButton = false;
+      if (nameInput === ''
+        || descriptionInput === ''
+        || imageInput === ''
+        || rareInput === ''
+        || sum > maxAttrSum
+        || attr1Input > maxAttr
+        || attr2Input > maxAttr
+        || attr3Input > maxAttr
+        || attr1Input < 0
+        || attr2Input < 0
+        || attr3Input < 0) disableButton = true;
       this.setState({
-        [target.name]: target.value,
+        isButtonDisabled: disableButton,
       });
-    } else {
-      this.setState({
-        [target.name]: target.checked,
-      });
-    }
+      console.log(`nameInput = ${nameInput} imageInput = ${imageInput}
+      rareInput = ${rareInput} attr1 = ${attr1Input} attr2 = ${attr2Input}
+      attr3 = ${attr3Input} soma = ${sum}
+      disableButton = ${disableButton}`);
+    });
   }
 
   render() {
     const { nameInput, descriptionInput, attr1Input, attr2Input,
-      attr3Input, imageInput, rareInput, trunfoInput } = this.state;
+      attr3Input, imageInput, rareInput, trunfoInput, isButtonDisabled } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form onInputChange={ this.handleInputChange } />
+        <Form
+          onInputChange={ this.handleInputChange }
+          isSaveButtonDisabled={ isButtonDisabled }
+        />
         <Card
           cardName={ nameInput }
           cardImage={ imageInput }
