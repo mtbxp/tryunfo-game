@@ -113,6 +113,7 @@ render() {
     cardTrunfo,
     hasTrunfo,
     isSaveButtonDisabled,
+    cards,
   } = this.state;
   return (
     <div>
@@ -142,6 +143,19 @@ render() {
         cardTrunfo={ cardTrunfo }
         hasTrunfo={ hasTrunfo }
       />
+      { cards.map((element) => (
+        <Card
+          key={ element.cardName }
+          cardName={ element.cardName }
+          cardDescription={ element.cardDescription }
+          cardAttr1={ element.cardAttr1 }
+          cardAttr2={ element.cardAttr2 }
+          cardAttr3={ element.cardAttr3 }
+          cardImage={ element.cardImage }
+          cardRare={ element.cardRare }
+          cardTrunfo={ element.cardTrunfo }
+        />
+      ))}
     </div>
   );
 }

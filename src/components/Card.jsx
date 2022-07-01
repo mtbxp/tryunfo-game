@@ -3,7 +3,6 @@ import React from 'react';
 
 class Card extends React.Component {
   render() {
-    // const { name } = this.state;
     const {
       cardName,
       cardDescription,
