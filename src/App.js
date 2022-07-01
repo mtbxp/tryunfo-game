@@ -6,13 +6,13 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      newCard: [],
+
       hasTrunfo: false,
       cardName: '',
       cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
@@ -95,9 +95,9 @@ class App extends React.Component {
       this.setState({
         cardName: '',
         cardDescription: '',
-        cardAttr1: 0,
-        cardAttr2: 0,
-        cardAttr3: 0,
+        cardAttr1: '',
+        cardAttr2: '',
+        cardAttr3: '',
         cardImage: '',
         cardRare: 'normal',
         cardTrunfo: false,
@@ -106,7 +106,7 @@ class App extends React.Component {
 
     render() {
       const {
-        newCard,
+        arrayCards,
         hasTrunfo,
         cardName,
         cardDescription,
@@ -149,9 +149,8 @@ class App extends React.Component {
           />
           <section>
             {
-              newCard.map((cardEvent) => (
+              arrayCards.map((cardEvent) => (
                 <section key={ cardEvent.cardName }>
-
                   <Card
                     cardName={ cardEvent.cardName }
                     cardDescription={ cardEvent.cardDescription }
