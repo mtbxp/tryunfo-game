@@ -7,6 +7,8 @@ class App extends React.Component {
     super();
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.validateBtn = this.validateBtn.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
 
     this.state = {
       cardName: '',
@@ -17,6 +19,8 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
+      // listCard: [],
     };
   }
 
@@ -25,6 +29,47 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+    }, () => this.validateBtn());
+  }
+
+  onSaveButtonClick() {
+    console.log('entrou');
+  }
+
+  validateBtn() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+
+    const charactersInfo = cardName !== '' && cardDescription !== ''
+      && cardImage !== '' && cardRare !== '';
+
+    const maxSumValueAttr = 210;
+
+    const sumAttrs = Number(cardAttr1) + Number(cardAttr2)
+    + Number(cardAttr3) <= maxSumValueAttr;
+
+    const maxValueAttr = 90;
+
+    const minValueAttr = 0;
+
+    const valueMaxAttrs = Number(cardAttr1) <= maxValueAttr
+      && Number(cardAttr2) <= maxValueAttr
+      && Number(cardAttr3) <= maxValueAttr;
+
+    const valueMinAttrs = Number(cardAttr1) >= minValueAttr
+      && Number(cardAttr2) >= minValueAttr
+      && Number(cardAttr3) >= minValueAttr;
+
+    this.setState({
+      isSaveButtonDisabled: !(charactersInfo
+       && sumAttrs && valueMaxAttrs && valueMinAttrs),
     });
   }
 
@@ -38,6 +83,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      isSaveButtonDisabled,
     } = this.state;
 
     return (
@@ -53,6 +99,8 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         {' '}
         <Card
