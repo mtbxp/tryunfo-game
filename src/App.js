@@ -6,16 +6,17 @@ class App extends React.Component {
   state = {
     nameInput: '',
     descriptionInput: '',
-    attr1Input: '',
-    attr2Input: '',
-    attr3Input: '',
+    attr1Input: '0',
+    attr2Input: '0',
+    attr3Input: '0',
     imageInput: '',
     rareInput: 'normal',
     trunfoInput: false,
     buttonDisabled: true,
+    savedCards: [],
   }
 
-  teste = () => {
+  toggleButton = () => {
     const {
       nameInput, descriptionInput, imageInput, attr1Input, attr2Input, attr3Input,
     } = this.state;
@@ -50,7 +51,23 @@ class App extends React.Component {
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    }, this.teste);
+    }, this.toggleButton);
+  }
+
+  saveCard = () => {
+    const carta = this.state;
+    this.setState((prevstate) => ({
+      nameInput: '',
+      descriptionInput: '',
+      attr1Input: '0',
+      attr2Input: '0',
+      attr3Input: '0',
+      imageInput: '',
+      rareInput: 'normal',
+      trunfoInput: false,
+      buttonDisabled: true,
+      savedCards: [...prevstate.savedCards, carta],
+    }), document.querySelector('form').reset());
   }
 
   render() {
@@ -73,6 +90,7 @@ class App extends React.Component {
           <Form
             onInputChange={ this.handleChange }
             isSaveButtonDisabled={ buttonDisabled }
+            onSaveButtonClick={ this.saveCard }
           />
           <Card
             cardName={ nameInput }
