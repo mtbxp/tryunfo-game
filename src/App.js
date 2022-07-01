@@ -10,7 +10,7 @@ const INICIAL_STATE = {
   cardAttr3: 0,
   cardImage: '',
   cardRare: '',
-  cardTrunfo: false,
+  cardTrunfo: true,
   hasTrunfo: false,
   isSaveButtonDisabled: false,
 };

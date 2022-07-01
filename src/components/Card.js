@@ -2,6 +2,11 @@ import React from 'react';
 import PropType from 'prop-types';
 
 class Card extends React.Component {
+  handelSuperTrunfo = (cardTrunfo) => {
+    const superTrunfo = <span data-testid="trunfo-card">Super Trunfo </span>;
+    return cardTrunfo === true ? superTrunfo : '';
+  }
+
   render() {
     const {
       cardName,
@@ -13,6 +18,7 @@ class Card extends React.Component {
       cardRare,
       cardTrunfo,
     } = this.props;
+
     return (
       <div>
         <h1 data-testid="name-card">{ cardName }</h1>
@@ -22,7 +28,7 @@ class Card extends React.Component {
         <span data-testid="attr2-card">{ cardAttr2 }</span>
         <span data-testid="attr3-card">{ cardAttr3 }</span>
         <div data-testid="rare-card">{ cardRare }</div>
-        <div data-testid="trunfo-card">{cardTrunfo === true ? 'Super Trunfo' : ''}</div>
+        <div>{ this.handelSuperTrunfo(cardTrunfo) }</div>
       </div>
     );
   }
