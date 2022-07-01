@@ -16,6 +16,7 @@ class App extends React.Component {
       rareInput: 'normal',
       trunfoInput: false,
       isButtonDisabled: true,
+      hasAlreadyTrunfo: false,
       createdCards: [],
     };
   }
@@ -48,10 +49,6 @@ class App extends React.Component {
       this.setState({
         isButtonDisabled: disableButton,
       });
-      console.log(`nameInput = ${nameInput} imageInput = ${imageInput}
-      rareInput = ${rareInput} attr1 = ${attr1Input} attr2 = ${attr2Input}
-      attr3 = ${attr3Input} soma = ${sum}
-      disableButton = ${disableButton}`);
     });
   }
 
@@ -76,7 +73,7 @@ class App extends React.Component {
     this.setState((previousState) => ({
       createdCards: [...previousState.createdCards, cardInfo],
     }), () => {
-      this.setState({
+      this.setState((previousState) => ({
         nameInput: '',
         descriptionInput: '',
         attr1Input: 0,
@@ -86,13 +83,15 @@ class App extends React.Component {
         rareInput: 'normal',
         trunfoInput: false,
         isButtonDisabled: true,
-      });
+        hasAlreadyTrunfo: previousState.hasAlreadyTrunfo || previousState.trunfoInput,
+      }));
     });
   }
 
   render() {
     const { nameInput, descriptionInput, attr1Input, attr2Input,
-      attr3Input, imageInput, rareInput, trunfoInput, isButtonDisabled } = this.state;
+      attr3Input, imageInput, rareInput, trunfoInput,
+      isButtonDisabled, hasAlreadyTrunfo } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -109,6 +108,7 @@ class App extends React.Component {
           cardImage={ imageInput }
           cardRare={ rareInput }
           cardTrunfo={ trunfoInput }
+          hasTrunfo={ hasAlreadyTrunfo }
         />
         <Card
           cardName={ nameInput }
