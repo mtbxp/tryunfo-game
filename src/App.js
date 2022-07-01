@@ -16,7 +16,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      // hasTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       novaCarta: [],
     };
@@ -66,17 +66,25 @@ class App extends React.Component {
       () => this.validaAtivacaoBotao());
     };
 
+    validaSuperTrunfo = () => {
+      const { cardTrunfo } = this.state;
+      if (cardTrunfo === true) {
+        return this.setState({ hasTrunfo: true });
+      }
+      return this.setState({ hasTrunfo: false });
+    }
+
   onSaveButtonClick = () => {
     const carta = this.state;
     this.setState((cartaSalva) => ({
       cardName: '',
       cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
       cardImage: '',
       cardRare: 'normal',
-      // hasTrunfo: 'false',
+      hasTrunfo: this.validaSuperTrunfo(),
       novaCarta: [...cartaSalva.novaCarta, carta],
     }));
   };
@@ -91,7 +99,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
     return (
@@ -106,6 +114,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
           onInputChange={ this.onInputChange }
