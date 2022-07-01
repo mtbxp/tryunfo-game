@@ -16,12 +16,11 @@ class App extends React.Component {
       rareInput: 'normal',
       trunfoInput: false,
       isButtonDisabled: true,
+      createdCards: [],
     };
   }
 
   handleInputChange = ({ target }) => {
-    console.log(target.value);
-    console.log(target.name);
     const { name, type } = target;
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
@@ -56,6 +55,41 @@ class App extends React.Component {
     });
   }
 
+  handleButtonClick = (event) => {
+    event.preventDefault();
+    const { nameInput,
+      descriptionInput,
+      attr1Input,
+      attr2Input,
+      attr3Input,
+      imageInput,
+      rareInput,
+      trunfoInput } = this.state;
+    const cardInfo = { nameInput,
+      descriptionInput,
+      attr1Input,
+      attr2Input,
+      attr3Input,
+      imageInput,
+      rareInput,
+      trunfoInput };
+    this.setState((previousState) => ({
+      createdCards: [...previousState.createdCards, cardInfo],
+    }), () => {
+      this.setState({
+        nameInput: '',
+        descriptionInput: '',
+        attr1Input: 0,
+        attr2Input: 0,
+        attr3Input: 0,
+        imageInput: '',
+        rareInput: 'normal',
+        trunfoInput: false,
+        isButtonDisabled: true,
+      });
+    });
+  }
+
   render() {
     const { nameInput, descriptionInput, attr1Input, attr2Input,
       attr3Input, imageInput, rareInput, trunfoInput, isButtonDisabled } = this.state;
@@ -65,6 +99,16 @@ class App extends React.Component {
         <Form
           onInputChange={ this.handleInputChange }
           isSaveButtonDisabled={ isButtonDisabled }
+          onSaveButtonClick={ this.handleButtonClick }
+          onSubmitFunc={ this.avoidPageLoad }
+          cardName={ nameInput }
+          cardDescription={ descriptionInput }
+          cardAttr1={ attr1Input }
+          cardAttr2={ attr2Input }
+          cardAttr3={ attr3Input }
+          cardImage={ imageInput }
+          cardRare={ rareInput }
+          cardTrunfo={ trunfoInput }
         />
         <Card
           cardName={ nameInput }
