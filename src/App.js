@@ -32,8 +32,9 @@ class App extends React.Component {
       cardDeck: [],
     };
     this.onInputChange = this.onInputChange.bind(this);
-    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.enableSaveButton = this.enableSaveButton.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
   }
 
   onSaveButtonClick(e) {
@@ -64,11 +65,24 @@ class App extends React.Component {
 
     if (cardTrunfo) {
       this.setState(() => ({ hasTrunfo: true }));
-    } else {
-      this.setState(() => ({ hasTrunfo: false }));
     }
 
     this.setState((prevState) => ({ cardDeck: [...prevState.cardDeck, card] }),
+      () => this.setState(this.emptyFormState));
+  }
+
+  onDeleteButtonClick(cardToDelete) {
+    if (cardToDelete.cardTrunfo) {
+      this.setState(() => ({ hasTrunfo: false }));
+    }
+
+    const { cardDeck } = this.state;
+
+    const newDeck = cardDeck
+      .filter((eachCard) => eachCard
+        .cardName !== cardToDelete.cardName);
+
+    this.setState(() => ({ cardDeck: newDeck }),
       () => this.setState(this.emptyFormState));
   }
 
@@ -157,17 +171,26 @@ class App extends React.Component {
         />
         {
           cardDeck.map((card) => (
-            <Card
-              key={ card.cardName }
-              cardName={ card.cardName }
-              cardDescription={ card.cardDescription }
-              cardAttr1={ card.cardAttr1 }
-              cardAttr2={ card.cardAttr2 }
-              cardAttr3={ card.cardAttr3 }
-              cardImage={ card.cardImage }
-              cardRare={ card.cardRare }
-              cardTrunfo={ card.cardTrunfo }
-            />
+            <div key={ card.cardName }>
+              <Card
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardImage={ card.cardImage }
+                cardRare={ card.cardRare }
+                cardTrunfo={ card.cardTrunfo }
+              />
+              <button
+                type="button"
+                className="deleteButton"
+                data-testid="delete-button"
+                onClick={ () => this.onDeleteButtonClick(card) }
+              >
+                Excluir
+              </button>
+            </div>
           ))
         }
       </div>

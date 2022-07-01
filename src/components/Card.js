@@ -38,7 +38,7 @@ export class Card extends Component {
           alt={ cardName }
         />
         <p className="cardRare" data-testid="rare-card">{ cardRare }</p>
-        {trunfo}
+        { trunfo }
       </div>
     );
   }
