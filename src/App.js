@@ -16,7 +16,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       // hasTrunfo: false,
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
     };
   }
 
@@ -38,12 +38,11 @@ class App extends React.Component {
       cardDescription,
       cardImage,
       cardRare,
-      isSaveButtonDisabled,
     } = this.state;
     console.log('função validateInputs');
     if (cardName || cardDescription || cardImage || cardRare === null) {
       this.setState({
-        isSaveButtonDisabled: true,
+        isSaveButtonDisabled: false,
       });
     }
   }
@@ -56,7 +55,7 @@ class App extends React.Component {
     const QTDMAXTOTAL = 210;
     if ((cardAttr1 + cardAttr1 + cardAttr3) > QTDMAXTOTAL) {
       this.setState({
-        isSaveButtonDisabled: true,
+        isSaveButtonDisabled: false,
       });
       console.log('validateAttrs');
     }
@@ -68,7 +67,7 @@ class App extends React.Component {
     }
     if ((cardAttr1 < 0) || (cardAttr2 < 0) || (cardAttr3 < 0)) {
       this.setState({
-        isSaveButtonDisabled: true,
+        isSaveButtonDisabled: false,
       });
       console.log('validateAttrs');
     }
@@ -91,8 +90,6 @@ class App extends React.Component {
       cardTrunfo,
       // hasTrunfo,
       isSaveButtonDisabled,
-      onInputChange,
-      onSaveButtonClick,
     } = this.state;
     return (
       <div>
