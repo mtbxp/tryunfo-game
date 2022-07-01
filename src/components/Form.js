@@ -2,34 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
-  constructor() {
-    super();
-
-    this.handleChange = this.handleChange.bind(this);
-
-    this.setState = {
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
-      cardImage: '',
-      cardRare: '',
-      cardTrunfo: false,
-      hasTrunfo: false,
-      isSaveButtonDisabled: false,
-    };
-  }
-
-  handleChange({ target }) {
-    const { name } = target;
-    const { value } = target.type === 'checkbox' ? target.checked : target.value;
-
-    this.setState = {
-      [name]: value,
-    };
-  }
-
   render() {
     const {
       cardName,
@@ -48,11 +20,11 @@ class Form extends React.Component {
 
     return (
       <div className="Form">
-        <label htmlFor="name__card">
+        <label htmlFor="cardName">
           Gaga Name:
           <input
             data-testid="name-input"
-            name="name__card"
+            name="cardName"
             type="text"
             value={ cardName }
             onChange={ onInputChange }
@@ -62,7 +34,7 @@ class Form extends React.Component {
           Descrição:
           <textarea
             data-testid="description-input"
-            name="description"
+            name="cardDescription"
             value={ cardDescription }
             onChange={ onInputChange }
           />
@@ -71,7 +43,7 @@ class Form extends React.Component {
           Atributo 1:
           <input
             data-testid="attr1-input"
-            name="attr1__input"
+            name="cardAttr1"
             type="number"
             value={ cardAttr1 }
             onChange={ onInputChange }
@@ -81,7 +53,7 @@ class Form extends React.Component {
           Atributo 2:
           <input
             data-testid="attr2-input"
-            name="attr2__input"
+            name="cardAttr2"
             type="number"
             value={ cardAttr2 }
             onChange={ onInputChange }
@@ -91,7 +63,7 @@ class Form extends React.Component {
           Atributo 3:
           <input
             data-testid="attr3-input"
-            name="attr3__input"
+            name="cardAttr3"
             type="number"
             value={ cardAttr3 }
             onChange={ onInputChange }
@@ -100,7 +72,7 @@ class Form extends React.Component {
         <label htmlFor="image__input">
           <input
             data-testid="image-input"
-            name="image__card"
+            name="cardImage"
             type="text"
             value={ cardImage }
             onChange={ onInputChange }
@@ -109,6 +81,7 @@ class Form extends React.Component {
         <div>
           The Fame:
           <select
+            name="cardRare"
             data-testid="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
@@ -121,7 +94,7 @@ class Form extends React.Component {
         <label htmlFor="trunfo">
           <input
             data-testid="trunfo-input"
-            name="trunfo"
+            name="cardTrunfo"
             type="checkbox"
             checked={ cardTrunfo }
             onChange={ onInputChange }
