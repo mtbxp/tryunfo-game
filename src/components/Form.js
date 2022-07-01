@@ -5,83 +5,89 @@ class Form extends React.Component {
   render() {
     const {
       cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, hasTrunfo,
-      isSaveButtonDisabled, onInputChange, onSaveButtonClick,
+      cardImage, cardRare, cardTrunfo,
+      hasTrunfo, isSaveButtonDisabled, onInputChange, onSaveButtonClick 
     } = this.props;
     return (
       <form>
-        <label htmlFor="name">
-          Nome
+        <label htmlFor="name-input">
+          Nome:
           <input
             data-testid="name-input"
             type="text"
-            name="name"
-            id="name"
+            name="cardName"
+            id="name-input"
             value={ cardName }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="description">
+
+        <label htmlFor="description-input">
           Descrição
           <textarea
             data-testid="description-input"
-            name="description"
-            id="description"
+            name="cardDescription"
+            id="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="attr1">
+
+        <label htmlFor="attr1-input">
           Atributo 1
           <input
             data-testid="attr1-input"
             type="number"
-            name="attr1"
-            id="attr1"
+            name="cardAttr1"
+            id="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
         </label>
+
         <label htmlFor="attr2">
           Atributo 2
           <input
             data-testid="attr2-input"
             type="number"
-            name="attr2"
-            id="attr2"
+            name="cardAttr2"
+            id="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
         </label>
+
         <label htmlFor="attr3">
           Atributo 3
           <input
             data-testid="attr3-input"
             type="number"
-            name="attr3"
-            id="attr3"
+            name="cardAttr3"
+            id="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
         </label>
+
         <label htmlFor="image">
           Imagem
           <input
             data-testid="image-input"
             type="text"
-            name="image"
-            id="image"
+            name="cardImage"
+            id="image-input"
             value={ cardImage }
             onChange={ onInputChange }
           />
         </label>
+
         <label htmlFor="rare">
           Raridade
           <select
             data-testid="rare-input"
             type="select"
-            name="rare"
-            id="rare"
+            name="cardRare"
+            id="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
           >
@@ -90,13 +96,14 @@ class Form extends React.Component {
             <option value="muito raro">muito raro</option>
           </select>
         </label>
+
         <label htmlFor="trunfo">
           Super Trunfo
           <input
             data-testid="trunfo-input"
             type="checkbox"
-            name="trunfo"
-            id="trunfo"
+            name="cardTrunfo"
+            id="trunfo-input"
             checked={ cardTrunfo }
             onChange={ onInputChange }
           />
