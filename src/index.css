@@ -29,10 +29,11 @@ code {
   background-color: gainsboro;
 }
 
-.label-container {
+.input-container {
   padding: 10px;
   text-align: left;
   display: block;
+  
 }
 
 textarea {
