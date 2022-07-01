@@ -1,4 +1,3 @@
-import { Linter } from 'eslint';
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
