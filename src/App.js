@@ -12,12 +12,14 @@ class App extends React.Component {
       atribute2: 0,
       atribute3: 0,
       imagePath: '',
-      // hasTrunfo: false,
+      hasTrunfo: false,
       rarity: '',
       superTrunfo: false,
       isSaveButtonDisabled: true,
+      cardDeck: [],
     };
     this.onInputChange = this.onInputChange.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
   onInputChange = ({ target }) => {
@@ -80,7 +82,44 @@ class App extends React.Component {
   }
 
   onSaveButtonClick = () => {
-
+    this.setState((prevValue) => {
+      const {
+        name,
+        description,
+        atribute1,
+        atribute2,
+        atribute3,
+        imagePath,
+        rarity,
+        hasTrunfo,
+        superTrunfo,
+        cardDeck,
+      } = prevValue;
+      const deck = [...cardDeck, {
+        name,
+        description,
+        atribute1,
+        atribute2,
+        atribute3,
+        imagePath,
+        rarity,
+        superTrunfo,
+      }];
+      const temSuper = superTrunfo || hasTrunfo;
+      return {
+        name: '',
+        description: '',
+        atribute1: 0,
+        atribute2: 0,
+        atribute3: 0,
+        imagePath: '',
+        rarity: 'normal',
+        superTrunfo: false,
+        isSaveButtonDisabled: true,
+        cardDeck: deck,
+        hasTrunfo: temSuper,
+      };
+    });
   }
 
   render() {
@@ -92,6 +131,7 @@ class App extends React.Component {
       atribute3,
       imagePath,
       rarity,
+      hasTrunfo,
       superTrunfo,
       isSaveButtonDisabled,
     } = this.state;
@@ -107,7 +147,7 @@ class App extends React.Component {
           cardImage={ imagePath }
           cardRare={ rarity }
           cardTrunfo={ superTrunfo }
-          // hasTrunfo,
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
