@@ -117,35 +117,48 @@ render() {
     cardTrunfo,
     isSaveButtonDisabled,
     hasTrunfo,
+    cards,
   } = this.state;
 
   return (
     <section>
-      <Form
-        cardName={ cardName }
-        cardDescription={ cardDescription }
-        cardAttr1={ cardAttr1 }
-        cardAttr2={ cardAttr2 }
-        cardAttr3={ cardAttr3 }
-        cardImage={ cardImage }
-        cardRare={ cardRare }
-        cardTrunfo={ cardTrunfo }
-        onInputChange={ this.onInputChange }
-        isSaveButtonDisabled={ isSaveButtonDisabled }
-        onSaveButtonClick={ this.onSaveButtonClick }
-        hasTrunfo={ hasTrunfo }
-      />
-
-      <Card
-        cardName={ cardName }
-        cardDescription={ cardDescription }
-        cardAttr1={ cardAttr1 }
-        cardAttr2={ cardAttr2 }
-        cardAttr3={ cardAttr3 }
-        cardImage={ cardImage }
-        cardRare={ cardRare }
-        cardTrunfo={ cardTrunfo }
-      />
+      <div>
+        <Form
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          onInputChange={ this.onInputChange }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ hasTrunfo }
+        />
+      </div>
+      <div>
+        <h1>Pré-visualização</h1>
+        <Card
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+        />
+      </div>
+      <div>
+        <h1>Mostruário</h1>
+        {
+          cards.map((flag, acc) => (
+            <Card key={ acc } { ...flag } />
+          ))
+        }
+      </div>
     </section>
   );
 }
