@@ -16,7 +16,9 @@ class App extends React.Component {
       cardAttr4: '0',
       cardRare: 'normal',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
+      cardList: [],
     };
   }
 
@@ -41,9 +43,9 @@ class App extends React.Component {
     if (cardName === ''
     || cardDescription === ''
     || cardImage === ''
-    || cardAttr1 === ''
-    || cardAttr2 === ''
-    || cardAttr3 === ''
+    || cardAttr1 === '0'
+    || cardAttr2 === '0'
+    || cardAttr3 === '0'
     || sum > n210
     || att1 === false
     || att2 === false
@@ -64,6 +66,29 @@ class App extends React.Component {
   }
 
   onSaveButtonClick = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardAttr4,
+      cardRare,
+      cardTrunfo,
+      cardList,
+    } = this.state;
+    const object = {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardAttr4,
+      cardRare,
+      cardTrunfo,
+    };
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -73,7 +98,13 @@ class App extends React.Component {
       cardAttr3: '0',
       cardAttr4: '0',
       cardRare: 'normal',
-      cardTrunfo: false,
+      hasTrunfo: cardTrunfo,
+      cardList: [...cardList, object],
+    }, () => {
+      this.setState({
+        cardTrunfo: false,
+        isSaveButtonDisabled: this.enableButton(),
+      });
     });
   }
 
@@ -88,12 +119,15 @@ class App extends React.Component {
       cardAttr4,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
+      cardList,
       isSaveButtonDisabled,
     } = this.state;
 
     return (
       <div>
         <h1>Tryunfo Pokemon</h1>
+        <h2>Adicionar Nova Carta</h2>
         <Form
           cardName={ cardName }
           cardDescription={ cardDescription }
@@ -104,10 +138,12 @@ class App extends React.Component {
           cardAttr4={ cardAttr4 }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
+        <h2>Pré-Visualização</h2>
         <Card
           cardName={ cardName }
           cardImage={ cardImage }
@@ -118,7 +154,24 @@ class App extends React.Component {
           cardAttr4={ cardAttr4 }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
         />
+        <h2>Todas as Cartas</h2>
+        <div>
+          {cardList.map((elem) => (<Card
+            key={ elem.cardName }
+            cardName={ elem.cardName }
+            cardImage={ elem.cardImage }
+            cardDescription={ elem.cardDescription }
+            cardAttr1={ elem.cardAttr1 }
+            cardAttr2={ elem.cardAttr2 }
+            cardAttr3={ elem.cardAttr3 }
+            cardAttr4={ elem.cardAttr4 }
+            cardRare={ elem.cardRare }
+            cardTrunfo={ elem.cardTrunfo }
+            hasTrunfo={ elem.hasTrunfo }
+          />))}
+        </div>
       </div>
     );
   }

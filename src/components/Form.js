@@ -2,6 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
+  showPhrase = (callback, callback2, callback3) => {
+    if (callback) {
+      return <p>Você já tem um Super Trunfo em seu baralho</p>;
+    }
+    return (
+      <label htmlFor="trunfo">
+        <input
+          type="checkbox"
+          name="cardTrunfo"
+          checked={ callback2 }
+          onChange={ callback3 }
+          data-testid="trunfo-input"
+        />
+        { ' Super Trybe Trunfo ' }
+      </label>
+    );
+  }
+
   render() {
     const {
       cardName,
@@ -120,16 +138,7 @@ class Form extends React.Component {
           </select>
         </label>
 
-        <label htmlFor="trunfo">
-          <input
-            type="checkbox"
-            name="cardTrunfo"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-            data-testid="trunfo-input"
-          />
-          { ' Super Trybe Trunfo ' }
-        </label>
+        { this.showPhrase(hasTrunfo, cardTrunfo, onInputChange) }
 
         <button
           type="button"
