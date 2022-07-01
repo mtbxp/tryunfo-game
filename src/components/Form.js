@@ -21,11 +21,20 @@ class Form extends React.Component {
   //   this.handleChange = this.handleChange.bind(this);
   // }
   render() {
-    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled } = this.props;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick } = this.props;
 
-    const onInputChange = () => {};
-    const onSaveButtonClick = () => {};
     return (
       <fieldset>
         <div>
@@ -123,17 +132,17 @@ class Form extends React.Component {
               type="checkbox"
               data-testid="trunfo-input"
               id="trunfo"
-              value={ cardTrunfo }
+              checked={ cardTrunfo }
               onChange={ onInputChange }
             />
           </label>
         </div>
 
         <button
-          type="submit"
+          type="button"
           data-testid="save-button"
-          disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
+          disabled={ isSaveButtonDisabled }
         >
           Salvar
 
@@ -156,6 +165,8 @@ Form.propTypes = {
   cardTrunfo: PropTypes.bool.isRequired,
   hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
 };
 
 export default Form;
