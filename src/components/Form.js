@@ -17,10 +17,9 @@ class Form extends React.Component {
       onInputChange,
       onSaveButtonClick,
     } = this.props;
-
     return (
       <div>
-        <form>
+        <fieldset>
           <label htmlFor="nome">
             Nome
             <input
@@ -36,6 +35,7 @@ class Form extends React.Component {
           <label htmlFor="descricao">
             Descrição
             <textarea
+              type="textarea"
               name="cardDescription"
               id="descricao"
               value={ cardDescription }
@@ -124,7 +124,7 @@ class Form extends React.Component {
           >
             Salvar
           </button>
-        </form>
+        </fieldset>
       </div>
 
     );
