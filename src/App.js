@@ -20,6 +20,7 @@ class App extends React.Component {
       newCard: [],
       searchName: '',
       type: 'todas',
+      trunfoFilter: false,
     };
   }
 
@@ -125,6 +126,7 @@ class App extends React.Component {
       isSaveButtonDisabled,
       searchName,
       type,
+      trunfoFilter,
     } = this.state;
 
     return (
@@ -159,11 +161,12 @@ class App extends React.Component {
           searchName={ searchName }
           cardRare={ cardRare }
           type={ type }
-
+          trunfoFilter={ trunfoFilter }
         />
         {
           newCard
             .filter((card) => card.cardName.includes(searchName))
+            .filter((card) => (trunfoFilter ? card.cardTrunfo === true : newCard))
             .filter((card) => (type !== 'todas' ? type === card.cardRare : newCard))
             .map((card, index) => (
 
