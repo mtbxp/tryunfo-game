@@ -23,7 +23,7 @@ class Form extends React.Component {
         <label htmlFor="name">
           Nome:
           <input
-            name="cardName"
+            name="name"
             type="text"
             data-testid="name-input"
             id="name"
@@ -34,7 +34,7 @@ class Form extends React.Component {
         <label htmlFor="descricao">
           descrição da carta:
           <textarea
-            name="cardDescription"
+            name="descript"
             data-testid="description-input"
             id="descricao"
             value={ cardDescription }
@@ -44,7 +44,7 @@ class Form extends React.Component {
         <label htmlFor="attr1">
           Atributo 1
           <input
-            name="cardAttr1"
+            name="tr1"
             type="number"
             data-testid="attr1-input"
             id="attr1"
@@ -55,7 +55,7 @@ class Form extends React.Component {
         <label htmlFor="attr2">
           Atributo 2
           <input
-            name="cardAttr2"
+            name="tr2"
             type="number"
             data-testid="attr2-input"
             id="attr2"
@@ -66,7 +66,7 @@ class Form extends React.Component {
         <label htmlFor="attr3">
           Atributo 3
           <input
-            name="cardAttr3"
+            name="tr3"
             type="number"
             data-testid="attr3-input"
             id="attr3"
@@ -77,7 +77,7 @@ class Form extends React.Component {
         <label htmlFor="image">
           imagem
           <input
-            name="cardImage"
+            name="image"
             type="text"
             data-testid="image-input"
             id="image"
@@ -88,7 +88,7 @@ class Form extends React.Component {
         <label htmlFor="select">
           Tipo da carta
           <select
-            name="cardRare"
+            name="rare"
             data-testid="rare-input"
             id="select"
             value={ cardRare }
@@ -102,7 +102,7 @@ class Form extends React.Component {
         <label htmlFor="check">
           Super Trunfo
           <input
-            name="trunfo-input"
+            name="trunfo"
             type="checkbox"
             data-testid="trunfo-input"
             id="check"
@@ -111,7 +111,6 @@ class Form extends React.Component {
           />
         </label>
         <button
-          name="save-button"
           type="submit"
           data-testid="save-button"
           onClick={ onSaveButtonClick }
