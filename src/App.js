@@ -79,13 +79,13 @@ class App extends React.Component {
   }
 
   hasTrunfo = () => {
-    const { allCards } = this.state;
-    return allCards.some((card) => card.trunfo === 'on');
+    const { filterCards } = this.state;
+    return filterCards.some((card) => card.trunfo === 'on');
   };
 
   deleteCard = (cardName) => {
     this.setState((prevState) => ({
-      allCards: prevState.allCards.filter((card) => card.name !== cardName),
+      filterCards: prevState.filterCards.filter((card) => card.name !== cardName),
     }), () => {
       this.setState({
         hasTrunfo: this.hasTrunfo(),
