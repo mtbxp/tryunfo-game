@@ -14,8 +14,13 @@ class App extends React.Component {
       image: '',
       rare: 'normal',
       trunfo: 'false',
-      isSaveButtonDisabled: 'false',
     };
+  }
+
+  onInputChange = ({ target }) => {
+    const { id, type, checked, value } = target;
+    const valor = type === 'checkbox' ? checked : value;
+    this.setState({ [id]: valor });
   }
 
   render() {
@@ -28,26 +33,25 @@ class App extends React.Component {
       image,
       rare,
       trunfo,
-      isSaveButtonDisabled,
+      // isSaveButtonDisabled,
     } = this.state;
 
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
+          onInputChange={ this.onInputChange }
+        />
+        <Card
           cardName={ name }
           cardDescription={ description }
+          cardImage={ image }
           cardAttr1={ attr1 }
           cardAttr2={ attr2 }
           cardAttr3={ attr3 }
-          cardImage={ image }
           cardRare={ rare }
           cardTrunfo={ trunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
         />
-        <Card />
       </div>
     );
   }
