@@ -12,7 +12,7 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -101,24 +101,31 @@ class Form extends React.Component {
               <option value="muito raro"> Muito Raro</option>
             </select>
           </label>
-          Super Trunfo
-          <label htmlFor="trunfo-input">
-            <input
-              name="cardTrunfo"
-              data-testid="trunfo-input"
-              type="checkbox"
-              id="trunfo-input"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-            />
-          </label>
+          { hasTrunfo
+            ? (
+              <p data-testid="trunfo-input">
+                Você já tem um Super Trunfo em seu baralho
+              </p>
+            )
+            : (
+              <label htmlFor="trunfo-input">
+                <p>Super Trunfo</p>
+                <input
+                  name="cardTrunfo"
+                  data-testid="trunfo-input"
+                  type="checkbox"
+                  id="trunfo-input"
+                  checked={ cardTrunfo }
+                  onChange={ onInputChange }
+                />
+              </label>
+            )}
           <button
             data-testid="save-button"
             type="submit"
             id="save-button"
             disabled={ isSaveButtonDisabled }
             onClick={ onSaveButtonClick }
-            // onSubmit={ onSaveButtonClick }
           >
             Salvar
           </button>
@@ -137,24 +144,10 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
 };
 
 export default Form;
-
-/* // linhas 85
-this.setState((prevState) => ({
-  cardName: '',
-  cardDescription: '',
-  cardAttr1: '0',
-  cardAttr2: '0',
-  cardAttr3: '0',
-  cardImage: '',
-  cardRare: 'normal',
-  cardTrunfo: false,
-  cards: [...prevState.cards, objectOfCard],
-}));
- */

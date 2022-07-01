@@ -8,14 +8,15 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true, // iniciar a página com o botão desabilitado.
       cards: [],
+      hasTrunfo: false,
     };
   }
 
@@ -71,7 +72,8 @@ onSaveButtonClick = (event) => {
     cardAttr2,
     cardAttr3,
     cardRare,
-    cardTrunfo } = this.state;
+    cardTrunfo,
+  } = this.state;
 
   const objectOfCard = { cardName,
     cardDescription,
@@ -81,6 +83,12 @@ onSaveButtonClick = (event) => {
     cardAttr3,
     cardRare,
     cardTrunfo };
+
+  if (cardTrunfo) {
+    this.setState({
+      hasTrunfo: true,
+    });
+  }
 
   this.setState((prevState) => ({
     cardName: '',
@@ -103,6 +111,7 @@ render() {
     cardImage,
     cardRare,
     cardTrunfo,
+    hasTrunfo,
     isSaveButtonDisabled,
   } = this.state;
   return (
@@ -117,6 +126,7 @@ render() {
         cardImage={ cardImage }
         cardRare={ cardRare }
         cardTrunfo={ cardTrunfo }
+        hasTrunfo={ hasTrunfo }
         onInputChange={ this.onInputChange }
         isSaveButtonDisabled={ isSaveButtonDisabled }
         onSaveButtonClick={ this.onSaveButtonClick }
@@ -130,6 +140,7 @@ render() {
         cardImage={ cardImage }
         cardRare={ cardRare }
         cardTrunfo={ cardTrunfo }
+        hasTrunfo={ hasTrunfo }
       />
     </div>
   );
