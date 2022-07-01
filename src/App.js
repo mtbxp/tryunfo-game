@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import CardDeck from './components/CardDeck';
 
 class App extends React.Component {
   constructor() {
@@ -19,7 +20,7 @@ class App extends React.Component {
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo,
+      cardImage, cardRare, cardTrunfo, cards,
     } = this.state;
 
     const handleChange = (event) => {
@@ -97,6 +98,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <CardDeck cards={ cards } />
       </div>
     );
   }
