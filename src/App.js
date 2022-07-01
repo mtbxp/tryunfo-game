@@ -91,7 +91,7 @@ class App extends React.Component {
   render() {
     const { nameInput, descriptionInput, attr1Input, attr2Input,
       attr3Input, imageInput, rareInput, trunfoInput,
-      isButtonDisabled, hasAlreadyTrunfo } = this.state;
+      isButtonDisabled, hasAlreadyTrunfo, createdCards } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -120,6 +120,21 @@ class App extends React.Component {
           cardRare={ rareInput }
           cardTrunfo={ trunfoInput }
         />
+        <ul>
+          { createdCards.map((card) => (
+            <Card
+              key={ card.nameInput }
+              cardName={ card.nameInput }
+              cardImage={ card.imageInput }
+              cardDescription={ card.descriptionInput }
+              cardAttr1={ card.attr1Input }
+              cardAttr2={ card.attr2Input }
+              cardAttr3={ card.attr3Input }
+              cardRare={ card.rareInput }
+              cardTrunfo={ card.trunfoInput }
+            />
+          ))}
+        </ul>
       </div>
     );
   }
