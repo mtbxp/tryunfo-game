@@ -17,7 +17,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      // hasTrunfo,
+      hasTrunfo: true,
       isSaveButtonDisabled: true,
       cardList: [],
     };
@@ -47,6 +47,8 @@ class App extends React.Component {
       cardTrunfo: false,
       cardImage: '',
       cardList: [...cardList, card],
+    }, () => {
+      this.hasTrunfo();
     });
   };
 
@@ -86,11 +88,24 @@ class App extends React.Component {
     }
   };
 
+  hasTrunfo=() => {
+    const { cardList } = this.state;
+    cardList.forEach((card) => {
+      const { cardTrunfo } = card;
+      if (cardTrunfo === true) {
+        this.setState({
+          hasTrunfo: false,
+        });
+      }
+    });
+  }
+
   render() {
     const {
       cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, isSaveButtonDisabled, cardTrunfo } = this.state;
+      cardImage, cardRare, isSaveButtonDisabled,
+      cardTrunfo, hasTrunfo, cardList } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -106,6 +121,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardImage={ cardImage }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ cardName }
@@ -117,6 +133,23 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardTrunfo={ cardTrunfo }
         />
+        <section>
+          {
+            cardList.map((card) => (
+              <Card
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardRare={ card.cardRare }
+                cardImage={ card.cardImage }
+                cardTrunfo={ card.cardTrunfo }
+                key={ card.cardName }
+              />
+            ))
+          }
+        </section>
       </div>
     );
   }
