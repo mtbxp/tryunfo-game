@@ -3,6 +3,19 @@ import { Card } from './components/Card';
 import { Form } from './components/Form';
 
 class App extends React.Component {
+  // Limpa o Estado, zerando
+  emptyFormState = {
+    cardName: '',
+    cardDescription: '',
+    cardAttr1: 0,
+    cardAttr2: 0,
+    cardAttr3: 0,
+    cardImage: '',
+    cardRare: '',
+    cardTrunfo: false,
+    isSaveButtonDisabled: true,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +29,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      cardDeck: [],
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
@@ -24,24 +38,36 @@ class App extends React.Component {
 
   onSaveButtonClick(e) {
     e.preventDefault();
-  //   // Passar o state inteiro para o componente Pai
-  //   const { add } = this.props;
-  //   // valida os campos title e level, se tudo estiver certo aí sim faz o add
-  //   if (this.validateForm()) {
-  //     add(this.state);
-  //     // reset state depois de enviar
-  //     this.setState({
-  //       cardName: '',
-  //       cardDesciption: '',
-  //       cardAttr1: '',
-  //       cardAttr2: '',
-  //       cardAttr3: '',
-  //       cardImage: '',
-  //       cardRare: '',
-  //       cardTrunfo: false,
-  //       saveBtn: '',
-  //     });
-    // }
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+    } = this.state;
+
+    const card = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+    };
+
+    if (cardTrunfo) {
+      this.setState(() => ({ hasTrunfo: true }));
+    }
+
+    this.setState((prevState) => ({ cardDeck: [...prevState.cardDeck, card] }),
+      () => this.setState(this.emptyFormState));
   }
 
   onInputChange({ target }) {

@@ -3,22 +3,6 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 export class Form extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     cardName: "",
-  //     cardDescription: "",
-  //     cardAttr1: "",
-  //     cardAttr2: "",
-  //     cardAttr3: "",
-  //     cardImage: "",
-  //     cardRare: "",
-  //     cardTrunfo: false,
-  //     hasTrunfo: false,
-  //     isSaveButtonDisabled: true,
-  //   };
-  // }
-
   render() {
     const {
       cardName,
@@ -29,11 +13,36 @@ export class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
       onInputChange,
       isSaveButtonDisabled,
       onSaveButtonClick,
+      hasTrunfo,
     } = this.props;
+
+    const renderCheckBox = (
+      <label className="labelForCardTrunfo" htmlFor="cardTrunfo">
+        <input
+          data-testid="trunfo-input"
+          type="checkbox"
+          name="cardTrunfo"
+          id="cardTrunfo"
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
+        />
+        Super Trybe Trunfo
+      </label>
+    );
+
+    const disallowCheckBox = <p>Você já tem um Super Trunfo em seu baralho</p>;
+
+    let checkBox;
+
+    if (hasTrunfo) {
+      checkBox = disallowCheckBox;
+    } else {
+      checkBox = renderCheckBox;
+    }
+
     return (
       <form
         className="form"
@@ -47,7 +56,7 @@ export class Form extends Component {
             type="text"
             name="cardName"
             id="cardName"
-            defaultValue={ cardName }
+            value={ cardName }
             onChange={ onInputChange }
           />
         </label>
@@ -60,7 +69,7 @@ export class Form extends Component {
             type="textarea"
             name="cardDescription"
             id="cardDescription"
-            defaultValue={ cardDescription }
+            value={ cardDescription }
             onChange={ onInputChange }
           />
         </label>
@@ -75,7 +84,7 @@ export class Form extends Component {
             id="cardAttr1"
             min="0"
             max="90"
-            defaultValue={ cardAttr1 }
+            value={ cardAttr1 }
             onChange={ onInputChange }
           />
         </label>
@@ -90,7 +99,7 @@ export class Form extends Component {
             id="cardAttr2"
             min="0"
             max="90"
-            defaultValue={ cardAttr2 }
+            value={ cardAttr2 }
             onChange={ onInputChange }
           />
         </label>
@@ -105,7 +114,7 @@ export class Form extends Component {
             id="cardAttr3"
             min="0"
             max="90"
-            defaultValue={ cardAttr3 }
+            value={ cardAttr3 }
             onChange={ onInputChange }
           />
         </label>
@@ -118,7 +127,7 @@ export class Form extends Component {
             type="text"
             name="cardImage"
             id="cardImage"
-            defaultValue={ cardImage }
+            value={ cardImage }
             onChange={ onInputChange }
           />
         </label>
@@ -130,7 +139,7 @@ export class Form extends Component {
             data-testid="rare-input"
             name="cardRare"
             id="cardRare"
-            defaultValue={ cardRare }
+            value={ cardRare }
             onChange={ onInputChange }
           >
             <option value="normal">Normal</option>
@@ -139,17 +148,7 @@ export class Form extends Component {
           </select>
         </label>
         <br />
-        <label className="labelForCardTrunfo" htmlFor="cardTrunfo">
-          <input
-            data-testid="trunfo-input"
-            type="checkbox"
-            name="cardTrunfo"
-            id="cardTrunfo"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-          Super Trybe Trunfo
-        </label>
+        { checkBox }
         <br />
         <button
           data-testid="save-button"
