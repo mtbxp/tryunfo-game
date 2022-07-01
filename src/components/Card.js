@@ -24,7 +24,7 @@ class Card extends React.Component {
   }
 }
 
-Card.PropTypes = {
+Card.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.string.isRequired,
