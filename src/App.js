@@ -20,7 +20,7 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
-      // listCard: [],
+      listCard: [],
     };
   }
 
@@ -33,7 +33,35 @@ class App extends React.Component {
   }
 
   onSaveButtonClick() {
-    console.log('entrou');
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+    this.setState((prevState) => ({
+      listCard: [{
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+      }, ...prevState.listCard],
+    }));
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardRare: 'normal',
+    });
   }
 
   validateBtn() {
