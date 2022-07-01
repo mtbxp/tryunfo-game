@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 class Form extends React.Component {
   render() {
@@ -17,6 +17,7 @@ class Form extends React.Component {
       onInputChange,
       onSaveButtonClick,
     } = this.props;
+
     return (
       <form>
         <h1>Adicionar nova carta</h1>
@@ -25,6 +26,7 @@ class Form extends React.Component {
           <input
             data-testid="name-input"
             type="text"
+            name="cardName"
             id="nameCard"
             required
             value={ cardName }
@@ -36,7 +38,7 @@ class Form extends React.Component {
           Descreva a carta
           <textarea
             data-testid="description-input"
-            type=""
+            name="cardDescription"
             id="descriptionCard"
             cols="30"
             rows="10"
@@ -52,6 +54,7 @@ class Form extends React.Component {
           <input
             data-testid="attr1-input"
             type="number"
+            name="cardAttr1"
             id="attr1"
             required
             value={ cardAttr1 }
@@ -64,6 +67,7 @@ class Form extends React.Component {
           <input
             data-testid="attr2-input"
             type="number"
+            name="cardAttr2"
             id="attr2"
             required
             value={ cardAttr2 }
@@ -76,6 +80,7 @@ class Form extends React.Component {
           <input
             data-testid="attr3-input"
             type="number"
+            name="cardAttr3"
             id="attr3"
             required
             value={ cardAttr3 }
@@ -88,6 +93,7 @@ class Form extends React.Component {
           <input
             data-testid="image-input"
             type="text"
+            name="cardImage"
             id="imgCard"
             required
             value={ cardImage }
@@ -100,6 +106,7 @@ class Form extends React.Component {
           <select
             type="select"
             data-testid="rare-input"
+            name="cardRare"
             id="rare"
             required
             value={ cardRare }
@@ -131,9 +138,8 @@ class Form extends React.Component {
           <input
             data-testid="trunfo-input"
             type="checkbox"
+            name="cardTrunfo"
             id="trunfo"
-            placeholder="Nome da carta"
-            required
             checked={ cardTrunfo }
             onChange={ onInputChange }
           />
@@ -141,6 +147,7 @@ class Form extends React.Component {
 
         <button
           type="submit"
+          name="onSaveButtonClick"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
