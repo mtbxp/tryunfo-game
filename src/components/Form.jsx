@@ -95,7 +95,7 @@ class Form extends React.Component {
               <option value="muito raro">muito raro</option>
             </select>
           </label>
-          {hasTrunfo
+          {hasTrunfo === false
             ? (
               <label htmlFor="trunfoInput">
                 <h3>Super Trybe Trunfo</h3>
@@ -106,7 +106,9 @@ class Form extends React.Component {
                   checked={ cardTrunfo }
                   onChange={ onInputChange }
                 />
-              </label>) : <h3> Você já tem um Super Trunfo em seu baralho</h3>}
+              </label>
+            )
+            : <h3> Você já tem um Super Trunfo em seu baralho</h3>}
           <button
             type="button"
             name="saveButton"
