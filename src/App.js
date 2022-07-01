@@ -20,7 +20,6 @@ class App extends React.Component {
       newCard: [],
       searchName: '',
       type: 'todas',
-      filterCard: [],
     };
   }
 
@@ -95,7 +94,6 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       newCard: [...previous.newCard, card],
-      filterCard: [...previous.newCard, card],
     }));
   };
 
@@ -111,14 +109,6 @@ class App extends React.Component {
       )),
     });
   }
-
-  // filterForType = ({ target }) => {
-  //   const { type, newCard } = this.state;
-  //   this.setState({
-  //     type: target.value,
-  //     newCard: newCard,
-  //   });
-  // }
 
   render() {
     const {

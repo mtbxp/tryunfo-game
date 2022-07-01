@@ -3,7 +3,7 @@ import React from 'react';
 
 class Filter extends React.Component {
   render() {
-    const { onInputChange, searchName, type, filterForType } = this.props;
+    const { onInputChange, searchName, type } = this.props;
     return (
       <div>
         <label htmlFor="search">
@@ -40,7 +40,6 @@ Filter.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   searchName: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  // filterForType: PropTypes.func.isRequired,
 };
 
 export default Filter;
