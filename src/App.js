@@ -134,35 +134,55 @@ class App extends React.Component {
       hasTrunfo,
       superTrunfo,
       isSaveButtonDisabled,
+      cardDeck,
     } = this.state;
     return (
-      <div>
-        <h1>Tryunfo</h1>
-        <Form
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ parseInt(atribute1, 10) }
-          cardAttr2={ parseInt(atribute2, 10) }
-          cardAttr3={ parseInt(atribute3, 10) }
-          cardImage={ imagePath }
-          cardRare={ rarity }
-          cardTrunfo={ superTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ parseInt(atribute1, 10) }
-          cardAttr2={ parseInt(atribute2, 10) }
-          cardAttr3={ parseInt(atribute3, 10) }
-          cardImage={ imagePath }
-          cardRare={ rarity }
-          cardTrunfo={ superTrunfo }
-        />
-      </div>
+      <>
+        <div>
+          <h1>Tryunfo</h1>
+          <Form
+            cardName={ name }
+            cardDescription={ description }
+            cardAttr1={ parseInt(atribute1, 10) }
+            cardAttr2={ parseInt(atribute2, 10) }
+            cardAttr3={ parseInt(atribute3, 10) }
+            cardImage={ imagePath }
+            cardRare={ rarity }
+            cardTrunfo={ superTrunfo }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <Card
+            cardName={ name }
+            cardDescription={ description }
+            cardAttr1={ parseInt(atribute1, 10) }
+            cardAttr2={ parseInt(atribute2, 10) }
+            cardAttr3={ parseInt(atribute3, 10) }
+            cardImage={ imagePath }
+            cardRare={ rarity }
+            cardTrunfo={ superTrunfo }
+          />
+        </div>
+        <div className="lista-de-cartas">
+          {
+            cardDeck.map((card) => (
+              <Card
+                key={ card.name }
+                cardName={ card.name }
+                cardDescription={ card.description }
+                cardAttr1={ parseInt(card.atribute1, 10) }
+                cardAttr2={ parseInt(card.atribute2, 10) }
+                cardAttr3={ parseInt(card.atribute3, 10) }
+                cardImage={ card.imagePath }
+                cardRare={ card.rarity }
+                cardTrunfo={ card.superTrunfo }
+              />
+            ))
+          }
+        </div>
+      </>
     );
   }
 }
