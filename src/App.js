@@ -111,7 +111,7 @@ class App extends React.Component {
   }
 
   deleteCard = (e) => {
-    const { deckOfCards, hasTrunfo, cardTrunfo } = this.state;
+    const { deckOfCards, hasTrunfo } = this.state;
     // console.log(e);
     if (hasTrunfo === true) {
       this.setState({
