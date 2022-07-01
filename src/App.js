@@ -15,6 +15,7 @@ class App extends Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       cards: [],
     };
@@ -54,7 +55,6 @@ verificarCampo = () => {
       isSaveButtonDisabled: true,
     });
   }
-  console.log(somaDosAtributos);
 }
 
 onInputChange = ({ target }) => {
@@ -96,7 +96,11 @@ onSaveButtonClick = (e) => {
     cardAttr3: '0',
     cardImage: '',
     cardRare: 'normal',
+    isSaveButtonDisabled: true,
+    cardTrunfo: false,
     cards: [...preventState.cards, allCards],
+  }), () => this.setState({
+    hasTrunfo: !!cardTrunfo || cards.includes((flag) => flag.cardTrunfo),
   }));
 };
 
@@ -111,6 +115,7 @@ render() {
     cardRare,
     cardTrunfo,
     isSaveButtonDisabled,
+    hasTrunfo,
   } = this.state;
 
   return (
@@ -127,6 +132,7 @@ render() {
         onInputChange={ this.onInputChange }
         isSaveButtonDisabled={ isSaveButtonDisabled }
         onSaveButtonClick={ this.onSaveButtonClick }
+        hasTrunfo={ hasTrunfo }
       />
 
       <Card
