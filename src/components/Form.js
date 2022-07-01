@@ -5,7 +5,7 @@ class Form extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
       cardRare, cardTrunfo, isSaveButtonDisabled, onInputChange,
-      onSaveButtonClick, hasTrunfo} = this.props;
+      onSaveButtonClick, hasTrunfo } = this.props;
 
     return (
       <div>
@@ -130,5 +130,6 @@ Form.propTypes = {
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
 };
 export default Form;
