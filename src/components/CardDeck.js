@@ -4,11 +4,11 @@ import Card from './Card';
 
 class CardDeck extends React.Component {
   render() {
-    const { cards } = this.props;
-    console.log(cards);
+    const { cards, button } = this.props;
     return (
       <div>
         {cards.map((item) => (<Card
+          name={ cards.cardName }
           key={ cards.cardName }
           cardName={ item.cardName }
           cardImage={ item.cardImage }
@@ -18,6 +18,8 @@ class CardDeck extends React.Component {
           cardAttr3={ item.cardAttr3 }
           cardRare={ item.cardRare }
           cardTrunfo={ item.cardTrunfo }
+          deleteCard
+          deletarCarta={ button }
         />))}
       </div>
     );
@@ -26,5 +28,6 @@ class CardDeck extends React.Component {
 
 CardDeck.propTypes = {
   cards: PropTypes.string.isRequired,
+  button: PropTypes.func.isRequired,
 };
 export default CardDeck;

@@ -12,15 +12,16 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
+      deleteCard: false,
       cards: [],
     };
   }
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, cards,
+      cardImage, cardRare, cardTrunfo, cards, deleteCard,
     } = this.state;
 
     const handleChange = (event) => {
@@ -59,6 +60,8 @@ class App extends React.Component {
         cardAttr3,
         cardImage,
         cardRare,
+        deleteCard,
+        cardTrunfo,
       };
       this.setState((prevState) => ({
         cards: [...prevState.cards, newCard],
@@ -69,8 +72,18 @@ class App extends React.Component {
         cardAttr3: 0,
         cardImage: '',
         cardRare: '',
+        cardTrunfo: false,
+      }));
+      console.log(cardTrunfo);
+    };
+
+    const deleteCards = (e) => {
+      this.setState((prevState) => ({
+        cards: prevState.cards.filter((item) => (item.cardName !== e.target.name)),
       }));
     };
+
+    console.log(cards.map((item) => item.cardTrunfo));
 
     return (
       <div>
@@ -87,6 +100,7 @@ class App extends React.Component {
           onInputChange={ handleChange }
           isSaveButtonDisabled={ disableButton() }
           onSaveButtonClick={ onSaveButtonClick }
+          hasTrunfo={ cards.some((item) => item.cardTrunfo) }
         />
         <Card
           cardName={ cardName }
@@ -98,7 +112,10 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        <CardDeck cards={ cards } />
+        <CardDeck
+          cards={ cards }
+          button={ deleteCards }
+        />
       </div>
     );
   }
