@@ -18,7 +18,9 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       newCard: [],
-      searchValue: '',
+      searchName: '',
+      type: 'todas',
+      filterCard: [],
     };
   }
 
@@ -93,6 +95,7 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       newCard: [...previous.newCard, card],
+      filterCard: [...previous.newCard, card],
     }));
   };
 
@@ -109,6 +112,14 @@ class App extends React.Component {
     });
   }
 
+  // filterForType = ({ target }) => {
+  //   const { type, newCard } = this.state;
+  //   this.setState({
+  //     type: target.value,
+  //     newCard: newCard,
+  //   });
+  // }
+
   render() {
     const {
       cardName,
@@ -122,7 +133,8 @@ class App extends React.Component {
       hasTrunfo,
       newCard,
       isSaveButtonDisabled,
-      searchValue,
+      searchName,
+      type,
     } = this.state;
 
     return (
@@ -154,11 +166,15 @@ class App extends React.Component {
         />
         <Filter
           onInputChange={ this.onInputChange }
-          searchValue={ searchValue }
+          searchName={ searchName }
+          cardRare={ cardRare }
+          type={ type }
+
         />
         {
           newCard
-            .filter((card) => card.cardName.includes(searchValue))
+            .filter((card) => card.cardName.includes(searchName))
+            .filter((card) => (type !== 'todas' ? type === card.cardRare : newCard))
             .map((card, index) => (
 
               <section className="cards-save" key={ index }>

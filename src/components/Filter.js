@@ -3,18 +3,33 @@ import React from 'react';
 
 class Filter extends React.Component {
   render() {
-    const { onInputChange, searchValue } = this.props;
+    const { onInputChange, searchName, type, filterForType } = this.props;
     return (
       <div>
         <label htmlFor="search">
           Filtro de Busca
           <input
             type="text"
-            name="searchValue"
+            name="searchName"
             data-testid="name-filter"
             onChange={ onInputChange }
-            value={ searchValue }
+            value={ searchName }
           />
+        </label>
+        <label htmlFor="rare">
+          Filtrar por Raridade:
+          <select
+            data-testid="rare-filter"
+            id="type"
+            name="type"
+            value={ type }
+            onChange={ onInputChange }
+          >
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito raro</option>
+            <option value="todas">Todas</option>
+          </select>
         </label>
       </div>
     );
@@ -23,7 +38,9 @@ class Filter extends React.Component {
 
 Filter.propTypes = {
   onInputChange: PropTypes.func.isRequired,
-  searchValue: PropTypes.string.isRequired,
+  searchName: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  // filterForType: PropTypes.func.isRequired,
 };
 
 export default Filter;
