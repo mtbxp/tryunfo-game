@@ -16,6 +16,7 @@ class App extends Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      cards: [],
     };
   }
 
@@ -64,6 +65,41 @@ onInputChange = ({ target }) => {
   }, () => this.verificarCampo());
 }
 
+onSaveButtonClick = (e) => {
+  e.preventDefault();
+
+  const {
+    cardName,
+    cardDescription,
+    cardImage,
+    cardAttr1,
+    cardAttr2,
+    cardAttr3,
+    cardRare,
+    cardTrunfo } = this.state;
+
+  const allCards = {
+    cardName,
+    cardDescription,
+    cardImage,
+    cardAttr1,
+    cardAttr2,
+    cardAttr3,
+    cardRare,
+    cardTrunfo };
+
+  this.setState((preventState) => ({
+    cardName: '',
+    cardDescription: '',
+    cardAttr1: '0',
+    cardAttr2: '0',
+    cardAttr3: '0',
+    cardImage: '',
+    cardRare: 'normal',
+    cards: [...preventState.cards, allCards],
+  }));
+};
+
 render() {
   const {
     cardName,
@@ -90,6 +126,7 @@ render() {
         cardTrunfo={ cardTrunfo }
         onInputChange={ this.onInputChange }
         isSaveButtonDisabled={ isSaveButtonDisabled }
+        onSaveButtonClick={ this.onSaveButtonClick }
       />
 
       <Card
