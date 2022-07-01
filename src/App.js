@@ -14,9 +14,43 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardAttr4: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
     };
+  }
+
+  enableButton = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = this.state;
+    const n90 = 90;
+    const n210 = 210;
+    const num1 = parseInt(cardAttr1, 10);
+    const num2 = parseInt(cardAttr2, 10);
+    const num3 = parseInt(cardAttr3, 10);
+    const sum = num1 + num2 + num3;
+    const att1 = num1 >= 0 && num1 <= n90;
+    const att2 = num2 >= 0 && num2 <= n90;
+    const att3 = num3 >= 0 && num3 <= n90;
+    if (cardName === ''
+    || cardDescription === ''
+    || cardImage === ''
+    || cardAttr1 === ''
+    || cardAttr2 === ''
+    || cardAttr3 === ''
+    || sum > n210
+    || att1 === false
+    || att2 === false
+    || att3 === false) {
+      return true;
+    }
+    return false;
   }
 
   onInputChange = ({ target }) => {
@@ -24,35 +58,51 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    });
+    }, () => this.setState({
+      isSaveButtonDisabled: this.enableButton(),
+    }));
   }
 
   render() {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardAttr4,
+      cardRare,
+      cardTrunfo,
+      isSaveButtonDisabled,
+    } = this.state;
+
     return (
       <div>
         <h1>Tryunfo Pokemon</h1>
         <Form
-          cardName={ this.state.cardName }
-          cardDescription={ this.state.cardDescription }
-          cardImage={ this.state.cardImage }
-          cardAttr1={ this.state.cardAttr1 }
-          cardAttr2={ this.state.cardAttr2 }
-          cardAttr3={ this.state.cardAttr3 }
-          cardAttr4={ this.state.cardAttr4 }
-          cardRare={ this.state.cardRare }
-          cardTrunfo={ this.state.cardTrunfo }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardImage={ cardImage }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardAttr4={ cardAttr4 }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
         />
         <Card
-          cardName={ this.state.cardName }
-          cardImage={ this.state.cardImage }
-          cardDescription={ this.state.cardDescription }
-          cardAttr1={ this.state.cardAttr1 }
-          cardAttr2={ this.state.cardAttr2 }
-          cardAttr3={ this.state.cardAttr3 }
-          cardAttr4={ this.state.cardAttr4 }
-          cardRare={ this.state.cardRare }
-          cardTrunfo={ this.state.cardTrunfo }
+          cardName={ cardName }
+          cardImage={ cardImage }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardAttr4={ cardAttr4 }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
         />
       </div>
     );

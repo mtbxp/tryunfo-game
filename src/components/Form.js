@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Form extends React.Component {
   render() {
@@ -47,6 +48,8 @@ class Form extends React.Component {
           <p className="yellow">Força</p>
           <input
             type="number"
+            min="0"
+            max="90"
             name="cardAttr1"
             value={ cardAttr1 }
             onChange={ onInputChange }
@@ -58,6 +61,8 @@ class Form extends React.Component {
           <p className="red">Ataque</p>
           <input
             type="number"
+            min="0"
+            max="90"
             name="cardAttr2"
             value={ cardAttr2 }
             onChange={ onInputChange }
@@ -69,6 +74,8 @@ class Form extends React.Component {
           <p className="green">Defesa</p>
           <input
             type="number"
+            min="0"
+            max="90"
             name="cardAttr3"
             value={ cardAttr3 }
             onChange={ onInputChange }
@@ -80,6 +87,8 @@ class Form extends React.Component {
           <p className="orange">Agilidade</p>
           <input
             type="number"
+            min="0"
+            max="90"
             name="cardAttr4"
             value={ cardAttr4 }
             onChange={ onInputChange }
@@ -134,5 +143,21 @@ class Form extends React.Component {
     );
   }
 }
+
+Form.propTypes = {
+  cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardAttr4: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  cardRare: PropTypes.string.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
+};
 
 export default Form;
