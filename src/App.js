@@ -47,6 +47,7 @@ class App extends React.Component {
       cardAttr2,
       cardAttr3,
       cardDeck,
+      cardTrunfo,
     } = this.state;
 
     this.setState({
@@ -61,8 +62,10 @@ class App extends React.Component {
           cardAttr3,
         },
       ],
+      hasTrunfo: cardTrunfo,
     });
 
+    console.log(cardDeck);
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -72,7 +75,6 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      hasTrunfo: false,
     });
   }
 

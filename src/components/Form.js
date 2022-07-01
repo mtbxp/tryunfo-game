@@ -15,6 +15,7 @@ class Form extends React.Component {
       onInputChange,
       isSaveButtonDisabled,
       onSaveButtonClick,
+      hasTrunfo,
     } = this.props;
 
     return (
@@ -22,6 +23,7 @@ class Form extends React.Component {
         <form>
 
           <label htmlFor="cardName">
+            Nome:
             <input
               type="text"
               name="cardName"
@@ -32,6 +34,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="cardDescription">
+            Descrição:
             <input
               type="textarea"
               name="cardDescription"
@@ -42,6 +45,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="cardAttr1">
+            Atributo 01:
             <input
               type="number"
               name="cardAttr1"
@@ -52,6 +56,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="cardAttr2">
+            Atributo 02:
             <input
               type="number"
               name="cardAttr2"
@@ -62,6 +67,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="cardAttr3">
+            Atributo 03:
             <input
               type="number"
               name="cardAttr3"
@@ -72,6 +78,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="cardImage">
+            Imagem:
             <input
               type="text"
               name="cardImage"
@@ -82,6 +89,7 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="cardRare">
+            Raridade:
             <select
               name="cardRare"
               data-testid="rare-input"
@@ -95,13 +103,21 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="cardTrunfo">
-            <input
-              type="checkbox"
-              name="cardTrunfo"
-              data-testid="trunfo-input"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-            />
+            Super Trufo
+            {
+              hasTrunfo ? (
+                <p>
+                  Você já tem um Super Trunfo em seu baralho
+                </p>
+              ) : (
+                <input
+                  name="cardTrunfo"
+                  data-testid="trunfo-input"
+                  type="checkbox"
+                  checked={ cardTrunfo }
+                  onChange={ onInputChange }
+                />)
+            }
           </label>
 
           <button
@@ -131,7 +147,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
