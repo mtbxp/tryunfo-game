@@ -16,15 +16,15 @@ class Card extends React.Component {
 
     return (
       <div>
-        <span data-testid="name-card">{ cardName }</span>
+        <h2 data-testid="name-card">{ cardName }</h2>
         <img
           src={ cardImage }
           alt={ cardName }
           data-testid="image-card"
         />
-        <span data-testid="description-card">
+        <p data-testid="description-card">
           { cardDescription }
-        </span>
+        </p>
         <p data-testid="attr1-card">
           { cardAttr1 }
         </p>
@@ -39,7 +39,7 @@ class Card extends React.Component {
         </p>
         { cardTrunfo === true
           ? <p data-testid="trunfo-card">Super Trunfo</p>
-          : <p>.</p>}
+          : '' }
       </div>
     );
   }
