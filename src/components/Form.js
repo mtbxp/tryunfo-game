@@ -13,7 +13,7 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
+      // hasTrunfo,
       isSaveButtonDisabled,
       onSaveButtonClick,
       onInputChange,
@@ -24,7 +24,6 @@ class Form extends React.Component {
       <form className="form">
         <h2>Adicionar nova carta</h2>
         {/* Para htmlFor foi consultado a documentação no MDN (https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor) */}
-
         <label htmlFor="cardName">
           Nome
           <input
@@ -57,6 +56,8 @@ class Form extends React.Component {
             id="set-attribute01"
             data-testid="attr1-input"
             value={ cardAttr1 }
+            max="90"
+            min="0"
             onChange={ onInputChange }
           />
         </label>
@@ -69,6 +70,8 @@ class Form extends React.Component {
             id="set-attribute02"
             data-testid="attr2-input"
             value={ cardAttr2 }
+            max="90"
+            min="0"
             onChange={ onInputChange }
           />
         </label>
@@ -81,6 +84,8 @@ class Form extends React.Component {
             id="set-attribute03"
             data-testid="attr3-input"
             value={ cardAttr3 }
+            max="90"
+            min="0"
             onChange={ onInputChange }
           />
         </label>
@@ -148,7 +153,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,

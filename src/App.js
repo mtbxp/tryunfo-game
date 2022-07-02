@@ -21,13 +21,46 @@ class App extends React.Component {
     };
   }
 
+  // Maria Clara e Graciele Sampaio
+
+  formValidation = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+    const maxAllAttr = 210;
+    const maxAttr = 90;
+    const minAttr = 0;
+    if (cardName !== ''
+    && cardDescription !== ''
+    && cardImage !== ''
+    && cardRare !== ''
+    && (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3)) <= maxAllAttr
+    && Number(cardAttr1) >= minAttr
+    && Number(cardAttr1) <= maxAttr
+    && Number(cardAttr2) >= minAttr
+    && Number(cardAttr2) <= maxAttr
+    && Number(cardAttr3) >= minAttr
+    && Number(cardAttr3) <= maxAttr
+    ) {
+      return false;
+    }
+    return true;
+  };
+
   // Para as funções 'onInputChange' e 'onSaveButtonClick' foi consultado a aula ao vivo 'Aula 11.2 - Formulários no React' do curso da Trybe
   onInputChange = ({ target }) => {
     const { name, type } = target;
     const value = type === 'checkbox' ? target.checked : target.value;
+
     this.setState({
       [name]: value,
-    });
+    }, () => this.setState({ isSaveButtonDisabled: this.formValidation() }));
   };
 
   onSaveButtonClick = (event) => {
