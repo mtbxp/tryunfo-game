@@ -7,56 +7,57 @@ class App extends React.Component {
     super();
 
     this.state = {
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
-      cardImage: '',
-      cardRare: 'normal',
-      cardTrunfo: false,
+      name: '',
+      description: '',
+      attr1: '',
+      attr2: '',
+      attr3: '',
+      image: '',
+      rare: 'normal',
+      trunfo: false,
       isSaveButtonDisabled: true,
+      card: [],
     };
   }
 
   validationButton = () => {
     const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      image,
+      rare,
     } = this.state;
 
     const sumAll = 210;
     const maxPointsAtt = 90;
     const zeroPoints = 0;
 
-    if (cardName === ''
-    || cardDescription === ''
-    || cardImage === ''
-    || cardRare === '') {
+    if (name === ''
+    || description === ''
+    || image === ''
+    || rare === '') {
       return true;
     }
 
-    if (Number(cardAttr1)
-    + Number(cardAttr2)
-    + Number(cardAttr3)
+    if (Number(attr1)
+    + Number(attr2)
+    + Number(attr3)
     > sumAll) {
       return true;
     }
 
-    if (Number(cardAttr1) > maxPointsAtt
-    || Number(cardAttr2) > maxPointsAtt
-    || Number(cardAttr3) > maxPointsAtt) {
+    if (Number(attr1) > maxPointsAtt
+    || Number(attr2) > maxPointsAtt
+    || Number(attr3) > maxPointsAtt) {
       return true;
     }
 
-    if (Number(cardAttr1) < zeroPoints
-    || Number(cardAttr2) < zeroPoints
-    || Number(cardAttr3) < zeroPoints) {
+    if (Number(attr1) < zeroPoints
+    || Number(attr2) < zeroPoints
+    || Number(attr3) < zeroPoints) {
       return true;
     }
 
@@ -74,20 +75,51 @@ class App extends React.Component {
     }));
   };
 
-  // onSaveButtonClick = (event) => {
-  //   event.preventDefault();
-  // }
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    const {
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      image,
+      rare,
+      trunfo,
+    } = this.state;
+
+    const objects = { name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      image,
+      rare,
+      trunfo };
+
+    this.setState((prevState) => ({ card: [...prevState.card, objects] }), () => {
+      this.setState({
+        name: '',
+        description: '',
+        attr1: '0',
+        attr2: '0',
+        attr3: '0',
+        image: '',
+        rare: 'normal',
+      });
+    });
+  }
 
   render() {
     const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo,
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      image,
+      rare,
+      trunfo,
       isSaveButtonDisabled,
     } = this.state;
 
@@ -95,30 +127,30 @@ class App extends React.Component {
       <div>
         <h1>Tryunfo</h1>
         <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
+          cardName={ name }
+          cardDescription={ description }
+          cardAttr1={ attr1 }
+          cardAttr2={ attr2 }
+          cardAttr3={ attr3 }
+          cardImage={ image }
+          cardRare={ rare }
+          cardTrunfo={ trunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
 
         <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onSaveButtonClick={ this.onSaveButtonClick }
+          cardName={ name }
+          cardDescription={ description }
+          cardAttr1={ attr1 }
+          cardAttr2={ attr2 }
+          cardAttr3={ attr3 }
+          cardImage={ image }
+          cardRare={ rare }
+          cardTrunfo={ trunfo }
+          // isSaveButtonDisabled={ isSaveButtonDisabled }
+          // onSaveButtonClick={ this.onSaveButtonClick }
         />
       </div>
     );
