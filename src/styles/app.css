@@ -7,14 +7,13 @@
 
 .app h1 {
   text-align: center;
-  color: white;
 }
 
 .header {
   background-color: #036b52;
   box-shadow: rgba(0, 0, 0, 0.4) 0 5px 15px;
   padding: 12px 0;
-  color: white;
+
 }
 
 .form-preview {
@@ -154,6 +153,4 @@ form button {
   height: 40px;
   padding: 8px 32px;
   width: 100px;
-  border: 2px black solid;
-  border-style: 1px solid gray;
 }

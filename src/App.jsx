@@ -110,7 +110,7 @@ class App extends React.Component {
       () => this.setState({ hasTrunfo: this.containsTrufoInCards() }),
     );
   };
-
+  
   render() {
     const {
       name,
