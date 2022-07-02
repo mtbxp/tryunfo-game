@@ -26,7 +26,7 @@ class Form extends React.Component {
 
     return (
       <div className="container">
-        <form className="cardForm" onSubmit={ onSaveButtonClick }>
+        <form className="cardForm">
           <h2>Adicionar Carta</h2>
           <div className="input-container">
             <label htmlFor="cardName">
@@ -164,35 +164,3 @@ Form.propTypes = {
 };
 
 export default Form;
-
-// constructor(props) {
-//   super(props);
-//   this.state = {
-//     cardName: '',
-//     cardDescription: '',
-//     cardAttr1: '',
-//     cardAttr2: '',
-//     cardAttr3: '',
-//     cardImage: '',
-//     cardRare: '',
-//     cardTrunfo: false,
-//     // hasTrunfo: false,
-//     isSaveButtonDisabled: false,
-//   };
-// }
-
-// onInputChange = ({ target }) => {
-//   const { name, type } = target;
-//   const value = type === 'checkbox' ? target.checked : target.value;
-//   this.setState({
-//     [name]: value,
-//   });
-// }
-
-// onSaveButtonClick = () => {
-//   console.log(this);
-// };
-
-// handleSubmit = (event) => {
-//   event.preventDefault();
-// }

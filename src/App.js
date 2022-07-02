@@ -28,8 +28,21 @@ class App extends React.Component {
     }, this.validateInputs);
   }
 
-  onSaveButtonClick = () => {
-    console.log(this);
+  onSaveButtonClick = (e) => {
+    e.preventDefault();
+    console.log('clicou!');
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false,
+      // hasTrunfo: false,
+      isSaveButtonDisabled: true,
+    });
   };
 
   validateInputs = () => {

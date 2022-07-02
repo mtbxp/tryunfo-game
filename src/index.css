@@ -25,7 +25,7 @@ code {
   border: 1px solid gray;
   width: 30%;
   height: 20%;
-  margin-left: 300px;
+  margin-left: 440px;
   background-color: gainsboro;
 }
 
@@ -41,3 +41,8 @@ textarea {
   width: 291px;
   height: 65px
 }
+
+h1 {
+  text-align: center;
+}
+
