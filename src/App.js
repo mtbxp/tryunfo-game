@@ -58,7 +58,7 @@ handleValidation = () => {
 handleSave = (event) => {
   event.preventDefault();
   const { cardName, cardDescription, cardAttr1,
-    cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo, cards } = this.state;
+    cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo } = this.state;
 
   const card = { cardName,
     cardDescription,
