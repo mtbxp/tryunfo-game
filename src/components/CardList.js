@@ -24,9 +24,8 @@ class CardList extends React.Component {
     );
   }
 }
-
 CardList.propTypes = {
-  cardDeck: PropTypes.string,
+  cardDeck: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default CardList;
