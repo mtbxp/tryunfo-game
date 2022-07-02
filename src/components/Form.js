@@ -28,8 +28,8 @@ class Form extends React.Component {
             <input
               data-testid="name-input"
               type="text"
-              name=" cardName"
-              id=" cardName"
+              name="cardName"
+              id="cardName"
               value={ cardName }
               onChange={ onInputChange }
             />

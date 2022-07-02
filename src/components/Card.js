@@ -59,7 +59,7 @@ class Card extends React.Component {
           { cardRare }
         </p>
 
-        { cardTrunfo && (
+        { (cardTrunfo) && (
           <h2
             data-testid="trunfo-card"
           >
