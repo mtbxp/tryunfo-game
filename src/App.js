@@ -25,7 +25,7 @@ class App extends React.Component {
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    });
+    }, this.validateInputs);
   }
 
   onSaveButtonClick = () => {
@@ -38,44 +38,38 @@ class App extends React.Component {
       cardDescription,
       cardImage,
       cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
     } = this.state;
-    console.log('função validateInputs');
-    if (cardName || cardDescription || cardImage || cardRare === null) {
-      this.setState({
-        isSaveButtonDisabled: false,
-      });
-    }
-  }
 
-  validateAttrs = () => {
-    console.log('entrou na validateAttrs');
-    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
-    const array = [cardAttr1, cardAttr2, cardAttr3];
-    const QTDMAXATTR = 90;
-    const QTDMAXTOTAL = 210;
-    if ((cardAttr1 + cardAttr1 + cardAttr3) > QTDMAXTOTAL) {
-      this.setState({
-        isSaveButtonDisabled: false,
-      });
-      console.log('validateAttrs');
-    }
-    if (array.find((cardAttr) => cardAttr > QTDMAXATTR)) {
-      this.setState({
-        isSaveButtonDisabled: true,
-      });
-      console.log('validateAttrs');
-    }
-    if ((cardAttr1 < 0) || (cardAttr2 < 0) || (cardAttr3 < 0)) {
-      this.setState({
-        isSaveButtonDisabled: false,
-      });
-      console.log('validateAttrs');
-    }
-  }
+    const attr1 = parseFloat(cardAttr1);
+    const attr2 = parseFloat(cardAttr2);
+    const attr3 = parseFloat(cardAttr3);
+    const totalAt = attr1 + attr2 + attr3;
+    const qtdmaxattr = 90;
+    const qtdmaxtotal = 210;
 
-  validateSaveButton = () => {
-    this.validateInputs();
-    this.validateAttrs();
+    const fieldInputs = [
+      cardName.length !== 0,
+      cardDescription.length !== 0,
+      cardImage.length !== 0,
+      cardRare.length !== 0,
+      cardAttr1.length !== 0,
+      cardAttr1 <= qtdmaxattr,
+      cardAttr1 >= 0,
+      cardAttr2.length !== 0,
+      cardAttr2 <= qtdmaxattr,
+      cardAttr2 >= 0,
+      cardAttr3.length !== 0,
+      cardAttr3 <= qtdmaxattr,
+      cardAttr3 >= 0,
+      totalAt <= qtdmaxtotal,
+    ];
+    const habilitaBotao = fieldInputs.every((input) => input === true);
+    this.setState({
+      isSaveButtonDisabled: !habilitaBotao,
+    });
   }
 
   render() {
