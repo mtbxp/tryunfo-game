@@ -65,7 +65,8 @@ class App extends React.Component {
       hasTrunfo: cardTrunfo,
     });
 
-    console.log(cardDeck);
+    // console.log(cardDeck);
+
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -133,6 +134,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
+      cardDeck,
     } = this.state;
 
     return (
@@ -152,6 +154,7 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
+        <h3>Pré-visualização </h3>
         <Card
           cardName={ cardName }
           cardDescription={ cardDescription }
@@ -162,6 +165,25 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <div>
+          <h3>Deck de cartas</h3>
+          { cardDeck.map((card) => (
+            <Card
+              key={ card.cardName + cardDescription }
+              { ...card }
+              // o spread operator funciona da mesma forma, pois pega todos os atributos
+              // de dentro de card e 'espalha'
+              // mesma coisa que fazer:
+              // cardName={ card.cardName }
+              // cardDescription={ card.cardDescription }
+              // cardAttr1={ card.cardAttr1 }
+              // cardAttr2={ card.cardAttr2 }
+              // cardAttr3={ card.cardAttr3 }
+              // cardImage={ card.cardImage }
+              // cardRare={ card.cardRare }
+              // cardTrunfo={ card.cardTrunfo }
+            />))}
+        </div>
       </div>
     );
   }
