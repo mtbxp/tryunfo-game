@@ -19,16 +19,64 @@ class App extends React.Component {
     };
   }
 
+  validationButton = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+
+    const sumAll = 210;
+    const maxPointsAtt = 90;
+    const zeroPoints = 0;
+
+    if (cardName === ''
+    || cardDescription === ''
+    || cardImage === ''
+    || cardRare === '') {
+      return true;
+    }
+
+    if (Number(cardAttr1)
+    + Number(cardAttr2)
+    + Number(cardAttr3)
+    > sumAll) {
+      return true;
+    }
+
+    if (Number(cardAttr1) > maxPointsAtt
+    || Number(cardAttr2) > maxPointsAtt
+    || Number(cardAttr3) > maxPointsAtt) {
+      return true;
+    }
+
+    if (Number(cardAttr1) < zeroPoints
+    || Number(cardAttr2) < zeroPoints
+    || Number(cardAttr3) < zeroPoints) {
+      return true;
+    }
+
+    return false;
+  }
+
   onInputChange = ({ target }) => {
     const { name, type } = target;
     const value = type === 'checkbox' ? target.checked : target.value;
 
     this.setState({
       [name]: value,
-    });
-  }
+    }, () => this.setState({
+      isSaveButtonDisabled: this.validationButton(),
+    }));
+  };
 
-  onSaveButtonClick = () => {}
+  // onSaveButtonClick = (event) => {
+  //   event.preventDefault();
+  // }
 
   render() {
     const {
