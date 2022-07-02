@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import Letter from './imagem/images.jpg';
+import '../styles/card.css';
 
-export default class Card extends Component {
+class Card extends Component {
   render() {
     const {
       cardName,
@@ -15,30 +17,38 @@ export default class Card extends Component {
       preview,
       onDeleteButtonClick,
     } = this.props;
+    const cardRareClass = cardRare === 'muito raro' ? 'muito-raro' : cardRare;
     return (
-      <div>
-        <p data-testid="name-card">{cardName}</p>
-        <p data-testid="description-card">{cardDescription}</p>
-        <p data-testid="attr1-card">{cardAttr1}</p>
-        <p data-testid="attr2-card">{cardAttr2}</p>
-        <p data-testid="attr3-card">{cardAttr3}</p>
-        <img data-testid="image-card" src={ cardImage } alt={ cardName } />
-        <p data-testid="rare-card">{cardRare}</p>
+      <div className={ `card-container ${cardRareClass}` }>
+        <div className="card">
+          <p data-testid="name-card" className="name-card">{cardName || 'card name'}</p>
+          <img data-testid="image-card" src={ cardImage || Letter } alt={ cardName } />
+          <p data-testid="description-card">{cardDescription || 'card description'}</p>
+          <div className="attr-container">
+            <p data-testid="attr1-card">{`for ${cardAttr1}`}</p>
+            <p data-testid="attr2-card">{`int ${cardAttr2}`}</p>
+            <p data-testid="attr3-card">{`vit ${cardAttr3}`}</p>
+          </div>
+          <p data-testid="rare-card">{cardRare}</p>
 
-        {cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p>}
-        {preview && (
-          <button
-            data-testid="delete-button"
-            onClick={ () => onDeleteButtonClick(cardName) }
-            type="button"
-          >
-            Excluir
-          </button>
-        )}
+          {cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p>}
+          {preview && (
+            <button
+              data-testid="delete-button"
+              onClick={ () => onDeleteButtonClick(cardName) }
+              type="button"
+            >
+              Excluir
+            </button>
+          )}
+        </div>
       </div>
     );
   }
 }
+
+export default Card;
+
 Card.propTypes = {
   cardAttr1: PropTypes.string.isRequired,
   cardAttr2: PropTypes.string.isRequired,

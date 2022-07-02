@@ -1,0 +1,159 @@
+.app {
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  font-family: Verdana , sans-serif;
+}
+
+.app h1 {
+  text-align: center;
+  color: white;
+}
+
+.header {
+  background-color: #036b52;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 5px 15px;
+  padding: 12px 0;
+  color: white;
+}
+
+.form-preview {
+  display: flex;
+  height: 80%;
+  width: 100%;
+
+}
+
+.form-container {
+  display: flex;
+  flex-basis: 50%;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: flex-start;
+  padding: 40px 80px;
+}
+
+.preview-container {
+  background-color: #023031;
+  display: flex;
+  flex-basis: 50%;
+  flex-direction: column;
+  gap: 80px;
+  padding: 40px 80px;
+}
+
+.preview-container h1 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input {
+  background-color: white;
+  border: none;
+  height: 37px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+textarea:focus, input:focus, select:focus {
+  outline: none;
+}
+
+.form-container form span {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 25px;
+}
+
+.label-name {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label-name input {
+  border-bottom: 1px solid gray;
+}
+
+.label-description {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label-description input {
+  border-bottom: 1px solid gray;
+  height: 80px;
+}
+
+.label-image {
+  display: flex;
+  gap: 10px;
+}
+
+.label-image input {
+  border: 1px solid gray;
+}
+
+.label-rare {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label-rare select {
+  align-self: center;
+  border: none;
+  border-bottom: 1px solid gray;
+  height: 37px;
+  width: 100%;
+}
+
+.label-trunfo {
+  display: flex;
+  gap: 8px;
+}
+
+.label-trunfo input {
+  align-self: center;
+  border-bottom: 1px solid gray;
+  height: 20px;
+  width: 20px;
+}
+
+.attrs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.attrs label {
+  align-items: center;
+  display: flex;
+  gap: 22px;
+}
+
+.attrs label input {
+  border: 1px solid gray;
+}
+
+.point-counter {
+  align-self: flex-end;
+}
+
+form button {
+  background-color: #003be5;
+  color: white;
+  height: 40px;
+  padding: 8px 32px;
+  width: 100px;
+  border: 2px black solid;
+  border-style: 1px solid gray;
+}

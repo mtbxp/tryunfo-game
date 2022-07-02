@@ -1,6 +1,8 @@
 import React from 'react';
+import AllCards from './components/AllCards';
 import Card from './components/Card';
 import Form from './components/Form';
+import './styles/app.css';
 
 class App extends React.Component {
   constructor() {
@@ -9,16 +11,14 @@ class App extends React.Component {
       name: '',
       description: '',
       image: '',
-      attr1: '0',
-      attr2: '0',
-      attr3: '0',
+      attr1: '',
+      attr2: '',
+      attr3: '',
+      maxSumAttr: '210',
       rare: 'normal',
       trunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
-      nameFilter: '',
-      rareFilter: 'todas',
-      trunfoFilter: false,
       cards: [],
     };
   }
@@ -34,15 +34,34 @@ class App extends React.Component {
     const maxValue = 90;
     const minValue = 0;
     const maxSumValue = 210;
+
     const notEmpty = name !== '' && description !== '' && image !== '';
-    const maxSum = Number(attr1) + Number(attr2) + Number(attr3) <= maxSumValue;
+
+    const maxSum = Number(attr1) + Number(attr2) + Number(attr3);
+    const isValidSum = maxSum <= maxSumValue;
+
     const maxInputValue = Number(attr1) <= maxValue
       && Number(attr2) <= maxValue
       && Number(attr3) <= maxValue;
+
     const minInputValue = Number(attr1) >= minValue
       && Number(attr2) >= minValue
       && Number(attr3) >= minValue;
-    if (notEmpty && maxSum && maxInputValue && minInputValue) {
+
+    this.setState(
+      {
+        attr1: Number(attr1) >= maxValue ? `${maxValue}` : attr1,
+        attr2: Number(attr2) >= maxValue ? `${maxValue}` : attr2,
+        attr3: Number(attr3) >= maxValue ? `${maxValue}` : attr3,
+      },
+      () => this.setState((prev) => ({
+        maxSumAttr:
+            maxSumValue
+            - (Number(prev.attr1) + Number(prev.attr2) + Number(prev.attr3)),
+      })),
+    );
+
+    if (notEmpty && isValidSum && maxInputValue && minInputValue) {
       return false;
     }
     return true;
@@ -60,7 +79,7 @@ class App extends React.Component {
       }),
     );
   };
-  
+
   onSaveButtonClick = (event) => {
     event.preventDefault();
     const { name, description, image, attr1, attr2, attr3, rare, trunfo } = this.state;
@@ -100,98 +119,54 @@ class App extends React.Component {
       attr1,
       attr2,
       attr3,
+      maxSumAttr,
       rare,
       trunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      nameFilter,
-      rareFilter,
-      trunfoFilter,
       cards,
     } = this.state;
-    const filtredCards = cards
-      .filter((card) => (!trunfoFilter ? true : card.trunfo))
-      .filter((card) => (nameFilter === '' ? true : card.name.includes(nameFilter)))
-      .filter((card) => (rareFilter === 'todas' ? true : card.rare === rareFilter));
     return (
-      <div>
-        <h1>Tryunfo</h1>
-        <Form
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardImage={ image }
-          cardRare={ rare }
-          cardTrunfo={ trunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ attr1 }
-          cardAttr2={ attr2 }
-          cardAttr3={ attr3 }
-          cardImage={ image }
-          cardRare={ rare }
-          cardTrunfo={ trunfo }
+      <div className="app">
+        <h1 className="header">Tryunfo</h1>
+        <div className="form-preview">
+          <Form
+            cardName={ name }
+            cardDescription={ description }
+            cardAttr1={ attr1 }
+            cardAttr2={ attr2 }
+            cardAttr3={ attr3 }
+            maxSumAttr={ maxSumAttr }
+            cardImage={ image }
+            cardRare={ rare }
+            cardTrunfo={ trunfo }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <div className="preview-container">
+            <h1>Pré-visualização</h1>
+            <Card
+              cardName={ name }
+              cardDescription={ description }
+              cardAttr1={ attr1 }
+              cardAttr2={ attr2 }
+              cardAttr3={ attr3 }
+              cardImage={ image }
+              cardRare={ rare }
+              cardTrunfo={ trunfo }
+              onDeleteButtonClick={ this.onDeleteButtonClick }
+              preview={ false }
+            />
+          </div>
+        </div>
+        <h1 className="all-cards-title">Todas as cartas</h1>
+        <AllCards
+          cards={ cards }
           onDeleteButtonClick={ this.onDeleteButtonClick }
-          preview={ false }
+          preview
         />
-        {filtredCards.map((card) => (
-          <Card
-            key={ card.name }
-            cardName={ card.name }
-            cardDescription={ card.description }
-            cardAttr1={ card.attr1 }
-            cardAttr2={ card.attr2 }
-            cardAttr3={ card.attr3 }
-            cardImage={ card.image }
-            cardRare={ card.rare }
-            cardTrunfo={ card.trunfo }
-            onDeleteButtonClick={ this.onDeleteButtonClick }
-            preview
-          />
-        ))}
-        <label htmlFor="nameFilter">
-          <input
-            data-testid="name-filter"
-            type="text"
-            value={ nameFilter }
-            name="nameFilter"
-            id="nameFilter"
-            onChange={ this.onInputChange }
-            disabled={ trunfoFilter }
-          />
-        </label>
-        <label htmlFor="rareFilter">
-          <select
-            name="rareFilter"
-            id="rareFilter"
-            data-testid="rare-filter"
-            value={ rareFilter }
-            onChange={ this.onInputChange }
-            disabled={ trunfoFilter }
-          >
-            <option value="todas">todas</option>
-            <option value="normal">normal</option>
-            <option value="raro">raro</option>
-            <option value="muito raro">muito raro</option>
-          </select>
-        </label>
-        <label htmlFor="trunfoFilter" data-testid="trunfo-filter">
-          <input
-            type="checkbox"
-            name="trunfoFilter"
-            id="trunfoFilter"
-            checked={ trunfoFilter }
-            onChange={ this.onInputChange }
-          />
-        </label>
       </div>
     );
   }
