@@ -18,11 +18,11 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      cardsList: [],
     };
   }
 
-  // Maria Clara e Graciele Sampaio
-
+  // Para a função 'formValidation' foi recebido a orientação e auxilio da Maria Clara Reis e Graciele Sampaio - Turma 22 - Tribo A
   formValidation = () => {
     const {
       cardName,
@@ -63,30 +63,47 @@ class App extends React.Component {
     }, () => this.setState({ isSaveButtonDisabled: this.formValidation() }));
   };
 
+  // Para a função 'onSaveButtonClick' foi recebido a orientação e auxilio da Graciele Sampaio, Daniel Rubens e João Gustavo - Turma 22 - Tribo A // Ademais para 'setState' foi consultado a documentação no React (https://reactjs.org/docs/react-component.html#setstate)
   onSaveButtonClick = (event) => {
     event.preventDefault();
-    // addCard(this.state);
-    console.log(event);
-    // this.setState({
-    //   cardName: '',
-    //   cardDescription: '',
-    //   cardAttr1: '',
-    //   cardAttr2: '',
-    //   cardAttr3: '',
-    //   cardImage: '',
-    //   cardRare: '',
-    //   cardTrunfo: false,
-    //   hasTrunfo: false,
-    //   isSaveButtonDisabled: true,
-    // });
-  };
 
-  // // Para a função 'addNewCard' foi consultado a aula ao vivo 'Aula 11.2 - Formulários no React' do curso da Trybe
-  // addNewCard = (newcard) => {
-  //   this.setState((previousState) => ({
-  //     cards: [newcard, ...previousState.cards],
-  //   }));
-  // };
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled } = this.state;
+
+    const objState = { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled };
+
+    this.setState((prevState) => ({
+      cardsList: [{ objState, ...prevState.cardsList }],
+    }), () => this.setState(({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      hasTrunfo: false,
+      isSaveButtonDisabled: true,
+    })));
+  };
 
   render() {
     const {
