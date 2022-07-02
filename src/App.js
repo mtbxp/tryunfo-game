@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
-import Card from './components/Card';
 import CardList from './components/CardList';
+import Card from './components/Card';
 
 class App extends React.Component {
   constructor() {
@@ -22,6 +22,8 @@ class App extends React.Component {
       onSaveButtonClick: this.onSaveButtonClick,
     };
   }
+  // It gets the target of a a change on its value, if th target is a checkbox
+  // it changes the state with the value .checked (checkbox), if not it gets the target`s .value(input case)
 
   handleInputChange = ({ target }) => {
     const { name, type } = target;
@@ -40,9 +42,9 @@ class App extends React.Component {
     this.setState((previousDeck) => ({
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
@@ -50,7 +52,6 @@ class App extends React.Component {
       cardDeck: [savedCard, ...previousDeck.cardDeck],
     }));
   }
-
   /* validateInputs = () => {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare } = this.state;
