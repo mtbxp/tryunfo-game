@@ -1,86 +1,161 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import './components css/Form.css';
 
 const rarities = ['normal', 'raro', 'muito raro'];
 
 class Form extends React.Component {
   render() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick,
+    } = this.props;
     return (
-      <div>
+      <div className="form-div">
         <h2>Adicionar nova carta</h2>
-        <label htmlFor="name">
-          Nome
-          <input
-            data-testid="name-input"
-            type="text"
-            id="name"
-            name="name"
-          />
-        </label>
-        <label htmlFor="descr">
-          Descricao
-          <textarea
-            data-testid="description-input"
-            id="descr"
-            name="descr"
-          />
-        </label>
-        <label htmlFor="attr1">
-          Forca
-          <input
-            data-testid="attr1-input"
-            type="number"
-            id="attr1"
-            name="attr1"
-          />
-        </label>
-        <label htmlFor="attr2">
-          Inteligencia
-          <input
-            data-testid="attr2-input"
-            type="number"
-            id="attr2"
-            name="attr2"
-          />
-        </label>
-        <label htmlFor="attr3">
-          Agilidade
-          <input
-            data-testid="attr3-input"
-            type="number"
-            id="attr3"
-            name="attr3"
-          />
-        </label>
-        <label htmlFor="img">
-          Imagem
-          <input
-            data-testid="image-input"
-            type="text"
-            id="img"
-            name="img"
-          />
-        </label>
-        <label htmlFor="rarities">
-          Raridades
-          <select id="rarities" name="rarities" data-testid="rare-input">
-            {
-              rarities.map((rarity, key) => <option key={ key }>{rarity}</option>)
-            }
-          </select>
-        </label>
+        <div className="input-container">
+          <label htmlFor="name">
+            Nome
+            <input
+              data-testid="name-input"
+              value={ cardName }
+              onChange={ onInputChange }
+              type="text"
+              id="name"
+              name="cardName"
+              required
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <label htmlFor="descr">
+            Descricao
+            <textarea
+              value={ cardDescription }
+              onChange={ onInputChange }
+              data-testid="description-input"
+              id="descr"
+              name="cardDescription"
+              required
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <label htmlFor="attr1">
+            Forca
+            <input
+              data-testid="attr1-input"
+              value={ cardAttr1 }
+              onChange={ onInputChange }
+              type="number"
+              id="attr1"
+              name="cardAttr1"
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <label htmlFor="attr2">
+            Inteligencia
+            <input
+              data-testid="attr2-input"
+              onChange={ onInputChange }
+              value={ cardAttr2 }
+              type="number"
+              id="attr2"
+              name="cardAttr2"
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <label htmlFor="attr3">
+            Agilidade
+            <input
+              data-testid="attr3-input"
+              onChange={ onInputChange }
+              value={ cardAttr3 }
+              type="number"
+              id="attr3"
+              name="cardAttr3"
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <label htmlFor="img">
+            Imagem
+            <input
+              data-testid="image-input"
+              value={ cardImage }
+              onChange={ onInputChange }
+              type="text"
+              id="img"
+              name="cardImage"
+              required
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <label htmlFor="rarities">
+            Raridades
+            <select
+              id="rarities"
+              onChange={ onInputChange }
+              value={ cardRare }
+              name="cardRare"
+              data-testid="rare-input"
+              required
+            >
+              {
+                rarities.map((rarity, key) => <option key={ key }>{rarity}</option>)
+              }
+            </select>
+          </label>
+        </div>
         <label htmlFor="superTrunfo">
           É Super Trunfo?
           <input
             data-testid="trunfo-input"
+            checked={ cardTrunfo }
+            onChange={ onInputChange }
             type="checkbox"
             id="superTrunfo"
-            name="superTrunfo"
+            name="cardTrunfo"
           />
         </label>
-        <button type="button" data-testid="save-button">Salvar</button>
+        <button
+          type="submit"
+          data-testid="save-button"
+          disabled={ isSaveButtonDisabled }
+          onClick={ onSaveButtonClick }
+          id="submit-btn"
+          name="isSaveButtonDisabled"
+        >
+          Salvar
+        </button>
       </div>
     );
   }
 }
 
+Form.propTypes = {
+  cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  cardRare: PropTypes.string.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
+};
 export default Form;
