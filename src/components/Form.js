@@ -12,7 +12,7 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -47,6 +47,8 @@ class Form extends React.Component {
           <label htmlFor="attr01">
             Attr01
             <input
+              min={ 0 }
+              max={ 90 }
               name="cardAttr1"
               id="attr01"
               value={ cardAttr1 }
@@ -59,6 +61,8 @@ class Form extends React.Component {
           <label htmlFor="attr02">
             Attr02
             <input
+              min={ 0 }
+              max={ 90 }
               name="cardAttr2"
               id="attr02"
               value={ cardAttr2 }
@@ -71,6 +75,8 @@ class Form extends React.Component {
           <label htmlFor="attr03">
             Attr03
             <input
+              min={ 0 }
+              max={ 90 }
               name="cardAttr3"
               id="attr03"
               value={ cardAttr3 }
@@ -102,18 +108,20 @@ class Form extends React.Component {
             <option>raro</option>
             <option>muito raro</option>
           </select>
-          Super Tryunfo
 
-          <label htmlFor="check-trunfo">
-            <input
-              name="onInputChange"
-              id="check-trunfo"
-              data-testid="trunfo-input"
-              onChange={ onInputChange }
-              type="checkbox"
-              checked={ cardTrunfo }
-            />
-          </label>
+          { hasTrunfo ? ('Você já tem um Super Trunfo em seu baralho') : (
+            <label htmlFor="check-trunfo">
+              Super Tryunfo
+              <input
+                name="card-trunfo"
+                id="check-trunfo"
+                data-testid="trunfo-input"
+                onChange={ onInputChange }
+                type="checkbox"
+                checked={ cardTrunfo }
+              />
+            </label>
+          )}
 
           <button
             value={ isSaveButtonDisabled }
@@ -134,14 +142,14 @@ class Form extends React.Component {
 Form.propTypes = {
   cardName: PropType.string.isRequired,
   cardDescription: PropType.string.isRequired,
-  cardAttr1: PropType.string.isRequired,
-  cardAttr2: PropType.string.isRequired,
-  cardAttr3: PropType.string.isRequired,
+  cardAttr1: PropType.number.isRequired,
+  cardAttr2: PropType.number.isRequired,
+  cardAttr3: PropType.number.isRequired,
   cardImage: PropType.string.isRequired,
-  cardRare: PropType.bool.isRequired,
+  cardRare: PropType.string.isRequired,
   cardTrunfo: PropType.bool.isRequired,
-  // hasTrunfo: PropType.bool.isRequired,
-  isSaveButtonDisabled: PropType.func.isRequired,
+  hasTrunfo: PropType.bool.isRequired,
+  isSaveButtonDisabled: PropType.bool.isRequired,
   onInputChange: PropType.func.isRequired,
   onSaveButtonClick: PropType.func.isRequired,
 };
