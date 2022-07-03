@@ -22,8 +22,10 @@ class App extends React.Component {
 
   habilitButton = () => {
     const { name, description, image, rare, attr1, attr2, attr3 } = this.state;
+
     const inputsText = [name, description, image, rare];
     const textArea = inputsText.every((area) => area.length > 0);
+
     const minPoint = 0;
     const maxPointAttr = 90;
     const maxPointAllsAttr = 210;
@@ -44,6 +46,7 @@ class App extends React.Component {
     this.setState(({
       [name]: value,
     }),
+
     () => this.habilitButton());
   }
 
@@ -64,6 +67,7 @@ class App extends React.Component {
     this.setState((prevState) => ({
       arrayInforCard: [...prevState.arrayInforCard, objInf],
     }),
+
     () => {
       this.setState({
         name: '',
@@ -80,6 +84,7 @@ class App extends React.Component {
   render() {
     const { name, description, attr1, attr2,
       attr3, image, rare, trunfo, button } = this.state;
+
     return (
       <div>
         <h1>Tryunfo</h1>
