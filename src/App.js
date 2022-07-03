@@ -15,9 +15,10 @@ class App extends React.Component {
     console.log(target);
     console.log('target');
     console.log(this);
-    // this.setState({
-    //   cardName: target.value,
-    // });
+    const { name } = target;
+    this.setState({
+      [name]: value,
+    });
   }
 
   render() {
@@ -34,6 +35,7 @@ class App extends React.Component {
         <input
           type="text"
           className="name-input"
+          name="cardName"
           value={ cardName }
           onChange={ this.onInputChange }
           data-testid="name-input"
