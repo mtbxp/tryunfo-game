@@ -1,15 +1,69 @@
 * {
+  box-sizing: border-box;
   margin:0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+body {
+  background-color:aliceblue;
+}
+
+.header {
+  background-color: blueviolet;
+  display: flex;
+  font-size: 50px;
+  height: 70px;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+} 
+
+subtitle {
+  align-items: center; 
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  justify-content: center;
 }
 
 .form {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  font-size: 20px;
+  margin-top: 70px;
 }
 
-h1 {
-  text-align: center;
+
+input, select, textarea {
+  background-color: rgb(214, 214, 214);
+  border-radius: 10px;
+  justify-content: center;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-top: 10px;
+  padding: 10px;
 }
+
+img {
+  max-width: 150px;
+}
+.newCard {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  height: 300px;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 10px 20px;
+}
+
+button {
+  background-color: blueviolet;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  padding: 5px 30px;
+  margin-top: 20px;
+}
+

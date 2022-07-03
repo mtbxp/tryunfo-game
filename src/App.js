@@ -134,7 +134,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>Tryunfo</h1>
+        <h1 className="header">Tryunfo</h1>
         <Form
           cardName={ name }
           cardDescription={ description }
