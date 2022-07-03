@@ -10,10 +10,11 @@ class App extends React.Component {
       cardAttr2: '0',
       cardAttr3: '0',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'Normal',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
-      card: [],
+      cards: [],
     };
 
   validadTypeNumber = (keys, numbers) => {
@@ -83,7 +84,7 @@ class App extends React.Component {
       cardTrunfo,
     };
 
-    this.setState((prevState) => ({ card: [...prevState.card, objects] }), () => {
+    this.setState((prevState) => ({ cards: [...prevState.cards, objects] }), () => {
       this.setState({
         cardName: '',
         cardDescription: '',
@@ -91,9 +92,19 @@ class App extends React.Component {
         cardAttr2: '0',
         cardAttr3: '0',
         cardImage: '',
-        cardRare: 'normal',
+        cardRare: 'Normal',
       });
+      this.validateTrunfo();
     });
+  }
+
+  validateTrunfo = () => {
+    const { cards } = this.state;
+    const trunfo = cards.some((card) => card.cardTrunfo === true);
+    console.log(trunfo);
+    if (trunfo === true) {
+      this.setState({ hasTrunfo: true });
+    }
   }
 
   render() {
@@ -106,7 +117,9 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
+      cards,
     } = this.state;
     return (
       <>
@@ -120,6 +133,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
           onInputChange={ this.onInputChange }
@@ -134,6 +148,18 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        { cards.map((card) => (
+          <div key={ cardName }>
+            <h4>{ `Nome: ${card.cardName}`}</h4>
+            <p>{ `Descrição: ${card.cardDescription}`}</p>
+            <p>{ `Atributo 1: ${card.cardAttr1}`}</p>
+            <p>{ `Atributo 2: ${card.cardAttr2}`}</p>
+            <p>{ `Atributo 3: ${card.cardAttr3}`}</p>
+            <img src={ cardImage } alt={ cardName } />
+            <p>{ `Raridade: ${card.cardRare}`}</p>
+            <p>{ `Trunfo: ${card.cardTrunfo}`}</p>
+          </div>
+        ))}
       </>
     );
   }
