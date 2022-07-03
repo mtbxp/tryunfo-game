@@ -13,14 +13,20 @@ class App extends React.Component {
 
   onInputChange({ target }) {
     console.log('target');
+    this.setState({
+      cardName: target.value,
+    });
   }
 
   render() {
+    const {
+      cardName,
+    } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
-          cardName={ this.state.cardName }
+          cardName={ cardName }
         />
         <Card />
       </div>
