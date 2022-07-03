@@ -13,8 +13,9 @@ class App extends React.Component {
       attr2: '',
       attr3: '',
       image: '',
-      rare: '',
+      rare: 'normal',
       trunfo: false,
+      hasTrunfo: false,
       button: true,
       arrayInforCard: [],
     };
@@ -77,13 +78,19 @@ class App extends React.Component {
         attr3: 0,
         image: '',
         rare: 'normal',
+        hasTrunfo: this.checkedTrunfo(),
       });
     });
   }
 
+  checkedTrunfo = () => {
+    const { arrayInforCard } = this.state;
+    return arrayInforCard.some((item) => item.trunfo);
+  };
+
   render() {
     const { name, description, attr1, attr2,
-      attr3, image, rare, trunfo, button } = this.state;
+      attr3, image, rare, trunfo, hasTrunfo, button } = this.state;
 
     return (
       <div>
@@ -97,6 +104,7 @@ class App extends React.Component {
           cardImage={ image }
           cardRare={ rare }
           cardTrunfo={ trunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ button }
           onSaveButtonClick={ this.saveInforms }
           onInputChange={ this.onInputChange }
