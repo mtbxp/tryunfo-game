@@ -71,7 +71,7 @@ class App extends React.Component {
   onSaveButtonClick = (e) => {
     e.preventDefault();
     const card = this.state;
-    const { cardTrunfo }  = this.state;
+    const { cardTrunfo } = this.state;
     this.setState((prevState) => ({
       cardName: '',
       cardDescription: '',
