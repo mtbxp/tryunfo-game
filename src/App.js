@@ -16,6 +16,7 @@ class App extends React.Component {
       rare: '',
       trunfo: false,
       button: true,
+      arrayInforCard: [],
     };
   }
 
@@ -46,6 +47,36 @@ class App extends React.Component {
     () => this.habilitButton());
   }
 
+  saveInforms = () => {
+    const { name, description, image, rare, trunfo, attr1, attr2,
+      attr3 } = this.state;
+    const objInf = {
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      image,
+      rare,
+      trunfo,
+    };
+
+    this.setState((prevState) => ({
+      arrayInforCard: [...prevState.arrayInforCard, objInf],
+    }),
+    () => {
+      this.setState({
+        name: '',
+        description: '',
+        attr1: 0,
+        attr2: 0,
+        attr3: 0,
+        image: '',
+        rare: 'normal',
+      });
+    });
+  }
+
   render() {
     const { name, description, attr1, attr2,
       attr3, image, rare, trunfo, button } = this.state;
@@ -62,6 +93,7 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
           isSaveButtonDisabled={ button }
+          onSaveButtonClick={ this.saveInforms }
           onInputChange={ this.onInputChange }
         />
         <Card
