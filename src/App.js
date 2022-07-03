@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -51,6 +52,11 @@ class App extends React.Component {
     () => this.habilitButton());
   }
 
+  checkedTrunfo = () => {
+    const { arrayInforCard } = this.state;
+    return arrayInforCard.some((item) => item.trunfo);
+  };
+
   saveInforms = () => {
     const { name, description, image, rare, trunfo, attr1, attr2,
       attr3 } = this.state;
@@ -83,17 +89,12 @@ class App extends React.Component {
     });
   }
 
-  checkedTrunfo = () => {
-    const { arrayInforCard } = this.state;
-    return arrayInforCard.some((item) => item.trunfo);
-  };
-
   render() {
     const { name, description, attr1, attr2,
-      attr3, image, rare, trunfo, hasTrunfo, button } = this.state;
+      attr3, image, rare, trunfo, hasTrunfo, button, arrayInforCard } = this.state;
 
     return (
-      <div>
+      <div className="appJs">
         <h1>Tryunfo</h1>
         <Form
           cardName={ name }
@@ -120,6 +121,19 @@ class App extends React.Component {
           cardTrunfo={ trunfo }
           onInputChange={ this.onInputChange }
         />
+        {arrayInforCard.map((card) => (
+          <Card
+            key={ card.name }
+            cardName={ card.name }
+            cardDescription={ card.description }
+            cardAttr1={ card.attr1 }
+            cardAttr2={ card.attr2 }
+            cardAttr3={ card.attr3 }
+            cardImage={ card.image }
+            cardRare={ card.rare }
+            cardTrunfo={ card.trunfo }
+          />
+        ))}
       </div>
     );
   }
