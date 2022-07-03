@@ -10,23 +10,28 @@ class Card extends Component {
     return (
       <div className="Card-container">
         <h3 data-testid="name-card">{ cardName }</h3>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
+        <div className="img-container">
+          <img src={ cardImage } alt={ cardName } data-testid="image-card" />
+        </div>
         <p data-testid="description-card" className="description">{ cardDescription }</p>
         <div className="attr-container">
           <h5 data-testid="attr1-card">
             Health:
+            {' '}
             { cardAttr1 }
           </h5>
           <h5 data-testid="attr2-card">
             Melee Damage:
+            {' '}
             { cardAttr2 }
           </h5>
           <h5 data-testid="attr3-card">
             Movement Speed:
+            {' '}
             { cardAttr3 }
           </h5>
         </div>
-        <h5 data-testid="rare-card">{ cardRare }</h5>
+        <h5 data-testid="rare-card" className="card-rare">{ cardRare }</h5>
         { cardTrunfo
           ? <h5 data-testid="trunfo-card" className="super-trunfo">Super Trunfo</h5> : ''}
       </div>

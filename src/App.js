@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
 import './App.css';
+// import data from './data';
 
 class App extends React.Component {
   constructor() {
@@ -93,6 +94,14 @@ class App extends React.Component {
     }), this.hasTrundoCheck);
   };
 
+  deleteCard = ({ target }) => {
+    const { id: cardName } = target;
+    const { cardList } = this.state;
+    this.setState({
+      cardList: cardList.filter((card) => card.cardName !== cardName),
+    }, () => this.setState({ hasTrunfo: this.hasTrundoCheck() }));
+  }
+
   render() {
     const { cardName, cardDescription, cardAttr1,
       cardAttr2, cardAttr3, cardImage, cardRare,
@@ -100,7 +109,7 @@ class App extends React.Component {
     return (
       <div>
         <header>
-          <h1>Tryunfo</h1>
+          <h1>Ark Card Game</h1>
         </header>
         <div className="cardCreate-container">
           <Form
@@ -128,6 +137,9 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </div>
+        <section>
+          <h2>Lista de Cards</h2>
+        </section>
         <div className="cardList-container">
           {cardList.map((element) => (
             <li key={ element.cardName } className="card">
@@ -141,6 +153,15 @@ class App extends React.Component {
                 cardRare={ element.cardRare }
                 cardTrunfo={ element.cardTrunfo }
               />
+              <button
+                type="button"
+                id={ element.cardName }
+                className="btnDelete"
+                data-testid="delete-button"
+                onClick={ this.deleteCard }
+              >
+                Excluir
+              </button>
             </li>
           ))}
         </div>
