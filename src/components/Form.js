@@ -77,9 +77,9 @@ class Form extends React.Component {
               value={ cardRare }
               onChange={ onInputChange }
             >
-              <option>muito raro</option>
-              <option>raro</option>
               <option>normal</option>
+              <option>raro</option>
+              <option>muito raro</option>
             </select>
           </div>
           <div>
