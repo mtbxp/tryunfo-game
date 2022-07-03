@@ -17,10 +17,11 @@ class Form extends React.Component {
       onInputChange,
       onSaveButtonClick,
     } = this.props;
+
     return (
       <section className="container-section">
 
-        <h1>Adicionar Nova Carta</h1>
+        <h1 className="adicionarCarta">Adicionar Nova Carta</h1>
 
         <form>
           Nome:
@@ -29,6 +30,7 @@ class Form extends React.Component {
               data-testid="name-input"
               type="text"
               name="cardName"
+              id="cardName"
               value={ cardName }
               onChange={ onInputChange }
             />
@@ -40,6 +42,7 @@ class Form extends React.Component {
               data-testid="image-input"
               type="text"
               name="cardImage"
+              id="cardImage"
               width={ 100 }
               height={ 40 }
               value={ cardImage }
@@ -53,6 +56,7 @@ class Form extends React.Component {
               data-testid="description-input"
               type="text"
               name="cardDescription"
+              id="cardDescription"
               value={ cardDescription }
               onChange={ onInputChange }
             />
@@ -64,6 +68,7 @@ class Form extends React.Component {
               data-testid="attr1-input"
               type="number"
               name="cardAttr1"
+              id="cardAttr1"
               value={ cardAttr1 }
               onChange={ onInputChange }
             />
@@ -75,6 +80,7 @@ class Form extends React.Component {
               data-testid="attr2-input"
               type="number"
               name="cardAttr2"
+              id='"cardAttr2"'
               value={ cardAttr2 }
               onChange={ onInputChange }
             />
@@ -86,6 +92,7 @@ class Form extends React.Component {
               data-testid="attr3-input"
               type="number"
               name="cardAttr3"
+              id="cardAttr3"
               value={ cardAttr3 }
               onChange={ onInputChange }
             />
@@ -96,6 +103,7 @@ class Form extends React.Component {
             <select
               name="cardRare"
               data-testid="rare-input"
+              id="cardRare"
               value={ cardRare }
               onChange={ onInputChange }
             >
@@ -105,20 +113,22 @@ class Form extends React.Component {
             </select>
           </label>
 
-          { hasTrunfo ? <h4>Você já tem um Super Trunfo em seu baralho</h4>
-            : (
-              <label htmlFor="trunfo-input">
-                Super Trunfo
-                <input
-                  name="cardTrunfo"
-                  data-testid="trunfo-input"
-                  type="checkbox"
-                  checked={ cardTrunfo }
-                  onChange={ onInputChange }
-                />
-              </label>
-            )}
-
+          <div className="super-trunfo">
+            { hasTrunfo ? <h4>Você já tem um Super Trunfo em seu baralho</h4>
+              : (
+                <label htmlFor="trunfo-input">
+                  Super Trunfo
+                  <input
+                    name="cardTrunfo"
+                    id="cardTrunfo"
+                    data-testid="trunfo-input"
+                    type="checkbox"
+                    checked={ cardTrunfo }
+                    onChange={ onInputChange }
+                  />
+                </label>
+              )}
+          </div>
           <button
             data-testid="save-button"
             type="submit"

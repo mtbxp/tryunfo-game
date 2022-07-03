@@ -9,17 +9,27 @@ class App extends Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
       cardImage: '',
-      cardRare: 'normal',
+      cardRare: '',
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       cards: [],
     };
   }
+
+  onDeleteClick = (id, isATrunfo) => {
+    const { cards } = this.state;
+    const filteredCards = cards.filter(({ id: cardId }) => cardId !== id);
+
+    this.setState({
+      cards: [...filteredCards],
+      hasTrunfo: isATrunfo && !isATrunfo,
+    });
+  };
 
 verificarCampo = () => {
   const {
@@ -77,7 +87,7 @@ onSaveButtonClick = (event) => {
     cardAttr3,
     cardRare,
     cardTrunfo,
-    cards } = this.state;
+    hasTrunfo } = this.state;
 
   const allCards = {
     cardName,
@@ -87,7 +97,11 @@ onSaveButtonClick = (event) => {
     cardAttr2,
     cardAttr3,
     cardRare,
-    cardTrunfo };
+    cardTrunfo,
+    onDeleteClick: this.onDeleteClick,
+    id: Date.now(),
+    isAnExample: false,
+  };
 
   this.setState((preventState) => ({
     cardName: '',
@@ -100,8 +114,7 @@ onSaveButtonClick = (event) => {
     isSaveButtonDisabled: true,
     cardTrunfo: false,
     cards: [...preventState.cards, allCards],
-  }), () => this.setState({
-    hasTrunfo: !!cardTrunfo || cards.includes((flag) => flag.cardTrunfo),
+    hasTrunfo: cardTrunfo || hasTrunfo,
   }));
 };
 
@@ -121,7 +134,7 @@ render() {
   } = this.state;
 
   return (
-    <section>
+    <section className="container-forms">
       <div>
         <Form
           cardName={ cardName }
@@ -138,7 +151,8 @@ render() {
           hasTrunfo={ hasTrunfo }
         />
       </div>
-      <div>
+
+      <div className="container-card">
         <h1>Pré-visualização</h1>
         <Card
           cardName={ cardName }
@@ -149,9 +163,12 @@ render() {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          onDeleteClick={ this.onDeleteClick }
+          isAnExample
+          id={ Date.now() }
         />
       </div>
-      <div>
+      <div className="card-exibition">
         <h1>Mostruário</h1>
         {
           cards.map((flag, acc) => (
