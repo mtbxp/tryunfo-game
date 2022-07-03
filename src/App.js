@@ -99,10 +99,15 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
-      cardTrunfo: false,
-      hasTrunfo: false,
       isSaveButtonDisabled: true,
-    })));
+    }), () => {
+      if (cardTrunfo === true) {
+        this.setState({
+          hasTrunfo: true,
+          cardTrunfo: false,
+        });
+      }
+    }));
   };
 
   render() {

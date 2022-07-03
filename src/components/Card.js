@@ -40,17 +40,17 @@ class Card extends React.Component {
               <span>{cardAttr3}</span>
             </li>
           </ul>
-          <p data-testid="rare-card" className="rarity-area">
+          <div data-testid="rare-card" className="rarity-area">
             {cardRare}
             {
               cardTrunfo ? (
-                <spam data-testid="trunfo-card">
+                <div data-testid="trunfo-card">
                   <p className="trunfo-text">Super Trunfo</p>
                   <img src={ tryunfo } alt="Super Trunfo" className="logo-trunfo" />
-                </spam>
+                </div>
               ) : null
             }
-          </p>
+          </div>
         </div>
       </div>
     );

@@ -20,7 +20,7 @@
 }
 
 .rarity-area {
-  align-items: flex-end;
+  align-items: center;
   display: flex;
   gap: 5px;
 }
