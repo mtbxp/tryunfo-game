@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import './index.css';
+import cardList from './components/cardList'; 
 
 class App extends React.Component {
   constructor() {
@@ -15,8 +16,9 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      // hasTrunfo: false,
       isSaveButtonDisabled: true,
+      hasTrunfo: false,
+      cards: cardList,
     };
   }
 
@@ -30,7 +32,6 @@ class App extends React.Component {
 
   onSaveButtonClick = (e) => {
     e.preventDefault();
-    console.log('clicou!');
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -38,11 +39,10 @@ class App extends React.Component {
       cardAttr2: '0',
       cardAttr3: '0',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
-      // hasTrunfo: false,
-      isSaveButtonDisabled: true,
-    });
+    }, this.addNewCard(this.state));
+    this.verifyHasTrunfo(this.setState);
   };
 
   validateInputs = () => {
@@ -85,6 +85,21 @@ class App extends React.Component {
     });
   }
 
+  verifyHasTrunfo = () => {
+    const { cardTrunfo, hasTrunfo } = this.state;
+    if (cardTrunfo === true && hasTrunfo === false) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
+  }
+
+  addNewCard = (card) => {
+    this.setState((prevState) => ({
+      cards: [...prevState.cards, card],
+    }));
+  };
+
   render() {
     const {
       cardName,
@@ -95,9 +110,11 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
       isSaveButtonDisabled,
+      hasTrunfo,
+      cards,
     } = this.state;
+
     return (
       <div>
         <h1>Super Triumph</h1>
@@ -111,6 +128,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          hasTrunfo={ hasTrunfo }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
@@ -124,6 +142,26 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <div>
+          <h2>Cartas Adcionadas</h2>
+          <ul>
+            {
+              cards.map((card) => (
+                <li key={ card.cardName }>
+                  <div className="container-card ">
+                    <p>{ `Nome: ${card.cardName}` }</p>
+                    <p>{ `Descrição: ${card.cardDescription}` }</p>
+                    <p>{ `Attr1: ${card.cardAttr1}` }</p>
+                    <p>{ `Attr2: ${card.cardAttr2}` }</p>
+                    <p>{ `Attr3: ${card.cardAttr3}` }</p>
+                    <p>{ `Imagem: ${card.cardImage}` }</p>
+                    <p>{ `Raridade: ${card.cardRare}` }</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
       </div>
     );
   }

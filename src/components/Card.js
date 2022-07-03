@@ -15,24 +15,37 @@ class Card extends React.Component {
     } = this.props;
 
     return (
-      <div className="container">
-        Nome:
-        <p data-testid="name-card">{ cardName }</p>
-        Descrição:
-        <p data-testid="description-card">{ cardDescription }</p>
-        Atributo 1:
-        <p data-testid="attr1-card">{ cardAttr1 }</p>
-        Atributo 2:
-        <p data-testid="attr2-card">{ cardAttr2}</p>
-        Atributo 3:
-        <p data-testid="attr3-card">{ cardAttr3 }</p>
+      <div className="container-card">
+        <h2 className="color-title">Fut-Card</h2>
+        <p className="color-name" data-testid="name-card">
+          <span>Nome: </span>
+          { cardName }
+        </p>
+        <p className="color-name" data-testid="description-card">
+          <span>Descrição: </span>
+          { cardDescription }
+        </p>
+        <p className="color-name" data-testid="attr1-card">
+          <span>Atributo 1: </span>
+          { cardAttr1 }
+        </p>
+        <p className="color-name" data-testid="attr2-card">
+          <span>Atributo 2: </span>
+          { cardAttr2}
+        </p>
+        <p className="color-name" data-testid="attr3-card">
+          <span>Atributo 3: </span>
+          { cardAttr3 }
+        </p>
         Imagem:
         <img data-testid="image-card" src={ cardImage } alt={ cardName } />
         <br />
-        <br />
-        Raridade:
-        <p data-testid="rare-card">{ cardRare }</p>
-        { cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p> }
+        <p className="color-name" data-testid="rare-card">
+          <span>Raridade: </span>
+          { cardRare }
+        </p>
+        { cardTrunfo
+          && <p className="color-name" data-testid="trunfo-card">Super Trunfo</p> }
       </div>
     );
   }
