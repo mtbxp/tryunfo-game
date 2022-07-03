@@ -52,14 +52,9 @@ class App extends React.Component {
     () => this.habilitButton());
   }
 
-  checkedTrunfo = () => {
-    const { arrayInforCard } = this.state;
-    return arrayInforCard.some((item) => item.trunfo);
-  };
-
   saveInforms = () => {
     const { name, description, image, rare, trunfo, attr1, attr2,
-      attr3 } = this.state;
+      attr3, arrayInforCard } = this.state;
     const objInf = {
       name,
       description,
@@ -72,21 +67,16 @@ class App extends React.Component {
     };
 
     this.setState((prevState) => ({
+      name: '',
+      description: '',
+      attr1: 0,
+      attr2: 0,
+      attr3: 0,
+      image: '',
+      rare: 'normal',
       arrayInforCard: [...prevState.arrayInforCard, objInf],
-    }),
-
-    () => {
-      this.setState({
-        name: '',
-        description: '',
-        attr1: 0,
-        attr2: 0,
-        attr3: 0,
-        image: '',
-        rare: 'normal',
-        hasTrunfo: this.checkedTrunfo(),
-      });
-    });
+      hasTrunfo: arrayInforCard.some((item) => item.trunfo),
+    }));
   }
 
   render() {
