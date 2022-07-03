@@ -1,62 +1,68 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Form extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.handleChange = this.handleChange.bind(this);
+  //   this.handleChange = this.handleChange.bind(this);
 
-    this.state = {
-      name: '',
-      description: '',
-      colors: 0,
-      duration: 0,
-      crackling: 0,
-      image: '',
-      rare: '',
-      tryunfo: false,
+  //   this.state = {
+  //     cardName: '',
+  //     cardDescription: '',
+  //     cardAttr1: '',
+  //     cardAttr2: '',
+  //     cardAttr3: '',
+  //     cardImage: '',
+  //     cardRare: '',
+  //     cardTrunfo: false,
+  //     hasTrunfo: false,
 
-    };
-  }
+  //   };
+  // }
 
-  handleChange({ target }) {
-    const { name, type } = target;
-    const value = type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value });
-  }
+  // handleChange({ target }) {
+  //   const { name, type } = target;
+  //   const value = type === 'checkbox' ? target.checked : target.value;
+  //   this.setState({
+  //     [name]: value });
+  // }
 
-  handleSubmit(event) {
-    event.preventDefault();
-  }
+  // handleSubmit(event) {
+  //   event.preventDefault();
+  // }
 
   render() {
     const {
-      name,
-      description,
-      colors,
-      duration,
-      crackling,
-      image,
-      rare,
-      tryunfo,
-    } = this.state;
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick,
+    } = this.props;
 
     return (
       <div>
         <h1>Adicionar nova carta</h1>
 
-        <form className="new-card-form" onSubmit={ this.handleSubmit }>
+        <form className="new-card-form">
 
-          <label htmlFor="name">
+          <label htmlFor="cardName">
             Nome
             <input
               type="text"
               data-testid="name-input"
-              name="name"
-              id="name"
-              value={ name }
-              onChange={ this.handleChange }
+              name="cardName"
+              id="cardName"
+              value={ cardName }
+              onChange={ onInputChange }
             />
           </label>
 
@@ -66,9 +72,9 @@ class Form extends Component {
               type="textarea"
               name="description"
               id="description"
-              value={ description }
+              value={ cardDescription }
               data-testid="description-input"
-              onChange={ this.handleChange }
+              onChange={ onInputChange }
             />
           </label>
 
@@ -78,9 +84,9 @@ class Form extends Component {
               type="number"
               name="colors"
               id="colors"
-              value={ colors }
+              value={ cardAttr1 }
               data-testid="attr1-input"
-              onChange={ this.handleChange }
+              onChange={ onInputChange }
             />
           </label>
 
@@ -90,9 +96,8 @@ class Form extends Component {
               type="number"
               name="duration"
               id="duration"
-              value={ duration }
-              data-testid="attr2-input"
-              onChange={ this.handleChange }
+              value={ cardAttr2 }
+              onChange={ onInputChange }
             />
           </label>
 
@@ -102,9 +107,8 @@ class Form extends Component {
               type="number"
               name="crackling"
               id="crackling"
-              value={ crackling }
-              data-testid="attr3-input"
-              onChange={ this.handleChange }
+              value={ cardAttr3 }
+              onChange={ onInputChange }
             />
           </label>
 
@@ -114,9 +118,9 @@ class Form extends Component {
               type="text"
               name="image"
               id="image"
-              value={ image }
+              value={ cardImage }
               data-testid="image-input"
-              onChange={ this.handleChange }
+              onChange={ onInputChange }
             />
           </label>
 
@@ -126,8 +130,8 @@ class Form extends Component {
               data-testid="rare-input"
               name="rare"
               id="rare"
-              value={ rare }
-              onChange={ this.handleChange }
+              value={ cardRare }
+              onChange={ onInputChange }
             >
               <option value="normal">Normal</option>
               <option value="raro">Raro</option>
@@ -141,16 +145,17 @@ class Form extends Component {
               data-testid="trunfo-input"
               name="tryunfo"
               id="tryunfo"
-              value={ tryunfo }
-              onChange={ this.handleChange }
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
             />
           </label>
 
           <button
             type="submit"
-            disabled
+            disabled={ isSaveButtonDisabled }
             id="save"
             data-testid="save-button"
+            onClick={ onSaveButtonClick }
           >
             Salvar
           </button>
@@ -159,5 +164,20 @@ class Form extends Component {
     );
   }
 }
+
+Form.propTypes = {
+  cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  cardRare: PropTypes.string.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
+};
 
 export default Form;
