@@ -11,7 +11,8 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
   }
 
-  onInputChange() {
+  onInputChange({ target }) {
+    console.log(target);
     console.log('target');
     console.log(this);
     // this.setState({
