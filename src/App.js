@@ -90,7 +90,7 @@ class App extends React.Component {
       isSaveButtonDisabled };
 
     this.setState((prevState) => ({
-      cardsList: [{ objState, ...prevState.cardsList }],
+      cardsList: [{ objState }, ...prevState.cardsList],
     }), () => this.setState(({
       cardName: '',
       cardDescription: '',
@@ -116,7 +116,8 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
-      isSaveButtonDisabled } = this.state;
+      isSaveButtonDisabled,
+      cardsList } = this.state;
 
     return (
       <main className="body">
@@ -141,6 +142,7 @@ class App extends React.Component {
             />
           </section>
           <section className="preview-area">
+            <h2>Pré-visualização</h2>
             <Card
               cardName={ cardName }
               cardDescription={ cardDescription }
@@ -152,6 +154,19 @@ class App extends React.Component {
               cardTrunfo={ cardTrunfo }
             />
           </section>
+        </section>
+        <section className="cards-area">
+          { cardsList.map((card) => (<Card
+            key={ card.objState.cardName }
+            cardName={ card.objState.cardName }
+            cardDescription={ card.objState.cardDescription }
+            cardAttr1={ card.objState.cardAttr1 }
+            cardAttr2={ card.objState.cardAttr2 }
+            cardAttr3={ card.objState.cardAttr3 }
+            cardImage={ card.objState.cardImage }
+            cardRare={ card.objState.cardRare }
+            cardTrunfo={ card.objState.cardTrunfo }
+          />))}
         </section>
       </main>
     );

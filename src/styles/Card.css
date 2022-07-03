@@ -19,6 +19,12 @@
   width: 280px;
 }
 
+.rarity-area {
+  align-items: flex-end;
+  display: flex;
+  gap: 5px;
+}
+
 .image {
   height: 150px;
   object-fit: contain;
@@ -30,6 +36,5 @@
 }
 
 .logo-trunfo {
-  position: absolute;
   width: 30px;
 }

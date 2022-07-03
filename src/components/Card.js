@@ -17,18 +17,8 @@ class Card extends React.Component {
     } = this.props;
     return (
       <div className="card-preview">
-        <h2>Pré-visualização</h2>
         <div className="card">
           <h3 data-testid="name-card">{cardName}</h3>
-          {
-            cardTrunfo ? (
-              <div data-testid="trunfo-card">
-                <p className="trunfo-text">Super Trunfo</p>
-                <img src={ tryunfo } alt="Super Trunfo" className="logo-trunfo" />
-              </div>
-            ) : null
-          }
-          <p data-testid="rare-card">{cardRare}</p>
           <img
             src={ cardImage }
             alt={ cardName }
@@ -50,6 +40,17 @@ class Card extends React.Component {
               <span>{cardAttr3}</span>
             </li>
           </ul>
+          <p data-testid="rare-card" className="rarity-area">
+            {cardRare}
+            {
+              cardTrunfo ? (
+                <spam data-testid="trunfo-card">
+                  <p className="trunfo-text">Super Trunfo</p>
+                  <img src={ tryunfo } alt="Super Trunfo" className="logo-trunfo" />
+                </spam>
+              ) : null
+            }
+          </p>
         </div>
       </div>
     );
