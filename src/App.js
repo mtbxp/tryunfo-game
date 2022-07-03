@@ -87,6 +87,19 @@ class App extends React.Component {
     }));
   };
 
+  handleDeleteButton = ({ target }) => {
+    const { hasTrunfo } = this.state;
+    if (hasTrunfo) {
+      this.setState({
+        hasTrunfo: false,
+        cardTrunfo: false,
+      });
+    }
+    this.setState((prevState) => ({
+      cards: prevState.cards.filter(({ cardName }) => cardName !== target.id),
+    }));
+  }
+
   render() {
     const {
       cardName,
@@ -130,19 +143,30 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
         />
         <section className="all-cards">
+          <h2>Todas as cartas</h2>
           {
             cards.map((card) => (
-              <Card
-                key={ card.cardName }
-                cardName={ card.cardName }
-                cardDescription={ card.cardDescription }
-                cardAttr1={ card.cardAttr1 }
-                cardAttr2={ card.cardAttr2 }
-                cardAttr3={ card.cardAttr3 }
-                cardImage={ card.cardImage }
-                cardRare={ card.cardRare }
-                cardTrunfo={ card.cardTrunfo }
-              />
+              <section className="saved-card" key={ card.cardName }>
+                <Card
+                  cardName={ card.cardName }
+                  cardDescription={ card.cardDescription }
+                  cardAttr1={ card.cardAttr1 }
+                  cardAttr2={ card.cardAttr2 }
+                  cardAttr3={ card.cardAttr3 }
+                  cardImage={ card.cardImage }
+                  cardRare={ card.cardRare }
+                  cardTrunfo={ card.cardTrunfo }
+                />
+
+                <button
+                  type="button"
+                  data-testid="delete-button"
+                  id={ card.cardName }
+                  onClick={ this.handleDeleteButton }
+                >
+                  Excluir
+                </button>
+              </section>
             ))
           }
         </section>
