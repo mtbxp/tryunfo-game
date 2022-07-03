@@ -22,69 +22,81 @@ class Form extends React.Component {
       <div>
         <form className="form">
           <label htmlFor="cardName">
-            Nome:
+            <span> Nome: </span>
             <input
               name="cardName"
               data-testid="name-input"
               type="text"
               value={ cardName }
               onChange={ onInputChange }
+              placeholder="Insira o nome da carta"
             />
           </label>
 
           <label htmlFor="inputDescription">
-            Descrição:
+            <span> Descrição: </span>
             <input
               name="cardDescription"
               data-testid="description-input"
               type="textarea"
               value={ cardDescription }
               onChange={ onInputChange }
+              placeholder="Breve descrição sobre a carta"
             />
           </label>
 
           <label htmlFor="inputAttr1">
-            Atributo 1:
+            <span> Atributo 1: </span>
             <input
+              min="1"
+              max="90"
               name="cardAttr1"
               data-testid="attr1-input"
               type="number"
               value={ cardAttr1 }
               onChange={ onInputChange }
+              placeholder="Valor"
             />
           </label>
 
           <label htmlFor="inputAttr2">
-            Atributo 2:
+            <span> Atributo 2: </span>
             <input
+              min="1"
+              max="90"
               name="cardAttr2"
               data-testid="attr2-input"
               type="number"
               value={ cardAttr2 }
               onChange={ onInputChange }
+              placeholder="Valor"
 
             />
           </label>
 
           <label htmlFor="inputAttr3">
-            Atributo 3:
+            <span> Atributo 3: </span>
             <input
+              min="1"
+              max="90"
               name="cardAttr3"
               data-testid="attr3-input"
               type="number"
               value={ cardAttr3 }
               onChange={ onInputChange }
+              placeholder="Valor"
             />
           </label>
 
           <label htmlFor="inputImg">
-            Imagem:
+            <span> Imagem: </span>
             <input
               name="cardImage"
               data-testid="image-input"
               type="text"
               value={ cardImage }
               onChange={ onInputChange }
+              placeholder="Link da imagem"
             />
           </label>
 
