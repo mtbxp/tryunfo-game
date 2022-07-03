@@ -11,17 +11,17 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
   }
 
-  onInputChange({ target }) {
+  onInputChange() {
     console.log('target');
-    this.setState({
-      cardName: target.value,
-    });
+    console.log(this);
+    // this.setState({
+    //   cardName: target.value,
+    // });
   }
 
   render() {
     const {
       cardName,
-      onInputChange,
     } = this.state;
     return (
       <div>
@@ -34,13 +34,15 @@ class App extends React.Component {
           type="text"
           className="name-input"
           value={ cardName }
-          onChange={ onInputChange }
+          onChange={ this.onInputChange }
           data-testid="name-input"
         />
         <Form
           cardName={ cardName }
         />
-        <Card />
+        <Card
+          cardName={ cardName }
+        />
       </div>
     );
   }
