@@ -21,10 +21,22 @@ class App extends React.Component {
   render() {
     const {
       cardName,
+      onInputChange,
     } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
+        <h1><b>Adicionar nova Carta</b></h1>
+        <br />
+        <br />
+        <b className="Nome">Nome:</b>
+        <input
+          type="text"
+          className="name-input"
+          value={ cardName }
+          onChange={ onInputChange }
+          data-testid="name-input"
+        />
         <Form
           cardName={ cardName }
         />
