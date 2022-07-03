@@ -98,13 +98,30 @@ class App extends React.Component {
       cardAttr3: '0',
       cardAttr4: '0',
       cardRare: 'normal',
-      hasTrunfo: cardTrunfo,
       cardList: [...cardList, object],
     }, () => {
-      this.setState({
-        cardTrunfo: false,
-        isSaveButtonDisabled: this.enableButton(),
-      });
+      if (cardTrunfo) {
+        this.setState({
+          cardTrunfo: false,
+          hasTrunfo: true,
+          isSaveButtonDisabled: this.enableButton(),
+        });
+      } else {
+        this.setState({
+          cardTrunfo: false,
+          isSaveButtonDisabled: this.enableButton(),
+        });
+      }
+    });
+  }
+
+  deleteCard = ({ target }) => {
+    const { className } = target;
+    const { cardList } = this.state;
+    const element = cardList.find((card) => card.cardName === className);
+    this.setState({
+      cardList: cardList.filter((ele) => ele.cardName !== className),
+      hasTrunfo: !element.cardTrunfo,
     });
   }
 
@@ -158,19 +175,30 @@ class App extends React.Component {
         />
         <h2>Todas as Cartas</h2>
         <div>
-          {cardList.map((elem) => (<Card
-            key={ elem.cardName }
-            cardName={ elem.cardName }
-            cardImage={ elem.cardImage }
-            cardDescription={ elem.cardDescription }
-            cardAttr1={ elem.cardAttr1 }
-            cardAttr2={ elem.cardAttr2 }
-            cardAttr3={ elem.cardAttr3 }
-            cardAttr4={ elem.cardAttr4 }
-            cardRare={ elem.cardRare }
-            cardTrunfo={ elem.cardTrunfo }
-            hasTrunfo={ elem.hasTrunfo }
-          />))}
+          {cardList.map((elem) => (
+            <div key={ elem.cardName }>
+              <Card
+                cardName={ elem.cardName }
+                cardImage={ elem.cardImage }
+                cardDescription={ elem.cardDescription }
+                cardAttr1={ elem.cardAttr1 }
+                cardAttr2={ elem.cardAttr2 }
+                cardAttr3={ elem.cardAttr3 }
+                cardAttr4={ elem.cardAttr4 }
+                cardRare={ elem.cardRare }
+                cardTrunfo={ elem.cardTrunfo }
+                hasTrunfo={ elem.hasTrunfo }
+              />
+              <button
+                type="button"
+                className={ elem.cardName }
+                onClick={ this.deleteCard }
+                data-testid="delete-button"
+              >
+                Excluir
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     );

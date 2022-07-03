@@ -141,7 +141,7 @@ class Form extends React.Component {
         { this.showPhrase(hasTrunfo, cardTrunfo, onInputChange) }
 
         <button
-          type="button"
+          type="submit"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
           data-testid="save-button"
