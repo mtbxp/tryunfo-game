@@ -40,8 +40,19 @@ h1 {
   width: 50%;
 }
 
+.preview-area h2 {
+  color: white;
+}
+
 .cards-area {
   background-color: #fafafa;
   display: flex;
+  flex-wrap: wrap;
   gap: 30px;
+}
+
+.savedCard {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
