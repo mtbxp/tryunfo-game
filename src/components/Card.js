@@ -19,7 +19,12 @@ class Card extends Component {
         <p data-testid="name-card" className="NomeDoCard">
           { cardName }
         </p>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
+        <img
+          className="imgSize"
+          src={ cardImage }
+          alt={ cardName }
+          data-testid="image-card"
+        />
         <p data-testid="description-card" className="DescricaoCard">
           { cardDescription }
         </p>
