@@ -16,6 +16,8 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      deckCard: [],
+      onSaveButtonClick: this.onSaveButtonClick,
     };
   }
 
@@ -31,7 +33,46 @@ class App extends React.Component {
     }
   }
 
-validateButton = () => {
+  validateButton = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+
+    // let ableButton = true;
+    const maxSum = 210;
+    const maxAttr = 90;
+    const minAttr = 0;
+
+    if (
+      cardName.length
+      && cardDescription.length
+      && cardImage.length
+      && cardRare.length !== 0
+      && Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= maxSum
+      && Number(cardAttr1) <= maxAttr
+      && Number(cardAttr1) >= minAttr
+      && Number(cardAttr2) <= maxAttr
+      && Number(cardAttr2) >= minAttr
+      && Number(cardAttr3) <= maxAttr
+      && Number(cardAttr3) >= minAttr
+    ) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
+  }
+
+onSaveButtonClick = () => {
   const {
     cardName,
     cardDescription,
@@ -41,33 +82,19 @@ validateButton = () => {
     cardImage,
     cardRare,
   } = this.state;
+  const card = {
+    cardName,
+    cardDescription,
+    cardAttr1,
+    cardAttr2,
+    cardAttr3,
+    cardImage,
+    cardRare,
+  };
 
-  // let ableButton = true;
-  const maxSum = 210;
-  const maxAttr = 90;
-  const minAttr = 0;
-
-  if (
-    cardName.length
-    && cardDescription.length
-    && cardImage.length
-    && cardRare.length !== 0
-    && Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= maxSum
-    && Number(cardAttr1) <= maxAttr
-    && Number(cardAttr1) >= minAttr
-    && Number(cardAttr2) <= maxAttr
-    && Number(cardAttr2) >= minAttr
-    && Number(cardAttr3) <= maxAttr
-    && Number(cardAttr3) >= minAttr
-  ) {
-    this.setState({
-      isSaveButtonDisabled: false,
-    });
-  } else {
-    this.setState({
-      isSaveButtonDisabled: true,
-    });
-  }
+  this.setState((prev) => ({
+    deckCard: [card, ...prev.deckCard],
+  }));
 }
 
 render() {
@@ -81,6 +108,7 @@ render() {
     cardRare,
     cardTrunfo,
     isSaveButtonDisabled,
+    onSaveButtonClick,
   } = this.state;
 
   // Auxilio do colega Lucas Medeiros que me explicou melhor o conceito de props
@@ -98,6 +126,7 @@ render() {
         cardTrunfo={ cardTrunfo }
         isSaveButtonDisabled={ isSaveButtonDisabled }
         onInputChange={ this.onInputChange }
+        onSaveButtonClick={ onSaveButtonClick }
       />
 
       <Card
