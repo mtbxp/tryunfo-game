@@ -1,3 +1,4 @@
+import { element } from 'prop-types';
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
@@ -9,6 +10,7 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.validateBtn = this.validateBtn.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.validadeTrunfo = this.validadeTrunfo.bind(this);
 
     this.state = {
       cardName: '',
@@ -21,6 +23,7 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       listCard: [],
+      hasTrunfo: false,
     };
   }
 
@@ -41,6 +44,7 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
     } = this.state;
     this.setState((prevState) => ({
       listCard: [{
@@ -51,8 +55,9 @@ class App extends React.Component {
         cardAttr3,
         cardImage,
         cardRare,
+        cardTrunfo,
       }, ...prevState.listCard],
-    }));
+    }), () => this.validadeTrunfo());
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -61,6 +66,7 @@ class App extends React.Component {
       cardAttr2: '0',
       cardAttr3: '0',
       cardRare: 'normal',
+      cardTrunfo: false,
     });
   }
 
@@ -101,6 +107,14 @@ class App extends React.Component {
     });
   }
 
+  validadeTrunfo() {
+    const { listCard } = this.state;
+    const result = listCard.some((item) => item.cardTrunfo === true);
+    this.setState({
+      hasTrunfo: result,
+    });
+  }
+
   render() {
     const {
       cardName,
@@ -112,6 +126,8 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      hasTrunfo,
+      listCard,
     } = this.state;
 
     return (
@@ -129,6 +145,7 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ hasTrunfo }
         />
         {' '}
         <Card
@@ -141,6 +158,19 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        { listCard.map((card) => (
+          <Card
+            key={ card.cardName }
+            cardName={ card.cardName }
+            cardDescription={ card.cardDescription }
+            cardAttr1={ card.cardAttr1 }
+            cardAttr2={ card.cardAttr2 }
+            cardAttr3={ card.cardAttr3 }
+            cardImage={ card.cardImage }
+            cardRare={ card.cardRare }
+            cardTrunfo={ card.cardTrunfo }
+          />
+        ))}
       </div>
     );
   }
