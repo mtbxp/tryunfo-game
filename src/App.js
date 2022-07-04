@@ -22,21 +22,6 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
   }
 
-  onInputChange({ target }) {
-    console.log(target);
-    console.log('target');
-    console.log(this);
-    const { name, type } = target;
-    if (type === 'checkbox') {
-      return this.setState({
-        [name]: true,
-      });
-    }
-    this.setState({
-      [name]: target.value,
-    });
-  }
-
   saveButtonOpen1() {
     const { cardAttr1 } = this.state;
     return (cardAttr1 > 0 && cardAttr1 <= limitU);
@@ -44,14 +29,12 @@ class App extends React.Component {
 
   saveButtonOpen2() {
     const { cardAttr2 } = this.state;
-    if (cardAttr2 > 0 && cardAttr2 <= limitU) return true;
-    return false;
+    return (cardAttr2 > 0 && cardAttr2 <= limitU);
   }
 
   saveButtonOpen3() {
     const { cardAttr3 } = this.state;
-    if (cardAttr3 > 0 && cardAttr3 <= limitU) return true;
-    return false;
+    return (cardAttr3 > 0 && cardAttr3 <= limitU);
   }
 
   saveButtonOpen4() {
@@ -59,26 +42,22 @@ class App extends React.Component {
     const cd1 = cardAttr1;
     const cd2 = cardAttr2;
     const cd3 = cardAttr3;
-    if (cd1 + cd2 + cd3 <= limitG) return true;
-    return false;
+    return (cd1 + cd2 + cd3 <= limitG);
   }
 
   saveButtonOpen5() {
     const { cardName } = this.state;
-    if (cardName.length > 0) return true;
-    return false;
+    return (cardName.length > 0);
   }
 
   saveButtonOpen6() {
     const { cardDescription } = this.state;
-    if (cardDescription.length > 0) return true;
-    return false;
+    return (cardDescription.length > 0);
   }
 
   saveButtonOpen7() {
     const { cardImage } = this.state;
-    if (cardImage.length > 0) return true;
-    return false;
+    return (cardImage.length > 0);
   }
 
   isSaveButton() {
@@ -97,6 +76,18 @@ class App extends React.Component {
     return this.setState({
       isSaveButtonDisabled: false,
     });
+  }
+
+  onInputChange({ target }) {
+    const { name, type } = target;
+    if (type === 'checkbox') {
+      return this.setState({
+        [name]: true,
+      });
+    }
+    this.setState({
+      [name]: target.value,
+    }, () => this.isSaveButton);
   }
 
   render() {
