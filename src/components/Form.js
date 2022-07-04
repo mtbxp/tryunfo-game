@@ -12,7 +12,6 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // eslint-disable-next-line no-unused-vars
       hasTrunfo,
       isSaveButtonDisabled,
       onSaveButtonClick,
@@ -92,15 +91,19 @@ class Form extends React.Component {
             <option value="muito raro">Venus</option>
           </select>
         </div>
-        <label htmlFor="trunfo">
-          <input
-            data-testid="trunfo-input"
-            name="cardTrunfo"
-            type="checkbox"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-        </label>
+        { hasTrunfo ? <h4>Você já tem um Super Trunfo em seu baralho</h4>
+          : (
+            <label htmlFor="trunfo">
+              Super Trunfo
+              <input
+                name="cardTrunfo"
+                data-testid="trunfo-input"
+                type="checkbox"
+                checked={ cardTrunfo }
+                onChange={ onInputChange }
+              />
+            </label>
+          )}
         <button
           type="button"
           data-testid="save-button"
