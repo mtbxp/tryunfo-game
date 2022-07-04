@@ -20,54 +20,55 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
     };
     this.onInputChange = this.onInputChange.bind(this);
+    this.onInputChange = this.saveButtonOpenN.bind(this);
+    this.onInputChange = this.saveButtonOpenS.bind(this);
+    this.onInputChange = this.saveButtonOpenW.bind(this);
+    this.isSaveButton = this.isSaveButton.bind(this);
   }
 
-  saveButtonOpen1() {
-    const { cardAttr1 } = this.state;
-    return (cardAttr1 > 0 && cardAttr1 <= limitU);
+  onInputChange({ target }) {
+    const { name, type, value, checked } = target;
+    if (type === 'checkbox') {
+      return this.setState({
+        [name]: checked,
+      }, () => this.isSaveButton);
+    }
+    this.setState({
+      [name]: value,
+    }, () => this.isSaveButton);
   }
 
-  saveButtonOpen2() {
-    const { cardAttr2 } = this.state;
-    return (cardAttr2 > 0 && cardAttr2 <= limitU);
+  saveButtonOpenN(atributinho) {
+    return (atributinho > 0 && atributinho <= limitU);
   }
 
-  saveButtonOpen3() {
-    const { cardAttr3 } = this.state;
-    return (cardAttr3 > 0 && cardAttr3 <= limitU);
-  }
-
-  saveButtonOpen4() {
-    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
-    const cd1 = cardAttr1;
-    const cd2 = cardAttr2;
-    const cd3 = cardAttr3;
+  saveButtonOpenS(cd1, cd2, cd3) {
     return (cd1 + cd2 + cd3 <= limitG);
   }
 
-  saveButtonOpen5() {
+  saveButtonOpenW() {
     const { cardName } = this.state;
     return (cardName.length > 0);
   }
 
-  saveButtonOpen6() {
-    const { cardDescription } = this.state;
-    return (cardDescription.length > 0);
-  }
-
-  saveButtonOpen7() {
-    const { cardImage } = this.state;
-    return (cardImage.length > 0);
-  }
-
   isSaveButton() {
-    const op1 = this.saveButtonOpen1();
-    const op2 = this.saveButtonOpen2();
-    const op3 = this.saveButtonOpen3();
-    const op4 = this.saveButtonOpen4();
-    const op5 = this.saveButtonOpen5();
-    const op6 = this.saveButtonOpen6();
-    const op7 = this.saveButtonOpen7();
+    console.log('entrei');
+    const {
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardName,
+      cardDescription,
+      cardImage,
+    } = this.state;
+    const op1 = this.saveButtonOpenN(cardAttr1);
+    const op2 = this.saveButtonOpenN(cardAttr2);
+    const op3 = this.saveButtonOpenN(cardAttr3);
+    const op4 = this.saveButtonOpenS(cardAttr1, cardAttr2, cardAttr3);
+    const op5 = this.saveButtonOpenW(cardName);
+    const op6 = this.saveButtonOpenW(cardDescription);
+    const op7 = this.saveButtonOpenW(cardImage);
+    console.log(op1, op2, op3, op4, op5, op6, op7);
     if (!op1 || !op2 || !op3 || !op4 || !op5 || !op6 || !op7) {
       return this.setState({
         isSaveButtonDisabled: true,
@@ -76,18 +77,6 @@ class App extends React.Component {
     return this.setState({
       isSaveButtonDisabled: false,
     });
-  }
-
-  onInputChange({ target }) {
-    const { name, type } = target;
-    if (type === 'checkbox') {
-      return this.setState({
-        [name]: true,
-      });
-    }
-    this.setState({
-      [name]: target.value,
-    }, () => this.isSaveButton);
   }
 
   render() {
