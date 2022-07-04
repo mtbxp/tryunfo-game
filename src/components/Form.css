@@ -1,0 +1,17 @@
+.form-card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  background-color: #aab69b;
+  padding: 20px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+span {
+  text-align: center;
+}

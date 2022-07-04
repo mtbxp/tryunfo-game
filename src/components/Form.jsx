@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Form.css';
 
 class Form extends React.Component {
   render() {
@@ -18,9 +19,9 @@ class Form extends React.Component {
     } = this.props;
 
     return (
-      <form>
+      <form className="form-card">
         <label htmlFor="input-name">
-          Nome
+          <span>Nome</span>
           <input
             id="input-name"
             data-testid="name-input"

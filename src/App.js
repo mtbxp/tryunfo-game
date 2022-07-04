@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -17,6 +18,43 @@ class App extends React.Component {
       cardTrunfo: false,
     };
   }
+
+  checkInputs = () => {
+    const { cardName, cardDescription, cardImage } = this.state;
+
+    if (cardName.length === 0) return true;
+    if (cardDescription.length === 0) return true;
+    if (cardImage.length === 0) return true;
+
+    return false;
+  };
+
+  checkAttributes = () => {
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    const attributesNumber = [
+      parseInt(cardAttr1, 10),
+      parseInt(cardAttr2, 10),
+      parseInt(cardAttr3, 10),
+    ];
+
+    const sum = attributesNumber.reduce((acc, cur) => acc + cur);
+
+    const limitSum = 210;
+    const limitMax = 90;
+    const limitMin = 0;
+
+    if (sum > limitSum) return true;
+    if (cardAttr1 < limitMin || cardAttr1 > limitMax) return true;
+    if (cardAttr2 < limitMin || cardAttr2 > limitMax) return true;
+    if (cardAttr3 < limitMin || cardAttr3 > limitMax) return true;
+
+    return false;
+  };
+
+  validationsSave = () => {
+    if (this.checkAttributes() === true) return true;
+    if (this.checkInputs() === true) return true;
+  };
 
   handleChange = ({ target }) => {
     const { name } = target;
@@ -40,7 +78,7 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <div>
+      <section className="App">
         <h1>Tryunfo</h1>
         <Form
           cardName={ cardName }
@@ -52,6 +90,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.handleChange }
+          isSaveButtonDisabled={ this.validationsSave() }
         />
 
         <Card
@@ -64,7 +103,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-      </div>
+      </section>
     );
   }
 }
