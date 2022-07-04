@@ -5,7 +5,6 @@ import Form from './components/Form';
 class App extends React.Component {
   constructor() {
     super();
-    this.handleChange = this.handleChange.bind(this);
 
     this.state = {
       cardName: '',
@@ -17,17 +16,53 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       hasTrunfo: false,
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
     };
   }
 
-  handleChange({ target }) {
+  valideForm = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+
+    const cardPoints = 90;
+    const cardSum = 210;
+    const attrSum = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
+
+    if (cardName !== ''
+      && cardDescription !== ''
+      && cardImage !== ''
+      && cardRare !== ''
+      && cardAttr1 >= 0
+      && cardAttr2 >= 0
+      && cardAttr3 >= 0
+      && cardAttr1 <= cardPoints
+      && cardAttr2 <= cardPoints
+      && cardAttr3 <= cardPoints
+      && attrSum <= cardSum) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
+  }
+
+  handleChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
     this.setState({
       [name]: value,
-    });
+    }, this.valideForm);
   }
 
   render() {
