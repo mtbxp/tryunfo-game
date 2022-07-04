@@ -230,9 +230,9 @@ textarea {
 }
 
 .container-tryunfo {
-  width: 100%;
   border: 1px solid black;
   margin: 1rem;
   padding: 2rem;
   text-align: center;
+  width: 100%;
 }
