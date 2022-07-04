@@ -20,7 +20,6 @@ class Form extends React.Component {
 
     return (
       <form>
-        <h1>Adicionar nova carta</h1>
         <label htmlFor="input-name">
           Nome
           <input
