@@ -29,19 +29,18 @@ class Form extends React.Component {
           <input type="text" data-testid="image-input" />
         </label>
         <label htmlFor="rare">
-          <select data-testid="rare-input">
-            <options value="normal">normal</options>
-            <options value="raro">raro</options>
-            <options value="muito-raro">muito raro</options>
+          <select data-testid="rare-input" id="rare">
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito Raro</option>
           </select>
         </label>
         <label htmlFor="super-trunfo">
           <input type="checkbox" data-testid="trunfo-input" />
         </label>
-        <label htmlFor="save-button">
+        <button type="button" data-testid="save-button">
           Salvar
-          <button type="button" data-testid="save-button" />
-        </label>
+        </button>
       </>
     );
   }
