@@ -14,21 +14,15 @@ class App extends React.Component {
       errors: {},
       cardName: '',
       cardDescription: '',
-      cardAttr1: 1,
-      cardAttr2: 1,
-      cardAttr3: 1,
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
       cardImage: '',
-      cardRare: 'normal',
+      cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisable: true,
       hasTrunfo: false,
     };
-  }
-
-  hasTrunfoToggle = () => {
-    let { hasTrunfo } = this.state;
-    hasTrunfo = !hasTrunfo;
-    this.setState = { hasTrunfo };
   }
 
   onSaveButtonClick = (event) => {
@@ -37,6 +31,10 @@ class App extends React.Component {
       cardRare, cardTrunfo } = this.state;
 
     event.preventDefault();
+
+    let hasTrunfo;
+
+    if (cardTrunfo) hasTrunfo = true;
 
     const card = {
       cardName,
@@ -54,27 +52,23 @@ class App extends React.Component {
       errors: {},
       cardName: '',
       cardDescription: '',
-      cardAttr1: 1,
-      cardAttr2: 1,
-      cardAttr3: 1,
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
       cardImage: '',
-      cardRare: 'normal',
+      cardRare: '',
       cardTrunfo: false,
-      isSaveButtonDisable: true,
+      isSaveButtonDisabled: true,
+      hasTrunfo,
     }));
   }
 
   getErrors = () => {
     const errors = validateForm(this.state);
-    let isSaveButtonDisable;
-    if (Object.keys(errors).length === 0) {
-      isSaveButtonDisable = false;
-    } else {
-      isSaveButtonDisable = true;
-    }
+    console.log(errors);
+
     this.setState(() => ({
-      errors,
-      isSaveButtonDisable,
+      isSaveButtonDisable: errors,
     }));
   }
 
@@ -89,7 +83,7 @@ class App extends React.Component {
   render() {
     const {
       cards, cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisable, errors,
+      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled, errors,
     } = this.state;
 
     return (
@@ -105,7 +99,7 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
-            isSaveButtonDisable={ isSaveButtonDisable }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
             hasTrunfo={ hasTrunfo }
             errors={ errors }
             onInputChange={ this.onInputChange }

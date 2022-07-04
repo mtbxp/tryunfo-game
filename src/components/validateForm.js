@@ -4,39 +4,38 @@ function validateForm(params) {
 
   const maxAttr = 90;
   const minAttr = 1;
-  const errAttr = `*Apenas números de 1 a ${maxAttr} suportados`;
 
-  const erros = {};
+  let errors = false;
 
-  if (!cardName.length) {
-    erros.name = '*Preencha o nome da carta';
+  if (cardName.length === 0) {
+    errors = true;
   }
 
-  if (!cardDescription.length) {
-    erros.description = '*Preencha a descrição da carta';
+  if (cardDescription.length === 0) {
+    errors = true;
   }
 
-  if (!cardImage.length) {
-    erros.image = '*Preencha a imagem da carta';
+  if (cardImage.length === 0) {
+    errors = true;
   }
 
-  if (!cardRare.length) {
-    erros.rare = '*Preencha a popularidade da carta';
+  if (cardRare.length === 0) {
+    errors = true;
   }
 
   if (cardAttr1 < minAttr || cardAttr1 > maxAttr) {
-    erros.attr = errAttr;
+    errors = true;
   }
 
   if (cardAttr2 < minAttr || cardAttr2 > maxAttr) {
-    erros.attr = errAttr;
+    errors = true;
   }
 
   if (cardAttr3 < minAttr || cardAttr3 > maxAttr) {
-    erros.attr = errAttr;
+    errors = true;
   }
 
-  return erros;
+  return errors;
 }
 
 export default validateForm;
