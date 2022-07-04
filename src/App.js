@@ -20,9 +20,9 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
     };
     this.onInputChange = this.onInputChange.bind(this);
-    this.onInputChange = this.saveButtonOpenN.bind(this);
-    this.onInputChange = this.saveButtonOpenS.bind(this);
-    this.onInputChange = this.saveButtonOpenW.bind(this);
+    this.saveButtonOpenN = this.saveButtonOpenN.bind(this);
+    this.saveButtonOpenS = this.saveButtonOpenS.bind(this);
+    this.saveButtonOpenW = this.saveButtonOpenW.bind(this);
     this.isSaveButton = this.isSaveButton.bind(this);
   }
 
@@ -35,7 +35,7 @@ class App extends React.Component {
     }
     this.setState({
       [name]: value,
-    }, () => this.isSaveButton);
+    }, () => console.log(this.isSaveButton()));
   }
 
   saveButtonOpenN(atributinho) {
@@ -43,12 +43,11 @@ class App extends React.Component {
   }
 
   saveButtonOpenS(cd1, cd2, cd3) {
-    return (cd1 + cd2 + cd3 <= limitG);
+    return (cd1 + cd2 + cd3 >= limitG);
   }
 
-  saveButtonOpenW() {
-    const { cardName } = this.state;
-    return (cardName.length > 0);
+  saveButtonOpenW(textoInput) {
+    return (textoInput.length > 0);
   }
 
   isSaveButton() {
