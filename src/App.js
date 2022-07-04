@@ -122,20 +122,21 @@ class App extends React.Component {
             cardImage: cardImage1,
             cardRare: cardRare1,
             cardTrunfo: cardTrunfo1,
-          }) => (<>
-            <h2>Todas as cartas</h2>
-            <Card
-              key={ `${cardName1} ${cardDescription1}` }
-              cardName={ cardName1 }
-              cardDescription={ cardDescription1 }
-              cardAttr1={ cardAttr01 }
-              cardAttr2={ cardAttr02 }
-              cardAttr3={ cardAttr03 }
-              cardImage={ cardImage1 }
-              cardRare={ cardRare1 }
-              cardTrunfo={ cardTrunfo1 }
-            />
-          </>))
+          }) => (
+            <>
+              <h2>Todas as cartas</h2>
+              <Card
+                key={ `${cardName1} ${cardDescription1}` }
+                cardName={ cardName1 }
+                cardDescription={ cardDescription1 }
+                cardAttr1={ cardAttr01 }
+                cardAttr2={ cardAttr02 }
+                cardAttr3={ cardAttr03 }
+                cardImage={ cardImage1 }
+                cardRare={ cardRare1 }
+                cardTrunfo={ cardTrunfo1 }
+              />
+            </>))
         }
 
       </>
