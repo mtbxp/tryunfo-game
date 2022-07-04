@@ -12,11 +12,16 @@ class Card extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      isSaveButton,
     } = this.props;
 
     return (
       <div id="divCard">
-        <p data-testid="name-card" className="NomeDoCard">
+        <p
+          data-testid="name-card"
+          className="NomeDoCard"
+          onChange={ isSaveButton }
+        >
           { cardName }
         </p>
         <img
@@ -25,12 +30,34 @@ class Card extends Component {
           alt={ cardName }
           data-testid="image-card"
         />
-        <p data-testid="description-card" className="DescricaoCard">
+        <p
+          data-testid="description-card"
+          className="DescricaoCard"
+          onChange={ isSaveButton }
+        >
           { cardDescription }
         </p>
-        <p data-testid="attr1-card" className="Atb1 Atributos">{ cardAttr1 }</p>
-        <p data-testid="attr2-card" className="Atb2 Atributos">{ cardAttr2 }</p>
-        <p data-testid="attr3-card" className="Atb3 Atributos">{ cardAttr3 }</p>
+        <p
+          data-testid="attr1-card"
+          className="Atb1 Atributos"
+          onChange={ isSaveButton }
+        >
+          { cardAttr1 }
+        </p>
+        <p
+          data-testid="attr2-card"
+          className="Atb2 Atributos"
+          onChange={ isSaveButton }
+        >
+          { cardAttr2 }
+        </p>
+        <p
+          data-testid="attr3-card"
+          className="Atb3 Atributos"
+          onChange={ isSaveButton }
+        >
+          { cardAttr3 }
+        </p>
         <p data-testid="rare-card" className="Raridade">{ cardRare }</p>
         { cardTrunfo === true ? (
           <p
@@ -53,6 +80,7 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  isSaveButton: PropTypes.func.isRequired,
 };
 
 export default Card;

@@ -69,6 +69,7 @@ class Form extends Component {
       cardRare,
       cardTrunfo,
       // hasTrunfo,
+      // isSaveButton,
     } = this.props;
     return (
       <div id="divForm">
@@ -196,6 +197,7 @@ Form.propTypes = {
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   // hasTrunfo: PropTypes.bool.isRequired,
+  // isSaveButton: PropTypes.func.isRequired,
 };
 
 export default Form;

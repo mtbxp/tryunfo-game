@@ -39,19 +39,18 @@ class App extends React.Component {
 
   saveButtonOpen1() {
     const { cardAttr1 } = this.state;
-    if (cardAttr1 >= 0 && cardAttr1 <= limitU) return true;
-    return false;
+    return (cardAttr1 > 0 && cardAttr1 <= limitU);
   }
 
   saveButtonOpen2() {
     const { cardAttr2 } = this.state;
-    if (cardAttr2 >= 0 && cardAttr2 <= limitU) return true;
+    if (cardAttr2 > 0 && cardAttr2 <= limitU) return true;
     return false;
   }
 
   saveButtonOpen3() {
     const { cardAttr3 } = this.state;
-    if (cardAttr3 >= 0 && cardAttr3 <= limitU) return true;
+    if (cardAttr3 > 0 && cardAttr3 <= limitU) return true;
     return false;
   }
 
@@ -82,24 +81,23 @@ class App extends React.Component {
     return false;
   }
 
-  // isSaveButtonOpen() {
-  //   const { isSaveButtonDisabled } = this.state;
-  //   const op1 = this.saveButtonOpen1();
-  //   const op2 = this.saveButtonOpen2();
-  //   const op3 = this.saveButtonOpen3();
-  //   const op4 = this.saveButtonOpen4();
-  //   const op5 = this.saveButtonOpen5();
-  //   const op6 = this.saveButtonOpen6();
-  //   const op7 = this.saveButtonOpen7();
-  //   if (!op1 || !op2 || !op3 || !op4 || !op5 || !op6 || !op7) {
-  //     return this.setState({
-  //       isSaveButtonOpen: true,
-  //     });
-  //   }
-  //   return this.setState({
-  //     isSaveButtonOpen: false,
-  //   });
-  // }
+  isSaveButton() {
+    const op1 = this.saveButtonOpen1();
+    const op2 = this.saveButtonOpen2();
+    const op3 = this.saveButtonOpen3();
+    const op4 = this.saveButtonOpen4();
+    const op5 = this.saveButtonOpen5();
+    const op6 = this.saveButtonOpen6();
+    const op7 = this.saveButtonOpen7();
+    if (!op1 || !op2 || !op3 || !op4 || !op5 || !op6 || !op7) {
+      return this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
+    return this.setState({
+      isSaveButtonDisabled: false,
+    });
+  }
 
   render() {
     const {
