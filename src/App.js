@@ -19,6 +19,7 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       cardList: [],
+      cardListSave: [],
     };
   }
 
@@ -125,6 +126,30 @@ class App extends React.Component {
     });
   }
 
+  inputSave = ({ target }) => {
+    const { value } = target;
+    const { cardList } = this.state;
+    if (value === '') {
+      this.setState({
+        cardListSave: cardList,
+      });
+    }
+  }
+
+  nameFilter = ({ target }) => {
+    const { value } = target;
+    const { cardListSave } = this.state;
+    this.setState({
+      cardList: cardListSave.filter((ele) => ele.cardName.includes(value)),
+    }, () => {
+      if (value === '') {
+        this.setState({
+          cardList: cardListSave,
+        });
+      }
+    });
+  }
+
   render() {
     const {
       cardName,
@@ -144,37 +169,48 @@ class App extends React.Component {
     return (
       <div>
         <h1>Tryunfo Pokemon</h1>
-        <h2>Adicionar Nova Carta</h2>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardImage={ cardImage }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardAttr4={ cardAttr4 }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <h2>Pré-Visualização</h2>
-        <Card
-          cardName={ cardName }
-          cardImage={ cardImage }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardAttr4={ cardAttr4 }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-        />
+        <div className="container">
+          <Form
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardImage={ cardImage }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardAttr4={ cardAttr4 }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <div>
+            <h2>Pré-Visualização</h2>
+            <Card
+              cardName={ cardName }
+              cardImage={ cardImage }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardAttr4={ cardAttr4 }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              hasTrunfo={ hasTrunfo }
+            />
+          </div>
+        </div>
         <h2>Todas as Cartas</h2>
-        <div>
+        <div className="input-container">
+          <input
+            type="text"
+            onSelect={ this.inputSave }
+            onChange={ this.nameFilter }
+            data-testid="name-filter"
+          />
+        </div>
+        <div className="cardList">
           {cardList.map((elem) => (
             <div key={ elem.cardName }>
               <Card

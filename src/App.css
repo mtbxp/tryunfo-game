@@ -13,7 +13,7 @@ form {
 }
 
 label {
-  margin: 10px;
+  margin: 2px;
 }
 
 p {
@@ -41,8 +41,14 @@ option {
 
 button {
   align-self: center;
-  background-color: blue;
-  color: white;
+  background-color: white;
+  height: 30px;
+  width: 60px;
+}
+
+.form-button {
+  align-self: center;
+  background-color: white;
   height: 40px;
   width: 100px;
 }
@@ -70,6 +76,7 @@ button {
 .card {
   display: flex;
   flex-direction: column;
+  margin: 10px 48px;
 }
 
 img {
@@ -88,4 +95,22 @@ img {
   height: 30px;
   padding-top: 4px;
   width: 120px;
+}
+
+.container {
+  display: flex;
+  margin: 10px;
+  padding: 5px;
+  border: 4px solid white;
+  border-radius: 2%;
+  justify-content: space-around;
+}
+
+h2 {
+  margin: 5px;
+}
+
+.cardList {
+  display: flex;
+  flex-wrap: wrap;
 }
