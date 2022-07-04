@@ -211,28 +211,28 @@ textarea {
 }
 
 .container-card {
-  text-align: center;
-  width: 50%;
-  display: inline-block;
   border: 1px solid red;
   border-radius: var(--borderRadius);
-  padding: 16px 16px;
+  display: inline-block;
+  padding: 16px;
+  text-align: center;
   vertical-align: middle;
+  width: 50%;
 }
 
 .container-preview {
-  text-align: left;
-  width: 50%;
-  display: inline-block;
   border: 1px solid red;
-  padding: 1rem 1rem;
+  display: inline-block;
+  padding: 1rem;
+  text-align: left;
   vertical-align: middle;
+  width: 50%;
 }
 
 .container-tryunfo {
   width: 100%;
   border: 1px solid black;
   margin: 1rem;
-  padding: 2rem 2rem;
+  padding: 2rem;
   text-align: center;
 }
