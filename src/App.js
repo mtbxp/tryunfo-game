@@ -17,7 +17,7 @@ class App extends React.Component {
     console.log(this);
     const { name } = target;
     this.setState({
-      [name]: value,
+      [name]: target.value,
     });
   }
 
@@ -42,6 +42,7 @@ class App extends React.Component {
         />
         <Form
           cardName={ cardName }
+          onInputChange={ this.onInputChange }
         />
         <Card
           cardName={ cardName }
