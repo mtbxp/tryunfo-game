@@ -209,3 +209,30 @@ textarea {
   background: var(--green-light);
   color: var(--green-dark);
 }
+
+.container-card {
+  text-align: center;
+  width: 50%;
+  display: inline-block;
+  border: 1px solid red;
+  border-radius: var(--borderRadius);
+  padding: 16px 16px;
+  vertical-align: middle;
+}
+
+.container-preview {
+  text-align: left;
+  width: 50%;
+  display: inline-block;
+  border: 1px solid red;
+  padding: 1rem 1rem;
+  vertical-align: middle;
+}
+
+.container-tryunfo {
+  width: 100%;
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 2rem 2rem;
+  text-align: center;
+}
