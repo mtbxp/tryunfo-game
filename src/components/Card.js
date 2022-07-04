@@ -17,10 +17,24 @@ class Card extends React.Component {
       <div id="preview-card">
         <h2 data-testid="name-card">{cardName}</h2>
         <img data-testid="image-card" src={ cardImage } alt={ cardName } />
-        <h2 data-testid="description-card">{cardDescription}</h2>
-        <h2 data-testid="attr1-card">{cardAttr1}</h2>
-        <h2 data-testid="attr2-card">{cardAttr2}</h2>
-        <h2 data-testid="attr3-card">{cardAttr3}</h2>
+        <h2 data-testid="description-card">
+          Descrição:
+          {' '}
+          {cardDescription}
+        </h2>
+        <h2 data-testid="attr1-card">
+          Velocidade:
+          {' '}
+          {cardAttr1}
+        </h2>
+        <h2 data-testid="attr2-card">
+          Força:
+          {cardAttr2}
+        </h2>
+        <h2 data-testid="attr3-card">
+          Saúde:
+          {cardAttr3}
+        </h2>
         <h2 data-testid="rare-card">{cardRare}</h2>
         {cardTrunfo ? <h2 data-testid="trunfo-card">Super Trunfo</h2> : ''}
       </div>
