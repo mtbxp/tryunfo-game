@@ -12,6 +12,7 @@ const initialState = {
   cardImage: '',
   cardRare: '',
   cardTrunfo: false,
+  hasTrunfo: false,
   isSaveButtonDisabled: true,
   allCards: [{
     cardName: '',
@@ -31,8 +32,17 @@ class App extends React.Component {
     this.state = initialState;
   }
 
+  handleTrunfoCards = () => {
+    const { allCards } = this.state;
+    const cardHasTrunfo = allCards.some((card) => card.cardTrunfo === true);
+    return cardHasTrunfo;
+    // this.setState({
+    //   hasTrunfo: cardHasTrunfo,
+    // });
+    // return hasTrunfo;
+  }
+
   addNewCard = (card) => {
-    // console.log(card);
     this.setState((prevState) => ({
       allCards: [...prevState.allCards, card],
     }));
@@ -113,6 +123,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      // hasTrunfo,
       isSaveButtonDisabled,
       allCards,
     } = this.state;
@@ -130,7 +141,8 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
-            hasTrunfo={ false }
+            hasTrunfo={ this.handleTrunfoCards() }
+            // cardHasTrunfo={ this.handleTrunfoCards }
             isSaveButtonDisabled={ isSaveButtonDisabled }
             onInputChange={ this.onInputChange }
             onSaveButtonClick={ this.addNewCard }
@@ -150,6 +162,7 @@ class App extends React.Component {
         </div>
         <div>
           {
+            // lógica funcionou, porém deixou de passar no teste do requisito 2
             allCards.map((card) => (
               <Card
                 key={ card.cardName }
