@@ -11,9 +11,9 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
@@ -21,12 +21,20 @@ class App extends React.Component {
     };
   }
 
+  checkAttrs = (obj) => {
+    const { name } = obj;
+    const NAMES = ['cardAttr1', 'cardAttr2', 'cardAttr3'];
+    console.log(obj.target.value === '');
+    if (NAMES.includes(name) && obj.target.value === '') obj.value = '0';
+  }
+
   handleChange = ({ target }) => {
     const { name, type } = target;
     const MAX_ATT = 90;
     const MAX_POINTS = 210;
     const value = type === 'checkbox' ? target.checked : target.value;
-    this.setState({ [name]: value }, () => {
+    this.checkAttrs({ target });
+    this.setState(({ [name]: value }), () => {
       const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
         cardImage } = this.state;
       console.log('cardAtt1', parseInt(cardAttr1, 10));
@@ -40,6 +48,7 @@ class App extends React.Component {
         && parseInt(cardAttr1, 10) <= MAX_ATT && parseInt(cardAttr2, 10) <= MAX_ATT
         && parseInt(cardAttr3, 10) <= MAX_ATT && parseInt(cardAttr1, 10) > 0
         && parseInt(cardAttr2, 10) > 0 && parseInt(cardAttr3, 10) > 0
+        && cardAttr1 !== '' && cardAttr2 !== '' && cardAttr3 !== ''
         && parseInt(cardAttr1, 10) + parseInt(cardAttr2, 10) + parseInt(cardAttr3, 10)
         <= MAX_POINTS) {
         this.setState({ isSaveButtonDisabled: false });
@@ -47,8 +56,6 @@ class App extends React.Component {
         this.setState({ isSaveButtonDisabled: true });
       }
     });
-    // const LIST = ['cardName', 'cardDescription', 'cardAttr1', 'cardAttr2', 'cardAttr3',
-    //  'cardImage', 'cardRare'];
   };
 
   handleSubmit = (e) => {
