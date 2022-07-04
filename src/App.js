@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
+import CardList from './components/CardList';
 import Form from './components/Form';
 // import data from './components/data';
 
@@ -14,16 +15,7 @@ const initialState = {
   cardTrunfo: false,
   hasTrunfo: false,
   isSaveButtonDisabled: true,
-  allCards: [{
-    cardName: '',
-    cardDescription: '',
-    cardAttr1: '',
-    cardAttr2: '',
-    cardAttr3: '',
-    cardImage: '',
-    cardRare: '',
-    cardTrunfo: false,
-  }],
+  allCards: [],
 };
 
 class App extends React.Component {
@@ -161,22 +153,9 @@ class App extends React.Component {
           />
         </div>
         <div>
-          {
-            // lógica funcionou, porém deixou de passar no teste do requisito 2
-            allCards.map((card) => (
-              <Card
-                key={ card.cardName }
-                cardName={ card.cardName }
-                cardDescription={ card.cardDescription }
-                cardAttr1={ card.cardAttr1 }
-                cardAttr2={ card.cardAttr2 }
-                cardAttr3={ card.cardAttr3 }
-                cardImage={ card.cardImage }
-                cardRare={ card.cardRare }
-                cardTrunfo={ card.cardTrunfo }
-              />
-            ))
-          }
+          <CardList
+            allCards={ allCards }
+          />
         </div>
       </div>
     );
