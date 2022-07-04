@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-class Form extends React.Component {
+class form extends React.Component {
   render() {
     const {
       cardName,
@@ -17,7 +17,7 @@ class Form extends React.Component {
       onSaveButtonClick,
     } = this.props; // declaraçao das props
     return (
-      <div>
+      <section className="conteiner-section">
         <form>
           <h1>Adicionar Nova Carta</h1>
           Nome:
@@ -33,6 +33,7 @@ class Form extends React.Component {
           Descrição:
           <label htmlFor="description-input">
             <input
+              max="200"
               data-testid="description-input"
               type="text"
               name="cardDescription"
@@ -112,12 +113,12 @@ class Form extends React.Component {
             Salvar
           </button>
         </form>
-      </div>
+      </section>
     );
   }
 }
 
-Form.propTypes = {
+form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.string.isRequired,
@@ -131,4 +132,4 @@ Form.propTypes = {
   onSaveButtonClick: PropTypes.func.isRequired,
 };
 
-export default Form;
+export default form;
