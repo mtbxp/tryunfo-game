@@ -21,7 +21,7 @@ code {
   background-color:mediumseagreen
 }
 
-#telaDividida {
+.telaDividida {
   display: inline-block;
 }
 

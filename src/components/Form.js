@@ -1,56 +1,59 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+// const limitU = 90;
+// const limitG = 210;
+
 class Form extends Component {
-  saveButtonOpen1() {
-    if (cardAttr1.target.value >= 0 && cardAttr1.target.value <= 90) return true;
-    return false;
-  }
+  // saveButtonOpen1() {
+  //   if (cardAttr1.target.value >= 0 && cardAttr1.target.value <= limitU) return true;
+  //   return false;
+  // }
 
-  saveButtonOpen2() {
-    if (cardAttr2.target.value >= 0 && cardAttr2.target.value <= 90) return true;
-    return false;
-  }
+  // saveButtonOpen2() {
+  //   if (cardAttr2.target.value >= 0 && cardAttr2.target.value <= limitU) return true;
+  //   return false;
+  // }
 
-  saveButtonOpen3() {
-    if (cardAttr3.target.value >= 0 && cardAttr3.target.value <= 90) return true;
-    return false;
-  }
+  // saveButtonOpen3() {
+  //   if (cardAttr3.target.value >= 0 && cardAttr3.target.value <= limitU) return true;
+  //   return false;
+  // }
 
-  saveButtonOpen4() {
-    const cd1 = cardAttr1.target.value;
-    const cd2 = cardAttr2.target.value;
-    const cd3 = cardAttr3.target.value;
-    if (cd1 + cd2 + cd3 <= 210) return true;
-    return false;
-  }
+  // saveButtonOpen4() {
+  //   const cd1 = cardAttr1.target.value;
+  //   const cd2 = cardAttr2.target.value;
+  //   const cd3 = cardAttr3.target.value;
+  //   if (cd1 + cd2 + cd3 <= limitG) return true;
+  //   return false;
+  // }
 
-  saveButtonOpen5() {
-    if (cardName.target.value.length > 0) return true;
-    return false;
-  }
+  // saveButtonOpen5() {
+  //   if (cardName.target.value.length > 0) return true;
+  //   return false;
+  // }
 
-  saveButtonOpen6() {
-    if (cardDescription.target.value.length > 0) return true;
-    return false;
-  }
+  // saveButtonOpen6() {
+  //   if (cardDescription.target.value.length > 0) return true;
+  //   return false;
+  // }
 
-  saveButtonOpen7() {
-    if (cardImage.target.value.length > 0) return true;
-    return false;
-  }
+  // saveButtonOpen7() {
+  //   if (cardImage.target.value.length > 0) return true;
+  //   return false;
+  // }
 
-  isSaveButtonDisabled() {
-    const op1 = this.saveButtonOpen1;
-    const op2 = this.saveButtonOpen2;
-    const op3 = this.saveButtonOpen3;
-    const op4 = this.saveButtonOpen4;
-    const op5 = this.saveButtonOpen5;
-    const op6 = this.saveButtonOpen6;
-    const op7 = this.saveButtonOpen7;
-    if (!op1 || !op2 || !op3 || !op4 || !op5 || !op6 || !op7) return false;
-    return true;
-  }
+  // isSaveButtonDisabled() {
+  //   const op1 = this.saveButtonOpen1();
+  //   const op2 = this.saveButtonOpen2();
+  //   const op3 = this.saveButtonOpen3();
+  //   const op4 = this.saveButtonOpen4();
+  //   const op5 = this.saveButtonOpen5();
+  //   const op6 = this.saveButtonOpen6();
+  //   const op7 = this.saveButtonOpen7();
+  //   if (!op1 || !op2 || !op3 || !op4 || !op5 || !op6 || !op7) return false;
+  //   return true;
+  // }
 
   render() {
     const {
