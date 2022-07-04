@@ -35,7 +35,7 @@ class App extends React.Component {
     }
     this.setState({
       [name]: value,
-    }, () => this.isSaveButton);
+    }, () => console.log(this.isSaveButton()));
   }
 
   saveButtonOpenN(atributinho) {
