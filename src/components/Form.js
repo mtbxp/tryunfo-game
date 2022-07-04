@@ -26,6 +26,7 @@ class Form extends Component {
         <input
           type="text"
           className="name-input"
+          name="cardName"
           value={ cardName }
           onChange={ onInputChange }
           data-testid="name-input"
