@@ -37,10 +37,12 @@ class Card extends React.Component {
         </div>
         {img}
         {trunfo}
-        <p data-testid="description-card" className="card-desc">{ cardDescription }</p>
-        <p data-testid="attr1-card" className="card-attr">{ cardAttr1 }</p>
-        <p data-testid="attr2-card" className="card-attr">{ cardAttr2 }</p>
-        <p data-testid="attr3-card" className="card-attr">{ cardAttr3 }</p>
+        <div className="card-data">
+          <p data-testid="description-card" className="card-desc">{ cardDescription }</p>
+          <p data-testid="attr1-card" className="card-attr">{ cardAttr1 }</p>
+          <p data-testid="attr2-card" className="card-attr">{ cardAttr2 }</p>
+          <p data-testid="attr3-card" className="card-attr">{ cardAttr3 }</p>
+        </div>
       </div>
     );
   }

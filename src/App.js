@@ -76,6 +76,15 @@ class App extends React.Component {
     return savedCards.some((card) => card.trunfoInput === true);
   }
 
+  deleteCard = ({ target }) => {
+    const card = target.parentElement.id;
+    const { savedCards } = this.state;
+    const cards = savedCards.filter((savedCard) => savedCard.nameInput !== card);
+    this.setState({
+      savedCards: cards,
+    });
+  }
+
   render() {
     const {
       nameInput,
@@ -107,6 +116,7 @@ class App extends React.Component {
             isSaveButtonDisabled={ buttonDisabled }
             onSaveButtonClick={ this.saveCard }
             hasTrunfo={ this.trunfoValidation() }
+
           />
           <Card
             cardName={ nameInput }
@@ -118,25 +128,26 @@ class App extends React.Component {
             cardRare={ rareInput }
             cardTrunfo={ trunfoInput }
           />
-          <ul>
-            {
-              savedCards.map((card) => (
-                <li key={ card.nameInput }>
-                  <Card
-                    cardName={ card.nameInput }
-                    cardDescription={ card.descriptionInput }
-                    cardAttr1={ card.attr1Input }
-                    cardAttr2={ card.attr2Input }
-                    cardAttr3={ card.attr3Input }
-                    cardImage={ card.imageInput }
-                    cardRare={ card.rareInput }
-                    cardTrunfo={ card.trunfoInput }
-                  />
-                </li>
-              ))
-            }
-          </ul>
         </main>
+        <div>
+          {
+            savedCards.map((card) => (
+              <div key={ card.nameInput } id={ card.nameInput }>
+                <Card
+                  cardName={ card.nameInput }
+                  cardDescription={ card.descriptionInput }
+                  cardAttr1={ card.attr1Input }
+                  cardAttr2={ card.attr2Input }
+                  cardAttr3={ card.attr3Input }
+                  cardImage={ card.imageInput }
+                  cardRare={ card.rareInput }
+                  cardTrunfo={ card.trunfoInput }
+                />
+                <button type="button" onClick={ this.deleteCard }>Excluir</button>
+              </div>
+            ))
+          }
+        </div>
       </div>
     );
   }
