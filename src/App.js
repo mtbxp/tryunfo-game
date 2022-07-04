@@ -31,11 +31,11 @@ class App extends React.Component {
     if (type === 'checkbox') {
       return this.setState({
         [name]: checked,
-      }, () => this.isSaveButton);
+      }, () => this.isSaveButton());
     }
     this.setState({
       [name]: value,
-    }, () => console.log(this.isSaveButton()));
+    }, () => this.isSaveButton());
   }
 
   saveButtonOpenN(atributinho) {
