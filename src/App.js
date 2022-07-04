@@ -3,6 +3,13 @@ import Card from './components/Card';
 import Form from './components/Form';
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+
+    };
+  }
+
   render() {
     return (
       <div>
