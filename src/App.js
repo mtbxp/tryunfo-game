@@ -16,7 +16,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
-
+      addedCard: [],
     };
   }
 
@@ -66,6 +66,49 @@ class App extends React.Component {
       }, () => this.enableSubmitButton());
     }
 
+    // prevent default + addCards (consulta da monitoria)
+
+    onSaveButtonClick = (e) => {
+      e.preventDefault();
+      const {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
+      } = this.state;
+
+      const cardInfo = {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
+      };
+
+      this.setState((previousState) => ({
+        addedCard: [...previousState.addedCard, cardInfo] }), () => {
+        this.setState(() => ({
+          cardName: '',
+          cardDescription: '',
+          cardAttr1: 0,
+          cardAttr2: 0,
+          cardAttr3: 0,
+          cardImage: '',
+          cardRare: '',
+          cardTrunfo: false,
+          hasTrunfo: false,
+          isSaveButtonDisabled: true,
+        }));
+      });
+    }
+
     render() {
       const {
         cardName,
@@ -78,12 +121,14 @@ class App extends React.Component {
         cardTrunfo,
         hasTrunfo,
         isSaveButtonDisabled,
+        addedCard,
       } = this.state;
 
       return (
         <div>
           <h1>Tryunfo</h1>
           <Form
+            onSaveButtonClick={ this.onSaveButtonClick }
             onInputChange={ this.onInputChange }
             cardName={ cardName }
             cardDescription={ cardDescription }
@@ -108,7 +153,25 @@ class App extends React.Component {
             hasTrunfo={ hasTrunfo }
             isSaveButtonDisabled={ isSaveButtonDisabled }
           />
+
+          <section className="createdCard">
+            {addedCard.map((card) => (
+              <Card
+                key={ card.cardName }
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardImage={ card.cardImage }
+                cardRare={ card.cardRare }
+                cardTrunfo={ card.cardTrunfo }
+                hasTrunfo={ card.hasTrunfo }
+              />
+            ))}
+          </section>
         </div>
+
       );
     }
 }
