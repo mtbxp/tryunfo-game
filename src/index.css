@@ -18,3 +18,20 @@ code {
   display: flex;
   flex-direction: column;
 }
+
+.card-preview {
+  border: 1px solid black;
+  position: absolute;
+  top: 50%;
+  margin-top: -25px;
+  width: 300px;
+  height: 400px;
+}
+
+.image {
+  border: 1px solid black;
+  display: block;
+  width: 100px;
+  height: 200px;
+
+}
