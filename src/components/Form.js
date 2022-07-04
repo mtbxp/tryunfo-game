@@ -36,6 +36,7 @@ class Form extends Component {
         <input
           type="textarea"
           className="description-input"
+          name="description-input"
           value={ cardDescription }
           onChange={ onInputChange }
           data-testid="description-input"
@@ -47,6 +48,7 @@ class Form extends Component {
         <input
           type="number"
           className="attr1-input"
+          name="attr1-input"
           value={ cardAttr1 }
           onChange={ onInputChange }
           data-testid="attr1-input"
@@ -56,6 +58,7 @@ class Form extends Component {
         <input
           type="number"
           className="attr2-input"
+          name="attr2-input"
           value={ cardAttr2 }
           onChange={ onInputChange }
           data-testid="attr2-input"
@@ -65,6 +68,7 @@ class Form extends Component {
         <input
           type="number"
           className="attr3-input"
+          name="attr3-input"
           value={ cardAttr3 }
           onChange={ onInputChange }
           data-testid="attr3-input"
@@ -76,6 +80,7 @@ class Form extends Component {
         <input
           type="text"
           className="image-input"
+          name="image-input"
           value={ cardImage }
           onChange={ onInputChange }
           data-testid="image-input"
@@ -86,6 +91,7 @@ class Form extends Component {
         <b>Raridade:</b>
         <select
           className="rare-input"
+          name="rare-input"
           value={ cardRare }
           onChange={ onInputChange }
           data-testid="rare-input"
@@ -100,6 +106,7 @@ class Form extends Component {
         <input
           type="checkbox"
           className="trunfo-input"
+          name="trunfo-input"
           checked={ cardTrunfo }
           onChange={ onInputChange }
           data-testid="trunfo-input"
@@ -111,6 +118,7 @@ class Form extends Component {
         <button
           type="button"
           className="save-button"
+          name="save-button"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
           data-testid="save-button"
