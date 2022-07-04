@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import './styles/App.css';
+import Filter from './components/Filter';
 
 class App extends React.Component {
   // Para o 'construtor' foi consultado a documentação no React (https://reactjs.org/docs/react-component.html#constructor)
@@ -175,30 +176,36 @@ class App extends React.Component {
           </section>
         </section>
         <section className="cards-area">
-          { cardsList.map((card) => (
-            <div
-              key={ card.cardName }
-              id={ card.cardName }
-              className="savedCard"
-            >
-              <Card
-                cardName={ card.cardName }
-                cardDescription={ card.cardDescription }
-                cardAttr1={ card.cardAttr1 }
-                cardAttr2={ card.cardAttr2 }
-                cardAttr3={ card.cardAttr3 }
-                cardImage={ card.cardImage }
-                cardRare={ card.cardRare }
-                cardTrunfo={ card.cardTrunfo }
-              />
-              <button
-                type="button"
-                data-testid="delete-button"
-                onClick={ this.deleteCard }
+          <section>
+            <h3>Todas as cartas</h3>
+            <Filter />
+          </section>
+          <section className="cards-area">
+            { cardsList.map((card) => (
+              <div
+                key={ card.cardName }
+                id={ card.cardName }
+                className="savedCard"
               >
-                Excluir
-              </button>
-            </div>))}
+                <Card
+                  cardName={ card.cardName }
+                  cardDescription={ card.cardDescription }
+                  cardAttr1={ card.cardAttr1 }
+                  cardAttr2={ card.cardAttr2 }
+                  cardAttr3={ card.cardAttr3 }
+                  cardImage={ card.cardImage }
+                  cardRare={ card.cardRare }
+                  cardTrunfo={ card.cardTrunfo }
+                />
+                <button
+                  type="button"
+                  data-testid="delete-button"
+                  onClick={ this.deleteCard }
+                >
+                  Excluir
+                </button>
+              </div>))}
+          </section>
         </section>
       </main>
     );
