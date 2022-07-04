@@ -4,6 +4,7 @@ import Form from './components/Form';
 import data from './data';
 import Header from './components/Header';
 import './styles/app.css';
+import validateForm from './components/validateForm';
 
 class App extends React.Component {
   constructor() {
@@ -13,18 +14,29 @@ class App extends React.Component {
       errors: {},
       cardName: '',
       cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: 1,
+      cardAttr2: 1,
+      cardAttr3: 1,
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+      isSaveButtonDisable: true,
+      hasTrunfo: false,
     };
   }
 
-  addNewCard = () => {
+  hasTrunfoToggle = () => {
+    let { hasTrunfo } = this.state;
+    hasTrunfo = !hasTrunfo;
+    this.setState = { hasTrunfo };
+  }
+
+  onSaveButtonClick = (event) => {
     const { cardName, cardDescription,
-      cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo } = this.state;
+      cardAttr1, cardAttr2, cardAttr3, cardImage,
+      cardRare, cardTrunfo } = this.state;
+
+    event.preventDefault();
 
     const card = {
       cardName,
@@ -42,12 +54,27 @@ class App extends React.Component {
       errors: {},
       cardName: '',
       cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: 1,
+      cardAttr2: 1,
+      cardAttr3: 1,
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+      isSaveButtonDisable: true,
+    }));
+  }
+
+  getErrors = () => {
+    const errors = validateForm(this.state);
+    let isSaveButtonDisable;
+    if (Object.keys(errors).length === 0) {
+      isSaveButtonDisable = false;
+    } else {
+      isSaveButtonDisable = true;
+    }
+    this.setState(() => ({
+      errors,
+      isSaveButtonDisable,
     }));
   }
 
@@ -56,19 +83,13 @@ class App extends React.Component {
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    });
-  }
-
-  getErrors = (param) => {
-    this.setState(() => ({
-      errors: param,
-    }));
+    }, this.getErrors());
   }
 
   render() {
     const {
-      cards, cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo, errors,
+      cards, cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
+      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisable, errors,
     } = this.state;
 
     return (
@@ -76,9 +97,6 @@ class App extends React.Component {
         <Header />
         <div className="card-inputs">
           <Form
-            addNewCard={ this.addNewCard }
-            onInputChange={ this.onInputChange }
-            getErrors={ this.getErrors }
             cardName={ cardName }
             cardDescription={ cardDescription }
             cardAttr1={ cardAttr1 }
@@ -87,7 +105,11 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
+            isSaveButtonDisable={ isSaveButtonDisable }
+            hasTrunfo={ hasTrunfo }
             errors={ errors }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
           />
           <Card
             cardName={ cardName }

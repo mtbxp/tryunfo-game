@@ -1,31 +1,19 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import '../styles/form.css';
-import validateForm from './validateForm';
 
 class Form extends React.Component {
-  onSaveButtonClick = (event) => {
-    event.preventDefault();
-    const { addNewCard, getErrors } = this.props;
-
-    const returnedErrors = validateForm(this.props);
-
-    if (Object.keys(returnedErrors).length === 0) {
-      addNewCard();
-    } else {
-      getErrors(returnedErrors);
-    }
-  }
-
   render() {
     const { cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare,
-      cardTrunfo, onInputChange, errors,
+      cardTrunfo, errors, isSaveButtonDisable,
+      onInputChange, onSaveButtonClick,
     } = this.props;
 
     return (
-      <form className="form" onSubmit={ this.onSaveButtonClick }>
+      <form className="form" onSubmit={ onSaveButtonClick }>
         <h2 className="form-title">Card Info</h2>
+
         {/* ------------- NAME -------------- */}
         <label htmlFor="Name" className="label">
           Nome do personagem
@@ -57,6 +45,7 @@ class Form extends React.Component {
         </label>
         <span className="error">{ errors.description }</span>
         <div className="attrs">
+
           {/* ------------- ATTR1 -------------- */}
           <label htmlFor="attr1" className="label">
             Cool
@@ -103,10 +92,11 @@ class Form extends React.Component {
           </label>
         </div>
         <div>
-          { errors.attr1 ? <span className="error">{ errors.attr1 }</span> : undefined }
-          { errors.attr2 ? <span className="error">{ errors.attr2 }</span> : undefined }
-          { errors.attr3 ? <span className="error">{ errors.attr3 }</span> : undefined }
+          {
+            errors.attr ? <span className="error">{ errors.attr }</span> : undefined
+          }
         </div>
+
         {/* ------------- IMAGE -------------- */}
         <label htmlFor="image" className="label">
           Imagem
@@ -161,8 +151,8 @@ class Form extends React.Component {
           className="btn"
           name="salvar"
           id="salvar"
+          disabled={ isSaveButtonDisable }
           data-testid="save-button"
-          // disabled={ isSaveButtonDisabled }
         >
           Salvar Carta
         </button>
@@ -172,8 +162,7 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-  addNewCard: PropTypes.func.isRequired,
-  getErrors: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
@@ -186,13 +175,11 @@ Form.propTypes = {
   errors: PropTypes.shape({
     name: PropTypes.string,
     description: PropTypes.string,
-    attr1: PropTypes.number,
-    attr2: PropTypes.number,
-    attr3: PropTypes.number,
+    attr: PropTypes.string,
     rare: PropTypes.string,
     image: PropTypes.string,
   }).isRequired,
-  // isSaveButtonDisabled: PropTypes.bool.isRequired,
+  isSaveButtonDisable: PropTypes.bool.isRequired,
 };
 
 export default Form;

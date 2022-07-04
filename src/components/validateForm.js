@@ -2,8 +2,9 @@ function validateForm(params) {
   const { cardName, cardDescription, cardAttr1,
     cardAttr2, cardAttr3, cardImage, cardRare } = params;
 
-  const maxAttr = 10;
-  const errAttr = '*Apenas números de 1 a 10 suportados';
+  const maxAttr = 90;
+  const minAttr = 1;
+  const errAttr = `*Apenas números de 1 a ${maxAttr} suportados`;
 
   const erros = {};
 
@@ -20,19 +21,19 @@ function validateForm(params) {
   }
 
   if (!cardRare.length) {
-    erros.rare = '*Preencha a raridade da carta';
+    erros.rare = '*Preencha a popularidade da carta';
   }
 
-  if (cardAttr1 < 0 || cardAttr1 > maxAttr) {
-    erros.attr1 = errAttr;
+  if (cardAttr1 < minAttr || cardAttr1 > maxAttr) {
+    erros.attr = errAttr;
   }
 
-  if (cardAttr2 < 0 || cardAttr2 > maxAttr) {
-    erros.attr2 = errAttr;
+  if (cardAttr2 < minAttr || cardAttr2 > maxAttr) {
+    erros.attr = errAttr;
   }
 
-  if (!cardAttr1 < 0 || cardAttr3 > maxAttr) {
-    erros.attr3 = errAttr;
+  if (cardAttr3 < minAttr || cardAttr3 > maxAttr) {
+    erros.attr = errAttr;
   }
 
   return erros;
