@@ -103,9 +103,15 @@ class App extends React.Component {
           cardImage: '',
           cardRare: '',
           cardTrunfo: false,
-          hasTrunfo: false,
           isSaveButtonDisabled: true,
-        }));
+        }), () => {
+          if (cardTrunfo === true) {
+            this.setState({
+              hasTrunfo: true,
+              cardTrunfo: false,
+            });
+          }
+        });
       });
     }
 
@@ -166,7 +172,6 @@ class App extends React.Component {
                 cardImage={ card.cardImage }
                 cardRare={ card.cardRare }
                 cardTrunfo={ card.cardTrunfo }
-                hasTrunfo={ card.hasTrunfo }
               />
             ))}
           </section>
@@ -175,5 +180,5 @@ class App extends React.Component {
       );
     }
 }
-
+// Utilizando renderização condicional para validar se já existe super-trunfo!
 export default App;
