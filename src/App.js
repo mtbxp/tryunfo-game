@@ -56,6 +56,21 @@ class App extends React.Component {
     if (this.checkInputs() === true) return true;
   };
 
+  saveCards = (event) => {
+    event.preventDefault();
+
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardRare: 'normal',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardTrunfo: false,
+    });
+  };
+
   handleChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -91,6 +106,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.handleChange }
           isSaveButtonDisabled={ this.validationsSave() }
+          onSaveButtonClick={ this.saveCards }
         />
 
         <Card
