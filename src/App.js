@@ -16,6 +16,8 @@ class App extends React.Component {
       superTrunfo: false,
       buttonSave: true,
       cartComplete: [],
+      hasTrunfo: false,
+      cardTrunfo: false,
     };
   }
 
@@ -53,6 +55,15 @@ class App extends React.Component {
     this.setState({ [name]: valueCard }, () => this.validateButton());
   }
 
+  verifyTrunfo = () => {
+    const { hasTrunfo, cardTrunfo } = this.state;
+    if (!cardTrunfo && !hasTrunfo) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
+  }
+
   onSaveButtonClick = () => {
     const cartas = this.state;
     this.setState((prevState) => ({
@@ -65,7 +76,7 @@ class App extends React.Component {
       URL: '',
       raridade: '',
       buttonSave: true,
-    }));
+    }), () => this.verifyTrunfo());
   }
 
   render() {
@@ -78,6 +89,7 @@ class App extends React.Component {
       raridade,
       superTrunfo,
       buttonSave,
+      hasTrunfo,
     } = this.state;
 
     return (
@@ -95,6 +107,7 @@ class App extends React.Component {
           onInputChange={ this.heandleState }
           isSaveButtonDisabled={ buttonSave }
           onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ hasTrunfo }
         />
         <h2>Nova Carta</h2>
         <Card
