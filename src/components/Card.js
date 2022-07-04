@@ -32,25 +32,25 @@ class Card extends React.Component {
         </p>
         <p data-testid="attr1-card">
           {
-            `Idade: ${cardAttr1}`
+            `Atributo 1: ${cardAttr1}`
           }
         </p>
 
         <p data-testid="attr2-card">
           {
-            `Peso: ${cardAttr2}`
+            `Atributo 2: ${cardAttr2}`
           }
         </p>
 
         <p data-testid="attr3-card">
           {
-            `Altura: ${cardAttr3}`
+            `Atributo 3: ${cardAttr3}`
           }
         </p>
 
         <p data-testid="rare-card">
           {
-            `Especial: ${cardRare}`
+            `Raridade: ${cardRare}`
           }
         </p>
 
