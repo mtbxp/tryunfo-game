@@ -143,7 +143,13 @@ class App extends React.Component {
                   cardRare={ card.rareInput }
                   cardTrunfo={ card.trunfoInput }
                 />
-                <button type="button" onClick={ this.deleteCard }>Excluir</button>
+                <button
+                  data-testid="delete-button"
+                  type="button"
+                  onClick={ this.deleteCard }
+                >
+                  Excluir
+                </button>
               </div>
             ))
           }
