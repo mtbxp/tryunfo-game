@@ -63,14 +63,14 @@ class App extends React.Component {
       cardDescription,
       cardImage,
     } = this.state;
-    const op1 = this.saveButtonOpenN(cardAttr1);
-    const op2 = this.saveButtonOpenN(cardAttr2);
-    const op3 = this.saveButtonOpenN(cardAttr3);
-    const op4 = this.saveButtonOpenS(cardAttr1, cardAttr2, cardAttr3);
-    const op5 = this.saveButtonOpenW(cardName);
-    const op6 = this.saveButtonOpenW(cardDescription);
-    const op7 = this.saveButtonOpenW(cardImage);
-    console.log(op1, op2, op3, op4, op5, op6, op7);
+    // op significa as operações. Indo de 1 a 7
+    const op1 = this.saveButtonOpenN(cardAttr1); // Atributo 1 validado
+    const op2 = this.saveButtonOpenN(cardAttr2); // Atributo 2 validado
+    const op3 = this.saveButtonOpenN(cardAttr3); // Atributo 3 validado
+    const op4 = this.saveButtonOpenS(cardAttr1, cardAttr2, cardAttr3); // Limite alcançado
+    const op5 = this.saveButtonOpenW(cardName); // Name presente
+    const op6 = this.saveButtonOpenW(cardDescription); // Descrição presente
+    const op7 = this.saveButtonOpenW(cardImage); // Imagem presente
     if (op1 && op2 && op3 && op4 && op5 && op6 && op7) {
       return this.setState({
         isSaveButtonDisabled: false,
