@@ -2,6 +2,29 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends Component {
+  saveButtonOpen1() {
+    if (cardAttr1.target.value >= 0 && cardAttr1.target.value <= 90) return true;
+    return false;
+  }
+
+  saveButtonOpen2() {
+    if (cardAttr2.target.value >= 0 && cardAttr2.target.value <= 90) return true;
+    return false;
+  }
+
+  saveButtonOpen3() {
+    if (cardAttr3.target.value >= 0 && cardAttr3.target.value <= 90) return true;
+    return false;
+  }
+
+  saveButtonOpen4() {
+    const cd1 = cardAttr1.target.value;
+    const cd2 = cardAttr2.target.value;
+    const cd3 = cardAttr3.target.value;
+    if (cd1 + cd2 + cd3 <= 210) return true;
+    return false;
+  }
+
   render() {
     const {
       onInputChange,
@@ -18,7 +41,7 @@ class Form extends Component {
       // hasTrunfo,
     } = this.props;
     return (
-      <div>
+      <div id="divForm">
         <h1><b>Adicionar nova Carta</b></h1>
         <br />
         <br />
@@ -36,7 +59,7 @@ class Form extends Component {
         <input
           type="textarea"
           className="description-input"
-          name="description-input"
+          name="cardDescription"
           value={ cardDescription }
           onChange={ onInputChange }
           data-testid="description-input"
@@ -48,7 +71,7 @@ class Form extends Component {
         <input
           type="number"
           className="attr1-input"
-          name="attr1-input"
+          name="cardAttr1"
           value={ cardAttr1 }
           onChange={ onInputChange }
           data-testid="attr1-input"
@@ -58,7 +81,7 @@ class Form extends Component {
         <input
           type="number"
           className="attr2-input"
-          name="attr2-input"
+          name="cardAttr2"
           value={ cardAttr2 }
           onChange={ onInputChange }
           data-testid="attr2-input"
@@ -68,7 +91,7 @@ class Form extends Component {
         <input
           type="number"
           className="attr3-input"
-          name="attr3-input"
+          name="cardAttr3"
           value={ cardAttr3 }
           onChange={ onInputChange }
           data-testid="attr3-input"
@@ -80,7 +103,7 @@ class Form extends Component {
         <input
           type="text"
           className="image-input"
-          name="image-input"
+          name="cardImage"
           value={ cardImage }
           onChange={ onInputChange }
           data-testid="image-input"
@@ -91,7 +114,7 @@ class Form extends Component {
         <b>Raridade:</b>
         <select
           className="rare-input"
-          name="rare-input"
+          name="cardRare"
           value={ cardRare }
           onChange={ onInputChange }
           data-testid="rare-input"
@@ -106,7 +129,7 @@ class Form extends Component {
         <input
           type="checkbox"
           className="trunfo-input"
-          name="trunfo-input"
+          name="cardTrunfo"
           checked={ cardTrunfo }
           onChange={ onInputChange }
           data-testid="trunfo-input"

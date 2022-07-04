@@ -12,3 +12,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#idForm {
+  background-color: azure;
+}
+
+#idCard {
+  background-color:mediumseagreen
+}
+
+#telaDividida {
+  display: inline-block;
+}
+
+#tituloH1 {
+  background-color: darkgreen;
+}
