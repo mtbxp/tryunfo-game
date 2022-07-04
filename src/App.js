@@ -15,6 +15,7 @@ class App extends React.Component {
       raridade: '',
       superTrunfo: false,
       buttonSave: true,
+      cartComplete: [],
     };
   }
 
@@ -33,9 +34,9 @@ class App extends React.Component {
     const pointMin = 0;
 
     this.setState({
-      buttonSave: !(cartName !== ''
-      && description !== ''
-      && URL !== ''
+      buttonSave: !(cartName.length
+      && description.length
+      && URL.length
       && historia >= pointMin
       && inteligencia >= pointMin
       && carisma >= pointMin
@@ -50,6 +51,21 @@ class App extends React.Component {
     const { name, value, type, checked } = target;
     const valueCard = type === 'checkbox' ? checked : value;
     this.setState({ [name]: valueCard }, () => this.validateButton());
+  }
+
+  onSaveButtonClick = () => {
+    const cartas = this.state;
+    this.setState((prevState) => ({
+      cartComplete: [cartas, ...prevState.cartComplete],
+      cartName: '',
+      description: '',
+      historia: '0',
+      inteligencia: '0',
+      carisma: '0',
+      URL: '',
+      raridade: '',
+      buttonSave: true,
+    }));
   }
 
   render() {
@@ -78,6 +94,7 @@ class App extends React.Component {
           cardTrunfo={ superTrunfo }
           onInputChange={ this.heandleState }
           isSaveButtonDisabled={ buttonSave }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <h2>Nova Carta</h2>
         <Card

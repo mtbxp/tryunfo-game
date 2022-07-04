@@ -17,7 +17,7 @@ class Form extends React.Component {
       onSaveButtonClick } = this.props;
 
     return (
-      <fieldset>
+      <form>
         <div>
           <label htmlFor="1">
             Nome da carta:
@@ -146,7 +146,7 @@ class Form extends React.Component {
         >
           Salvar
         </button>
-      </fieldset>
+      </form>
     );
   }
 }
