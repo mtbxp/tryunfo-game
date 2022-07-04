@@ -43,11 +43,11 @@ class App extends React.Component {
   }
 
   saveButtonOpenS(cd1, cd2, cd3) {
-    console.log(Number(cd1), " ", Number(cd2), " ", Number(cd3));
-    console.log(Number(cd1) + Number(cd2) + Number(cd3) < limitG);
+    console.log(Number(cd1), ' ', Number(cd2), ' ', Number(cd3));
+    console.log(Number(cd1) + Number(cd2) + Number(cd3) >= limitG);
     const sum = Number(cd1) + Number(cd2) + Number(cd3);
     console.log(sum);
-    return (sum < limitG);
+    return (sum <= limitG);
   }
 
   saveButtonOpenW(textoInput) {
@@ -70,14 +70,14 @@ class App extends React.Component {
     const op5 = this.saveButtonOpenW(cardName);
     const op6 = this.saveButtonOpenW(cardDescription);
     const op7 = this.saveButtonOpenW(cardImage);
-    // console.log(op1, op2, op3, op4, op5, op6, op7);
-    if (!op1 || !op2 || !op3 || !op4 || !op5 || !op6 || !op7) {
+    console.log(op1, op2, op3, op4, op5, op6, op7);
+    if (op1 && op2 && op3 && op4 && op5 && op6 && op7) {
       return this.setState({
-        isSaveButtonDisabled: true,
+        isSaveButtonDisabled: false,
       });
     }
     return this.setState({
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
     });
   }
 
