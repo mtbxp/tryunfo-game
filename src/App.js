@@ -16,7 +16,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       // hasTrunfo: '',
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
     };
   }
 
@@ -26,7 +26,32 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
-    });
+    }, () => this.setState({
+      isSaveButtonDisabled: this.SaveButtonValidate(),
+    }));
+  }
+
+  SaveButtonValidate = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+    } = this.state;
+
+    const maxAttribute = 90;
+    const minAttribute = 0;
+    const maxSumAttr = 210;
+    const allAttri = [Number(cardAttr1), Number(cardAttr2), Number(cardAttr3)];
+
+    const emptyValidate = (cardName !== '' && cardDescription !== '' && cardImage !== '');
+    const SumValidate = allAttri.reduce((acc, num) => acc + num, 0) <= maxSumAttr;
+    const AttrBetwn = allAttri.every((num) => num >= minAttribute && num <= maxAttribute);
+    const allValidate = [emptyValidate, SumValidate, AttrBetwn];
+
+    return !(allValidate.every((item) => item === true));
   }
 
   render() {

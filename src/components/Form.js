@@ -16,6 +16,7 @@ class Form extends React.Component {
       onInputChange,
       onSaveButtonClick,
     } = this.props;
+
     return (
       <form>
 
@@ -57,6 +58,8 @@ class Form extends React.Component {
             type="number"
             data-testid="attr1-input"
             id="attr1-input"
+            min="0"
+            max="90"
           />
         </label>
 
@@ -71,6 +74,8 @@ class Form extends React.Component {
             type="number"
             data-testid="attr2-input"
             id="attr2-input"
+            min="0"
+            max="90"
           />
         </label>
 
@@ -85,6 +90,8 @@ class Form extends React.Component {
             type="number"
             data-testid="attr3-input"
             id="attr3-input"
+            min="0"
+            max="90"
           />
         </label>
 
@@ -140,6 +147,7 @@ class Form extends React.Component {
         <br />
 
         <button
+          name="isSaveButtonDisabled"
           type="submit"
           data-testid="save-button"
           id="save-button"
