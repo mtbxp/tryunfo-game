@@ -16,6 +16,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       hasTrunfo: false,
+      cards: [],
       // isSaveButtonDisabled: true,
     };
   }
@@ -61,30 +62,28 @@ disableButton = () => {
 }
 
 onSaveButtonClick = (event) => {
-  const { cardTrunfo } = this.state;
-  if (cardTrunfo === true) {
-    this.setState({
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardImage: '',
-      cardRare: '',
-      hasTrunfo: true,
-    });
-  } else {
-    event.preventDefault();
-    this.setState({
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardImage: '',
-      cardRare: 'normal',
-    });
-  }
+  const defaultCards = this.state;
+
+  event.preventDefault();
+  this.setState((prevState) => ({
+    cardName: '',
+    cardDescription: '',
+    cardAttr1: '0',
+    cardAttr2: '0',
+    cardAttr3: '0',
+    cardImage: '',
+    cardRare: 'normal',
+    cardTrunfo: false,
+    cards: [...prevState.cards, defaultCards],
+  }), () => this.hasTrunfo());
+}
+
+hasTrunfo = () => {
+  const { cards } = this.state;
+  const verifyCard = cards.some((card) => card.cardTrunfo === true);
+  this.setState({
+    hasTrunfo: verifyCard,
+  });
 }
 
 render() {
@@ -98,6 +97,7 @@ render() {
     cardRare,
     cardTrunfo,
     hasTrunfo,
+    cards,
   } = this.state;
 
   return (
@@ -126,6 +126,23 @@ render() {
         cardRare={ cardRare }
         cardTrunfo={ cardTrunfo }
       />
+      <div>
+        {
+          cards.map((card) => (
+            <Card
+              key={ card.cardName }
+              cardName={ card.cardName }
+              cardDescription={ card.cardDescription }
+              cardAttr1={ card.cardAttr1 }
+              cardAttr2={ card.cardAttr2 }
+              cardAttr3={ card.cardAttr3 }
+              cardImage={ card.cardImage }
+              cardRare={ card.cardRare }
+              cardTrunfo={ card.cardTrunfo }
+            />
+          ))
+        }
+      </div>
     </>
   );
 }
