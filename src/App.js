@@ -90,6 +90,7 @@ class App extends React.Component {
       superTrunfo,
       buttonSave,
       hasTrunfo,
+      cartComplete,
     } = this.state;
 
     return (
@@ -120,6 +121,18 @@ class App extends React.Component {
           cardRare={ raridade }
           cardTrunfo={ superTrunfo }
         />
+        <p>Seu baralho</p>
+        { cartComplete.map((cart) => (<Card
+          key={ cart.cartName }
+          cardName={ cart.cartName }
+          cardDescription={ cart.description }
+          cardAttr1={ cart.historia }
+          cardAttr2={ cart.inteligencia }
+          cardAttr3={ cart.carisma }
+          cardImage={ cart.URL }
+          cardRare={ cart.raridade }
+          cardTrunfo={ cart.cardTrunfo }
+        />)) }
       </div>
     );
   }
