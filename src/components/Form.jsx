@@ -1,7 +1,7 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
 
-class Form extends Component {
+class Form extends React.Component {
   render() {
     const {
       cardName,
@@ -17,7 +17,6 @@ class Form extends Component {
       onInputChange,
       onSaveButtonClick,
     } = this.props;
-
     return (
       <div>
         <input
@@ -61,56 +60,72 @@ class Form extends Component {
           min="0"
           max="90"
         />
-        <input
-          type="text"
-          value={ cardImage }
-          name="cardImage"
-          data-testid="image-input"
-          onChange={ onInputChange }
-          placeholder="Imagem"
-        />
-        <label htmlFor="trunfo">
+        <label htmlFor="playing-card-picture">
+          Imagem
+          <input
+            type="text"
+            data-testid="image-input"
+            id="playing-card-picture"
+            name="cardImage"
+            value={ cardImage }
+            onChange={ onInputChange }
+          />
+        </label>
+
+        <label htmlFor="rare-card">
+          Raridade
+
           <select
-            value={ cardRare }
-            name="cardRare"
             data-testid="rare-input"
+            id="rare-card"
+            name="cardRare"
+            value={ cardRare }
             onChange={ onInputChange }
           >
-            <option value="normal">Normal</option>
-            <option value="raro">Raro</option>
-            <option value="muito raro">Muito Raro</option>
+            <option value="normal">normal</option>
+            <option value="raro">raro</option>
+            <option value="muito raro">muito raro</option>
           </select>
+
         </label>
-        {hasTrunfo ? <span>Você já tem um Super Trunfo em seu baralho</span>
-          : (
+        { hasTrunfo === false ? (
+          <label htmlFor="trunfo-card">
+            Super Trunfo
+
             <input
               type="checkbox"
-              checked={ cardTrunfo }
-              name="cardTrunfo"
               data-testid="trunfo-input"
+              id="trunfo-card"
+              name="cardTrunfo"
+              checked={ cardTrunfo }
               onChange={ onInputChange }
-            />)}
+            />
+          </label>
+        )
+          : <p>Você já tem um Super Trunfo em seu baralho </p> }
         <button
-          type="button"
-          value={ isSaveButtonDisabled }
+          type="submit"
           data-testid="save-button"
+          id="button"
+          name="isSaveButtonDisabled"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
         >
           Salvar
         </button>
+
       </div>
     );
   }
 }
 
 Form.propTypes = {
+  cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.string.isRequired,
   cardAttr2: PropTypes.string.isRequired,
   cardAttr3: PropTypes.string.isRequired,
-  cardDescription: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
-  cardName: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   hasTrunfo: PropTypes.bool.isRequired,
@@ -118,4 +133,5 @@ Form.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
 };
+
 export default Form;
