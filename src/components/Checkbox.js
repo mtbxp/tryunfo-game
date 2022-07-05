@@ -5,7 +5,7 @@ class Checkbox extends React.Component {
   render() {
     const { cardTrunfo, onInputChange, hasTrunfo } = this.props;
     if (hasTrunfo) {
-      return <p>Você já tem um Super Trunfo no seu baralho</p>;
+      return <p>Você já tem um Super Trunfo em seu baralho</p>;
     }
     return (
       <label htmlFor="trunfo-input">
@@ -22,6 +22,7 @@ class Checkbox extends React.Component {
     );
   }
 }
+// Botafogo bagunçou o Bragantino hj, deu até novo ânimo pra terminar o projeto.
 
 Checkbox.propTypes = {
   hasTrunfo: PropTypes.bool.isRequired,
