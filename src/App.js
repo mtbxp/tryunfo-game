@@ -101,6 +101,11 @@ class App extends React.Component {
     }
   }
 
+  buttonClear(name) {
+    this.setState((prev) => ({
+      listSavedCards: prev.listSavedCards.filter((card) => card.cardName !== name) }));
+  }
+
   render() {
     const {
       cardName,
@@ -156,6 +161,13 @@ class App extends React.Component {
               cardTrunfo={ card.cardTrunfo }
             />
           ))}
+          <button
+            type="button"
+            data-testid="delete-button"
+            onClick={ () => this.buttonClear(Card.cardName) }
+          >
+            excluir
+          </button>
         </div>
       </div>
     );
