@@ -13,10 +13,10 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: 'normal',
+      cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
-      // onSaveButtonClick: false,
+      listCard: [],
     };
   }
 
@@ -25,7 +25,7 @@ class App extends React.Component {
     const finalValue = type === 'checkbox' ? checked : value;
     this.setState({
       [name]: finalValue,
-    }, () => this.buttonDisabled());
+    }, () => { this.buttonDisabled(); });
   }
 
   buttonDisabled = () => {
@@ -65,6 +65,52 @@ class App extends React.Component {
     }
   }
 
+  // addNewCard = (card) => {
+  //   this.setState((prev) => ({
+  //     listCard: [...prev.listCard, card],
+  //   }));
+  // }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+
+    const card = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+
+    this.setState(({ listCard }) => ({
+      listCard: [...listCard, card],
+    }));
+
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+    });
+  }
+
   render() {
     const {
       cardName,
@@ -76,7 +122,6 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
-      onSaveButtonClick,
     } = this.state;
 
     return (
@@ -93,7 +138,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.handleChange }
-          onSaveButtonClick={ onSaveButtonClick }
+          onSaveButtonClick={ this.handleSubmit }
         />
         <Card
           cardName={ cardName }
