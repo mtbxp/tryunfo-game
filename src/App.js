@@ -18,9 +18,6 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       listCards: [],
     };
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
-    this.validateButton = this.validateButton.bind(this);
   }
 
   onInputChange = ({ target }) => {
@@ -58,9 +55,9 @@ class App extends React.Component {
     this.setState((prevState) => ({
       cardName: '',
       cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
