@@ -41,6 +41,7 @@
 }
 
 .filters {
+  align-items: flex-end;
   display: flex;
   gap: 12px;
   justify-content: center;
