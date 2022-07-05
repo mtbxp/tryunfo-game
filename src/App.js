@@ -75,6 +75,7 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
     } = this.state;
 
     const currentState = {
@@ -85,12 +86,13 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
     };
 
     this.setState(
       (prevState) => (
         {
-          deck: [{ currentState, ...prevState.deck }],
+          deck: [currentState, ...prevState.deck],
         }
       ),
 
@@ -103,9 +105,20 @@ class App extends React.Component {
           cardAttr3: '0',
           cardImage: '',
           cardRare: 'normal',
+          cardTrunfo: false,
         },
       ),
     );
+  }
+
+  superTrunfoValidation = () => {
+    const { deck } = this.state;
+    let trunfoCounter = 0;
+    deck.forEach((element) => {
+      if (element.cardTrunfo === true) trunfoCounter += 1;
+    });
+    if (trunfoCounter === 1) return true;
+    return false;
   }
 
   render() {
@@ -135,6 +148,7 @@ class App extends React.Component {
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.handleChange }
           onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ this.superTrunfoValidation() }
         />
         <Card
           cardName={ cardName }
