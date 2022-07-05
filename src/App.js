@@ -74,7 +74,9 @@ class App extends React.Component {
       cardAttr2,
       cardAttr3,
       cardImage,
-      cardRare } = this.state;
+      cardRare,
+      cardTrunfo,
+    } = this.state;
 
     const maxValue = 90;
     const maxAtributos = 211;
@@ -93,6 +95,7 @@ class App extends React.Component {
       && somaAtributos < maxAtributos) {
       this.setState({
         isSaveButtonDisabled: false,
+        hasTrunfo: cardTrunfo,
       });
     } else {
       this.setState({
