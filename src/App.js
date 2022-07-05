@@ -4,7 +4,6 @@ import Card from './components/Card';
 
 const limitU = 90;
 const limitG = 210;
-// const savelist = [];
 let atual = {};
 
 class App extends React.Component {
@@ -30,6 +29,7 @@ class App extends React.Component {
     this.isSaveButton = this.isSaveButton.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.clickRemove = this.clickRemove.bind(this);
+    this.onTrunfo = this.onTrunfo.bind(this);
   }
 
   onInputChange({ target }) {
@@ -66,20 +66,6 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
     };
-    if (cardTrunfo === checked) {
-      return this.setState((prevState) => ({
-        cardName: '',
-        cardDescription: '',
-        cardAttr1: 0,
-        cardAttr2: 0,
-        cardAttr3: 0,
-        cardImage: '',
-        hasTrunfo: true,
-        cardTrunfo: undefined,
-        cardRare: 'normal',
-        savelist: [...prevState.savelist, atual],
-      }));
-    }
     return this.setState((prevState) => ({
       cardName: '',
       cardDescription: '',
@@ -89,8 +75,21 @@ class App extends React.Component {
       cardImage: '',
       cardTrunfo: false,
       cardRare: 'normal',
+      hasTrunfo: this.handleTrunfo(),
       savelist: [...prevState.savelist, atual],
     }));
+  }
+
+  onTrunfo() {
+    const { cardTrunfo } = this.state;
+    if (cardTrunfo) {
+      return this.setState({
+        hasTrunfo: true,
+      });
+    }
+    return this.setState({
+      hasTrunfo: false,
+    });
   }
 
   clickRemove({ target }) {

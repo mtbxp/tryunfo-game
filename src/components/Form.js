@@ -107,7 +107,7 @@ class Form extends Component {
         <br />
 
         <div>
-          {hasTrunfo === false ? (
+          {hasTrunfo ? (<p>Você já tem um Super Trunfo em seu baralho</p>) : (
             <div>
               <input
                 type="checkbox"
@@ -119,7 +119,7 @@ class Form extends Component {
               />
               <b>Super Trunfo!</b>
             </div>
-          ) : (<p>Você já tem um Super Trunfo em seu baralho</p>)}
+          )}
         </div>
 
         <br />
