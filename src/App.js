@@ -83,11 +83,10 @@ class App extends React.Component {
   clickRemove({ target }) {
     const { name } = target;
     const { savelist } = this.state;
-    savelist.filter((name) => {});
-
-    // this.setState({
-    //   savelist: filter(() => {})
-    // })
+    const preservadas = savelist.filter((nome) => nome.cardName !== name);
+    this.setState({
+      savelist: preservadas,
+    });
   }
 
   saveButtonOpenN(atributinho) {
