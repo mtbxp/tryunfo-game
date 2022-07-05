@@ -12,7 +12,7 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -112,7 +112,7 @@ class Form extends React.Component {
           </label>
 
           <button
-            type="button"
+            type="submit"
             data-testid="save-button"
             name="save-button"
             disabled={ isSaveButtonDisabled }

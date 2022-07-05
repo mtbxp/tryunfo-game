@@ -16,7 +16,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       // hasTrunfo: '',
-      isSaveButtonDisabled: true,
+      // isSaveButtonDisabled: true,
     };
   }
 
@@ -60,6 +60,19 @@ disableButton = () => {
   return true;
 }
 
+onSaveButtonClick = (event) => {
+  event.preventDefault();
+  this.setState({
+    cardName: '',
+    cardDescription: '',
+    cardAttr1: '0',
+    cardAttr2: '0',
+    cardAttr3: '0',
+    cardImage: '',
+    cardRare: 'normal',
+  });
+};
+
 render() {
   const {
     cardName,
@@ -70,8 +83,6 @@ render() {
     cardImage,
     cardRare,
     cardTrunfo,
-    isSaveButtonDisabled,
-    onSaveButtonClick,
   } = this.state;
 
   return (
@@ -87,7 +98,7 @@ render() {
         cardTrunfo={ cardTrunfo }
         isSaveButtonDisabled={ this.disableButton() }
         onInputChange={ this.onInputChange }
-        onSaveButtonClick={ onSaveButtonClick }
+        onSaveButtonClick={ this.onSaveButtonClick }
       />
       <Card
         cardName={ cardName }
@@ -98,9 +109,6 @@ render() {
         cardImage={ cardImage }
         cardRare={ cardRare }
         cardTrunfo={ cardTrunfo }
-        isSaveButtonDisabled={ isSaveButtonDisabled }
-        onInputChange={ this.onInputChange }
-        onSaveButtonClick={ onSaveButtonClick }
       />
     </>
   );
