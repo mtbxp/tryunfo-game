@@ -4,7 +4,7 @@ import Card from './components/Card';
 
 const limitU = 90;
 const limitG = 210;
-const savelist = [];
+// const savelist = [];
 let atual = {};
 
 class App extends React.Component {
@@ -20,6 +20,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      savelist: [],
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.saveButtonOpenN = this.saveButtonOpenN.bind(this);
@@ -63,9 +64,9 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
     };
-    savelist.push(atual);
-    console.log(savelist);
-    return this.setState({
+    // savelist.push(atual);
+    // console.log(savelist);
+    return this.setState((prevState) => ({
       cardName: '',
       cardDescription: '',
       cardAttr1: 0,
@@ -74,7 +75,8 @@ class App extends React.Component {
       cardImage: '',
       cardTrunfo: false,
       cardRare: 'normal',
-    });
+      savelist: [...prevState.savelist, atual],
+    }));
   }
 
   // showList() {
@@ -132,6 +134,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      savelist,
       // onSaveButtonClick,
       // hasTrunfo,
     } = this.state;
@@ -169,6 +172,38 @@ class App extends React.Component {
               onSaveButtonClick={ this.onSaveButtonClick }
             />
           </div>
+        </div>
+        <div id="listaDeCartas">
+          {savelist.map((element, index) => (
+            <div key={ index } className="carta">
+              <p>
+                N:
+                { element.cardName }
+                <br />
+                { element.cardImage }
+                <br />
+                D:
+                { element.cardDescription }
+                <br />
+                Style:
+                { element.cardAttr1 }
+                <br />
+                Smart:
+                { element.cardAttr2 }
+                <br />
+                Intensive:
+                { element.cardAttr3 }
+                <br />
+                { element.cardTrunfo === true ? (
+                  <p
+                    data-testid="trunfo-card"
+                    className="ST"
+                  >
+                    Super Trunfo
+                  </p>) : (<p className="ST" />)}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     );
