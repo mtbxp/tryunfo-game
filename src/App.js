@@ -59,10 +59,11 @@ class App extends React.Component {
   }
 
   onSaveButtonClick= (event) => {
+    /* Refatorar utilizando prevState */
     event.preventDefault();
     const { cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, deck } = this.state;
+      cardImage, cardRare, cardTrunfo, hasTrunfo, deck } = this.state;
 
     this.setState({
       deck: [...deck, { cardName,
@@ -72,7 +73,8 @@ class App extends React.Component {
         cardAttr3,
         cardImage,
         cardRare,
-        cardTrunfo },
+        cardTrunfo,
+        hasTrunfo },
       ],
     });
 
