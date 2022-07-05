@@ -39,3 +39,8 @@
 .form-title {
   margin: 0;
 }
+
+.filters {
+  padding-top: 20px;
+  text-align: center;
+}

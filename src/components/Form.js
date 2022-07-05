@@ -139,6 +139,7 @@ class Form extends React.Component {
                   onChange={ onInputChange }
                   hidden={ hasTrunfo }
                 />
+                Super Trunfo
               </label>
             )
         }

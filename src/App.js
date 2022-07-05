@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
+import Filters from './components/Filters';
 import Form from './components/Form';
 // import data from './data';
 import Header from './components/Header';
@@ -20,6 +21,7 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       hasTrunfo: false,
+      nameFilter: '',
     };
   }
 
@@ -32,7 +34,7 @@ class App extends React.Component {
 
     let hasTrunfo;
 
-    if (cardTrunfo) hasTrunfo = true;
+    if (cardTrunfo) hasTrunfo = true; else hasTrunfo = false;
 
     const card = {
       cardName,
@@ -56,6 +58,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      nameFilter: '',
       hasTrunfo,
     }));
   }
@@ -112,7 +115,7 @@ class App extends React.Component {
   eraseCard = (cardName) => {
     const { cards } = this.state;
     const cardToErase = cards.find((card) => card.cardName === cardName);
-    console.log(cardToErase.cardTrunfo);
+
     if (cardToErase.cardTrunfo) this.setState({ hasTrunfo: false });
 
     this.setState((prevState) => ({
@@ -120,11 +123,23 @@ class App extends React.Component {
     }));
   }
 
+  filteredCard = () => {
+    const { cards, nameFilter } = this.state;
+    return cards.filter((card) => {
+      if (!nameFilter) return true;
+      return card.cardName.includes(nameFilter);
+    });
+  }
+
   render() {
     const {
-      cards, cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
+      cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
+      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled, nameFilter,
     } = this.state;
+
+    const cards = this.filteredCard();
+
+    // console.log(cards);
 
     return (
       <div>
@@ -157,6 +172,7 @@ class App extends React.Component {
             list={ false }
           />
         </div>
+        <Filters nameFilter={ nameFilter } onInputChange={ this.onInputChange } />
         <div className="cards">
           {
             cards.length !== 0
