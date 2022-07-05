@@ -9,7 +9,7 @@ const data = [
     cardAttr3: 7,
     cardImage: 'https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FNickRiviera.png?1497567511084',
     cardRare: 'raro',
-    cardTrunfo: true,
+    cardTrunfo: false,
   },
   {
     cardName: 'Homer Simpson',
