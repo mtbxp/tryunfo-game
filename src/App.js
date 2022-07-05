@@ -66,8 +66,20 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
     };
-    // savelist.push(atual);
-    // console.log(savelist);
+    if (cardTrunfo === checked) {
+      return this.setState((prevState) => ({
+        cardName: '',
+        cardDescription: '',
+        cardAttr1: 0,
+        cardAttr2: 0,
+        cardAttr3: 0,
+        cardImage: '',
+        hasTrunfo: true,
+        cardTrunfo: false,
+        cardRare: 'normal',
+        savelist: [...prevState.savelist, atual],
+      }));
+    }
     return this.setState((prevState) => ({
       cardName: '',
       cardDescription: '',
