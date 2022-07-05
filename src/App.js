@@ -21,6 +21,7 @@ class App extends React.Component {
       cards: [],
       searchName: '',
       searchRare: 'todas',
+      searchTrunfo: false,
     };
   }
 
@@ -42,6 +43,7 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
     } = this.state;
 
     const validInput = this.verifyLength(cardName, cardDescription, cardImage, cardRare);
@@ -74,7 +76,11 @@ class App extends React.Component {
   onSaveButtonClick = (e) => {
     e.preventDefault();
     const card = this.state;
-    const { cardTrunfo } = this.state;
+    if (card.cardTrunfo) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
     this.setState((prevState) => ({
       cardName: '',
       cardDescription: '',
@@ -83,19 +89,17 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
+      cardTrunfo: false,
       isSaveButtonDisabled: true,
       cards: [...prevState.cards, card],
-    }), () => this.setState({
-      hasTrunfo: cardTrunfo,
     }));
   };
 
   handleDeleteButton = ({ target }) => {
-    const { hasTrunfo } = this.state;
-    if (hasTrunfo) {
+    const { cardTrunfo } = this.state;
+    if (cardTrunfo) {
       this.setState({
         hasTrunfo: false,
-        cardTrunfo: false,
       });
     }
     this.setState((prevState) => ({
@@ -103,13 +107,20 @@ class App extends React.Component {
     }));
   }
 
-  handleSearchFilter = (searchName, searchRare) => {
+  handleSearchFilter = () => {
     const { cards } = this.state;
+    const { searchName, searchRare, searchTrunfo } = this.state;
     const lowerSearchName = searchName.toLowerCase();
+    const cardsByTrunfo = cards.filter(({ cardTrunfo }) => cardTrunfo === true);
     const cardsByNames = cards
       .filter(({ cardName }) => (cardName.toLowerCase().includes(lowerSearchName)));
     const cardsByRare = cardsByNames
       .filter(({ cardRare }) => (cardRare === searchRare));
+
+    if (searchTrunfo) {
+      console.log(cardsByTrunfo);
+      return cardsByTrunfo;
+    }
     return (searchRare === 'todas' ? cardsByNames : cardsByRare);
   }
 
@@ -127,6 +138,7 @@ class App extends React.Component {
       isSaveButtonDisabled,
       searchName,
       searchRare,
+      searchTrunfo,
     } = this.state;
 
     return (
@@ -161,10 +173,11 @@ class App extends React.Component {
           <SearchFilters
             searchName={ searchName }
             searchRare={ searchRare }
+            searchTrunfo={ searchTrunfo }
             onSearchInputChange={ this.onInputChange }
           />
           {
-            this.handleSearchFilter(searchName, searchRare)
+            this.handleSearchFilter()
               .map((card) => (
                 <section className="saved-card" key={ card.cardName }>
                   <Card
