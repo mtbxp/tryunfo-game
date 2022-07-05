@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
-import data from './data';
+// import data from './data';
 import Header from './components/Header';
 import './styles/app.css';
 
@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      cards: data,
+      cards: [],
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -46,7 +46,7 @@ class App extends React.Component {
     };
 
     this.setState((prevState) => ({
-      cards: [card, ...prevState.cards],
+      cards: [...prevState.cards, card],
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -70,7 +70,7 @@ class App extends React.Component {
     const totalAttr = parseInt(cardAttr1, 10)
     + parseInt(cardAttr2, 10) + parseInt(cardAttr3, 10);
 
-    console.log(totalAttr);
+    // console.log(totalAttr);
 
     let errors = false;
 
@@ -109,6 +109,17 @@ class App extends React.Component {
     }, () => this.getErrors());
   }
 
+  eraseCard = (cardName) => {
+    const { cards } = this.state;
+    const cardToErase = cards.find((card) => card.cardName === cardName);
+    console.log(cardToErase.cardTrunfo);
+    if (cardToErase.cardTrunfo) this.setState({ hasTrunfo: false });
+
+    this.setState((prevState) => ({
+      cards: prevState.cards.filter((card) => card.cardName !== cardName),
+    }));
+  }
+
   render() {
     const {
       cards, cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
@@ -142,25 +153,28 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
+            eraseCard={ this.eraseCard }
             list={ false }
           />
         </div>
         <div className="cards">
           {
-            cards.map((card) => (
-              <Card
-                key={ card.cardName }
-                cardName={ card.cardName }
-                cardDescription={ card.cardDescription }
-                cardAttr1={ card.cardAttr1 }
-                cardAttr2={ card.cardAttr2 }
-                cardAttr3={ card.cardAttr3 }
-                cardImage={ card.cardImage }
-                cardRare={ card.cardRare }
-                cardTrunfo={ card.cardTrunfo }
-                list
-              />
-            ))
+            cards.length !== 0
+              ? cards.map((card) => (
+                <Card
+                  key={ card.cardName }
+                  cardName={ card.cardName }
+                  cardDescription={ card.cardDescription }
+                  cardAttr1={ card.cardAttr1 }
+                  cardAttr2={ card.cardAttr2 }
+                  cardAttr3={ card.cardAttr3 }
+                  cardImage={ card.cardImage }
+                  cardRare={ card.cardRare }
+                  cardTrunfo={ card.cardTrunfo }
+                  eraseCard={ this.eraseCard }
+                  list
+                />
+              )) : undefined
           }
         </div>
       </div>

@@ -64,3 +64,8 @@
 .silhueta {
   filter: contrast(0%);
 }
+
+.remove-btn {
+  padding-top: 20px;
+  text-align: center;
+}

@@ -44,6 +44,7 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      eraseCard,
       list } = this.props;
 
     return (
@@ -88,6 +89,22 @@ class Card extends React.Component {
             { cardDescription ? `"${cardDescription}"` : '"Frase memorável"' }
           </h4>
         </div>
+        {
+          list
+            ? (
+              <div className="remove-btn">
+                <button
+                  className="btn"
+                  type="button"
+                  data-testid="delete-button"
+                  onClick={ () => eraseCard(cardName) }
+                >
+                  Excluir
+                </button>
+              </div>
+            ) : undefined
+        }
+
       </div>
     );
   }
@@ -102,6 +119,7 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  eraseCard: PropTypes.func.isRequired,
   list: PropTypes.bool.isRequired,
 };
 
