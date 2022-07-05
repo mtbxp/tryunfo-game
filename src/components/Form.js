@@ -139,12 +139,13 @@ class Form extends React.Component {
 
         {/* ------------- BUTTON SALVAR -------------- */}
         <button
-          type="submit"
+          type="button"
           className="btn"
           name="salvar"
           id="salvar"
           disabled={ isSaveButtonDisabled }
           data-testid="save-button"
+          onClick={ onSaveButtonClick }
         >
           Salvar Carta
         </button>
@@ -158,9 +159,9 @@ Form.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.number.isRequired,
-  cardAttr2: PropTypes.number.isRequired,
-  cardAttr3: PropTypes.number.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,

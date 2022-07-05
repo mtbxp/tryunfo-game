@@ -4,23 +4,21 @@ import Form from './components/Form';
 import data from './data';
 import Header from './components/Header';
 import './styles/app.css';
-import validateForm from './components/validateForm';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       cards: data,
-      errors: {},
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      isSaveButtonDisable: true,
+      isSaveButtonDisabled: true,
       hasTrunfo: false,
     };
   }
@@ -49,12 +47,11 @@ class App extends React.Component {
 
     this.setState((prevState) => ({
       cards: [card, ...prevState.cards],
-      errors: {},
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
@@ -63,12 +60,44 @@ class App extends React.Component {
     }));
   }
 
+  validateForm = () => {
+    const { cardName, cardDescription, cardAttr1,
+      cardAttr2, cardAttr3, cardImage, cardRare } = this.state;
+
+    const maxAttr = 90;
+    const minAttr = 0;
+    const maxTotalAttr = 210;
+    const totalAttr = parseInt(cardAttr1, 10)
+    + parseInt(cardAttr2, 10) + parseInt(cardAttr3, 10);
+
+    console.log(totalAttr);
+
+    let errors = false;
+
+    if (cardName.length === 0) errors = true;
+
+    if (cardDescription.length === 0) errors = true;
+
+    if (cardImage.length === 0) errors = true;
+
+    if (cardAttr1 < minAttr || cardAttr1 > maxAttr) errors = true;
+
+    if (cardAttr2 < minAttr || cardAttr2 > maxAttr) errors = true;
+
+    if (cardAttr3 < minAttr || cardAttr3 > maxAttr) errors = true;
+
+    if (totalAttr > maxTotalAttr) errors = true;
+
+    if (cardRare.length === 0) errors = true;
+
+    return errors;
+  }
+
   getErrors = () => {
-    const errors = validateForm(this.state);
-    console.log(errors);
+    const errors = this.validateForm();
 
     this.setState(() => ({
-      isSaveButtonDisable: errors,
+      isSaveButtonDisabled: errors,
     }));
   }
 
@@ -77,13 +106,13 @@ class App extends React.Component {
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    }, this.getErrors());
+    }, () => this.getErrors());
   }
 
   render() {
     const {
       cards, cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled, errors,
+      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
     } = this.state;
 
     return (
@@ -101,7 +130,6 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
             isSaveButtonDisabled={ isSaveButtonDisabled }
             hasTrunfo={ hasTrunfo }
-            errors={ errors }
             onInputChange={ this.onInputChange }
             onSaveButtonClick={ this.onSaveButtonClick }
           />
