@@ -63,7 +63,7 @@ class App extends React.Component {
     event.preventDefault();
     const { cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, hasTrunfo, deck } = this.state;
+      cardImage, cardRare, cardTrunfo, deck } = this.state;
 
     this.setState({
       deck: [...deck, { cardName,
@@ -74,8 +74,9 @@ class App extends React.Component {
         cardImage,
         cardRare,
         cardTrunfo,
-        hasTrunfo },
+      },
       ],
+      hasTrunfo: cardTrunfo,
     });
 
     this.setState({
@@ -87,7 +88,6 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      hasTrunfo: false,
     });
   }
 
@@ -100,7 +100,8 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo } = this.state;
+      hasTrunfo,
+      deck } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -128,6 +129,22 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <div>
+          <h2>Deck</h2>
+          { deck.map((card) => (
+            <Card
+              key={ cardName }
+              cardName={ card.cardName }
+              cardDescription={ card.cardDescription }
+              cardAttr1={ card.cardAttr1 }
+              cardAttr2={ card.cardAttr2 }
+              cardAttr3={ card.cardAttr3 }
+              cardImage={ card.cardImage }
+              cardRare={ card.cardRare }
+              cardTrunfo={ card.cardTrunfo }
+            />
+          ))}
+        </div>
       </div>
     );
   }
