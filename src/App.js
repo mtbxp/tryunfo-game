@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Card from './components/Card';
 import Form from './components/Form';
+import Inputs from './components/Inputs';
 
 class App extends React.Component {
   constructor() {
@@ -21,17 +22,13 @@ class App extends React.Component {
       cardList: [],
       cardListSave: [],
       cardRareState: 'todas',
+      disabled: false,
+      checkboxSave: '',
     };
   }
 
   enableButton = () => {
-    const {
-      cardName,
-      cardDescription,
-      cardImage,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
+    const { cardName, cardDescription, cardImage, cardAttr1, cardAttr2, cardAttr3,
     } = this.state;
     const n90 = 90;
     const n210 = 210;
@@ -42,16 +39,9 @@ class App extends React.Component {
     const att1 = num1 >= 0 && num1 <= n90;
     const att2 = num2 >= 0 && num2 <= n90;
     const att3 = num3 >= 0 && num3 <= n90;
-    if (cardName === ''
-    || cardDescription === ''
-    || cardImage === ''
-    || cardAttr1 === '0'
-    || cardAttr2 === '0'
-    || cardAttr3 === '0'
-    || sum > n210
-    || att1 === false
-    || att2 === false
-    || att3 === false) {
+    if (cardName === '' || cardDescription === '' || cardImage === '' || cardAttr1 === '0'
+    || cardAttr2 === '0' || cardAttr3 === '0' || sum > n210 || att1 === false
+    || att2 === false || att3 === false) {
       return true;
     }
     return false;
@@ -76,18 +66,8 @@ class App extends React.Component {
   }
 
   onSaveButtonClick = () => {
-    const {
-      cardName,
-      cardDescription,
-      cardImage,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardAttr4,
-      cardRare,
-      cardTrunfo,
-      cardList,
-    } = this.state;
+    const { cardName, cardDescription, cardImage, cardAttr1, cardAttr2, cardAttr3,
+      cardAttr4, cardRare, cardTrunfo, cardList } = this.state;
     const object = {
       cardName,
       cardDescription,
@@ -166,21 +146,32 @@ class App extends React.Component {
     }
   }
 
+  checkFilter = ({ target }) => {
+    const { checked } = target;
+    const { cardList, cardListSave, checkboxSave } = this.state;
+    if (checked) {
+      this.setState({
+        checkboxSave: cardList,
+        disabled: true,
+      }, () => {
+        if (cardListSave.length > 0) {
+          this.setState({
+            cardList: cardListSave.filter((ele) => ele.cardTrunfo === true),
+          });
+        }
+      });
+    } else {
+      this.setState({
+        cardList: checkboxSave,
+        disabled: false,
+      });
+    }
+  }
+
   render() {
-    const {
-      cardName,
-      cardDescription,
-      cardImage,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardAttr4,
-      cardRare,
-      cardTrunfo,
-      hasTrunfo,
-      cardList,
-      isSaveButtonDisabled,
-    } = this.state;
+    const { cardName, cardDescription, cardImage, cardAttr1, cardAttr2, cardAttr3,
+      cardAttr4, cardRare, cardTrunfo, hasTrunfo, cardList, isSaveButtonDisabled,
+      disabled } = this.state;
 
     return (
       <div>
@@ -218,22 +209,12 @@ class App extends React.Component {
           </div>
         </div>
         <h2>Todas as Cartas</h2>
-        <div className="input-container">
-          <input
-            type="text"
-            onChange={ this.nameFilter }
-            data-testid="name-filter"
-          />
-          <select
-            data-testid="rare-filter"
-            onChange={ this.rareFilter }
-          >
-            <option>todas</option>
-            <option>normal</option>
-            <option>raro</option>
-            <option>muito raro</option>
-          </select>
-        </div>
+        <Inputs
+          disabled={ disabled }
+          nameFilter={ this.nameFilter }
+          rareFilter={ this.rareFilter }
+          checkFilter={ this.checkFilter }
+        />
         <div className="cardList">
           {cardList.map((elem) => (
             <div key={ elem.cardName }>
