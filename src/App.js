@@ -17,7 +17,6 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       deckCard: [],
-      onSaveButtonClick: this.onSaveButtonClick,
     };
   }
 
@@ -72,7 +71,8 @@ class App extends React.Component {
     }
   }
 
-onSaveButtonClick = () => {
+onSaveButtonClick = (e) => {
+  e.preventDefault();
   const {
     cardName,
     cardDescription,
@@ -82,6 +82,7 @@ onSaveButtonClick = () => {
     cardImage,
     cardRare,
   } = this.state;
+
   const card = {
     cardName,
     cardDescription,
@@ -92,9 +93,19 @@ onSaveButtonClick = () => {
     cardRare,
   };
 
-  this.setState((prev) => ({
-    deckCard: [card, ...prev.deckCard],
+  this.setState(({ deckCard }) => ({
+    deckCard: [card, ...deckCard],
   }));
+  this.setState({
+    cardName: '',
+    cardDescription: '',
+    cardAttr1: '0',
+    cardAttr2: '0',
+    cardAttr3: '0',
+    cardImage: '',
+    cardRare: 'normal',
+    cardTrunfo: false,
+  });
 }
 
 render() {
@@ -108,7 +119,6 @@ render() {
     cardRare,
     cardTrunfo,
     isSaveButtonDisabled,
-    onSaveButtonClick,
   } = this.state;
 
   // Auxilio do colega Lucas Medeiros que me explicou melhor o conceito de props
@@ -126,7 +136,7 @@ render() {
         cardTrunfo={ cardTrunfo }
         isSaveButtonDisabled={ isSaveButtonDisabled }
         onInputChange={ this.onInputChange }
-        onSaveButtonClick={ onSaveButtonClick }
+        onSaveButtonClick={ this.onSaveButtonClick }
       />
 
       <Card
