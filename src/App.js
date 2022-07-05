@@ -6,8 +6,6 @@ class App extends React.Component {
   constructor() {
     super();
 
-    // this.handleChange = this.handleChange.bind(this);
-
     this.state = {
       cardName: '',
       cardDescription: '',
@@ -18,6 +16,9 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      cards: [],
+      alert: '',
+      searchValue: '',
     };
   }
 
@@ -58,13 +59,58 @@ class App extends React.Component {
     });
   };
 
+  hasTrunfo = () => {
+    const { cards } = this.state;
+    const newArr = cards.filter((card) => card.cardTrunfo === true);
+    if (newArr.length > 0) {
+      this.setState({ alert: 'Você já tem um Super Trunfo em seu baralho' });
+      return false;
+    }
+    return true;
+  }
+
+  cardNotExist = (name) => {
+    const { cards } = this.state;
+    const newArr = cards.filter((card) => card.cardName === name);
+    if (newArr.length > 0) {
+      this.setState({ alert: 'Já existe uma carta com esse nome' });
+      return false;
+    }
+    return true;
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
+    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
+      cardImage, cardRare, cardTrunfo, cards } = this.state;
+    if (cardTrunfo === true && this.hasTrunfo() === false) return;
+    if (this.cardNotExist(cardName)) {
+      cards.push({
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+        cardTrunfo,
+      });
+      this.setState({ cardName: '' });
+      this.setState({ cardDescription: '' });
+      this.setState({ cardAttr1: '0' });
+      this.setState({ cardAttr2: '0' });
+      this.setState({ cardAttr3: '0' });
+      this.setState({ cardImage: '' });
+      this.setState({ cardRare: 'normal' });
+      this.setState({ cardTrunfo: false });
+      this.setState({ alert: '' });
+    }
   }
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
+      cardRare, cardTrunfo, isSaveButtonDisabled, alert, cards,
+      searchValue } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -81,6 +127,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
         />
+        <p className="alertText">{ alert }</p>
         <Card
           cardName={ cardName }
           cardDescription={ cardDescription }
@@ -91,6 +138,24 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <div className="allCards">
+          {
+            cards.filter((card) => card.cardName.toLowerCase().startsWith(searchValue))
+              .map((card) => (
+                <Card
+                  cardName={ card.cardName }
+                  cardDescription={ card.cardDescription }
+                  cardAttr1={ card.cardAttr1 }
+                  cardAttr2={ card.cardAttr2 }
+                  cardAttr3={ card.cardAttr3 }
+                  cardImage={ card.cardImage }
+                  cardRare={ card.cardRare }
+                  cardTrunfo={ card.cardTrunfo }
+                  key={ card.cardName }
+                />
+              ))
+          }
+        </div>
       </div>
     );
   }
