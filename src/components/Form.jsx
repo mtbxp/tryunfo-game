@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
-class Form extends React.Component {
+class Form extends Component {
   render() {
     const {
       cardName,
@@ -12,7 +12,6 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -20,141 +19,99 @@ class Form extends React.Component {
 
     return (
       <div>
-        <h1>Adicionar nova carta</h1>
-        <form>
-          <label htmlFor="name">
-            Nome
-            <input
-              data-testid="name-input"
-              type="text"
-              id="card-name"
-              name="cardName"
-              value={ cardName }
-              onChange={ onInputChange }
-            />
-          </label>
-          <label htmlFor="description">
-            Descrição
-            <textarea
-              data-testid="description-input"
-              type="text-area"
-              id="card-description"
-              name="cardDescription"
-              value={ cardDescription }
-              onChange={ onInputChange }
-            />
-          </label>
-          <label htmlFor="image">
-            Imagem
-            <input
-              data-testid="image-input"
-              type="text"
-              id="card-image"
-              name="cardImage"
-              value={ cardImage }
-              onChange={ onInputChange }
-            />
-          </label>
-          <label htmlFor="attr1">
-            Attr01
-            <input
-              data-testid="attr1-input"
-              type="number"
-              name="cardAttr1"
-              id="card-attr1"
-              value={ cardAttr1 }
-              onChange={ onInputChange }
-            />
-          </label>
-          <label htmlFor="attr2">
-            Attr02
-            <input
-              data-testid="attr2-input"
-              type="number"
-              name="cardAttr2"
-              id="card-attr2"
-              value={ cardAttr2 }
-              onChange={ onInputChange }
-            />
-          </label>
-          <label htmlFor="attr3">
-            Attr03
-            <input
-              data-testid="attr3-input"
-              type="number"
-              name="cardAttr3"
-              id="card-attr3"
-              value={ cardAttr3 }
-              onChange={ onInputChange }
-            />
-          </label>
-          <label htmlFor="thumbnail">
-            Imagem
-            <input
-              data-testid="image-input"
-              type="text"
-              name="cardImage"
-              value={ cardImage }
-              onChange={ onInputChange }
-            />
-          </label>
-          <label htmlFor="Raridade">
-            Raridade:
-            <select
-              data-testid="rare-input"
-              name="cardRare"
-              id="card-rare"
-              value={ cardRare }
-              onChange={ onInputChange }
-            >
-              <option value="normal">Normal</option>
-              <option value="raro">Raro</option>
-              <option value="muito raro">Muito-raro</option>
-            </select>
-          </label>
-          { hasTrunfo === false ? (
-            <label htmlFor="trunfo">
-              Super Trunfo
-              <input
-                data-testid="trunfo-input"
-                name="cardTrunfo"
-                id="trunfo-card"
-                type="checkbox"
-                checked={ cardTrunfo }
-                onChange={ onInputChange }
-              />
-            </label>
-          )
-            : <p>Você já tem um Super Trunfo em seu baralho </p> }
-          <button
-            type="submit"
-            data-testid="save-button"
-            id="button"
-            name="isSaveButtonDisabled"
-            disabled={ isSaveButtonDisabled }
-            onClick={ onSaveButtonClick }
+        <input
+          type="text"
+          value={ cardName }
+          name="cardName"
+          data-testid="name-input"
+          onChange={ onInputChange }
+        />
+        <input
+          type="textarea"
+          value={ cardDescription }
+          name="cardDescription"
+          data-testid="description-input"
+          onChange={ onInputChange }
+        />
+        <input
+          type="number"
+          value={ cardAttr1 }
+          name="cardAttr1"
+          data-testid="attr1-input"
+          onChange={ onInputChange }
+          min="0"
+          max="90"
+        />
+        <input
+          type="number"
+          value={ cardAttr2 }
+          name="cardAttr2"
+          data-testid="attr2-input"
+          onChange={ onInputChange }
+          min="0"
+          max="90"
+        />
+        <input
+          type="number"
+          value={ cardAttr3 }
+          name="cardAttr3"
+          data-testid="attr3-input"
+          onChange={ onInputChange }
+          min="0"
+          max="90"
+        />
+        <input
+          type="text"
+          value={ cardImage }
+          name="cardImage"
+          data-testid="image-input"
+          onChange={ onInputChange }
+          placeholder="Imagem"
+        />
+        <label htmlFor="trunfo">
+          <select
+            value={ cardRare }
+            name="cardRare"
+            data-testid="rare-input"
+            onChange={ onInputChange }
           >
-            Salvar
-          </button>
-        </form>
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito Raro</option>
+          </select>
+        </label>
+        <input
+          type="checkbox"
+          checked={ cardTrunfo }
+          name="cardTrunfo"
+          data-testid="trunfo-input"
+          onChange={ onInputChange }
+        />
+        <button
+          type="button"
+          value={ isSaveButtonDisabled }
+          data-testid="save-button"
+          disabled={ isSaveButtonDisabled }
+          onClick={ onSaveButtonClick }
+        >
+          Salvar
+        </button>
       </div>
     );
   }
 }
 
 Form.propTypes = {
-  cardName: PropTypes.string.isRequired,
-  cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.string.isRequired,
   cardAttr2: PropTypes.string.isRequired,
   cardAttr3: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
+  cardName: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
 };
-
 export default Form;
