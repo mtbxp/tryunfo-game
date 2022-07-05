@@ -22,6 +22,7 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       hasTrunfo: false,
       nameFilter: '',
+      rareFilter: '',
     };
   }
 
@@ -59,6 +60,7 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       nameFilter: '',
+      rareFilter: '',
       hasTrunfo,
     }));
   }
@@ -124,17 +126,20 @@ class App extends React.Component {
   }
 
   filteredCard = () => {
-    const { cards, nameFilter } = this.state;
+    const { cards, nameFilter, rareFilter } = this.state;
     return cards.filter((card) => {
-      if (!nameFilter) return true;
-      return card.cardName.includes(nameFilter);
+      if (!nameFilter && !rareFilter) return true;
+      if (nameFilter && card.cardName.includes(nameFilter)) return true;
+      if (rareFilter && card.cardRare === rareFilter) return true;
+      return false;
     });
   }
 
   render() {
     const {
       cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled, nameFilter,
+      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
+      nameFilter, rareFilter,
     } = this.state;
 
     const cards = this.filteredCard();
@@ -172,7 +177,11 @@ class App extends React.Component {
             list={ false }
           />
         </div>
-        <Filters nameFilter={ nameFilter } onInputChange={ this.onInputChange } />
+        <Filters
+          nameFilter={ nameFilter }
+          rareFilter={ rareFilter }
+          onInputChange={ this.onInputChange }
+        />
         <div className="cards">
           {
             cards.length !== 0

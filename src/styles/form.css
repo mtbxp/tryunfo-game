@@ -41,6 +41,8 @@
 }
 
 .filters {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
   padding-top: 20px;
-  text-align: center;
 }

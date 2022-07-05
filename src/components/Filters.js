@@ -4,7 +4,7 @@ import '../styles/form.css';
 
 class Filters extends React.Component {
   render() {
-    const { nameFilter, onInputChange } = this.props;
+    const { nameFilter, onInputChange, rareFilter } = this.props;
     return (
       <div className="filters">
         <label htmlFor="name-filter">
@@ -18,6 +18,22 @@ class Filters extends React.Component {
             name="nameFilter"
             onChange={ onInputChange }
           />
+        </label>
+        <label htmlFor="rareFilter">
+          Popularidade
+          <br />
+          <select
+            name="rareFilter"
+            className="input"
+            value={ rareFilter }
+            data-testid="rare-filter"
+            onChange={ onInputChange }
+          >
+            <option value="">todas</option>
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito raro</option>
+          </select>
         </label>
       </div>
     );
