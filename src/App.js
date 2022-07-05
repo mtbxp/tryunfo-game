@@ -194,6 +194,7 @@ class App extends React.Component {
                 Intensive:
                 { element.cardAttr3 }
                 <br />
+                { element.cardRare }
                 { element.cardTrunfo === true ? (
                   <p
                     data-testid="trunfo-card"
