@@ -4,6 +4,8 @@ import Card from './components/Card';
 
 const limitU = 90;
 const limitG = 210;
+const savelist = [];
+let atual = {};
 
 class App extends React.Component {
   constructor() {
@@ -39,7 +41,20 @@ class App extends React.Component {
     }, () => this.isSaveButton());
   }
 
-  onSaveButtonClick() {
+  onSaveButtonClick({ target }) {
+    const { value } = target;
+    atual = {
+      cardName: value,
+      cardDescription: value,
+      cardAttr1: value,
+      cardAttr2: value,
+      cardAttr3: value,
+      cardImage: value,
+      cardRare: value,
+      cardTrunfo: value,
+    };
+    savelist.push(atual);
+    console.log(savelist);
     return this.setState({
       cardName: '',
       cardDescription: '',
@@ -51,6 +66,10 @@ class App extends React.Component {
       cardRare: 'normal',
     });
   }
+
+  // showList() {
+
+  // }
 
   saveButtonOpenN(atributinho) {
     return (atributinho >= 0 && atributinho <= limitU);
