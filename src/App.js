@@ -17,27 +17,58 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       cardDeck: [],
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
       onInputChange: this.handleInputChange,
       onSaveButtonClick: this.onSaveButtonClick,
     };
   }
+
+  validateInputs = () => {
+    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
+      cardImage, cardRare } = this.state;
+
+    const numbersArry = [cardAttr1, cardAttr2, cardAttr3];
+    const textsArry = [cardName, cardDescription, cardImage, cardRare];
+
+    const maxTotalSum = 210;
+    const maxSingleAtrr = 90;
+
+    const checkIfEmpty = textsArry.every((txt) => txt.length > 0);
+    const minValue = numbersArry.every((atrr) => atrr >= 0 && atrr <= maxSingleAtrr);
+    const sum = numbersArry.reduce((acc, curr) => acc + Number(curr), 0) <= maxTotalSum;
+
+    return ![checkIfEmpty, sum, minValue].every((result) => result === true);
+  }
+
   // It gets the target of a a change on its value, if th target is a checkbox
   // it changes the state with the value .checked (checkbox), if not it gets the target`s .value(input case)
-
   handleInputChange = ({ target }) => {
     const { name, type } = target;
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+    }, () => {
+      this.setState({
+        isSaveButtonDisabled: this.validateInputs(),
+      });
     });
+  }
+
+  verifyTrunfoInDeck = () => {
+    const { cardDeck } = this.state;
     this.setState({
-      isSaveButtonDisabled: this.validateInputs,
+      hasTrunfo: cardDeck.some((card) => card.cardTrunfo === true),
     });
   }
 
   onSaveButtonClick = (event) => {
     event.preventDefault();
+    const { cardTrunfo } = this.state;
+    if (cardTrunfo) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
     const savedCard = this.state;
     this.setState((previousDeck) => ({
       cardName: '',
@@ -48,28 +79,9 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      hasTrunfo: false,
       cardDeck: [savedCard, ...previousDeck.cardDeck],
     }));
   }
-  /* validateInputs = () => {
-    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare } = this.state;
-
-    const texts = [cardName, cardDescription, cardImage, cardRare];
-    const numbers = [cardAttr1, cardAttr2, cardAttr3];
-
-    const checkTextInputs = texts.every((text) => text.length > 0);
-    const maxAtrrSum = 210;
-    const maxSingleAtrr = 90;
-
-    const checkMaxSumAtrr = numbers
-      .reduce((acc, curr) => acc + Number(curr), 0) <= maxAtrrSum;
-    const checkMinSumAtrr = numbers.every((atrr) => atrr > 0 && atrr <= maxSingleAtrr);
-    const resultsArry = [checkMaxSumAtrr, checkMinSumAtrr, checkTextInputs];
-
-    return !(resultsArry.every((result) => result === true));
-  } */
 
   render() {
     const {
