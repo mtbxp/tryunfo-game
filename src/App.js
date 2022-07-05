@@ -28,6 +28,7 @@ class App extends React.Component {
     this.saveButtonOpenW = this.saveButtonOpenW.bind(this);
     this.isSaveButton = this.isSaveButton.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.clickRemove = this.clickRemove.bind(this);
   }
 
   onInputChange({ target }) {
@@ -79,9 +80,15 @@ class App extends React.Component {
     }));
   }
 
-  // showList() {
+  clickRemove({ target }) {
+    const { name } = target;
+    const { savelist } = this.state;
+    savelist.filter((name) => {});
 
-  // }
+    // this.setState({
+    //   savelist: filter(() => {})
+    // })
+  }
 
   saveButtonOpenN(atributinho) {
     return (atributinho >= 0 && atributinho <= limitU);
@@ -135,6 +142,7 @@ class App extends React.Component {
       cardTrunfo,
       isSaveButtonDisabled,
       savelist,
+      // clickRemove,
       // onSaveButtonClick,
       // hasTrunfo,
     } = this.state;
@@ -202,6 +210,15 @@ class App extends React.Component {
                   >
                     Super Trunfo
                   </p>) : (<p className="ST" />)}
+                <br />
+                <button
+                  type="button"
+                  className="Excluir"
+                  name={ element.cardName }
+                  onClick={ this.clickRemove }
+                >
+                  Excluir
+                </button>
               </p>
             </div>
           ))}
