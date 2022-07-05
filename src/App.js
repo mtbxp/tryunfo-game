@@ -103,7 +103,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
-      onSaveButtonClick,
+      // onSaveButtonClick,
       // hasTrunfo,
     } = this.state;
     return (
@@ -122,7 +122,7 @@ class App extends React.Component {
               cardTrunfo={ cardTrunfo }
               isSaveButtonDisabled={ isSaveButtonDisabled }
               onInputChange={ this.onInputChange }
-              onSaveButtonClick={ onSaveButtonClick }
+              onSaveButtonClick={ this.onSaveButtonClick }
             />
           </div>
           <div className="telaDividida" id="idCard">
@@ -137,7 +137,7 @@ class App extends React.Component {
               cardTrunfo={ cardTrunfo }
               isSaveButtonDisabled={ isSaveButtonDisabled }
               onInputChange={ this.onInputChange }
-              onSaveButtonClick={ onSaveButtonClick }
+              onSaveButtonClick={ this.onSaveButtonClick }
             />
           </div>
         </div>
