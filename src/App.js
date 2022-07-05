@@ -44,7 +44,8 @@ class App extends React.Component {
     }, () => this.isSaveButton());
   }
 
-  onSaveButtonClick() {
+  onSaveButtonClick(event) {
+    event.preventDefault();
     const {
       cardName,
       cardDescription,
@@ -75,7 +76,7 @@ class App extends React.Component {
       cardImage: '',
       cardTrunfo: false,
       cardRare: 'normal',
-      hasTrunfo: this.handleTrunfo(),
+      hasTrunfo: this.onTrunfo(),
       savelist: [...prevState.savelist, atual],
     }));
   }
