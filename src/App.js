@@ -43,7 +43,6 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
-      cardTrunfo,
     } = this.state;
 
     const validInput = this.verifyLength(cardName, cardDescription, cardImage, cardRare);
