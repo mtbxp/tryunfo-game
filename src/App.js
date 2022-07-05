@@ -24,6 +24,7 @@ class App extends React.Component {
     this.saveButtonOpenS = this.saveButtonOpenS.bind(this);
     this.saveButtonOpenW = this.saveButtonOpenW.bind(this);
     this.isSaveButton = this.isSaveButton.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
   onInputChange({ target }) {
@@ -38,15 +39,25 @@ class App extends React.Component {
     }, () => this.isSaveButton());
   }
 
+  onSaveButtonClick() {
+    return this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardTrunfo: false,
+      cardRare: 'normal',
+    });
+  }
+
   saveButtonOpenN(atributinho) {
     return (atributinho >= 0 && atributinho <= limitU);
   }
 
   saveButtonOpenS(cd1, cd2, cd3) {
-    console.log(Number(cd1), ' ', Number(cd2), ' ', Number(cd3));
-    console.log(Number(cd1) + Number(cd2) + Number(cd3) >= limitG);
     const sum = Number(cd1) + Number(cd2) + Number(cd3);
-    console.log(sum);
     return (sum <= limitG);
   }
 
