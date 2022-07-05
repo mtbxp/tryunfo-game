@@ -146,6 +146,10 @@ class App extends React.Component {
             cardTrunfo,
           } }
         />
+        {listSaveCards.map((card, index) => (<Card
+          { ...card }
+          key={ index }
+        />))}
       </>
     );
   }
