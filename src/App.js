@@ -41,17 +41,27 @@ class App extends React.Component {
     }, () => this.isSaveButton());
   }
 
-  onSaveButtonClick({ target }) {
-    const { value } = target;
+  onSaveButtonClick() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+
     atual = {
-      cardName: value,
-      cardDescription: value,
-      cardAttr1: value,
-      cardAttr2: value,
-      cardAttr3: value,
-      cardImage: value,
-      cardRare: value,
-      cardTrunfo: value,
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
     };
     savelist.push(atual);
     console.log(savelist);
