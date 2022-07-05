@@ -18,7 +18,39 @@ class App extends React.Component {
       rare: '',
       trunfo: '',
       disabled: true,
+      projects: [],
     };
+  }
+
+  saveButton = () => {
+    const {
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      thumbnail,
+      rare,
+    } = this.state;
+    const newProjects = {
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      thumbnail,
+      rare };
+    this.setState(({ projects }) => ({ projects: [newProjects, ...projects] }), () => {
+      this.setState(() => ({
+        name: '',
+        description: '',
+        thumbnail: '',
+        rare: 'normal',
+        attr1: 0,
+        attr2: 0,
+        attr3: 0,
+      }));
+    });
   }
 
   saveButtonValidation = () => {
@@ -86,6 +118,7 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
           isSaveButtonDisabled={ disabled }
+          onSaveButtonClick={ this.saveButton }
         />
         <Card
           cardName={ name }
