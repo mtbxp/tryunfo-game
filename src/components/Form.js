@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes, { bool } from 'prop-types';
+import PropTypes from 'prop-types';
 
 class Form extends React.Component {
   render() {
@@ -122,7 +122,7 @@ class Form extends React.Component {
           <br />
           <button
             data-testid="save-button"
-            name="save"
+            name="isSaveButtonDisabled"
             type="submit"
             disabled={ isSaveButtonDisabled }
             onClick={ onSaveButtonClick }
@@ -136,18 +136,18 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-  cardName: propTypes.string.isRequired,
-  cardDescription: propTypes.string.isRequired,
-  cardAttr1: propTypes.string.isRequired,
-  cardAttr2: propTypes.string.isRequired,
-  cardAttr3: propTypes.string.isRequired,
-  cardImage: propTypes.string.isRequired,
-  cardRare: propTypes.string.isRequired,
-  cardTrunfo: propTypes.bool.isRequired,
-  // hasTrunfo: propTypes.bool.isRequired,
-  isSaveButtonDisabled: bool.isRequired,
-  onInputChange: propTypes.func.isRequired,
-  onSaveButtonClick: propTypes.func.isRequired,
-};
+  cardName: PropTypes.string,
+  cardDescription: PropTypes.string,
+  cardAttr1: PropTypes.string,
+  cardAttr2: PropTypes.string,
+  cardAttr3: PropTypes.string,
+  cardImage: PropTypes.string,
+  cardRare: PropTypes.string,
+  cardTrunfo: PropTypes.bool,
+  hasTrunfo: PropTypes.bool,
+  isSaveButtonDisabled: PropTypes.bool,
+  onInputChange: PropTypes.func,
+  onSaveButtonClick: PropTypes.func,
+}.isRequired;
 
 export default Form;
