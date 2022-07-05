@@ -15,7 +15,6 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       hasTrunfo: false,
-      isSaveButtonDisabled: false,
     };
   }
 
@@ -24,6 +23,38 @@ class App extends React.Component {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({ [name]: value });
+  }
+
+  isSaveButtonDisabled = () => {
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare } = this.state;
+    const maxTotalScore = 210;
+    const maxCardScore = 90;
+    const minCardScore = 0;
+
+    if (cardName === '' || cardDescription === ''
+    || cardImage === '' || cardRare === '') {
+      return true;
+    }
+
+    const isSumExceeds = (Number(cardAttr1)
+    + Number(cardAttr2) + Number(cardAttr3)) > maxTotalScore;
+
+    const isCardInputInvalid = (Number(cardAttr1) > maxCardScore
+    || Number(cardAttr1) < minCardScore) || (Number(cardAttr2) > maxCardScore
+    || Number(cardAttr2) < minCardScore) || (Number(cardAttr3) > maxCardScore
+    || Number(cardAttr3) < minCardScore);
+
+    if (isSumExceeds || isCardInputInvalid) {
+      return true;
+    }
+
+    return false;
   }
 
   onSaveButtonClick= () => {}
@@ -37,8 +68,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
-      isSaveButtonDisabled } = this.state;
+      hasTrunfo } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -52,8 +82,9 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
+          isSaveButtonDisabled={ this.isSaveButtonDisabled() }
           onInputChange={ this.onInputChange }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
