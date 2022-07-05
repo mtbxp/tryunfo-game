@@ -19,7 +19,8 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       cards: [],
-      search: '',
+      searchName: '',
+      searchRare: 'todas',
     };
   }
 
@@ -102,12 +103,14 @@ class App extends React.Component {
     }));
   }
 
-  handleSearch = (search) => {
+  handleSearchFilter = (searchName, searchRare) => {
     const { cards } = this.state;
-    const lowerSearch = search.toLowerCase();
-    return cards
-      .filter(({ cardName }) => (
-        cardName.toLowerCase().includes(lowerSearch)));
+    const lowerSearchName = searchName.toLowerCase();
+    const cardsByNames = cards
+      .filter(({ cardName }) => (cardName.toLowerCase().includes(lowerSearchName)));
+    const cardsByRare = cardsByNames
+      .filter(({ cardRare }) => (cardRare === searchRare));
+    return (searchRare === 'todas' ? cardsByNames : cardsByRare);
   }
 
   render() {
@@ -122,7 +125,8 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      search,
+      searchName,
+      searchRare,
     } = this.state;
 
     return (
@@ -155,11 +159,12 @@ class App extends React.Component {
         <section className="all-cards">
           <h2>Todas as cartas</h2>
           <SearchFilters
-            search={ search }
+            searchName={ searchName }
+            searchRare={ searchRare }
             onSearchInputChange={ this.onInputChange }
           />
           {
-            this.handleSearch(search)
+            this.handleSearchFilter(searchName, searchRare)
               .map((card) => (
                 <section className="saved-card" key={ card.cardName }>
                   <Card
