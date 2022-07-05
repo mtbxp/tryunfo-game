@@ -20,6 +20,7 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       cardList: [],
       cardListSave: [],
+      cardRareState: 'todas',
     };
   }
 
@@ -66,6 +67,14 @@ class App extends React.Component {
     }));
   }
 
+  rarity = () => {
+    const { cardListSave, cardRareState } = this.state;
+    if (cardRareState === 'todas') {
+      return cardListSave.filter((ele) => ele.cardRare !== cardRareState);
+    }
+    return cardListSave.filter((ele) => ele.cardRare === cardRareState);
+  }
+
   onSaveButtonClick = () => {
     const {
       cardName,
@@ -99,18 +108,20 @@ class App extends React.Component {
       cardAttr3: '0',
       cardAttr4: '0',
       cardRare: 'normal',
-      cardList: [...cardList, object],
+      cardListSave: [...cardList, object],
     }, () => {
       if (cardTrunfo) {
         this.setState({
           cardTrunfo: false,
           hasTrunfo: true,
           isSaveButtonDisabled: this.enableButton(),
+          cardList: this.rarity(),
         });
       } else {
         this.setState({
           cardTrunfo: false,
           isSaveButtonDisabled: this.enableButton(),
+          cardList: this.rarity(),
         });
       }
     });
@@ -126,28 +137,33 @@ class App extends React.Component {
     });
   }
 
-  inputSave = ({ target }) => {
-    const { value } = target;
-    const { cardList } = this.state;
-    if (value === '') {
-      this.setState({
-        cardListSave: cardList,
-      });
-    }
-  }
-
   nameFilter = ({ target }) => {
     const { value } = target;
-    const { cardListSave } = this.state;
     this.setState({
-      cardList: cardListSave.filter((ele) => ele.cardName.includes(value)),
+      cardList: this.rarity().filter((ele) => ele.cardName.includes(value)),
     }, () => {
       if (value === '') {
         this.setState({
-          cardList: cardListSave,
+          cardList: this.rarity(),
         });
       }
     });
+  }
+
+  rareFilter = ({ target }) => {
+    const { value } = target;
+    const { cardList } = this.state;
+    if (value === 'todas') {
+      this.setState({
+        cardList: cardList.filter((ele) => ele.cardRare !== value),
+        cardRareState: value,
+      });
+    } else {
+      this.setState({
+        cardList: cardList.filter((ele) => ele.cardRare === value),
+        cardRareState: value,
+      });
+    }
   }
 
   render() {
@@ -205,10 +221,18 @@ class App extends React.Component {
         <div className="input-container">
           <input
             type="text"
-            onSelect={ this.inputSave }
             onChange={ this.nameFilter }
             data-testid="name-filter"
           />
+          <select
+            data-testid="rare-filter"
+            onChange={ this.rareFilter }
+          >
+            <option>todas</option>
+            <option>normal</option>
+            <option>raro</option>
+            <option>muito raro</option>
+          </select>
         </div>
         <div className="cardList">
           {cardList.map((elem) => (
