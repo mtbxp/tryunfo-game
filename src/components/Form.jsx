@@ -113,7 +113,7 @@ class Form extends React.Component {
         >
           Salvar
         </button>
-        <p value={ hasTrunfo }>hasTrunfo</p>
+        <p value={ hasTrunfo }>hasTrunfo!</p>
       </div>
 
     );
