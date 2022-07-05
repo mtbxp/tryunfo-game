@@ -75,7 +75,7 @@ class App extends React.Component {
         cardAttr3: 0,
         cardImage: '',
         hasTrunfo: true,
-        cardTrunfo: false,
+        cardTrunfo: undefined,
         cardRare: 'normal',
         savelist: [...prevState.savelist, atual],
       }));
