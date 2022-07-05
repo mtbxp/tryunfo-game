@@ -44,7 +44,6 @@ class Form extends React.Component {
               onChange={ onInputChange }
             />
           </label>
-
           <label htmlFor="image">
             Imagem
             <input
@@ -56,7 +55,6 @@ class Form extends React.Component {
               onChange={ onInputChange }
             />
           </label>
-
           <label htmlFor="attr1">
             Attr01
             <input
@@ -66,8 +64,6 @@ class Form extends React.Component {
               id="card-attr1"
               value={ cardAttr1 }
               onChange={ onInputChange }
-              min={ 0 }
-              max={ 90 }
             />
           </label>
           <label htmlFor="attr2">
@@ -79,8 +75,6 @@ class Form extends React.Component {
               id="card-attr2"
               value={ cardAttr2 }
               onChange={ onInputChange }
-              min={ 0 }
-              max={ 90 }
             />
           </label>
           <label htmlFor="attr3">
@@ -92,8 +86,6 @@ class Form extends React.Component {
               id="card-attr3"
               value={ cardAttr3 }
               onChange={ onInputChange }
-              min={ 0 }
-              max={ 90 }
             />
           </label>
           <label htmlFor="thumbnail">
