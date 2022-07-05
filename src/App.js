@@ -23,6 +23,7 @@ class App extends React.Component {
       hasTrunfo: false,
       nameFilter: '',
       rareFilter: '',
+      trunfoFilter: false,
     };
   }
 
@@ -61,6 +62,7 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       nameFilter: '',
       rareFilter: '',
+      trunfoFilter: false,
       hasTrunfo,
     }));
   }
@@ -126,11 +128,12 @@ class App extends React.Component {
   }
 
   filteredCard = () => {
-    const { cards, nameFilter, rareFilter } = this.state;
+    const { cards, nameFilter, rareFilter, trunfoFilter } = this.state;
     return cards.filter((card) => {
-      if (!nameFilter && !rareFilter) return true;
+      if (!nameFilter && !rareFilter && !trunfoFilter) return true;
       if (nameFilter && card.cardName.includes(nameFilter)) return true;
       if (rareFilter && card.cardRare === rareFilter) return true;
+      if (trunfoFilter && card.cardTrunfo) return true;
       return false;
     });
   }
@@ -139,11 +142,10 @@ class App extends React.Component {
     const {
       cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
-      nameFilter, rareFilter,
+      nameFilter, rareFilter, trunfoFilter,
     } = this.state;
 
     const cards = this.filteredCard();
-
     // console.log(cards);
 
     return (
@@ -180,6 +182,7 @@ class App extends React.Component {
         <Filters
           nameFilter={ nameFilter }
           rareFilter={ rareFilter }
+          trunfoFilter={ trunfoFilter }
           onInputChange={ this.onInputChange }
         />
         <div className="cards">
