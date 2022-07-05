@@ -102,8 +102,12 @@ class App extends React.Component {
   }
 
   buttonClear(name) {
+    const { hasTrunfo } = this.state;
     this.setState((prev) => ({
       listSavedCards: prev.listSavedCards.filter((card) => card.cardName !== name) }));
+    if (hasTrunfo) {
+      this.setState({ hasTrunfo: false });
+    }
   }
 
   render() {
