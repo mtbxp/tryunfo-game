@@ -14,18 +14,24 @@ code {
 }
 
 #idForm {
+  display: inline-block;
   background-color: azure;
 }
 
 #idCard {
+  display: inline-block;
   background-color:mediumseagreen
 }
 
 .telaDividida {
-  display: inline-block;
   width: 50%;
 }
 
 #tituloH1 {
   background-color: darkgreen;
+}
+
+.listaDeCartas {
+  justify-content: center;
+  align-items: center;
 }

@@ -21,6 +21,7 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       savelist: [],
+      hasTrunfo: false,
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.saveButtonOpenN = this.saveButtonOpenN.bind(this);
@@ -143,7 +144,7 @@ class App extends React.Component {
       savelist,
       // clickRemove,
       // onSaveButtonClick,
-      // hasTrunfo,
+      hasTrunfo,
     } = this.state;
     return (
       <div>
@@ -162,6 +163,7 @@ class App extends React.Component {
               isSaveButtonDisabled={ isSaveButtonDisabled }
               onInputChange={ this.onInputChange }
               onSaveButtonClick={ this.onSaveButtonClick }
+              hasTrunfo={ hasTrunfo }
             />
           </div>
           <div className="telaDividida" id="idCard">
@@ -215,6 +217,7 @@ class App extends React.Component {
                   className="Excluir"
                   name={ element.cardName }
                   onClick={ this.clickRemove }
+                  data-testid="delete-button"
                 >
                   Excluir
                 </button>

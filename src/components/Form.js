@@ -15,7 +15,7 @@ class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
     } = this.props;
     return (
       <div id="divForm">
@@ -45,6 +45,7 @@ class Form extends Component {
         <br />
 
         <b className="1Atb">Primeiro Atributo:</b>
+        <br />
         <input
           type="number"
           className="attr1-input"
@@ -55,6 +56,7 @@ class Form extends Component {
         />
         <br />
         <b className="2Atb">Segundo Atributo:</b>
+        <br />
         <input
           type="number"
           className="attr2-input"
@@ -65,6 +67,7 @@ class Form extends Component {
         />
         <br />
         <b className="3Atb">Terceiro Atributo:</b>
+        <br />
         <input
           type="number"
           className="attr3-input"
@@ -103,15 +106,22 @@ class Form extends Component {
         <br />
         <br />
 
-        <input
-          type="checkbox"
-          className="trunfo-input"
-          name="cardTrunfo"
-          checked={ cardTrunfo }
-          onChange={ onInputChange }
-          data-testid="trunfo-input"
-        />
-        <b>Super Trunfo!</b>
+        <div>
+          {hasTrunfo === false ? (
+            <div>
+              <input
+                type="checkbox"
+                className="trunfo-input"
+                name="cardTrunfo"
+                checked={ cardTrunfo }
+                onChange={ onInputChange }
+                data-testid="trunfo-input"
+              />
+              <b>Super Trunfo!</b>
+            </div>
+          ) : (<p>Você já tem um Super Trunfo em seu baralho</p>)}
+        </div>
+
         <br />
         <br />
 
@@ -142,7 +152,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
 };
 
 export default Form;
