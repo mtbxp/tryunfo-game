@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import SearchFilters from './components/SearchFilters';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       cards: [],
+      search: '',
     };
   }
 
@@ -100,6 +102,14 @@ class App extends React.Component {
     }));
   }
 
+  handleSearch = (search) => {
+    const { cards } = this.state;
+    const lowerSearch = search.toLowerCase();
+    return cards
+      .filter(({ cardName }) => (
+        cardName.toLowerCase().includes(lowerSearch)));
+  }
+
   render() {
     const {
       cardName,
@@ -112,7 +122,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      cards,
+      search,
     } = this.state;
 
     return (
@@ -144,30 +154,35 @@ class App extends React.Component {
         />
         <section className="all-cards">
           <h2>Todas as cartas</h2>
+          <SearchFilters
+            search={ search }
+            onSearchInputChange={ this.onInputChange }
+          />
           {
-            cards.map((card) => (
-              <section className="saved-card" key={ card.cardName }>
-                <Card
-                  cardName={ card.cardName }
-                  cardDescription={ card.cardDescription }
-                  cardAttr1={ card.cardAttr1 }
-                  cardAttr2={ card.cardAttr2 }
-                  cardAttr3={ card.cardAttr3 }
-                  cardImage={ card.cardImage }
-                  cardRare={ card.cardRare }
-                  cardTrunfo={ card.cardTrunfo }
-                />
+            this.handleSearch(search)
+              .map((card) => (
+                <section className="saved-card" key={ card.cardName }>
+                  <Card
+                    cardName={ card.cardName }
+                    cardDescription={ card.cardDescription }
+                    cardAttr1={ card.cardAttr1 }
+                    cardAttr2={ card.cardAttr2 }
+                    cardAttr3={ card.cardAttr3 }
+                    cardImage={ card.cardImage }
+                    cardRare={ card.cardRare }
+                    cardTrunfo={ card.cardTrunfo }
+                  />
 
-                <button
-                  type="button"
-                  data-testid="delete-button"
-                  id={ card.cardName }
-                  onClick={ this.handleDeleteButton }
-                >
-                  Excluir
-                </button>
-              </section>
-            ))
+                  <button
+                    type="button"
+                    data-testid="delete-button"
+                    id={ card.cardName }
+                    onClick={ this.handleDeleteButton }
+                  >
+                    Excluir
+                  </button>
+                </section>
+              ))
           }
         </section>
       </div>
