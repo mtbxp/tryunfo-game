@@ -95,8 +95,8 @@ class App extends React.Component {
   };
 
   handleDeleteButton = ({ target }) => {
-    const { cardTrunfo } = this.state;
-    if (cardTrunfo) {
+    const { hasTrunfo } = this.state;
+    if (hasTrunfo) {
       this.setState({
         hasTrunfo: false,
       });
