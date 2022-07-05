@@ -44,8 +44,7 @@ class App extends React.Component {
     }, () => this.isSaveButton());
   }
 
-  onSaveButtonClick(event) {
-    event.preventDefault();
+  onSaveButtonClick() {
     const {
       cardName,
       cardDescription,
@@ -154,8 +153,6 @@ class App extends React.Component {
       cardTrunfo,
       isSaveButtonDisabled,
       savelist,
-      // clickRemove,
-      // onSaveButtonClick,
       hasTrunfo,
     } = this.state;
     return (
