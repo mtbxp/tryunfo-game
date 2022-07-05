@@ -92,7 +92,7 @@ class App extends React.Component {
     this.setState(
       (prevState) => (
         {
-          deck: [currentState, ...prevState.deck],
+          deck: [{ currentState }, ...prevState.deck],
         }
       ),
 
@@ -105,7 +105,6 @@ class App extends React.Component {
           cardAttr3: '0',
           cardImage: '',
           cardRare: 'normal',
-          cardTrunfo: false,
         },
       ),
     );
@@ -132,6 +131,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      deck,
     } = this.state;
 
     return (
@@ -160,6 +160,23 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <section>
+          {
+            deck.map((card) => (
+              <Card
+                key={ card.currentState.cardName }
+                cardName={ card.currentState.cardName }
+                cardDescription={ card.currentState.cardDescription }
+                cardAttr1={ card.currentState.cardAttr1 }
+                cardAttr2={ card.currentState.cardAttr2 }
+                cardAttr3={ card.currentState.cardAttr3 }
+                cardImage={ card.currentState.cardImage }
+                cardRare={ card.currentState.cardRare }
+                cardTrunfo={ card.currentState.cardTrunfo }
+              />
+            ))
+          }
+        </section>
       </div>
     );
   }
