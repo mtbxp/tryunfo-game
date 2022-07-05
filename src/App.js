@@ -127,6 +127,7 @@ render() {
     cardTrunfo,
     isSaveButtonDisabled,
     hasTrunfo,
+    deckCard,
   } = this.state;
 
   // Auxilio do colega Lucas Medeiros que me explicou melhor o conceito de props
@@ -159,6 +160,23 @@ render() {
         cardTrunfo={ cardTrunfo }
         isSaveButtonDisabled={ isSaveButtonDisabled }
       />
+      <container>
+        {
+          deckCard.map((card) => (
+            <Card
+              key={ card.name }
+              cardName={ card.cardName }
+              cardDescription={ card.cardDescription }
+              cardAttr1={ card.cardAttr1 }
+              cardAttr2={ card.cardAttr2 }
+              cardAttr3={ card.cardAttr3 }
+              cardImage={ card.cardImage }
+              cardRare={ card.cardRare }
+              cardTrunfo={ card.cardTrunfo }
+            />
+          ))
+        }
+      </container>
     </div>
   );
 }
